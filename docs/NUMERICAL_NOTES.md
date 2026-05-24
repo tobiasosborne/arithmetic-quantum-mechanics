@@ -54,6 +54,12 @@ supercharge after ghost swapping, while transversal phase is a chain
 isomorphism to a changed generator presentation and compares back by the common
 syndrome-sector homotopy retract.
 
+The Steane all-Clifford ghost-Gaussian run is
+`runs/2026-05-24-steane-all-clifford-ghost-gaussians/`. It validates the
+signed image of every Steane stabilizer generator under the 56 standard
+H/P/CNOT Clifford generators, and checks the 45 elementary GL6 presentation
+moves that lift to number-preserving fermionic Gaussian ghost operations.
+
 ## Commands
 
 ```bash

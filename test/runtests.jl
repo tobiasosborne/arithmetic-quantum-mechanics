@@ -171,3 +171,43 @@ end
     @test rows[2].image == "1111000|1111000"
     @test rows[2].image_basis_coordinates == "X1+Z1"
 end
+
+@testset "Steane all-Clifford ghost Gaussian theorem data" begin
+    summary = steane_all_clifford_generator_summary()
+    @test summary.standard_clifford_generator_gates == 56
+    @test summary.hadamard_generator_gates == 7
+    @test summary.phase_generator_gates == 7
+    @test summary.cnot_generator_gates == 42
+    @test summary.generator_image_rows == 336
+    @test summary.all_generator_images_rank_six
+    @test summary.rank_six_gate_count == 56
+    @test summary.all_generator_images_isotropic
+    @test summary.isotropic_gate_count == 56
+    @test summary.transported_presentation_chain_map == "U_tensor_identity_on_ghosts"
+    @test summary.theorem_extends_to_all_clifford_words_by_generation
+    @test summary.elementary_gl6_ghost_generators == 45
+    @test summary.row_swap_ghost_generators == 15
+    @test summary.row_shear_ghost_generators == 30
+    @test summary.shear_projector_identities_checked == 1920
+    @test summary.shear_projector_identities_hold
+    @test summary.presentation_change_requires_operator_coefficients
+    @test summary.zero_syndrome_shear_reduces_to_scalar_exterior_gl
+    @test summary.no_bogoliubov_mixing_needed
+
+    images = steane_all_clifford_generator_rows()
+    @test length(images) == 336
+    @test images[1].gate == "H1"
+    @test images[1].source == "X1"
+    @test images[1].signed_image == "+0111000|1000000"
+    @test all(row -> row.image_list_rank == 6, images)
+    @test all(row -> row.image_list_isotropic, images)
+
+    ghosts = steane_ghost_gaussian_elementary_rows()
+    @test length(ghosts) == 45
+    @test count(row -> row.operation == "row_swap", ghosts) == 15
+    @test count(row -> row.operation == "row_shear", ghosts) == 30
+    @test all(row -> row.identity_holds, ghosts)
+    @test any(row -> row.operation == "row_shear" &&
+                     row.projector_identity == "P(S1*S2)=P(S1)+S1*P(S2)",
+              ghosts)
+end

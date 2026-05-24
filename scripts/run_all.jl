@@ -58,6 +58,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "lattice codes",
+        label = "steane_all_clifford_ghost_gaussians",
+        path = "lattice_codes/steane_all_clifford_ghost_gaussians.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

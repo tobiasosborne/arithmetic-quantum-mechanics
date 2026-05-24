@@ -15,10 +15,13 @@ export qutrit_css_toy_matrices
 export steane_molecular_summary, steane_binary_space_rows
 export steane_cohomology_by_degree
 export steane_clifford_morphism_summary, steane_clifford_morphism_rows
+export steane_all_clifford_generator_summary, steane_all_clifford_generator_rows
+export steane_ghost_gaussian_elementary_rows
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")
 include("ArithmeticQuantumMechanics/SteaneSupercharge.jl")
+include("ArithmeticQuantumMechanics/SteaneCliffordGroup.jl")
 
 """
     project_root()

@@ -1,0 +1,277 @@
+% SHARD-ID: AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM
+% SHARD-TITLE: Clifford Group Ghost-Gaussian Theorem
+% SHARD-SUMMARY: States and proves the arbitrary-Clifford covariance theorem for signed Pauli Koszul supercharges.
+% SHARD-SUMMARY: Proves that stabilizer presentation changes lift to number-preserving fermionic Gaussian ghost operations.
+% SHARD-SUMMARY: Applies the theorem to all standard Clifford generators on the Steane stabilizer presentation.
+% SHARD-KEYWORDS: Clifford group, Pauli group, signed stabilizers, ghost Gaussian, Koszul complex, Steane code
+
+\section{Clifford Group Ghost-Gaussian Theorem}
+\label{sec:clifford-group-ghost-gaussian-theorem}
+
+The previous section treated two transversal Steane Cliffords.  The correct
+general statement is stronger, but it needs one extra convention: binary Pauli
+labels alone are not enough.  Gottesman's local source says that Clifford
+normalizer elements conjugate Pauli products to Pauli products
+\path{Thesis.tex}, lines 2292--2305 and 2307--2348; the binary stabilizer
+language drops phases at lines 1303--1327.  The source manifest records the
+full local path.  The supercharge projectors do not allow that drop.
+
+\subsection{Signed Pauli Convention}
+
+For \(n\) qubits define the Hermitian representative
+\[
+  W(x,z)=i^{x\cdot z}\bigotimes_{j=1}^n X_j^{x_j}Z_j^{z_j},
+  \qquad x,z\in\mathbb F_2^n .
+\]
+A signed Pauli stabilizer generator is
+\[
+  S=\tau W(x,z),\qquad \tau\in\{\pm1\}.
+\]
+The violated-check projector is
+\[
+  P_S=\frac{I-S}{2}.
+\]
+Thus if a Clifford gives
+\[
+  U W(x,z)U^\dagger=\tau W(x',z'),
+\]
+then the transported projector is
+\[
+  U P_{W(x,z)}U^\dagger=\frac{I-\tau W(x',z')}{2}.
+\]
+When \(\tau=-1\), this is the opposite syndrome projector for the unsigned
+binary label \((x',z')\).  This is why the theorem below is stated for signed
+Pauli operators, not only for symplectic binary labels.
+
+\subsection{The Koszul Complex Attached to a Signed Presentation}
+
+Let
+\[
+  G=(S_1,\ldots,S_r)
+\]
+be an ordered independent list of commuting signed Hermitian Pauli operators,
+with no product equal to \(-I\).  Let \(E=\mathrm{span}_{\mathbb C}
+\{\epsilon_1,\ldots,\epsilon_r\}\), and let \(c_i^\dagger\) denote exterior
+multiplication by \(\epsilon_i\) on \(\Lambda E\).  The ghost-extended complex
+is
+\[
+  \mathcal K(G)=\mathcal H\otimes\Lambda E,
+  \qquad
+  Q_G=\sum_{i=1}^r c_i^\dagger P_{S_i}.
+\]
+This is exactly the earlier supercharge notation
+\(\sum_i\epsilon_iP_{S_i}\), now with the creation operator written
+explicitly.  Since the \(P_{S_i}\) commute and the \(c_i^\dagger\) anticommute,
+\(Q_G^2=0\).
+
+\subsection{Theorem: Arbitrary Clifford Covariance}
+
+Let \(U\) be any \(n\)-qubit Clifford.  Define the transported signed
+presentation
+\[
+  U(G)=\bigl(US_1U^\dagger,\ldots,US_rU^\dagger\bigr)
+\]
+and give it ghosts \(E^U=\mathrm{span}\{\epsilon_1^U,\ldots,\epsilon_r^U\}\).
+Let \(T_U:E\to E^U\) be the linear map \(T_U(\epsilon_i)=\epsilon_i^U\).  Then
+\[
+  \Phi_U=U\otimes\Lambda T_U
+\]
+is a chain isomorphism
+\[
+  \Phi_U Q_G=Q_{U(G)}\Phi_U .
+\]
+Equivalently,
+\[
+  Q_{U(G)}
+  =
+  (U\otimes\Lambda T_U)Q_G(U^\dagger\otimes\Lambda T_U^{-1}).
+\]
+
+\emph{Proof.}
+For each \(i\),
+\[
+  U P_{S_i} U^\dagger
+  =
+  U\frac{I-S_i}{2}U^\dagger
+  =
+  \frac{I-US_iU^\dagger}{2}
+  =
+  P_{US_iU^\dagger}.
+\]
+Now apply both sides to a pure tensor \(\psi\otimes\omega\):
+\[
+\begin{aligned}
+  \Phi_UQ_G(\psi\otimes\omega)
+  &=
+  \sum_i U(P_{S_i}\psi)\otimes
+        \epsilon_i^U\wedge(\Lambda T_U)\omega                 \\
+  &=
+  \sum_i P_{US_iU^\dagger}(U\psi)\otimes
+        \epsilon_i^U\wedge(\Lambda T_U)\omega                 \\
+  &=
+  Q_{U(G)}\Phi_U(\psi\otimes\omega).
+\end{aligned}
+\]
+The map is invertible because \(U\) and \(T_U\) are invertible.  This proves
+the chain isomorphism and hence gives canonical isomorphisms
+\[
+  H^q(Q_G)\cong H^q(Q_{U(G)})
+\]
+for every ghost degree \(q\).
+
+\subsection{Where the Ghost Gaussian Enters}
+
+The covariance theorem uses the transported ordered list \(U(G)\), so the ghost
+map is just \(\epsilon_i\mapsto\epsilon_i^U\).  The genuinely nontrivial ghost
+operation appears when we rewrite a signed stabilizer group in a different
+independent generator basis.
+
+First consider a row swap: exchange \(S_a\) and \(S_b\).  The supercharge is
+unchanged after the same swap of ghost creation operators,
+\[
+  c_a^\dagger\leftrightarrow c_b^\dagger .
+\]
+This is a number-preserving fermionic Gaussian operation on the ghost Fock
+space.
+
+Now consider the elementary row shear
+\[
+  S_a\longmapsto S_aS_b,\qquad S_i\longmapsto S_i\quad(i\ne a).
+\]
+The key projector identity is not linear over \(\mathbb C\) in the syndrome
+bits; it contains the old stabilizer operator:
+\[
+\begin{aligned}
+  P_{S_aS_b}
+  &=
+  \frac{I-S_aS_b}{2}                                      \\
+  &=
+  \frac{I-S_a}{2}+S_a\frac{I-S_b}{2}                       \\
+  &=
+  P_{S_a}+S_aP_{S_b}.
+\end{aligned}
+\]
+Therefore the sheared supercharge is
+\[
+\begin{aligned}
+  Q'
+  &=
+  c_a^\dagger P_{S_aS_b}
+  +c_b^\dagger P_{S_b}
+  +\sum_{i\ne a,b}c_i^\dagger P_{S_i}                       \\
+  &=
+  c_a^\dagger P_{S_a}
+  +(c_b^\dagger+S_ac_a^\dagger)P_{S_b}
+  +\sum_{i\ne a,b}c_i^\dagger P_{S_i}.
+\end{aligned}
+\]
+Thus the ghost creation operators transform by
+\[
+  c_b^\dagger\longmapsto c_b^\dagger+S_ac_a^\dagger,
+  \qquad c_i^\dagger\longmapsto c_i^\dagger\quad(i\ne b).
+\]
+This is a number-preserving fermionic Gaussian with an even
+operator-valued coefficient:
+\[
+  \Gamma_{ab}=\exp(S_a c_a^\dagger c_b).
+\]
+Indeed \(S_a\) commutes with all projectors and ghost operators, and the
+commutator gives
+\[
+  \Gamma_{ab}c_b^\dagger\Gamma_{ab}^{-1}
+  =
+  c_b^\dagger+S_ac_a^\dagger,
+  \qquad
+  \Gamma_{ab}c_i^\dagger\Gamma_{ab}^{-1}=c_i^\dagger
+  \quad(i\ne b).
+\]
+Consequently
+\[
+  Q'=\Gamma_{ab}Q_G\Gamma_{ab}^{-1}.
+\]
+
+Row swaps and row shears generate \(\mathrm{GL}_r(\mathbb F_2)\).  Therefore
+every independent presentation
+\[
+  S'_a=\prod_i S_i^{A_{ai}},\qquad A\in\mathrm{GL}_r(\mathbb F_2),
+\]
+is obtained by composing these elementary ghost Gaussians.  The closed
+projector formula for a row \(I=(i_1,\ldots,i_m)\) is the telescoping identity
+\[
+  P_{\prod_{\nu=1}^mS_{i_\nu}}
+  =
+  \sum_{\mu=1}^m
+  \left(\prod_{\nu<\mu}S_{i_\nu}\right)P_{S_{i_\mu}} .
+\]
+This formula is the concrete reason that a scalar exterior
+\(\mathrm{GL}_r(\mathbb F_2)\) operation on ghosts is not enough on the full
+physical Hilbert space.  The syndrome parity
+\(\sigma_a\oplus\sigma_b\) is represented over \(\mathbb C\) by
+\[
+  \sigma_a+(-1)^{\sigma_a}\sigma_b,
+\]
+not by \(\sigma_a+\sigma_b\).  The coefficient \((-1)^{\sigma_a}\) is exactly
+the eigenvalue of \(S_a\).
+
+On the code subspace all \(S_i=+1\).  Hence every row shear reduces there to
+the ordinary exterior linear map
+\[
+  c_b^\dagger\mapsto c_b^\dagger+c_a^\dagger .
+\]
+So the higher-ghost cohomology is functorial under the exterior representation
+of the chosen presentation change on the zero-syndrome sector, while the full
+chain-level comparison remembers operator-valued syndrome signs.
+
+\subsection{Steane: All Clifford Generators}
+
+For the Steane code, \(r=6\).  The standard Clifford generating gates are the
+seven single-qubit \(H\)'s, seven single-qubit \(P\)'s, and the \(42\) ordered
+CNOT gates.  This is the generating set described in the local Gottesman source
+at lines 2292--2348.  The producer
+\path{scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl} applies
+these \(56\) gates to the six sourced Steane stabilizer generators from
+Section~\ref{sec:steane-symplectic-molecular}.
+
+The run records \(336\) signed generator images.  Every one of the \(56\)
+image lists has binary rank \(6\) and is isotropic for the binary symplectic
+form.  Since the listed \(H\), \(P\), and CNOT gates generate the Clifford
+group, any Clifford word is handled by composing these signed Pauli-label
+updates and then applying the covariance theorem above.
+
+The same run records the \(45\) elementary ghost-Gaussian presentation moves
+for the Steane six-generator group: \(15\) row swaps and \(30\) directed row
+shears.  For each shear it checks all \(64\) Steane syndrome sectors, i.e.
+\[
+  30\cdot64=1920
+\]
+instances of
+\[
+  P(S_aS_b)=P(S_a)+S_aP(S_b).
+\]
+
+If a Clifford \(U\) lies in the Steane stabilizer normalizer, then
+\[
+  US_iU^\dagger=\prod_jS_j^{A_{ij}}
+\]
+for some \(A\in\mathrm{GL}_6(\mathbb F_2)\).  In that case
+\[
+  (U\otimes I)Q_G(U^\dagger\otimes I)=Q_{A(G)}
+  =
+  \Gamma_AQ_G\Gamma_A^{-1},
+\]
+where \(\Gamma_A\) is any product of the elementary ghost Gaussians above that
+realizes the row-reduction path for \(A\).  If \(U\) is an arbitrary Clifford
+not preserving the Steane stabilizer group, the first equality still gives a
+strict supercharge for the transported code \(U\mathcal C\), but no ghost-only
+operation can turn its physical projectors back into the original Steane
+projectors.
+
+\subsection{Conclusion}
+
+The precise answer is therefore Clifford conjugation on physical qubits plus a
+fermionic Gaussian change of ghost presentation.  No Bogoliubov mixing of
+creation and annihilation operators is needed for the cohomological complex;
+the transformations preserve ghost degree.  The only non-scalar feature is
+essential: when a product stabilizer is rewritten in terms of old violated-check
+projectors, the Gaussian coefficients are even operators generated by the old
+stabilizers themselves.

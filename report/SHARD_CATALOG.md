@@ -24,7 +24,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/02_lab_log.tex`
 - Title: Lab Log
 - Summary: Maintains a chronological record of infrastructure changes and sourced research steps.
-- Summary: The initial entry records scaffold creation and the absence of checked mathematical content.
+- Summary: Later entries record sourced toric/CSS/Steane stabilizer-supercharge results.
 - Keywords: lab log, session log, chronology, handoff
 
 ## `AQM-03-REPRO-MAP`
@@ -114,3 +114,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves that transversal Hadamard gives an exact chain automorphism after ghost swapping.
 - Summary: Shows that transversal phase gives a chain isomorphism to a changed presentation and a homotopy equivalence back.
 - Keywords: Steane code, Clifford, symplectic automorphism, Koszul complex, homotopy equivalence
+
+## `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM`
+
+- Source: `report/sections/13_clifford_group_ghost_gaussian_theorem.tex`
+- Title: Clifford Group Ghost-Gaussian Theorem
+- Summary: States and proves the arbitrary-Clifford covariance theorem for signed Pauli Koszul supercharges.
+- Summary: Proves that stabilizer presentation changes lift to number-preserving fermionic Gaussian ghost operations.
+- Summary: Applies the theorem to all standard Clifford generators on the Steane stabilizer presentation.
+- Keywords: Clifford group, Pauli group, signed stabilizers, ghost Gaussian, Koszul complex, Steane code

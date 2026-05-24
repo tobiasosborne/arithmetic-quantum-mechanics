@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Nine CSV outputs exist.
+Twelve CSV outputs exist.
 
 ## Common Rules
 
@@ -26,6 +26,9 @@ Nine CSV outputs exist.
 | `runs/2026-05-24-steane-supercharge-molecular/data/steane_cohomology_by_degree.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Active |
 | `runs/2026-05-24-steane-clifford-koszul-morphisms/data/steane_clifford_koszul_summary.csv` | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | Active |
 | `runs/2026-05-24-steane-clifford-koszul-morphisms/data/steane_clifford_generator_maps.csv` | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | Active |
+| `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_all_clifford_generator_summary.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Active |
+| `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_all_clifford_generator_images.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Active |
+| `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_ghost_gaussian_elementaries.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -258,3 +261,76 @@ of the six Steane stabilizer labels.
 | source | string | Source stabilizer generator label. |
 | image | string | Image Pauli label as `x|z` binary strings. |
 | image_basis_coordinates | string | Coordinates of the image in the original Steane generator basis. |
+
+## steane_all_clifford_generator_summary.csv
+
+Produced by: `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl`
+Run bundle: `runs/2026-05-24-steane-all-clifford-ghost-gaussians/`
+Report shard: `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM`
+Sentinel: row 1 begins with `#` and states that this is an exact
+Clifford-generator and ghost-Gaussian certificate.
+
+| column | type | description |
+|---|---|---|
+| n | int | Number of physical Steane qubits. |
+| steane_stabilizer_generators | int | Number of sourced Steane stabilizer generators. |
+| standard_clifford_generator_gates | int | Count of checked standard Clifford generating gates. |
+| hadamard_generator_gates | int | Number of single-qubit Hadamard generators checked. |
+| phase_generator_gates | int | Number of single-qubit phase generators checked. |
+| cnot_generator_gates | int | Number of ordered CNOT generators checked. |
+| generator_image_rows | int | Number of signed stabilizer-generator image rows written. |
+| all_generator_images_rank_six | bool | Whether every image list has binary rank six. |
+| rank_six_gate_count | int | Number of Clifford generator gates whose six images have rank six. |
+| all_generator_images_isotropic | bool | Whether every image list is binary symplectic-isotropic. |
+| isotropic_gate_count | int | Number of Clifford generator gates with isotropic image lists. |
+| negative_signed_images_from_steane_generators | int | Number of negative signed images among the checked one-gate Steane generator images. |
+| transported_presentation_chain_map | string | Label for the exact Clifford covariance chain map. |
+| theorem_extends_to_all_clifford_words_by_generation | bool | Whether the generator check is used with the H/P/CNOT generation theorem. |
+| signed_pauli_convention | string | Compact label for the signed Hermitian Pauli convention. |
+| elementary_gl6_ghost_generators | int | Row swaps plus row shears generating presentation changes. |
+| row_swap_ghost_generators | int | Number of row-swap ghost maps. |
+| row_shear_ghost_generators | int | Number of directed row-shear ghost maps. |
+| shear_projector_identities_checked | int | Number of syndrome-sector shear projector identities checked. |
+| shear_projector_identities_hold | bool | Whether all shear identities hold. |
+| presentation_change_requires_operator_coefficients | bool | Whether full-chain shears require stabilizer-operator coefficients. |
+| zero_syndrome_shear_reduces_to_scalar_exterior_gl | bool | Whether shears become ordinary exterior GL maps on the code sector. |
+| no_bogoliubov_mixing_needed | bool | Whether the ghost transforms preserve ghost degree. |
+
+## steane_all_clifford_generator_images.csv
+
+Produced by: `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl`
+Run bundle: `runs/2026-05-24-steane-all-clifford-ghost-gaussians/`
+Report shard: `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM`
+Sentinel: row 1 begins with `#` and states that the rows are images of the
+six Steane generators under the standard H/P/CNOT Clifford generating gates.
+
+| column | type | description |
+|---|---|---|
+| gate | string | Clifford generator name, e.g. `H1`, `P1`, or `CNOT1_2`. |
+| gate_kind | string | Gate family: `H`, `P`, or `CNOT`. |
+| source | string | Source Steane stabilizer generator label. |
+| image_sign | int | Sign of the Hermitian signed Pauli image. |
+| image | string | Unsigned binary Pauli label as `x|z`. |
+| signed_image | string | Signed binary Pauli label. |
+| image_list_rank | int | Rank of all six images for this gate. |
+| image_list_isotropic | bool | Whether all six images for this gate commute symplectically. |
+
+## steane_ghost_gaussian_elementaries.csv
+
+Produced by: `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl`
+Run bundle: `runs/2026-05-24-steane-all-clifford-ghost-gaussians/`
+Report shard: `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM`
+Sentinel: row 1 begins with `#` and states that the rows are elementary GL6
+presentation moves and their ghost-Gaussian lifts.
+
+| column | type | description |
+|---|---|---|
+| operation | string | `row_swap` or `row_shear`. |
+| a | int | First generator index. |
+| b | int | Second generator index. |
+| generator_change | string | Stabilizer presentation move. |
+| projector_identity | string | Projector identity used by the move. |
+| ghost_gaussian | string | Creation-operator action of the ghost Gaussian. |
+| checked_syndromes | int | Number of syndrome sectors checked for this row. |
+| identity_holds | bool | Whether the projector identity holds. |
+| zero_syndrome_map | string | Simplified exterior ghost map on the code sector. |

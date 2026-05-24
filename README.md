@@ -4,9 +4,9 @@ Lab-book workspace for investigating bridges between Weil conjectures and zeta
 functions, arithmetic quantum mechanics, supersymmetric quantum mechanics, and
 Kitaev/Levin-Wen/toric-code style topological lattice models.
 
-Status: initial research infrastructure. The repository currently contains the
-report scaffold, provenance rules, run-bundle discipline, and tool runner. It
-does not yet contain checked mathematical results.
+Status: active research notebook. The repository contains the report scaffold,
+provenance rules, run-bundle discipline, tool runner, and checked toric/CSS/
+Steane stabilizer-supercharge results.
 
 ## Layout
 
@@ -35,7 +35,7 @@ make report
 # Run the Julia package smoke tests.
 julia --project=. -e 'using Pkg; Pkg.test()'
 
-# Run registered evidence producers. Currently no producers are registered.
+# Run registered evidence producers.
 julia --project=. scripts/run_all.jl --fast
 
 # Show locally available optional tools.

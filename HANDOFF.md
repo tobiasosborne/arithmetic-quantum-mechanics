@@ -64,6 +64,11 @@ the ghost-extended local-check supercharge formulation of the toric code in
   exact automorphism of the written Steane `Q` after ghost swap; transversal
   phase is a chain isomorphism to a changed generator presentation and a
   homotopy equivalence back through the common zero-syndrome retract.
+- Added `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM`: arbitrary Clifford
+  covariance is stated for signed Pauli stabilizer presentations, while
+  stabilizer presentation changes lift to number-preserving ghost Gaussians;
+  the Steane validation checks all 56 H/P/CNOT Clifford generators and the 45
+  elementary GL6 ghost moves.
 
 ## Next Useful Steps
 
