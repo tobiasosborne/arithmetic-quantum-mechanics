@@ -44,6 +44,10 @@ the ghost-extended local-check supercharge formulation of the toric code in
   `[a] in ker(delta^1)/im(delta^0)` map to normalized orbit sums in the code
   space, and the ghost anticommutator follows from the CAR and commuting
   projectors.
+- Added `AQM-07-TORIC-OPERATOR-RELATION`: `Q_cell` is not a low-ghost
+  restriction of `Q_gh`; instead `delta^0` induces star translations,
+  `delta^1` induces plaquette syndrome multiplication, and `Q_gh` is the
+  Koszul differential for those projector equations.
 
 ## Next Useful Steps
 

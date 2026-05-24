@@ -1,0 +1,237 @@
+% SHARD-ID: AQM-07-TORIC-OPERATOR-RELATION
+% SHARD-TITLE: Operator Relation Between Cellular and Ghost Supercharges
+% SHARD-SUMMARY: Shows that the cellular and ghost supercharges are not restrictions of one operator.
+% SHARD-SUMMARY: Derives the ghost projectors from the boundary maps via translations and syndrome characters.
+% SHARD-SUMMARY: Proves that degree-zero ghost cohomology is the complex linearization of cellular cohomology.
+% SHARD-KEYWORDS: toric code, supercharge, operator relation, ghost Fock space, cellular differential, Koszul
+
+\section{Operator Relation Between Cellular and Ghost Supercharges}
+\label{sec:operator-relation}
+
+The honest operator-level answer is: \(Q_{\mathrm{cell}}\) is not the
+restriction of \(Q_{\mathrm{gh}}\) to a low-ghost-number subspace of the
+check-ghost Fock space. The precise relation is induced, not restrictive:
+the cellular maps \(\delta^0,\delta^1\) define translations and syndrome
+characters on the physical edge-bit Hilbert space, and \(Q_{\mathrm{gh}}\) is
+the Koszul differential for the corresponding commuting projector equations.
+
+\subsection{Why It Is Not a Low-Ghost Restriction}
+
+Let
+\[
+  E=C^1
+\]
+be the \(\mathbb F_2\)-vector space of edge-bit strings, and let
+\[
+  \mathcal H=\mathbb C[E]
+\]
+be the complex vector space with basis \(\{|a\rangle:a\in E\}\). The
+check-ghost space used by \(Q_{\mathrm{gh}}\) is
+\[
+  G_{\mathrm{check}}
+  =\mathbb C\{\eta_v:v\in C_0\}
+  \oplus \mathbb C\{\theta_f:f\in C_2\}.
+\]
+The full ghost-extended space is
+\[
+  \mathcal H_{\mathrm{gh}}
+  =
+  \mathcal H\otimes\Lambda(G_{\mathrm{check}}).
+\]
+Its low ghost-number pieces are therefore
+\[
+  \mathcal H\otimes\Lambda^0G_{\mathrm{check}}=\mathcal H,
+\]
+\[
+  \mathcal H\otimes\Lambda^1G_{\mathrm{check}}
+  =
+  \mathcal H\otimes
+  \bigl(\mathbb C\{v\text{-ghosts}\}\oplus
+        \mathbb C\{f\text{-ghosts}\}\bigr).
+\]
+There is no edge one-particle sector here. But the cellular differential has
+the form
+\[
+  Q_{\mathrm{cell}}:\ C^0\to C^1\to C^2.
+\]
+Its middle degree is the edge space \(C^1\). In contrast,
+\[
+  Q_{\mathrm{gh}}:\ \mathcal H\otimes\Lambda^rG_{\mathrm{check}}
+  \longrightarrow
+  \mathcal H\otimes\Lambda^{r+1}G_{\mathrm{check}}
+\]
+adds a vertex-check or face-check ghost and keeps the same physical Hilbert
+space. On ghost degree zero it maps
+\[
+  \mathcal H\longrightarrow
+  \mathcal H\otimes(\mathbb C\{v\text{-ghosts}\}\oplus
+                    \mathbb C\{f\text{-ghosts}\}),
+\]
+not \(C^0\to C^1\). On ghost degree one it maps to two-check ghosts, not to
+faces. Thus \(Q_{\mathrm{cell}}\) is not literally \(Q_{\mathrm{gh}}\) on any
+canonical low-ghost subspace of \(\mathcal H_{\mathrm{gh}}\).
+
+If one wants a Fock-space operator whose one-particle restriction is
+\(Q_{\mathrm{cell}}\), one must build a different Fock space. Choose an
+oriented signed cellular boundary over \(\mathbb Z\),
+\[
+  C_2^{\mathbb Z}\xrightarrow{\partial_2^{\mathbb Z}}
+  C_1^{\mathbb Z}\xrightarrow{\partial_1^{\mathbb Z}} C_0^{\mathbb Z},
+  \qquad
+  \partial_1^{\mathbb Z}\partial_2^{\mathbb Z}=0.
+\]
+Let \(W=W_0\oplus W_1\oplus W_2\) be the complex vector space with basis the
+oriented cells, and let \(a_\sigma^*,a_\sigma\) be creation and annihilation
+operators for cell fermions. The second-quantized cellular differential is
+\[
+  \widehat Q_{\mathrm{cell}}
+  =
+  \sum_{e,v}(\delta^0_{\mathbb Z})_{ev}a_e^*a_v
+  +
+  \sum_{f,e}(\delta^1_{\mathbb Z})_{fe}a_f^*a_e .
+\]
+It preserves fermion number and raises cell degree. Its square is zero because
+\(\delta^1_{\mathbb Z}\delta^0_{\mathbb Z}=0\), and on the one-particle sector
+\(W\) it is exactly the signed cellular cochain differential. This is a
+cell-fermion Fock space, not the check-ghost Fock space used by
+\(Q_{\mathrm{gh}}\). Reducing the signed incidence matrices modulo \(2\) gives
+the CSS supports used below.
+
+\subsection{The Induced Operator Construction}
+
+The actual bridge starts with the mod-\(2\) cellular maps
+\[
+  C^0\xrightarrow{\delta^0}E\xrightarrow{\delta^1}C^2,
+  \qquad \delta^1\delta^0=0.
+\]
+The edge-bit space \(E\) is an abelian group under addition. For each
+\(u\in E\), define the translation operator on \(\mathcal H=\mathbb C[E]\) by
+\[
+  T_u|a\rangle=|a+u\rangle .
+\]
+For each \(s\in E\), define the character multiplication operator by
+\[
+  M_s|a\rangle=(-1)^{s\cdot a}|a\rangle .
+\]
+These obey
+\[
+  T_uM_s=(-1)^{s\cdot u}M_sT_u.
+\]
+
+Now feed the boundary maps into these two representations of \(E\). For a
+vertex \(v\), set
+\[
+  A_v=T_{\delta^0 v}.
+\]
+For a face \(f\), set \(s_f=\partial_2 f\in E\) and
+\[
+  B_f=M_{s_f}.
+\]
+Then
+\[
+  A_vB_f=(-1)^{s_f\cdot\delta^0v}B_fA_v.
+\]
+The exponent \(s_f\cdot\delta^0v\) is the \(f\)-coordinate of
+\(\delta^1\delta^0v\), equivalently the \(v\)-coefficient of
+\(\partial_1\partial_2f\). It is zero. Hence all star and plaquette checks
+commute.
+
+The violated-check projectors are therefore
+\[
+  P_v^X=\frac{I-T_{\delta^0v}}{2},\qquad
+  P_f^Z=\frac{I-M_{s_f}}{2}.
+\]
+Their action on the computational basis is concrete:
+\[
+  P_v^X|a\rangle
+  =
+  \frac{|a\rangle-|a+\delta^0v\rangle}{2},
+\]
+and
+\[
+  P_f^Z|a\rangle
+  =
+  \frac{1-(-1)^{s_f\cdot a}}{2}|a\rangle
+  =
+  (\delta^1a)_f|a\rangle,
+\]
+where the bit \((\delta^1a)_f\in\mathbb F_2\) is embedded as \(0\) or \(1\) in
+\(\mathbb C\). Thus the plaquette part of \(Q_{\mathrm{gh}}\) reads off the
+cellular coboundary \(\delta^1a\) as a face-ghost syndrome, while the star part
+is a finite-difference operator along the \(\operatorname{im}\delta^0\) orbit.
+
+\subsection{The Ghost Differential}
+
+Let exterior multiplication by \(\eta_v\) and \(\theta_f\) be denoted by the
+same symbols. Define
+\[
+  Q_X=\sum_v \eta_v P_v^X,\qquad
+  Q_Z=\sum_f \theta_f P_f^Z,\qquad
+  Q_{\mathrm{gh}}=Q_X+Q_Z .
+\]
+The projectors commute because the checks commute, and exterior
+multiplication by ghost labels anticommutes. Therefore
+\[
+  Q_{\mathrm{gh}}^2
+  =
+  \sum_{i,j}\gamma_i\gamma_jP_iP_j
+  =
+  \sum_{i<j}(\gamma_i\gamma_j+\gamma_j\gamma_i)P_iP_j
+  =0,
+\]
+where \(\gamma_i\) ranges over all \(\eta_v,\theta_f\). With ghost
+annihilation operators \(\gamma_i^*\) satisfying
+\(\gamma_i^*\gamma_j+\gamma_j\gamma_i=\delta_{ij}\), one also has
+\[
+  Q_{\mathrm{gh}}Q_{\mathrm{gh}}^*
+  +Q_{\mathrm{gh}}^*Q_{\mathrm{gh}}
+  =\sum_iP_i .
+\]
+Thus \(Q_{\mathrm{gh}}\) is the Koszul differential for the equations
+\[
+  T_{\delta^0v}\psi=\psi,\qquad M_{s_f}\psi=\psi .
+\]
+Those equations are exactly the stabilizer equations.
+
+\subsection{Cohomology-Level Relation}
+
+Let
+\[
+  \psi=\sum_{a\in E}\psi_a|a\rangle\in\mathcal H
+\]
+be a no-ghost state. The plaquette equations are:
+\[
+  P_f^Z\psi=0\ \text{for all }f
+  \quad\Longleftrightarrow\quad
+  \psi_a=0\ \text{unless}\ \delta^1a=0.
+\]
+Indeed, \(P_f^Z\) multiplies the coefficient of \(|a\rangle\) by the bit
+\((\delta^1a)_f\). The star equations are:
+\[
+  P_v^X\psi=0\ \text{for all }v
+  \quad\Longleftrightarrow\quad
+  \psi_a=\psi_{a+\delta^0v}\ \text{for all }a,v.
+\]
+Thus a no-ghost state is \(Q_{\mathrm{gh}}\)-closed exactly when its
+coefficients are supported on \(\ker\delta^1\) and are constant on cosets of
+\(\operatorname{im}\delta^0\). Since there are no degree \(-1\) states, there
+are no no-ghost exact states. Therefore
+\[
+  H^0(Q_{\mathrm{gh}})
+  \cong
+  \mathbb C[\ker\delta^1/\operatorname{im}\delta^0]
+  =
+  \mathbb C[H^1(Q_{\mathrm{cell}})].
+\]
+
+This is the concrete relation. \(Q_{\mathrm{cell}}\) does not act inside the
+check-ghost Fock space. Instead, its two arrows induce two kinds of operators
+on \(\mathbb C[C^1]\): \(\delta^0\) gives translations, and \(\delta^1\) gives
+syndrome multiplications. The ghost supercharge is the Koszul operator for
+the projector constraints built from those induced operators. The equality is
+therefore a cohomology-level identification, not an operator restriction:
+\[
+  H^0(Q_{\mathrm{gh}})
+  \simeq
+  \mathbb C[H^1(Q_{\mathrm{cell}})].
+\]

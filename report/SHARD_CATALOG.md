@@ -60,3 +60,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Constructs an explicit cohomology-class basis for the toric-code space.
 - Summary: Proves nilpotence and the stabilizer Hamiltonian anticommutator from projectors and CAR.
 - Keywords: toric code, proof, chain complex, CSS code, ghost supercharge, cohomology
+
+## `AQM-07-TORIC-OPERATOR-RELATION`
+
+- Source: `report/sections/07_toric_operator_relation.tex`
+- Title: Operator Relation Between Cellular and Ghost Supercharges
+- Summary: Shows that the cellular and ghost supercharges are not restrictions of one operator.
+- Summary: Derives the ghost projectors from the boundary maps via translations and syndrome characters.
+- Summary: Proves that degree-zero ghost cohomology is the complex linearization of cellular cohomology.
+- Keywords: toric code, supercharge, operator relation, ghost Fock space, cellular differential, Koszul

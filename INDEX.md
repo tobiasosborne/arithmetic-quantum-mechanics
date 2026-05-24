@@ -32,7 +32,7 @@ producer.
 | Script | Tool | Run bundle | CSV outputs | Figures | Report shard |
 |---|---|---|---|---|---|
 | `scripts/lattice_codes/toric_supercharge_validation.jl` | Julia | `runs/2026-05-24-toric-supercharge/` | `data/toric_supercharge_summary.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE` |
-| `scripts/lattice_codes/toric_chain_ghost_unification.jl` | Julia | `runs/2026-05-24-toric-chain-ghost-unification/` | `data/toric_chain_ghost_unification.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE`, `AQM-06-TORIC-CHAIN-GHOST-PROOF` |
+| `scripts/lattice_codes/toric_chain_ghost_unification.jl` | Julia | `runs/2026-05-24-toric-chain-ghost-unification/` | `data/toric_chain_ghost_unification.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE`, `AQM-06-TORIC-CHAIN-GHOST-PROOF`, `AQM-07-TORIC-OPERATOR-RELATION` |
 
 ## CSV Reverse Lookup
 
@@ -54,6 +54,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-04-SOURCES-QUESTIONS` | `report/sections/04_source_queue_open_questions.tex` | Source Queue and Open Questions |
 | `AQM-05-TORIC-SUPERCHARGE` | `report/sections/05_toric_supercharge_checks.tex` | Toric Code Supercharge From Local Checks |
 | `AQM-06-TORIC-CHAIN-GHOST-PROOF` | `report/sections/06_toric_chain_ghost_proof.tex` | Proof of the Toric Chain-to-Ghost Lift |
+| `AQM-07-TORIC-OPERATOR-RELATION` | `report/sections/07_toric_operator_relation.tex` | Operator Relation Between Cellular and Ghost Supercharges |
 
 ## Source Topics
 
