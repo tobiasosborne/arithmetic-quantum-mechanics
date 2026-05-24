@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newcommand{\Fq}{\mathbb{F}_q}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\TODO}[1]{\textbf{TODO:} #1}
+
+\title{Arithmetic Quantum Mechanics Lab Book}
+\author{arithmetic-quantum-mechanics contributors}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{report/sections/00_frontmatter_status}
+\include{report/sections/01_programme_map}
+\include{report/sections/02_lab_log}
+\include{report/sections/03_reproducibility_map}
+\include{report/sections/04_source_queue_open_questions}
+
+% Enable after the first registered citation is added to report/references.bib.
+% \bibliographystyle{alpha}
+% \bibliography{report/references}
+
+\end{document}

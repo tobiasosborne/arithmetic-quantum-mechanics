@@ -1,0 +1,27 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.pdf
+!references/**/*.pdf
+
+# Julia
+.julia/
+*.ji
+
+# Python/Sage caches
+__pycache__/
+*.py[cod]
+.sage/
+
+# Editor/OS noise
+.DS_Store
+*~

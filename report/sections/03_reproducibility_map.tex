@@ -1,0 +1,32 @@
+% SHARD-ID: AQM-03-REPRO-MAP
+% SHARD-TITLE: Reproducibility Map
+% SHARD-SUMMARY: Describes how scripts, run bundles, schemas, and report shards connect.
+% SHARD-SUMMARY: Provides the current validation commands for the infrastructure scaffold.
+% SHARD-KEYWORDS: reproducibility, scripts, run bundles, schema, validation
+
+\section{Reproducibility Map}
+
+Generated artifacts live in run bundles:
+
+\begin{verbatim}
+runs/<YYYY-MM-DD>-<slug>/
+  README.md
+  data/
+  figures/
+\end{verbatim}
+
+Each producer must be listed in \texttt{scripts/run\_all.jl} and
+\texttt{INDEX.md}. Each CSV must be documented in \texttt{data/SCHEMA.md}.
+Each report claim that uses generated data must point back to the producer and
+run bundle.
+
+\subsection{Current Validation Commands}
+
+\begin{verbatim}
+make check-report-shards
+make report
+julia --project=. -e 'using Pkg; Pkg.test()'
+julia --project=. scripts/run_all.jl --fast
+\end{verbatim}
+
+At scaffold time, \texttt{scripts/run\_all.jl} has no registered producers.

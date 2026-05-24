@@ -1,0 +1,10 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.12.3"
+manifest_format = "2.0"
+project_hash = "4d14576d2fb3c65b9d41ff0743f3ed23c6d5b52e"
+
+[[deps.ArithmeticQuantumMechanics]]
+path = "."
+uuid = "153a0210-f8bb-4d5c-a8b6-fe591b6cc79e"
+version = "0.1.0"
