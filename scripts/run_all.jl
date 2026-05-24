@@ -15,7 +15,15 @@ const SCRIPTS_DIR = @__DIR__
 #   tool   - :julia, :sage, :gap, or :shell
 #   fast   - include in --fast mode?
 #   entry  - optional Julia function to call after include, default :main
-const ALL_ENTRIES = NamedTuple[]
+const ALL_ENTRIES = [
+    (
+        topic = "lattice codes",
+        label = "toric_supercharge_validation",
+        path = "lattice_codes/toric_supercharge_validation.jl",
+        tool = :julia,
+        fast = true,
+    ),
+]
 
 struct RunResult
     topic::String

@@ -21,7 +21,10 @@ Local command availability in this shell:
 | Sage | Not found on PATH. |
 | GAP | Not found on PATH. |
 
-No numerical runs have been performed. No CSVs or figures exist yet.
+The first algebraic run is
+`runs/2026-05-24-toric-supercharge/data/toric_supercharge_summary.csv`. It
+does not build full Hilbert matrices; it validates the toric-code ghost
+supercharge through binary stabilizer algebra and fermion CAR identities.
 
 ## Commands
 

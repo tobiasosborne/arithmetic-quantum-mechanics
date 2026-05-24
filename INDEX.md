@@ -12,7 +12,7 @@ Generated data and figures will live under
 
 | Run | Topic | What it covers |
 |---|---|---|
-| _none yet_ | _none_ | Initial scaffold only. |
+| `runs/2026-05-24-toric-supercharge/` | Toric code / local-check ghosts | Algebraic validation of the auxiliary-fermion supercharge construction for a `k=4` toric-code instance. |
 
 ## Quick Start
 
@@ -30,7 +30,7 @@ producer.
 
 | Script | Tool | Run bundle | CSV outputs | Figures | Report shard |
 |---|---|---|---|---|---|
-| _none yet_ | _none_ | _none_ | _none_ | _none_ | _none_ |
+| `scripts/lattice_codes/toric_supercharge_validation.jl` | Julia | `runs/2026-05-24-toric-supercharge/` | `data/toric_supercharge_summary.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE` |
 
 ## CSV Reverse Lookup
 
@@ -38,7 +38,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 
 | CSV path | Producing script | Schema section |
 |---|---|---|
-| _none yet_ | _none_ | _none_ |
+| `runs/2026-05-24-toric-supercharge/data/toric_supercharge_summary.csv` | `scripts/lattice_codes/toric_supercharge_validation.jl` | `toric_supercharge_summary.csv` |
 
 ## Report Shards
 
@@ -49,6 +49,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-02-LAB-LOG` | `report/sections/02_lab_log.tex` | Lab Log |
 | `AQM-03-REPRO-MAP` | `report/sections/03_reproducibility_map.tex` | Reproducibility Map |
 | `AQM-04-SOURCES-QUESTIONS` | `report/sections/04_source_queue_open_questions.tex` | Source Queue and Open Questions |
+| `AQM-05-TORIC-SUPERCHARGE` | `report/sections/05_toric_supercharge_checks.tex` | Toric Code Supercharge From Local Checks |
 
 ## Source Topics
 
@@ -59,4 +60,4 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Weil conjectures and zeta functions | _pending_ | No sources acquired. |
 | Arithmetic quantum mechanics | _pending_ | No sources acquired. |
 | Supersymmetric quantum mechanics | _pending_ | No sources acquired. |
-| Toric codes and Levin-Wen models | _pending_ | No sources acquired. |
+| Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |

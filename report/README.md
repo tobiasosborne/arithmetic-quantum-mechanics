@@ -22,6 +22,7 @@ before treating report edits as complete.
 | 2 | `AQM-02-LAB-LOG` | `report/sections/02_lab_log.tex` | Lab Log |
 | 3 | `AQM-03-REPRO-MAP` | `report/sections/03_reproducibility_map.tex` | Reproducibility Map |
 | 4 | `AQM-04-SOURCES-QUESTIONS` | `report/sections/04_source_queue_open_questions.tex` | Source Queue and Open Questions |
+| 5 | `AQM-05-TORIC-SUPERCHARGE` | `report/sections/05_toric_supercharge_checks.tex` | Toric Code Supercharge From Local Checks |
 
 ## Maintenance Rules
 

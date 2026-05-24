@@ -1,0 +1,127 @@
+% SHARD-ID: AQM-05-TORIC-SUPERCHARGE
+% SHARD-TITLE: Toric Code Supercharge From Local Checks
+% SHARD-SUMMARY: Answers the first toric-code question with an auxiliary-fermion construction.
+% SHARD-SUMMARY: Defines the degree-zero Q-cohomology and boundary quotient in elementary terms.
+% SHARD-SUMMARY: Records the algebraic validation run for a k=4 toric-code instance without building huge Hilbert matrices.
+% SHARD-KEYWORDS: toric code, supercharge, ghosts, fermions, local checks, cohomology, homology
+
+\section{Toric Code Supercharge From Local Checks}
+
+\subsection{Question}
+
+Can one formulate the Kitaev toric code concretely as
+\[
+  H = Q Q^* + Q^* Q
+\]
+for a supercharge \(Q\), and can the code space be realized by the elementary
+``\(Q\)-cohomology'' construction?
+
+The answer recorded here is:
+
+\begin{quote}
+Yes, after adding one auxiliary fermion, or ghost, for each local stabilizer
+check. This gives a local-check supersymmetric package. It is not yet a
+purely physical-qubit supercharge.
+\end{quote}
+
+The toric-code stabilizer convention is sourced from the local TeX file
+\path{references/toric_code/kitaev_quant_ph_9707021_source/anyons.tex}. Lines
+189--222 define qubits on edges, star operators \(A_s\), plaquette operators
+\(B_p\), and the protected subspace; lines 328--337 define Kitaev's
+Hamiltonian and state that its ground state is the protected subspace.
+
+\subsection{Elementary Construction}
+
+Let \(V\) be the physical Hilbert space of the toric-code qubits. For every
+star or plaquette stabilizer \(S_i\), define the violated-check projector
+\[
+  P_i = \frac{1-S_i}{2}.
+\]
+Thus \(P_i v=0\) means that the state \(v\) satisfies check \(i\), while
+\(P_i v=v\) means that this component violates check \(i\). The shifted
+positive toric-code Hamiltonian is
+\[
+  H_{\mathrm{TC}} = \sum_i P_i .
+\]
+
+Now add one auxiliary fermion for each check. Concretely, this means we allow
+formal labels \(e_i\), one per check, and impose the usual rule that swapping
+two labels changes the sign. Let \(c_i^*\) be the operation ``attach the label
+\(e_i\)'', and let \(c_i\) be the operation ``remove the label \(e_i\)'',
+with zero result if the label is absent. These operations satisfy
+\[
+  c_i c_j^* + c_j^* c_i = \delta_{ij}, \qquad
+  c_i c_j + c_j c_i = 0, \qquad
+  c_i^* c_j^* + c_j^* c_i^* = 0 .
+\]
+
+Define the cochain supercharge
+\[
+  Q = \sum_i c_i^* P_i .
+\]
+This operator sends a physical state to the formal list of its violated local
+checks. Because the projectors \(P_i\) commute, and because two fermion
+creations anticommute, \(Q^2=0\). The adjoint \(Q^*=\sum_i c_i P_i\) removes
+one ghost label. The cross-terms in \(Q Q^*+Q^* Q\) cancel in pairs, again
+using commutation of the projectors and anticommutation of the fermions, so
+\[
+  Q Q^* + Q^* Q = \sum_i P_i = H_{\mathrm{TC}}
+\]
+on the physical ghost-vacuum sector, and \(H_{\mathrm{TC}}\otimes I\) on the
+full ghost-extended space.
+
+\subsection{What The Cohomology Means}
+
+Here is the promised elementary definition. Degree zero means ``no ghost label
+attached'', so a degree-zero state is just a physical toric-code state
+\(v\in V\). The degree-zero \(Q\)-cohomology is:
+
+\begin{itemize}
+  \item closed degree-zero states: those \(v\) with \(Qv=0\);
+  \item exact degree-zero states: those of the form \(Qw\) where \(w\) has
+  degree \(-1\).
+\end{itemize}
+
+There are no degree \(-1\) states in this construction, so no nonzero exact
+degree-zero states. Also, \(Qv=\sum_i e_i\otimes P_i v\), and the one-ghost
+labels \(e_i\) are independent. Therefore
+\[
+  Qv=0
+  \quad\Longleftrightarrow\quad
+  P_i v=0\ \text{for every check }i
+  \quad\Longleftrightarrow\quad
+  S_i v=v\ \text{for every check }i .
+\]
+Thus the degree-zero \(Q\)-cohomology is exactly the toric-code code space.
+The qualifier ``degree-zero'' is essential: on a code state all \(P_i\) vanish,
+so the full ghost-extended cohomology also contains ghost-labelled copies of
+the code space in higher degrees. The physical code is the no-ghost part.
+
+Equivalently, using the boundary operator \(Q^*=\sum_i c_iP_i\), degree-zero
+homology is the quotient of all physical states by the span of states with at
+least one local-check violation. Since the \(P_i\) are commuting orthogonal
+projectors, this quotient has the protected subspace as its canonical
+representative.
+
+\subsection{Algebraic Validation}
+
+The validation script is
+\path{scripts/lattice_codes/toric_supercharge_validation.jl}. It checks the
+construction algebraically, not by building the full Hilbert matrices. For the
+\(k=4\) torus it verifies:
+
+\begin{itemize}
+  \item \(n=2k^2=32\) physical qubits and \(32\) local checks;
+  \item each check has weight \(4\);
+  \item the binary symplectic commutator of every pair of checks is zero;
+  \item the stabilizer rank is \(2k^2-2=30\);
+  \item the code dimension is \(2^{32-30}=4\);
+  \item the CAR/projector algebra certifies \(Q^2=0\) and
+  \(Q Q^*+Q^*Q=H_{\mathrm{TC}}\);
+  \item the degree-zero \(Q\)-cohomology dimension is \(4\).
+\end{itemize}
+
+The generated CSV lives in the run bundle
+\path{runs/2026-05-24-toric-supercharge/} as
+\path{data/toric_supercharge_summary.csv}. Its first row is a sentinel noting
+that no full physical or ghost Hilbert matrices are built.

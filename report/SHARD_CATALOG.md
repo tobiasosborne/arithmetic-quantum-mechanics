@@ -42,3 +42,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Lists source-acquisition priorities before substantive claims are added.
 - Summary: Keeps open questions separate from checked report conclusions.
 - Keywords: sources, open questions, Weil, zeta, SUSY, toric code, Levin-Wen
+
+## `AQM-05-TORIC-SUPERCHARGE`
+
+- Source: `report/sections/05_toric_supercharge_checks.tex`
+- Title: Toric Code Supercharge From Local Checks
+- Summary: Answers the first toric-code question with an auxiliary-fermion construction.
+- Summary: Defines the degree-zero Q-cohomology and boundary quotient in elementary terms.
+- Summary: Records the algebraic validation run for a k=4 toric-code instance without building huge Hilbert matrices.
+- Keywords: toric code, supercharge, ghosts, fermions, local checks, cohomology, homology

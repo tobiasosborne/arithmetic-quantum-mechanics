@@ -1,6 +1,13 @@
 module ArithmeticQuantumMechanics
 
 export project_root, run_bundle_path
+export horizontal_edge_index, vertical_edge_index, star_edges, plaquette_edges
+export PauliCheck, toric_code_checks, toric_code_stabilizers
+export toric_code_check_projectors, symplectic_commutes, gf2_rank
+export toric_code_stabilizer_rank
+export toric_supercharge_summary
+
+include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 
 """
     project_root()

@@ -79,7 +79,9 @@ CSV sentinel rows.
 4. **Acquire sources before using them.** Store new papers, books notes, PDFs,
 or source snapshots under `references/<topic>/`, update that topic's
 `SOURCES.md` with bibliographic data, DOI/arXiv/URL, retrieval date, access
-route, and SHA256, and keep fetched source files append-only. Prefer arXiv,
+route, and SHA256, and keep fetched source files append-only. Prefer TeX or
+other source bundles over PDF extraction when available; for arXiv sources,
+try the e-print source before falling back to `pdftotext`. Prefer arXiv,
 publisher pages, books the user has access to, or lawful institutional access.
 Do not use pirate sources.
 

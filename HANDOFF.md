@@ -8,10 +8,9 @@ source manifests for that.
 
 Initial infrastructure is in place for a lab-book style research workspace
 about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
-mechanics, and Kitaev/Levin-Wen/toric-code models.
-
-No sources, mathematical results, scripts, CSVs, or figures have been acquired
-or checked yet.
+mechanics, and Kitaev/Levin-Wen/toric-code models. The first checked item is
+the ghost-extended local-check supercharge formulation of the toric code in
+`AQM-05-TORIC-SUPERCHARGE`.
 
 ## Most Recent Session
 
@@ -26,6 +25,17 @@ or checked yet.
   checker, Makefile, and local CI script.
 - Local tool check found Julia, LaTeX `latexmk`, and `bd`; `sage` and `gap`
   were not on PATH in this shell.
+
+**2026-05-24 - Toric-code ghost supercharge run added.**
+
+- Registered Kitaev's arXiv TeX source bundle under
+  `references/toric_code/`.
+- Added the convention `Q=sum_i c_i^* P_i`, one auxiliary fermion per local
+  stabilizer check, with `P_i=(I-S_i)/2`.
+- Implemented an algebraic validator that avoids full Hilbert matrices. For
+  `k=4` it checks commuting local stabilizers, rank `2k^2-2`, code dimension
+  `4`, and the CAR/projector certificates for `Q^2=0` and
+  `{Q,Q^*}=H_TC`.
 
 ## Next Useful Steps
 

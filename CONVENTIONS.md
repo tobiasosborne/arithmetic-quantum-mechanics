@@ -123,3 +123,51 @@ The following are intentionally not fixed yet:
 
 Do not silently choose any of these. Add a new convention entry before using
 one in a derivation or script.
+
+## (i) Toric-Code Stabilizer Convention
+
+For the first toric-code run, use the square `k x k` lattice with periodic
+boundary conditions and one qubit on each oriented edge. There are `2k^2`
+qubits: horizontal edges and vertical edges.
+
+For a vertex `s`, the star operator `A_s` is the product of Pauli `X` over the
+four incident edges. For a plaquette `p`, the plaquette operator `B_p` is the
+product of Pauli `Z` over the four boundary edges. The code space is the common
+`+1` eigenspace of all `A_s` and `B_p`.
+
+Source: `references/toric_code/kitaev_quant_ph_9707021_source/anyons.tex`,
+lines 189-222.
+
+The positive Hamiltonian used in this repo is the shifted penalty
+
+```text
+H_TC = sum_s (I - A_s)/2 + sum_p (I - B_p)/2.
+```
+
+It has the same ground space as Kitaev's `H_0 = -sum_s A_s - sum_p B_p`
+from equation (4), lines 328-337 of the same source.
+
+## (j) Finite Supercharge Convention
+
+For a finite-dimensional Hilbert space, a supercharge is a matrix `Q` with
+`Q^2 = 0`. Its adjoint is written `Q^*`. The associated positive Hamiltonian
+is `{Q,Q^*} = Q Q^* + Q^* Q`.
+
+For the first toric-code run, `Q` is a local-check ghost/Koszul supercharge on
+the enlarged Hilbert space `ghost Fock space tensor physical qubits`:
+
+```text
+Q = sum_i c_i^* P_i,
+```
+
+where `i` runs over all vertex and plaquette checks, `P_i=(I-S_i)/2` is the
+projector onto the violated-check eigenspace, and `c_i^*` creates the auxiliary
+fermion associated to check `i`. The abstract fermion modes satisfy
+`c_i c_j^* + c_j^* c_i = delta_ij` and anticommute otherwise.
+
+With this convention, `{Q,Q^*}=H_TC tensor I_ghost`. Restricted to the ghost
+vacuum sector this is the physical shifted toric-code Hamiltonian. This proves
+a local-check ghost formulation, not a purely physical-qubit supercharge.
+
+The elementary meaning of cohomology for this `Q` is defined in report shard
+`AQM-05-TORIC-SUPERCHARGE` before the term is used substantively.
