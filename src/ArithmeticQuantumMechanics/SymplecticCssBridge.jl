@@ -118,3 +118,53 @@ function symplectic_css_bridge_summary(k::Integer=4, p::Integer=3)
         chain_count_matches_symplectic_count = h1_dim == nedges - stabilizer_rank,
     )
 end
+
+function css_supercharge_dictionary_summary(hx::AbstractMatrix{<:Integer},
+                                            hz::AbstractMatrix{<:Integer},
+                                            p::Integer)
+    _assert_prime_field(p)
+    size(hx, 2) == size(hz, 2) || throw(DimensionMismatch("CSS matrices must have the same block length"))
+    n = size(hx, 2)
+    mixed = matmul_modp(hx, transpose(hz), p)
+    rank_x = rank_modp(hx, p)
+    rank_z = rank_modp(hz, p)
+    stabilizer_rank = rank_x + rank_z
+    encoded_qudits = n - stabilizer_rank
+    encoded_qudits < 0 && throw(ArgumentError("stabilizer rank exceeds block length"))
+    basis_free_ghost_count = div(BigInt(p)^stabilizer_rank - 1, p - 1)
+
+    return (
+        p = p,
+        n = n,
+        x_rows = size(hx, 1),
+        z_rows = size(hz, 1),
+        rank_x = rank_x,
+        rank_z = rank_z,
+        stabilizer_rank = stabilizer_rank,
+        css_isotropic = all(==(0), mixed),
+        encoded_qudits = encoded_qudits,
+        code_dimension_exact = string(BigInt(p)^encoded_qudits),
+        logical_symplectic_dimension = 2encoded_qudits,
+        l_perp_dimension = 2n - stabilizer_rank,
+        generator_ghost_count = stabilizer_rank,
+        basis_free_projective_ghost_count_exact = string(basis_free_ghost_count),
+        q_square_certificate = all(==(0), mixed),
+        anticommutator_certificate = all(==(0), mixed),
+        h0_matches_stabilizer_code = all(==(0), mixed),
+    )
+end
+
+function steane_css_matrices()
+    h = [
+        1 1 1 0 1 0 0
+        1 1 0 1 0 1 0
+        1 0 1 1 0 0 1
+    ]
+    return h, h
+end
+
+function qutrit_css_toy_matrices()
+    hx = [1 1 1]
+    hz = [1 2 0]
+    return hx, hz
+end

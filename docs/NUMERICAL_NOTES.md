@@ -37,6 +37,11 @@ It validates the oriented toric boundary matrices over `F_2`, `F_3`, and
 `F_5`, checking both `partial_1 partial_2=0` and isotropy of the induced CSS
 subspace in the Pauli symplectic module.
 
+The CSS supercharge/symplectic dictionary run is
+`runs/2026-05-24-css-supercharge-symplectic-dictionary/data/css_supercharge_symplectic_dictionary.csv`.
+It validates the generator-ghost and logical-symplectic dimension counts for
+the Steane CSS code over `F_2` and a qutrit CSS toy code over `F_3`.
+
 ## Commands
 
 ```bash

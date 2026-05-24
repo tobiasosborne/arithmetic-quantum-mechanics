@@ -52,6 +52,10 @@ the ghost-extended local-check supercharge formulation of the toric code in
   isotropic stabilizer subspace `L`, and the logical Pauli module is
   `L^perp/L = H^1 x H_1`; a new exact Julia run checks this over
   `F_2`, `F_3`, and `F_5`.
+- Added `AQM-09-SYMPLECTIC-SUPERCHARGE-DICTIONARY`: for any CSS stabilizer
+  subspace `L`, a chosen basis gives a ghost/Koszul supercharge whose
+  degree-zero cohomology is the stabilizer code and whose logical Pauli action
+  is `L^perp/L`.
 
 ## Next Useful Steps
 

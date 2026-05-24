@@ -37,6 +37,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "lattice codes",
+        label = "css_supercharge_symplectic_dictionary",
+        path = "lattice_codes/css_supercharge_symplectic_dictionary.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

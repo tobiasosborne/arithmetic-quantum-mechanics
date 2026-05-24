@@ -1,0 +1,4 @@
+# Exact CSS/symplectic/Koszul-supercharge dictionary certificate; no Hilbert matrices are built.
+example,p,n,x_rows,z_rows,rank_x,rank_z,stabilizer_rank,css_isotropic,encoded_qudits,code_dimension_exact,logical_symplectic_dimension,l_perp_dimension,generator_ghost_count,basis_free_projective_ghost_count_exact,q_square_certificate,anticommutator_certificate,h0_matches_stabilizer_code
+steane_f2,2,7,3,3,3,3,6,true,1,2,2,8,6,63,true,true,true
+qutrit_toy_f3,3,3,1,1,1,1,2,true,1,3,2,4,2,4,true,true,true

@@ -69,3 +69,32 @@ end
         @test summary.chain_count_matches_symplectic_count
     end
 end
+
+@testset "CSS supercharge symplectic dictionary" begin
+    hx, hz = steane_css_matrices()
+    steane = css_supercharge_dictionary_summary(hx, hz, 2)
+    @test steane.css_isotropic
+    @test steane.n == 7
+    @test steane.rank_x == 3
+    @test steane.rank_z == 3
+    @test steane.stabilizer_rank == 6
+    @test steane.encoded_qudits == 1
+    @test steane.code_dimension_exact == "2"
+    @test steane.logical_symplectic_dimension == 2
+    @test steane.l_perp_dimension == 8
+    @test steane.generator_ghost_count == 6
+    @test steane.basis_free_projective_ghost_count_exact == "63"
+    @test steane.q_square_certificate
+    @test steane.anticommutator_certificate
+    @test steane.h0_matches_stabilizer_code
+
+    hx3, hz3 = qutrit_css_toy_matrices()
+    qutrit = css_supercharge_dictionary_summary(hx3, hz3, 3)
+    @test qutrit.css_isotropic
+    @test qutrit.n == 3
+    @test qutrit.stabilizer_rank == 2
+    @test qutrit.encoded_qudits == 1
+    @test qutrit.code_dimension_exact == "3"
+    @test qutrit.logical_symplectic_dimension == 2
+    @test qutrit.basis_free_projective_ghost_count_exact == "4"
+end

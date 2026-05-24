@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Three CSV outputs exist.
+Four CSV outputs exist.
 
 ## Common Rules
 
@@ -20,6 +20,7 @@ Three CSV outputs exist.
 | `runs/2026-05-24-toric-supercharge/data/toric_supercharge_summary.csv` | `scripts/lattice_codes/toric_supercharge_validation.jl` | Active |
 | `runs/2026-05-24-toric-chain-ghost-unification/data/toric_chain_ghost_unification.csv` | `scripts/lattice_codes/toric_chain_ghost_unification.jl` | Active |
 | `runs/2026-05-24-symplectic-css-bridge/data/symplectic_css_bridge_summary.csv` | `scripts/lattice_codes/symplectic_css_bridge_validation.jl` | Active |
+| `runs/2026-05-24-css-supercharge-symplectic-dictionary/data/css_supercharge_symplectic_dictionary.csv` | `scripts/lattice_codes/css_supercharge_symplectic_dictionary.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -101,3 +102,32 @@ certificate; no Hilbert matrices are built.
 | encoded_qudits | int | Number of encoded qudits, `nedges - symplectic_stabilizer_rank`. |
 | encoded_hilbert_dimension_exact | string | Exact code-space Hilbert dimension `p^encoded_qudits`. |
 | chain_count_matches_symplectic_count | bool | Whether the homological and symplectic counts agree. |
+
+## css_supercharge_symplectic_dictionary.csv
+
+Produced by: `scripts/lattice_codes/css_supercharge_symplectic_dictionary.jl`
+Run bundle: `runs/2026-05-24-css-supercharge-symplectic-dictionary/`
+Report shard: `AQM-09-SYMPLECTIC-SUPERCHARGE-DICTIONARY`
+Sentinel: row 1 begins with `#` and states that this is an exact dictionary
+certificate; no Hilbert matrices are built.
+
+| column | type | description |
+|---|---|---|
+| example | string | Name of the CSS example checked. |
+| p | int | Prime field characteristic and qudit dimension. |
+| n | int | Number of physical qudits. |
+| x_rows | int | Number of supplied `X`-check rows. |
+| z_rows | int | Number of supplied `Z`-check rows. |
+| rank_x | int | Rank over `F_p` of the `X`-check rowspace. |
+| rank_z | int | Rank over `F_p` of the `Z`-check rowspace. |
+| stabilizer_rank | int | Dimension of the CSS isotropic stabilizer subspace `L`. |
+| css_isotropic | bool | Whether the supplied CSS matrices satisfy `H_X H_Z^T=0`. |
+| encoded_qudits | int | Number of encoded qudits, `n - stabilizer_rank`. |
+| code_dimension_exact | string | Exact degree-zero supercharge cohomology dimension. |
+| logical_symplectic_dimension | int | Dimension of `L^perp/L`. |
+| l_perp_dimension | int | Dimension of the symplectic centralizer `L^perp`. |
+| generator_ghost_count | int | Number of ghosts in a generator-basis supercharge. |
+| basis_free_projective_ghost_count_exact | string | Number of ghosts in the projective-line basis-free variant. |
+| q_square_certificate | bool | Algebraic certificate that the CSS ghost supercharge squares to zero. |
+| anticommutator_certificate | bool | Algebraic certificate that `{Q,Q^*}` is the sum of violated-check projectors. |
+| h0_matches_stabilizer_code | bool | Whether degree-zero supercharge cohomology matches the stabilizer code count. |

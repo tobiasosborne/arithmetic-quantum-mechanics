@@ -10,6 +10,8 @@ export toric_cellular_supercharge_square_zero
 export toric_supercharge_summary, toric_chain_ghost_unification_summary
 export oriented_toric_boundary_matrices, matmul_modp, rank_modp
 export css_symplectic_isotropic, symplectic_css_bridge_summary
+export css_supercharge_dictionary_summary, steane_css_matrices
+export qutrit_css_toy_matrices
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")

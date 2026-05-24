@@ -1,0 +1,278 @@
+% SHARD-ID: AQM-09-SYMPLECTIC-SUPERCHARGE-DICTIONARY
+% SHARD-TITLE: Symplectic Dictionary for CSS Supercharges
+% SHARD-SUMMARY: Constructs the ghost/Koszul supercharge from an isotropic CSS stabilizer subspace.
+% SHARD-SUMMARY: Proves how logical Paulis in \(L^\perp/L\) act on degree-zero supercharge cohomology.
+% SHARD-SUMMARY: Separates generator-dependent and basis-free versions of the supercharge.
+% SHARD-KEYWORDS: CSS code, symplectic geometry, supercharge, Koszul differential, stabilizer, logical Pauli
+
+\section{Symplectic Dictionary for CSS Supercharges}
+\label{sec:symplectic-supercharge-dictionary}
+
+This section relates the supercharge operators to the symplectic stabilizer
+geometry of Section~\ref{sec:symplectic-css-bridge}. The result is not that
+the supercharge is itself a symplectic form. Rather, for any CSS stabilizer
+subspace \(L\), the supercharge is the Koszul differential for the commuting
+projector equations defining the \(L\)-invariant subspace.
+
+The source anchors are registered in the local symplectic-QECC and toric-code
+source manifests. The locators used here are Gottesman \path{Thesis.tex}, lines
+1293--1341; Ashikhmin--Knill \path{n9.tex}, lines 249--375; and
+Bombin--Martin-Delgado \path{HomologicalErrorCorrection6.tex}, lines
+1206--1259.
+
+\subsection{CSS Symplectic Data}
+
+Work first over a prime field \(\mathbb F_p\). A CSS code on \(n\) qudits is
+given by two row spaces
+\[
+  R_X,R_Z\subset \mathbb F_p^n
+\]
+with
+\[
+  x\cdot z=0\quad\text{for all }x\in R_X,\ z\in R_Z.
+\]
+The Pauli label space is
+\[
+  V=\mathbb F_p^n\oplus\mathbb F_p^n,
+  \qquad
+  \omega((x,z),(x',z'))=z\cdot x'-x\cdot z'.
+\]
+The CSS stabilizer label subspace is
+\[
+  L=(R_X\oplus 0)+(0\oplus R_Z)\subset V.
+\]
+The row-orthogonality condition is exactly \(L\subseteq L^\perp\).
+
+Let
+\[
+  G=(\ell_1,\ldots,\ell_r)
+\]
+be an ordered \(\mathbb F_p\)-basis of \(L\). This basis is extra data. It is
+needed to write a small generator-based supercharge, but the code subspace
+depends only on \(L\).
+
+\subsection{Projectors From Symplectic Labels}
+
+For \(v=(x,z)\in V\), write \(W(v)=X^xZ^z\). In the whole Pauli label space,
+\[
+  W(v)W(w)=\zeta^{\omega(v,w)}W(w)W(v),
+  \qquad \zeta=e^{2\pi i/p}.
+\]
+For the CSS subspace \(L=(R_X\oplus0)+(0\oplus R_Z)\), the canonical lifts are
+stronger than commuting. If \(\ell=(x,z)\) and \(\ell'=(x',z')\) lie in \(L\),
+then \(z\cdot x'=x\cdot z'=0\), because \(R_X\perp R_Z\). Hence
+\[
+  W(\ell)W(\ell')=W(\ell+\ell'),\qquad W(\ell)^*=W(-\ell).
+\]
+Thus \(W\) restricts to an honest representation of the additive group \(L\).
+
+For each generator \(\ell_i\), define the stabilizer-line averaging projector
+\[
+  \Pi_i=\frac1p\sum_{a\in\mathbb F_p}W(a\ell_i).
+\]
+This is the projector onto states fixed by the one-parameter stabilizer
+subgroup \(\{W(a\ell_i):a\in\mathbb F_p\}\). To check this directly,
+\[
+\begin{aligned}
+  \Pi_i^2
+  &=\frac1{p^2}\sum_{a,b}W((a+b)\ell_i)     \\
+  &=\frac1p\sum_c W(c\ell_i)=\Pi_i,
+\end{aligned}
+\]
+since for each \(c\) there are \(p\) pairs \((a,b)\) with \(a+b=c\). Also
+\(\Pi_i^*=\Pi_i\), because \(W(a\ell_i)^*=W(-a\ell_i)\). Set
+\[
+  P_i=I-\Pi_i .
+\]
+Then \(P_i\) is a self-adjoint projector onto the subspace violating the
+\(\ell_i\)-stabilizer equation. The projectors \(P_i\) commute with each other
+because the line averages commute.
+
+For qubits, \(p=2\), this reduces to the previous formula:
+\[
+  \Pi_i=\frac{I+W(\ell_i)}2,\qquad
+  P_i=\frac{I-W(\ell_i)}2.
+\]
+
+\subsection{The Generator-Based Supercharge}
+
+Attach one fermionic ghost \(\epsilon_i\) to each chosen generator
+\(\ell_i\). Exterior multiplication by \(\epsilon_i\) and contraction
+\(\iota_i\) satisfy
+\[
+  \iota_i\epsilon_j+\epsilon_j\iota_i=\delta_{ij},\qquad
+  \epsilon_i\epsilon_j+\epsilon_j\epsilon_i=0,\qquad
+  \iota_i\iota_j+\iota_j\iota_i=0.
+\]
+They commute with all physical Pauli projectors. Define
+\[
+  Q_G=\sum_{i=1}^r \epsilon_iP_i,\qquad
+  Q_G^*=\sum_{i=1}^r \iota_iP_i .
+\]
+Now compute:
+\[
+\begin{aligned}
+  Q_G^2
+  &=\sum_{i,j}\epsilon_i\epsilon_jP_iP_j        \\
+  &=\sum_{i<j}(\epsilon_i\epsilon_j+\epsilon_j\epsilon_i)P_iP_j=0.
+\end{aligned}
+\]
+The anticommutator is
+\[
+\begin{aligned}
+  Q_GQ_G^*+Q_G^*Q_G
+  &=\sum_{i,j}(\epsilon_i\iota_j+\iota_j\epsilon_i)P_iP_j \\
+  &=\sum_iP_i^2=\sum_iP_i .
+\end{aligned}
+\]
+Thus the supersymmetric Hamiltonian is the stabilizer-violation penalty for
+the chosen generator basis.
+
+Degree zero means no ghost. A physical vector \(\psi\) is degree-zero closed
+iff
+\[
+  Q_G\psi=\sum_i\epsilon_iP_i\psi=0.
+\]
+The one-ghost labels are independent, so this is equivalent to \(P_i\psi=0\)
+for every \(i\), equivalently \(\Pi_i\psi=\psi\) for every \(i\). Since the
+\(\ell_i\) form a basis of \(L\), this means
+\[
+  W(\ell)\psi=\psi\quad\text{for every }\ell\in L.
+\]
+There are no degree \(-1\) states, so no degree-zero exact states. Therefore
+\[
+  H^0(Q_G)
+  =
+  \{\psi:W(\ell)\psi=\psi\text{ for all }\ell\in L\},
+\]
+the CSS stabilizer code space. If \(r=\dim L\), its dimension is \(p^{n-r}\).
+
+\subsection{Logical Paulis Commute With the Supercharge}
+
+Let \(v\in L^\perp\). Then \(\omega(v,\ell_i)=0\) for every \(i\), so \(W(v)\)
+commutes with every \(W(a\ell_i)\), hence with every \(\Pi_i\), \(P_i\), and
+\[
+  Q_G=\sum_i\epsilon_iP_i.
+\]
+Therefore \(W(v)\) acts on \(H^0(Q_G)\).
+
+If \(v\in L\), then \(W(v)\) acts as the identity on \(H^0(Q_G)\) in the
+trivial-character sector. Hence the action factors through
+\[
+  L^\perp/L.
+\]
+This is the exact point where symplectic geometry enters the supercharge
+cohomology: the degree-zero cohomology carries the logical Pauli action of the
+symplectic reduction.
+
+If \(v\notin L^\perp\), then some \(\ell_i\) has \(\omega(\ell_i,v)\neq0\).
+For \(\psi\in H^0(Q_G)\),
+\[
+  W(a\ell_i)W(v)\psi
+  =
+  \zeta^{a\omega(\ell_i,v)}W(v)\psi .
+\]
+Averaging over \(a\) gives \(\Pi_iW(v)\psi=0\). Thus
+\[
+  P_iW(v)\psi=W(v)\psi,
+  \qquad
+  Q_GW(v)\psi
+  \text{ has a nonzero } \epsilon_i\text{-component}.
+\]
+So Pauli labels outside \(L^\perp\) are precisely those detected by the
+supercharge as nonzero stabilizer syndrome.
+
+\subsection{Basis Dependence and Basis-Free Variant}
+
+The operator \(Q_G\) depends on the chosen basis \(G\) of \(L\). Changing
+generators changes the individual projectors \(P_i\) and therefore changes the
+positive Hamiltonian \(\sum_iP_i\). The degree-zero cohomology does not change:
+it is always the common invariant subspace for the whole \(L\).
+
+There is also a basis-free, but redundant, version. Let \(\mathbb P(L)\) be
+the set of one-dimensional subspaces of \(L\). For a line
+\(\lambda=\mathbb F_p\ell\), define
+\[
+  \Pi_\lambda=\frac1p\sum_{a\in\mathbb F_p}W(a\ell),
+  \qquad
+  P_\lambda=I-\Pi_\lambda .
+\]
+This is independent of the nonzero representative \(\ell\). Attach one ghost
+\(\epsilon_\lambda\) to each line and set
+\[
+  Q_L^{\mathrm{all}}
+  =
+  \sum_{\lambda\in\mathbb P(L)}\epsilon_\lambda P_\lambda .
+\]
+The same CAR/projector proof gives \((Q_L^{\mathrm{all}})^2=0\). Its
+degree-zero cohomology is again the CSS code space. The price is redundancy:
+if \(\dim L=r\), then
+\[
+  |\mathbb P(L)|=\frac{p^r-1}{p-1}.
+\]
+The generator-based \(Q_G\) is smaller; the projective-line \(Q_L^{\mathrm{all}}\)
+is intrinsic to \(L\).
+
+\subsection{General CSS Dictionary}
+
+For a CSS code with check matrices \(H_X,H_Z\) over \(\mathbb F_p\), the
+dictionary is summarized by the table below. In the cellular toric-code case,
+this means
+\[
+  Q_{\mathrm{cell}}=\delta^0+\delta^1
+  \quad\leadsto\quad
+  R_X=\operatorname{im}\delta^0,\quad R_Z=\operatorname{im}\partial_2
+  \quad\leadsto\quad
+  L\quad\leadsto\quad Q_G .
+\]
+The cellular differential supplies the two CSS support spaces. The symplectic
+step packages them as \(L\). The ghost/Koszul step turns a chosen basis of \(L\)
+into commuting projectors and the operator \(Q_G\).
+\[
+\begin{array}{c|c}
+\text{CSS/symplectic object} & \text{supercharge object}\\
+\hline
+R_X,R_Z & X\text{- and }Z\text{-type stabilizer equations}\\
+L=(R_X\oplus0)+(0\oplus R_Z) & \text{common invariant equations}\\
+L\subseteq L^\perp & \text{commuting projectors }P_i\\
+\text{basis }G\text{ of }L & \text{minimal ghost list}\\
+P_i=I-\frac1p\sum_aW(a\ell_i) & \text{violated-check projector}\\
+Q_G=\sum_i\epsilon_iP_i & \text{Koszul supercharge}\\
+L^\perp & \text{Paulis commuting with }Q_G\\
+L^\perp/L & \text{logical Paulis on }H^0(Q_G)
+\end{array}
+\]
+Thus the supercharge is a homological-algebra package built on top of an
+isotropic subspace. Symplectic geometry supplies \(L\), its normalizer
+\(L^\perp\), and the logical quotient; the supercharge resolves the common
+stabilizer equations defining the code space.
+
+\subsection{Prime-Power Note}
+
+For \(q=p^m\), replace \(\mathbb F_p\) by \(\mathbb F_q\), and use the additive
+character
+\[
+  \chi(t)=\exp(2\pi i\,\operatorname{Tr}_{\mathbb F_q/\mathbb F_p}(t)/p).
+\]
+For a line \(\mathbb F_q\ell\), the invariant projector is
+\[
+  \Pi_\ell=\frac1q\sum_{a\in\mathbb F_q}W(a\ell).
+\]
+The same calculation proves \(\Pi_\ell^2=\Pi_\ell\), commuting projectors for
+isotropic \(L\), \(Q^2=0\), and
+\[
+  H^0(Q)\cong\text{the }L\text{-stabilizer code}.
+\]
+For composite non-field qudit dimension, one must replace vector spaces by
+modules over \(\mathbb Z_D\), and the clean count \(p^{n-\dim L}\) need not be
+imported without checking torsion.
+
+\subsection{Exact Validation}
+
+The script \path{css_supercharge_symplectic_dictionary.jl} in
+\path{scripts/lattice_codes/} validates the dictionary without building Hilbert
+matrices. It checks the binary Steane CSS code and a qutrit CSS toy code. The
+CSV \path{css_supercharge_symplectic_dictionary.csv} records CSS isotropy,
+stabilizer rank, code dimension, logical symplectic dimension, ghost counts,
+and the \(Q^2\) and anticommutator certificates in the
+\path{2026-05-24-css-supercharge-symplectic-dictionary} run bundle.

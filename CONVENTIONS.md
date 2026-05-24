@@ -267,3 +267,26 @@ For prime powers `q=p^m`, the same formulas hold over `F_q` with the Pauli
 phase character composed with `Tr_{F_q/F_p}`. For composite non-field qudit
 dimension, module torsion can enter, so rank/dimension statements are not
 silently imported from the field case.
+
+## (m) Symplectic Supercharge Convention
+
+For a CSS stabilizer subspace `L <= F_p^n x F_p^n`, a generator-based
+supercharge requires an ordered independent generator list
+`G = (ell_1, ..., ell_r)` for `L`. For each generator, define the invariant
+projector
+
+```text
+Pi_i = (1/p) * sum_{a in F_p} W(a * ell_i)
+P_i = I - Pi_i
+```
+
+and the ghost/Koszul supercharge
+
+```text
+Q_G = sum_i epsilon_i * P_i.
+```
+
+This `Q_G` depends on the generator basis, but its degree-zero cohomology is
+the `L`-stabilizer code and is basis-independent. The logical Pauli action on
+that cohomology is `L^perp / L`. A basis-free but redundant variant attaches
+one ghost to each projective line in `L`.

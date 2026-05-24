@@ -78,3 +78,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Identifies the logical Pauli module as the symplectic reduction \(L^\perp/L\).
 - Summary: Records the prime-field qudit validation run for the oriented toric complex.
 - Keywords: QECC, symplectic geometry, CSS codes, chain complex, qudits, stabilizer
+
+## `AQM-09-SYMPLECTIC-SUPERCHARGE-DICTIONARY`
+
+- Source: `report/sections/09_symplectic_supercharge_dictionary.tex`
+- Title: Symplectic Dictionary for CSS Supercharges
+- Summary: Constructs the ghost/Koszul supercharge from an isotropic CSS stabilizer subspace.
+- Summary: Proves how logical Paulis in \(L^\perp/L\) act on degree-zero supercharge cohomology.
+- Summary: Separates generator-dependent and basis-free versions of the supercharge.
+- Keywords: CSS code, symplectic geometry, supercharge, Koszul differential, stabilizer, logical Pauli
