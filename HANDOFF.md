@@ -56,6 +56,10 @@ the ghost-extended local-check supercharge formulation of the toric code in
   subspace `L`, a chosen basis gives a ghost/Koszul supercharge whose
   degree-zero cohomology is the stabilizer code and whose logical Pauli action
   is `L^perp/L`.
+- Added `AQM-10-STEANE-SYMPLECTIC-MOLECULAR` and
+  `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY`: the Gottesman-table Steane code is
+  now worked out at vector-space, stabilizer, fermion, supercharge, and
+  cohomology level, with an exact run bundle.
 
 ## Next Useful Steps
 

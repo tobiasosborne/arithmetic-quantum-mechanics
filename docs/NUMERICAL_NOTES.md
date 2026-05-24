@@ -42,6 +42,11 @@ The CSS supercharge/symplectic dictionary run is
 It validates the generator-ghost and logical-symplectic dimension counts for
 the Steane CSS code over `F_2` and a qutrit CSS toy code over `F_3`.
 
+The Steane molecular supercharge run is
+`runs/2026-05-24-steane-supercharge-molecular/`. It records the sourced
+Gottesman-table binary spaces, `L`, `L^perp`, logical representatives, and the
+full six-ghost cohomology dimensions `2,12,30,40,30,12,2`.
+
 ## Commands
 
 ```bash

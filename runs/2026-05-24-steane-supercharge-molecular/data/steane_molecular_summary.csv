@@ -1,0 +1,3 @@
+# Exact Steane CSS/symplectic/supercharge molecular summary; source convention is Gottesman's seven-qubit CSS table.
+n,check_rank,d_dim,d_size,c_dim,c_size,d_subset_c,logical_word,logical_word_in_c,logical_word_not_in_d,h_h_transpose_zero,stabilizer_rank,l_dim,l_size,l_perp_dim,l_perp_size,logical_symplectic_dim,logical_pauli_classes,logical_pairing_x_z,physical_hilbert_dim,ghost_count,ghost_fock_dim,full_ghost_hilbert_dim,code_dim,encoded_qubits,syndrome_count,nonzero_syndrome_count,syndrome_block_dim,full_q_cohomology_dim,degree_zero_cohomology_dim,q_square_certificate,anticommutator_certificate,codewords_match_two_cosets
+7,3,3,8,4,16,true,0000111,true,true,true,6,6,64,8,256,2,4,1,128,6,64,8192,2,1,64,63,2,128,2,true,true,true

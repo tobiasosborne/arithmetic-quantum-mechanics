@@ -1,0 +1,177 @@
+% SHARD-ID: AQM-10-STEANE-SYMPLECTIC-MOLECULAR
+% SHARD-TITLE: Steane Code Symplectic Data in Molecular Detail
+% SHARD-SUMMARY: Fixes the sourced Gottesman-table convention for the seven-qubit Steane code.
+% SHARD-SUMMARY: Enumerates the binary spaces \(D\), \(C=D^\perp\), \(L\), \(L^\perp\), and \(L^\perp/L\).
+% SHARD-SUMMARY: Derives the logical Pauli symplectic pairing from the explicit binary representatives.
+% SHARD-KEYWORDS: Steane code, CSS code, Hamming code, symplectic reduction, stabilizer
+
+\section{Steane Code Symplectic Data in Molecular Detail}
+\label{sec:steane-symplectic-molecular}
+
+This section fixes one concrete Steane-code presentation and writes all
+finite-vector-space objects explicitly. The local source anchor is Gottesman's
+\path{Thesis.tex}: lines 1249--1267 give the seven-qubit CSS stabilizer table,
+and lines 1269--1284 give the two displayed encoded codewords.
+
+\subsection{Binary Check Space}
+
+Work over \(\mathbb F_2\) with qubits ordered \(1,\ldots,7\). The three
+binary rows read from Gottesman's \(X\)-check table are
+\[
+\begin{aligned}
+  g_1&=1111000,\\
+  g_2&=1100110,\\
+  g_3&=1010101.
+\end{aligned}
+\]
+Equivalently,
+\[
+H=
+\begin{pmatrix}
+1&1&1&1&0&0&0\\
+1&1&0&0&1&1&0\\
+1&0&1&0&1&0&1
+\end{pmatrix}.
+\]
+Let
+\[
+  D=\operatorname{row}(H)=\langle g_1,g_2,g_3\rangle\subset\mathbb F_2^7 .
+\]
+The eight elements of \(D\) are
+\[
+\begin{gathered}
+0000000,\ 1111000,\ 1100110,\ 1010101,\\
+0011110,\ 0101101,\ 0110011,\ 1001011 .
+\end{gathered}
+\]
+The row dot products are
+\[
+HH^T=
+\begin{pmatrix}
+0&0&0\\
+0&0&0\\
+0&0&0
+\end{pmatrix}
+\quad \text{over } \mathbb F_2.
+\]
+Thus \(D\subseteq D^\perp\).
+
+Put
+\[
+  C=D^\perp=\{a\in\mathbb F_2^7:Ha^T=0\}.
+\]
+Since \(\operatorname{rank}H=3\), \(\dim C=4\). Let
+\[
+  u=0000111 .
+\]
+Then \(u\in C\), but \(u\notin D\). Therefore
+\[
+  C=D\sqcup(u+D).
+\]
+The second coset is
+\[
+\begin{gathered}
+0000111,\ 1111111,\ 1100001,\ 1010010,\\
+0011001,\ 0101010,\ 0110100,\ 1001100 .
+\end{gathered}
+\]
+These are exactly the two cosets supporting Gottesman's displayed
+\(|\overline 0\rangle\) and \(|\overline 1\rangle\) states.
+
+\subsection{The Stabilizer Subspace}
+
+The Pauli label space is
+\[
+  V=\mathbb F_2^7\oplus\mathbb F_2^7.
+\]
+We write a label as \((x,z)\), corresponding to \(X^xZ^z\). The binary
+symplectic form is
+\[
+  \omega((x,z),(x',z'))=z\cdot x'+x\cdot z',
+\]
+where the sign from the odd-prime formula disappears in characteristic \(2\).
+
+The six stabilizer labels are
+\[
+\begin{array}{lll}
+\ell_1=(g_1,0),& \ell_2=(g_2,0),& \ell_3=(g_3,0),\\
+\ell_4=(0,g_1),& \ell_5=(0,g_2),& \ell_6=(0,g_3).
+\end{array}
+\]
+Their span is
+\[
+  L=(D\oplus0)+(0\oplus D)\subset V.
+\]
+This is an isotropic subspace. Indeed, same-type pairings vanish automatically.
+For a mixed pair,
+\[
+  \omega((d,0),(0,d'))=d\cdot d'=0
+  \qquad(d,d'\in D),
+\]
+because \(D\subseteq D^\perp\). Therefore \(L\subseteq L^\perp\).
+
+The dimensions and sizes are
+\[
+  \dim L=6,\qquad |L|=2^6=64.
+\]
+
+\subsection{The Centralizer}
+
+Let \((x,z)\in V\). It is orthogonal to every \((d,0)\in D\oplus0\) exactly
+when
+\[
+  z\cdot d=0\quad\text{for all }d\in D,
+\]
+that is, \(z\in C\). It is orthogonal to every \((0,d)\in0\oplus D\) exactly
+when
+\[
+  x\cdot d=0\quad\text{for all }d\in D,
+\]
+that is, \(x\in C\). Hence
+\[
+  L^\perp=C\oplus C.
+\]
+Consequently
+\[
+  \dim L^\perp=8,\qquad |L^\perp|=2^8=256.
+\]
+
+\subsection{The Logical Symplectic Quotient}
+
+The logical Pauli label space is the finite symplectic reduction
+\[
+  L^\perp/L
+  =
+  (C\oplus C)/(D\oplus D)
+  \cong
+  (C/D)\oplus(C/D).
+\]
+Since \(C=D\sqcup(u+D)\), the quotient \(C/D\) is one-dimensional. Thus
+\[
+  \dim(L^\perp/L)=2.
+\]
+Choose the representatives
+\[
+  \overline X=(u,0),\qquad \overline Z=(0,u).
+\]
+Their symplectic pairing is
+\[
+  \omega(\overline X,\overline Z)
+  =
+  u\cdot u
+  =
+  1+1+1
+  =
+  1
+  \quad \text{in }\mathbb F_2.
+\]
+Thus the corresponding Pauli operators anticommute. The four logical Pauli
+classes are represented by
+\[
+  (0,0),\quad (u,0),\quad (0,u),\quad (u,u).
+\]
+
+This is the full symplectic anatomy of the code: \(D\) supplies the CSS check
+space, \(L=D\oplus D\) is the isotropic stabilizer subspace, \(L^\perp=C\oplus
+C\) is the Pauli centralizer, and \(L^\perp/L\) is the one-qubit logical
+symplectic module.

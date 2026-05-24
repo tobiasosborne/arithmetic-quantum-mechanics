@@ -87,3 +87,21 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves how logical Paulis in \(L^\perp/L\) act on degree-zero supercharge cohomology.
 - Summary: Separates generator-dependent and basis-free versions of the supercharge.
 - Keywords: CSS code, symplectic geometry, supercharge, Koszul differential, stabilizer, logical Pauli
+
+## `AQM-10-STEANE-SYMPLECTIC-MOLECULAR`
+
+- Source: `report/sections/10_steane_symplectic_molecular.tex`
+- Title: Steane Code Symplectic Data in Molecular Detail
+- Summary: Fixes the sourced Gottesman-table convention for the seven-qubit Steane code.
+- Summary: Enumerates the binary spaces \(D\), \(C=D^\perp\), \(L\), \(L^\perp\), and \(L^\perp/L\).
+- Summary: Derives the logical Pauli symplectic pairing from the explicit binary representatives.
+- Keywords: Steane code, CSS code, Hamming code, symplectic reduction, stabilizer
+
+## `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY`
+
+- Source: `report/sections/11_steane_supercharge_cohomology.tex`
+- Title: Steane Code Fermions, Supercharge, and Cohomology
+- Summary: Constructs the six-fermion Koszul supercharge for the sourced Steane stabilizer generators.
+- Summary: Proves directly that the no-ghost cohomology is the two-dimensional Steane code.
+- Summary: Computes the full ghost-degree cohomology and separates it from the physical code space.
+- Keywords: Steane code, supercharge, fermions, Koszul complex, cohomology, stabilizer Hamiltonian

@@ -290,3 +290,38 @@ This `Q_G` depends on the generator basis, but its degree-zero cohomology is
 the `L`-stabilizer code and is basis-independent. The logical Pauli action on
 that cohomology is `L^perp / L`. A basis-free but redundant variant attaches
 one ghost to each projective line in `L`.
+
+## (n) Steane Code Molecular Convention
+
+For the detailed Steane calculation, use Gottesman's seven-qubit CSS table
+with qubits ordered `1,...,7` and binary check rows
+
+```text
+g1 = 1111000
+g2 = 1100110
+g3 = 1010101
+```
+
+The rowspace is `D = <g1,g2,g3> <= F_2^7`, the classical Hamming code is
+`C = D^perp`, and the odd coset representative is
+
+```text
+u = 0000111.
+```
+
+The CSS stabilizer subspace is
+
+```text
+L = (D x 0) + (0 x D) <= F_2^7 x F_2^7.
+```
+
+The logical representatives are `Xbar = (u,0)` and `Zbar = (0,u)`, with
+binary symplectic pairing `omega(Xbar,Zbar)=1`. The six-generator Steane
+supercharge uses one ghost for each ordered stabilizer label
+`(g1,0),(g2,0),(g3,0),(0,g1),(0,g2),(0,g3)`.
+
+For this generator-based Koszul supercharge, the full cohomology is
+`Code x Lambda^* E`. Higher ghost-degree classes are interpreted as
+presentation-dependent derived constraint/conormal data for the chosen
+stabilizer equations, not as additional logical code states. The physical QECC
+space is the no-ghost sector `H^0(Q)`.

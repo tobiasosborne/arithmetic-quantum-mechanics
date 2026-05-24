@@ -1,0 +1,248 @@
+% SHARD-ID: AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY
+% SHARD-TITLE: Steane Code Fermions, Supercharge, and Cohomology
+% SHARD-SUMMARY: Constructs the six-fermion Koszul supercharge for the sourced Steane stabilizer generators.
+% SHARD-SUMMARY: Proves directly that the no-ghost cohomology is the two-dimensional Steane code.
+% SHARD-SUMMARY: Computes the full ghost-degree cohomology and separates it from the physical code space.
+% SHARD-KEYWORDS: Steane code, supercharge, fermions, Koszul complex, cohomology, stabilizer Hamiltonian
+
+\section{Steane Code Fermions, Supercharge, and Cohomology}
+\label{sec:steane-supercharge-cohomology}
+
+Keep the notation of Section~\ref{sec:steane-symplectic-molecular}. This
+section constructs the actual fermions and supercharge for the same six
+Gottesman-table stabilizer generators.
+
+\subsection{Physical Stabilizer Projectors}
+
+The physical Hilbert space is
+\[
+  \mathcal H=\mathbb C\{|a\rangle:a\in\mathbb F_2^7\}.
+\]
+For \(d\in\mathbb F_2^7\), define
+\[
+  X(d)|a\rangle=|a+d\rangle,\qquad
+  Z(d)|a\rangle=(-1)^{d\cdot a}|a\rangle .
+\]
+The six stabilizer operators are
+\[
+\begin{array}{lll}
+S_1=X(g_1),&S_2=X(g_2),&S_3=X(g_3),\\
+S_4=Z(g_1),&S_5=Z(g_2),&S_6=Z(g_3).
+\end{array}
+\]
+The violated-check projectors are
+\[
+  P_i=\frac{I-S_i}{2},\qquad
+  \Pi_i=\frac{I+S_i}{2}.
+\]
+Since the labels span the isotropic subspace \(L\), all \(S_i\), hence all
+\(P_i\), commute.
+
+\subsection{The Two Codeword Cosets}
+
+The two normalized Steane basis states in this convention are
+\[
+  |\overline0\rangle
+  =
+  \frac1{\sqrt8}\sum_{d\in D}|d\rangle,
+  \qquad
+  |\overline1\rangle
+  =
+  \frac1{\sqrt8}\sum_{d\in D}|u+d\rangle .
+\]
+For an \(X\)-type check \(X(g_j)\), adding \(g_j\in D\) permutes \(D\) and also
+permutes \(u+D\). Hence
+\[
+  X(g_j)|\overline0\rangle=|\overline0\rangle,\qquad
+  X(g_j)|\overline1\rangle=|\overline1\rangle .
+\]
+For a \(Z\)-type check \(Z(g_j)\), every vector in \(D\) is orthogonal to
+\(g_j\), and \(u\) is also orthogonal to \(g_j\). Therefore
+\[
+  Z(g_j)|d\rangle=|d\rangle,\qquad
+  Z(g_j)|u+d\rangle=|u+d\rangle .
+\]
+So both displayed states are fixed by all six stabilizers.
+
+Conversely, let
+\[
+  |\psi\rangle=\sum_{a\in\mathbb F_2^7}\psi_a|a\rangle .
+\]
+The equations \(Z(g_j)|\psi\rangle=|\psi\rangle\) force \(\psi_a=0\) unless
+\(a\in C=D^\perp\). The equations \(X(g_j)|\psi\rangle=|\psi\rangle\) force
+\(\psi_{a+g_j}=\psi_a\), so the amplitudes are constant on \(D\)-cosets inside
+\(C\). There are exactly two such cosets, \(D\) and \(u+D\). Thus the common
+stabilizer \(+1\) space is
+\[
+  \mathcal C=\operatorname{span}\{|\overline0\rangle,|\overline1\rangle\},
+  \qquad \dim\mathcal C=2.
+\]
+
+\subsection{Six Fermions}
+
+Let
+\[
+  E=\operatorname{span}_{\mathbb C}
+  \{\epsilon_1,\ldots,\epsilon_6\}.
+\]
+The ghost Fock space is the exterior algebra \(\Lambda E\). Exterior
+multiplication by \(\epsilon_i\) and contraction \(\iota_i\) obey
+\[
+  \iota_i\epsilon_j+\epsilon_j\iota_i=\delta_{ij},
+  \qquad
+  \epsilon_i\epsilon_j+\epsilon_j\epsilon_i=0,
+  \qquad
+  \iota_i\iota_j+\iota_j\iota_i=0.
+\]
+The ghost-extended Hilbert space is
+\[
+  \mathcal K=\mathcal H\otimes\Lambda E,
+  \qquad
+  \dim\mathcal K=2^7\,2^6=8192.
+\]
+
+Define
+\[
+  Q=\sum_{i=1}^6\epsilon_iP_i,\qquad
+  Q^*=\sum_{i=1}^6\iota_iP_i .
+\]
+Written without abbreviations,
+\[
+\begin{aligned}
+Q={}&
+\epsilon_1\frac{I-X(g_1)}2+
+\epsilon_2\frac{I-X(g_2)}2+
+\epsilon_3\frac{I-X(g_3)}2\\
+&+
+\epsilon_4\frac{I-Z(g_1)}2+
+\epsilon_5\frac{I-Z(g_2)}2+
+\epsilon_6\frac{I-Z(g_3)}2 .
+\end{aligned}
+\]
+Because the \(P_i\) commute and the \(\epsilon_i\) anticommute,
+\[
+  Q^2=\sum_{i<j}(\epsilon_i\epsilon_j+\epsilon_j\epsilon_i)P_iP_j=0.
+\]
+The supersymmetric Hamiltonian is
+\[
+\begin{aligned}
+  QQ^*+Q^*Q
+  &=\sum_{i,j}(\epsilon_i\iota_j+\iota_j\epsilon_i)P_iP_j\\
+  &=\sum_iP_i .
+\end{aligned}
+\]
+Thus it is the Steane stabilizer-violation Hamiltonian, shifted and scaled so
+that the code sector has energy \(0\).
+
+\subsection{Cohomology, Defined and Computed}
+
+Ghost degree is exterior degree. The degree-\(q\) subspace is
+\[
+  \mathcal K^q=\mathcal H\otimes\Lambda^qE.
+\]
+The degree-\(q\) cohomology of \(Q\) is
+\[
+  H^q(Q)=
+  \frac{\{\phi\in\mathcal K^q:Q\phi=0\}}
+       {\{Q\eta:\eta\in\mathcal K^{q-1}\}} .
+\]
+For \(q=0\), the denominator is zero because \(\mathcal K^{-1}=0\).
+
+Decompose the physical Hilbert space into stabilizer-syndrome sectors
+\[
+  \mathcal H=\bigoplus_{\lambda\in\mathbb F_2^6}\mathcal H_\lambda,
+  \qquad
+  S_i\psi=(-1)^{\lambda_i}\psi .
+\]
+On \(\mathcal H_\lambda\), the projector \(P_i\) acts as multiplication by
+\(\lambda_i\). Therefore
+\[
+  Q|_{\mathcal H_\lambda\otimes\Lambda E}
+  =
+  \epsilon(\alpha_\lambda),
+  \qquad
+  \alpha_\lambda=\sum_i\lambda_i\epsilon_i,
+\]
+where \(\epsilon(\alpha)\) means exterior multiplication by \(\alpha\).
+
+If \(\lambda\neq0\), choose a contraction \(h\) with \(h(\alpha_\lambda)=1\).
+Then
+\[
+  hQ+Qh=I
+\]
+on \(\mathcal H_\lambda\otimes\Lambda E\), so that syndrome block is acyclic:
+it contributes no cohomology. If \(\lambda=0\), then \(Q=0\), and
+\(\mathcal H_0=\mathcal C\) has dimension \(2\). Hence
+\[
+  H^q(Q)\cong\mathcal C\otimes\Lambda^qE,
+  \qquad
+  \dim H^q(Q)=2\binom6q .
+\]
+The dimensions are
+\[
+\begin{array}{c|ccccccc}
+q&0&1&2&3&4&5&6\\
+\hline
+\dim H^q(Q)&2&12&30&40&30&12&2 .
+\end{array}
+\]
+
+The physical Steane code is the no-ghost part:
+\[
+  H^0(Q)=\mathcal C
+  =
+  \operatorname{span}\{|\overline0\rangle,|\overline1\rangle\}.
+\]
+The full \(Q\)-cohomology has ghost-labelled copies of the same code space,
+with total dimension \(2\cdot2^6=128\). The ground space of
+\(\{Q,Q^*\}\) has the same ghost degeneracy. The no-ghost sector is therefore
+the physical stabilizer code; the higher ghost-degree classes are auxiliary
+Koszul bookkeeping.
+
+\subsection{What the Higher Ghost Classes Mean}
+
+The word ``bookkeeping'' in the previous paragraph should be read narrowly. It
+means that higher ghost degree does not add new Steane logical qubits. It does
+not mean that the Koszul cohomology is meaningless.
+
+The six equations defining the code are
+\[
+  P_1\psi=\cdots=P_6\psi=0.
+\]
+The Koszul differential remembers these as six separate equations. On a
+nonzero syndrome sector \(\lambda\neq0\), at least one equation is violated and
+the complex is contractible by the homotopy \(h\) above. On the zero-syndrome
+sector, all six functions \(P_i\) vanish. Therefore \(Q\) becomes the zero
+operator on
+\[
+  \mathcal C\otimes\Lambda E,
+\]
+and every exterior ghost monomial survives.
+
+Thus the higher cohomology is exactly
+\[
+  H^{>0}(Q)=\mathcal C\otimes\Lambda^{>0}E.
+\]
+It records the exterior algebra on the six chosen stabilizer equations over the
+constraint surface. Equivalently, it is the finite-dimensional analogue of
+conormal or derived-intersection data for the equations \(P_i=0\). This data is
+useful if the question is about the Koszul resolution itself, or about how the
+constraint presentation changes when generators are added, removed, or made
+redundant.
+
+It is not, however, an invariant of the Steane code alone. If we choose a
+different independent generating set for the same \(L\), the ghost basis
+changes. If we add redundant stabilizer generators, the higher exterior algebra
+gets larger while the physical code space is unchanged. The intrinsic QECC
+content is therefore the no-ghost code \(\mathcal C=H^0(Q)\) together with the
+logical symplectic quotient \(L^\perp/L\). The full \(Q\)-cohomology is a
+presentation-dependent derived enhancement of the stabilizer equations.
+
+\subsection{Exact Validation}
+
+The producer \path{steane_supercharge_molecular.jl} writes three CSV files in
+the Steane molecular run bundle. The summary CSV records \(\dim D=3\),
+\(\dim C=4\), \(\dim L=6\), \(\dim L^\perp=8\), \(|\mathcal K|=8192\),
+\(\dim H^0(Q)=2\), and full cohomology dimension \(128\). The vector CSV
+records the two codeword cosets and the logical representatives \((u,0)\),
+\((0,u)\). The cohomology CSV records the seven dimensions displayed above.

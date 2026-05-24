@@ -44,6 +44,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "lattice codes",
+        label = "steane_supercharge_molecular",
+        path = "lattice_codes/steane_supercharge_molecular.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

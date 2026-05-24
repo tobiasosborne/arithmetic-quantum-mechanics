@@ -1,0 +1,9 @@
+# Full Q-cohomology by ghost degree for the six-generator Steane supercharge.
+degree,ghost_binomial,cohomology_dim
+0,1,2
+1,6,12
+2,15,30
+3,20,40
+4,15,30
+5,6,12
+6,1,2

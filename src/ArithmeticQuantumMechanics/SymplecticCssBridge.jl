@@ -156,9 +156,9 @@ end
 
 function steane_css_matrices()
     h = [
-        1 1 1 0 1 0 0
-        1 1 0 1 0 1 0
-        1 0 1 1 0 0 1
+        1 1 1 1 0 0 0
+        1 1 0 0 1 1 0
+        1 0 1 0 1 0 1
     ]
     return h, h
 end

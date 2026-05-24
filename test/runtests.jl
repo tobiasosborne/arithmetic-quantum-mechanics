@@ -98,3 +98,45 @@ end
     @test qutrit.logical_symplectic_dimension == 2
     @test qutrit.basis_free_projective_ghost_count_exact == "4"
 end
+
+@testset "Steane molecular supercharge data" begin
+    data = steane_binary_space_rows()
+    h = data.h
+    @test h == [
+        1 1 1 1 0 0 0
+        1 1 0 0 1 1 0
+        1 0 1 0 1 0 1
+    ]
+    @test all(==(0), matmul_modp(h, transpose(h), 2))
+    @test length(data.d_space) == 8
+    @test length(data.c_space) == 16
+    @test data.logical_word == [0, 0, 0, 0, 1, 1, 1]
+
+    summary = steane_molecular_summary()
+    @test summary.d_subset_c
+    @test summary.logical_word_in_c
+    @test summary.logical_word_not_in_d
+    @test summary.stabilizer_rank == 6
+    @test summary.l_dim == 6
+    @test summary.l_size == 64
+    @test summary.l_perp_dim == 8
+    @test summary.l_perp_size == 256
+    @test summary.logical_symplectic_dim == 2
+    @test summary.logical_pauli_classes == 4
+    @test summary.logical_pairing_x_z == 1
+    @test summary.physical_hilbert_dim == 128
+    @test summary.ghost_fock_dim == 64
+    @test summary.full_ghost_hilbert_dim == 8192
+    @test summary.code_dim == 2
+    @test summary.syndrome_count == 64
+    @test summary.nonzero_syndrome_count == 63
+    @test summary.syndrome_block_dim == 2
+    @test summary.full_q_cohomology_dim == 128
+    @test summary.degree_zero_cohomology_dim == 2
+    @test summary.q_square_certificate
+    @test summary.anticommutator_certificate
+    @test summary.codewords_match_two_cosets
+
+    @test [row.cohomology_dim for row in steane_cohomology_by_degree()] ==
+          [2, 12, 30, 40, 30, 12, 2]
+end

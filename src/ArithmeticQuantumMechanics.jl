@@ -12,9 +12,12 @@ export oriented_toric_boundary_matrices, matmul_modp, rank_modp
 export css_symplectic_isotropic, symplectic_css_bridge_summary
 export css_supercharge_dictionary_summary, steane_css_matrices
 export qutrit_css_toy_matrices
+export steane_molecular_summary, steane_binary_space_rows
+export steane_cohomology_by_degree
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")
+include("ArithmeticQuantumMechanics/SteaneSupercharge.jl")
 
 """
     project_root()

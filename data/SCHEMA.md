@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Four CSV outputs exist.
+Seven CSV outputs exist.
 
 ## Common Rules
 
@@ -21,6 +21,9 @@ Four CSV outputs exist.
 | `runs/2026-05-24-toric-chain-ghost-unification/data/toric_chain_ghost_unification.csv` | `scripts/lattice_codes/toric_chain_ghost_unification.jl` | Active |
 | `runs/2026-05-24-symplectic-css-bridge/data/symplectic_css_bridge_summary.csv` | `scripts/lattice_codes/symplectic_css_bridge_validation.jl` | Active |
 | `runs/2026-05-24-css-supercharge-symplectic-dictionary/data/css_supercharge_symplectic_dictionary.csv` | `scripts/lattice_codes/css_supercharge_symplectic_dictionary.jl` | Active |
+| `runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_summary.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Active |
+| `runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_vectors.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Active |
+| `runs/2026-05-24-steane-supercharge-molecular/data/steane_cohomology_by_degree.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -131,3 +134,78 @@ certificate; no Hilbert matrices are built.
 | q_square_certificate | bool | Algebraic certificate that the CSS ghost supercharge squares to zero. |
 | anticommutator_certificate | bool | Algebraic certificate that `{Q,Q^*}` is the sum of violated-check projectors. |
 | h0_matches_stabilizer_code | bool | Whether degree-zero supercharge cohomology matches the stabilizer code count. |
+
+## steane_molecular_summary.csv
+
+Produced by: `scripts/lattice_codes/steane_supercharge_molecular.jl`
+Run bundle: `runs/2026-05-24-steane-supercharge-molecular/`
+Report shards: `AQM-10-STEANE-SYMPLECTIC-MOLECULAR`,
+`AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY`
+Sentinel: row 1 begins with `#` and states that this is an exact Steane
+CSS/symplectic/supercharge molecular summary.
+
+| column | type | description |
+|---|---|---|
+| n | int | Number of physical qubits. |
+| check_rank | int | Rank of the three sourced binary check rows. |
+| d_dim | int | Dimension of the rowspace `D`. |
+| d_size | int | Number of vectors in `D`. |
+| c_dim | int | Dimension of `C = D^perp`. |
+| c_size | int | Number of vectors in `C`. |
+| d_subset_c | bool | Whether `D <= C`. |
+| logical_word | string | Binary representative `u` for `C/D`. |
+| logical_word_in_c | bool | Whether `u in C`. |
+| logical_word_not_in_d | bool | Whether `u notin D`. |
+| h_h_transpose_zero | bool | Whether `H H^T=0` over `F_2`. |
+| stabilizer_rank | int | Rank of the six CSS stabilizer labels. |
+| l_dim | int | Dimension of the isotropic stabilizer subspace `L`. |
+| l_size | int | Number of labels in `L`. |
+| l_perp_dim | int | Dimension of `L^perp`. |
+| l_perp_size | int | Number of labels in `L^perp`. |
+| logical_symplectic_dim | int | Dimension of `L^perp/L`. |
+| logical_pauli_classes | int | Number of logical Pauli label classes. |
+| logical_pairing_x_z | int | Binary symplectic pairing of the chosen `Xbar,Zbar` representatives. |
+| physical_hilbert_dim | int | Dimension of the seven-qubit Hilbert space. |
+| ghost_count | int | Number of fermionic ghosts in the generator supercharge. |
+| ghost_fock_dim | int | Dimension of the ghost exterior algebra. |
+| full_ghost_hilbert_dim | int | Dimension of physical Hilbert space tensor ghost Fock space. |
+| code_dim | int | Dimension of the no-ghost Steane code. |
+| encoded_qubits | int | Number of encoded qubits. |
+| syndrome_count | int | Number of stabilizer syndrome sectors. |
+| nonzero_syndrome_count | int | Number of nonzero syndrome sectors. |
+| syndrome_block_dim | int | Dimension of each syndrome sector. |
+| full_q_cohomology_dim | int | Total dimension of full ghost-degree `Q` cohomology. |
+| degree_zero_cohomology_dim | int | Dimension of `H^0(Q)`, the physical no-ghost code. |
+| q_square_certificate | bool | Algebraic certificate that `Q^2=0`. |
+| anticommutator_certificate | bool | Algebraic certificate that `{Q,Q^*}=sum_i P_i`. |
+| codewords_match_two_cosets | bool | Whether `C` is exactly the union of the two sourced codeword cosets. |
+
+## steane_molecular_vectors.csv
+
+Produced by: `scripts/lattice_codes/steane_supercharge_molecular.jl`
+Run bundle: `runs/2026-05-24-steane-supercharge-molecular/`
+Report shards: `AQM-10-STEANE-SYMPLECTIC-MOLECULAR`,
+`AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY`
+Sentinel: row 1 begins with `#` and states that the rows are exact binary
+vectors for the sourced Steane presentation.
+
+| column | type | description |
+|---|---|---|
+| object | string | Kind of row: `check_row`, `l_basis`, `D`, `u_plus_D`, `C`, `l_perp_basis`, or `logical_class`. |
+| label | string | Human-readable label for the row. |
+| x | string | Binary `X` exponent string, or a binary vector when `z` is blank. |
+| z | string | Binary `Z` exponent string for Pauli labels; blank for ordinary binary vectors. |
+
+## steane_cohomology_by_degree.csv
+
+Produced by: `scripts/lattice_codes/steane_supercharge_molecular.jl`
+Run bundle: `runs/2026-05-24-steane-supercharge-molecular/`
+Report shard: `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY`
+Sentinel: row 1 begins with `#` and states that this is full `Q`-cohomology by
+ghost degree.
+
+| column | type | description |
+|---|---|---|
+| degree | int | Ghost degree `q`. |
+| ghost_binomial | int | Exterior-algebra dimension `binomial(6,q)`. |
+| cohomology_dim | int | Dimension `2 * binomial(6,q)` of `H^q(Q)`. |
