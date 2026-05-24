@@ -51,3 +51,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Defines the degree-zero Q-cohomology and boundary quotient in elementary terms.
 - Summary: Unifies the ghost-supercharge construction with the face-edge-vertex boundary complex.
 - Keywords: toric code, supercharge, ghosts, fermions, local checks, cohomology, homology
+
+## `AQM-06-TORIC-CHAIN-GHOST-PROOF`
+
+- Source: `report/sections/06_toric_chain_ghost_proof.tex`
+- Title: Proof of the Toric Chain-to-Ghost Lift
+- Summary: Gives a concrete theorem relating cellular cohomology, CSS stabilizers, and the ghost supercharge.
+- Summary: Constructs an explicit cohomology-class basis for the toric-code space.
+- Summary: Proves nilpotence and the stabilizer Hamiltonian anticommutator from projectors and CAR.
+- Keywords: toric code, proof, chain complex, CSS code, ghost supercharge, cohomology

@@ -170,7 +170,8 @@ vacuum sector this is the physical shifted toric-code Hamiltonian. This proves
 a local-check ghost formulation, not a purely physical-qubit supercharge.
 
 The elementary meaning of cohomology for this `Q` is defined in report shard
-`AQM-05-TORIC-SUPERCHARGE` before the term is used substantively.
+`AQM-05-TORIC-SUPERCHARGE` before the term is used substantively. The explicit
+chain-to-ghost proof is in `AQM-06-TORIC-CHAIN-GHOST-PROOF`.
 
 ## (k) Toric Chain-Complex/CSS Convention
 

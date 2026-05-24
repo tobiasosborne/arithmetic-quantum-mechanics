@@ -40,6 +40,10 @@ the ghost-extended local-check supercharge formulation of the toric code in
   `C_2 -> C_1 -> C_0` gives `H_X=partial_1`, `H_Z=partial_2^T`, so
   `partial_1 partial_2=0` is the CSS commutation condition and its rows/columns
   are exactly the ghost-supercharge check supports.
+- Added a full proof in `AQM-06-TORIC-CHAIN-GHOST-PROOF`: cellular classes
+  `[a] in ker(delta^1)/im(delta^0)` map to normalized orbit sums in the code
+  space, and the ghost anticommutator follows from the CAR and commuting
+  projectors.
 
 ## Next Useful Steps
 

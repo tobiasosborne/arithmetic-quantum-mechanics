@@ -1,0 +1,226 @@
+% SHARD-ID: AQM-06-TORIC-CHAIN-GHOST-PROOF
+% SHARD-TITLE: Proof of the Toric Chain-to-Ghost Lift
+% SHARD-SUMMARY: Gives a concrete theorem relating cellular cohomology, CSS stabilizers, and the ghost supercharge.
+% SHARD-SUMMARY: Constructs an explicit cohomology-class basis for the toric-code space.
+% SHARD-SUMMARY: Proves nilpotence and the stabilizer Hamiltonian anticommutator from projectors and CAR.
+% SHARD-KEYWORDS: toric code, proof, chain complex, CSS code, ghost supercharge, cohomology
+
+\section{Proof of the Toric Chain-to-Ghost Lift}
+\label{sec:chain-ghost-proof}
+
+This section replaces the slogan ``the chain complex supplies the supports''
+by an explicit finite-dimensional statement.
+
+\subsection{Data}
+
+Fix the \(k\times k\) periodic square cellulation of the torus, \(k\geq 2\).
+All chain groups in this subsection are vector spaces over \(\mathbb{F}_2\):
+\[
+  C_2 \xrightarrow{\partial_2} C_1 \xrightarrow{\partial_1} C_0 .
+\]
+The bases are faces, edges, and vertices. Thus
+\[
+  |C_0|=k^2,\qquad |C_1|=2k^2,\qquad |C_2|=k^2 .
+\]
+Let
+\[
+  \delta^0=\partial_1^T:C^0\to C^1,\qquad
+  \delta^1=\partial_2^T:C^1\to C^2.
+\]
+The cellular supercharge is the degree \(+1\) map
+\[
+  Q_{\mathrm{cell}}=\delta^0+\delta^1
+  \quad\text{on}\quad C^0\oplus C^1\oplus C^2 .
+\]
+Since \(\partial_1\partial_2=0\), one has
+\[
+  Q_{\mathrm{cell}}^2=\delta^1\delta^0=(\partial_1\partial_2)^T=0.
+\]
+The degree-one cellular cohomology is the quotient
+\[
+  H^1_{\mathrm{cell}}
+  =\ker(\delta^1)/\operatorname{im}(\delta^0).
+\]
+In elementary terms, its elements are edge-bit strings \(a\) whose parity around
+every plaquette is zero, with two such strings identified if they differ by the
+edge-bit string produced by applying star flips at some set of vertices.
+
+\subsection{From Boundary Matrices to Pauli Checks}
+
+The physical Hilbert space is
+\[
+  \mathcal H=(\mathbb C^2)^{\otimes C_1}.
+\]
+Its computational \(Z\)-basis is written \(\{|a\rangle:a\in C^1\}\), where
+\(a_e\in\mathbb{F}_2\) is the bit on edge \(e\).
+
+For an edge-bit string \(r\in C^1\), define Pauli monomials by
+\[
+  X^r|a\rangle=|a+r\rangle,\qquad
+  Z^r|a\rangle=(-1)^{r\cdot a}|a\rangle ,
+\]
+where \(r\cdot a=\sum_e r_ea_e\) is computed in \(\mathbb{F}_2\).
+They obey
+\[
+  X^rZ^s=(-1)^{r\cdot s}Z^sX^r .
+\]
+
+For a vertex \(v\), let \(r_v=\delta^0 v\in C^1\), the row of
+\(\partial_1\) supported on edges incident to \(v\). Define the star check
+\[
+  A_v=X^{r_v}.
+\]
+For a face \(f\), let \(s_f=\partial_2 f\in C_1\), identified with its edge-bit
+string in \(C^1\). Define the plaquette check
+\[
+  B_f=Z^{s_f}.
+\]
+Then
+\[
+  A_vB_f=(-1)^{r_v\cdot s_f}B_fA_v.
+\]
+But \(r_v\cdot s_f\) is exactly the coefficient of \(v\) in
+\(\partial_1\partial_2f\), hence it is zero. Therefore every \(A_v\) commutes
+with every \(B_f\). Checks of the same Pauli type commute automatically, and
+each check squares to the identity.
+
+\subsection{The Code Space as a Linearized Cohomology Set}
+
+The toric-code space is
+\[
+  \mathcal C=\{|\psi\rangle\in\mathcal H:
+  A_v|\psi\rangle=|\psi\rangle,\ B_f|\psi\rangle=|\psi\rangle
+  \text{ for all }v,f\}.
+\]
+We now construct a basis of \(\mathcal C\) from
+\(\ker(\delta^1)/\operatorname{im}(\delta^0)\).
+
+First, for a basis vector \(|a\rangle\),
+\[
+  B_f|a\rangle=(-1)^{s_f\cdot a}|a\rangle .
+\]
+The condition \(B_f|a\rangle=|a\rangle\) for every \(f\) is therefore
+\[
+  s_f\cdot a=0\quad\text{for all }f,
+\]
+which is precisely \(\delta^1a=0\). Thus the simultaneous \(+1\) eigenspace of
+all plaquettes is spanned by \(|a\rangle\) with \(a\in\ker(\delta^1)\).
+
+Second, a star acts by
+\[
+  A_v|a\rangle=|a+\delta^0 v\rangle.
+\]
+Thus the star group translates \(a\) by elements of
+\(\operatorname{im}(\delta^0)\). Because \(\delta^1\delta^0=0\), these
+translations preserve \(\ker(\delta^1)\).
+
+For each class \([a]\in H^1_{\mathrm{cell}}\), define
+\[
+  |[a]\rangle
+  =
+  \frac{1}{\sqrt{|\operatorname{im}\delta^0|}}
+  \sum_{u\in\operatorname{im}(\delta^0)} |a+u\rangle .
+\]
+This vector is well-defined: replacing \(a\) by \(a+u_0\) just reindexes the
+sum. It is fixed by every star \(A_v\), because \(A_v\) translates the summation
+set by \(\delta^0v\). It is fixed by every plaquette \(B_f\), because every
+\(a+u\) in the sum lies in \(\ker(\delta^1)\). Hence \(|[a]\rangle\in\mathcal C\).
+
+If \([a]\neq[b]\), the two sums have disjoint computational-basis supports, so
+\(|[a]\rangle\) and \(|[b]\rangle\) are orthogonal. Conversely, any vector in
+the plaquette \(+1\) eigenspace is a linear combination of basis states with
+\(a\in\ker(\delta^1)\), and imposing all star equations forces its coefficients
+to be constant on each coset of \(\operatorname{im}(\delta^0)\). Therefore the
+vectors \(|[a]\rangle\) form a basis of \(\mathcal C\), and there is a concrete
+isomorphism
+\[
+  \mathbb C[H^1_{\mathrm{cell}}]\cong \mathcal C,\qquad
+  [a]\mapsto |[a]\rangle .
+\]
+
+For the periodic square torus this gives four states. Indeed, suppose
+\(\sum_v \alpha_v(\text{row }v\text{ of }\partial_1)=0\). For each edge with
+endpoints \(v,w\), the coefficient of that edge gives
+\(\alpha_v+\alpha_w=0\). The graph is connected, so all \(\alpha_v\) are equal.
+Thus the only row relation is the sum of all rows, and
+\(\operatorname{rank}\partial_1=k^2-1\).
+
+Similarly, suppose \(\sum_f\beta_f\partial_2 f=0\). For each edge separating
+adjacent faces \(f,g\), the coefficient of that edge gives
+\(\beta_f+\beta_g=0\). The dual graph is connected, so all \(\beta_f\) are
+equal. Thus the only column relation is the sum of all face boundaries, and
+\(\operatorname{rank}\partial_2=k^2-1\). Hence
+\[
+  \dim_{\mathbb F_2}H^1_{\mathrm{cell}}
+  =2k^2-(k^2-1)-(k^2-1)=2.
+\]
+Thus \(\dim_{\mathbb C}\mathcal C=|H^1_{\mathrm{cell}}|=2^2=4\).
+
+\subsection{The Ghost Supercharge Is the Koszul Lift of These Checks}
+
+Let the list of stabilizer checks be
+\[
+  \{S_i\}_{i\in I}=\{A_v:v\in C_0\}\cup\{B_f:f\in C_2\}.
+\]
+The previous subsection proved that all \(S_i\) commute and that \(S_i^2=I\).
+Define the violated-check projectors
+\[
+  P_i=\frac{I-S_i}{2}.
+\]
+They are self-adjoint idempotents, and they commute with each other.
+
+Now attach one auxiliary fermion to each \(i\in I\). Let \(\epsilon_i\) create
+the \(i\)-ghost and \(\iota_i\) annihilate it. These operations act on the
+exterior algebra on the ghost labels and satisfy
+\[
+  \iota_i\epsilon_j+\epsilon_j\iota_i=\delta_{ij},\qquad
+  \epsilon_i\epsilon_j+\epsilon_j\epsilon_i=0,\qquad
+  \iota_i\iota_j+\iota_j\iota_i=0 .
+\]
+They commute with the physical projectors \(P_i\). Define
+\[
+  Q_{\mathrm{gh}}=\sum_{i\in I}\epsilon_iP_i,\qquad
+  Q_{\mathrm{gh}}^*=\sum_{i\in I}\iota_iP_i .
+\]
+
+Nilpotence is immediate but worth writing out:
+\[
+  Q_{\mathrm{gh}}^2
+  =\sum_{i,j}\epsilon_i\epsilon_jP_iP_j
+  =\sum_{i<j}(\epsilon_i\epsilon_j+\epsilon_j\epsilon_i)P_iP_j=0.
+\]
+For the anticommutator,
+\[
+\begin{aligned}
+  Q_{\mathrm{gh}}Q_{\mathrm{gh}}^*
+  +Q_{\mathrm{gh}}^*Q_{\mathrm{gh}}
+  &=
+  \sum_{i,j}(\epsilon_i\iota_j+\iota_j\epsilon_i)P_iP_j  \\
+  &=\sum_i P_i^2
+  =\sum_i P_i .
+\end{aligned}
+\]
+This is the shifted toric-code Hamiltonian on \(\mathcal H\), tensored with the
+identity on the ghost exterior algebra.
+
+Finally, degree-zero means ``no ghost present''. A degree-zero vector
+\(|\psi\rangle\in\mathcal H\) is \(Q_{\mathrm{gh}}\)-closed exactly when
+\[
+  Q_{\mathrm{gh}}|\psi\rangle
+  =\sum_i \epsilon_iP_i|\psi\rangle=0,
+\]
+which, by independence of the one-ghost labels, is equivalent to
+\(P_i|\psi\rangle=0\) for every \(i\). This is equivalent to
+\(S_i|\psi\rangle=|\psi\rangle\) for every star and plaquette. There are no
+degree \(-1\) states, so no degree-zero exact states. Therefore
+\[
+  H^0(Q_{\mathrm{gh}})=\mathcal C
+  \cong \mathbb C[H^1_{\mathrm{cell}}].
+\]
+
+This is the concrete unification. \(Q_{\mathrm{cell}}\) is the cellular
+differential on finite \(\mathbb F_2\)-cochains. \(Q_{\mathrm{gh}}\) is a
+complex-linear operator on the physical Hilbert space tensored with ghosts. The
+first one supplies the quotient set \(H^1_{\mathrm{cell}}\); the second one has
+the toric-code Hamiltonian as its anticommutator and selects the complex vector
+space freely spanned by that quotient.
