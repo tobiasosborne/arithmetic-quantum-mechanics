@@ -1,8 +1,7 @@
 # INDEX.md - Script, Output, And Report Manifest
 
 This manifest indexes the evidence layer behind the sharded lab book rooted at
-`report.tex`. The repository is currently an infrastructure scaffold; no
-evidence-producing scripts or run bundles are registered yet.
+`report.tex`. Evidence-producing scripts and run bundles are registered below.
 
 ## Run Bundles
 
@@ -14,6 +13,7 @@ Generated data and figures will live under
 |---|---|---|
 | `runs/2026-05-24-toric-supercharge/` | Toric code / local-check ghosts | Algebraic validation of the auxiliary-fermion supercharge construction for a `k=4` toric-code instance. |
 | `runs/2026-05-24-toric-chain-ghost-unification/` | Toric code / chain complex | Algebraic validation that `C_2 -> C_1 -> C_0` boundary maps determine the same CSS check supports used by the ghost supercharge. |
+| `runs/2026-05-24-symplectic-css-bridge/` | Toric code / symplectic CSS bridge | Exact prime-field validation that oriented boundary maps produce an isotropic CSS stabilizer subspace. |
 
 ## Quick Start
 
@@ -33,6 +33,7 @@ producer.
 |---|---|---|---|---|---|
 | `scripts/lattice_codes/toric_supercharge_validation.jl` | Julia | `runs/2026-05-24-toric-supercharge/` | `data/toric_supercharge_summary.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE` |
 | `scripts/lattice_codes/toric_chain_ghost_unification.jl` | Julia | `runs/2026-05-24-toric-chain-ghost-unification/` | `data/toric_chain_ghost_unification.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE`, `AQM-06-TORIC-CHAIN-GHOST-PROOF`, `AQM-07-TORIC-OPERATOR-RELATION` |
+| `scripts/lattice_codes/symplectic_css_bridge_validation.jl` | Julia | `runs/2026-05-24-symplectic-css-bridge/` | `data/symplectic_css_bridge_summary.csv` | _none_ | `AQM-08-SYMPLECTIC-CSS-BRIDGE` |
 
 ## CSV Reverse Lookup
 
@@ -42,6 +43,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 |---|---|---|
 | `runs/2026-05-24-toric-supercharge/data/toric_supercharge_summary.csv` | `scripts/lattice_codes/toric_supercharge_validation.jl` | `toric_supercharge_summary.csv` |
 | `runs/2026-05-24-toric-chain-ghost-unification/data/toric_chain_ghost_unification.csv` | `scripts/lattice_codes/toric_chain_ghost_unification.jl` | `toric_chain_ghost_unification.csv` |
+| `runs/2026-05-24-symplectic-css-bridge/data/symplectic_css_bridge_summary.csv` | `scripts/lattice_codes/symplectic_css_bridge_validation.jl` | `symplectic_css_bridge_summary.csv` |
 
 ## Report Shards
 
@@ -55,6 +57,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-05-TORIC-SUPERCHARGE` | `report/sections/05_toric_supercharge_checks.tex` | Toric Code Supercharge From Local Checks |
 | `AQM-06-TORIC-CHAIN-GHOST-PROOF` | `report/sections/06_toric_chain_ghost_proof.tex` | Proof of the Toric Chain-to-Ghost Lift |
 | `AQM-07-TORIC-OPERATOR-RELATION` | `report/sections/07_toric_operator_relation.tex` | Operator Relation Between Cellular and Ghost Supercharges |
+| `AQM-08-SYMPLECTIC-CSS-BRIDGE` | `report/sections/08_symplectic_css_bridge.tex` | Chain Complexes as Symplectic CSS Stabilizers |
 
 ## Source Topics
 
@@ -66,3 +69,4 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Arithmetic quantum mechanics | _pending_ | No sources acquired. |
 | Supersymmetric quantum mechanics | _pending_ | No sources acquired. |
 | Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |
+| Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman and Ashikhmin-Knill arXiv source bundles acquired for stabilizer symplectic conventions. |

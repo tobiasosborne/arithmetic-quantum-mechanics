@@ -1,0 +1,5 @@
+# Exact prime-field certificate for the chain/CSS/symplectic bridge; no Hilbert matrices are built.
+k,p,nvertices,nedges,nfaces,boundary_square_zero,css_isotropic,rank_boundary_one,rank_boundary_two,h1_dim,symplectic_stabilizer_rank,encoded_qudits,encoded_hilbert_dimension_exact,chain_count_matches_symplectic_count
+4,2,16,32,16,true,true,15,15,2,30,2,4,true
+4,3,16,32,16,true,true,15,15,2,30,2,9,true
+4,5,16,32,16,true,true,15,15,2,30,2,25,true

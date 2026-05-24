@@ -50,3 +50,22 @@ end
         @test summary.ghost_checks_from_chain_complex
     end
 end
+
+@testset "symplectic CSS bridge over prime fields" begin
+    for k in 2:4, p in (2, 3, 5)
+        boundary_one, boundary_two = oriented_toric_boundary_matrices(k, p)
+        @test all(==(0), matmul_modp(boundary_one, boundary_two, p))
+        @test css_symplectic_isotropic(boundary_one, boundary_two, p)
+
+        summary = symplectic_css_bridge_summary(k, p)
+        @test summary.boundary_square_zero
+        @test summary.css_isotropic
+        @test summary.rank_boundary_one == k^2 - 1
+        @test summary.rank_boundary_two == k^2 - 1
+        @test summary.h1_dim == 2
+        @test summary.symplectic_stabilizer_rank == 2k^2 - 2
+        @test summary.encoded_qudits == 2
+        @test summary.encoded_hilbert_dimension_exact == string(BigInt(p)^2)
+        @test summary.chain_count_matches_symplectic_count
+    end
+end

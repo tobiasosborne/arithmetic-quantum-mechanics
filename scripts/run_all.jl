@@ -30,6 +30,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "lattice codes",
+        label = "symplectic_css_bridge_validation",
+        path = "lattice_codes/symplectic_css_bridge_validation.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

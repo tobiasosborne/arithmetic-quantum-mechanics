@@ -48,6 +48,10 @@ the ghost-extended local-check supercharge formulation of the toric code in
   restriction of `Q_gh`; instead `delta^0` induces star translations,
   `delta^1` induces plaquette syndrome multiplication, and `Q_gh` is the
   Koszul differential for those projector equations.
+- Added `AQM-08-SYMPLECTIC-CSS-BRIDGE`: the CSS chain complex produces an
+  isotropic stabilizer subspace `L`, and the logical Pauli module is
+  `L^perp/L = H^1 x H_1`; a new exact Julia run checks this over
+  `F_2`, `F_3`, and `F_5`.
 
 ## Next Useful Steps
 

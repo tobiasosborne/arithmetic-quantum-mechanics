@@ -69,3 +69,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Derives the ghost projectors from the boundary maps via translations and syndrome characters.
 - Summary: Proves that degree-zero ghost cohomology is the complex linearization of cellular cohomology.
 - Keywords: toric code, supercharge, operator relation, ghost Fock space, cellular differential, Koszul
+
+## `AQM-08-SYMPLECTIC-CSS-BRIDGE`
+
+- Source: `report/sections/08_symplectic_css_bridge.tex`
+- Title: Chain Complexes as Symplectic CSS Stabilizers
+- Summary: Derives the exact relation between chain/cochain CSS data and isotropic stabilizer subspaces.
+- Summary: Identifies the logical Pauli module as the symplectic reduction \(L^\perp/L\).
+- Summary: Records the prime-field qudit validation run for the oriented toric complex.
+- Keywords: QECC, symplectic geometry, CSS codes, chain complex, qudits, stabilizer

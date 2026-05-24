@@ -224,3 +224,46 @@ columns of `partial_2`.
 Source: `references/toric_code/bombin_martin_delgado_0605094_source/HomologicalErrorCorrection6.tex`,
 lines 2050-2140, and `references/toric_code/error_correction_zoo_toric.yml`,
 lines 20-39.
+
+## (l) Symplectic Stabilizer/CSS Convention
+
+For prime qudit dimension `p`, Pauli labels live in
+
+```text
+V = F_p^n x F_p^n.
+```
+
+The first component is the `X` exponent vector and the second component is the
+`Z` exponent vector. The symplectic form is
+
+```text
+omega((x,z),(x',z')) = z*x' - x*z'
+```
+
+with dot products over `F_p`. Stabilizer generators labelled by a subspace
+`L <= V` commute exactly when `L` is isotropic: `omega(L,L)=0`.
+
+For a CSS code from a chain complex
+
+```text
+C_2 --partial_2--> C_1 --partial_1--> C_0,
+```
+
+qudits live on the basis of `C_1`, and
+
+```text
+L = (im delta^0 x 0) + (0 x im partial_2),
+delta^0 = transpose(partial_1).
+```
+
+The identity `partial_1 * partial_2 = 0` is exactly the isotropy condition for
+this `L`. The logical Pauli module is the symplectic reduction
+
+```text
+L^perp / L = (H^1) x (H_1).
+```
+
+For prime powers `q=p^m`, the same formulas hold over `F_q` with the Pauli
+phase character composed with `Tr_{F_q/F_p}`. For composite non-field qudit
+dimension, module torsion can enter, so rank/dimension statements are not
+silently imported from the field case.

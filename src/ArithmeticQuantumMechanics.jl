@@ -8,8 +8,11 @@ export toric_boundary_one_rows, toric_boundary_two_columns
 export toric_code_stabilizer_rank, toric_boundary_square_zero
 export toric_cellular_supercharge_square_zero
 export toric_supercharge_summary, toric_chain_ghost_unification_summary
+export oriented_toric_boundary_matrices, matmul_modp, rank_modp
+export css_symplectic_isotropic, symplectic_css_bridge_summary
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
+include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")
 
 """
     project_root()

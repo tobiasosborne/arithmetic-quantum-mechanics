@@ -31,6 +31,12 @@ The boundary-map unification run is
 It validates `partial_1 partial_2=0`, the match between boundary-map supports
 and stabilizer-check supports, and the homological dimension count `dim H_1=2`.
 
+The symplectic CSS bridge run is
+`runs/2026-05-24-symplectic-css-bridge/data/symplectic_css_bridge_summary.csv`.
+It validates the oriented toric boundary matrices over `F_2`, `F_3`, and
+`F_5`, checking both `partial_1 partial_2=0` and isotropy of the induced CSS
+subspace in the Pauli symplectic module.
+
 ## Commands
 
 ```bash

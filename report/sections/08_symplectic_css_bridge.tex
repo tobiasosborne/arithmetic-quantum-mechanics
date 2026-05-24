@@ -1,0 +1,274 @@
+% SHARD-ID: AQM-08-SYMPLECTIC-CSS-BRIDGE
+% SHARD-TITLE: Chain Complexes as Symplectic CSS Stabilizers
+% SHARD-SUMMARY: Derives the exact relation between chain/cochain CSS data and isotropic stabilizer subspaces.
+% SHARD-SUMMARY: Identifies the logical Pauli module as the symplectic reduction \(L^\perp/L\).
+% SHARD-SUMMARY: Records the prime-field qudit validation run for the oriented toric complex.
+% SHARD-KEYWORDS: QECC, symplectic geometry, CSS codes, chain complex, qudits, stabilizer
+
+\section{Chain Complexes as Symplectic CSS Stabilizers}
+\label{sec:symplectic-css-bridge}
+
+This section answers the symplectic-geometry question. The conclusion is:
+
+\begin{quote}
+The chain/cochain CSS construction is not an alternative to the symplectic
+description. It is a functorial way to manufacture an isotropic stabilizer
+subspace \(L\) inside the Pauli symplectic vector space. The usual homology and
+cohomology groups appear as the two halves of the symplectic reduction
+\(L^\perp/L\).
+\end{quote}
+
+The local source anchors are as follows. Gottesman's TeX source records CSS
+commutation as row orthogonality in
+\path{references/symplectic_qecc/gottesman_9705052_source/Thesis.tex},
+lines 1227--1246, and the binary symplectic stabilizer form in lines
+1293--1341. Ashikhmin--Knill's local TeX source
+\path{references/symplectic_qecc/ashikhmin_knill_0005008_source/n9.tex},
+lines 249--313, gives the nonbinary shift/phase commutator; lines 351--407
+relate nonbinary stabilizers to self-orthogonal classical data. The
+Bombin--Martin-Delgado local source
+\path{references/toric_code/bombin_martin_delgado_0605094_source/HomologicalErrorCorrection6.tex},
+lines 1206--1259, writes qudit Pauli operators with a symplectic commutator;
+lines 2050--2136 define the chain/cochain pairing; lines 2383--2452 state the
+homological-code construction as a symplectic code.
+
+\subsection{The Symplectic Stabilizer Side}
+
+First take prime qudit dimension \(p\). Put one qudit on each of \(n\) sites.
+The Pauli label space is
+\[
+  V=\mathbb F_p^n\oplus\mathbb F_p^n .
+\]
+We write an element as \((x,z)\), where \(x\) is the vector of \(X\)-exponents
+and \(z\) is the vector of \(Z\)-exponents. With
+\(\zeta=\exp(2\pi i/p)\), define
+\[
+  X^x|a\rangle=|a+x\rangle,\qquad
+  Z^z|a\rangle=\zeta^{z\cdot a}|a\rangle ,
+\]
+where \(a,x,z\in\mathbb F_p^n\). Then
+\[
+  X^xZ^zX^{x'}Z^{z'}
+  =
+  \zeta^{z\cdot x'-x\cdot z'}X^{x'}Z^{z'}X^xZ^z .
+\]
+Thus the commutator is controlled by the symplectic form
+\[
+  \omega((x,z),(x',z'))=z\cdot x'-x\cdot z' .
+\]
+
+A stabilizer specified by exponent labels \(L\subset V\) is commuting exactly
+when
+\[
+  \omega(\ell,\ell')=0\quad\text{for all }\ell,\ell'\in L.
+\]
+That is, \(L\) is isotropic. If \(\dim L=r\), the joint eigenspace of the
+corresponding independent stabilizers has dimension
+\[
+  p^{n-r}.
+\]
+The logical Pauli labels are not \(V/L\), because Pauli operators must preserve
+the code space. They are
+\[
+  L^\perp/L,\qquad
+  L^\perp=\{v\in V:\omega(v,\ell)=0\text{ for all }\ell\in L\}.
+\]
+This is the finite symplectic reduction. Its dimension is \(2(n-r)\).
+
+\subsection{The CSS Case Inside the Symplectic Module}
+
+A CSS stabilizer is specified by two subspaces
+\[
+  R_X,R_Z\subset \mathbb F_p^n.
+\]
+The \(X\)-type labels are \((x,0)\) with \(x\in R_X\), and the \(Z\)-type labels
+are \((0,z)\) with \(z\in R_Z\). Hence
+\[
+  L=(R_X\oplus 0)+(0\oplus R_Z)\subset V.
+\]
+The same-type commutators vanish automatically. The mixed commutator is
+\[
+  \omega((x,0),(0,z))=-x\cdot z .
+\]
+Therefore
+\[
+  L\text{ isotropic}
+  \quad\Longleftrightarrow\quad
+  x\cdot z=0\ \text{for all }x\in R_X,\ z\in R_Z.
+\]
+If \(H_X\) and \(H_Z\) are matrices whose rows span \(R_X\) and \(R_Z\), this
+condition is exactly
+\[
+  H_XH_Z^T=0.
+\]
+So the CSS row-orthogonality condition is literally the isotropy condition in
+the Pauli symplectic vector space.
+
+\subsection{Feed in a Chain Complex}
+
+Now let
+\[
+  C_2\xrightarrow{\partial_2}C_1\xrightarrow{\partial_1}C_0
+\]
+be a finite chain complex over \(\mathbb F_p\), so
+\[
+  \partial_1\partial_2=0.
+\]
+Put the physical qudits on the chosen basis of \(C_1\), so \(n=\dim C_1\). Let
+\[
+  \delta^0=\partial_1^T:C^0\to C^1,\qquad
+  \delta^1=\partial_2^T:C^1\to C^2 .
+\]
+After identifying \(C^1\) with coordinate row vectors on the edge basis, define
+\[
+  R_X=\operatorname{im}\delta^0,\qquad
+  R_Z=\operatorname{im}\partial_2.
+\]
+Thus the stabilizer subspace is
+\[
+  L=(\operatorname{im}\delta^0\oplus 0)
+    +(0\oplus \operatorname{im}\partial_2)
+  \subset C^1\oplus C_1 .
+\]
+
+We now derive isotropy, not just state it. Take \(\alpha\in C^0\) and
+\(\beta\in C_2\). The corresponding \(X\)- and \(Z\)-type labels are
+\((\delta^0\alpha,0)\) and \((0,\partial_2\beta)\). Their symplectic pairing is
+\[
+\begin{aligned}
+  \omega((\delta^0\alpha,0),(0,\partial_2\beta))
+  &=-\langle \delta^0\alpha,\partial_2\beta\rangle       \\
+  &=-\langle \alpha,\partial_1\partial_2\beta\rangle      \\
+  &=0 .
+\end{aligned}
+\]
+The first line is the Pauli symplectic form. The second line is the definition
+of the coboundary as the transpose of the boundary. The last line is exactly
+\(\partial_1\partial_2=0\). This is the clean bridge: the chain-complex
+identity is the CSS isotropy identity.
+
+\subsection{The Exact Sequence Hidden in Symplectic Geometry}
+
+The stronger statement identifies the symplectic reduction. Let
+\[
+  B^1=\operatorname{im}\delta^0,\quad
+  Z^1=\ker\delta^1,\quad
+  B_1=\operatorname{im}\partial_2,\quad
+  Z_1=\ker\partial_1.
+\]
+Then \(L=B^1\oplus B_1\), using the CSS embedding into \(C^1\oplus C_1\).
+
+Compute \(L^\perp\). A general Pauli label is \((x,z)\in C^1\oplus C_1\). It
+is orthogonal to every \((u,0)\) with \(u\in B^1\) iff
+\[
+  0=\omega((x,z),(u,0))=z\cdot u
+  \quad\text{for all }u\in \operatorname{im}\delta^0.
+\]
+This says \(z\) annihilates \(\operatorname{im}\delta^0\), equivalently
+\[
+  z\in(\operatorname{im}\delta^0)^\perp
+  =\ker\partial_1=Z_1 .
+\]
+It is orthogonal to every \((0,b)\) with \(b\in B_1\) iff
+\[
+  0=\omega((x,z),(0,b))=-x\cdot b
+  \quad\text{for all }b\in \operatorname{im}\partial_2.
+\]
+This says
+\[
+  x\in(\operatorname{im}\partial_2)^\perp
+  =\ker\delta^1=Z^1 .
+\]
+Therefore
+\[
+  L^\perp=Z^1\oplus Z_1 .
+\]
+Quotienting by \(L=B^1\oplus B_1\) gives the short exact sequence
+\[
+  0\longrightarrow B^1\oplus B_1
+  \longrightarrow Z^1\oplus Z_1
+  \longrightarrow H^1\oplus H_1
+  \longrightarrow 0,
+\]
+and hence
+\[
+  L^\perp/L\cong H^1\oplus H_1.
+\]
+This is the precise connection. The chain/cochain short exact sequence is the
+CSS presentation of the symplectic reduction of an isotropic stabilizer
+subspace.
+
+\subsection{Lagrangians and Logical Bases}
+
+If \(L\) has dimension \(n-k\), then \(L^\perp/L\) has dimension \(2k\). The
+code encodes \(k\) qudits. A stabilizer code itself is therefore represented by
+an isotropic subspace \(L\), not usually a Lagrangian subspace of \(V\). It
+becomes Lagrangian only when \(k=0\), i.e. for a stabilizer state.
+
+The Lagrangians appear one level down, in the logical symplectic module
+\[
+  L^\perp/L\cong H^1\oplus H_1.
+\]
+For example,
+\[
+  \Lambda_Z=Z^1\oplus B_1,\qquad
+  \Lambda_X=B^1\oplus Z_1
+\]
+are isotropic subspaces of \(L^\perp\) containing \(L\). Their quotients are
+\[
+  \Lambda_Z/L\cong H^1,\qquad
+  \Lambda_X/L\cong H_1.
+\]
+These are complementary Lagrangian subspaces of the logical Pauli module, and
+the induced pairing is the natural evaluation pairing
+\[
+  H^1\times H_1\longrightarrow \mathbb F_p,\qquad
+  ([x],[z])\mapsto x(z).
+\]
+Choosing a logical computational basis is choosing one of these Lagrangian
+polarizations.
+
+\subsection{Qudit Generalization}
+
+For prime \(p\), the derivation above is literal. For prime powers \(q=p^m\),
+replace \(\mathbb F_p\) by \(\mathbb F_q\) and use the additive character
+\[
+  \chi(t)=\exp(2\pi i\,\operatorname{Tr}_{\mathbb F_q/\mathbb F_p}(t)/p).
+\]
+The Pauli commutator is then controlled by the trace-symplectic form
+\[
+  \operatorname{Tr}_{\mathbb F_q/\mathbb F_p}
+  \bigl(z\cdot x'-x\cdot z'\bigr).
+\]
+The CSS chain-complex condition over \(\mathbb F_q\) is still
+\[
+  \partial_1\partial_2=0,
+\]
+and the same calculation proves isotropy. Thus the chain/cochain construction
+does generalize cleanly to field-valued qudits.
+
+The caveat is composite non-field dimension \(D\). One can work over
+\(\mathbb Z_D\), but then the clean vector-space statements about rank,
+dimension, and duality become module statements. Torsion can matter. This is
+why the field symplectic formulation is the robust one: the chain complex is
+safe when interpreted as producing the isotropic subspace \(L\), while the
+logical information is recovered from the symplectic reduction \(L^\perp/L\).
+
+\subsection{Exact Validation}
+
+The validation script is \path{symplectic_css_bridge_validation.jl} under
+\path{scripts/lattice_codes/}. It builds oriented boundary matrices for the
+\(k=4\) periodic square torus over \(\mathbb F_p\) for \(p=2,3,5\). It
+verifies:
+\[
+  \partial_1\partial_2=0,\qquad L\subseteq L^\perp,
+\]
+\[
+  \operatorname{rank}\partial_1=15,\qquad
+  \operatorname{rank}\partial_2=15,\qquad
+  \dim H_1=32-15-15=2.
+\]
+The corresponding stabilizer subspace has rank \(30\), so the symplectic count
+gives \(32-30=2\) encoded qudits and Hilbert dimension \(p^2\). The generated
+CSV is \path{symplectic_css_bridge_summary.csv} in the
+\path{2026-05-24-symplectic-css-bridge} run bundle.

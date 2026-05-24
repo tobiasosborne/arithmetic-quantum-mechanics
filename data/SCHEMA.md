@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Two CSV outputs exist.
+Three CSV outputs exist.
 
 ## Common Rules
 
@@ -19,6 +19,7 @@ Two CSV outputs exist.
 |---|---|---|
 | `runs/2026-05-24-toric-supercharge/data/toric_supercharge_summary.csv` | `scripts/lattice_codes/toric_supercharge_validation.jl` | Active |
 | `runs/2026-05-24-toric-chain-ghost-unification/data/toric_chain_ghost_unification.csv` | `scripts/lattice_codes/toric_chain_ghost_unification.jl` | Active |
+| `runs/2026-05-24-symplectic-css-bridge/data/symplectic_css_bridge_summary.csv` | `scripts/lattice_codes/symplectic_css_bridge_validation.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -75,3 +76,28 @@ chain-complex certificate.
 | cochain_coboundary_count_exact | string | Exact size of `im(partial_1^T)`, the star-generated coboundary orbit size. |
 | css_commutation_from_boundary | bool | Whether CSS commutation follows from `partial_1 partial_2=0`. |
 | ghost_checks_from_chain_complex | bool | Whether the supports used in the ghost supercharge are exactly the supports determined by the boundary complex. |
+
+## symplectic_css_bridge_summary.csv
+
+Produced by: `scripts/lattice_codes/symplectic_css_bridge_validation.jl`
+Run bundle: `runs/2026-05-24-symplectic-css-bridge/`
+Report shard: `AQM-08-SYMPLECTIC-CSS-BRIDGE`
+Sentinel: row 1 begins with `#` and states that this is an exact prime-field
+certificate; no Hilbert matrices are built.
+
+| column | type | description |
+|---|---|---|
+| k | int | Linear size of the periodic square toric-code lattice. |
+| p | int | Prime field characteristic and qudit dimension for this exact check. |
+| nvertices | int | Number of vertices, dimension of `C_0`. |
+| nedges | int | Number of oriented edges/qudits, dimension of `C_1`. |
+| nfaces | int | Number of faces, dimension of `C_2`. |
+| boundary_square_zero | bool | Whether the oriented matrices satisfy `partial_1 partial_2=0` over `F_p`. |
+| css_isotropic | bool | Whether the CSS rowspace is isotropic in `F_p^n x F_p^n`. |
+| rank_boundary_one | int | Rank over `F_p` of `partial_1`. |
+| rank_boundary_two | int | Rank over `F_p` of `partial_2`. |
+| h1_dim | int | Middle homology dimension, `nedges - rank_boundary_one - rank_boundary_two`. |
+| symplectic_stabilizer_rank | int | Dimension of the isotropic stabilizer subspace. |
+| encoded_qudits | int | Number of encoded qudits, `nedges - symplectic_stabilizer_rank`. |
+| encoded_hilbert_dimension_exact | string | Exact code-space Hilbert dimension `p^encoded_qudits`. |
+| chain_count_matches_symplectic_count | bool | Whether the homological and symplectic counts agree. |
