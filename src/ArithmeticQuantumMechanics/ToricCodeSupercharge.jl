@@ -65,6 +65,24 @@ function toric_code_check_projectors(k::Integer)
     return checks
 end
 
+function toric_boundary_one_rows(k::Integer)
+    2 <= k <= 7 || throw(ArgumentError("this UInt128 checker supports 2 <= k <= 7"))
+    rows = UInt128[]
+    for y in 0:(k - 1), x in 0:(k - 1)
+        push!(rows, _edge_mask(star_edges(k, x, y)))
+    end
+    return rows
+end
+
+function toric_boundary_two_columns(k::Integer)
+    2 <= k <= 7 || throw(ArgumentError("this UInt128 checker supports 2 <= k <= 7"))
+    columns = UInt128[]
+    for y in 0:(k - 1), x in 0:(k - 1)
+        push!(columns, _edge_mask(plaquette_edges(k, x, y)))
+    end
+    return columns
+end
+
 function symplectic_commutes(a::PauliCheck, b::PauliCheck)
     parity = count_ones(a.x & b.z) + count_ones(a.z & b.x)
     return iseven(parity)
@@ -109,6 +127,16 @@ function toric_code_stabilizer_rank(k::Integer)
     return gf2_rank(_stabilizer_rows(k), 2nqubits)
 end
 
+function toric_boundary_square_zero(k::Integer)
+    rows = toric_boundary_one_rows(k)
+    columns = toric_boundary_two_columns(k)
+    return all(iseven(count_ones(row & column)) for row in rows for column in columns)
+end
+
+function toric_cellular_supercharge_square_zero(k::Integer)
+    return toric_boundary_square_zero(k)
+end
+
 """
     toric_supercharge_summary(k)
 
@@ -151,5 +179,45 @@ function toric_supercharge_summary(k::Integer=4)
         q_square_certificate = all_commute && all_square,
         anticommutator_certificate = all_commute && all_square,
         degree_zero_homology_matches_code = code_dim == 4,
+    )
+end
+
+function toric_chain_ghost_unification_summary(k::Integer=4)
+    nedges = 2k^2
+    nvertices = k^2
+    nfaces = k^2
+    boundary_one = toric_boundary_one_rows(k)
+    boundary_two = toric_boundary_two_columns(k)
+    stars, plaquettes = toric_code_checks(k)
+    star_masks = UInt128[check.x for check in stars]
+    plaquette_masks = UInt128[check.z for check in plaquettes]
+
+    rank_boundary_one = gf2_rank(boundary_one, nedges)
+    rank_boundary_two = gf2_rank(boundary_two, nedges)
+    h1_dim = nedges - rank_boundary_one - rank_boundary_two
+    code_dim = BigInt(1) << h1_dim
+    cocycle_count = BigInt(1) << (nedges - rank_boundary_two)
+    coboundary_count = BigInt(1) << rank_boundary_one
+
+    return (
+        k = k,
+        nvertices = nvertices,
+        nedges = nedges,
+        nfaces = nfaces,
+        boundary_square_zero = toric_boundary_square_zero(k),
+        star_masks_match_boundary_one = star_masks == boundary_one,
+        plaquette_masks_match_boundary_two = plaquette_masks == boundary_two,
+        rank_boundary_one = rank_boundary_one,
+        rank_boundary_two = rank_boundary_two,
+        h1_dim = h1_dim,
+        code_dim_from_h1_exact = string(code_dim),
+        cellular_supercharge_square_zero = toric_cellular_supercharge_square_zero(k),
+        cellular_middle_cohomology_dim = h1_dim,
+        cellular_middle_cohomology_basis_count_exact = string(code_dim),
+        cochain_cocycle_count_exact = string(cocycle_count),
+        cochain_coboundary_count_exact = string(coboundary_count),
+        css_commutation_from_boundary = toric_boundary_square_zero(k),
+        ghost_checks_from_chain_complex = (star_masks == boundary_one) &&
+                                          (plaquette_masks == boundary_two),
     )
 end

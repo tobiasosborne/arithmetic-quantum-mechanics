@@ -36,6 +36,10 @@ the ghost-extended local-check supercharge formulation of the toric code in
   `k=4` it checks commuting local stabilizers, rank `2k^2-2`, code dimension
   `4`, and the CAR/projector certificates for `Q^2=0` and
   `{Q,Q^*}=H_TC`.
+- Added the boundary-map unification: the chain complex
+  `C_2 -> C_1 -> C_0` gives `H_X=partial_1`, `H_Z=partial_2^T`, so
+  `partial_1 partial_2=0` is the CSS commutation condition and its rows/columns
+  are exactly the ghost-supercharge check supports.
 
 ## Next Useful Steps
 

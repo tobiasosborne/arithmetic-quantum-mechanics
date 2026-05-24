@@ -26,6 +26,11 @@ The first algebraic run is
 does not build full Hilbert matrices; it validates the toric-code ghost
 supercharge through binary stabilizer algebra and fermion CAR identities.
 
+The boundary-map unification run is
+`runs/2026-05-24-toric-chain-ghost-unification/data/toric_chain_ghost_unification.csv`.
+It validates `partial_1 partial_2=0`, the match between boundary-map supports
+and stabilizer-check supports, and the homological dimension count `dim H_1=2`.
+
 ## Commands
 
 ```bash

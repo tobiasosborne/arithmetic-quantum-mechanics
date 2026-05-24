@@ -13,6 +13,7 @@ Generated data and figures will live under
 | Run | Topic | What it covers |
 |---|---|---|
 | `runs/2026-05-24-toric-supercharge/` | Toric code / local-check ghosts | Algebraic validation of the auxiliary-fermion supercharge construction for a `k=4` toric-code instance. |
+| `runs/2026-05-24-toric-chain-ghost-unification/` | Toric code / chain complex | Algebraic validation that `C_2 -> C_1 -> C_0` boundary maps determine the same CSS check supports used by the ghost supercharge. |
 
 ## Quick Start
 
@@ -31,6 +32,7 @@ producer.
 | Script | Tool | Run bundle | CSV outputs | Figures | Report shard |
 |---|---|---|---|---|---|
 | `scripts/lattice_codes/toric_supercharge_validation.jl` | Julia | `runs/2026-05-24-toric-supercharge/` | `data/toric_supercharge_summary.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE` |
+| `scripts/lattice_codes/toric_chain_ghost_unification.jl` | Julia | `runs/2026-05-24-toric-chain-ghost-unification/` | `data/toric_chain_ghost_unification.csv` | _none_ | `AQM-05-TORIC-SUPERCHARGE` |
 
 ## CSV Reverse Lookup
 
@@ -39,6 +41,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | CSV path | Producing script | Schema section |
 |---|---|---|
 | `runs/2026-05-24-toric-supercharge/data/toric_supercharge_summary.csv` | `scripts/lattice_codes/toric_supercharge_validation.jl` | `toric_supercharge_summary.csv` |
+| `runs/2026-05-24-toric-chain-ghost-unification/data/toric_chain_ghost_unification.csv` | `scripts/lattice_codes/toric_chain_ghost_unification.jl` | `toric_chain_ghost_unification.csv` |
 
 ## Report Shards
 

@@ -27,3 +27,26 @@ end
         @test summary.degree_zero_homology_matches_code
     end
 end
+
+@testset "toric chain complex and ghost checks agree" begin
+    for k in 2:4
+        summary = toric_chain_ghost_unification_summary(k)
+        @test summary.nvertices == k^2
+        @test summary.nedges == 2k^2
+        @test summary.nfaces == k^2
+        @test summary.boundary_square_zero
+        @test summary.star_masks_match_boundary_one
+        @test summary.plaquette_masks_match_boundary_two
+        @test summary.rank_boundary_one == k^2 - 1
+        @test summary.rank_boundary_two == k^2 - 1
+        @test summary.h1_dim == 2
+        @test summary.code_dim_from_h1_exact == "4"
+        @test summary.cellular_supercharge_square_zero
+        @test summary.cellular_middle_cohomology_dim == 2
+        @test summary.cellular_middle_cohomology_basis_count_exact == "4"
+        @test summary.cochain_cocycle_count_exact == string(BigInt(1) << (2k^2 - (k^2 - 1)))
+        @test summary.cochain_coboundary_count_exact == string(BigInt(1) << (k^2 - 1))
+        @test summary.css_commutation_from_boundary
+        @test summary.ghost_checks_from_chain_complex
+    end
+end

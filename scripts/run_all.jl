@@ -23,6 +23,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "lattice codes",
+        label = "toric_chain_ghost_unification",
+        path = "lattice_codes/toric_chain_ghost_unification.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

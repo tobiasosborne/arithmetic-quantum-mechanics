@@ -49,5 +49,5 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Title: Toric Code Supercharge From Local Checks
 - Summary: Answers the first toric-code question with an auxiliary-fermion construction.
 - Summary: Defines the degree-zero Q-cohomology and boundary quotient in elementary terms.
-- Summary: Records the algebraic validation run for a k=4 toric-code instance without building huge Hilbert matrices.
+- Summary: Unifies the ghost-supercharge construction with the face-edge-vertex boundary complex.
 - Keywords: toric code, supercharge, ghosts, fermions, local checks, cohomology, homology

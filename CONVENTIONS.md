@@ -171,3 +171,52 @@ a local-check ghost formulation, not a purely physical-qubit supercharge.
 
 The elementary meaning of cohomology for this `Q` is defined in report shard
 `AQM-05-TORIC-SUPERCHARGE` before the term is used substantively.
+
+## (k) Toric Chain-Complex/CSS Convention
+
+The homological toric-code layer uses the `F_2` chain complex
+
+```text
+C_2 --partial_2--> C_1 --partial_1--> C_0,
+```
+
+where `C_2` is spanned by plaquettes, `C_1` by edges/qubits, and `C_0` by
+vertices. Over `F_2`, signs and orientations drop out.
+
+The CSS check matrices are:
+
+```text
+H_X = partial_1
+H_Z = transpose(partial_2)
+```
+
+so the CSS commutation condition is exactly
+
+```text
+H_X * transpose(H_Z) = partial_1 * partial_2 = 0.
+```
+
+There is a finite-cell cochain supercharge already at this level:
+
+```text
+Q_cell = delta^0 + delta^1,  delta^0 = transpose(partial_1),
+delta^1 = transpose(partial_2).
+```
+
+Its square is zero because `partial_1 * partial_2 = 0`, and its middle
+cohomology is `ker(delta^1) / im(delta^0)`.
+
+This boundary-map layer is not itself the quantum stabilizer supercharge from
+convention (j). It is the cellular skeleton. It determines the supports of the
+local checks used in the ghost/Koszul supercharge:
+
+```text
+Q = sum_v c_v^* (I - A_v)/2 + sum_f b_f^* (I - B_f)/2,
+```
+
+where the `A_v` supports are rows of `partial_1` and the `B_f` supports are
+columns of `partial_2`.
+
+Source: `references/toric_code/bombin_martin_delgado_0605094_source/HomologicalErrorCorrection6.tex`,
+lines 2050-2140, and `references/toric_code/error_correction_zoo_toric.yml`,
+lines 20-39.

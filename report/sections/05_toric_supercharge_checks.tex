@@ -2,7 +2,7 @@
 % SHARD-TITLE: Toric Code Supercharge From Local Checks
 % SHARD-SUMMARY: Answers the first toric-code question with an auxiliary-fermion construction.
 % SHARD-SUMMARY: Defines the degree-zero Q-cohomology and boundary quotient in elementary terms.
-% SHARD-SUMMARY: Records the algebraic validation run for a k=4 toric-code instance without building huge Hilbert matrices.
+% SHARD-SUMMARY: Unifies the ghost-supercharge construction with the face-edge-vertex boundary complex.
 % SHARD-KEYWORDS: toric code, supercharge, ghosts, fermions, local checks, cohomology, homology
 
 \section{Toric Code Supercharge From Local Checks}
@@ -125,3 +125,97 @@ The generated CSV lives in the run bundle
 \path{runs/2026-05-24-toric-supercharge/} as
 \path{data/toric_supercharge_summary.csv}. Its first row is a sentinel noting
 that no full physical or ghost Hilbert matrices are built.
+
+\subsection{Boundary Maps and the Same Construction}
+
+There is a second, more topological description of the toric code. It starts
+from the cellular chain complex over \(\mathbb{F}_2\)
+\[
+  C_2 \xrightarrow{\partial_2} C_1 \xrightarrow{\partial_1} C_0 ,
+\]
+where \(C_2\) is spanned by faces, \(C_1\) by edges, and \(C_0\) by vertices.
+The local Bombin--Martin-Delgado TeX source listed in
+\path{references/toric_code/SOURCES.md} defines these maps for 2-complexes in
+lines 2050--2140 and records \(\partial^2=0\). The local QECC Zoo source in the
+same manifest records the toric-code family as a CSS code with star and
+plaquette stabilizers in lines 20--39.
+
+The cellular description does suggest a different supercharge first. Define
+the cochain maps
+\[
+  \delta^0=\partial_1^T:C^0\to C^1,\qquad
+  \delta^1=\partial_2^T:C^1\to C^2 .
+\]
+On the finite graded vector space \(C^0\oplus C^1\oplus C^2\), the cellular
+supercharge
+\[
+  Q_{\mathrm{cell}}=\delta^0+\delta^1
+\]
+is nilpotent because
+\[
+  Q_{\mathrm{cell}}^2=\delta^1\delta^0
+  =(\partial_1\partial_2)^T=0 .
+\]
+Its middle cohomology means the following elementary quotient: take all edge
+bit strings \(a\in C^1\) with \(\delta^1 a=0\), and identify two such strings
+when they differ by \(\delta^0 b\) for some vertex bit string \(b\in C^0\).
+In symbols,
+\[
+  H^1_{\mathrm{cell}}=\ker(\delta^1)/\operatorname{im}(\delta^0).
+\]
+
+The quantum CSS unification is then:
+\[
+  H_X = \partial_1,\qquad H_Z=\partial_2^T .
+\]
+The rows of \(H_X\) are the vertex-star supports for the \(X\)-checks. The rows
+of \(H_Z\), equivalently the columns of \(\partial_2\), are the face-boundary
+supports for the \(Z\)-checks. The CSS commutation condition is not extra:
+\[
+  H_X H_Z^T = \partial_1\partial_2 = 0 .
+\]
+
+This explains the impedance mismatch. The cellular supercharge
+\(Q_{\mathrm{cell}}\) acts on classical cochains and computes the two
+topological bits of the torus. The ghost-supercharge \(Q\) acts on the quantum
+Hilbert space enlarged by auxiliary fermions and has the stabilizer Hamiltonian
+as its anticommutator. These are not the same operator, but they are two levels
+of one construction: the chain complex supplies the CSS supports; the
+ghost/Koszul lift turns the corresponding commuting stabilizer constraints
+into a supersymmetric Hamiltonian.
+
+Concretely, the boundary map
+\(\partial_2:C_2\to C_1\) and \(\partial_1:C_1\to C_0\) act on classical
+\(\mathbb{F}_2\)-chains: formal sums of faces, edges, and vertices. They
+classify error strings, check supports, and logical operators. The
+boundary data determine the stabilizer checks \(S_i\), and those checks
+determine the projectors \(P_i=(1-S_i)/2\) used in \(Q\).
+
+The chain complex also explains the number of encoded qubits. The first
+homology group is
+\[
+  H_1=\ker(\partial_1)/\operatorname{im}(\partial_2).
+\]
+For the torus this has dimension \(2\) over \(\mathbb{F}_2\), so the code
+space has dimension \(2^2=4\). In the \(Z\)-basis one sees the dual statement:
+the plaquette constraints select \(1\)-cocycles, and the star operators
+identify cocycles differing by a coboundary. Hence the code basis is naturally
+labelled by \(H^1\), while the logical string operators are labelled by the
+paired \(H_1/H^1\) data.
+
+The validation script is
+\path{scripts/lattice_codes/toric_chain_ghost_unification.jl}. For \(k=4\), it
+verifies \(\partial_1\partial_2=0\), checks that rows of
+\(\partial_1\) match the star supports and columns of \(\partial_2\) match the
+plaquette supports, and computes
+\[
+  \operatorname{rank}\partial_1=15,\quad
+  \operatorname{rank}\partial_2=15,\quad
+  \dim H_1 = 32-15-15=2 .
+\]
+It also records that \(Q_{\mathrm{cell}}^2=0\), that the middle cellular
+cohomology has \(2\) binary generators, that the \(Z\)-basis cocycle space has
+\(2^{17}=131072\) elements, and that quotienting by the \(2^{15}=32768\)
+star-generated coboundaries leaves \(4\) classes.
+The run output is the CSV \path{toric_chain_ghost_unification.csv} in the
+\path{2026-05-24-toric-chain-ghost-unification} run bundle.
