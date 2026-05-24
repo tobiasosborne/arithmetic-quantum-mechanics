@@ -312,6 +312,17 @@ end
 
     stalk_rows = projective_line_stalk_rows(; p=3, max_degree=4)
     @test length(stalk_rows) == 60
+    point_labels = p1_rational_point_labels(3)
+    stalk_by_key = Dict((row.d, row.basis_label, row.point_label) => row for row in stalk_rows)
+    for d in 0:4
+        values = p1_od_evaluation_matrix(d, 3)
+        for (basis_index, basis_label) in enumerate(p1_od_basis_labels(d))
+            for (point_index, point_label) in enumerate(point_labels)
+                row = stalk_by_key[(d, basis_label, point_label)]
+                @test row.residue_value == values[basis_index, point_index]
+            end
+        end
+    end
     @test any(row -> row.d == 2 &&
                      row.point_label == "[1:0]" &&
                      row.local_ring == "F3[u]_(u)" &&

@@ -459,3 +459,10 @@ Stalk computations use the standard frames `e_X^(d)` on `D_+(X)` and
 `X^(d-i)Y^i` has germ `u^i e_X^(d)` at `[1:0]` and germ
 `v^(d-i) e_Y^(d)` at `[t:1]`. Evaluation is residue modulo `(u)` or
 `(v-t)`, respectively.
+
+Terminology: in the arithmetic-field language, a stalk is the local field germ
+at a point. The sampled field value is the fiber/residue value, obtained from
+the stalk by tensoring with the residue field. For rational points of
+`P^1_F3`, the residue field is `F_3`, so the fiber of
+`O(d) tensor F_3^2` is canonically represented as the target space `F_3^2`
+after the chosen local frame is reduced modulo the maximal ideal.

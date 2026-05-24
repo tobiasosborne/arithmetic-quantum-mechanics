@@ -33,7 +33,9 @@ The stalk rows spell out the local rings and germs at the four rational
 points. At \([1:0]\), the local ring is \(\mathbb F_3[u]_{(u)}\),
 \(u=Y/X\), and \(X^{d-i}Y^i\) has germ \(u^i e_X^{(d)}\). At \([t:1]\), the
 local ring is \(\mathbb F_3[v]_{(v-t)}\), \(v=X/Y\), and the same monomial
-has germ \(v^{d-i}e_Y^{(d)}\).
+has germ \(v^{d-i}e_Y^{(d)}\). These are local field germs; the sampled field
+values are the fiber/residue values after reducing modulo \((u)\) or
+\((v-t)\).
 
 ## Caveat
 

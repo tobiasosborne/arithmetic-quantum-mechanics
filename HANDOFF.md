@@ -87,6 +87,10 @@ residues give the finite evaluation rows.
 - Added `AQM-17-PROJECTIVE-LINE-STALKS`: the same run now records one symbolic
   germ row for every monomial section at each rational point, including the
   local ring, local frame, maximal ideal, and residue value.
+- Added `AQM-18-STALKS-AS-FIELD-GERMS`: the phrase "field at the point" is now
+  fixed as stalk equals local field germ, while fiber/residue equals sampled
+  field value.  The shard tabulates every scalar residue for the
+  \(\mathbf P^1_{\mathbb F_3}\), \(d=0,\ldots,4\), examples.
 
 ## Next Useful Steps
 

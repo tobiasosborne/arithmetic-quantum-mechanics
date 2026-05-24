@@ -159,3 +159,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Computes the local rings and \(\mathcal O(d)\) stalks at each rational point used in the projective-line example.
 - Summary: Relates the stalk residues to the evaluation rows used by the finite symplectic field pairing.
 - Keywords: stalk, germ, projective line, local ring, O(d), rational point
+
+## `AQM-18-STALKS-AS-FIELD-GERMS`
+
+- Source: `report/sections/18_stalks_as_field_germs.tex`
+- Title: Stalks as Field Germs
+- Summary: Refines the phrase ``field at a point'' into stalk, local germ, fiber, and residue value.
+- Summary: Applies the dictionary to \(\mathcal O(d)\otimes\mathbb F_3^2\) on \(\mathbf P^1_{\mathbb F_3}\).
+- Summary: Tabulates every scalar residue used by the \(d=0,\ldots,4\) projective-line examples.
+- Keywords: stalk, fiber, residue field, germ, projective line, arithmetic quantum field

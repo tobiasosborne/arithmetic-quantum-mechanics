@@ -1,0 +1,182 @@
+% SHARD-ID: AQM-18-STALKS-AS-FIELD-GERMS
+% SHARD-TITLE: Stalks as Field Germs
+% SHARD-SUMMARY: Refines the phrase ``field at a point'' into stalk, local germ, fiber, and residue value.
+% SHARD-SUMMARY: Applies the dictionary to \(\mathcal O(d)\otimes\mathbb F_3^2\) on \(\mathbf P^1_{\mathbb F_3}\).
+% SHARD-SUMMARY: Tabulates every scalar residue used by the \(d=0,\ldots,4\) projective-line examples.
+% SHARD-KEYWORDS: stalk, fiber, residue field, germ, projective line, arithmetic quantum field
+
+\section{Stalks as Field Germs}
+\label{sec:stalks-as-field-germs}
+
+\subsection{Answer to the Terminology Question}
+
+It is useful, but slightly dangerous, to say that a stalk is the ``field at the
+point.''  The precise dictionary used here is:
+\[
+  \text{stalk}=\text{local field germ at the point},
+  \qquad
+  \text{fiber}=\text{actual value after residue reduction}.
+\]
+The source definition of a stalk as germs is
+\path{references/algebraic_geometry/stacks_project_sheaves.tex}, lines
+894--944.  The source Proj stalk formula is
+\path{references/algebraic_geometry/stacks_project_constructions.tex}, lines
+1091--1116 and 1182--1207.  The checked finite table is
+\path{runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_stalk_rows.csv}.
+
+Let \(x\in X\) and let \(\mathcal E\) be a sheaf of
+\(\mathcal O_X\)-modules.  The stalk \(\mathcal E_x\) consists of germs of
+sections near \(x\).  If \(X\) is a scheme, \(\mathcal O_x\) is a local ring,
+with maximal ideal \(\mathfrak m_x\), and residue field
+\[
+  \kappa(x)=\mathcal O_x/\mathfrak m_x.
+\]
+The fiber of \(\mathcal E\) at \(x\) is
+\[
+  \mathcal E(x)=\mathcal E_x\otimes_{\mathcal O_x}\kappa(x).
+\]
+Thus \(\mathcal E_x\) remembers infinitesimal or algebraic variation near
+\(x\), while \(\mathcal E(x)\) is the value obtained after setting the local
+coordinates equal to their value at \(x\).
+
+\subsection{The Projective-Line Field Sheaf}
+
+In the current example
+\[
+  X=\mathbf P^1_{\mathbb F_3},\qquad
+  V=\mathbb F_3q\oplus\mathbb F_3p,\qquad
+  \mathcal E_d=\mathcal O(d)\otimes_{\mathbb F_3}V.
+\]
+The rational points are ordered as
+\[
+  P_\infty=[1:0],\quad P_0=[0:1],\quad P_1=[1:1],\quad P_2=[2:1].
+\]
+For every rational point \(P\), the residue field is \(\kappa(P)=\mathbb F_3\).
+Hence
+\[
+  \mathcal E_d(P)
+  =
+  \mathcal E_{d,P}\otimes_{\mathcal O_P}\kappa(P)
+  \cong
+  \mathbb F_3q\oplus\mathbb F_3p=V.
+\]
+This is the exact sense in which the arithmetic quantum field has a
+point-value in \(V\).
+
+The stalks themselves are larger local modules.  With
+\[
+  u=Y/X\quad\text{on }D_+(X),\qquad
+  v=X/Y\quad\text{on }D_+(Y),
+\]
+and local frames \(e_X^{(d)}\), \(e_Y^{(d)}\), the four rational-point stalks
+are:
+\[
+\begin{array}{c|c|c|c}
+P & \mathcal O_P & \mathcal O(d)_P & \mathcal E_{d,P}\\
+\hline
+P_\infty & \mathbb F_3[u]_{(u)}
+  & \mathbb F_3[u]_{(u)}e_X^{(d)}
+  & \mathbb F_3[u]_{(u)}e_X^{(d)}\otimes V\\
+P_0 & \mathbb F_3[v]_{(v)}
+  & \mathbb F_3[v]_{(v)}e_Y^{(d)}
+  & \mathbb F_3[v]_{(v)}e_Y^{(d)}\otimes V\\
+P_1 & \mathbb F_3[v]_{(v-1)}
+  & \mathbb F_3[v]_{(v-1)}e_Y^{(d)}
+  & \mathbb F_3[v]_{(v-1)}e_Y^{(d)}\otimes V\\
+P_2 & \mathbb F_3[v]_{(v-2)}
+  & \mathbb F_3[v]_{(v-2)}e_Y^{(d)}
+  & \mathbb F_3[v]_{(v-2)}e_Y^{(d)}\otimes V.
+\end{array}
+\]
+
+\subsection{Germ-to-Value Maps}
+
+Let
+\[
+  s_{d,i}=X^{d-i}Y^i,\qquad 0\leq i\leq d,
+\]
+and let \(w=aq+bp\in V\).  The vector-valued section is
+\[
+  \Phi_{d,i,w}=s_{d,i}\otimes w.
+\]
+Its stalk germ and fiber value at the four rational points are:
+\[
+\begin{array}{c|c|c}
+P & \text{germ in }\mathcal E_{d,P} & \text{fiber value in }V\\
+\hline
+P_\infty
+  & u^i e_X^{(d)}\otimes w
+  & \begin{cases}w,&i=0,\\0,&i>0,\end{cases}\\
+P_0
+  & v^{d-i} e_Y^{(d)}\otimes w
+  & \begin{cases}w,&i=d,\\0,&i<d,\end{cases}\\
+P_1
+  & v^{d-i} e_Y^{(d)}\otimes w
+  & w\\
+P_2
+  & v^{d-i} e_Y^{(d)}\otimes w
+  & 2^{d-i}w.
+\end{array}
+\]
+The last line uses \(v=2=-1\) in \(\mathbb F_3\).  If \(w=(a,b)\) in the
+ordered basis \((q,p)\), multiplication by the scalar \(\lambda\in\mathbb F_3\)
+means
+\[
+  \lambda w=(\lambda a,\lambda b).
+\]
+These maps are not extra choices: they are the quotient maps
+\(\mathcal E_{d,P}\to\mathcal E_d(P)\) induced by
+\(\mathcal O_P\to\kappa(P)\).
+
+\subsection{All Scalar Residues for Degrees 0 Through 4}
+
+The following table gives the scalar \(\lambda_{d,i}(P)\) such that
+\[
+  \Phi_{d,i,w}(P)=\lambda_{d,i}(P)\,w.
+\]
+It is exactly the stalk-residue layer underlying the evaluation matrices in
+Shard \(AQM\)-16.
+\[
+\begin{array}{c|c|c|c|c|c}
+d & s_{d,i} & P_\infty & P_0 & P_1 & P_2\\
+\hline
+0 & 1       & 1 & 1 & 1 & 1\\
+\hline
+1 & X       & 1 & 0 & 1 & 2\\
+1 & Y       & 0 & 1 & 1 & 1\\
+\hline
+2 & X^2     & 1 & 0 & 1 & 1\\
+2 & XY      & 0 & 0 & 1 & 2\\
+2 & Y^2     & 0 & 1 & 1 & 1\\
+\hline
+3 & X^3     & 1 & 0 & 1 & 2\\
+3 & X^2Y    & 0 & 0 & 1 & 1\\
+3 & XY^2    & 0 & 0 & 1 & 2\\
+3 & Y^3     & 0 & 1 & 1 & 1\\
+\hline
+4 & X^4     & 1 & 0 & 1 & 1\\
+4 & X^3Y    & 0 & 0 & 1 & 2\\
+4 & X^2Y^2  & 0 & 0 & 1 & 1\\
+4 & XY^3    & 0 & 0 & 1 & 2\\
+4 & Y^4     & 0 & 1 & 1 & 1.
+\end{array}
+\]
+
+\subsection{Concrete Reading of the Table}
+
+For \(d=4\), the section \(X^3Y\otimes(q+2p)\) has:
+\[
+\begin{array}{c|c|c}
+P & \text{germ} & \text{value}\\
+\hline
+P_\infty & u e_X^{(4)}\otimes(q+2p) & 0\\
+P_0 & v^3 e_Y^{(4)}\otimes(q+2p) & 0\\
+P_1 & v^3 e_Y^{(4)}\otimes(q+2p) & q+2p\\
+P_2 & v^3 e_Y^{(4)}\otimes(q+2p) & 2q+p.
+\end{array}
+\]
+The \(P_2\) value is \(2(q+2p)=2q+4p=2q+p\) in \(\mathbb F_3\).
+
+Thus a stalk is the correct local object if one wants to discuss the field
+near a point.  The finite Weyl label construction samples the residue/fiber
+values, not the whole local stalk module.
