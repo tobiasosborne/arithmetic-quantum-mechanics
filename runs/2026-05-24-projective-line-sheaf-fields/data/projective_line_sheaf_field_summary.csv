@@ -1,0 +1,7 @@
+# Exact F3 certificate for P1 sheaf-field examples H0(P1,O(d)) tensor F3^2, d=0..4; no Weyl matrices are built.
+example,d,p,scheme,sheaf,rational_points,point_count,scalar_section_dim,evaluation_rank,evaluation_kernel_dim,scalar_pairing_rank,field_phase_dim,symplectic_rank,radical_dim,reduced_phase_dim,total_section_labels_exact,evaluation_kernel_labels_exact,radical_labels_exact,reduced_weyl_labels_exact,hilbert_dim_exact,observable_basis_dim_exact,nondegenerate
+P1_F3_O0,0,3,P1_F3,O(0),[1:0] [0:1] [1:1] [2:1],4,1,1,0,1,2,2,0,2,9,1,1,9,3,9,true
+P1_F3_O1,1,3,P1_F3,O(1),[1:0] [0:1] [1:1] [2:1],4,2,2,0,0,4,0,4,0,81,1,81,1,1,1,false
+P1_F3_O2,2,3,P1_F3,O(2),[1:0] [0:1] [1:1] [2:1],4,3,3,0,3,6,6,0,6,729,1,1,729,27,729,true
+P1_F3_O3,3,3,P1_F3,O(3),[1:0] [0:1] [1:1] [2:1],4,4,4,0,4,8,8,0,8,6561,1,1,6561,81,6561,true
+P1_F3_O4,4,3,P1_F3,O(4),[1:0] [0:1] [1:1] [2:1],4,5,4,1,4,10,8,2,8,59049,9,9,6561,81,6561,false

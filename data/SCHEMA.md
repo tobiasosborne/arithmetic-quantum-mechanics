@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Fourteen CSV outputs exist.
+Sixteen CSV outputs exist.
 
 ## Common Rules
 
@@ -31,6 +31,8 @@ Fourteen CSV outputs exist.
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_ghost_gaussian_elementaries.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Active |
 | `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | Active |
 | `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_bases.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | Active |
+| `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_summary.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
+| `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_basis_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -376,6 +378,57 @@ scalar Gram rows for the exact `F_3` examples.
 | column | type | description |
 |---|---|---|
 | example | string | Stable example slug matching the summary CSV. |
+| row_kind | string | `basis_values` or `scalar_gram_row`. |
+| label | string | Basis label for this row. |
+| values | string | Space-separated `F_3` row values. |
+
+## projective_line_sheaf_field_summary.csv
+
+Produced by: `scripts/bridges/projective_line_sheaf_fields.jl`
+Run bundle: `runs/2026-05-24-projective-line-sheaf-fields/`
+Report shards: `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS`,
+`AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION`
+Sentinel: row 1 begins with `#` and states that the rows are exact
+`F_3` certificates for \(H^0(\mathbf P^1,\mathcal O(d))\otimes F_3^2\),
+`d=0..4`; no Weyl matrices are built.
+
+| column | type | description |
+|---|---|---|
+| example | string | Stable example slug, `P1_F3_Od`. |
+| d | int | Twist degree in `O(d)`. |
+| p | int | Prime field characteristic, here `3`. |
+| scheme | string | Scheme label, here `P1_F3`. |
+| sheaf | string | Sheaf label, here `O(d)`. |
+| rational_points | string | Space-separated rational point representatives in the fixed evaluation order. |
+| point_count | int | Number of rational points used in the finite pairing. |
+| scalar_section_dim | int | Dimension of `H^0(P1,O(d))` over `F_3`. |
+| evaluation_rank | int | Rank over `F_3` of the scalar section evaluation matrix at rational points. |
+| evaluation_kernel_dim | int | Scalar section dimension minus evaluation rank. |
+| scalar_pairing_rank | int | Rank over `F_3` of `B(s,t)=sum_P s(P)t(P)`. |
+| field_phase_dim | int | Dimension of `H^0(P1,O(d)) tensor F_3^2`. |
+| symplectic_rank | int | Rank of the induced pointwise symplectic form. |
+| radical_dim | int | Dimension of the radical of the induced pointwise symplectic form. |
+| reduced_phase_dim | int | Dimension of the reduced symplectic Weyl label space. |
+| total_section_labels_exact | string | Exact count `3^field_phase_dim`. |
+| evaluation_kernel_labels_exact | string | Exact count of `V`-valued labels vanishing at all chosen rational points. |
+| radical_labels_exact | string | Exact count `3^radical_dim`. |
+| reduced_weyl_labels_exact | string | Exact count `3^reduced_phase_dim`. |
+| hilbert_dim_exact | string | Hilbert dimension of the reduced Weyl representation. |
+| observable_basis_dim_exact | string | Dimension of the reduced Weyl operator basis. |
+| nondegenerate | bool | Whether the induced pointwise symplectic form has zero radical. |
+
+## projective_line_sheaf_field_basis_rows.csv
+
+Produced by: `scripts/bridges/projective_line_sheaf_fields.jl`
+Run bundle: `runs/2026-05-24-projective-line-sheaf-fields/`
+Report shard: `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION`
+Sentinel: row 1 begins with `#` and states that rows are basis values and
+scalar Gram rows for the exact `P1(F3), O(d), d=0..4` examples.
+
+| column | type | description |
+|---|---|---|
+| example | string | Stable example slug matching the summary CSV. |
+| d | int | Twist degree in `O(d)`. |
 | row_kind | string | `basis_values` or `scalar_gram_row`. |
 | label | string | Basis label for this row. |
 | values | string | Space-separated `F_3` row values. |

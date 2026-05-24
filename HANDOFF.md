@@ -8,9 +8,11 @@ source manifests for that.
 
 Initial infrastructure is in place for a lab-book style research workspace
 about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
-mechanics, and Kitaev/Levin-Wen/toric-code models. The first checked item is
-the ghost-extended local-check supercharge formulation of the toric code in
-`AQM-05-TORIC-SUPERCHARGE`.
+mechanics, and Kitaev/Levin-Wen/toric-code models. The current arithmetic-field
+frontier is projective: `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS` and
+`AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION` replace naive projective
+`Hom(X,V)` by chosen sheaf-section spaces \(H^0(X,\mathcal L)\otimes V\) and
+check the first \(\mathbf P^1_{\mathbb F_3}\) examples.
 
 ## Most Recent Session
 
@@ -74,6 +76,13 @@ the ghost-extended local-check supercharge formulation of the toric code in
   symplectic function spaces `E <= Map(X,V)`. The validation run gives exact
   `F_3` examples for finite sets, vector spaces, and simple arithmetic
   varieties.
+- Added `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS` and
+  `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION`: Stacks Project TeX sources
+  are registered locally for presheaves, sheaves, Proj, projective space,
+  varieties, twists, and projective-space cohomology. The new exact run checks
+  \(\mathbf P^1_{\mathbb F_3}\), \(H^0(\mathcal O(d))\otimes\mathbb F_3^2\),
+  finite rational-point evaluations, radicals, and reduced Weyl counts for
+  `d=0..4`.
 
 ## Next Useful Steps
 

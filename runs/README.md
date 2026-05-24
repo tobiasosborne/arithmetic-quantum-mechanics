@@ -16,4 +16,6 @@ The run `README.md` must answer:
 3. Headline finding.
 4. What to look at next.
 
-No run bundles exist yet.
+Registered run bundles are indexed in `INDEX.md`. Current bundles cover toric
+code supercharges, CSS/symplectic bridges, Steane Clifford/Koszul checks,
+finite arithmetic quantum fields, and the projective-line sheaf-field run.

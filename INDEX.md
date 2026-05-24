@@ -19,6 +19,7 @@ Generated data and figures will live under
 | `runs/2026-05-24-steane-clifford-koszul-morphisms/` | Steane code / Clifford morphisms | Exact validation of transversal Hadamard and phase as Clifford/Koszul chain maps and homotopy equivalences. |
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/` | Steane code / Clifford group ghost Gaussians | Exact generator-level validation of arbitrary Clifford covariance and elementary GL6 ghost-Gaussian presentation moves. |
 | `runs/2026-05-24-arithmetic-quantum-fields/` | Arithmetic quantum fields / finite function spaces | Exact `F_3` validation of pointwise symplectic function spaces, radicals, reduced Weyl labels, and observable algebra dimensions. |
+| `runs/2026-05-24-projective-line-sheaf-fields/` | Projective arithmetic fields / sheaves | Exact `F_3` validation of \(\mathbf P^1\), \(H^0(\mathcal O(d))\otimes\mathbb F_3^2\), finite point evaluations, radicals, and reduced Weyl labels. |
 
 ## Quick Start
 
@@ -44,6 +45,7 @@ producer.
 | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | Julia | `runs/2026-05-24-steane-clifford-koszul-morphisms/` | `data/steane_clifford_koszul_summary.csv`, `data/steane_clifford_generator_maps.csv` | _none_ | `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS` |
 | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Julia | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/` | `data/steane_all_clifford_generator_summary.csv`, `data/steane_all_clifford_generator_images.csv`, `data/steane_ghost_gaussian_elementaries.csv` | _none_ | `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM` |
 | `scripts/bridges/arithmetic_quantum_fields.jl` | Julia | `runs/2026-05-24-arithmetic-quantum-fields/` | `data/arithmetic_quantum_field_examples.csv`, `data/arithmetic_quantum_field_bases.csv` | _none_ | `AQM-14-ARITHMETIC-QUANTUM-FIELDS` |
+| `scripts/bridges/projective_line_sheaf_fields.jl` | Julia | `runs/2026-05-24-projective-line-sheaf-fields/` | `data/projective_line_sheaf_field_summary.csv`, `data/projective_line_sheaf_field_basis_rows.csv` | _none_ | `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS`, `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION` |
 
 ## CSV Reverse Lookup
 
@@ -65,6 +67,8 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_ghost_gaussian_elementaries.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | `steane_ghost_gaussian_elementaries.csv` |
 | `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | `arithmetic_quantum_field_examples.csv` |
 | `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_bases.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | `arithmetic_quantum_field_bases.csv` |
+| `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_summary.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | `projective_line_sheaf_field_summary.csv` |
+| `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_basis_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | `projective_line_sheaf_field_basis_rows.csv` |
 
 ## Report Shards
 
@@ -85,6 +89,8 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS` | `report/sections/12_steane_clifford_koszul_morphisms.tex` | Steane Clifford Morphisms of the Koszul Supercharge |
 | `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM` | `report/sections/13_clifford_group_ghost_gaussian_theorem.tex` | Clifford Group Ghost-Gaussian Theorem |
 | `AQM-14-ARITHMETIC-QUANTUM-FIELDS` | `report/sections/14_arithmetic_quantum_fields.tex` | Arithmetic Quantum Fields |
+| `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS` | `report/sections/15_projective_sheaf_fields_definitions.tex` | Projective Sheaf Field Definitions |
+| `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION` | `report/sections/16_projective_line_sheaf_field_calculation.tex` | Projective Line Sheaf Field Calculation |
 
 ## Source Topics
 
@@ -97,3 +103,4 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Supersymmetric quantum mechanics | _pending_ | No sources acquired. |
 | Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |
 | Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman and Ashikhmin-Knill arXiv source bundles acquired for stabilizer symplectic conventions. |
+| Algebraic geometry and sheaves | `references/algebraic_geometry/SOURCES.md` | Stacks Project TeX snapshot acquired for presheaves, sheaves, Proj, projective space, varieties, twists, and projective-space cohomology. |

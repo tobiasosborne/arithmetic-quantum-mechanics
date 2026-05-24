@@ -8,7 +8,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/00_frontmatter_status.tex`
 - Title: Frontmatter, Status, and Scope
 - Summary: Declares the lab book's scope, status labels, and evidence rules.
-- Summary: Records that the current document is infrastructure-only and has no checked scientific claims yet.
+- Summary: Records that claims are established only when linked to local sources, derivations, tests, or run artifacts.
 - Keywords: status, scope, claim status, lab book
 
 ## `AQM-01-PROGRAMME-MAP`
@@ -32,7 +32,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/03_reproducibility_map.tex`
 - Title: Reproducibility Map
 - Summary: Describes how scripts, run bundles, schemas, and report shards connect.
-- Summary: Provides the current validation commands for the infrastructure scaffold.
+- Summary: Provides the current validation commands for the checked local evidence layer.
 - Keywords: reproducibility, scripts, run bundles, schema, validation
 
 ## `AQM-04-SOURCES-QUESTIONS`
@@ -132,3 +132,21 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves the pointwise vector-space and symplectic-form lemmas, including the radical caveat.
 - Summary: Computes exact \(F_3\) examples for finite sets, vector spaces, and arithmetic varieties.
 - Keywords: arithmetic quantum field, finite field, Weyl-Heisenberg, function space, symplectic form, finite variety
+
+## `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS`
+
+- Source: `report/sections/15_projective_sheaf_fields_definitions.tex`
+- Title: Projective Sheaf Field Definitions
+- Summary: Gives self-contained definitions of presheaves, sheaves, global sections, varieties, projective space, and twists.
+- Summary: Defines the projective replacement for naive Hom(X,V) as a sheaf-section field space with a finite-point pairing.
+- Summary: Proves the basic vector-space and symplectic-form lemmas needed before the projective-line examples.
+- Keywords: presheaf, sheaf, projective variety, projective space, twist, arithmetic quantum field
+
+## `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION`
+
+- Source: `report/sections/16_projective_line_sheaf_field_calculation.tex`
+- Title: Projective Line Sheaf Field Calculation
+- Summary: Computes the finite sheaf-field construction for \(\mathbf P^1_{\mathbb F_3}\) and \(V=\mathbb F_3^2\).
+- Summary: Lists the rational points, the \(H^0(\mathcal O(d))\) bases, point evaluations, scalar Gram forms, radicals, and Weyl counts.
+- Summary: Records the exact Julia validator and its CSV outputs.
+- Keywords: projective line, sheaf, O(d), finite field, symplectic target, Weyl labels

@@ -72,6 +72,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "bridges",
+        label = "projective_line_sheaf_fields",
+        path = "bridges/projective_line_sheaf_fields.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

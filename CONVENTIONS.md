@@ -411,3 +411,45 @@ In the exact `F_3` examples, the internal space is `V=F_3^2` with
 `U <= Map(X,F_3)` gives `E = U q + U p`; the scalar pairing is
 `B(f,g)=sum_x f(x)g(x)`, and the field form is
 `Omega((q,p),(q',p'))=B(p,q')-B(q,p')`.
+
+## (r) Projective Sheaf Field Convention
+
+For projective arithmetic spaces, the default finite field-label space is not
+the set of regular maps from a projective variety to an affine symplectic
+vector space. The source-backed reason is that proper geometrically integral
+varieties have only constant global regular functions in the Stacks convention
+(`references/algebraic_geometry/stacks_project_varieties.tex`, lines
+4875-4886).
+
+The projective replacement used in this repo is:
+
+```text
+E(X,L,V) = H^0(X,L) tensor_Fq V
+```
+
+where `L` is an explicitly chosen sheaf, usually a line bundle or twist, and
+`V` is the finite symplectic target. For `X = P^1_F3` the first run uses
+`L = O(d)` for `d=0..4`. Stacks computes
+`H^0(P^n_R,O(d)) = R[T_0,...,T_n]_d` for `d >= 0`
+(`references/algebraic_geometry/stacks_project_coherent.tex`, lines
+1557-1622), so `H^0(P^1_F3,O(d))` is represented by homogeneous polynomials
+of degree `d` in `X,Y`.
+
+For the finite rational-point algebra, evaluations are recorded in the fixed
+point order
+
+```text
+[1:0], [0:1], [1:1], [2:1].
+```
+
+The monomial `X^(d-i)Y^i` is evaluated on these chosen representatives. This
+is a chart-coordinate evaluation convention for the finite point calculation,
+not a claim that sections of `O(d)` are global scalar functions. The scalar
+pairing is
+
+```text
+B(s,t) = sum_{P in P^1(F3)} s(P) t(P)
+```
+
+with all weights equal to `1`; the `V=F_3^2` symplectic extension is as in
+convention (q). The radical must be checked after this finite-point pairing.

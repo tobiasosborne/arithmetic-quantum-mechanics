@@ -1,0 +1,269 @@
+% SHARD-ID: AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION
+% SHARD-TITLE: Projective Line Sheaf Field Calculation
+% SHARD-SUMMARY: Computes the finite sheaf-field construction for \(\mathbf P^1_{\mathbb F_3}\) and \(V=\mathbb F_3^2\).
+% SHARD-SUMMARY: Lists the rational points, the \(H^0(\mathcal O(d))\) bases, point evaluations, scalar Gram forms, radicals, and Weyl counts.
+% SHARD-SUMMARY: Records the exact Julia validator and its CSV outputs.
+% SHARD-KEYWORDS: projective line, sheaf, O(d), finite field, symplectic target, Weyl labels
+
+\section{Projective Line Sheaf Field Calculation}
+\label{sec:projective-line-sheaf-field-calculation}
+
+\subsection{Status and Local Evidence}
+
+This shard is self-contained for the example
+\[
+  X=\mathbf P^1_{\mathbb F_3},\qquad V=\mathbb F_3^2.
+\]
+The algebraic geometry inputs are the local Stacks TeX files cited in
+Shard \(AQM\)-15.  The exact finite calculation is checked by
+\path{scripts/bridges/projective_line_sheaf_fields.jl}, with run bundle
+\path{runs/2026-05-24-projective-line-sheaf-fields/}.
+The output files are \path{data/projective_line_sheaf_field_summary.csv} and
+\path{data/projective_line_sheaf_field_basis_rows.csv}.
+
+\subsection{The Field and the Points}
+
+The field is
+\[
+  \mathbb F_3=\{0,1,2\},\qquad 2=-1,\qquad 1+1+1=0.
+\]
+The projective line has rational points given by nonzero pairs
+\((a,b)\in\mathbb F_3^2\setminus\{(0,0)\}\) modulo nonzero scalar
+multiplication:
+\[
+  [a:b]=[\lambda a:\lambda b]\quad(\lambda\in\mathbb F_3^\times).
+\]
+There are four classes.  The chosen representatives and order are
+\[
+  P_\infty=[1:0],\quad P_0=[0:1],\quad P_1=[1:1],\quad P_2=[2:1].
+\]
+
+\subsection{The Sheaves and Their Sections}
+
+For every \(d\geq0\), the source computation gives
+\[
+  H^0(\mathbf P^1_{\mathbb F_3},\mathcal O(d))
+  =
+  \mathbb F_3[X,Y]_d.
+\]
+Thus a basis is
+\[
+  X^d,\ X^{d-1}Y,\ X^{d-2}Y^2,\ \ldots,\ Y^d.
+\]
+This is a statement about sections of \(\mathcal O(d)\), not about global
+regular functions when \(d>0\).
+
+For this finite rational-point calculation, evaluate \(X^{d-i}Y^i\) on the
+fixed representatives above:
+\[
+  X^{d-i}Y^i(P_\infty)=
+  \begin{cases}
+  1,&i=0,\\
+  0,&i>0,
+  \end{cases}
+\]
+and
+\[
+  X^{d-i}Y^i(P_t)=t^{d-i}\qquad(t=0,1,2).
+\]
+This is the explicit chart-coordinate evaluation convention from
+CONVENTIONS (r).  It is not silently canonical for every line bundle.
+
+\subsection{Scalar Pairing and Symplectic Extension}
+
+For scalar sections \(s,t\), define
+\[
+  B(s,t)=\sum_{P\in\mathbf P^1(\mathbb F_3)}s(P)t(P).
+\]
+All weights are \(1\).  The target is \(V=\mathbb F_3^2\) with
+\(\omega((q,p),(q',p'))=pq'-qp'\).
+The field space is
+\[
+  E_d=H^0(\mathbf P^1,\mathcal O(d))\otimes_{\mathbb F_3}V.
+\]
+If \(U_d=H^0(\mathbf P^1,\mathcal O(d))\), write
+\[
+  E_d=U_d q\oplus U_d p.
+\]
+For \((q,p),(q',p')\in U_d q\oplus U_d p\),
+\[
+  \Omega_d((q,p),(q',p'))=B(p,q')-B(q,p').
+\]
+If the scalar Gram matrix \(G_d=(B(e_i,e_j))\) has rank \(r\), then
+\[
+  \dim E_d=2(d+1),\quad
+  \operatorname{rank}\Omega_d=2r,\quad
+  \dim\operatorname{rad}(E_d)=2(d+1-r).
+\]
+The Weyl label space is \(E_{d,\rm red}=E_d/\operatorname{rad}(E_d)\).
+
+\subsection{Degree 0: Constants}
+
+The basis is \(1\).  Its value row is
+\[
+  1:\quad (1,1,1,1).
+\]
+Therefore
+\[
+  B(1,1)=1+1+1+1=4=1\in\mathbb F_3.
+\]
+So
+\[
+  G_0=[1].
+\]
+The scalar rank is \(1\), hence \(\Omega_0\) has rank \(2\).  The reduced
+field has dimension \(2\), the Weyl Hilbert dimension is \(3\), and the Weyl
+operator basis has \(9\) elements.
+
+\subsection{Degree 1: Linear Sections}
+
+The basis is \(X,Y\).  The value rows are
+\[
+  X:\ (1,0,1,2),\qquad
+  Y:\ (0,1,1,1).
+\]
+Compute every scalar product:
+\[
+\begin{aligned}
+B(X,X)&=1^2+0^2+1^2+2^2=1+0+1+4=6=0,\\
+B(X,Y)&=1\cdot0+0\cdot1+1\cdot1+2\cdot1=3=0,\\
+B(Y,Y)&=0^2+1^2+1^2+1^2=3=0.
+\end{aligned}
+\]
+Thus
+\[
+  G_1=
+  \begin{pmatrix}
+  0&0\\
+  0&0
+  \end{pmatrix}.
+\]
+The two sections evaluate independently at the four points, but the chosen
+all-weights-one scalar pairing is totally zero on their span.  Consequently
+\[
+  \operatorname{rank}\Omega_1=0,\qquad
+  \operatorname{rad}(E_1)=E_1.
+\]
+The reduced Weyl label space is zero-dimensional.  This is the first concrete
+warning that evaluation rank and symplectic rank are different questions.
+
+\subsection{Degree 2: Quadratic Sections}
+
+The basis is \(X^2,XY,Y^2\).  The value rows are
+\[
+\begin{array}{c|cccc}
+&P_\infty&P_0&P_1&P_2\\
+\hline
+X^2&1&0&1&1\\
+XY&0&0&1&2\\
+Y^2&0&1&1&1
+\end{array}
+\]
+The scalar products give
+\[
+  G_2=
+  \begin{pmatrix}
+  0&0&2\\
+  0&2&0\\
+  2&0&0
+  \end{pmatrix}.
+\]
+For example,
+\[
+  B(X^2,Y^2)=1\cdot0+0\cdot1+1\cdot1+1\cdot1=2,
+\]
+and
+\[
+  B(XY,XY)=0+0+1+4=5=2.
+\]
+The determinant is
+\[
+  \det(G_2)=1\in\mathbb F_3,
+\]
+so \(G_2\) has rank \(3\).  Hence \(\Omega_2\) has rank \(6\), no radical,
+and
+\[
+  \dim E_2=6,\qquad
+  \dim\mathcal H=3^3=27,\qquad
+  |\{W(e)\}|=3^6=729.
+\]
+
+\subsection{Degree 3: Cubic Sections}
+
+The basis rows and Gram matrix are
+\[
+\begin{array}{c|cccc}
+&P_\infty&P_0&P_1&P_2\\
+\hline
+X^3&1&0&1&2\\
+X^2Y&0&0&1&1\\
+XY^2&0&0&1&2\\
+Y^3&0&1&1&1
+\end{array}
+\]
+and
+\[
+  G_3=
+  \begin{pmatrix}
+  0&0&2&0\\
+  0&2&0&2\\
+  2&0&2&0\\
+  0&2&0&0
+  \end{pmatrix}.
+\]
+The validator computes rank \(4\), equivalently \(\det(G_3)=1\).  Thus
+\[
+  \dim E_3=8,\quad \operatorname{rank}\Omega_3=8,\quad
+  \dim\mathcal H=3^4=81.
+\]
+
+\subsection{Degree 4: First Evaluation Kernel}
+
+The scalar section dimension is \(5\), but there are only four rational
+points.  The value rows include
+\[
+  X^3Y:\ (0,0,1,2),\qquad
+  XY^3:\ (0,0,1,2),
+\]
+so
+\[
+  X^3Y-XY^3
+\]
+evaluates to zero at all four chosen representatives.  Therefore the scalar
+evaluation map has a one-dimensional kernel.  The run confirms
+\[
+  \operatorname{rank}(\operatorname{ev})=4,\qquad
+  \operatorname{rank}(G_4)=4.
+\]
+The scalar radical is exactly one-dimensional, and after tensoring with
+\(V=\mathbb F_3^2\),
+\[
+  \dim\operatorname{rad}(E_4)=2.
+\]
+Thus
+\[
+  \dim E_4=10,\qquad
+  \dim E_{4,\rm red}=8,\qquad
+  \dim\mathcal H=3^4=81.
+\]
+
+\subsection{Run Summary}
+
+\[
+\begin{array}{c|c|c|c|c|c|c}
+d&\dim U_d&\operatorname{rank}(\operatorname{ev})&
+\operatorname{rank}G_d&\dim\operatorname{rad}E_d&
+\dim E_{d,\rm red}&\dim\mathcal H\\
+\hline
+0&1&1&1&0&2&3\\
+1&2&2&0&4&0&1\\
+2&3&3&3&0&6&27\\
+3&4&4&4&0&8&81\\
+4&5&4&4&2&8&81
+\end{array}
+\]
+
+The lessons are concrete: the projective sheaf field is controlled by
+\(H^0(\mathcal O(d))\), the finite rational-point pairing is an additional
+choice and can introduce radicals, and the Weyl-Heisenberg observable algebra
+is formed after quotienting by this radical.

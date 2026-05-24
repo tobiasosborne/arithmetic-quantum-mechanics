@@ -19,12 +19,17 @@ export steane_all_clifford_generator_summary, steane_all_clifford_generator_rows
 export steane_ghost_gaussian_elementary_rows
 export arithmetic_quantum_field_examples, arithmetic_quantum_field_summary_rows
 export arithmetic_quantum_field_basis_rows
+export p1_rational_point_labels, p1_od_basis_labels, p1_od_evaluation_matrix
+export projective_line_sheaf_field_examples
+export projective_line_sheaf_field_summary_rows
+export projective_line_sheaf_field_basis_rows
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")
 include("ArithmeticQuantumMechanics/SteaneSupercharge.jl")
 include("ArithmeticQuantumMechanics/SteaneCliffordGroup.jl")
 include("ArithmeticQuantumMechanics/ArithmeticQuantumFields.jl")
+include("ArithmeticQuantumMechanics/ProjectiveLineSheafFields.jl")
 
 """
     project_root()

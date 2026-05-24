@@ -267,3 +267,46 @@ end
                      row.values == "0 0",
               basis_rows)
 end
+
+@testset "Projective-line sheaf field examples" begin
+    @test p1_rational_point_labels(3) == ["[1:0]", "[0:1]", "[1:1]", "[2:1]"]
+    @test p1_od_basis_labels(2) == ["X^2", "XY", "Y^2"]
+    @test p1_od_evaluation_matrix(2, 3) == [
+        1 0 1 1
+        0 0 1 2
+        0 1 1 1
+    ]
+
+    rows = projective_line_sheaf_field_summary_rows(; p=3, max_degree=4)
+    by_degree = Dict(row.d => row for row in rows)
+    @test length(rows) == 5
+
+    @test by_degree[0].scalar_section_dim == 1
+    @test by_degree[0].scalar_pairing_rank == 1
+    @test by_degree[0].nondegenerate
+
+    @test by_degree[1].evaluation_rank == 2
+    @test by_degree[1].scalar_pairing_rank == 0
+    @test by_degree[1].radical_dim == 4
+    @test by_degree[1].reduced_weyl_labels_exact == "1"
+    @test !by_degree[1].nondegenerate
+
+    @test by_degree[2].scalar_section_dim == 3
+    @test by_degree[2].scalar_pairing_rank == 3
+    @test by_degree[2].hilbert_dim_exact == "27"
+    @test by_degree[2].nondegenerate
+
+    @test by_degree[4].scalar_section_dim == 5
+    @test by_degree[4].evaluation_rank == 4
+    @test by_degree[4].evaluation_kernel_dim == 1
+    @test by_degree[4].radical_dim == 2
+    @test by_degree[4].evaluation_kernel_labels_exact == "9"
+    @test !by_degree[4].nondegenerate
+
+    basis_rows = projective_line_sheaf_field_basis_rows(; p=3, max_degree=4)
+    @test any(row -> row.example == "P1_F3_O2" &&
+                     row.row_kind == "scalar_gram_row" &&
+                     row.label == "XY" &&
+                     row.values == "0 2 0",
+              basis_rows)
+end

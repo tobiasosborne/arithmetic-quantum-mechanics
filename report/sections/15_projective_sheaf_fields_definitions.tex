@@ -1,0 +1,249 @@
+% SHARD-ID: AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS
+% SHARD-TITLE: Projective Sheaf Field Definitions
+% SHARD-SUMMARY: Gives self-contained definitions of presheaves, sheaves, global sections, varieties, projective space, and twists.
+% SHARD-SUMMARY: Defines the projective replacement for naive Hom(X,V) as a sheaf-section field space with a finite-point pairing.
+% SHARD-SUMMARY: Proves the basic vector-space and symplectic-form lemmas needed before the projective-line examples.
+% SHARD-KEYWORDS: presheaf, sheaf, projective variety, projective space, twist, arithmetic quantum field
+
+\section{Projective Sheaf Field Definitions}
+\label{sec:projective-sheaf-field-definitions}
+
+\subsection{Status and Ground Truth}
+
+This shard is definition-building, not a classification theorem.  It is
+source-local where it recalls standard algebraic geometry and checked where it
+proves the finite linear-algebra statements.  The local ground truth is the
+Stacks Project TeX snapshot registered in
+\path{references/algebraic_geometry/SOURCES.md}.  We use:
+\begin{itemize}
+  \item presheaves and sections:
+  \path{stacks_project_sheaves.tex}, lines 73--123;
+  \item sheaves: \path{stacks_project_sheaves.tex}, lines 500--525;
+  \item Proj and its sheaves:
+  \path{stacks_project_constructions.tex}, lines 939--1225;
+  \item twists \(\mathcal O(n)\):
+  \path{stacks_project_constructions.tex}, lines 1695--1705;
+  \item projective space:
+  \path{stacks_project_constructions.tex}, lines 2775--2886;
+  \item varieties and projective varieties:
+  \path{stacks_project_varieties.tex}, lines 53--58 and 4843--4865;
+  \item \(H^0(\mathbf P^n,\mathcal O(d))\):
+  \path{stacks_project_coherent.tex}, lines 1557--1622.
+\end{itemize}
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&X\text{ is a topological space.}\\
+D2&:&\mathcal F\text{ is a presheaf on }X.\\
+D3&:&\mathcal F\text{ is a sheaf if compatible local sections glue uniquely.}\\
+D4&:&\Gamma(U,\mathcal F)=\mathcal F(U)=H^0(U,\mathcal F).\\
+D5&:&X\text{ is a variety, projective variety, or projective space over }F_q.\\
+D6&:&\mathcal O_X(d)\text{ is the }d\text{th twist on a projective space.}\\
+D7&:&(V,\omega_V)\text{ is a finite symplectic }F_q\text{-vector space.}\\
+D8&:&E(X,\mathcal L,V)=H^0(X,\mathcal L)\otimes_{F_q}V.\\
+D9&:&\Omega\text{ is the finite rational-point pairing after choosing evaluations.}\\
+L1&:&E(X,\mathcal L,V)\text{ is an }F_q\text{-vector space.}\\
+L2&:&\Omega\text{ is bilinear and alternating.}\\
+L3&:&E/\operatorname{rad}(E)\text{ is the honest Weyl label space.}
+\end{array}
+\]
+
+\subsection{Presheaves}
+
+Let \(X\) be a topological space.  A presheaf of sets \(\mathcal F\) on \(X\)
+consists of two pieces of data.
+
+First, every open subset \(U\subset X\) is assigned a set \(\mathcal F(U)\).
+Its elements are called sections over \(U\).  Second, every inclusion of open
+sets \(V\subset U\) is assigned a restriction map
+\[
+  \rho^U_V:\mathcal F(U)\longrightarrow \mathcal F(V).
+\]
+The maps must satisfy two identities:
+\[
+  \rho^U_U=\operatorname{id}_{\mathcal F(U)},\qquad
+  \rho^U_W=\rho^V_W\circ\rho^U_V
+  \quad\text{when } W\subset V\subset U.
+\]
+For \(s\in\mathcal F(U)\), write
+\[
+  s|_V=\rho^U_V(s).
+\]
+Thus \(s|_W=(s|_V)|_W\).  The notation
+\[
+  \Gamma(U,\mathcal F)=\mathcal F(U)=H^0(U,\mathcal F)
+\]
+means exactly the same set of sections over \(U\); the last two symbols do
+not add a new construction in degree zero.
+
+For a fixed field \(F_q\), a presheaf of \(F_q\)-vector spaces is the same
+data with each \(\mathcal F(U)\) an \(F_q\)-vector space and each restriction
+map \(F_q\)-linear.  Equivalently, it is a presheaf of sets whose section sets
+carry compatible vector-space operations.
+
+\subsection{Sheaves}
+
+A sheaf is a presheaf satisfying a locality-and-gluing axiom.  Let
+\[
+  U=\bigcup_{i\in I}U_i
+\]
+be an open cover.  Suppose \(s_i\in\mathcal F(U_i)\) is a section on each
+member of the cover.  The family is compatible if for every pair \(i,j\),
+\[
+  s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}.
+\]
+The presheaf \(\mathcal F\) is a sheaf if every compatible family has one and
+only one glued section \(s\in\mathcal F(U)\) such that
+\[
+  s|_{U_i}=s_i\qquad\text{for all }i.
+\]
+This says precisely: a sheaf is an object whose sections are determined
+locally, and whose locally compatible data assemble globally.
+
+\subsection{Varieties, Projective Space, and Twists}
+
+Let \(k\) be a field.  In the Stacks convention, a variety over \(k\) is a
+scheme \(X\) over \(k\) such that \(X\) is integral and the structure morphism
+\[
+  X\longrightarrow \operatorname{Spec}(k)
+\]
+is separated and of finite type.  A projective variety is a variety for which
+this structure morphism is projective; equivalently in the cited Stacks
+source, it embeds as a closed subscheme of some \(\mathbf P^n_k\).
+
+Projective \(n\)-space over a ring \(R\) is
+\[
+  \mathbf P^n_R=\operatorname{Proj}(R[T_0,\ldots,T_n]),
+\]
+where every \(T_i\) has degree \(1\).  Its standard opens are
+\[
+  D_+(T_i),\qquad i=0,\ldots,n,
+\]
+and these cover \(\mathbf P^n_R\).  For \(n=1\), the two standard opens
+\[
+  D_+(X),\qquad D_+(Y)
+\]
+are affine lines with coordinates \(Y/X\) and \(X/Y\), respectively.
+
+For \(X=\operatorname{Proj}(S)\), the \(d\)th twist of the structure sheaf is
+\[
+  \mathcal O_X(d)=\widetilde{S(d)}.
+\]
+In the special case \(X=\mathbf P^n_R\), the local source computes
+\[
+  H^0(\mathbf P^n_R,\mathcal O(d))
+  =
+  \begin{cases}
+  R[T_0,\ldots,T_n]_d,& d\geq0,\\
+  0,& d<0,
+  \end{cases}
+\]
+where \(R[T_0,\ldots,T_n]_d\) is the degree-\(d\) homogeneous part.  Thus
+\[
+  H^0(\mathbf P^1_{F_q},\mathcal O(d))
+  =
+  F_q\text{-span}\{X^{d-i}Y^i:0\leq i\leq d\}
+\]
+for \(d\geq0\).
+
+\subsection{Why Naive Hom Is Not the Projective Default}
+
+For a finite set \(X\), the previous shard used \(E\leq\operatorname{Map}(X,V)\).
+For a projective variety this is too naive if \(\operatorname{Hom}(X,V)\) is
+read as regular maps to an affine vector space.  A regular map to affine
+space is controlled by global regular functions, and the Stacks source records
+that a proper geometrically integral variety has
+\[
+  H^0(X,\mathcal O_X)=k.
+\]
+So for connected projective spaces this would see only constants.
+
+The projective replacement is therefore sheaf-theoretic:
+\[
+  E(X,\mathcal L,V)=H^0(X,\mathcal L)\otimes_{F_q}V,
+\]
+where \(\mathcal L\) is an explicitly chosen sheaf on \(X\).  The sheaf is part
+of the quantum-field datum.  Different choices \(\mathcal L=\mathcal O(d)\)
+give different finite field-label spaces.
+
+\subsection{Finite Symplectic Target and Pointwise Form}
+
+Let \(V\) be a finite-dimensional \(F_q\)-vector space.  A symplectic form on
+\(V\) is an \(F_q\)-bilinear pairing
+\[
+  \omega_V:V\times V\to F_q
+\]
+such that \(\omega_V(v,v)=0\) for all \(v\) and the only vector pairing to
+zero with every vector is \(0\).  The standard two-dimensional example is
+\[
+  V=F_q^2,\qquad
+  \omega_V((a,b),(c,d))=bc-ad.
+\]
+
+To turn \(E(X,\mathcal L,V)\) into a finite Weyl label space we also need a
+finite scalar pairing on \(H^0(X,\mathcal L)\).  Let \(S\subset X(F_q)\) be a
+finite set of rational points, let \(w_P\in F_q\), and choose an evaluation
+coordinate
+\[
+  \operatorname{ev}_P:H^0(X,\mathcal L)\to F_q
+\]
+for every \(P\in S\).  Then define
+\[
+  B(s,t)=\sum_{P\in S}w_P\,\operatorname{ev}_P(s)\operatorname{ev}_P(t).
+\]
+This evaluation choice is automatic for honest scalar functions, but for
+sections of a nontrivial line bundle it is a convention: one has chosen local
+trivializations or fixed projective representatives at the points.
+
+For pure tensors set
+\[
+  \Omega(s\otimes v,t\otimes w)=B(s,t)\omega_V(v,w),
+\]
+and extend bilinearly to all of \(E(X,\mathcal L,V)\).
+
+\paragraph{Lemma \(L1\).}
+\(E(X,\mathcal L,V)\) is an \(F_q\)-vector space.
+
+\emph{Proof.}
+The source definition of a sheaf of vector spaces gives
+\(H^0(X,\mathcal L)=\mathcal L(X)\) as an \(F_q\)-vector space.  The tensor
+product of two \(F_q\)-vector spaces is an \(F_q\)-vector space, with addition
+and scalar multiplication inherited from the tensor construction.  Hence
+\(H^0(X,\mathcal L)\otimes_{F_q}V\) is an \(F_q\)-vector space.
+
+\paragraph{Lemma \(L2\).}
+\(\Omega\) is \(F_q\)-bilinear and alternating.
+
+\emph{Proof.}
+The map \(B\) is bilinear because it is a sum of products of linear evaluation
+maps.  The form \(\omega_V\) is bilinear by definition.  Therefore their
+tensor product pairing is bilinear on pure tensors and hence bilinear after
+extension.  Also
+\[
+  \Omega(s\otimes v,s\otimes v)=B(s,s)\omega_V(v,v)=0,
+\]
+and the same alternating identity follows for arbitrary sums by bilinearity
+and the alternating property of \(\omega_V\).
+
+\paragraph{Lemma \(L3\).}
+Let
+\[
+  \operatorname{rad}(E)=
+  \{\phi\in E:\Omega(\phi,\psi)=0\text{ for every }\psi\in E\}.
+\]
+Then \(E_{\rm red}=E/\operatorname{rad}(E)\) has a nondegenerate alternating
+form induced by \(\Omega\).
+
+\emph{Proof.}
+If \(r\in\operatorname{rad}(E)\), then
+\(\Omega(\phi+r,\psi)=\Omega(\phi,\psi)\), so the form descends to the
+quotient.  If a quotient class \([\phi]\) pairs to zero with every quotient
+class, then \(\phi\) pairs to zero with every element of \(E\), hence
+\(\phi\in\operatorname{rad}(E)\) and \([\phi]=0\).  Thus the descended form is
+nondegenerate.
+
+The Weyl-Heisenberg field displacement algebra is built from
+\(E_{\rm red}\), not from unreduced \(E\), exactly as in
+Shard \(AQM\)-14.

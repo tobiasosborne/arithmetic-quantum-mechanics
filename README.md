@@ -6,7 +6,8 @@ Kitaev/Levin-Wen/toric-code style topological lattice models.
 
 Status: active research notebook. The repository contains the report scaffold,
 provenance rules, run-bundle discipline, tool runner, checked toric/CSS/Steane
-stabilizer-supercharge results, and a first arithmetic-quantum-field proposal.
+stabilizer-supercharge results, a first arithmetic-quantum-field proposal, and
+projective sheaf-field examples.
 
 ## Layout
 

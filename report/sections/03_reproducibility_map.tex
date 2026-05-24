@@ -1,7 +1,7 @@
 % SHARD-ID: AQM-03-REPRO-MAP
 % SHARD-TITLE: Reproducibility Map
 % SHARD-SUMMARY: Describes how scripts, run bundles, schemas, and report shards connect.
-% SHARD-SUMMARY: Provides the current validation commands for the infrastructure scaffold.
+% SHARD-SUMMARY: Provides the current validation commands for the checked local evidence layer.
 % SHARD-KEYWORDS: reproducibility, scripts, run bundles, schema, validation
 
 \section{Reproducibility Map}
@@ -29,4 +29,5 @@ julia --project=. -e 'using Pkg; Pkg.test()'
 julia --project=. scripts/run_all.jl --fast
 \end{verbatim}
 
-At scaffold time, \texttt{scripts/run\_all.jl} has no registered producers.
+The registered producers are indexed in \texttt{INDEX.md}; the canonical local
+driver is \texttt{scripts/run\_all.jl}.

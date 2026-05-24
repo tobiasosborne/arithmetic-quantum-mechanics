@@ -1,0 +1,32 @@
+# Basis-value rows and scalar Gram rows for the exact P1(F3), O(d), d=0..4 sheaf-field examples.
+example,d,row_kind,label,values
+P1_F3_O0,0,basis_values,1,1 1 1 1
+P1_F3_O0,0,scalar_gram_row,1,1
+P1_F3_O1,1,basis_values,X,1 0 1 2
+P1_F3_O1,1,basis_values,Y,0 1 1 1
+P1_F3_O1,1,scalar_gram_row,X,0 0
+P1_F3_O1,1,scalar_gram_row,Y,0 0
+P1_F3_O2,2,basis_values,X^2,1 0 1 1
+P1_F3_O2,2,basis_values,XY,0 0 1 2
+P1_F3_O2,2,basis_values,Y^2,0 1 1 1
+P1_F3_O2,2,scalar_gram_row,X^2,0 0 2
+P1_F3_O2,2,scalar_gram_row,XY,0 2 0
+P1_F3_O2,2,scalar_gram_row,Y^2,2 0 0
+P1_F3_O3,3,basis_values,X^3,1 0 1 2
+P1_F3_O3,3,basis_values,X^2Y,0 0 1 1
+P1_F3_O3,3,basis_values,XY^2,0 0 1 2
+P1_F3_O3,3,basis_values,Y^3,0 1 1 1
+P1_F3_O3,3,scalar_gram_row,X^3,0 0 2 0
+P1_F3_O3,3,scalar_gram_row,X^2Y,0 2 0 2
+P1_F3_O3,3,scalar_gram_row,XY^2,2 0 2 0
+P1_F3_O3,3,scalar_gram_row,Y^3,0 2 0 0
+P1_F3_O4,4,basis_values,X^4,1 0 1 1
+P1_F3_O4,4,basis_values,X^3Y,0 0 1 2
+P1_F3_O4,4,basis_values,X^2Y^2,0 0 1 1
+P1_F3_O4,4,basis_values,XY^3,0 0 1 2
+P1_F3_O4,4,basis_values,Y^4,0 1 1 1
+P1_F3_O4,4,scalar_gram_row,X^4,0 0 2 0 2
+P1_F3_O4,4,scalar_gram_row,X^3Y,0 2 0 2 0
+P1_F3_O4,4,scalar_gram_row,X^2Y^2,2 0 2 0 2
+P1_F3_O4,4,scalar_gram_row,XY^3,0 2 0 2 0
+P1_F3_O4,4,scalar_gram_row,Y^4,2 0 2 0 0
