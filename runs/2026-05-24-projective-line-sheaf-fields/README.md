@@ -18,6 +18,7 @@ julia --project=. scripts/bridges/projective_line_sheaf_fields.jl
 
 - `data/projective_line_sheaf_field_summary.csv`
 - `data/projective_line_sheaf_field_basis_rows.csv`
+- `data/projective_line_stalk_rows.csv`
 
 ## Headline Finding
 
@@ -27,6 +28,12 @@ pointwise scalar pairing is zero, so the whole \(V\)-valued field space is
 radical. For \(d=2\), the induced scalar Gram form is nondegenerate. For
 \(d=4\), global sections already outnumber the four rational points, so
 evaluation has a scalar kernel.
+
+The stalk rows spell out the local rings and germs at the four rational
+points. At \([1:0]\), the local ring is \(\mathbb F_3[u]_{(u)}\),
+\(u=Y/X\), and \(X^{d-i}Y^i\) has germ \(u^i e_X^{(d)}\). At \([t:1]\), the
+local ring is \(\mathbb F_3[v]_{(v-t)}\), \(v=X/Y\), and the same monomial
+has germ \(v^{d-i}e_Y^{(d)}\).
 
 ## Caveat
 

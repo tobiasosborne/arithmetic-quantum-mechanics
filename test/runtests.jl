@@ -309,4 +309,22 @@ end
                      row.label == "XY" &&
                      row.values == "0 2 0",
               basis_rows)
+
+    stalk_rows = projective_line_stalk_rows(; p=3, max_degree=4)
+    @test length(stalk_rows) == 60
+    @test any(row -> row.d == 2 &&
+                     row.point_label == "[1:0]" &&
+                     row.local_ring == "F3[u]_(u)" &&
+                     row.basis_label == "XY" &&
+                     row.germ_in_frame == "u*e_X^(2)" &&
+                     row.residue_value == 0,
+              stalk_rows)
+    @test any(row -> row.d == 4 &&
+                     row.point_label == "[2:1]" &&
+                     row.homogeneous_prime == "(X-2Y)=(X+Y)" &&
+                     row.local_ring == "F3[v]_(v-2)" &&
+                     row.basis_label == "X^3Y" &&
+                     row.germ_in_frame == "v^3*e_Y^(4)" &&
+                     row.residue_value == 2,
+              stalk_rows)
 end

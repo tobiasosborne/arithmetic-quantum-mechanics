@@ -23,6 +23,7 @@ export p1_rational_point_labels, p1_od_basis_labels, p1_od_evaluation_matrix
 export projective_line_sheaf_field_examples
 export projective_line_sheaf_field_summary_rows
 export projective_line_sheaf_field_basis_rows
+export projective_line_stalk_rows
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")

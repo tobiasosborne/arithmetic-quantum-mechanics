@@ -11,8 +11,9 @@ about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
 mechanics, and Kitaev/Levin-Wen/toric-code models. The current arithmetic-field
 frontier is projective: `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS` and
 `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION` replace naive projective
-`Hom(X,V)` by chosen sheaf-section spaces \(H^0(X,\mathcal L)\otimes V\) and
-check the first \(\mathbf P^1_{\mathbb F_3}\) examples.
+`Hom(X,V)` by chosen sheaf-section spaces \(H^0(X,\mathcal L)\otimes V\), and
+`AQM-17-PROJECTIVE-LINE-STALKS` works out the rational-point stalks whose
+residues give the finite evaluation rows.
 
 ## Most Recent Session
 
@@ -83,6 +84,9 @@ check the first \(\mathbf P^1_{\mathbb F_3}\) examples.
   \(\mathbf P^1_{\mathbb F_3}\), \(H^0(\mathcal O(d))\otimes\mathbb F_3^2\),
   finite rational-point evaluations, radicals, and reduced Weyl counts for
   `d=0..4`.
+- Added `AQM-17-PROJECTIVE-LINE-STALKS`: the same run now records one symbolic
+  germ row for every monomial section at each rational point, including the
+  local ring, local frame, maximal ideal, and residue value.
 
 ## Next Useful Steps
 

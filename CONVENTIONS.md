@@ -453,3 +453,9 @@ B(s,t) = sum_{P in P^1(F3)} s(P) t(P)
 
 with all weights equal to `1`; the `V=F_3^2` symplectic extension is as in
 convention (q). The radical must be checked after this finite-point pairing.
+
+Stalk computations use the standard frames `e_X^(d)` on `D_+(X)` and
+`e_Y^(d)` on `D_+(Y)`. With `u=Y/X` and `v=X/Y`, the monomial
+`X^(d-i)Y^i` has germ `u^i e_X^(d)` at `[1:0]` and germ
+`v^(d-i) e_Y^(d)` at `[t:1]`. Evaluation is residue modulo `(u)` or
+`(v-t)`, respectively.

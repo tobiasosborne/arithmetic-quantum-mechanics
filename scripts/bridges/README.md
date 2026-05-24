@@ -8,4 +8,5 @@ Registered producers:
 - `arithmetic_quantum_fields.jl` writes finite-function-space arithmetic-field
   certificates.
 - `projective_line_sheaf_fields.jl` writes \(\mathbf P^1_{\mathbb F_3}\)
-  sheaf-field certificates for \(H^0(\mathcal O(d))\otimes\mathbb F_3^2\).
+  sheaf-field and stalk certificates for
+  \(H^0(\mathcal O(d))\otimes\mathbb F_3^2\).

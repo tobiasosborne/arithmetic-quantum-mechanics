@@ -150,3 +150,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Lists the rational points, the \(H^0(\mathcal O(d))\) bases, point evaluations, scalar Gram forms, radicals, and Weyl counts.
 - Summary: Records the exact Julia validator and its CSV outputs.
 - Keywords: projective line, sheaf, O(d), finite field, symplectic target, Weyl labels
+
+## `AQM-17-PROJECTIVE-LINE-STALKS`
+
+- Source: `report/sections/17_projective_line_stalks.tex`
+- Title: Projective Line Stalks
+- Summary: Defines stalks as germs and applies the Proj stalk formula to \(\mathbf P^1_{\mathbb F_3}\).
+- Summary: Computes the local rings and \(\mathcal O(d)\) stalks at each rational point used in the projective-line example.
+- Summary: Relates the stalk residues to the evaluation rows used by the finite symplectic field pairing.
+- Keywords: stalk, germ, projective line, local ring, O(d), rational point

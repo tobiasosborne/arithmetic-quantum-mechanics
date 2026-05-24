@@ -167,3 +167,99 @@ function projective_line_sheaf_field_basis_rows(; p::Integer=3, max_degree::Inte
     end
     return rows
 end
+
+function _pl_frame_string(chart_var::String, d::Integer)
+    return "e_$(chart_var)^($d)"
+end
+
+function _pl_germ_string(coord::String, exp::Integer, frame::String)
+    if exp == 0
+        return frame
+    elseif exp == 1
+        return "$(coord)*$(frame)"
+    else
+        return "$(coord)^$(exp)*$(frame)"
+    end
+end
+
+function _pl_finite_prime_string(t::Integer, p::Integer)
+    if t == 0
+        return "(X)"
+    elseif p == 3 && t == 1
+        return "(X-Y)"
+    elseif p == 3 && t == 2
+        return "(X-2Y)=(X+Y)"
+    else
+        return "(X-$(t)Y)"
+    end
+end
+
+function _pl_finite_maximal_ideal_string(t::Integer)
+    return t == 0 ? "(v)" : "(v-$t)"
+end
+
+function _pl_rational_stalk_points(p::Integer)
+    points = NamedTuple[(
+        point_label = "[1:0]",
+        homogeneous_prime = "(Y)",
+        chart = "D_+(X)",
+        local_coordinate = "u=Y/X",
+        coordinate_symbol = "u",
+        coordinate_value = 0,
+        local_maximal_ideal = "(u)",
+        local_ring = "F$(p)[u]_(u)",
+        frame_symbol = "X",
+        is_infinity = true,
+    )]
+    for t in 0:(p - 1)
+        push!(points, (
+            point_label = "[$t:1]",
+            homogeneous_prime = _pl_finite_prime_string(t, p),
+            chart = "D_+(Y)",
+            local_coordinate = "v=X/Y",
+            coordinate_symbol = "v",
+            coordinate_value = t,
+            local_maximal_ideal = _pl_finite_maximal_ideal_string(t),
+            local_ring = "F$(p)[v]_$(_pl_finite_maximal_ideal_string(t))",
+            frame_symbol = "Y",
+            is_infinity = false,
+        ))
+    end
+    return points
+end
+
+function projective_line_stalk_rows(; p::Integer=3, max_degree::Integer=4)
+    _assert_prime_field(p)
+    max_degree >= 0 || throw(ArgumentError("max_degree must be nonnegative"))
+    rows = NamedTuple[]
+    for d in 0:max_degree
+        labels = p1_od_basis_labels(d)
+        for point in _pl_rational_stalk_points(p)
+            frame = _pl_frame_string(point.frame_symbol, d)
+            for i in 0:d
+                xexp = d - i
+                yexp = i
+                local_exp = point.is_infinity ? yexp : xexp
+                residue = point.is_infinity ? (yexp == 0 ? 1 : 0) :
+                          _pl_pow_mod(point.coordinate_value, xexp, p)
+                push!(rows, (
+                    d = d,
+                    point_label = point.point_label,
+                    homogeneous_prime = point.homogeneous_prime,
+                    chart = point.chart,
+                    local_coordinate = point.local_coordinate,
+                    local_maximal_ideal = point.local_maximal_ideal,
+                    local_ring = point.local_ring,
+                    residue_field = "F$p",
+                    local_frame = frame,
+                    basis_label = labels[i + 1],
+                    x_exponent = xexp,
+                    y_exponent = yexp,
+                    germ_in_frame = _pl_germ_string(point.coordinate_symbol, local_exp, frame),
+                    residue_value = residue,
+                ))
+            end
+        end
+    end
+    return rows
+end

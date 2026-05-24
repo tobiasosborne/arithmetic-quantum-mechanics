@@ -1,0 +1,276 @@
+% SHARD-ID: AQM-17-PROJECTIVE-LINE-STALKS
+% SHARD-TITLE: Projective Line Stalks
+% SHARD-SUMMARY: Defines stalks as germs and applies the Proj stalk formula to \(\mathbf P^1_{\mathbb F_3}\).
+% SHARD-SUMMARY: Computes the local rings and \(\mathcal O(d)\) stalks at each rational point used in the projective-line example.
+% SHARD-SUMMARY: Relates the stalk residues to the evaluation rows used by the finite symplectic field pairing.
+% SHARD-KEYWORDS: stalk, germ, projective line, local ring, O(d), rational point
+
+\section{Projective Line Stalks}
+\label{sec:projective-line-stalks}
+
+\subsection{Status and Local Evidence}
+
+This shard continues Shard \(AQM\)-16.  The phrase ``each point in the
+example'' means the four rational points used by the finite pairing:
+\([1:0]\), \([0:1]\), \([1:1]\), and \([2:1]\).  The scheme has more points
+than these four; a general formula for those other stalks is recorded at the
+end.
+
+The source definition of a stalk is local:
+\path{references/algebraic_geometry/stacks_project_sheaves.tex}, lines
+894--944.  The source formula for stalks on \(\operatorname{Proj}(S)\) is
+\path{references/algebraic_geometry/stacks_project_constructions.tex}, lines
+1091--1116 and 1182--1207.  The checked rows are produced by
+\path{scripts/bridges/projective_line_sheaf_fields.jl}.
+
+\subsection{What a Stalk Is}
+
+Let \(X\) be a topological space, \(x\in X\), and \(\mathcal F\) a presheaf.
+The stalk at \(x\) is
+\[
+  \mathcal F_x=\operatorname*{colim}_{x\in U}\mathcal F(U),
+\]
+where \(U\) runs over open neighbourhoods of \(x\).  Concretely, an element is
+represented by \((U,s)\), with \(x\in U\) and \(s\in\mathcal F(U)\), and
+\((U,s)\sim(U',s')\) when some open neighbourhood
+\(U''\subset U\cap U'\) of \(x\) satisfies \(s|_{U''}=s'|_{U''}\).
+Thus a stalk element is a germ: it remembers the section only arbitrarily near
+the point.
+
+\subsection{The Proj Stalk Formula}
+
+Let
+\[
+  S=\mathbb F_3[X,Y],\qquad \deg X=\deg Y=1,\qquad
+  X_{\rm sch}=\operatorname{Proj}(S)=\mathbf P^1_{\mathbb F_3}.
+\]
+A point of \(X_{\rm sch}\) is a homogeneous prime
+\(\mathfrak p\subset S\) not containing the irrelevant ideal \((X,Y)\).
+For a graded \(S\)-module \(M\), the associated sheaf \(\widetilde M\) has
+stalk
+\[
+  (\widetilde M)_{\mathfrak p}=M_{(\mathfrak p)}.
+\]
+The right hand side consists of homogeneous fractions
+\[
+  a/b,\qquad a,b\in M \text{ homogeneous},\quad
+  \deg a=\deg b,\quad b\notin\mathfrak p.
+\]
+For the structure sheaf, this gives
+\[
+  \mathcal O_{X_{\rm sch},\mathfrak p}=S_{(\mathfrak p)}.
+\]
+For the twist \(\mathcal O(d)=\widetilde{S(d)}\),
+\[
+  \mathcal O(d)_{\mathfrak p}=S(d)_{(\mathfrak p)}.
+\]
+
+\subsection{The Two Standard Charts}
+
+On the chart \(D_+(X)\), set \(u=Y/X\).  Then
+\[
+  D_+(X)=\operatorname{Spec}\mathbb F_3[u].
+\]
+On this chart we use the local frame \(e_X^{(d)}\) of \(\mathcal O(d)\)
+corresponding to \(X^d\).  The section
+\[
+  X^{d-i}Y^i
+\]
+has local expression
+\[
+  u^i e_X^{(d)}.
+\]
+
+On the chart \(D_+(Y)\), set \(v=X/Y\).  Then
+\[
+  D_+(Y)=\operatorname{Spec}\mathbb F_3[v].
+\]
+On this chart we use the local frame \(e_Y^{(d)}\) corresponding to \(Y^d\).
+The same section has local expression
+\[
+  v^{d-i}e_Y^{(d)}.
+\]
+On the overlap \(D_+(XY)\), \(u=1/v\), and the two frames satisfy
+\[
+  e_X^{(d)}=v^d e_Y^{(d)},\qquad e_Y^{(d)}=u^d e_X^{(d)}.
+\]
+This is why both local expressions describe the same germ where both charts
+are available.
+
+\subsection{Point P-Infinity: [1:0]}
+
+The homogeneous prime is
+\[
+  \mathfrak p_\infty=(Y).
+\]
+Since \(X\notin\mathfrak p_\infty\), this point lies in \(D_+(X)\).  In the
+coordinate \(u=Y/X\), the corresponding prime of \(\mathbb F_3[u]\) is
+\[
+  (u).
+\]
+Therefore
+\[
+  \mathcal O_{P_\infty}=\mathbb F_3[u]_{(u)},\qquad
+  \mathfrak m_{P_\infty}=(u),\qquad
+  \kappa(P_\infty)=\mathbb F_3[u]_{(u)}/(u)=\mathbb F_3.
+\]
+The \(\mathcal O(d)\)-stalk is free of rank one:
+\[
+  \mathcal O(d)_{P_\infty}
+  =
+  \mathbb F_3[u]_{(u)}e_X^{(d)}.
+\]
+For the monomial \(X^{d-i}Y^i\),
+\[
+  (X^{d-i}Y^i)_{P_\infty}=u^i e_X^{(d)}.
+\]
+Reducing modulo \((u)\) gives
+\[
+  u^i e_X^{(d)}
+  \longmapsto
+  \begin{cases}
+  1\cdot \overline e_X^{(d)},& i=0,\\
+  0,& i>0.
+  \end{cases}
+\]
+This is exactly the evaluation rule used earlier at \([1:0]\).
+
+\subsection{Point P0: [0:1]}
+
+The homogeneous prime is
+\[
+  \mathfrak p_0=(X).
+\]
+Since \(Y\notin\mathfrak p_0\), use \(D_+(Y)\) and \(v=X/Y\).  The local
+prime is \((v)\).  Hence
+\[
+  \mathcal O_{P_0}=\mathbb F_3[v]_{(v)},\qquad
+  \mathfrak m_{P_0}=(v),\qquad
+  \kappa(P_0)=\mathbb F_3.
+\]
+The twist stalk is
+\[
+  \mathcal O(d)_{P_0}=\mathbb F_3[v]_{(v)}e_Y^{(d)}.
+\]
+The monomial \(X^{d-i}Y^i\) has germ
+\[
+  v^{d-i}e_Y^{(d)}.
+\]
+Modulo \((v)\),
+\[
+  v^{d-i}e_Y^{(d)}
+  \longmapsto
+  \begin{cases}
+  1\cdot \overline e_Y^{(d)},& i=d,\\
+  0,& i<d.
+  \end{cases}
+\]
+
+\subsection{Point P1: [1:1]}
+
+The homogeneous prime is
+\[
+  \mathfrak p_1=(X-Y).
+\]
+On \(D_+(Y)\), it becomes
+\[
+  (v-1)\subset\mathbb F_3[v].
+\]
+Therefore
+\[
+  \mathcal O_{P_1}=\mathbb F_3[v]_{(v-1)},\qquad
+  \mathfrak m_{P_1}=(v-1),\qquad
+  \kappa(P_1)=\mathbb F_3.
+\]
+The twist stalk is
+\[
+  \mathcal O(d)_{P_1}=\mathbb F_3[v]_{(v-1)}e_Y^{(d)}.
+\]
+The germ of \(X^{d-i}Y^i\) is
+\[
+  v^{d-i}e_Y^{(d)}.
+\]
+Modulo \((v-1)\), we set \(v=1\), so
+\[
+  v^{d-i}e_Y^{(d)}
+  \longmapsto
+  1\cdot \overline e_Y^{(d)}
+\]
+for every \(i\).  This explains why every monomial evaluates to \(1\) at
+\([1:1]\).
+
+\subsection{Point P2: [2:1]}
+
+The homogeneous prime is
+\[
+  \mathfrak p_2=(X-2Y)=(X+Y).
+\]
+On \(D_+(Y)\), it becomes
+\[
+  (v-2)\subset\mathbb F_3[v].
+\]
+Thus
+\[
+  \mathcal O_{P_2}=\mathbb F_3[v]_{(v-2)},\qquad
+  \mathfrak m_{P_2}=(v-2),\qquad
+  \kappa(P_2)=\mathbb F_3.
+\]
+The twist stalk is
+\[
+  \mathcal O(d)_{P_2}=\mathbb F_3[v]_{(v-2)}e_Y^{(d)}.
+\]
+The germ of \(X^{d-i}Y^i\) is
+\[
+  v^{d-i}e_Y^{(d)}.
+\]
+Modulo \((v-2)\), we set \(v=2=-1\).  Therefore
+\[
+  v^{d-i}e_Y^{(d)}
+  \longmapsto
+  2^{d-i}\overline e_Y^{(d)}.
+\]
+The residue is \(1\) when \(d-i\) is even and \(2\) when \(d-i\) is odd.
+
+\subsection{Target-Valued Stalks}
+
+The arithmetic field sheaf used in the example is
+\[
+  \mathcal O(d)\otimes_{\mathbb F_3}V,\qquad V=\mathbb F_3^2.
+\]
+At any rational point \(P\), its stalk is
+\[
+  (\mathcal O(d)\otimes V)_P
+  =
+  \mathcal O(d)_P\otimes_{\mathbb F_3}V.
+\]
+Because \(\mathcal O(d)_P\) is a free rank-one \(\mathcal O_P\)-module, this
+is two copies of the local ring:
+\[
+  (\mathcal O(d)\otimes V)_P
+  \cong
+  \mathcal O_P q\oplus \mathcal O_P p.
+\]
+The residue at \(P\) is
+\[
+  (\mathcal O(d)\otimes V)_P
+  \longrightarrow
+  \kappa(P)\otimes_{\mathbb F_3}V
+  =
+  V,
+\]
+and this is the pointwise value used in the finite symplectic pairing.
+
+\subsection{Other Scheme Points}
+
+The finite field algebra in Shard \(AQM\)-16 uses only rational points, but
+the scheme has more stalks.  The generic point has
+\(\mathcal O_\eta=\mathbb F_3(v)\) and
+\(\mathcal O(d)_\eta=\mathbb F_3(v)e_Y^{(d)}\).  A non-rational closed point
+on \(D_+(Y)\) is given by an irreducible \(h(v)\in\mathbb F_3[v]\) of degree
+\(>1\); then
+\[
+  \mathcal O_h=\mathbb F_3[v]_{(h)},\quad
+  \mathcal O(d)_h=\mathbb F_3[v]_{(h)}e_Y^{(d)},\quad
+  \kappa(h)=\mathbb F_3[v]/(h).
+\]
+These stalks are not sampled by the current rational-point pairing.

@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Sixteen CSV outputs exist.
+Seventeen CSV outputs exist.
 
 ## Common Rules
 
@@ -33,6 +33,7 @@ Sixteen CSV outputs exist.
 | `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_bases.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | Active |
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_summary.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_basis_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
+| `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_stalk_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -432,3 +433,29 @@ scalar Gram rows for the exact `P1(F3), O(d), d=0..4` examples.
 | row_kind | string | `basis_values` or `scalar_gram_row`. |
 | label | string | Basis label for this row. |
 | values | string | Space-separated `F_3` row values. |
+
+## projective_line_stalk_rows.csv
+
+Produced by: `scripts/bridges/projective_line_sheaf_fields.jl`
+Run bundle: `runs/2026-05-24-projective-line-sheaf-fields/`
+Report shard: `AQM-17-PROJECTIVE-LINE-STALKS`
+Sentinel: row 1 begins with `#` and states that rows are exact symbolic stalk
+germs for `P1(F3), O(d), d=0..4` at the four rational points used by the
+finite pairing.
+
+| column | type | description |
+|---|---|---|
+| d | int | Twist degree in `O(d)`. |
+| point_label | string | Rational point representative. |
+| homogeneous_prime | string | Homogeneous prime ideal of `F_3[X,Y]` for this point. |
+| chart | string | Standard affine chart used to compute the stalk. |
+| local_coordinate | string | Affine coordinate on the chosen chart. |
+| local_maximal_ideal | string | Maximal ideal of the chart coordinate ring at the point. |
+| local_ring | string | Local ring of `P1_F3` at the point in chart notation. |
+| residue_field | string | Residue field, here `F3` for all rational points. |
+| local_frame | string | Chosen local frame of `O(d)` on the chart. |
+| basis_label | string | Homogeneous monomial section label. |
+| x_exponent | int | Exponent of `X` in the monomial section. |
+| y_exponent | int | Exponent of `Y` in the monomial section. |
+| germ_in_frame | string | Germ of the monomial written in the chosen local frame. |
+| residue_value | int | Image of the germ in the residue field after setting the local coordinate to its point value. |

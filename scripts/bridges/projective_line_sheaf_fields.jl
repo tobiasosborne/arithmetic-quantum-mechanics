@@ -82,8 +82,50 @@ function write_basis_rows()
     return path
 end
 
+function write_stalk_rows()
+    header = join((
+        "d",
+        "point_label",
+        "homogeneous_prime",
+        "chart",
+        "local_coordinate",
+        "local_maximal_ideal",
+        "local_ring",
+        "residue_field",
+        "local_frame",
+        "basis_label",
+        "x_exponent",
+        "y_exponent",
+        "germ_in_frame",
+        "residue_value",
+    ), ",")
+    path = data_path(RUN, "projective_line_stalk_rows.csv")
+    with_csv(path, header;
+             sentinel="Exact symbolic stalk rows for P1(F3), O(d), d=0..4, at the four rational points used by the finite pairing.") do io
+        for row in projective_line_stalk_rows(; p=3, max_degree=4)
+            println(io, join(_cell.([
+                row.d,
+                row.point_label,
+                row.homogeneous_prime,
+                row.chart,
+                row.local_coordinate,
+                row.local_maximal_ideal,
+                row.local_ring,
+                row.residue_field,
+                row.local_frame,
+                row.basis_label,
+                row.x_exponent,
+                row.y_exponent,
+                row.germ_in_frame,
+                row.residue_value,
+            ]), ","))
+        end
+    end
+    return path
+end
+
 function main()
-    for path in (write_summary(), write_basis_rows())
+    for path in (write_summary(), write_basis_rows(), write_stalk_rows())
         println("wrote ", path)
     end
 end
