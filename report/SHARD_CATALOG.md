@@ -105,3 +105,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves directly that the no-ghost cohomology is the two-dimensional Steane code.
 - Summary: Computes the full ghost-degree cohomology and separates it from the physical code space.
 - Keywords: Steane code, supercharge, fermions, Koszul complex, cohomology, stabilizer Hamiltonian
+
+## `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS`
+
+- Source: `report/sections/12_steane_clifford_koszul_morphisms.tex`
+- Title: Steane Clifford Morphisms of the Koszul Supercharge
+- Summary: Defines the Clifford lift of a symplectic Pauli-label automorphism to the Steane Koszul complex.
+- Summary: Proves that transversal Hadamard gives an exact chain automorphism after ghost swapping.
+- Summary: Shows that transversal phase gives a chain isomorphism to a changed presentation and a homotopy equivalence back.
+- Keywords: Steane code, Clifford, symplectic automorphism, Koszul complex, homotopy equivalence

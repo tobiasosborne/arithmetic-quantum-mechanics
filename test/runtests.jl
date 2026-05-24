@@ -140,3 +140,34 @@ end
     @test [row.cohomology_dim for row in steane_cohomology_by_degree()] ==
           [2, 12, 30, 40, 30, 12, 2]
 end
+
+@testset "Steane Clifford Koszul morphisms" begin
+    summary = steane_clifford_morphism_summary()
+    @test summary.hadamard_maps_l_to_l
+    @test summary.hadamard_image_rank == 6
+    @test summary.hadamard_exact_same_q_after_ghost_swap
+    @test summary.hadamard_logical_x_image == "Zbar"
+    @test summary.hadamard_logical_z_image == "Xbar"
+    @test summary.phase_maps_l_to_l
+    @test summary.phase_image_rank == 6
+    @test summary.phase_chain_isomorphism_to_image_presentation
+    @test summary.phase_same_q_only_after_homotopy_retract
+    @test summary.phase_logical_x_image == "Xbar+Zbar"
+    @test summary.phase_logical_z_image == "Zbar"
+    @test summary.nonzero_syndrome_blocks == 63
+    @test summary.nonzero_syndrome_blocks_contractible
+    @test summary.zero_syndrome_cohomology_dim_by_degree == "2;12;30;40;30;12;2"
+    @test summary.physical_h0_dim == 2
+    @test summary.full_cohomology_dim == 128
+
+    rows = steane_clifford_morphism_rows()
+    @test length(rows) == 12
+    @test rows[1].morphism == "transversal_H"
+    @test rows[1].source == "X1"
+    @test rows[1].image == "0000000|1111000"
+    @test rows[1].image_basis_coordinates == "Z1"
+    @test rows[2].morphism == "transversal_P"
+    @test rows[2].source == "X1"
+    @test rows[2].image == "1111000|1111000"
+    @test rows[2].image_basis_coordinates == "X1+Z1"
+end

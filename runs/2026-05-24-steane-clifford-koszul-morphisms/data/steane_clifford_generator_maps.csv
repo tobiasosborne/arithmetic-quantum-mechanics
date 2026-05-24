@@ -1,0 +1,14 @@
+# Images of the six Steane stabilizer labels under transversal Clifford H and P.
+morphism,source,image,image_basis_coordinates
+transversal_H,X1,0000000|1111000,Z1
+transversal_P,X1,1111000|1111000,X1+Z1
+transversal_H,X2,0000000|1100110,Z2
+transversal_P,X2,1100110|1100110,X2+Z2
+transversal_H,X3,0000000|1010101,Z3
+transversal_P,X3,1010101|1010101,X3+Z3
+transversal_H,Z1,1111000|0000000,X1
+transversal_P,Z1,0000000|1111000,Z1
+transversal_H,Z2,1100110|0000000,X2
+transversal_P,Z2,0000000|1100110,Z2
+transversal_H,Z3,1010101|0000000,X3
+transversal_P,Z3,0000000|1010101,Z3

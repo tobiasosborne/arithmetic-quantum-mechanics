@@ -60,6 +60,10 @@ the ghost-extended local-check supercharge formulation of the toric code in
   `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY`: the Gottesman-table Steane code is
   now worked out at vector-space, stabilizer, fermion, supercharge, and
   cohomology level, with an exact run bundle.
+- Added `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS`: transversal Hadamard is an
+  exact automorphism of the written Steane `Q` after ghost swap; transversal
+  phase is a chain isomorphism to a changed generator presentation and a
+  homotopy equivalence back through the common zero-syndrome retract.
 
 ## Next Useful Steps
 

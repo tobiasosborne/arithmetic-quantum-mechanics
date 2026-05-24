@@ -51,6 +51,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "lattice codes",
+        label = "steane_clifford_koszul_morphisms",
+        path = "lattice_codes/steane_clifford_koszul_morphisms.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

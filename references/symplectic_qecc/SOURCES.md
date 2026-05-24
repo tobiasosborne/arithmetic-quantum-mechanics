@@ -11,7 +11,7 @@
 | Retrieved | 2026-05-24 |
 | Local file | `references/symplectic_qecc/gottesman_9705052_source.tar`; extracted source at `references/symplectic_qecc/gottesman_9705052_source/Thesis.tex` |
 | SHA256 | `c138c0962ee4573b667180b2efa3a4c43d920798c9d7c0d887f29698de740e0c` |
-| Relevant locators | `Thesis.tex:1227-1246` for CSS commutation as row orthogonality; `Thesis.tex:1249-1267` for the seven-qubit CSS stabilizer table; `Thesis.tex:1269-1284` for the displayed Steane codewords; `Thesis.tex:1293-1341` for binary vector stabilizers and the symplectic commutation form; `Thesis.tex:1375-1384` for the GF(4) trace-inner-product version. |
+| Relevant locators | `Thesis.tex:1227-1246` for CSS commutation as row orthogonality; `Thesis.tex:1249-1267` for the seven-qubit CSS stabilizer table; `Thesis.tex:1269-1284` for the displayed Steane codewords; `Thesis.tex:1293-1341` for binary vector stabilizers and the symplectic commutation form; `Thesis.tex:1375-1384` for the GF(4) trace-inner-product version; `Thesis.tex:2271-2348` for Clifford/normalizer Pauli-label actions; `Thesis.tex:2439-2445` for bitwise Hadamard and phase on the seven-qubit code. |
 | Notes | This source anchors the binary stabilizer and CSS-to-symplectic conventions. |
 
 ## `ashikhmin-knill-nonbinary-2000`

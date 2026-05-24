@@ -325,3 +325,21 @@ For this generator-based Koszul supercharge, the full cohomology is
 presentation-dependent derived constraint/conormal data for the chosen
 stabilizer equations, not as additional logical code states. The physical QECC
 space is the no-ghost sector `H^0(Q)`.
+
+## (o) Clifford/Koszul Morphism Convention
+
+In the Steane Clifford calculation, a "symplectic morphism" means the
+Pauli-label action induced by an actual Clifford unitary `U`. If `F_U` sends a
+chosen stabilizer generator list `G=(ell_i)` to `G'=(F_U ell_i)`, then the
+Clifford lift of the Koszul complex is
+
+```text
+Phi_U = U tensor Lambda(T),  T(epsilon_i) = epsilon'_i.
+```
+
+It is a chain isomorphism from `Q_G` to `Q_G'`. If `G'` is a permutation of
+`G`, this is an automorphism of the same written supercharge after the same
+ghost permutation. If `G'` is a different independent basis of the same
+stabilizer subspace `L`, compare back to the original presentation by the
+common deformation retract that contracts every nonzero syndrome sector and
+keeps the zero-syndrome sector `Code x Lambda^* E`.

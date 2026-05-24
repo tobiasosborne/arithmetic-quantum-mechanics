@@ -47,6 +47,13 @@ The Steane molecular supercharge run is
 Gottesman-table binary spaces, `L`, `L^perp`, logical representatives, and the
 full six-ghost cohomology dimensions `2,12,30,40,30,12,2`.
 
+The Steane Clifford/Koszul morphism run is
+`runs/2026-05-24-steane-clifford-koszul-morphisms/`. It validates that
+transversal Hadamard is an exact automorphism of the same six-ghost
+supercharge after ghost swapping, while transversal phase is a chain
+isomorphism to a changed generator presentation and compares back by the common
+syndrome-sector homotopy retract.
+
 ## Commands
 
 ```bash

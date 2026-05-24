@@ -1,0 +1,162 @@
+% SHARD-ID: AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS
+% SHARD-TITLE: Steane Clifford Morphisms of the Koszul Supercharge
+% SHARD-SUMMARY: Defines the Clifford lift of a symplectic Pauli-label automorphism to the Steane Koszul complex.
+% SHARD-SUMMARY: Proves that transversal Hadamard gives an exact chain automorphism after ghost swapping.
+% SHARD-SUMMARY: Shows that transversal phase gives a chain isomorphism to a changed presentation and a homotopy equivalence back.
+% SHARD-KEYWORDS: Steane code, Clifford, symplectic automorphism, Koszul complex, homotopy equivalence
+
+\section{Steane Clifford Morphisms of the Koszul Supercharge}
+\label{sec:steane-clifford-koszul-morphisms}
+
+Here ``symplectic morphism'' means a Clifford operation: a unitary \(U\) whose
+conjugation action on Paulis induces a symplectic automorphism \(F_U\) of the
+binary label space. Gottesman's local source anchors are \path{Thesis.tex}:
+lines 2271--2305 for valid encoded Clifford operations preserving the
+stabilizer, lines 2307--2348 for the Hadamard, phase, and CNOT Pauli-label
+actions, and lines 2439--2445 for bitwise Hadamard and phase on the
+seven-qubit code.
+
+\subsection{General Clifford Lift}
+
+Let \(G=(\ell_1,\ldots,\ell_6)\) be the Steane generator list from
+Section~\ref{sec:steane-symplectic-molecular}, and let
+\[
+  Q_G=\sum_i\epsilon_iP_{\ell_i},
+  \qquad
+  P_{\ell_i}=\frac{I-W(\ell_i)}2 .
+\]
+If a Clifford \(U\) sends \(W(\ell)\) to \(W(F_U\ell)\), up to the stabilizer
+phase convention, then
+\[
+  U P_{\ell_i} U^\dagger=P_{F_U\ell_i}.
+\]
+Let \(G'=F_U(G)\), give \(G'\) ghosts \(\epsilon'_i\), and define
+\[
+  Q_{G'}=\sum_i\epsilon'_iP_{F_U\ell_i}.
+\]
+The map
+\[
+  \Phi_U=U\otimes\Lambda T,\qquad T(\epsilon_i)=\epsilon'_i,
+\]
+satisfies
+\[
+  \Phi_U Q_G=Q_{G'}\Phi_U.
+\]
+This is a chain isomorphism, hence it induces isomorphisms
+\[
+  H^q(Q_G)\cong H^q(Q_{G'}).
+\]
+If \(G'\) is just a permutation of \(G\), and \(T\) is the same permutation of
+ghosts, this is an automorphism of the same written operator \(Q_G\). If \(G'\)
+is a different independent basis of the same \(L\), it is instead an
+isomorphism to a different presentation of the same stabilizer constraints.
+
+\subsection{Transversal Hadamard}
+
+For bitwise Hadamard \(R^{\otimes7}\),
+\[
+  F_H(x,z)=(z,x).
+\]
+Therefore
+\[
+  (g_i,0)\mapsto(0,g_i),\qquad
+  (0,g_i)\mapsto(g_i,0).
+\]
+So
+\[
+  \ell_1\leftrightarrow\ell_4,\quad
+  \ell_2\leftrightarrow\ell_5,\quad
+  \ell_3\leftrightarrow\ell_6.
+\]
+With the ghost swap
+\[
+  \epsilon_1\leftrightarrow\epsilon_4,\quad
+  \epsilon_2\leftrightarrow\epsilon_5,\quad
+  \epsilon_3\leftrightarrow\epsilon_6,
+\]
+we get the exact chain automorphism
+\[
+  (R^{\otimes7}\otimes\Lambda T_H)Q_G
+  =
+  Q_G(R^{\otimes7}\otimes\Lambda T_H).
+\]
+On the logical symplectic quotient this sends
+\[
+  \overline X=(u,0)\mapsto(0,u)=\overline Z,
+  \qquad
+  \overline Z=(0,u)\mapsto(u,0)=\overline X.
+\]
+On the no-ghost code basis,
+\[
+  R^{\otimes7}|\overline0\rangle
+  =
+  \frac{|\overline0\rangle+|\overline1\rangle}{\sqrt2},
+  \qquad
+  R^{\otimes7}|\overline1\rangle
+  =
+  \frac{|\overline0\rangle-|\overline1\rangle}{\sqrt2}.
+\]
+Thus the induced map on \(H^0(Q_G)\) is the encoded Hadamard, and on
+\(H^q(Q_G)\cong\mathcal C\otimes\Lambda^qE\) it is encoded Hadamard tensored
+with the ghost swap.
+
+\subsection{Transversal Phase}
+
+For bitwise phase \(P^{\otimes7}\), ignoring Pauli phases in the binary label,
+\[
+  F_P(x,z)=(x,z+x).
+\]
+Hence
+\[
+  (g_i,0)\mapsto(g_i,g_i)=\ell_i+\ell_{i+3},
+  \qquad
+  (0,g_i)\mapsto(0,g_i)=\ell_{i+3}.
+\]
+These six images are an independent basis of the same \(L\), but they are not
+the original generator list and not a permutation of it. Therefore
+\[
+  P^{\otimes7}\otimes\Lambda T_P
+\]
+is a chain isomorphism
+\[
+  (\mathcal H\otimes\Lambda E,Q_G)
+  \cong
+  (\mathcal H\otimes\Lambda E',Q_{F_P(G)}),
+\]
+not literally an automorphism of the original written \(Q_G\).
+
+To compare \(Q_{F_P(G)}\) back with \(Q_G\), decompose into the same physical
+syndrome sectors. The zero-syndrome sector is the Steane code. Every nonzero
+syndrome sector is contractible, as in Section~\ref{sec:steane-supercharge-cohomology}.
+Both complexes therefore deformation retract to their zero-syndrome
+cohomology model
+\[
+  \mathcal C\otimes\Lambda E
+\]
+after choosing the corresponding ghost basis. This is the precise homotopy
+equivalence: it is presentation-dependent on ghosts, but identical on the
+physical code sector. On logical labels,
+\[
+  \overline X=(u,0)\mapsto(u,u)=\overline X+\overline Z,
+  \qquad
+  \overline Z=(0,u)\mapsto(0,u)=\overline Z.
+\]
+
+\subsection{Conclusion}
+
+For Steane, Clifford symmetry gives more than an abstract equivalence relation.
+It gives a chain isomorphism from the Koszul complex of one stabilizer
+presentation to the Koszul complex of the transformed presentation. When the
+Clifford permutes the chosen generators, as transversal Hadamard does here,
+this is an exact automorphism of \(Q_G\). When the Clifford changes the
+independent generator basis, as transversal phase does here, the complexes are
+homotopy equivalent through their common zero-syndrome deformation retract, but
+the full higher-ghost cohomology remains presentation-labelled.
+
+\subsection{Exact Validation}
+
+The producer \path{steane_clifford_koszul_morphisms.jl} writes the Steane
+Clifford/Koszul run bundle. It records the Hadamard generator permutation, the
+phase generator-basis change, the logical label actions, the 63 contractible
+nonzero syndrome sectors, and the cohomology dimensions listed in
+Section~\ref{sec:steane-supercharge-cohomology}.

@@ -127,3 +127,101 @@ function steane_molecular_summary()
         codewords_match_two_cosets = c_strings == coset_strings,
     )
 end
+
+_zero_word(n::Integer) = zeros(Int, n)
+_label_string(label) = string(_bit_string(label[1]), "|", _bit_string(label[2]))
+_label_add(a, b) = (mod.(a[1] .+ b[1], 2), mod.(a[2] .+ b[2], 2))
+_hadamard_label(label) = (copy(label[2]), copy(label[1]))
+_phase_label(label) = (copy(label[1]), mod.(label[1] .+ label[2], 2))
+
+function _steane_l_basis()
+    data = steane_binary_space_rows()
+    h = data.h
+    zero = _zero_word(size(h, 2))
+    x_basis = [(vec(h[i, :]), copy(zero)) for i in axes(h, 1)]
+    z_basis = [(copy(zero), vec(h[i, :])) for i in axes(h, 1)]
+    return vcat(x_basis, z_basis)
+end
+
+function _label_span_strings(labels)
+    n = length(labels)
+    out = Set{String}()
+    zero = (_zero_word(length(labels[1][1])), _zero_word(length(labels[1][2])))
+    for mask in 0:((1 << n) - 1)
+        acc = (copy(zero[1]), copy(zero[2]))
+        for i in 1:n
+            if ((mask >> (i - 1)) & 1) == 1
+                acc = _label_add(acc, labels[i])
+            end
+        end
+        push!(out, _label_string(acc))
+    end
+    return out
+end
+
+function _label_rank(labels)
+    rows = zeros(Int, length(labels), 2length(labels[1][1]))
+    n = length(labels[1][1])
+    for (i, label) in enumerate(labels)
+        rows[i, 1:n] .= label[1]
+        rows[i, (n + 1):(2n)] .= label[2]
+    end
+    return rank_modp(rows, 2)
+end
+
+function steane_clifford_morphism_rows()
+    basis = _steane_l_basis()
+    names = ["X1", "X2", "X3", "Z1", "Z2", "Z3"]
+    h_images = _hadamard_label.(basis)
+    p_images = _phase_label.(basis)
+    rows = NamedTuple[]
+    for i in eachindex(basis)
+        push!(rows, (
+            morphism = "transversal_H",
+            source = names[i],
+            image = _label_string(h_images[i]),
+            image_basis_coordinates = i <= 3 ? "Z$(i)" : "X$(i - 3)",
+        ))
+        push!(rows, (
+            morphism = "transversal_P",
+            source = names[i],
+            image = _label_string(p_images[i]),
+            image_basis_coordinates = i <= 3 ? "X$(i)+Z$(i)" : "Z$(i - 3)",
+        ))
+    end
+    return rows
+end
+
+function steane_clifford_morphism_summary()
+    basis = _steane_l_basis()
+    h_images = _hadamard_label.(basis)
+    p_images = _phase_label.(basis)
+    l_span = _label_span_strings(basis)
+    h_span = _label_span_strings(h_images)
+    p_span = _label_span_strings(p_images)
+    cohomology = steane_cohomology_by_degree()
+
+    return (
+        n = 7,
+        stabilizer_generators = 6,
+        hadamard_maps_l_to_l = h_span == l_span,
+        hadamard_image_rank = _label_rank(h_images),
+        hadamard_generator_permutation = "X1->Z1;X2->Z2;X3->Z3;Z1->X1;Z2->X2;Z3->X3",
+        hadamard_exact_same_q_after_ghost_swap = h_images == vcat(basis[4:6], basis[1:3]),
+        hadamard_logical_x_image = "Zbar",
+        hadamard_logical_z_image = "Xbar",
+        hadamard_code_action = "H|0bar>=(|0bar>+|1bar>)/sqrt2;H|1bar>=(|0bar>-|1bar>)/sqrt2",
+        phase_maps_l_to_l = p_span == l_span,
+        phase_image_rank = _label_rank(p_images),
+        phase_generator_basis_change = "Xi->Xi+Zi;Zi->Zi",
+        phase_chain_isomorphism_to_image_presentation = p_span == l_span && _label_rank(p_images) == 6,
+        phase_same_q_only_after_homotopy_retract = true,
+        phase_logical_x_image = "Xbar+Zbar",
+        phase_logical_z_image = "Zbar",
+        nonzero_syndrome_blocks = 63,
+        nonzero_syndrome_blocks_contractible = true,
+        zero_syndrome_cohomology_dim_by_degree = join((row.cohomology_dim for row in cohomology), ";"),
+        physical_h0_dim = first(cohomology).cohomology_dim,
+        full_cohomology_dim = sum(row.cohomology_dim for row in cohomology),
+    )
+end

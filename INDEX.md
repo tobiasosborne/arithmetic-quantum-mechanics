@@ -16,6 +16,7 @@ Generated data and figures will live under
 | `runs/2026-05-24-symplectic-css-bridge/` | Toric code / symplectic CSS bridge | Exact prime-field validation that oriented boundary maps produce an isotropic CSS stabilizer subspace. |
 | `runs/2026-05-24-css-supercharge-symplectic-dictionary/` | CSS codes / symplectic supercharge dictionary | Exact validation of the CSS isotropic-subspace to ghost-supercharge dictionary for representative CSS matrices. |
 | `runs/2026-05-24-steane-supercharge-molecular/` | Steane code / molecular supercharge | Exact validation of the sourced Steane CSS spaces, logical symplectic quotient, six-fermion supercharge, and cohomology dimensions. |
+| `runs/2026-05-24-steane-clifford-koszul-morphisms/` | Steane code / Clifford morphisms | Exact validation of transversal Hadamard and phase as Clifford/Koszul chain maps and homotopy equivalences. |
 
 ## Quick Start
 
@@ -38,6 +39,7 @@ producer.
 | `scripts/lattice_codes/symplectic_css_bridge_validation.jl` | Julia | `runs/2026-05-24-symplectic-css-bridge/` | `data/symplectic_css_bridge_summary.csv` | _none_ | `AQM-08-SYMPLECTIC-CSS-BRIDGE` |
 | `scripts/lattice_codes/css_supercharge_symplectic_dictionary.jl` | Julia | `runs/2026-05-24-css-supercharge-symplectic-dictionary/` | `data/css_supercharge_symplectic_dictionary.csv` | _none_ | `AQM-09-SYMPLECTIC-SUPERCHARGE-DICTIONARY` |
 | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Julia | `runs/2026-05-24-steane-supercharge-molecular/` | `data/steane_molecular_summary.csv`, `data/steane_molecular_vectors.csv`, `data/steane_cohomology_by_degree.csv` | _none_ | `AQM-10-STEANE-SYMPLECTIC-MOLECULAR`, `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY` |
+| `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | Julia | `runs/2026-05-24-steane-clifford-koszul-morphisms/` | `data/steane_clifford_koszul_summary.csv`, `data/steane_clifford_generator_maps.csv` | _none_ | `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS` |
 
 ## CSV Reverse Lookup
 
@@ -52,6 +54,8 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_summary.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | `steane_molecular_summary.csv` |
 | `runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_vectors.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | `steane_molecular_vectors.csv` |
 | `runs/2026-05-24-steane-supercharge-molecular/data/steane_cohomology_by_degree.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | `steane_cohomology_by_degree.csv` |
+| `runs/2026-05-24-steane-clifford-koszul-morphisms/data/steane_clifford_koszul_summary.csv` | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | `steane_clifford_koszul_summary.csv` |
+| `runs/2026-05-24-steane-clifford-koszul-morphisms/data/steane_clifford_generator_maps.csv` | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | `steane_clifford_generator_maps.csv` |
 
 ## Report Shards
 
@@ -69,6 +73,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-09-SYMPLECTIC-SUPERCHARGE-DICTIONARY` | `report/sections/09_symplectic_supercharge_dictionary.tex` | Symplectic Dictionary for CSS Supercharges |
 | `AQM-10-STEANE-SYMPLECTIC-MOLECULAR` | `report/sections/10_steane_symplectic_molecular.tex` | Steane Code Symplectic Data in Molecular Detail |
 | `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY` | `report/sections/11_steane_supercharge_cohomology.tex` | Steane Code Fermions, Supercharge, and Cohomology |
+| `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS` | `report/sections/12_steane_clifford_koszul_morphisms.tex` | Steane Clifford Morphisms of the Koszul Supercharge |
 
 ## Source Topics
 

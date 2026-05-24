@@ -14,6 +14,7 @@ export css_supercharge_dictionary_summary, steane_css_matrices
 export qutrit_css_toy_matrices
 export steane_molecular_summary, steane_binary_space_rows
 export steane_cohomology_by_degree
+export steane_clifford_morphism_summary, steane_clifford_morphism_rows
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")

@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Seven CSV outputs exist.
+Nine CSV outputs exist.
 
 ## Common Rules
 
@@ -24,6 +24,8 @@ Seven CSV outputs exist.
 | `runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_summary.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Active |
 | `runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_vectors.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Active |
 | `runs/2026-05-24-steane-supercharge-molecular/data/steane_cohomology_by_degree.csv` | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Active |
+| `runs/2026-05-24-steane-clifford-koszul-morphisms/data/steane_clifford_koszul_summary.csv` | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | Active |
+| `runs/2026-05-24-steane-clifford-koszul-morphisms/data/steane_clifford_generator_maps.csv` | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -209,3 +211,50 @@ ghost degree.
 | degree | int | Ghost degree `q`. |
 | ghost_binomial | int | Exterior-algebra dimension `binomial(6,q)`. |
 | cohomology_dim | int | Dimension `2 * binomial(6,q)` of `H^q(Q)`. |
+
+## steane_clifford_koszul_summary.csv
+
+Produced by: `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl`
+Run bundle: `runs/2026-05-24-steane-clifford-koszul-morphisms/`
+Report shard: `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS`
+Sentinel: row 1 begins with `#` and states that this is an exact
+Clifford/Koszul morphism certificate for transversal `H` and `P`.
+
+| column | type | description |
+|---|---|---|
+| n | int | Number of physical qubits. |
+| stabilizer_generators | int | Number of chosen Steane stabilizer generators. |
+| hadamard_maps_l_to_l | bool | Whether transversal Hadamard preserves the stabilizer label subspace. |
+| hadamard_image_rank | int | Rank of the Hadamard image generator list. |
+| hadamard_generator_permutation | string | Generator permutation induced by transversal Hadamard. |
+| hadamard_exact_same_q_after_ghost_swap | bool | Whether Hadamard is an automorphism of the same `Q` after ghost swapping. |
+| hadamard_logical_x_image | string | Image of the chosen logical `Xbar` label. |
+| hadamard_logical_z_image | string | Image of the chosen logical `Zbar` label. |
+| hadamard_code_action | string | Exact action on `|0bar>,|1bar>`. |
+| phase_maps_l_to_l | bool | Whether transversal phase preserves the stabilizer label subspace. |
+| phase_image_rank | int | Rank of the phase image generator list. |
+| phase_generator_basis_change | string | Generator basis change induced by transversal phase. |
+| phase_chain_isomorphism_to_image_presentation | bool | Whether phase gives a chain isomorphism to its image presentation. |
+| phase_same_q_only_after_homotopy_retract | bool | Whether comparison to the original written `Q` uses the common syndrome-sector retract. |
+| phase_logical_x_image | string | Image of the chosen logical `Xbar` label. |
+| phase_logical_z_image | string | Image of the chosen logical `Zbar` label. |
+| nonzero_syndrome_blocks | int | Number of nonzero syndrome sectors. |
+| nonzero_syndrome_blocks_contractible | bool | Whether all nonzero syndrome sectors are contractible Koszul blocks. |
+| zero_syndrome_cohomology_dim_by_degree | string | Semicolon-separated dimensions of zero-syndrome cohomology by ghost degree. |
+| physical_h0_dim | int | Dimension of physical no-ghost cohomology. |
+| full_cohomology_dim | int | Dimension of full ghost-degree cohomology. |
+
+## steane_clifford_generator_maps.csv
+
+Produced by: `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl`
+Run bundle: `runs/2026-05-24-steane-clifford-koszul-morphisms/`
+Report shard: `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS`
+Sentinel: row 1 begins with `#` and states that the rows are Clifford images
+of the six Steane stabilizer labels.
+
+| column | type | description |
+|---|---|---|
+| morphism | string | Clifford morphism name: `transversal_H` or `transversal_P`. |
+| source | string | Source stabilizer generator label. |
+| image | string | Image Pauli label as `x|z` binary strings. |
+| image_basis_coordinates | string | Coordinates of the image in the original Steane generator basis. |
