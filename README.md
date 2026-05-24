@@ -5,8 +5,8 @@ functions, arithmetic quantum mechanics, supersymmetric quantum mechanics, and
 Kitaev/Levin-Wen/toric-code style topological lattice models.
 
 Status: active research notebook. The repository contains the report scaffold,
-provenance rules, run-bundle discipline, tool runner, and checked toric/CSS/
-Steane stabilizer-supercharge results.
+provenance rules, run-bundle discipline, tool runner, checked toric/CSS/Steane
+stabilizer-supercharge results, and a first arithmetic-quantum-field proposal.
 
 ## Layout
 

@@ -1,0 +1,252 @@
+% SHARD-ID: AQM-14-ARITHMETIC-QUANTUM-FIELDS
+% SHARD-TITLE: Arithmetic Quantum Fields
+% SHARD-SUMMARY: Defines finite arithmetic quantum fields as Weyl displacements of finite symplectic function spaces.
+% SHARD-SUMMARY: Proves the pointwise vector-space and symplectic-form lemmas, including the radical caveat.
+% SHARD-SUMMARY: Computes exact \(F_3\) examples for finite sets, vector spaces, and arithmetic varieties.
+% SHARD-KEYWORDS: arithmetic quantum field, finite field, Weyl-Heisenberg, function space, symplectic form, finite variety
+
+\section{Arithmetic Quantum Fields}
+\label{sec:arithmetic-quantum-fields}
+
+\subsection{Status and Source Anchors}
+
+This section introduces a proposal.  The finite-field Weyl facts are
+source-local: Ashikhmin--Knill define \(p^m\)-ary shift/phase operators and
+their commutator in \path{n9.tex}, lines 249--313, and
+Bombin--Martin-Delgado record the qudit Pauli symplectic commutator in
+\path{HomologicalErrorCorrection6.tex}, lines 1206--1259.  The new content
+below is the checked construction of field label spaces from finite function
+spaces.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&X\text{ is a finite physical space.}\\
+D2&:&(V,\omega_V)\text{ is a finite symplectic }F\text{-vector space.}\\
+D3&:&E\leq \operatorname{Map}(X,V)\text{ is a chosen }F\text{-linear field space.}\\
+D4&:&\Omega_E(\phi,\psi)=\sum_{x\in X}w_x\omega_V(\phi(x),\psi(x)).\\
+L1&:&\operatorname{Map}(X,V)\text{ is an }F\text{-vector space pointwise.}\\
+L2&:&\Omega_E\text{ is alternating and bilinear.}\\
+L3&:&\Omega\text{ is nondegenerate on all maps if }\omega_V\text{ is and }w_x\ne0.\\
+L4&:&E\text{ is symplectic iff }\operatorname{rad}(E)=0.\\
+L5&:&E_{\mathrm{red}}=E/\operatorname{rad}(E)\text{ is symplectic.}\\
+L6&:&W:E_{\mathrm{red}}\to U(\mathcal H)\text{ is a projective Weyl representation.}\\
+T1&:&\mathcal A_{X,E}=\operatorname{span}_{\mathbb C}\{W(e)\}\text{ is the field-observable algebra.}
+\end{array}
+\]
+The numbering is used only to check that no later construction is invoked
+before its inputs are defined.
+
+\subsection{Definitions D1--D4}
+
+Let \(F=\mathbb F_q\), \(q=p^m\).  A finite physical space is first only a
+finite set \(X\).  If \(X\) has additional structure, for example an
+\(F\)-vector-space or variety structure, then \(\operatorname{Hom}(X,V)\)
+means a specified class of structure-preserving maps.  Without that extra
+choice the neutral object is
+\[
+  \operatorname{Map}(X,V)=\{\phi:X\to V\}.
+\]
+The proposed arithmetic field label space is not automatically all maps.  It
+is a chosen \(F\)-linear subspace
+\[
+  E\leq \operatorname{Map}(X,V).
+\]
+Examples include all functions, linear maps, affine maps, and polynomial
+functions up to a degree bound, all interpreted after evaluation on the finite
+point set.
+
+Fix nonzero weights \(w_x\in F^\times\).  In this shard and in the validation
+run all weights are \(w_x=1\).  Define
+\[
+  \Omega_E(\phi,\psi)
+  =
+  \sum_{x\in X}w_x\,\omega_V(\phi(x),\psi(x)).
+\]
+
+\subsection{Pointwise Linear Algebra L1--L5}
+
+\paragraph{Lemma \(L1\).}
+\(\operatorname{Map}(X,V)\) is an \(F\)-vector space under pointwise operations:
+\[
+  (a\phi+b\psi)(x)=a\phi(x)+b\psi(x).
+\]
+\emph{Proof.}
+The right side lies in \(V\), so it defines a map \(X\to V\).  Associativity,
+commutativity of addition, distributivity, scalar identity, and additive
+inverses hold after evaluating at each \(x\), where they are exactly the vector
+space axioms in \(V\).  Thus the function set is a vector space.  Any subset
+closed under these operations is an \(F\)-linear field subspace \(E\).
+
+\paragraph{Lemma \(L2\).}
+\(\Omega_E\) is \(F\)-bilinear and alternating.
+\emph{Proof.}
+For \(a,b\in F\),
+\[
+\begin{aligned}
+\Omega_E(a\phi+b\psi,\eta)
+&=\sum_xw_x\omega_V(a\phi(x)+b\psi(x),\eta(x))\\
+&=a\Omega_E(\phi,\eta)+b\Omega_E(\psi,\eta).
+\end{aligned}
+\]
+Linearity in the second argument is identical.  Also
+\[
+  \Omega_E(\phi,\phi)=\sum_xw_x\omega_V(\phi(x),\phi(x))=0
+\]
+because \(\omega_V\) is alternating.  Hence \(\Omega_E\) is an alternating
+bilinear form.
+
+\paragraph{Lemma \(L3\).}
+If \(E=\operatorname{Map}(X,V)\), \(\omega_V\) is nondegenerate, and every
+\(w_x\ne0\), then \(\Omega_E\) is nondegenerate.
+\emph{Proof.}
+Let \(\phi\ne0\).  Choose \(x_0\) with \(\phi(x_0)\ne0\).  Since
+\(\omega_V\) is nondegenerate, choose \(v\in V\) with
+\(\omega_V(\phi(x_0),v)\ne0\).  Define \(\psi(x_0)=w_{x_0}^{-1}v\) and
+\(\psi(x)=0\) for \(x\ne x_0\).  Then
+\[
+  \Omega_E(\phi,\psi)=\omega_V(\phi(x_0),v)\ne0.
+\]
+Thus no nonzero \(\phi\) is orthogonal to all maps.
+
+\paragraph{Lemma \(L4\).}
+For a subspace \(E\), define
+\[
+  \operatorname{rad}(E)=\{\phi\in E:\Omega_E(\phi,\psi)=0
+  \text{ for all }\psi\in E\}.
+\]
+Then \((E,\Omega_E)\) is symplectic iff \(\operatorname{rad}(E)=0\).
+\emph{Proof.}
+By definition, nondegeneracy means the only vector pairing to zero with every
+element of \(E\) is \(0\).  That set is exactly \(\operatorname{rad}(E)\).
+Together with Lemma \(L2\), this is precisely the definition of a symplectic
+vector space.
+
+\paragraph{Lemma \(L5\).}
+The quotient \(E_{\mathrm{red}}=E/\operatorname{rad}(E)\) is symplectic.
+\emph{Proof.}
+If \(r\in\operatorname{rad}(E)\), then
+\(\Omega_E(\phi+r,\psi)=\Omega_E(\phi,\psi)\), so the form descends to the
+quotient.  If \([\phi]\) pairs to zero with every \([\psi]\), then \(\phi\)
+lies in the radical, so \([\phi]=0\).  Hence the descended form is
+nondegenerate.
+
+\subsection{Weyl-Heisenberg Field Displacements L6}
+
+Choose a symplectic basis of \(E_{\mathrm{red}}\), so
+\[
+  E_{\mathrm{red}}\cong F^n\oplus F^n,\qquad e=(q,p).
+\]
+Let \(\chi(t)=\exp(2\pi i\,\operatorname{Tr}_{F/\mathbb F_p}(t)/p)\).  On
+\(\mathcal H=\mathbb C^{F^n}\), set
+\[
+  T_q|a\rangle=|a+q\rangle,\qquad
+  R_p|a\rangle=\chi(p\cdot a)|a\rangle,\qquad
+  W(q,p)=T_qR_p .
+\]
+Then
+\[
+  W(q,p)W(q',p')
+  =
+  \chi(p\cdot q')\,W(q+q',p+p')
+\]
+and therefore
+\[
+  W(e)W(f)=\chi(\Omega(e,f))W(f)W(e).
+\]
+The operators \(W(e)\) are unitary because \(T_q\) permutes the basis and
+\(R_p\) is diagonal with unit-modulus entries.  The multiplication law shows
+that \(e\mapsto W(e)\) is a projective unitary representation of the additive
+group of \(E_{\mathrm{red}}\), with cocycle
+\(c(e,f)=\chi(p\cdot q')\).
+
+\subsection{Definition: Arithmetic Quantum Field}
+
+An arithmetic quantum field datum is
+\[
+  (X,V,E,\Omega_E,W_E)
+\]
+where \(X\) is finite, \(V\) is finite symplectic over \(F_q\), \(E\leq
+\operatorname{Map}(X,V)\) is a chosen finite field-label space, and \(W_E\) is
+the Weyl projective representation of \(E_{\mathrm{red}}\).  The field
+displacement operators are
+\[
+  \mathsf A_{X,E}=\{W_E(e):e\in E_{\mathrm{red}}\}.
+\]
+The observable algebra of this finite arithmetic quantum field is
+\[
+  \mathcal A_{X,E}
+  =
+  \operatorname{span}_{\mathbb C}\mathsf A_{X,E}
+  \subseteq \operatorname{End}(\mathcal H).
+\]
+When \(\dim_F E_{\mathrm{red}}=2n\), the local Weyl source says these
+operators form an operator basis, so \(\mathcal A_{X,E}\cong M_{q^n}(\mathbb C)\).
+
+\subsection{Molecular F3 Examples}
+
+For the run we take \(V=F_3^2\) with
+\(\omega((q,p),(q',p'))=pq'-qp'\).  A scalar function space
+\(\mathcal U\leq\operatorname{Map}(X,F_3)\) gives
+\[
+  E=\mathcal U q\oplus\mathcal U p,\qquad
+  B(f,g)=\sum_{x\in X}f(x)g(x),
+\]
+\[
+  \Omega((q,p),(q',p'))=B(p,q')-B(q,p').
+\]
+If \(m=\dim\mathcal U\) and \(r=\operatorname{rank}B\), then
+\[
+  \dim E=2m,\quad \operatorname{rank}\Omega=2r,\quad
+  \dim\operatorname{rad}(E)=2(m-r).
+\]
+
+\[
+\begin{array}{l|c|c|c|c|c}
+\text{example} & |X| & \dim\mathcal U & r & \dim\operatorname{rad} & |E_{\rm red}|\\
+\hline
+\text{two points, all maps} & 2&2&2&0&81\\
+\text{three points, all maps} & 3&3&3&0&729\\
+F_3,\ \langle t\rangle & 3&1&1&0&9\\
+F_3,\ \langle1,t\rangle & 3&2&1&2&9\\
+F_3,\ \langle1,t,t^2\rangle & 3&3&3&0&729\\
+F_3^2,\ \langle x,y\rangle & 9&2&0&4&1\\
+F_3^2,\ \text{all maps} & 9&9&9&0&387420489\\
+y=x^2,\ \langle1\rangle & 3&1&0&2&1\\
+y=x^2,\ \langle x,y\rangle & 3&2&2&0&81\\
+y=x^2,\ \langle1,x,y\rangle & 3&3&3&0&729\\
+G_m(F_3),\ \langle1,t\rangle & 2&2&2&0&81
+\end{array}
+\]
+
+The negative controls are meaningful.  For affine fields on \(F_3\), the
+constant function has zero norm because \(1+1+1=0\) in \(F_3\), so constants
+lie in the radical.  For \(\langle x,y\rangle\) on \(F_3^2\), every sum
+\(\sum x^2\), \(\sum xy\), and \(\sum y^2\) vanishes, so the entire field
+space is radical and the reduced Weyl label group is trivial.
+
+For the parabola \(X=\{(0,0),(1,1),(2,1)\}\), the checked basis values are
+\[
+  1=(1,1,1),\qquad x=(0,1,2),\qquad y=(0,1,1),
+\]
+with Gram matrix
+\[
+  \begin{pmatrix}
+  0&0&2\\
+  0&2&0\\
+  2&0&2
+  \end{pmatrix},
+\]
+which has rank \(3\).  Thus degree-one ambient coordinate functions already
+give the full nondegenerate three-dimensional scalar function algebra on these
+three points.
+
+\subsection{Exact Validation}
+
+The producer is \path{arithmetic_quantum_fields.jl} under
+\path{scripts/bridges/}.  It writes the 2026-05-24 arithmetic-quantum-fields
+run bundle.  The summary CSV records point counts, scalar Gram ranks,
+symplectic ranks, radicals, reduced Weyl label counts, Hilbert dimensions, and
+observable-algebra dimensions.  The basis CSV records every scalar basis vector
+and every scalar Gram row used in the examples above.

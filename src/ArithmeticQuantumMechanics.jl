@@ -17,11 +17,14 @@ export steane_cohomology_by_degree
 export steane_clifford_morphism_summary, steane_clifford_morphism_rows
 export steane_all_clifford_generator_summary, steane_all_clifford_generator_rows
 export steane_ghost_gaussian_elementary_rows
+export arithmetic_quantum_field_examples, arithmetic_quantum_field_summary_rows
+export arithmetic_quantum_field_basis_rows
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")
 include("ArithmeticQuantumMechanics/SteaneSupercharge.jl")
 include("ArithmeticQuantumMechanics/SteaneCliffordGroup.jl")
+include("ArithmeticQuantumMechanics/ArithmeticQuantumFields.jl")
 
 """
     project_root()

@@ -65,6 +65,13 @@ const ALL_ENTRIES = [
         tool = :julia,
         fast = true,
     ),
+    (
+        topic = "bridges",
+        label = "arithmetic_quantum_fields",
+        path = "bridges/arithmetic_quantum_fields.jl",
+        tool = :julia,
+        fast = true,
+    ),
 ]
 
 struct RunResult

@@ -18,6 +18,7 @@ Generated data and figures will live under
 | `runs/2026-05-24-steane-supercharge-molecular/` | Steane code / molecular supercharge | Exact validation of the sourced Steane CSS spaces, logical symplectic quotient, six-fermion supercharge, and cohomology dimensions. |
 | `runs/2026-05-24-steane-clifford-koszul-morphisms/` | Steane code / Clifford morphisms | Exact validation of transversal Hadamard and phase as Clifford/Koszul chain maps and homotopy equivalences. |
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/` | Steane code / Clifford group ghost Gaussians | Exact generator-level validation of arbitrary Clifford covariance and elementary GL6 ghost-Gaussian presentation moves. |
+| `runs/2026-05-24-arithmetic-quantum-fields/` | Arithmetic quantum fields / finite function spaces | Exact `F_3` validation of pointwise symplectic function spaces, radicals, reduced Weyl labels, and observable algebra dimensions. |
 
 ## Quick Start
 
@@ -42,6 +43,7 @@ producer.
 | `scripts/lattice_codes/steane_supercharge_molecular.jl` | Julia | `runs/2026-05-24-steane-supercharge-molecular/` | `data/steane_molecular_summary.csv`, `data/steane_molecular_vectors.csv`, `data/steane_cohomology_by_degree.csv` | _none_ | `AQM-10-STEANE-SYMPLECTIC-MOLECULAR`, `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY` |
 | `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl` | Julia | `runs/2026-05-24-steane-clifford-koszul-morphisms/` | `data/steane_clifford_koszul_summary.csv`, `data/steane_clifford_generator_maps.csv` | _none_ | `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS` |
 | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Julia | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/` | `data/steane_all_clifford_generator_summary.csv`, `data/steane_all_clifford_generator_images.csv`, `data/steane_ghost_gaussian_elementaries.csv` | _none_ | `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM` |
+| `scripts/bridges/arithmetic_quantum_fields.jl` | Julia | `runs/2026-05-24-arithmetic-quantum-fields/` | `data/arithmetic_quantum_field_examples.csv`, `data/arithmetic_quantum_field_bases.csv` | _none_ | `AQM-14-ARITHMETIC-QUANTUM-FIELDS` |
 
 ## CSV Reverse Lookup
 
@@ -61,6 +63,8 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_all_clifford_generator_summary.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | `steane_all_clifford_generator_summary.csv` |
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_all_clifford_generator_images.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | `steane_all_clifford_generator_images.csv` |
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_ghost_gaussian_elementaries.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | `steane_ghost_gaussian_elementaries.csv` |
+| `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | `arithmetic_quantum_field_examples.csv` |
+| `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_bases.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | `arithmetic_quantum_field_bases.csv` |
 
 ## Report Shards
 
@@ -80,6 +84,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-11-STEANE-SUPERCHARGE-COHOMOLOGY` | `report/sections/11_steane_supercharge_cohomology.tex` | Steane Code Fermions, Supercharge, and Cohomology |
 | `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS` | `report/sections/12_steane_clifford_koszul_morphisms.tex` | Steane Clifford Morphisms of the Koszul Supercharge |
 | `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM` | `report/sections/13_clifford_group_ghost_gaussian_theorem.tex` | Clifford Group Ghost-Gaussian Theorem |
+| `AQM-14-ARITHMETIC-QUANTUM-FIELDS` | `report/sections/14_arithmetic_quantum_fields.tex` | Arithmetic Quantum Fields |
 
 ## Source Topics
 

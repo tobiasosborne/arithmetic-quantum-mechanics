@@ -24,7 +24,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/02_lab_log.tex`
 - Title: Lab Log
 - Summary: Maintains a chronological record of infrastructure changes and sourced research steps.
-- Summary: Later entries record sourced toric/CSS/Steane stabilizer-supercharge results.
+- Summary: Later entries record sourced toric/CSS/Steane and arithmetic-field results.
 - Keywords: lab log, session log, chronology, handoff
 
 ## `AQM-03-REPRO-MAP`
@@ -123,3 +123,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves that stabilizer presentation changes lift to number-preserving fermionic Gaussian ghost operations.
 - Summary: Applies the theorem to all standard Clifford generators on the Steane stabilizer presentation.
 - Keywords: Clifford group, Pauli group, signed stabilizers, ghost Gaussian, Koszul complex, Steane code
+
+## `AQM-14-ARITHMETIC-QUANTUM-FIELDS`
+
+- Source: `report/sections/14_arithmetic_quantum_fields.tex`
+- Title: Arithmetic Quantum Fields
+- Summary: Defines finite arithmetic quantum fields as Weyl displacements of finite symplectic function spaces.
+- Summary: Proves the pointwise vector-space and symplectic-form lemmas, including the radical caveat.
+- Summary: Computes exact \(F_3\) examples for finite sets, vector spaces, and arithmetic varieties.
+- Keywords: arithmetic quantum field, finite field, Weyl-Heisenberg, function space, symplectic form, finite variety

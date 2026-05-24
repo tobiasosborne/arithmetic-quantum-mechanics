@@ -69,6 +69,11 @@ the ghost-extended local-check supercharge formulation of the toric code in
   stabilizer presentation changes lift to number-preserving ghost Gaussians;
   the Steane validation checks all 56 H/P/CNOT Clifford generators and the 45
   elementary GL6 ghost moves.
+- Added `AQM-14-ARITHMETIC-QUANTUM-FIELDS`: finite arithmetic quantum fields
+  are proposed as Weyl-Heisenberg displacement systems for reduced pointwise
+  symplectic function spaces `E <= Map(X,V)`. The validation run gives exact
+  `F_3` examples for finite sets, vector spaces, and simple arithmetic
+  varieties.
 
 ## Next Useful Steps
 

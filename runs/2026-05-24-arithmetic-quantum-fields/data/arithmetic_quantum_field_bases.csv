@@ -1,0 +1,62 @@
+# Basis value rows and scalar Gram rows for the exact F3 arithmetic-field examples.
+example,row_kind,label,values
+finite_two_points_all_maps,basis_values,delta_a,1 0
+finite_two_points_all_maps,basis_values,delta_b,0 1
+finite_two_points_all_maps,scalar_gram_row,delta_a,1 0
+finite_two_points_all_maps,scalar_gram_row,delta_b,0 1
+finite_set_3_full,basis_values,delta_a,1 0 0
+finite_set_3_full,basis_values,delta_b,0 1 0
+finite_set_3_full,basis_values,delta_c,0 0 1
+finite_set_3_full,scalar_gram_row,delta_a,1 0 0
+finite_set_3_full,scalar_gram_row,delta_b,0 1 0
+finite_set_3_full,scalar_gram_row,delta_c,0 0 1
+vector_space_F3_linear,basis_values,t,0 1 2
+vector_space_F3_linear,scalar_gram_row,t,2
+vector_space_F3_affine,basis_values,1,1 1 1
+vector_space_F3_affine,basis_values,t,0 1 2
+vector_space_F3_affine,scalar_gram_row,1,0 0
+vector_space_F3_affine,scalar_gram_row,t,0 2
+vector_space_F3_poly_deg_le_2,basis_values,1,1 1 1
+vector_space_F3_poly_deg_le_2,basis_values,t,0 1 2
+vector_space_F3_poly_deg_le_2,basis_values,t^2,0 1 1
+vector_space_F3_poly_deg_le_2,scalar_gram_row,1,0 0 2
+vector_space_F3_poly_deg_le_2,scalar_gram_row,t,0 2 0
+vector_space_F3_poly_deg_le_2,scalar_gram_row,t^2,2 0 2
+affine_plane_F3_linear,basis_values,x,0 0 0 1 1 1 2 2 2
+affine_plane_F3_linear,basis_values,y,0 1 2 0 1 2 0 1 2
+affine_plane_F3_linear,scalar_gram_row,x,0 0
+affine_plane_F3_linear,scalar_gram_row,y,0 0
+affine_plane_F3_all_maps,basis_values,d00,1 0 0 0 0 0 0 0 0
+affine_plane_F3_all_maps,basis_values,d01,0 1 0 0 0 0 0 0 0
+affine_plane_F3_all_maps,basis_values,d02,0 0 1 0 0 0 0 0 0
+affine_plane_F3_all_maps,basis_values,d10,0 0 0 1 0 0 0 0 0
+affine_plane_F3_all_maps,basis_values,d11,0 0 0 0 1 0 0 0 0
+affine_plane_F3_all_maps,basis_values,d12,0 0 0 0 0 1 0 0 0
+affine_plane_F3_all_maps,basis_values,d20,0 0 0 0 0 0 1 0 0
+affine_plane_F3_all_maps,basis_values,d21,0 0 0 0 0 0 0 1 0
+affine_plane_F3_all_maps,basis_values,d22,0 0 0 0 0 0 0 0 1
+affine_plane_F3_all_maps,scalar_gram_row,d00,1 0 0 0 0 0 0 0 0
+affine_plane_F3_all_maps,scalar_gram_row,d01,0 1 0 0 0 0 0 0 0
+affine_plane_F3_all_maps,scalar_gram_row,d02,0 0 1 0 0 0 0 0 0
+affine_plane_F3_all_maps,scalar_gram_row,d10,0 0 0 1 0 0 0 0 0
+affine_plane_F3_all_maps,scalar_gram_row,d11,0 0 0 0 1 0 0 0 0
+affine_plane_F3_all_maps,scalar_gram_row,d12,0 0 0 0 0 1 0 0 0
+affine_plane_F3_all_maps,scalar_gram_row,d20,0 0 0 0 0 0 1 0 0
+affine_plane_F3_all_maps,scalar_gram_row,d21,0 0 0 0 0 0 0 1 0
+affine_plane_F3_all_maps,scalar_gram_row,d22,0 0 0 0 0 0 0 0 1
+parabola_F3_constants,basis_values,1,1 1 1
+parabola_F3_constants,scalar_gram_row,1,0
+parabola_F3_homogeneous_linear,basis_values,x,0 1 2
+parabola_F3_homogeneous_linear,basis_values,y,0 1 1
+parabola_F3_homogeneous_linear,scalar_gram_row,x,2 0
+parabola_F3_homogeneous_linear,scalar_gram_row,y,0 2
+parabola_F3_degree_le_1,basis_values,1,1 1 1
+parabola_F3_degree_le_1,basis_values,x,0 1 2
+parabola_F3_degree_le_1,basis_values,y,0 1 1
+parabola_F3_degree_le_1,scalar_gram_row,1,0 0 2
+parabola_F3_degree_le_1,scalar_gram_row,x,0 2 0
+parabola_F3_degree_le_1,scalar_gram_row,y,2 0 2
+torus_Gm_F3_laurent_0_1,basis_values,1,1 1
+torus_Gm_F3_laurent_0_1,basis_values,t,1 2
+torus_Gm_F3_laurent_0_1,scalar_gram_row,1,2 0
+torus_Gm_F3_laurent_0_1,scalar_gram_row,t,0 2

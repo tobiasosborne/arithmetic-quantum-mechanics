@@ -380,3 +380,34 @@ degree is preserved. It is not a scalar `GL_r(F_2)` operation on the full
 physical Hilbert space, because the coefficient `S_a` is an operator. On the
 zero-syndrome code sector all `S_i=+1`, so the same shear reduces to the
 ordinary exterior linear map `c_b^dagger -> c_b^dagger + c_a^dagger`.
+
+## (q) Arithmetic Quantum Field Convention
+
+For the finite-field arithmetic quantum field construction, `X` is a finite
+physical point set and `V` is a finite symplectic vector space over
+`F_q`. Without extra structure on `X`, the ambient field space is written
+`Map(X,V)`, not `Hom(X,V)`. The notation `Hom(X,V)` is reserved for a
+specified structure-preserving class of maps.
+
+An arithmetic field label space is a chosen `F_q`-linear subspace
+`E <= Map(X,V)`. The pointwise symplectic form uses weights `w_x`; the current
+run fixes all weights to `1`:
+
+```text
+Omega(phi,psi) = sum_{x in X} w_x * omega_V(phi(x), psi(x)).
+```
+
+The construction is symplectic only after checking the radical
+
+```text
+rad(E) = {phi in E : Omega(phi,psi)=0 for all psi in E}.
+```
+
+If `rad(E)=0`, use `E` as the Weyl label space. If `rad(E) != 0`, the honest
+Weyl label space is the reduced symplectic quotient `E_red = E/rad(E)`.
+
+In the exact `F_3` examples, the internal space is `V=F_3^2` with
+`omega((q,p),(q',p')) = p*q' - q*p'`. A scalar function space
+`U <= Map(X,F_3)` gives `E = U q + U p`; the scalar pairing is
+`B(f,g)=sum_x f(x)g(x)`, and the field form is
+`Omega((q,p),(q',p'))=B(p,q')-B(q,p')`.

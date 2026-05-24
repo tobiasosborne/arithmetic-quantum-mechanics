@@ -211,3 +211,59 @@ end
                      row.projector_identity == "P(S1*S2)=P(S1)+S1*P(S2)",
               ghosts)
 end
+
+@testset "Arithmetic quantum field examples" begin
+    rows = arithmetic_quantum_field_summary_rows()
+    by_name = Dict(row.example => row for row in rows)
+    @test length(rows) == 11
+
+    finite = by_name["finite_set_3_full"]
+    @test finite.scalar_basis_dim == 3
+    @test finite.scalar_pairing_rank == 3
+    @test finite.field_phase_dim == 6
+    @test finite.radical_dim == 0
+    @test finite.reduced_weyl_labels_exact == "729"
+    @test finite.hilbert_dim_exact == "27"
+    @test finite.observable_basis_dim_exact == "729"
+    @test finite.nondegenerate
+
+    linear = by_name["vector_space_F3_linear"]
+    @test linear.scalar_basis_dim == 1
+    @test linear.scalar_pairing_rank == 1
+    @test linear.reduced_weyl_labels_exact == "9"
+    @test linear.hilbert_dim_exact == "3"
+
+    affine = by_name["vector_space_F3_affine"]
+    @test affine.scalar_basis_dim == 2
+    @test affine.scalar_pairing_rank == 1
+    @test affine.field_phase_dim == 4
+    @test affine.radical_dim == 2
+    @test affine.radical_labels_exact == "9"
+    @test !affine.nondegenerate
+
+    plane = by_name["affine_plane_F3_linear"]
+    @test plane.scalar_pairing_rank == 0
+    @test plane.symplectic_rank == 0
+    @test plane.radical_dim == 4
+    @test plane.reduced_weyl_labels_exact == "1"
+    @test !plane.nondegenerate
+
+    parabola = by_name["parabola_F3_degree_le_1"]
+    @test parabola.scalar_basis_dim == 3
+    @test parabola.scalar_pairing_rank == 3
+    @test parabola.field_phase_dim == 6
+    @test parabola.reduced_weyl_labels_exact == "729"
+    @test parabola.nondegenerate
+
+    basis_rows = arithmetic_quantum_field_basis_rows()
+    @test any(row -> row.example == "parabola_F3_degree_le_1" &&
+                     row.row_kind == "basis_values" &&
+                     row.label == "y" &&
+                     row.values == "0 1 1",
+              basis_rows)
+    @test any(row -> row.example == "vector_space_F3_affine" &&
+                     row.row_kind == "scalar_gram_row" &&
+                     row.label == "1" &&
+                     row.values == "0 0",
+              basis_rows)
+end

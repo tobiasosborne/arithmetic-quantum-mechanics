@@ -60,6 +60,12 @@ signed image of every Steane stabilizer generator under the 56 standard
 H/P/CNOT Clifford generators, and checks the 45 elementary GL6 presentation
 moves that lift to number-preserving fermionic Gaussian ghost operations.
 
+The arithmetic quantum field run is
+`runs/2026-05-24-arithmetic-quantum-fields/`. It validates exact `F_3`
+finite-function-space examples, including full fields on finite sets, linear
+and polynomial fields on vector spaces, and coordinate-function fields on the
+parabola `y=x^2`.
+
 ## Commands
 
 ```bash

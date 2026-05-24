@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Twelve CSV outputs exist.
+Fourteen CSV outputs exist.
 
 ## Common Rules
 
@@ -29,6 +29,8 @@ Twelve CSV outputs exist.
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_all_clifford_generator_summary.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Active |
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_all_clifford_generator_images.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Active |
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/data/steane_ghost_gaussian_elementaries.csv` | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Active |
+| `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | Active |
+| `runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_bases.csv` | `scripts/bridges/arithmetic_quantum_fields.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -334,3 +336,46 @@ presentation moves and their ghost-Gaussian lifts.
 | checked_syndromes | int | Number of syndrome sectors checked for this row. |
 | identity_holds | bool | Whether the projector identity holds. |
 | zero_syndrome_map | string | Simplified exterior ghost map on the code sector. |
+
+## arithmetic_quantum_field_examples.csv
+
+Produced by: `scripts/bridges/arithmetic_quantum_fields.jl`
+Run bundle: `runs/2026-05-24-arithmetic-quantum-fields/`
+Report shard: `AQM-14-ARITHMETIC-QUANTUM-FIELDS`
+Sentinel: row 1 begins with `#` and states that the rows are exact `F_3`
+finite-function-space symplectic certificates; no Hilbert matrices are built.
+
+| column | type | description |
+|---|---|---|
+| example | string | Stable example slug. |
+| p | int | Prime field characteristic, here `3`. |
+| physical_space | string | Description of the finite physical point set. |
+| field_space | string | Description of the chosen scalar function space extended to `F_3^2`. |
+| point_count | int | Number of physical points. |
+| scalar_basis_dim | int | Dimension of the scalar function space `U`. |
+| scalar_pairing_rank | int | Rank of `B(f,g)=sum_x f(x)g(x)` over `F_3`. |
+| field_phase_dim | int | Dimension of `E=U q + U p`. |
+| symplectic_rank | int | Rank of the pointwise symplectic form on `E`. |
+| radical_dim | int | Dimension of the radical of the pointwise symplectic form. |
+| reduced_phase_dim | int | Dimension of `E/rad(E)`. |
+| total_field_labels_exact | string | Exact count `3^field_phase_dim`. |
+| radical_labels_exact | string | Exact count `3^radical_dim`. |
+| reduced_weyl_labels_exact | string | Exact count `3^reduced_phase_dim`. |
+| hilbert_dim_exact | string | Hilbert dimension of the reduced Weyl representation. |
+| observable_basis_dim_exact | string | Dimension of the Weyl operator basis after reduction. |
+| nondegenerate | bool | Whether the chosen field space has zero radical. |
+
+## arithmetic_quantum_field_bases.csv
+
+Produced by: `scripts/bridges/arithmetic_quantum_fields.jl`
+Run bundle: `runs/2026-05-24-arithmetic-quantum-fields/`
+Report shard: `AQM-14-ARITHMETIC-QUANTUM-FIELDS`
+Sentinel: row 1 begins with `#` and states that rows are basis values and
+scalar Gram rows for the exact `F_3` examples.
+
+| column | type | description |
+|---|---|---|
+| example | string | Stable example slug matching the summary CSV. |
+| row_kind | string | `basis_values` or `scalar_gram_row`. |
+| label | string | Basis label for this row. |
+| values | string | Space-separated `F_3` row values. |
