@@ -1,0 +1,273 @@
+% SHARD-ID: AQM-19-CANONICAL-BOSON-FERMION-FIELD-COMPARISON
+% SHARD-TITLE: Canonical Boson and Fermion Fields as Field-Label Tests
+% SHARD-SUMMARY: Tests whether standard finite bosonic and fermionic fields fit the arithmetic-field label-space pattern.
+% SHARD-SUMMARY: Proves that finite bosonic fields arise from real symplectic map spaces and Stone--von Neumann uniqueness.
+% SHARD-SUMMARY: Separates fermionic CAR fields from the naive proposal of replacing the target by Grassmann numbers.
+% SHARD-KEYWORDS: bosonic field, fermionic field, CCR, CAR, Weyl, Stone-von-Neumann, Grassmann, Fock
+
+\section{Canonical Boson and Fermion Fields as Field-Label Tests}
+\label{sec:canonical-boson-fermion-field-comparison}
+
+\subsection{Status and Source Anchors}
+This shard is a kinematic comparison.  It does not introduce dynamics,
+Hamiltonians, continuum limits, locality cones, or equations of motion.  The
+question is only whether the field-label construction from
+Shard \(AQM\)-14 reproduces the standard finite-mode canonical fields.
+
+The CCR and CAR ground truth is local; paths and hashes are registered in
+\path{references/canonical_fields/SOURCES.md}.  The line anchors used here are:
+Derezinski's \path{derezinski.tex}, lines 1078--1135 for Weyl CCR, 1197--1284
+for Schrodinger/Stone--von Neumann, 1437--1524 for CAR, 1612--1696 for finite
+CAR representations, 1803--1964 and 2098--2131 for Fock and creation operators,
+2251--2301 for bosonic Fock CCR fields, and 2629--2662 for fermionic Fock CAR
+fields; Bekka's \path{CCR-GeneralRings-v5.tex}, lines 220--231, 253--273,
+287--350, and 603--633; and Keyl--Schlingemann's \path{fidelity_arXiv.tex},
+lines 253--260, 270--355, 411--492, and 496--531.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&X\text{ is a finite set of sites.}\\
+D2&:&V_B=\mathbb R_q\oplus\mathbb R_p,\quad
+       \omega_B((q,p),(q',p'))=pq'-p'q.\\
+D3&:&E_B=\operatorname{Map}(X,V_B),\quad
+       \Omega_B=\sum_{x\in X}\omega_B.\\
+D4&:&W_B:E_B\to U(\mathcal H)\text{ satisfies Weyl-form CCR.}\\
+L1&:&(E_B,\Omega_B)\text{ is a real symplectic vector space.}\\
+L2&:&\text{Irreducible regular }W_B\text{ is Schrodinger by Stone--von Neumann.}\\
+T1&:&D1\text{--}D4\text{ reproduce the finite standard bosonic field.}\\[1mm]
+D5&:&Z=\operatorname{Map}(X,K)\text{ is a finite complex one-particle space.}\\
+D6&:&Y_F=\operatorname{Re}(Z\oplus\overline Z),\quad
+       \alpha((z,\bar z),(w,\bar w))=\operatorname{Re}\langle z,w\rangle.\\
+D7&:&\Gamma_a(Z)=\bigoplus_k\wedge^k Z,\quad
+       \phi(z,\bar z)=a^*(z)+a(z).\\
+L3&:&a,a^*\text{ satisfy the finite exterior-algebra CAR.}\\
+L4&:&\{\phi(y),\phi(y')\}=2\alpha(y,y').\\
+T2&:&D5\text{--}D7\text{ reproduce the finite standard fermionic field.}\\
+L5&:&\text{Grassmann target replacement is not the same construction as }T2.
+\end{array}
+\]
+
+\subsection{Bosonic Field Labels D1--D4}
+Let \(X\) be finite.  Write
+\[
+  \mathcal Q_X=\operatorname{Map}(X,\mathbb R)
+\]
+for the real configuration space.  Its algebraic dual is identified with
+\(\operatorname{Map}(X,\mathbb R)\) by the finite sum
+\[
+  p(q)=\sum_{x\in X}p_xq_x.
+\]
+Thus
+\[
+  E_B=\operatorname{Map}(X,\mathbb R_q\oplus\mathbb R_p)
+      \cong \mathcal Q_X\oplus\mathcal Q_X^*.
+\]
+For \(\phi=(q,p)\) and \(\psi=(q',p')\), define
+\[
+  \Omega_B(\phi,\psi)
+  =
+  \sum_{x\in X}\bigl(p_xq'_x-p'_xq_x\bigr).
+\]
+A Weyl-form CCR representation of \(E_B\) is a map
+\[
+  W_B:E_B\to U(\mathcal H)
+\]
+such that
+\[
+  W_B(\phi)W_B(\psi)
+  =
+  \exp\!\left(-\frac{i}{2}\Omega_B(\phi,\psi)\right)W_B(\phi+\psi).
+\]
+This is Derezinski's convention with \(\eta=p\) and \(q=q\).
+
+\paragraph{Lemma \(L1\).}
+\((E_B,\Omega_B)\) is a finite-dimensional real symplectic vector space.
+\emph{Proof.}
+Pointwise addition and scalar multiplication make \(E_B\) a real vector space.
+The formula for \(\Omega_B\) is a finite sum of bilinear expressions, hence is
+bilinear.  Also
+\[
+  \Omega_B(\phi,\phi)=\sum_x(p_xq_x-p_xq_x)=0,
+\]
+so it is alternating.  If \(\phi=(q,p)\ne0\), then either some \(q_{x_0}\ne0\)
+or some \(p_{x_0}\ne0\).  In the first case take \(\psi\) supported at \(x_0\)
+with \(p'_{x_0}=1\) and \(q'_{x_0}=0\); then
+\(\Omega_B(\phi,\psi)=-q_{x_0}\ne0\).  In the second case take \(\psi\)
+supported at \(x_0\) with \(q'_{x_0}=1\) and \(p'_{x_0}=0\); then
+\(\Omega_B(\phi,\psi)=p_{x_0}\ne0\).  Thus the radical is zero.
+
+\paragraph{Lemma \(L2\).}
+Every irreducible regular representation of the Weyl-form CCR over
+\((E_B,\Omega_B)\) is unitarily equivalent to the Schrodinger representation on
+\[
+  L^2(\mathcal Q_X)\cong L^2(\mathbb R^{|X|}).
+\]
+\emph{Proof.}
+Choose an ordering of \(X\).  Then \(\mathcal Q_X\cong\mathbb R^N\) for
+\(N=|X|\), and Lemma \(L1\) identifies \(E_B\) with
+\(\mathcal Q_X^*\oplus\mathcal Q_X\) carrying the canonical symplectic form.
+Derezinski's finite-dimensional Stone--von Neumann theorem states that a
+regular CCR representation over such a finite symplectic space is a
+Schrodinger representation up to multiplicity, and irreducibility is exactly
+the one-copy case.  Bekka's source records the same local-field uniqueness
+principle and the irreducibility of the Schrodinger pair.
+
+\paragraph{Theorem \(T1\).}
+For finite \(X\), the \(AQM\)-14 field-label recipe with real target \(V_B\)
+recovers the standard finite bosonic canonical field.
+\emph{Proof.}
+The input is exactly \(D1\)--\(D3\): a finite physical set, a target vector
+space with a scalar-valued alternating form, and a field-label space of maps.
+Lemma \(L1\) checks that the summed pointwise form is symplectic.  Definition
+\(D4\) is the Weyl quantization step.  By Lemma \(L2\), the irreducible regular
+output is, up to unitary equivalence, the Schrodinger representation on
+\(L^2(\mathbb R^{|X|})\).  Derezinski's bosonic Fock source gives the equivalent
+finite-mode Fock realization by creation and annihilation operators.  Therefore
+the finite standard bosonic field is a direct real analogue of the arithmetic
+finite-field Weyl construction, with \(\mathbb F_q\) replaced by \(\mathbb R\).
+
+\subsection{Fermionic Field Labels D5--D7}
+Now let \(K\) be a finite-dimensional complex internal one-particle Hilbert
+space and set
+\[
+  Z=\operatorname{Map}(X,K).
+\]
+Its inner product is the finite sum
+\[
+  \langle z,w\rangle_Z=\sum_{x\in X}\langle z_x,w_x\rangle_K.
+\]
+The real CAR label space is
+\[
+  Y_F=\operatorname{Re}(Z\oplus\overline Z)
+      =\{(z,\bar z):z\in Z\},
+\]
+equipped with
+\[
+  \alpha((z,\bar z),(w,\bar w))=\operatorname{Re}\langle z,w\rangle_Z.
+\]
+The fermionic Hilbert space is the antisymmetric Fock space
+\[
+  \Gamma_a(Z)=\bigoplus_{k=0}^{\dim Z}\wedge^k Z.
+\]
+For \(z\in Z\), define creation by \(a^*(z)\Psi=z\wedge\Psi\).  Define
+annihilation \(a(z)\) as the adjoint of \(a^*(z)\), equivalently on a
+decomposable wedge by
+\[
+  a(z)(w_1\wedge\cdots\wedge w_k)
+  =
+  \sum_{j=1}^k(-1)^{j-1}\langle z,w_j\rangle\,
+  w_1\wedge\cdots\widehat{w_j}\cdots\wedge w_k .
+\]
+The real fermion field operator is
+\[
+  \phi(z,\bar z)=a^*(z)+a(z).
+\]
+
+\paragraph{Lemma \(L3\).}
+The exterior creation and annihilation operators satisfy
+\[
+  \{a^*(z),a^*(w)\}=0,\qquad
+  \{a(z),a(w)\}=0,\qquad
+  \{a(z),a^*(w)\}=\langle z,w\rangle I .
+\]
+
+\emph{Proof.}
+The first identity is the antisymmetry of the wedge product:
+\[
+  z\wedge w\wedge\Psi+w\wedge z\wedge\Psi=0.
+\]
+The second follows from the displayed contraction formula, since deleting two
+vectors in opposite orders gives opposite signs.  For the mixed relation, use
+the contraction identity
+\[
+  a(z)(w\wedge\Psi)=\langle z,w\rangle\Psi-w\wedge a(z)\Psi .
+\]
+Therefore
+\[
+\begin{aligned}
+  a(z)a^*(w)\Psi+a^*(w)a(z)\Psi
+  &=a(z)(w\wedge\Psi)+w\wedge a(z)\Psi\\
+  &=\langle z,w\rangle\Psi .
+\end{aligned}
+\]
+This proves the three CAR identities.
+
+\paragraph{Lemma \(L4\).}
+For \(y=(z,\bar z)\) and \(y'=(w,\bar w)\),
+\[
+  \{\phi(y),\phi(y')\}=2\alpha(y,y')I .
+\]
+
+\emph{Proof.}
+Expand the anticommutator and apply Lemma \(L3\):
+\[
+\begin{aligned}
+  \{\phi(y),\phi(y')\}
+  &=
+  \{a^*(z)+a(z),a^*(w)+a(w)\}\\
+  &=\langle z,w\rangle I+\langle w,z\rangle I\\
+  &=2\operatorname{Re}\langle z,w\rangle I
+   =2\alpha(y,y')I .
+\end{aligned}
+\]
+
+\paragraph{Theorem \(T2\).}
+For finite \(X\), the standard finite fermionic canonical field is the CAR
+construction \(D5\)--\(D7\), not a Weyl-Heisenberg quantization of a
+Grassmann-valued target.
+
+\emph{Proof.}
+Derezinski's CAR definition uses a real Hilbert label space with positive
+scalar product and field operators satisfying an anticommutator relation.
+Definitions \(D5\)--\(D7\) instantiate this with \(Z=\operatorname{Map}(X,K)\).
+Lemma \(L4\) proves the CAR relation on the antisymmetric Fock space, and
+Derezinski's Fock source identifies this as the fermionic Fock representation
+of the CAR.  Thus the finite fermionic field arises from the same first step
+"choose site fields", but the quantization functor changes: symmetric
+symplectic/Weyl data give bosons, while positive-symmetric Clifford/CAR data
+give fermions.
+
+\subsection{Grassmann Target Test L5}
+
+\paragraph{Lemma \(L5\).}
+Replacing \(V_B\) by a Grassmann algebra is not a direct construction of the
+standard finite fermion field in the \(AQM\)-14 sense.
+
+\emph{Proof.}
+The \(AQM\)-14 Weyl construction requires an ordinary vector-space label
+group, a scalar-valued alternating form, and a projective unitary
+representation whose cocycle is a complex phase or finite-field character.
+The standard fermion field in \(T2\) instead satisfies the CAR relation
+\(\{\phi(y),\phi(y')\}=2\alpha(y,y')I\), with a symmetric positive scalar
+product.  This is already a different algebraic input.
+
+Keyl--Schlingemann show that Grassmann variables do enter fermionic phase-space
+methods inside GAR.  Cahill--Glauber give the sharper finite-mode object:
+Grassmann-valued displacement operators built from concrete CAR generators.
+Their multiplier is valued in the even Grassmann algebra, not generally in the
+complex phases.  Therefore this is not, without extending the scalar algebra,
+the same as the ordinary projective unitary representation of the additive
+group \(\operatorname{Map}(X,V)\) used in the bosonic and arithmetic Weyl
+constructions.  The naive target-replacement conjecture is rejected only in
+that strict scalar-projective sense.
+
+\subsection{Current Dictionary}
+
+The comparison is therefore compact:
+\begin{itemize}
+  \item finite boson: labels \(\operatorname{Map}(X,\mathbb R_q\oplus\mathbb R_p)\),
+  alternating symplectic form, CCR/Weyl quantization;
+  \item finite arithmetic field: labels \(E\leq\operatorname{Map}(X,V_{\mathbb F_q})\),
+  alternating symplectic form after radical reduction, finite Weyl quantization;
+  \item finite fermion: labels \(\operatorname{Re}(Z\oplus\overline Z)\) with
+  \(Z=\operatorname{Map}(X,K)\), positive symmetric form, CAR/Clifford
+  quantization.
+\end{itemize}
+Thus the bosonic conjecture is checked at finite kinematic level.  The
+fermionic conjecture is repaired: standard fermions first enter this programme
+through CAR/Clifford data on an antisymmetric Fock space, and Grassmann
+variables then give the Cahill--Glauber displacement calculus in the
+Grassmann-extended CAR algebra.  Section~\ref{sec:grassmann-weyl-fermion-displacements}
+proves that positive
+representation theorem and records the ordinary complex-Hilbert-space caveat.

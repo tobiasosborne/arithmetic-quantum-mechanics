@@ -1,0 +1,253 @@
+% SHARD-ID: AQM-28-CLOSED-POINT-AFFINE-ARITHMETIC-FIELDS
+% SHARD-TITLE: Closed-Point Affine Arithmetic Fields
+% SHARD-SUMMARY: Extends the finite residue-qudit construction to affine schemes of finite type over \(\mathbb F_q\).
+% SHARD-SUMMARY: Defines finite closed supports, Weyl-Heisenberg labels, open-local algebras, and state restrictions.
+% SHARD-SUMMARY: Separates quasi-local finite-support fields from formal regular-function field profiles.
+% SHARD-KEYWORDS: affine scheme, closed point, finite residue field, Weyl-Heisenberg, quasi-local algebra, state presheaf
+
+\section{Closed-Point Affine Arithmetic Fields}
+\label{sec:closed-point-affine-arithmetic-fields}
+
+\subsection{Status and Source Anchors}
+
+This shard records the convention needed before treating
+\(\Spec\mathbb F_q[t]\) and \(\Spec\mathbb F_q[x,y]\).  The finite-spectrum
+rule of AQM-23 and AQM-24 attached one finite Weyl system to each point because
+all residue fields in those examples were finite.  For infinite affine schemes
+over \(\mathbb F_q\), not every point has finite residue field.  The finite
+qudit layer is therefore indexed by closed points only.
+
+The topology and residue-field definitions are source-local from the Stacks
+Project snapshot:
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+120--158, 250--274, 2972--2983, 3104--3117, and 3310--3350.  The
+Nullstellensatz finite-residue statement is in the same file, lines
+6520--6665.  The finite Weyl laws use Ashikhmin--Knill,
+\path{references/symplectic_qecc/ashikhmin_knill_0005008_source/n9.tex},
+lines 249--313, and the Pauli symplectic commutator source used in AQM-22.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_q,\ R\text{ a finite-type }k\text{-algebra},\
+      X=\Spec R.\\
+D2&:&|X|_{\rm cl}=\operatorname{Max}R,\quad
+      d(x)=[\kappa(x):k]\text{ for }x\in |X|_{\rm cl}.\\
+L1&:&\kappa(x)\text{ is finite and }|\kappa(x)|=q^{d(x)}
+      \text{ for closed }x.\\
+D3&:&S\Subset |X|_{\rm cl}\text{ is a finite closed support}.\\
+D4&:&E(S)=\bigoplus_{x\in S}\kappa(x)^2,\quad
+      \mathcal H(S)=\bigotimes_{x\in S}\ell^2(\kappa(x)).\\
+L2&:&E(S)\text{ has a finite Weyl projective representation }W_S.\\
+D5&:&C(U)=U\cap |X|_{\rm cl},\
+      E(U)=\bigoplus_{x\in C(U)}\kappa(x)^2,\
+      \mathcal A(U)=\varinjlim_{S\Subset C(U)}\mathcal A(S).\\
+T1&:&U\mapsto\mathcal A(U)\text{ is an open-local net}.\\
+T2&:&\operatorname{State}(\mathcal A(U))
+      \cong\varprojlim_{S\Subset C(U)}
+      \operatorname{State}(\mathcal A(S)).\\
+T3&:&\text{Regular-function profiles are generally not quasi-local
+      operators.}
+\end{array}
+\]
+
+\subsection{Closed Finite-Residue Sites D1--L1}
+
+Let \(k=\mathbb F_q\), \(q=p^r\), and let \(R\) be a finite-type
+\(k\)-algebra.  Put \(X=\Spec R\).  A closed point of \(X\) means a maximal
+ideal \(x=\mathfrak m\subset R\).  Its residue field is
+\[
+  \kappa(x)=R_{\mathfrak m}/\mathfrak m R_{\mathfrak m}
+  \cong R/\mathfrak m.
+\]
+The last isomorphism holds because \(\mathfrak m\) is maximal.
+
+\paragraph{Lemma \(L1\).}
+If \(x\in |X|_{\rm cl}\), then \(\kappa(x)\) is a finite field.  More
+precisely, if \(d(x)=[\kappa(x):k]\), then
+\[
+  |\kappa(x)|=q^{d(x)}.
+\]
+
+\emph{Proof.}
+The Stacks Nullstellensatz source says that for a maximal ideal in a finite
+type \(k\)-algebra, the residue field is a finite extension of \(k\).  Hence
+\(\kappa(x)\) is a \(d(x)\)-dimensional vector space over the \(q\)-element
+field \(k\), so it has \(q^{d(x)}\) elements.
+
+Non-closed points are not discarded from \(X\); they remain topological points.
+They are simply not finite Weyl sites in this convention unless an additional
+infinite-residue representation convention is later fixed.
+
+\subsection{Finite Closed Supports D3--L2}
+
+For a finite subset \(S\Subset |X|_{\rm cl}\), define
+\[
+  E(S)=\bigoplus_{x\in S}\kappa(x)^2.
+\]
+Write \(e_x=(q_x,p_x)\).  Define the local alternating form
+\[
+  \omega_x(e_x,f_x)=p_xq'_x-q_xp'_x
+\]
+and the finite-support form
+\[
+  \Omega_S(e,f)=(\omega_x(e_x,f_x))_{x\in S}.
+\]
+This is not a form into one field when the residue degrees vary.  The
+representation uses the associated alternating bicharacter.  Let
+\[
+  \psi_x(a)=
+  \exp\!\left(\frac{2\pi i}{p}
+  \operatorname{Tr}_{\kappa(x)/\mathbb F_p}(a)\right).
+\]
+Set
+\[
+  B_S(e,f)=\prod_{x\in S}\psi_x(p_xq'_x-q_xp'_x).
+\]
+
+Let
+\[
+  \mathcal H_x=\ell^2(\kappa(x)),\qquad
+  \mathcal H(S)=\bigotimes_{x\in S}\mathcal H_x.
+\]
+On the basis \(|a\rangle\), \(a\in\kappa(x)\), define
+\[
+  T_x(q)|a\rangle=|a+q\rangle,\qquad
+  R_x(p)|a\rangle=\psi_x(pa)|a\rangle,\qquad
+  W_x(q,p)=T_x(q)R_x(p).
+\]
+For \(e\in E(S)\), put \(W_S(e)=\bigotimes_{x\in S}W_x(e_x)\).
+
+\paragraph{Lemma \(L2\).}
+For \(e,f\in E(S)\),
+\[
+  W_S(e)W_S(f)=c_S(e,f)W_S(e+f),\qquad
+  c_S(e,f)=\prod_{x\in S}\psi_x(p_xq'_x),
+\]
+and
+\[
+  W_S(e)W_S(f)=B_S(e,f)W_S(f)W_S(e).
+\]
+The complex span
+\[
+  \mathcal A(S)=\operatorname{span}_{\mathbb C}\{W_S(e):e\in E(S)\}
+\]
+is
+\[
+  \mathcal A(S)\cong\bigotimes_{x\in S}\operatorname{End}(\mathcal H_x).
+\]
+
+\emph{Proof.}
+At one site,
+\[
+  R_x(p)T_x(q')|a\rangle
+  =
+  \psi_x(p(a+q'))|a+q'\rangle
+  =
+  \psi_x(pq')T_x(q')R_x(p)|a\rangle .
+\]
+Thus \(W_x(e_x)W_x(f_x)=\psi_x(p_xq'_x)W_x(e_x+f_x)\), and dividing by the
+same formula with \(e_x,f_x\) reversed gives the local commutator
+\(\psi_x(p_xq'_x-q_xp'_x)\).  Tensoring over the finite set \(S\) gives the
+two displayed laws.  The local Weyl source says the finite-field operators
+\(T^aR^b\) form an operator basis; tensor products of bases are bases of
+tensor products.
+
+\subsection{Open-Local Algebra D5--T1}
+
+For an open set \(U\subset X\), define its closed-point support
+\[
+  C(U)=U\cap |X|_{\rm cl}.
+\]
+The field-label group on \(U\) is the finite-support direct sum
+\[
+  E(U)=\bigoplus_{x\in C(U)}\kappa(x)^2
+      =\varinjlim_{S\Subset C(U)}E(S).
+\]
+The observable algebra is the algebraic quasi-local algebra over finite closed
+supports:
+\[
+  \mathcal A(U)=
+  \varinjlim_{S\Subset C(U)}\mathcal A(S)
+  =
+  \operatorname{span}_{\mathbb C}\{W_U(e):e\in E(U)\}.
+\]
+If \(S\subset T\), the structure map is
+\[
+  a\longmapsto a\otimes \mathbf 1_{\mathcal H(T\setminus S)}.
+\]
+
+\paragraph{Theorem \(T1\).}
+\(U\mapsto\mathcal A(U)\) is an open-local net: it is isotone, local on
+disjoint closed supports, and additive for open covers.
+
+\emph{Proof.}
+If \(U\subset V\), then \(C(U)\subset C(V)\).  The finite-support inclusions
+therefore induce a unital injective \(*\)-homomorphism
+\(\mathcal A(U)\hookrightarrow\mathcal A(V)\).  If two labels have disjoint
+closed supports, then every local commutator factor in \(B(e,f)\) is \(1\), so
+their Weyl operators commute.  If \(U=\bigcup_iU_i\) and \(e\in E(U)\), the
+support of \(e\) is finite.  Assign each support point to one \(U_i\) that
+contains it.  Then \(e\) is a finite sum of labels \(e_i\in E(U_i)\), and
+\(W_U(e)\) is a scalar times a product of the corresponding \(W_{U_i}(e_i)\).
+Thus \(\mathcal A(U)\) is generated by the images of the \(\mathcal A(U_i)\).
+
+\subsection{States T2}
+
+A state on a unital \(*\)-algebra is a normalized positive linear functional.
+For finite \(S\), states on \(\mathcal A(S)\) are density matrices on
+\(\mathcal H(S)\).  For an open \(U\), define
+\[
+  \mathsf S(U)=\operatorname{State}(\mathcal A(U)).
+\]
+
+\paragraph{Theorem \(T2\).}
+There is a natural affine bijection
+\[
+  \operatorname{State}(\mathcal A(U))
+  \cong
+  \varprojlim_{S\Subset C(U)}
+  \operatorname{State}(\mathcal A(S)).
+\]
+
+\emph{Proof.}
+The algebra \(\mathcal A(U)\) is the filtered algebraic colimit of the finite
+matrix algebras \(\mathcal A(S)\).  Restricting a state to each finite
+\(\mathcal A(S)\) gives a compatible inverse-limit family.  Conversely, a
+compatible family \((\omega_S)\) defines
+\(\omega(a)=\omega_S(a)\) whenever \(a\in\mathcal A(S)\).  If \(a\) has two
+finite-support representatives, move both to a common larger finite support;
+compatibility gives the same value.  Linearity and positivity are checked in a
+common finite support.  The two constructions are inverse.
+
+If local density matrices \(\rho_x\) are chosen for all closed \(x\in C(U)\),
+then
+\[
+  \rho_S=\bigotimes_{x\in S}\rho_x
+\]
+defines a compatible product state.  Taking each \(\rho_x\) to be the
+normalized identity gives the product tracial state, whose value on
+\(W_U(e)\) is \(0\) for \(e\ne0\), because some nontrivial local Weyl operator
+has trace \(0\).
+
+\subsection{Regular Profiles Are Not Local Operators T3}
+
+For \(a,b\in R\), reduction modulo each closed point gives a closed-point
+field profile
+\[
+  e_{a,b}(x)=(a\bmod x,\ b\bmod x)\in\kappa(x)^2.
+\]
+This is a genuine arithmetic profile over all closed points.  It is an element
+of \(E(U)\), however, only when it has finite support in \(C(U)\).  Otherwise
+the formal product \(W(e_{a,b})\) is an infinite-volume field symbol, not an
+element of the algebraic quasi-local algebra \(\mathcal A(U)\).
+
+Thus the present finite-residue theory has two layers:
+\[
+  \text{quasi-local Weyl observables}
+  \quad\text{and}\quad
+  \text{formal regular-function field profiles}.
+\]
+A later analytic or representation-theoretic convention may relate them, but
+the current report does not silently identify them.

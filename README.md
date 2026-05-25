@@ -1,55 +1,221 @@
-# arithmetic-quantum-mechanics
+# Arithmetic Quantum Mechanics
 
-Lab-book workspace for investigating bridges between Weil conjectures and zeta
-functions, arithmetic quantum mechanics, supersymmetric quantum mechanics, and
-Kitaev/Levin-Wen/toric-code style topological lattice models.
+This repository is a reproducible research lab book for exploring a possible
+common language between arithmetic geometry, finite Weyl-Heisenberg quantum
+systems, stabilizer codes, Koszul/supersymmetric constructions, and eventually
+zeta-function or Weil-conjecture phenomena.
 
-Status: active research notebook. The repository contains the report scaffold,
-provenance rules, run-bundle discipline, tool runner, checked toric/CSS/Steane
-stabilizer-supercharge results, a first arithmetic-quantum-field proposal, and
-projective sheaf-field examples.
+The project is deliberately not written as a finished theory. It is a working
+notebook with strict provenance rules: every definition, convention, theorem,
+calculation, and numerical claim should point to a local source, a local
+derivation, a reproducible run, or an explicitly marked open question.
 
-## Layout
+## The Guiding Idea
+
+The central experiment is to ask whether familiar quantum field notions can be
+built from arithmetic spaces by a concrete recipe:
+
+1. Choose a space of arithmetic points, usually a finite spectrum or the closed
+   points of an affine scheme over a finite field.
+2. Attach a finite symplectic label space to those points, often using residue
+   fields.
+3. Quantize the label space by finite Weyl-Heisenberg operators.
+4. Organize the resulting observable algebras over Zariski opens.
+5. Study states, stabilizers, descent, dynamics, and scale changes in this
+   arithmetic local-net language.
+
+The current lab book shows where this recipe works cleanly, where it needs
+extra choices, and where attractive guesses fail.
+
+## What Is In The Lab Book
+
+The report is sharded under `report/sections/` and assembled by `report.tex`.
+Use `report/README.md` and `report/SHARD_CATALOG.md` as the map.
+
+### Stabilizers, Chain Complexes, And Supercharges
+
+The first checked layer starts from toric-code and CSS stabilizer data. It
+builds a ghost-extended Koszul supercharge
+
+```text
+Q = sum_i c_i^dagger P_i
+```
+
+from violated-check projectors `P_i = (I - S_i)/2`, proves `Q^2 = 0`, and
+identifies the shifted stabilizer Hamiltonian with `{Q,Q^*}` in the checked
+examples. The degree-zero cohomology is the physical stabilizer code.
+
+The same layer packages CSS codes symplectically: a chain complex produces an
+isotropic stabilizer subspace `L`, and logical Pauli operators are the
+symplectic reduction `L^perp/L`. The Steane-code shards work this out in
+detail, including the sourced Gottesman convention, the six-generator Koszul
+supercharge, the full ghost cohomology dimensions, and Clifford covariance via
+ghost-Gaussian presentation moves.
+
+### Arithmetic Quantum Fields
+
+The arithmetic-field layer begins with finite point spaces and finite
+symplectic targets. A field label space `E` is a subspace of `Map(X,V)`, but
+the pointwise symplectic pairing may have a radical, so the honest Weyl label
+space is `E / rad(E)`.
+
+For affine schemes of finite type over `F_q`, the current finite qudit layer is
+indexed by closed points. A closed point of degree `d` contributes one
+`q^d`-level qudit. Generic points still control the topology, but they are not
+finite Weyl sites under the present convention.
+
+Concrete results include:
+
+- `Spec(F_p)` gives one `p`-level qudit.
+- The underlying set of `F_p`, treated as `p` points, gives the ambient
+  `p`-qudit Pauli/Weyl system.
+- `Spec(Z/6Z)` gives a qubit tensor a qutrit, with label group
+  `F_2^2 direct_sum F_3^2` and observable algebra `M_6(C)`.
+- `Spec(F_q[t])` gives one finite-field qudit for each monic irreducible
+  polynomial.
+- `Spec(F_q[x,y])` includes rational points and higher-degree closed points;
+  the `q^2` rational-point model is only a truncation.
+
+For projective spaces, naive regular maps to an affine target see too little,
+so the report uses sheaf-section field spaces such as
+`H^0(X, L) tensor V`. The worked example is `P^1_F3` with `O(d)`, including
+stalks, fibers, rational-point evaluations, radicals, and Weyl label counts.
+
+### Locality, States, And Descent
+
+Zariski opens carry an open-local observable net: `A(U)` acts on the points in
+`U` and includes covariantly into `A(V)` when `U subset V`. The closed
+complement construction is also useful, but it is contravariant and is treated
+as a separate closed-support layer.
+
+The label assignment behaves cosheaf-like because finite-support Weyl labels
+glue additively. Observable algebras form an AQFT-style local net rather than
+an ordinary cosheaf of unital `*`-algebras: physical gluing is by commuting
+tensor-product structure, not by a free product.
+
+States form a presheaf by restriction or partial trace, but not a sheaf.
+Local marginals can fail to determine global correlations, and compatible
+overlapping marginals need not glue to a global state. The report separates
+this state-marginal problem from ordinary Cech cohomology and from stabilizer
+descent.
+
+The stabilizer descent layer proves another important distinction: a
+Lagrangian label space gives a full stabilizer state, but it may not be
+generated by local stabilizers on a cover. A two-qutrit example gives an
+explicit global entangled stabilizer whose one-site stabilizer restrictions are
+trivial.
+
+### Concrete Finite Schemes And Thickenings
+
+The `F_3[t]/(p)` shards compute finite coordinate-ring examples from the
+factorization of `p`. The reduced residue-qudit model has one Weyl site for
+each distinct irreducible factor. Repeated factors are not ignored; they are
+nilpotent scheme structure, but they are invisible to the reduced
+closed-point Weyl layer.
+
+The nilpotent-sensitive layer restores that structure by quantizing finite
+local Artin rings such as `F_3[t]/(pi^e)`. These are interpreted as jet degrees
+of freedom at an existing closed point, not as extra points. In the
+`t^n = 1` examples, the reduced Hilbert dimension is controlled by the
+squarefree part, while the thickened layer has dimension `3^n`.
+
+### Dynamics And Continuum Limits
+
+Finite odd-qudit Gaussian dynamics is described label-first: symplectic
+morphisms of finite Weyl label spaces induce algebra monomorphisms, symplectic
+automorphisms induce Clifford/Gaussian dynamics, and Gross's finite Hudson
+theorem identifies pure finite Gaussian states with stabilizer states.
+
+The current continuum-limit layer uses finite-field extension rank as scale.
+For `X_0 / F_q`, define
+
+```text
+X_r = X_0 x_Fq F_(q^r).
+```
+
+Base change of schemes is canonical, but Weyl phase compatibility is not:
+naive diagonal embeddings multiply absolute-trace commutator phases by the
+extension ratio. Prime-to-`p` scale jumps have canonical trace-normalized
+embeddings. The full tower admits coherent trace data, but the choice is a
+noncanonical trace gauge, and Frobenius acts gauge-covariantly across
+`p`-divisible scale jumps.
+
+## Reproducible Evidence
+
+The checked computational evidence lives under `runs/`, with schemas in
+`data/SCHEMA.md` and script/output links in `INDEX.md`.
+
+Representative checked runs include:
+
+- toric-code supercharge checks for a 32-qubit `k=4` toric instance;
+- exact CSS symplectic bridge checks over `F_2`, `F_3`, and `F_5`;
+- Steane-code stabilizer, cohomology, Clifford, and ghost-Gaussian checks;
+- exact `F_3` arithmetic-field examples;
+- projective-line sheaf-field and stalk calculations for `P^1_F3`.
+
+Run the main local validations with:
+
+```bash
+make check-report-shards
+make report
+julia --project=. -e 'using Pkg; Pkg.test()'
+julia --project=. scripts/run_all.jl --fast
+```
+
+Useful optional tools include Sage and GAP for later exact arithmetic and group
+or category computations. Scripts that depend on optional tools should fail
+closed or skip explicitly when those executables are unavailable.
+
+## How To Read
+
+Start with:
+
+1. `AGENTS.md` for the evidence discipline.
+2. `CONVENTIONS.md` for notation and modeling choices.
+3. `report/README.md` for the shard order.
+4. `report/SHARD_CATALOG.md` for a searchable catalogue.
+5. `report.tex` and the relevant shard in `report/sections/`.
+6. `INDEX.md` for run bundles, scripts, and output data.
+
+The most developed path through the lab book is:
+
+```text
+toric/CSS stabilizers
+  -> symplectic stabilizer geometry
+  -> Koszul supercharges
+  -> finite arithmetic Weyl fields
+  -> Zariski local nets
+  -> descent, dynamics, and finite-field scales
+```
+
+The larger bridge to Weil conjectures, zeta functions, supersymmetric quantum
+mechanics, and Levin-Wen/string-net models remains a research programme.
+Speculative links are marked as such until backed by local sources,
+derivations, or reproducible runs.
+
+## Repository Layout
 
 - `report.tex` - sharded LaTeX lab-book master.
 - `report/sections/*.tex` - body shards.
 - `report/README.md` - report source map.
 - `report/SHARD_CATALOG.md` - stable shard labels and search keywords.
 - `AGENTS.md` - scientific-practice rules for agents.
-- `CONVENTIONS.md` - notational, modelling, and data-layout conventions.
-- `INDEX.md` - script to output to report manifest.
-- `scripts/` - reproducibility scripts and the canonical driver.
-- `runs/<YYYY-MM-DD>-<slug>/` - generated data and figures grouped by run.
+- `CONVENTIONS.md` - notation, modeling, and data-layout conventions.
+- `INDEX.md` - script/output/report manifest.
+- `scripts/` - reproducibility scripts and local drivers.
+- `runs/<YYYY-MM-DD>-<slug>/` - generated data grouped by run.
 - `data/SCHEMA.md` - CSV column contracts.
-- `references/` - local source manifests and append-only source files.
-- `docs/NUMERICAL_NOTES.md` and `HANDOFF.md` - session-facing state.
+- `references/` - source manifests and, when redistributable, local source
+  snapshots.
 
-## Commands
+## Source And License Notes
 
-```bash
-# Check sharded report structure.
-make check-report-shards
+Original project code and lab-book text are released under the GNU Affero
+General Public License v3.0; see `LICENSE`.
 
-# Build report.pdf from report.tex.
-make report
-
-# Run the Julia package smoke tests.
-julia --project=. -e 'using Pkg; Pkg.test()'
-
-# Run registered evidence producers.
-julia --project=. scripts/run_all.jl --fast
-
-# Show locally available optional tools.
-make tool-versions
-```
-
-Julia and LaTeX are useful immediately. Sage and GAP are expected optional
-tools for later exact arithmetic and group/category computations; scripts that
-depend on them should fail closed or skip explicitly when the executable is not
-available.
-
-## Scientific Practice
-
-No mathematical or physical claim should be added from memory. Acquire or cite
-a local source, record the convention in `CONVENTIONS.md`, and connect any
-computed result to a script, run bundle, schema row, and report shard.
+Third-party papers, books, source snapshots, and extracted reference text
+retain their original licenses and terms. Some full-text local sources used
+while developing the lab book are intentionally not redistributed in this
+public repository. The manifests under `references/**/SOURCES.md` record
+provenance, retrieval routes, hashes, and line locators so missing sources can
+be reacquired before relying on a claim.

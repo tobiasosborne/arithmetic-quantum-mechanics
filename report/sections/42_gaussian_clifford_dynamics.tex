@@ -1,0 +1,252 @@
+% SHARD-ID: AQM-42-GAUSSIAN-CLIFFORD-DYNAMICS
+% SHARD-TITLE: Gaussian and Clifford Dynamics
+% SHARD-SUMMARY: Defines finite odd-qudit Gaussian dynamics as symplectic morphisms of Weyl label spaces.
+% SHARD-SUMMARY: Proves that symplectic morphisms induce Weyl observable algebra monomorphisms and automorphisms.
+% SHARD-SUMMARY: Registers Gross's discrete Hudson theorem as the stabilizer/Gaussian state dictionary.
+% SHARD-KEYWORDS: dynamics, symplectic morphism, Clifford group, Gaussian state, stabilizer state, Hudson theorem
+
+\section{Gaussian and Clifford Dynamics}
+\label{sec:gaussian-clifford-dynamics}
+
+\subsection{Status and Source Anchors}
+
+This shard adds the first dynamics layer for the finite residue-qudit
+arithmetic fields.  The new convention is \texttt{CONVENTIONS.md} (af).  Gross
+\path{references/symplectic_qecc/gross_0602001_source/poswig.tex} is now
+registered locally: lines 340--453 define odd-dimensional Weyl operators, the
+symplectic form, the Weyl composition law, the trace, and the Heisenberg
+representation; lines 458--537 define the Clifford group and state its
+symplectic/metaplectic structure theorem; lines 794--802 give Clifford
+covariance of Wigner functions; lines 846--903 define stabilizer states from
+maximally isotropic subspaces; lines 935--976 compute their Wigner functions;
+lines 202--214 state the discrete Hudson theorem; and lines 1633--1639 state
+that positivity-preserving unitaries are Clifford.  AQM-22, AQM-24, and
+AQM-40 supply the finite Weyl nets on arithmetic spectra.
+When \(k=\mathbb F_{p^r}\), the intrinsic algebraic statements below use the
+\(k\)-symplectic form, while the Gross-Hudson state dictionary is imported
+after choosing an \(\mathbb F_p\)-basis and viewing
+\(\ell^2(k^m)\cong\ell^2(\mathbb F_p^{rm})\).
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&(E,\Omega)\text{ is a finite nondegenerate symplectic }k\text{-space,
+      }\operatorname{char}k\ne2.\\
+D2&:&W_E(e)W_E(f)=\chi(\frac12\Omega(e,f))W_E(e+f),\quad
+      W_E(e)^*=W_E(-e).\\
+D3&:&\mathcal A(E)=\operatorname{span}_{\mathbb C}\{W_E(e):e\in E\}.\\
+L1&:&\{W_E(e):e\in E\}\text{ is a basis of }\mathcal A(E).\\
+D4&:&S:E\to F\text{ is symplectic if }\Omega_F(Se,Sf)=\Omega_E(e,f).\\
+L2&:&\text{A symplectic morphism from nondegenerate }E\text{ is injective}.\\
+T1&:&\alpha_S(W_E(e))=W_F(Se)\text{ is a unital }*\text{-monomorphism}.\\
+T2&:&S\in\operatorname{Sp}(E)\text{ gives a }*\text{-automorphism of }
+      \mathcal A(E).\\
+T3&:&\text{For odd qudits, }S\text{ has a projective Clifford lift }U_S.\\
+D5&:&\alpha_{a,S}=\operatorname{Ad}_{W(a)U_S}\text{ is affine Clifford
+      dynamics}.\\
+T4&:&\text{Gross-Hudson identifies pure nonnegative-Wigner states with
+      stabilizer states.}
+\end{array}
+\]
+
+\subsection{Half-Weyl Systems D1--L1}
+
+Let \(k=\mathbb F_q\) have odd characteristic and let
+\(\chi:k\to U(1)\) be a nontrivial additive character.  Let
+\((E,\Omega)\) be a finite-dimensional nondegenerate symplectic \(k\)-vector
+space.  A half-Weyl system for \(E\) is a map \(W_E:E\to U(\mathcal H_E)\)
+such that
+\[
+  W_E(e)W_E(f)=\chi\!\left(\frac12\Omega(e,f)\right)W_E(e+f),
+  \qquad
+  W_E(e)^*=W_E(-e).
+\]
+Here \(1/2\in k\) is defined because \(\operatorname{char}k\ne2\).
+Set
+\[
+  \mathcal A(E)=\operatorname{span}_{\mathbb C}\{W_E(e):e\in E\}.
+\]
+In the residue-qudit examples this is the full finite matrix algebra on
+\(\mathcal H_E\).  Gross's trace calculation for odd qudits,
+\path{poswig.tex}, lines 437--453, is the local source for the corresponding
+orthogonality statement.
+
+\paragraph{Lemma \(L1\).}
+The operators \(W_E(e)\) are linearly independent.  Hence they form a basis of
+\(\mathcal A(E)\) by definition of the span.
+
+\emph{Proof.}
+In the concrete residue-qudit representation, the trace pairing satisfies
+\[
+  \operatorname{Tr}\bigl(W_E(e)^*W_E(f)\bigr)
+  =
+  \dim(\mathcal H_E)\,\delta_{e,f},
+\]
+as in the finite Weyl trace computation already used in AQM-22 and AQM-38.
+If \(\sum_e c_eW_E(e)=0\), multiply on the left by \(W_E(f)^*\) and take the
+trace.  The displayed orthogonality gives
+\(\dim(\mathcal H_E)c_f=0\).  Since \(f\) was arbitrary, all \(c_f\) vanish.
+
+\subsection{Symplectic Morphisms and Algebra Maps D4--T2}
+
+Let \((E,\Omega_E)\) and \((F,\Omega_F)\) be finite nondegenerate symplectic
+\(k\)-spaces.  A symplectic morphism is a \(k\)-linear map
+\[
+  S:E\to F
+\]
+such that
+\[
+  \Omega_F(Se,Sf)=\Omega_E(e,f)
+  \qquad(e,f\in E).
+\]
+
+\paragraph{Lemma \(L2\).}
+Every symplectic morphism \(S:E\to F\) with \(E\) nondegenerate is injective.
+
+\emph{Proof.}
+If \(Se=0\), then for every \(f\in E\),
+\[
+  \Omega_E(e,f)=\Omega_F(Se,Sf)=0.
+\]
+Nondegeneracy of \(\Omega_E\) gives \(e=0\).
+
+\paragraph{Theorem \(T1\).}
+For every symplectic morphism \(S:E\to F\), the formula
+\[
+  \alpha_S(W_E(e))=W_F(Se)
+\]
+extends uniquely to a unital \(*\)-monomorphism
+\(\alpha_S:\mathcal A(E)\to\mathcal A(F)\).
+
+\emph{Proof.}
+Lemma \(L1\) makes the linear extension unique.  It is multiplicative because
+\[
+\begin{aligned}
+  \alpha_S(W_E(e)W_E(f))
+  &=
+  \chi\!\left(\frac12\Omega_E(e,f)\right)W_F(S(e+f))\\
+  &=
+  \chi\!\left(\frac12\Omega_F(Se,Sf)\right)W_F(Se+Sf)\\
+  &=
+  W_F(Se)W_F(Sf)
+  =
+  \alpha_S(W_E(e))\alpha_S(W_E(f)).
+\end{aligned}
+\]
+It preserves the involution since
+\[
+  \alpha_S(W_E(e)^*)=\alpha_S(W_E(-e))=W_F(-Se)=W_F(Se)^*.
+\]
+It is unital because \(S0=0\).  Finally, \(S\) is injective by Lemma \(L2\),
+so the labels \(Se\) are distinct; Lemma \(L1\) for \(F\) then implies that
+the images \(W_F(Se)\) are linearly independent.  Thus \(\alpha_S\) has zero
+kernel.
+
+\paragraph{Theorem \(T2\).}
+If \(S:E\to E\) is a symplectic automorphism, then \(\alpha_S\) is a
+\(*\)-automorphism of \(\mathcal A(E)\).  Moreover
+\[
+  \alpha_S\alpha_T=\alpha_{ST}.
+\]
+
+\emph{Proof.}
+The first statement follows from Theorem \(T1\) applied to \(S\) and
+\(S^{-1}\).  The composition law follows on the Weyl basis:
+\[
+  \alpha_S\alpha_T(W_E(e))=\alpha_S(W_E(Te))=W_E(STe)=\alpha_{ST}(W_E(e)).
+\]
+
+Thus a discrete one-parameter Gaussian or quasi-free dynamics is simply a
+homomorphism \(t\mapsto S_t\in\operatorname{Sp}(E)\), with
+\(\alpha_t=\alpha_{S_t}\).
+
+\subsection{Clifford Implementations T3--D5}
+
+For odd qudits, Gross's Clifford structure theorem
+\path{poswig.tex}, lines 458--537, states that every symplectic \(S\) has a
+unitary \(\mu(S)\), unique projectively, such that
+\[
+  \mu(S)W_E(e)\mu(S)^*=W_E(Se),
+\]
+and that \(S\mapsto\mu(S)\) is a projective representation.  Therefore the
+observable automorphism \(\alpha_S\) is implemented by a Clifford unitary.
+This is the unitary version of Theorem \(T2\).
+
+Allowing a displacement \(a\in E\), define
+\[
+  U_{a,S}=W_E(a)\mu(S).
+\]
+Then
+\[
+\begin{aligned}
+  U_{a,S}W_E(e)U_{a,S}^*
+  &=
+  W_E(a)W_E(Se)W_E(-a)\\
+  &=
+  \chi(\Omega_E(a,Se))W_E(Se).
+\end{aligned}
+\]
+The second equality uses the half-Weyl law twice:
+\[
+  \frac12\Omega(a,Se)+\frac12\Omega(a+Se,-a)
+  =
+  \Omega(a,Se).
+\]
+These affine Clifford maps are the finite odd-qudit analogue of affine
+Gaussian phase-space dynamics.  They move Wigner functions by affine
+symplectic transformations, as sourced by Gross's Clifford covariance theorem,
+\path{poswig.tex}, lines 794--802.
+
+\subsection{Local Nets and Support}
+
+For a finite open \(U\), the arithmetic-field label space \(E(U)\) is an
+orthogonal direct sum of local residue label spaces.  The inclusion
+\(E(U)\hookrightarrow E(V)\) for \(U\subset V\), given by extension by zero, is
+a symplectic morphism.  Theorem \(T1\) therefore recovers the open-local
+observable inclusion
+\[
+  \mathcal A(U)\hookrightarrow\mathcal A(V)
+\]
+from AQM-24 as a Gaussian morphism.
+
+A global symplectic automorphism \(S:E(X)\to E(X)\) gives a global dynamics on
+\(\mathcal A(X)\).  It is a dynamics of the open-local net only if it respects
+the support structure being used.  For example, if \(S(E(U))=E(U)\) for each
+open \(U\) under consideration, then every \(\mathcal A(U)\) is invariant.  If
+instead \(S(E(U))=E(\varphi(U))\) for a declared open-set permutation
+\(\varphi\), then \(S\) gives a covariant net dynamics
+\(\mathcal A(U)\to\mathcal A(\varphi(U))\).  Otherwise it is a nonlocal global
+automorphism, not an automorphism of the chosen local net.
+
+\subsection{Gaussian States and Gross-Hudson T4}
+
+Gross defines stabilizer states from maximally isotropic subspaces and Weyl
+eigenvalue equations, \path{poswig.tex}, lines 846--903.  He proves that their
+Wigner functions are normalized indicators of affine Lagrangian subspaces,
+lines 935--976.  His discrete Hudson theorem, lines 202--214, says that for
+odd \(d\), a pure state in \(L^2(\mathbb Z_d^n)\) has nonnegative Wigner
+function if and only if it is a stabilizer state; for full support, this is
+equivalent to a quadratic-phase form
+\[
+  \psi(q)\propto
+  \exp\!\left(\frac{2\pi i}{d}(q\theta q+xq)\right),
+  \qquad \theta^T=\theta .
+\]
+
+In the present report, this fixes the finite odd-qudit meaning of
+``Gaussian state'': pure Gaussian states are stabilizer states, equivalently
+phased Lagrangian label data.  Clifford dynamics sends them to Gaussian states
+because it sends Lagrangian subspaces to Lagrangian subspaces and transports
+the phase character by conjugation.  Gross's positivity-preservation theorem,
+lines 1633--1639, gives the converse in Wigner language: a unitary preserving
+nonnegative Wigner states is Clifford.
+
+\subsection{Conclusion}
+
+Dynamics in the finite odd residue-qudit AQF layer is therefore label-first.
+Symplectic morphisms give the functorial algebra maps; symplectic
+automorphisms give Gaussian/quasi-free automorphisms; Clifford unitaries are
+their projective Hilbert-space implementations; and Gross-Hudson identifies
+the pure finite Gaussian states with stabilizer states.  Even characteristic
+and mixed-residue dynamics remain separate convention problems.

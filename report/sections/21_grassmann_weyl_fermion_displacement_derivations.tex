@@ -1,0 +1,215 @@
+% SHARD-ID: AQM-21-GRASSMANN-WEYL-FERMION-DERIVATIONS
+% SHARD-TITLE: Grassmann-Weyl Fermion Displacement Derivations
+% SHARD-SUMMARY: Proves the unitarity of Cahill--Glauber fermion displacement operators.
+% SHARD-SUMMARY: Derives the CAR displacement identities and Grassmann-valued ray product.
+% SHARD-SUMMARY: Records the boundary between Grassmann-extended CAR unitarity and ordinary Hilbert-space unitarity.
+% SHARD-KEYWORDS: Grassmann, CAR, fermion displacement, Baker-Hausdorff, coherent states, unitary
+
+\section{Grassmann-Weyl Fermion Displacement Derivations}
+\label{sec:grassmann-weyl-fermion-displacement-derivations}
+
+\subsection{Status and Dependencies}
+
+This shard proves the Lamport items \(L2\)--\(T2\) stated in
+Section~\ref{sec:grassmann-weyl-fermion-displacements}.  It uses the same
+Cahill--Glauber source anchors: marker lines 72--81 for \(D(\gamma)\), lines
+83--101 for the displacement identities, and lines 103--133 for the
+Baker--Hausdorff and ray-composition formula.
+
+\[
+\begin{array}{rcl}
+D1\text{--}D7&:&\text{definitions from Section }
+  \ref{sec:grassmann-weyl-fermion-displacements}.\\
+L1&:&\sigma\text{ is the central Grassmann two-cocycle form.}\\
+L2&:&K(\gamma)^\dagger=-K(\gamma),\text{ so }D(\gamma)\text{ is unitary.}\\
+L3&:&D(\gamma)^\dagger a_nD(\gamma)=a_n+\gamma_n
+      \text{ and similarly for }a_n^\dagger.\\
+L4&:&[K(\alpha),K(\beta)]=\sigma(\alpha,\beta).\\
+T1&:&D(\gamma)\text{ represents the abstract displacement ray algebra.}\\
+T2&:&\text{The theorem is Grassmann-extended CAR-unitary, not ordinary
+      scalar-projective Hilbert-unitary.}
+\end{array}
+\]
+
+\subsection{Unitarity L2}
+
+\paragraph{Lemma \(L2\).}
+\[
+  K(\gamma)^\dagger=-K(\gamma),
+  \qquad
+  D(\gamma)^\dagger D(\gamma)=D(\gamma)D(\gamma)^\dagger=1 .
+\]
+
+\emph{Proof.}
+Using the adjoint convention from \(D3\),
+\[
+  (a_i^\dagger\gamma_i)^\dagger=\gamma_i^*a_i,\qquad
+  (\gamma_i^*a_i)^\dagger=a_i^\dagger\gamma_i .
+\]
+Therefore
+\[
+  K(\gamma)^\dagger
+  =
+  \sum_i(\gamma_i^*a_i-a_i^\dagger\gamma_i)
+  =
+  -K(\gamma).
+\]
+Hence \(D(\gamma)^\dagger=e^{-K(\gamma)}=D(-\gamma)\), and multiplying
+\(e^{-K(\gamma)}e^{K(\gamma)}\) or \(e^{K(\gamma)}e^{-K(\gamma)}\) gives \(1\).
+
+\subsection{Displacement of the CAR Generators L3}
+
+\paragraph{Lemma \(L3\).}
+For every \(n\in I\),
+\[
+  D(\gamma)^\dagger a_nD(\gamma)=a_n+\gamma_n,\qquad
+  D(\gamma)^\dagger a_n^\dagger D(\gamma)=a_n^\dagger+\gamma_n^* .
+\]
+
+\emph{Proof.}
+The conjugation identity \(e^{-K}Be^K=B+[B,K]+\frac12[[B,K],K]+\cdots\)
+applies because \(K\) is even.  For \(i\neq n\), the \(i\)-summand of
+\(K(\gamma)\) commutes with \(a_n\): the sign from moving \(a_n\) through the
+CAR generator is cancelled by the sign from moving it through the Grassmann
+coefficient.  For \(i=n\),
+\[
+\begin{aligned}
+ [a_n,a_n^\dagger\gamma_n-\gamma_n^*a_n]
+ &=
+ a_na_n^\dagger\gamma_n-a_n^\dagger\gamma_na_n\\
+ &=
+ (1-a_n^\dagger a_n)\gamma_n-a_n^\dagger\gamma_na_n\\
+ &=
+ \gamma_n-a_n^\dagger a_n\gamma_n+a_n^\dagger a_n\gamma_n\\
+ &=\gamma_n .
+\end{aligned}
+\]
+The element \(\gamma_n\) commutes with \(K(\gamma)\), so all higher
+commutators vanish.  Thus \(D(\gamma)^\dagger a_nD(\gamma)=a_n+\gamma_n\).
+The same calculation with \(a_n^\dagger\) gives
+\[
+\begin{aligned}
+ [a_n^\dagger,a_n^\dagger\gamma_n-\gamma_n^*a_n]
+ &=
+ -a_n^\dagger\gamma_n^*a_n+\gamma_n^*a_na_n^\dagger\\
+ &=
+ \gamma_n^*a_n^\dagger a_n+\gamma_n^*(1-a_n^\dagger a_n)\\
+ &=\gamma_n^* ,
+\end{aligned}
+\]
+and again higher commutators vanish.
+
+\subsection{The Grassmann Commutator L4}
+
+\paragraph{Lemma \(L4\).}
+For all parameters \(\alpha,\beta\),
+\[
+  [K(\alpha),K(\beta)]=\sigma(\alpha,\beta).
+\]
+
+\emph{Proof.}
+It is enough to compute one mode, since different modes commute after the same
+double sign cancellation used in Lemma \(L3\).  Put
+\[
+  p=a^\dagger\alpha,\quad q=\alpha^*a,\quad
+  r=a^\dagger\beta,\quad s=\beta^*a .
+\]
+Then \(K(\alpha)=p-q\) and \(K(\beta)=r-s\).  The products \(pr,rp,qs,sq\)
+vanish because \((a^\dagger)^2=a^2=0\).  The mixed commutators are
+\[
+\begin{aligned}
+ [p,s]
+ &=a^\dagger\alpha\beta^*a-\beta^*aa^\dagger\alpha\\
+ &=-\beta^*\alpha\,a^\dagger a-\beta^*(1-a^\dagger a)\alpha\\
+ &=-\beta^*\alpha,
+\end{aligned}
+\]
+and
+\[
+\begin{aligned}
+ [q,r]
+ &=\alpha^*aa^\dagger\beta-a^\dagger\beta\alpha^*a\\
+ &=\alpha^*(1-a^\dagger a)\beta+\alpha^*\beta\,a^\dagger a\\
+ &=\alpha^*\beta .
+\end{aligned}
+\]
+Therefore
+\[
+  [K(\alpha),K(\beta)]
+  =
+  [p-q,r-s]
+  =
+  -[p,s]-[q,r]
+  =
+  \beta^*\alpha-\alpha^*\beta .
+\]
+Summing over \(i\in I\) gives the displayed formula.
+
+\subsection{Representation Theorem T1}
+
+\paragraph{Theorem \(T1\).}
+The assignment
+\[
+  \Pi(\mathsf D(\gamma))=
+  \exp\!\left(\sum_i(a_i^\dagger\gamma_i-\gamma_i^*a_i)\right)
+\]
+is a unitary representation of the abstract Grassmann displacement ray algebra
+in the Grassmann-extended finite CAR algebra.
+
+\emph{Proof.}
+Lemma \(L2\) proves unitarity and the \(*\)-relation
+\(D(\gamma)^\dagger=D(-\gamma)\).  Lemma \(L4\) says that the commutator
+\([K(\alpha),K(\beta)]\) is the central element \(\sigma(\alpha,\beta)\).
+The Baker--Hausdorff identity for central commutator gives
+\[
+\begin{aligned}
+  e^{K(\alpha)}e^{K(\beta)}
+  &=
+  e^{K(\alpha)+K(\beta)}
+  e^{\frac12[K(\alpha),K(\beta)]}\\
+  &=
+  e^{K(\alpha+\beta)}
+  e^{\frac12\sigma(\alpha,\beta)}\\
+  &=
+  D(\alpha+\beta)c(\alpha,\beta).
+\end{aligned}
+\]
+This is exactly the defining product relation of \(\mathsf D_I\).  Lemma
+\(L1\) supplies associativity of the abstract relation, so \(\Pi\) is a
+well-defined representation.
+
+\subsection{Boundary of the Statement T2}
+
+\paragraph{Theorem \(T2\).}
+The positive theorem \(T1\) is not an ordinary projective representation
+\(\gamma\mapsto U_\gamma\in U(\mathcal H)\) with complex \(U(1)\) multiplier.
+It is a unitary representation in \(\mathcal A_I\), the CAR algebra extended by
+Grassmann coefficients.
+
+\emph{Proof.}
+The multiplier in \(T1\) is
+\[
+  c(\alpha,\beta)=
+  \exp\!\left(\frac12\sum_i(\beta_i^*\alpha_i-\alpha_i^*\beta_i)\right),
+\]
+which is an even Grassmann unit.  Cahill--Glauber's notation records that no
+nonzero Grassmann monomial is an ordinary complex number, and it later
+separates physical quantum operators from Grassmann variables.  Therefore
+unless the Grassmann coefficient algebra is included in the target, the
+multiplier is not a complex phase.
+
+More explicitly, if \(\rho:\Lambda_I\to B(\mathcal H)\) is a Hilbert-space
+\(*\)-representation of the Grassmann coefficient algebra, then
+\(\rho(\gamma_i)=0\) for each \(i\).  Indeed, with \(b=\rho(\gamma_i)\),
+\[
+  b^2=0,\qquad bb^\dagger+b^\dagger b=0,
+\]
+and hence for every \(v\in\mathcal H\),
+\[
+  0=\langle v,(bb^\dagger+b^\dagger b)v\rangle
+   =\|b^\dagger v\|^2+\|bv\|^2,
+\]
+so \(b=0\).  Thus the ordinary complex Hilbert representation collapses the
+Grassmann cocycle.  The representation found in \(T1\) avoids this collapse by
+keeping the Grassmann variables as formal odd coefficients anticommuting with
+the concrete CAR generators.

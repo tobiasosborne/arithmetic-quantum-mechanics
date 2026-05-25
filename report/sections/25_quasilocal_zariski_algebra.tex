@@ -1,0 +1,165 @@
+% SHARD-ID: AQM-25-QUASILOCAL-ZARISKI-ALGEBRA
+% SHARD-TITLE: Quasi-Local Zariski Algebra
+% SHARD-SUMMARY: Records the directed-system choice for building a quasi-local algebra from Zariski regions.
+% SHARD-SUMMARY: Proves that open-local algebras over quasi-compact opens form the natural filtered system.
+% SHARD-SUMMARY: Reinterprets the closed-complement construction as a closed-support system rather than the primary quasi-local net.
+% SHARD-KEYWORDS: quasi-local algebra, directed system, filtered colimit, Zariski open, quasi-compact open, closed support
+
+\section{Quasi-Local Zariski Algebra}
+\label{sec:quasilocal-zariski-algebra}
+
+\subsection{Status and Source Anchors}
+
+This shard records the answer to the directed-system question left by
+AQM-24.  The Zariski-topology source remains
+\path{references/algebraic_geometry/stacks_project_algebra.tex}: standard
+opens form a basis in lines 3104--3117, \(\operatorname{Spec}R\) is
+quasi-compact in lines 3251--3273, and the topology has a quasi-compact open
+basis with quasi-compact intersections in lines 3275--3298.
+
+No analytic completion convention is fixed here.  The object constructed below
+is the algebraic quasi-local \(*\)-algebra, i.e. the filtered colimit of the
+local finite-region \(*\)-algebras.  A later \(C^*\)-completion should be
+recorded as an additional convention.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&\text{A directed set is a preorder in which any two elements have
+      a common upper bound.}\\
+D2&:&\mathsf O(X)=\{\text{Zariski opens of }X\},\quad
+      \mathsf K(X)=\{\text{quasi-compact Zariski opens of }X\}.\\
+D3&:&U\in\mathsf K(X)\mapsto\mathcal A(U)
+      \text{ is the open-local algebra of AQM-24.}\\
+L1&:&\mathsf O(X)\text{ is directed under inclusion.}\\
+L2&:&\mathsf K(X)\text{ is directed under inclusion.}\\
+T1&:&(\mathcal A(U))_{U\in\mathsf K(X)}
+      \text{ is the natural quasi-local directed system.}\\
+T2&:&\text{Closed complements are naturally indexed by closed supports.}
+\end{array}
+\]
+
+\subsection{Directed Region Posets D1--L2}
+
+A preorder \(I\) is called directed if for every \(i,j\in I\) there exists
+\(k\in I\) such that \(i\leq k\) and \(j\leq k\).  A directed system of
+\(*\)-algebras over \(I\) is a family \((A_i)_{i\in I}\) with structure maps
+\(\alpha_{ij}:A_i\to A_j\) for \(i\leq j\), satisfying
+\[
+  \alpha_{ii}=\operatorname{id},\qquad
+  \alpha_{jk}\alpha_{ij}=\alpha_{ik}.
+\]
+
+Let \(X=\operatorname{Spec}R\).  Write \(\mathsf O(X)\) for the set of
+Zariski open subsets ordered by inclusion.  Write \(\mathsf K(X)\) for the
+quasi-compact open subsets ordered by inclusion.  At the present concrete
+level, \(\mathsf K(X)\) can be represented by finite unions of standard opens
+\[
+  D(f_1)\cup\cdots\cup D(f_n),
+\]
+using the Stacks source cited above.
+
+\paragraph{Lemma \(L1\).}
+\(\mathsf O(X)\) is directed under inclusion.
+
+\emph{Proof.}
+If \(U,V\subset X\) are open, then \(U\cup V\) is open and contains both.
+Thus \(U\cup V\) is a common upper bound.
+
+\paragraph{Lemma \(L2\).}
+\(\mathsf K(X)\) is directed under inclusion.
+
+\emph{Proof.}
+If \(U,V\) are quasi-compact opens, then \(U\cup V\) is open.  To show it is
+quasi-compact, let \((W_a)\) be an open cover of \(U\cup V\).  It restricts to
+an open cover of \(U\) and to an open cover of \(V\).  Since \(U\) and \(V\)
+are quasi-compact, finitely many \(W_a\)'s cover \(U\), and finitely many
+\(W_a\)'s cover \(V\).  The union of those two finite subfamilies covers
+\(U\cup V\).  Hence \(U\cup V\in\mathsf K(X)\), and it is a common upper
+bound.
+
+\subsection{The Quasi-Local System T1}
+
+For \(U\in\mathsf K(X)\), let \(\mathcal A(U)\) be the open-local Weyl
+observable algebra from AQM-24.  For \(U\subset V\), use the inclusion
+\[
+  \iota_{U,V}:\mathcal A(U)\hookrightarrow\mathcal A(V),\qquad
+  a\mapsto a\otimes\mathbf 1_{V\setminus U}.
+\]
+
+\paragraph{Theorem \(T1\).}
+\((\mathcal A(U),\iota_{U,V})_{U\in\mathsf K(X)}\) is a directed system of
+\(*\)-algebras.  Its algebraic filtered colimit
+\[
+  \mathcal A_{\rm qloc}(X)
+  :=
+  \varinjlim_{U\in\mathsf K(X)}\mathcal A(U)
+\]
+is the natural Zariski quasi-local algebra for the present programme.
+
+\emph{Proof.}
+The index category is directed by Lemma \(L2\).  For every inclusion
+\(U\subset V\), AQM-24 proves that \(\iota_{U,V}\) is an injective unital
+\(*\)-homomorphism.  The same lemma proves functoriality:
+\[
+  \iota_{V,W}\circ\iota_{U,V}=\iota_{U,W}
+\]
+for \(U\subset V\subset W\).  These are exactly the axioms of a directed
+system.  The displayed \(\varinjlim\) is therefore well-defined as the
+algebraic colimit of this system.
+
+\subsection{Closed Supports T2}
+
+The closed-complement assignment from AQM-24 sends an open \(U\) to
+\[
+  \mathcal A(X\setminus U).
+\]
+With opens ordered by inclusion, this assignment is contravariant.  Therefore
+it is not the primary quasi-local system if ``local region grows'' is meant to
+match \(U\subset V\).
+
+The same construction becomes covariant if it is indexed directly by closed
+supports.  Let \(\mathsf Z(X)\) be the set of Zariski closed subsets ordered by
+inclusion.  Since a finite union of closed subsets is closed, \(\mathsf Z(X)\)
+is directed: \(Z,Z'\subset Z\cup Z'\).  The assignment
+\[
+  Z\longmapsto\mathcal A(Z)
+\]
+with the same tensor-by-identity inclusions is then a directed system.  This is
+best read as a closed-support or vanishing-locus quasi-local algebra, not as
+the open-local observable algebra.
+
+\subsection{Finite Checks}
+
+For \(X=\operatorname{Spec}\mathbb F_p\), the space has a largest open
+\(X\).  Hence the directed system has a terminal object and
+\[
+  \mathcal A_{\rm qloc}(X)=\mathcal A(X)\cong M_p(\mathbb C).
+\]
+
+For \(X=\operatorname{Spec}(\mathbb Z/6\mathbb Z)\), all opens are
+quasi-compact and \(X\) is again terminal.  The quasi-local algebra is
+\[
+  \mathcal A_{\rm qloc}(X)
+  =
+  M_2(\mathbb C)\otimes M_3(\mathbb C)\cong M_6(\mathbb C).
+\]
+The proper open-local subalgebras are the two commuting singleton algebras
+\[
+  M_2(\mathbb C)\otimes\mathbf 1_3,\qquad
+  \mathbf 1_2\otimes M_3(\mathbb C),
+\]
+and their common upper bound is the full open \(X\).
+
+\subsection{Conclusion}
+
+For the quasi-local algebra, the natural general convention is
+\[
+  \boxed{\mathcal A_{\rm qloc}(X)
+  =\varinjlim_{U\in\mathsf K(X)}\mathcal A(U)}
+\]
+with \(\mathsf K(X)\) the quasi-compact Zariski opens and with inclusions
+following open inclusion.  The closed-complement possibility is retained as a
+separate closed-support construction, useful for vanishing loci and defects,
+but not as the primary open-local quasi-local algebra.

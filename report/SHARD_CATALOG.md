@@ -168,3 +168,237 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Applies the dictionary to \(\mathcal O(d)\otimes\mathbb F_3^2\) on \(\mathbf P^1_{\mathbb F_3}\).
 - Summary: Tabulates every scalar residue used by the \(d=0,\ldots,4\) projective-line examples.
 - Keywords: stalk, fiber, residue field, germ, projective line, arithmetic quantum field
+
+## `AQM-19-CANONICAL-BOSON-FERMION-FIELD-COMPARISON`
+
+- Source: `report/sections/19_canonical_boson_fermion_field_comparison.tex`
+- Title: Canonical Boson and Fermion Fields as Field-Label Tests
+- Summary: Tests whether standard finite bosonic and fermionic fields fit the arithmetic-field label-space pattern.
+- Summary: Proves that finite bosonic fields arise from real symplectic map spaces and Stone--von Neumann uniqueness.
+- Summary: Separates fermionic CAR fields from the naive proposal of replacing the target by Grassmann numbers.
+- Keywords: bosonic field, fermionic field, CCR, CAR, Weyl, Stone-von-Neumann, Grassmann, Fock
+
+## `AQM-20-GRASSMANN-WEYL-FERMION-DISPLACEMENTS`
+
+- Source: `report/sections/20_grassmann_weyl_fermion_displacements.tex`
+- Title: Grassmann-Weyl Fermion Displacements
+- Summary: Defines the abstract Grassmann displacement ray algebra used for fermion coherent states.
+- Summary: States the Cahill--Glauber representation inside the Grassmann-extended finite CAR algebra.
+- Summary: Sets up the Lamport dependencies proved in the following derivation shard.
+- Keywords: Grassmann, Weyl, CAR, fermions, coherent states, displacement operators, projective representation
+
+## `AQM-21-GRASSMANN-WEYL-FERMION-DERIVATIONS`
+
+- Source: `report/sections/21_grassmann_weyl_fermion_displacement_derivations.tex`
+- Title: Grassmann-Weyl Fermion Displacement Derivations
+- Summary: Proves the unitarity of Cahill--Glauber fermion displacement operators.
+- Summary: Derives the CAR displacement identities and Grassmann-valued ray product.
+- Summary: Records the boundary between Grassmann-extended CAR unitarity and ordinary Hilbert-space unitarity.
+- Keywords: Grassmann, CAR, fermion displacement, Baker-Hausdorff, coherent states, unitary
+
+## `AQM-22-PRIME-FIELD-ARITHMETIC-FIELDS-QUDIT-PAULIS`
+
+- Source: `report/sections/22_prime_field_arithmetic_fields_qudit_paulis.tex`
+- Title: Prime-Field Arithmetic Fields and Qudit Paulis
+- Summary: Separates the one-point spectrum of a prime field from its underlying set of elements.
+- Summary: Proves that the all-map arithmetic field on \(X=\mathbb F_p\) gives the \(p\)-qudit Pauli group.
+- Summary: Records the \(p=2\) phase edge case and the distinction between ambient Pauli groups and stabilizer choices.
+- Keywords: arithmetic quantum field, finite field, prime field, qudit, Pauli group, Weyl-Heisenberg, stabilizer
+
+## `AQM-23-SPEC-Z6-RESIDUE-QUDIT-FACTORISATION`
+
+- Source: `report/sections/23_spec_z6_residue_qudit_factorisation.tex`
+- Title: Spec Z/6Z and Residue Qudit Factorisation
+- Summary: Computes the prime ideals and residue fields of \(\operatorname{Spec}(\mathbb Z/6\mathbb Z)\).
+- Summary: Builds the residue-field Weyl label group and proves it quantizes to qubit tensor qutrit.
+- Summary: Separates the label direct sum from the Hilbert-space tensor product and rules out a Hilbert direct sum.
+- Keywords: arithmetic quantum field, Spec, residue field, Z/6Z, qubit, qutrit, tensor product, Weyl-Heisenberg
+
+## `AQM-24-ZARISKI-OPENS-OBSERVABLE-NETS`
+
+- Source: `report/sections/24_zariski_opens_observable_nets.tex`
+- Title: Zariski Opens and Observable Nets
+- Summary: Defines open-local and closed-complement observable algebras for finite affine spectra.
+- Summary: Proves that open-local Weyl algebras form a covariant net while closed-complement algebras are contravariant.
+- Summary: Computes the edge cases \(\operatorname{Spec}\mathbb F_p\) and \(\operatorname{Spec}(\mathbb Z/6\mathbb Z)\).
+- Keywords: Zariski topology, open set, closed set, observable algebra, Weyl-Heisenberg, Spec, Z/6Z
+
+## `AQM-25-QUASILOCAL-ZARISKI-ALGEBRA`
+
+- Source: `report/sections/25_quasilocal_zariski_algebra.tex`
+- Title: Quasi-Local Zariski Algebra
+- Summary: Records the directed-system choice for building a quasi-local algebra from Zariski regions.
+- Summary: Proves that open-local algebras over quasi-compact opens form the natural filtered system.
+- Summary: Reinterprets the closed-complement construction as a closed-support system rather than the primary quasi-local net.
+- Keywords: quasi-local algebra, directed system, filtered colimit, Zariski open, quasi-compact open, closed support
+
+## `AQM-26-PRESHEAVES-COSHEAVES-OBSERVABLE-NETS`
+
+- Source: `report/sections/26_presheaves_cosheaves_observable_nets.tex`
+- Title: Presheaves, Cosheaves, and Observable Nets
+- Summary: Defines presheaves, sheaves, precosheaves, and cosheaves before applying them to the observable net.
+- Summary: Proves that the open-local observable assignment is a precosheaf but not an ordinary cosheaf of unital \(*\)-algebras.
+- Summary: Shows that the Weyl label assignment is the cosheaf-like layer whose quantization gives additive local nets.
+- Keywords: presheaf, sheaf, precosheaf, copresheaf, cosheaf, local net, observable algebra, Weyl labels
+
+## `AQM-27-STATE-PRESHEAF-QUASILOCAL-ALGEBRA`
+
+- Source: `report/sections/27_state_presheaf_quasilocal_algebra.tex`
+- Title: State Presheaf of the Quasi-Local Algebra
+- Summary: Defines local quantum state spaces for the Zariski observable net and proves they form a presheaf.
+- Summary: Proves that the state presheaf is not generally a sheaf, by explicit finite marginal counterexamples.
+- Summary: Identifies global states on the algebraic quasi-local algebra with compatible inverse-limit families of local states.
+- Keywords: quantum state, density matrix, presheaf, sheaf failure, marginal, partial trace, quasi-local algebra
+
+## `AQM-28-CLOSED-POINT-AFFINE-ARITHMETIC-FIELDS`
+
+- Source: `report/sections/28_closed_point_affine_arithmetic_fields.tex`
+- Title: Closed-Point Affine Arithmetic Fields
+- Summary: Extends the finite residue-qudit construction to affine schemes of finite type over \(\mathbb F_q\).
+- Summary: Defines finite closed supports, Weyl-Heisenberg labels, open-local algebras, and state restrictions.
+- Summary: Separates quasi-local finite-support fields from formal regular-function field profiles.
+- Keywords: affine scheme, closed point, finite residue field, Weyl-Heisenberg, quasi-local algebra, state presheaf
+
+## `AQM-29-SPEC-FQ-T-ARITHMETIC-FIELD`
+
+- Source: `report/sections/29_spec_fq_t_arithmetic_field.tex`
+- Title: The Arithmetic Field on \(\operatorname{Spec}\mathbb F_q[t]\)
+- Summary: Computes the points, residue fields, and Zariski opens of the affine line over \(\mathbb F_q\).
+- Summary: Builds the closed-point Weyl-Heisenberg net and state presheaf for \(\operatorname{Spec}\mathbb F_q[t]\).
+- Summary: Shows that regular polynomial profiles are formal infinite-support fields, not quasi-local operators.
+- Keywords: affine line, finite field, closed point, irreducible polynomial, Weyl-Heisenberg, state presheaf
+
+## `AQM-30-SPEC-FQ-XY-ARITHMETIC-FIELD`
+
+- Source: `report/sections/30_spec_fq_xy_arithmetic_field.tex`
+- Title: The Arithmetic Field on \(\operatorname{Spec}\mathbb F_q[x,y]\)
+- Summary: Computes the point types of the affine plane over \(\mathbb F_q\): generic, curve-generic, and closed points.
+- Summary: Builds the closed-point Weyl-Heisenberg net, local algebras, and state presheaf for the affine plane.
+- Summary: Separates rational-point truncations from the full closed-point quasi-local algebra.
+- Keywords: affine plane, finite field, closed point, maximal ideal, curve point, Weyl-Heisenberg, rational truncation
+
+## `AQM-31-WEYL-HEISENBERG-RESEARCH-STATUS-RINGS`
+
+- Source: `report/sections/31_weyl_heisenberg_research_status_over_rings.tex`
+- Title: Weyl-Heisenberg Representation Status over Rings and LCA Systems
+- Summary: Separates the LCA, locally compact ring, finite Frobenius-ring, and finite Clifford/Weil representation literatures.
+- Summary: Records which theorems support Stone-von Neumann uniqueness and which only support Pauli/stabilizer or Clifford-extension structure.
+- Summary: Sets the ground-truth boundary for the rational-function field \(k(t)\) construction.
+- Keywords: Weyl-Heisenberg, commutative rings, Frobenius rings, LCA groups, Stone-von Neumann, Clifford group, Weil representation
+
+## `AQM-32-WEYL-HEISENBERG-REPRESENTATIONS-FOR-KT`
+
+- Source: `report/sections/32_weyl_heisenberg_representations_for_kt.tex`
+- Title: Weyl-Heisenberg Representations for \(k(t)\)
+- Summary: Defines the algebraic rational-function Heisenberg group using a coefficient character on \(k(t)\).
+- Summary: Proves the Schrödinger representation on \(\ell^2(k(t))\) is unitary and irreducible.
+- Summary: Leaves the full LCA, local-field, adelic, and \(k=\mathbb F_3\) examples to the following completion shard.
+- Keywords: k(t), rational function field, Weyl-Heisenberg, Schrödinger representation, Stone-von Neumann, F3, local field
+
+## `AQM-33-FULL-DUAL-LOCAL-MODELS-FOR-KT`
+
+- Source: `report/sections/33_full_dual_local_models_for_kt.tex`
+- Title: Full-Dual and Local Models for \(k(t)\)
+- Summary: Explains why the algebraic \(k(t)\) representation is not the full Stone-von Neumann theorem.
+- Summary: Records the full discrete-dual, local-field, and adelic completions where analytic uniqueness belongs.
+- Summary: Works explicit \(k=\mathbb F_3\) commutation examples.
+- Keywords: k(t), Pontryagin dual, local field, adele, Stone-von Neumann, F3, Weyl-Heisenberg
+
+## `AQM-34-F3-POLYNOMIAL-QUOTIENT-ARITHMETIC-FIELDS`
+
+- Source: `report/sections/34_f3_polynomial_quotient_arithmetic_fields.tex`
+- Title: Polynomial-Quotient Arithmetic Fields over \(\mathbb F_3\)
+- Summary: Computes \(\operatorname{Spec}\mathbb F_3[t]/(p)\) from the factorization of \(p\).
+- Summary: Builds the complete finite residue-field Weyl-Heisenberg representation.
+- Summary: Separates coordinate-ring nilpotents from reduced closed-point Weyl labels.
+- Keywords: finite field, polynomial quotient, coordinate ring, Weyl-Heisenberg, nilpotents
+
+## `AQM-35-TN-EQUALS-1-F3-ARITHMETIC-FIELD`
+
+- Source: `report/sections/35_tn_equals_1_f3_arithmetic_field.tex`
+- Title: The \(t^n=1\) Arithmetic Field over \(\mathbb F_3\)
+- Summary: Factors \(t^n-1\) over \(\mathbb F_3\), including the characteristic-\(3\) repeated-factor case.
+- Summary: Gives the complete finite residue-field Weyl-Heisenberg representation for \(R_n=\mathbb F_3[t]/(t^n-1)\).
+- Summary: Works small examples \(n=1,2,3,4,6\) and records when nilpotents are invisible to Weyl labels.
+- Keywords: finite field, polynomial quotient, t^n=1, Weyl-Heisenberg, cyclotomic, nilpotents
+
+## `AQM-36-NILPOTENT-THICKENING-WEYL-FIELDS`
+
+- Source: `report/sections/36_nilpotent_thickening_weyl_fields.tex`
+- Title: Nilpotent Thickening Weyl Fields
+- Summary: Defines the nilpotent-sensitive Weyl layer for \(\mathbb F_3[t]/(\pi^e)\).
+- Summary: Proves the top-coefficient character is generating and gives an irreducible Weyl representation.
+- Summary: Interprets thickenings as jet degrees of freedom rather than additional closed points.
+- Keywords: nilpotent thickening, finite chain ring, Frobenius ring, Weyl-Heisenberg, jet, Artin ring
+
+## `AQM-37-THICKENED-TN-EQUALS-1-EXAMPLES`
+
+- Source: `report/sections/37_thickened_tn_equals_1_examples.tex`
+- Title: Thickened \(t^n=1\) Examples
+- Summary: Applies the nilpotent-sensitive Weyl layer to \(R_n=\mathbb F_3[t]/(t^n-1)\).
+- Summary: Proves that the thickened Hilbert dimension is \(3^n\), while the reduced dimension is \(3^m\).
+- Summary: Works the \(t^3=1\) and \(t^6=1\) jet commutator formulas explicitly.
+- Keywords: nilpotent thickening, t^n=1, jet qudit, Weyl-Heisenberg, F3
+
+## `AQM-38-LAGRANGIAN-STABILIZER-DESCENT`
+
+- Source: `report/sections/38_lagrangian_stabilizer_descent.tex`
+- Title: Lagrangian Stabilizer Descent
+- Summary: Defines the descent defect of a global stabilizer against a finite cover.
+- Summary: Proves that Lagrangian labels give full stabilizer states, while zero descent defect is the extra local-to-global condition.
+- Summary: Proves that disjoint products of local Lagrangians have zero descent defect.
+- Keywords: Lagrangian, stabilizer, descent defect, local-to-global, cosheaf
+
+## `AQM-39-TWO-QUTRIT-STABILIZER-DESCENT-COUNTEREXAMPLE`
+
+- Source: `report/sections/39_two_qutrit_stabilizer_descent_counterexample.tex`
+- Title: Two-Qutrit Stabilizer Descent Counterexample
+- Summary: Gives an explicit global Lagrangian stabilizer with nonzero descent defect.
+- Summary: Shows that the associated two-qutrit stabilizer state has trivial one-site stabilizer restrictions.
+- Summary: Records the corrected local-to-global statement for Lagrangian stabilizers.
+- Keywords: qutrit, stabilizer, Lagrangian, descent defect, entanglement, local-to-global
+
+## `AQM-40-PRODUCT-FIELD-SPECTRUM-QUDIT-STABILIZERS`
+
+- Source: `report/sections/40_product_field_spectrum_qudit_stabilizers.tex`
+- Title: Product-Field Spectra and \(n\)-Qudit Stabilizers
+- Summary: Computes \(\operatorname{Spec}(k^n)\) for a finite field \(k=\mathbb F_q\).
+- Summary: Proves that the residue-qudit arithmetic field is the ambient \(n\)-qudit Weyl/Pauli system.
+- Summary: Separates the ambient \(n\)-qudit system from the extra choice of stabilizer labels and phases.
+- Keywords: finite field, product ring, spectrum, discrete scheme, qudit, stabilizer, Weyl-Heisenberg
+
+## `AQM-41-CECH-COHOMOLOGY-QUANTUM-DESCENT`
+
+- Source: `report/sections/41_cech_cohomology_quantum_descent.tex`
+- Title: Cech Cohomology and Quantum Descent
+- Summary: Defines cover-relative Cech cohomology and the dual cosheaf homology used by the arithmetic-field net.
+- Summary: Proves that the residue-label cosheaf has trivial higher Cech homology on finite covers.
+- Summary: Identifies state, observable, and stabilizer descent defects as distinct quantum counterparts.
+- Keywords: Cech cohomology, cosheaf homology, descent, marginal problem, stabilizer defect, observable net
+
+## `AQM-42-GAUSSIAN-CLIFFORD-DYNAMICS`
+
+- Source: `report/sections/42_gaussian_clifford_dynamics.tex`
+- Title: Gaussian and Clifford Dynamics
+- Summary: Defines finite odd-qudit Gaussian dynamics as symplectic morphisms of Weyl label spaces.
+- Summary: Proves that symplectic morphisms induce Weyl observable algebra monomorphisms and automorphisms.
+- Summary: Registers Gross's discrete Hudson theorem as the stabilizer/Gaussian state dictionary.
+- Keywords: dynamics, symplectic morphism, Clifford group, Gaussian state, stabilizer state, Hudson theorem
+
+## `AQM-43-FINITE-FIELD-SCALE-CONTINUUM-LIMITS`
+
+- Source: `report/sections/43_finite_field_scale_continuum_limits.tex`
+- Title: Finite-Field Scales and Continuum Limits
+- Summary: Defines base-extension scales \(X_r=X_0\times_{\mathbb F_q}\mathbb F_{q^r}\) and their closed-point Weyl nets.
+- Summary: Proves the trace obstruction to naive Weyl embeddings and the trace-normalized replacement.
+- Summary: Computes the point \(X_0=\operatorname{Spec}\mathbb F_3\), its prime-to-\(3\) continuum limit, and Frobenius action.
+- Keywords: continuum limit, finite field extension, base change, Weyl net, trace, Frobenius
+
+## `AQM-44-TRACE-GAUGES-FULL-CONTINUUM-TOWERS`
+
+- Source: `report/sections/44_trace_gauges_full_continuum_towers.tex`
+- Title: Trace Gauges for Full Continuum Towers
+- Summary: Defines coherent trace-density systems for finite-field scale towers.
+- Summary: Proves that coherent trace data always exist and give coherent Weyl-net embeddings.
+- Summary: Identifies the arbitrariness as trace gauge freedom and records the Frobenius obstruction.
+- Keywords: continuum limit, trace gauge, finite field, Weyl net, Frobenius, coherence

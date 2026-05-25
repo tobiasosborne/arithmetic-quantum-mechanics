@@ -1,0 +1,229 @@
+% SHARD-ID: AQM-29-SPEC-FQ-T-ARITHMETIC-FIELD
+% SHARD-TITLE: The Arithmetic Field on \(\operatorname{Spec}\mathbb F_q[t]\)
+% SHARD-SUMMARY: Computes the points, residue fields, and Zariski opens of the affine line over \(\mathbb F_q\).
+% SHARD-SUMMARY: Builds the closed-point Weyl-Heisenberg net and state presheaf for \(\operatorname{Spec}\mathbb F_q[t]\).
+% SHARD-SUMMARY: Shows that regular polynomial profiles are formal infinite-support fields, not quasi-local operators.
+% SHARD-KEYWORDS: affine line, finite field, closed point, irreducible polynomial, Weyl-Heisenberg, state presheaf
+
+\section{The Arithmetic Field on \texorpdfstring{\(\operatorname{Spec}\mathbb F_q[t]\)}{Spec Fq[t]}}
+\label{sec:spec-fq-t-arithmetic-field}
+
+\subsection{Status and Source Anchors}
+
+This shard instantiates AQM-28 for \(R_1=k[t]\), \(k=\mathbb F_q\).  The
+spectrum and \(D(f)\) notation are sourced from the Stacks Project snapshot,
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+2972--2983 and 3104--3117.  Residue fields are sourced from lines 250--274
+and 3310--3350.  The polynomial-ring classification below is proved directly
+from the Euclidean property of \(k[t]\).  The Weyl layer is the finite
+closed-point construction of AQM-28.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&R_1=k[t],\quad X_1=\Spec R_1.\\
+L1&:&X_1=\{\eta=(0)\}\cup\{x_\pi=(\pi):\pi
+      \text{ monic irreducible}\}.\\
+L2&:&\kappa(\eta)=k(t),\quad
+      \kappa(x_\pi)=k[t]/(\pi),\quad
+      |\kappa(x_\pi)|=q^{\deg\pi}.\\
+L3&:&D(g)=\emptyset\text{ if }g=0,\text{ and for }g\ne0
+      \text{ it omits exactly the closed points dividing }g.\\
+D2&:&E_1(U)=\bigoplus_{x_\pi\in U}\kappa(x_\pi)^2,\quad
+      \mathcal A_1(U)=\varinjlim_{S\Subset C(U)}\mathcal A(S).\\
+T1&:&\mathcal A_1(U)\text{ is the open-local Weyl algebra on closed
+      points of }U.\\
+T2&:&\operatorname{State}(\mathcal A_1(U))\text{ is the inverse limit of
+      finite-volume density-matrix states.}\\
+T3&:&\text{Nonzero polynomial field profiles have infinite closed-point
+      support.}
+\end{array}
+\]
+
+\subsection{Points of the Affine Line L1--L2}
+
+Let \(\mathcal P_k\) be the set of monic irreducible polynomials in \(k[t]\).
+The zero ideal is prime because \(k[t]\) is a domain; write
+\[
+  \eta=(0)
+\]
+for the generic point.
+
+\paragraph{Lemma \(L1\).}
+The remaining prime ideals are exactly
+\[
+  x_\pi=(\pi),\qquad \pi\in\mathcal P_k.
+\]
+
+\emph{Proof.}
+Since \(k[t]\) is Euclidean, every nonzero ideal has a unique monic generator.
+Let \(\mathfrak p\ne(0)\) be prime and write \(\mathfrak p=(g)\) with \(g\)
+monic.  If \(g=ab\) with nonconstant \(a,b\), then \(ab\in\mathfrak p\), so
+primality gives \(a\in\mathfrak p\) or \(b\in\mathfrak p\), contradicting
+minimal degree of the monic generator \(g\).  Thus \(g\) is irreducible.
+Conversely, if \(\pi\) is irreducible, then \(k[t]/(\pi)\) is a field, so
+\((\pi)\) is maximal and therefore prime.
+
+\paragraph{Lemma \(L2\).}
+\[
+  \kappa(\eta)=k(t),\qquad
+  \kappa(x_\pi)=k[t]/(\pi).
+\]
+If \(d=\deg\pi\), then \(\kappa(x_\pi)\) has \(q^d\) elements.  Thus the
+closed point \(x_\pi\) carries one \(q^d\)-level finite-field qudit.
+
+\emph{Proof.}
+The residue field at the zero prime is the fraction field of \(k[t]\), namely
+\(k(t)\).  For the maximal ideal \((\pi)\), localization does not change the
+quotient residue field, so \(\kappa(x_\pi)=k[t]/(\pi)\).  The residue classes
+of \(1,t,\ldots,t^{d-1}\) form a \(k\)-basis, hence the quotient has \(q^d\)
+elements.
+
+The generic point \(\eta\) has infinite residue field \(k(t)\).  It is not a
+finite Weyl site under the closed-point convention of AQM-28.
+
+\subsection{Zariski Opens L3}
+
+Let \(g\in k[t]\).  If \(g=0\), then \(D(g)=\emptyset\).  If
+\[
+  g=u\prod_{i=1}^r\pi_i^{n_i}
+\]
+with \(u\in k^\times\) and distinct monic irreducibles \(\pi_i\), then
+\[
+  D(g)=\{\eta\}\cup
+  \{x_\pi:\pi\in\mathcal P_k,\ \pi\notin\{\pi_1,\ldots,\pi_r\}\}.
+\]
+
+\emph{Derivation.}
+The generic prime \((0)\) contains no nonzero \(g\), so \(\eta\in D(g)\).
+The closed prime \((\pi)\) contains \(g\) iff \(\pi\) divides \(g\).  Therefore
+\(D(g)\) is exactly the displayed set.  In particular every nonempty open
+contains \(\eta\), and its closed-point support is cofinite in
+\(\mathcal P_k\).
+
+For a closed point \(x_\pi\),
+\[
+  \{x_\pi\}=V(\pi),\qquad
+  X_1\setminus\{x_\pi\}=D(\pi).
+\]
+Thus closed singletons are not open, but their complements are standard opens.
+
+\subsection{Weyl-Heisenberg Field Net D2--T1}
+
+For an open \(U\subset X_1\), define
+\[
+  C_1(U)=U\cap\{x_\pi:\pi\in\mathcal P_k\}.
+\]
+The affine-line field-label group is
+\[
+  E_1(U)=\bigoplus_{x_\pi\in C_1(U)}\kappa(x_\pi)^2.
+\]
+For \(D(g)\) with \(g\ne0\),
+\[
+  E_1(D(g))=
+  \bigoplus_{\pi\nmid g}\bigl(k[t]/(\pi)\bigr)^2.
+\]
+The corresponding algebra is
+\[
+  \mathcal A_1(D(g))=
+  \varinjlim_{S\Subset\{\pi:\pi\nmid g\}}
+  \bigotimes_{\pi\in S}M_{q^{\deg\pi}}(\mathbb C).
+\]
+For \(g=1\), this is the global algebra
+\[
+  \mathcal A_1(X_1)=
+  \varinjlim_{S\Subset\mathcal P_k}
+  \bigotimes_{\pi\in S}M_{q^{\deg\pi}}(\mathbb C).
+\]
+
+\paragraph{Theorem \(T1\).}
+The assignment \(U\mapsto\mathcal A_1(U)\) is the open-local
+Weyl-Heisenberg net on \(\Spec k[t]\).
+
+\emph{Proof.}
+This is AQM-28 applied to \(R_1=k[t]\).  If \(U\subset V\), then
+\(C_1(U)\subset C_1(V)\), so finite closed supports in \(U\) are finite closed
+supports in \(V\).  The algebra inclusion tensors by identities on the extra
+closed points.  Additivity for open covers follows because every Weyl label
+has finite closed support.
+
+At a single closed point \(x_\pi\), let \(K_\pi=k[t]/(\pi)\).  For
+\(a,b\in K_\pi\), write
+\[
+  X_\pi(a)=W_\pi(a,0),\qquad Z_\pi(b)=W_\pi(0,b).
+\]
+Then
+\[
+  Z_\pi(b)X_\pi(a)
+  =
+  \psi_\pi(ab)X_\pi(a)Z_\pi(b),
+\]
+while operators at distinct closed points commute.
+
+\subsection{States T2}
+
+For every open \(U\),
+\[
+  \operatorname{State}(\mathcal A_1(U))
+  \cong
+  \varprojlim_{S\Subset C_1(U)}
+  \operatorname{State}\!\left(
+  \bigotimes_{x_\pi\in S}M_{q^{\deg\pi}}(\mathbb C)\right).
+\]
+The restriction maps are partial traces over omitted closed points.  The
+product tracial state is obtained by taking the normalized trace at every
+closed point; it sends every nontrivial finite-support Weyl operator to \(0\).
+
+The state presheaf is not separated for the Zariski topology.  Let
+\[
+  x_0=(t),\qquad x_1=(t-1),\qquad
+  U=D(t),\quad V=D(t-1).
+\]
+Then \(U\cup V=X_1\).  On the two \(q\)-dimensional factors \(x_0,x_1\), take
+the maximally entangled vector
+\[
+  |\Phi\rangle=q^{-1/2}\sum_{a\in k}|a,a\rangle.
+\]
+Let \(\rho=|\Phi\rangle\langle\Phi|\), and let
+\(\sigma=(I_q/q)\otimes(I_q/q)\).  Tensor both with the product tracial state
+on all other closed points.  The two global states restrict equally to \(U\)
+and to \(V\), because each restriction traces out one of \(x_0,x_1\).  They
+differ globally, since \(\rho\ne\sigma\) on the two-site subalgebra.
+
+\subsection{Polynomial Field Profiles T3}
+
+A pair of polynomials \(a,b\in k[t]\) defines a closed-point profile
+\[
+  e_{a,b}(x_\pi)=(a\bmod\pi,\ b\bmod\pi).
+\]
+There are infinitely many monic irreducibles in \(k[t]\): if
+\(\pi_1,\ldots,\pi_n\) were all of them, then
+\(P=\pi_1\cdots\pi_n\) is nonconstant and \(P+1\) has an irreducible divisor
+which divides none of the \(\pi_i\), a contradiction.
+If \(a\ne0\), then \(a\bmod\pi=0\) only for the finitely many irreducible
+divisors of \(a\).  Hence \(a\) is nonzero at infinitely many closed points.
+The same holds for \(b\).  Therefore
+\[
+  e_{a,b}\in E_1(X_1)
+  \quad\Longleftrightarrow\quad
+  a=b=0.
+\]
+
+Thus the coordinate function \(t\), and every nonzero polynomial profile, is a
+formal infinite-support field profile.  Its finite restrictions
+\[
+  e_{a,b}|_S\in\bigoplus_{x_\pi\in S}\kappa(x_\pi)^2
+\]
+give finite-volume Weyl operators, but the full profile does not define an
+element of the algebraic quasi-local algebra.
+
+\subsection{Conclusion}
+
+\(\Spec k[t]\) produces a countable closed-point array of finite-field qudits:
+one \(q^d\)-level qudit for each monic irreducible polynomial of degree \(d\).
+Nonempty Zariski opens remove finitely many closed points and always contain
+the generic point, but the generic point has residue field \(k(t)\) and is not
+a finite Weyl site in the current convention.  The quasi-local observables are
+finite closed-support Weyl operators; polynomial fields are formal
+infinite-volume profiles until a completion convention is added.

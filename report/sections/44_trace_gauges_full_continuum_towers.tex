@@ -1,0 +1,193 @@
+% SHARD-ID: AQM-44-TRACE-GAUGES-FULL-CONTINUUM-TOWERS
+% SHARD-TITLE: Trace Gauges for Full Continuum Towers
+% SHARD-SUMMARY: Defines coherent trace-density systems for finite-field scale towers.
+% SHARD-SUMMARY: Proves that coherent trace data always exist and give coherent Weyl-net embeddings.
+% SHARD-SUMMARY: Identifies the arbitrariness as trace gauge freedom and records the Frobenius obstruction.
+% SHARD-KEYWORDS: continuum limit, trace gauge, finite field, Weyl net, Frobenius, coherence
+
+\section{Trace Gauges for Full Continuum Towers}
+\label{sec:trace-gauges-full-continuum-towers}
+
+\subsection{Status and Source Anchors}
+
+AQM-43 proved that pairwise trace-one elements repair the Weyl phase
+obstruction for finite-field scale embeddings.  This shard proves that the
+pairwise choices can be made coherently for the whole divisibility tower, and
+records exactly what is gauge-like about the arbitrariness.  The source
+anchors are Stacks Algebra,
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+45278--45284 for nondegenerate separable trace pairing, and Stacks Varieties,
+\path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
+7005--7112 for Frobenius.  All coherence statements below are local
+derivations from those facts.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k_r=\mathbb F_{q^r}\subset\bar k,\quad r\mid s\Rightarrow k_r\subset k_s.\\
+D2&:&\text{A trace density is }a_r\in k_r\text{ with }
+      \Tr_{k_s/k_r}(a_s)=a_r.\\
+L1&:&\Tr_{k_s/k_r}:k_s\to k_r\text{ is surjective.}\\
+T1&:&\text{A coherent trace-density system }(a_r)_r\text{ with }a_1=1
+      \text{ exists.}\\
+D3&:&c_{s,r}=a_s/a_r.\\
+L2&:&\Tr_{k_s/k_r}(c_{s,r})=1,\quad
+      c_{t,r}=c_{t,s}c_{s,r}.\\
+T2&:&(c_{s,r})\text{ gives coherent full-tower Weyl-net embeddings.}\\
+T3&:&\text{The choice of }(a_r)\text{ is trace gauge data.}\\
+T4&:&p\mid s/r\text{ forbids a relative-Frobenius-fixed trace-one scalar.}
+\end{array}
+\]
+
+\subsection{Coherent Trace Densities D1--T1}
+
+Fix \(k=\mathbb F_q\) and \(k_r=\mathbb F_{q^r}\subset\bar k\).  A coherent
+trace-density system is a family \(a_r\in k_r\) such that \(a_1=1\) and,
+whenever \(r\mid s\),
+\[
+  \Tr_{k_s/k_r}(a_s)=a_r .
+\]
+This condition forces \(a_r\ne0\), because
+\[
+  \Tr_{k_r/k}(a_r)=a_1=1.
+\]
+
+\paragraph{Lemma \(L1\).}
+For \(r\mid s\), the trace map
+\[
+  \Tr_{k_s/k_r}:k_s\to k_r
+\]
+is surjective.
+
+\emph{Proof.}
+Finite fields are perfect, hence \(k_s/k_r\) is separable.  The sourced
+separable trace pairing is nondegenerate:
+\[
+  (x,y)\longmapsto \Tr_{k_s/k_r}(xy).
+\]
+If the trace map itself were zero, then \(\Tr_{k_s/k_r}(1\cdot y)=0\) for
+every \(y\), contradicting nondegeneracy with \(x=1\).  Thus the trace is a
+nonzero \(k_r\)-linear map from \(k_s\) to the one-dimensional \(k_r\)-space
+\(k_r\), so it is surjective.
+
+\paragraph{Theorem \(T1\).}
+Coherent trace-density systems exist.
+
+\emph{Proof.}
+Let \(N_m=m!\).  Start with \(a_{N_1}=a_1=1\).  Having chosen
+\(a_{N_m}\), Lemma \(L1\) gives \(a_{N_{m+1}}\in k_{N_{m+1}}\) with
+\[
+  \Tr_{k_{N_{m+1}}/k_{N_m}}(a_{N_{m+1}})=a_{N_m}.
+\]
+For an arbitrary \(r\ge1\), choose \(m\) with \(r\mid N_m\), and define
+\[
+  a_r=\Tr_{k_{N_m}/k_r}(a_{N_m}).
+\]
+This is independent of \(m\): if \(n\ge m\), then transitivity of trace and
+the recursive construction give
+\[
+  \Tr_{k_{N_n}/k_r}(a_{N_n})
+  =
+  \Tr_{k_{N_m}/k_r}
+  \bigl(\Tr_{k_{N_n}/k_{N_m}}(a_{N_n})\bigr)
+  =
+  \Tr_{k_{N_m}/k_r}(a_{N_m}).
+\]
+If \(r\mid s\), choose \(m\) with \(s\mid N_m\).  Then
+\[
+  \Tr_{k_s/k_r}(a_s)
+  =
+  \Tr_{k_s/k_r}
+  \bigl(\Tr_{k_{N_m}/k_s}(a_{N_m})\bigr)
+  =
+  \Tr_{k_{N_m}/k_r}(a_{N_m})
+  =
+  a_r.
+\]
+Thus \((a_r)_r\) is coherent.
+
+\subsection{Coherent Weyl Embeddings D3--T2}
+
+Given a coherent trace-density system, define
+\[
+  c_{s,r}=a_s/a_r\in k_s
+\]
+for \(r\mid s\), where \(a_r\) is embedded in \(k_s\).
+
+\paragraph{Lemma \(L2\).}
+\[
+  \Tr_{k_s/k_r}(c_{s,r})=1,\qquad
+  c_{t,r}=c_{t,s}c_{s,r}\quad(r\mid s\mid t).
+\]
+
+\emph{Proof.}
+Since \(a_r\in k_r^\times\),
+\[
+  \Tr_{k_s/k_r}(a_s/a_r)
+  =
+  a_r^{-1}\Tr_{k_s/k_r}(a_s)=1.
+\]
+The multiplicative identity is immediate:
+\[
+  c_{t,s}c_{s,r}=(a_t/a_s)(a_s/a_r)=a_t/a_r=c_{t,r}.
+\]
+
+Let \(X_0=\Spec R\) be affine over \(k\), and put
+\(X_r=X_0\times_k k_r\).  If \(x\in |X_r|_{\rm cl}\) has residue field
+\(K=\kappa(x)\), then the points of \(X_s\) above \(x\) are encoded by
+\[
+  B_{s,r,x}=K\otimes_{k_r}k_s .
+\]
+Use \(1\otimes c_{s,r}\in B_{s,r,x}\) as the trace-normalizing scalar.  Its
+trace to \(K\) is \(1\): choose a \(k_r\)-basis of \(k_s\); the multiplication
+matrix of \(c_{s,r}\) has trace \(\Tr_{k_s/k_r}(c_{s,r})=1\), and base change
+of that matrix from \(k_r\) to \(K\) leaves the trace equal to \(1\).
+
+\paragraph{Theorem \(T2\).}
+The coherent trace-density system gives coherent monomorphisms of all
+open-local Weyl nets
+\[
+  \alpha_{s,r,U}:\mathcal A_r(U)\hookrightarrow
+  \mathcal A_s(\pi_{s,r}^{-1}U),
+  \qquad r\mid s.
+\]
+
+\emph{Proof.}
+AQM-43 proves that any trace-one normalizing scalar gives a Weyl-compatible
+monomorphism at one transition.  The preceding paragraph gives trace-one
+scalars at every closed point, and Lemma \(L2\) gives
+\[
+  (1\otimes c_{t,s})(1\otimes c_{s,r})=1\otimes c_{t,r}.
+\]
+Therefore the label embeddings compose strictly, hence the induced Weyl-net
+monomorphisms compose strictly.
+
+\subsection{Gauge Meaning and Frobenius T3--T4}
+
+The family \((a_r)\), equivalently \((c_{s,r})\), is called a trace gauge.  It
+is not extra geometry of \(X_0\); it is extra presentation data needed to
+compare Weyl phases across scales.  The prime-to-\(p\) subsystem has the
+canonical gauge \(c_{s,r}=(s/r)^{-1}\).  The full tower has many gauges, by
+Theorem \(T1\), but no canonical one is singled out by the finite-field
+embeddings alone.
+
+Frobenius acts on gauges.  If \(c_{s,r}\) has trace \(1\), then
+\[
+  \Tr_{k_s/k_r}(c_{s,r}^q)=\Tr_{k_s/k_r}(c_{s,r})^q=1.
+\]
+Thus Frobenius sends one trace gauge to another.  For \(p\mid s/r\), however,
+there is no trace-one scalar fixed by the relative Frobenius group.  If
+\(c\in k_s\) is fixed by \(\operatorname{Gal}(k_s/k_r)\), then \(c\in k_r\),
+and
+\[
+  \Tr_{k_s/k_r}(c)=(s/r)c=0
+\]
+in characteristic \(p\).  This cannot equal \(1\).
+
+For \(k=\mathbb F_3\), the first such case is
+\(\mathbb F_3\subset\mathbb F_{27}\).  A trace-one \(c\) exists, but it cannot
+lie in \(\mathbb F_3\).  Hence the full tower supports Frobenius only
+gauge-covariantly unless an additional Frobenius-compatible gauge convention
+is supplied.  This is the precise sense in which the arbitrariness is gauge
+freedom rather than a mathematical obstruction to the continuum limit.

@@ -1,0 +1,279 @@
+% SHARD-ID: AQM-41-CECH-COHOMOLOGY-QUANTUM-DESCENT
+% SHARD-TITLE: Cech Cohomology and Quantum Descent
+% SHARD-SUMMARY: Defines cover-relative Cech cohomology and the dual cosheaf homology used by the arithmetic-field net.
+% SHARD-SUMMARY: Proves that the residue-label cosheaf has trivial higher Cech homology on finite covers.
+% SHARD-SUMMARY: Identifies state, observable, and stabilizer descent defects as distinct quantum counterparts.
+% SHARD-KEYWORDS: Cech cohomology, cosheaf homology, descent, marginal problem, stabilizer defect, observable net
+
+\section{Cech Cohomology and Quantum Descent}
+\label{sec:cech-cohomology-quantum-descent}
+
+\subsection{Status and Source Anchors}
+
+This shard adds the cover-complex layer requested after AQM-26--AQM-40.
+Stacks Cohomology,
+\path{references/algebraic_geometry/stacks_project_cohomology.tex}, lines
+868--924, 926--946, 2438--2517, and 4071--4165, supplies the Cech complex,
+\(H^0\) sheaf criterion, refinement colimit, and ordered Cech complex.  Curry,
+\path{references/cosheaves/curry_1303_3255_source/ch_abstract_sheaves.tex},
+lines 246--259 and 270--335, supplies the dual vector-space exactness and
+Cech homology convention.  The quantum input is local: AQM-26 for labels and
+observable nets, AQM-27 for states, and AQM-38--AQM-39 for stabilizer descent.
+The new convention is \texttt{CONVENTIONS.md} (ae).
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&\mathcal U=\{U_i\}_{i\in I}\text{ is a finite ordered cover of }U.\\
+D2&:&\check C^p(\mathcal U,F)=
+      \prod_{i_0<\cdots<i_p}F(U_{i_0\cdots i_p}).\\
+L1&:&d^2=0\text{ for the Cech differential}.\\
+D3&:&\check H^p(\mathcal U,F)=\ker d^p/\operatorname{im}d^{p-1}.\\
+L2&:&\check H^0(\mathcal U,F)\text{ is compatible local section data}.\\
+D4&:&\check H^p(U,F)=\varinjlim_{\mathcal U}\check H^p(\mathcal U,F)
+      \text{ when refinements are declared}.\\
+D5&:&\check C_p(\mathcal U,G)=
+      \bigoplus_{i_0<\cdots<i_p}G(U_{i_0\cdots i_p})
+      \text{ for a precosheaf }G.\\
+T1&:&\check H_0(\mathcal U,E)\cong E(U),\quad
+      \check H_p(\mathcal U,E)=0\ (p>0).\\
+D6&:&\check Z^0(\mathcal U,\mathsf S)
+      \text{ is the set of compatible local states}.\\
+T2&:&\mathsf S(U)\to\check Z^0(\mathcal U,\mathsf S)
+      \text{ may fail injectivity and surjectivity}.\\
+D7&:&L_{\leq U}(W)=L\cap E(W)\text{ for a global stabilizer }L\leq E(U).\\
+T3&:&D_U(L;\mathcal U)\text{ is the cokernel of stabilizer Cech }H_0
+      \text{ generation}.\\
+P1&:&\mathcal A\text{ has an observable-net comparison map, not ordinary
+      abelian Cech cohomology.}
+\end{array}
+\]
+
+\subsection{Standard Cover Cohomology D1--D4}
+
+Let \(X\) be a topological space and let
+\(\mathcal U=\{U_i\}_{i\in I}\) be a finite open cover of \(U\subset X\).
+Fix a total order on \(I\), and write
+\[
+  U_{i_0\cdots i_p}=U_{i_0}\cap\cdots\cap U_{i_p}.
+\]
+For an abelian presheaf \(F\), define
+\[
+  \check C^p(\mathcal U,F)=
+  \prod_{i_0<\cdots<i_p}F(U_{i_0\cdots i_p}).
+\]
+If \(c\in\check C^p(\mathcal U,F)\), set
+\[
+  (dc)_{i_0\cdots i_{p+1}}
+  =
+  \sum_{j=0}^{p+1}(-1)^j\,
+  c_{i_0\cdots \widehat{i_j}\cdots i_{p+1}}
+  \big|_{U_{i_0\cdots i_{p+1}}}.
+\]
+
+\paragraph{Lemma \(L1\).}
+The differential satisfies \(d^2=0\).
+
+\emph{Proof.}
+Fix \(i_0<\cdots<i_{p+2}\).  In \((d^2c)_{i_0\cdots i_{p+2}}\), the term
+obtained by deleting \(i_a\) and \(i_b\), with \(a<b\), appears exactly twice.
+The two restriction maps are equal by functoriality of the presheaf.  The
+corresponding signs are
+\[
+  (-1)^a(-1)^{b-1}
+  \quad\text{and}\quad
+  (-1)^b(-1)^a .
+\]
+Their sum is \((-1)^{a+b-1}+(-1)^{a+b}=0\).  Summing over all pairs
+\((a,b)\) gives \(d^2c=0\).
+
+Thus
+\[
+  \check H^p(\mathcal U,F)
+  =
+  \ker\bigl(d:\check C^p\to\check C^{p+1}\bigr)/
+  \operatorname{im}\bigl(d:\check C^{p-1}\to\check C^p\bigr)
+\]
+is well-defined.
+
+\paragraph{Lemma \(L2\).}
+\(\check H^0(\mathcal U,F)\) is the group of compatible local sections:
+\[
+  \check H^0(\mathcal U,F)
+  =
+  \left\{(s_i)\in\prod_iF(U_i):
+  s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}\text{ for all }i,j\right\}.
+\]
+If \(F\) is a sheaf, the restriction map \(F(U)\to\check H^0(\mathcal U,F)\)
+is bijective.
+
+\emph{Proof.}
+Since \(\check C^{-1}=0\), \(\check H^0=\ker(d:\check C^0\to\check C^1)\).
+The displayed formula for \(d\) says exactly that all pairwise restrictions
+agree.  The second sentence is precisely the sheaf gluing axiom, as in
+Stacks Cohomology, lines 926--946.
+
+When a cover-independent group is needed, we follow Stacks Cohomology,
+lines 2438--2517, and define
+\[
+  \check H^p(U,F)=
+  \varinjlim_{\mathcal U}\check H^p(\mathcal U,F),
+\]
+over open covers ordered by refinement.  In the arithmetic-field questions
+below, the fixed cover is part of the physical question, so we keep the cover
+in the notation unless this direct limit is explicitly invoked.
+
+\subsection{Dual Cech Homology for Labels D5--T1}
+
+Let \(G\) be a covariant precosheaf of abelian groups or vector spaces.  Define
+\[
+  \check C_p(\mathcal U,G)=
+  \bigoplus_{i_0<\cdots<i_p}G(U_{i_0\cdots i_p}).
+\]
+For \(s\in G(U_{i_0\cdots i_p})\), put
+\[
+  \partial s=
+  \sum_{j=0}^p(-1)^j
+  r_{U_{i_0\cdots i_p},\,U_{i_0\cdots\widehat{i_j}\cdots i_p}}(s),
+\]
+where \(r\) is the covariant extension map.  The same sign cancellation as in
+Lemma \(L1\) gives \(\partial^2=0\), hence \(\check H_p(\mathcal U,G)\).
+
+For the residue-qudit label layer, \(E(W)=\bigoplus_{x\in W}E_x\), with
+extension by zero along inclusions.  Assume the cover \(\mathcal U\) is finite
+and \(E(U)\) is the finite-support direct sum used in AQM-24--AQM-26.
+
+\paragraph{Theorem \(T1\).}
+For every finite cover \(\mathcal U\) of \(U\),
+\[
+  \check H_0(\mathcal U,E)\cong E(U),
+  \qquad
+  \check H_p(\mathcal U,E)=0\quad(p>0).
+\]
+
+\emph{Proof.}
+For a point \(x\in U\), let \(I_x=\{i\in I:x\in U_i\}\).  This set is
+nonempty because \(\mathcal U\) covers \(U\).  Since direct sums distribute
+over the finite Cech chain groups,
+\[
+  \check C_p(\mathcal U,E)
+  \cong
+  \bigoplus_{x\in U}
+  \left(
+    \bigoplus_{i_0<\cdots<i_p,\ i_j\in I_x}E_x
+  \right).
+\]
+The differential preserves the summand indexed by \(x\), because all
+extension maps are the identity on the \(E_x\) component.  Therefore the
+\(x\)-summand is \(E_x\) tensored with the simplicial chain complex of the
+full simplex on the vertex set \(I_x\).
+
+Choose \(a\in I_x\).  The cone operator \(h(\sigma)=[a,\sigma]\), with the
+orientation sign determined by inserting \(a\) into the ordered simplex,
+satisfies \(\partial h+h\partial=\operatorname{id}-\epsilon\), where
+\(\epsilon\) is the augmentation to one copy of \(E_x\) in degree \(0\).  Thus
+the full simplex has homology \(E_x\) in degree \(0\) and \(0\) in higher
+degrees.  Taking the direct sum over \(x\) gives the displayed result.
+
+So the full label cosheaf carries no higher cover obstruction: every label is
+assembled pointwise from the cover, and all higher cycles are simplex
+boundaries.
+
+\subsection{Quantum Counterparts D6--P1}
+
+\paragraph{States.}
+For the state presheaf \(\mathsf S(W)=\operatorname{State}(\mathcal A(W))\),
+define only the zeroth compatible-family object
+\[
+  \check Z^0(\mathcal U,\mathsf S)=
+  \left\{(\omega_i)\in\prod_i\mathsf S(U_i):
+  \omega_i|_{U_i\cap U_j}=\omega_j|_{U_i\cap U_j}\right\}.
+\]
+There is a natural restriction map
+\[
+  \rho_{\mathcal U}:\mathsf S(U)\longrightarrow
+  \check Z^0(\mathcal U,\mathsf S).
+\]
+
+\paragraph{Theorem \(T2\).}
+\(\rho_{\mathcal U}\) is not generally injective and not generally
+surjective.
+
+\emph{Proof.}
+Non-injectivity is AQM-27 Theorem \(T2\): on
+\(\Spec(\mathbb Z/6\mathbb Z)\), an entangled state and a product state have
+the same one-factor restrictions.  Non-surjectivity is AQM-27 Theorem \(T3\):
+the \(AB\) and \(BC\) Bell marginals agree on \(B\), but no \(ABC\) state has
+both as marginals.
+
+Thus the state-side quantum counterpart is the marginal comparison map.
+Failure of injectivity measures hidden global correlations.  Failure of
+surjectivity measures incompatible marginal data.  These are not cohomology
+groups yet, because \(\mathsf S\) is a convex set-valued presheaf, not an
+abelian presheaf.
+
+\paragraph{Stabilizers.}
+Let \(L\leq E(U)\) be a global stabilizer label subspace.  Define the
+supported sublabel precosheaf on opens \(W\subset U\) by
+\[
+  L_{\leq U}(W)=L\cap E(W).
+\]
+The augmentation \(\check C_0(\mathcal U,L_{\leq U})\to L\) sends a tuple of
+local stabilizer labels to its sum in \(L\).  Its image is
+\[
+  \operatorname{Loc}_U(L;\mathcal U)
+  =
+  \sum_i(L\cap E(U_i)).
+\]
+The boundary from \(L\cap E(U_i\cap U_j)\) maps to zero under this
+augmentation, because the two copies are the same global label with opposite
+signs.  Hence the augmentation factors through
+\(\check H_0(\mathcal U,L_{\leq U})\).
+
+\paragraph{Theorem \(T3\).}
+The stabilizer descent defect of AQM-38 is the cokernel of this zeroth Cech
+homology generation map:
+\[
+  \operatorname{coker}\bigl(
+  \check H_0(\mathcal U,L_{\leq U})\to L
+  \bigr)
+  \cong
+  L/\operatorname{Loc}_U(L;\mathcal U)
+  =
+  D_U(L;\mathcal U).
+\]
+
+\emph{Proof.}
+The image of \(\check C_0\to L\) is exactly
+\(\operatorname{Loc}_U(L;\mathcal U)\).  Passing through the quotient
+\(\check H_0\) does not change the image, because boundaries already map to
+zero.  The cokernel is therefore the displayed quotient.  AQM-38 Theorem
+\(T2\) proves that its vanishing is equivalent to local generation of the
+stabilizer labels; AQM-39 gives the two-qutrit nonzero-defect example.
+
+\paragraph{Observable nets.}
+For a finite cover, let \(\operatorname{colim}_{\mathcal U}^{*{\rm alg}}\)
+denote the ordinary colimit of the cover diagram of unital \(*\)-algebras.
+The observable net supplies a canonical comparison map
+\[
+  \pi_{\mathcal U}:
+  \operatorname{colim}_{\mathcal U}^{*{\rm alg}}\mathcal A
+  \longrightarrow
+  \mathcal A(U).
+\]
+AQM-26 proves that this ordinary algebra colimit is not the physical gluing:
+for disjoint pieces it is a free-product gluing, while the Weyl net glues by
+commuting tensor-local subalgebras inside the ambient algebra.  Therefore the
+observable quantum counterpart is the comparison map \(\pi_{\mathcal U}\):
+its image is the additive generated algebra, and its kernel records the extra
+locality and commutation relations imposed by the physical representation.
+Without abelianization or another declared linearization, this is not an
+ordinary Cech cohomology group.
+
+\subsection{Conclusion}
+
+Classical Cech cohomology is the abelian cover-complex layer.  In AQF it
+splits into layered descent tests: label Cech homology, stabilizer cokernels,
+state marginal comparison maps, and observable-net colimit comparison maps.
+Only the first two are cohomology or homology groups at this stage.

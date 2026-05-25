@@ -1,0 +1,280 @@
+% SHARD-ID: AQM-34-F3-POLYNOMIAL-QUOTIENT-ARITHMETIC-FIELDS
+% SHARD-TITLE: Polynomial-Quotient Arithmetic Fields over \(\mathbb F_3\)
+% SHARD-SUMMARY: Computes \(\operatorname{Spec}\mathbb F_3[t]/(p)\) from the factorization of \(p\).
+% SHARD-SUMMARY: Builds the complete finite residue-field Weyl-Heisenberg representation.
+% SHARD-SUMMARY: Separates coordinate-ring nilpotents from reduced closed-point Weyl labels.
+% SHARD-KEYWORDS: finite field, polynomial quotient, coordinate ring, Weyl-Heisenberg, nilpotents
+
+\section{Polynomial-Quotient Arithmetic Fields over \texorpdfstring{\(\mathbb F_3\)}{F3}}
+\label{sec:f3-polynomial-quotient-arithmetic-fields}
+
+\subsection{Status and Source Anchors}
+
+This shard is a checked finite affine example.  The source-local notions are
+\(\Spec\), prime ideals, residue fields, and Zariski opens from
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+120--158, 250--274, 2972--2983, and 3104--3117.  The polynomial-ring prime
+classification and finite residue-field count reuse the direct derivation of
+AQM-29.  The finite Weyl representation is the closed-point construction of
+AQM-28, with the polynomial-quotient convention fixed in Convention (aa).
+The coordinate ring is written \(R_p=\mathbb F_3[t]/(p)\).
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_3,\ p\in k[t]\text{ monic nonzero},\
+      R_p=k[t]/(p),\ X_p=\Spec R_p.\\
+D2&:&p=\prod_{i=1}^r\pi_i^{e_i},\quad
+      \pi_i\text{ distinct monic irreducibles},\
+      K_i=k[t]/(\pi_i).\\
+L1&:&X_p=\{x_i=(\pi_i)/(p):1\le i\le r\},\
+      \kappa(x_i)=K_i,\text{ and }X_p\text{ is finite discrete}.\\
+L2&:&R_p\cong\prod_i k[t]/(\pi_i^{e_i}),\quad
+      (R_p)_{\rm red}\cong\prod_i K_i.\\
+D3&:&E_p=\bigoplus_i K_i^2,\quad
+      \mathcal H_p=\bigotimes_i\ell^2(K_i).\\
+T1&:&E_p\text{ has an explicit projective unitary Weyl representation }
+      W_p\text{ on }\mathcal H_p.\\
+T2&:&\operatorname{span}\{W_p(e):e\in E_p\}
+      =\operatorname{End}_{\mathbb C}(\mathcal H_p),\text{ hence the
+      representation is irreducible.}\\
+T3&:&R_p\text{ field profiles factor through }(R_p)_{\rm red}.\\
+\end{array}
+\]
+
+\subsection{The Spectrum L1--L2}
+
+Assume first that \(p\ne1\), so \(R_p\ne0\).  Factor
+\[
+  p=\prod_{i=1}^r\pi_i^{e_i}
+\]
+in \(k[t]\), where the \(\pi_i\) are distinct monic irreducibles and
+\(e_i\ge1\).  Put \(d_i=\deg\pi_i\) and \(K_i=k[t]/(\pi_i)\).
+
+\paragraph{Lemma \(L1\).}
+The points of \(X_p\) are exactly
+\[
+  x_i=(\pi_i)/(p),\qquad 1\le i\le r,
+\]
+and
+\[
+  \kappa(x_i)=K_i,\qquad |K_i|=3^{d_i}.
+\]
+Every point is closed, and every subset of \(X_p\) is open.
+
+\emph{Proof.}
+A prime ideal of \(R_p\) has inverse image a prime ideal
+\(\mathfrak q\subset k[t]\) containing \((p)\).  Since \(p\in\mathfrak q\)
+and \(p\ne0\), the prime \(\mathfrak q\) is nonzero.  By the AQM-29
+Euclidean-domain derivation, \(\mathfrak q=(\pi)\) for a monic irreducible
+\(\pi\).  The containment \((p)\subset(\pi)\) is equivalent to \(\pi\mid p\),
+so \(\pi=\pi_i\) for a unique \(i\).  Conversely, each \((\pi_i)/(p)\) is
+prime because
+\[
+  R_p/x_i\cong k[t]/(\pi_i)=K_i
+\]
+is a field.  This also proves the residue-field formula, since \(x_i\) is
+maximal.  The residue classes \(1,t,\ldots,t^{d_i-1}\) form a \(k\)-basis of
+the quotient, so \(|K_i|=3^{d_i}\).  Since every point is maximal, every
+singleton is closed.  A finite space in which every singleton is closed is
+discrete, because the complement of a singleton is a finite union of closed
+singletons.
+
+\paragraph{Lemma \(L2\).}
+There is a ring isomorphism
+\[
+  R_p\cong\prod_{i=1}^r k[t]/(\pi_i^{e_i}),
+\]
+and the reduced quotient is
+\[
+  (R_p)_{\rm red}=R_p/\sqrt0
+  \cong k[t]/(\pi_1\cdots\pi_r)
+  \cong\prod_{i=1}^r K_i.
+\]
+
+\emph{Proof.}
+If \(i\ne j\), then \(\pi_i^{e_i}\) and \(\pi_j^{e_j}\) are coprime.  Bezout
+therefore gives \(a_{ij}\pi_i^{e_i}+b_{ij}\pi_j^{e_j}=1\).  The Chinese
+remainder construction gives a surjective map
+\[
+  k[t]/(p)\longrightarrow\prod_i k[t]/(\pi_i^{e_i}),
+\]
+and its kernel is the intersection of the pairwise coprime ideals
+\((\pi_i^{e_i})\), equal to their product \((p)\).
+
+For the nilradical, a class \(f\bmod p\) is nilpotent iff \(p\mid f^N\) for
+some \(N\).  This happens iff every \(\pi_i\) divides \(f\), equivalently
+\(\pi_1\cdots\pi_r\mid f\).  Hence
+\(\sqrt0=(\pi_1\cdots\pi_r)/(p)\).  Quotienting by this ideal gives
+\(k[t]/(\pi_1\cdots\pi_r)\), and another Chinese remainder step gives
+\(\prod_iK_i\).
+
+If \(p=1\), then \(R_p=0\), \(\Spec R_p=\emptyset\), \(E_p=0\), and the
+observable algebra is the empty tensor product \(\mathbb C\).
+
+\subsection{The Weyl-Heisenberg Representation D3--T2}
+
+For each closed point \(x_i\), define the additive character
+\[
+  \psi_i(a)=
+  \exp\!\left(\frac{2\pi i}{3}\Tr_{K_i/\mathbb F_3}(a)\right).
+\]
+Let
+\[
+  \mathcal H_i=\ell^2(K_i),\qquad
+  E_i=K_i^2.
+\]
+On the basis \(|s\rangle\), \(s\in K_i\), set
+\[
+  T_i(a)|s\rangle=|s+a\rangle,\qquad
+  R_i(b)|s\rangle=\psi_i(bs)|s\rangle,\qquad
+  W_i(a,b)=T_i(a)R_i(b).
+\]
+
+\paragraph{Lemma \(L3\).}
+For \(a,b,a',b'\in K_i\),
+\[
+  W_i(a,b)W_i(a',b')
+  =
+  \psi_i(ba')W_i(a+a',b+b')
+\]
+and
+\[
+  W_i(a,b)W_i(a',b')
+  =
+  \psi_i(ba'-b'a)W_i(a',b')W_i(a,b).
+\]
+
+\emph{Proof.}
+For \(s\in K_i\),
+\[
+  R_i(b)T_i(a')|s\rangle
+  =\psi_i(b(s+a'))|s+a'\rangle
+  =\psi_i(ba')T_i(a')R_i(b)|s\rangle .
+\]
+Substituting this into \(T_i(a)R_i(b)T_i(a')R_i(b')\) gives the first formula.
+Dividing this product law by the same law with the two labels reversed gives
+the commutator formula.
+
+For \(J\subset\{1,\ldots,r\}\), write
+\[
+  E(J)=\bigoplus_{i\in J}K_i^2,\qquad
+  \mathcal H(J)=\bigotimes_{i\in J}\mathcal H_i,\qquad
+  \mathcal A(J)=\bigotimes_{i\in J}\operatorname{End}_{\mathbb C}(\mathcal H_i).
+\]
+The empty tensor product is \(\mathbb C\).  For the global system, put
+\[
+  E_p=E(\{1,\ldots,r\}),\qquad
+  \mathcal H_p=\mathcal H(\{1,\ldots,r\}).
+\]
+For \(e=((a_i,b_i))_i\in E_p\), define
+\[
+  W_p(e)=\bigotimes_iW_i(a_i,b_i).
+\]
+
+\paragraph{Theorem \(T1\).}
+The maps \(W_p(e)\) form a projective unitary representation of the additive
+group \(E_p\).  Explicitly,
+\[
+  W_p(e)W_p(f)=c_p(e,f)W_p(e+f),\qquad
+  c_p(e,f)=\prod_i\psi_i(b_ia'_i),
+\]
+and
+\[
+  W_p(e)W_p(f)=B_p(e,f)W_p(f)W_p(e),
+\]
+where
+\[
+  B_p(e,f)=\prod_i\psi_i(b_ia'_i-b'_ia_i).
+\]
+Equivalently, the finite Heisenberg group
+\[
+  H_p^{\rm WH}=\mu_3\times E_p
+\]
+with multiplication
+\[
+  (\zeta,e)(\eta,f)=(\zeta\eta c_p(e,f),e+f)
+\]
+has a unitary representation \(\rho_p(\zeta,e)=\zeta W_p(e)\).
+
+\emph{Proof.}
+Each \(T_i(a)\) is a permutation unitary and each \(R_i(b)\) is a diagonal
+unitary, so \(W_i(a,b)\) and \(W_p(e)\) are unitary.  Tensoring the one-site
+formula of \(L3\) over all \(i\) gives the displayed multiplier and
+commutator.  The multiplication law for \(H_p^{\rm WH}\) is exactly the
+statement that the multiplier defect has been placed in the central
+\(\mu_3\)-coordinate, so \(\rho_p\) is an ordinary unitary representation.
+
+\paragraph{Theorem \(T2\).}
+\[
+  \operatorname{span}_{\mathbb C}\{W_p(e):e\in E_p\}
+  =
+  \operatorname{End}_{\mathbb C}(\mathcal H_p).
+\]
+Hence \(\rho_p\) is irreducible on \(\mathcal H_p\).  Moreover
+\[
+  \dim_{\mathbb C}\mathcal H_p=\prod_i3^{d_i}
+  =3^{\sum_i d_i}=3^{\deg(\pi_1\cdots\pi_r)}.
+\]
+
+\emph{Proof.}
+AQM-28 proves that the one-site finite-field Weyl operators span
+\(\operatorname{End}(\mathcal H_i)\).  Tensor products of spanning sets span
+the tensor product algebra, giving the first formula.  A subspace invariant
+under all \(W_p(e)\) is invariant under their complex span, hence under the
+full matrix algebra on \(\mathcal H_p\).  The only such subspaces are \(0\)
+and \(\mathcal H_p\).  The dimension formula follows from
+\(\dim\ell^2(K_i)=|K_i|=3^{d_i}\).
+
+\subsection{Coordinate-Ring Fields and Local Nets T3}
+
+The coordinate ring maps to residues by
+\[
+  \operatorname{ev}:R_p\longrightarrow\prod_iK_i,\qquad
+  f\bmod p\longmapsto (f\bmod\pi_i)_i.
+\]
+By \(L2\), \(\ker(\operatorname{ev})=\sqrt0\).  Thus a pair
+\((f,g)\in R_p^2\) defines the Weyl label
+\[
+  e_{f,g}=((f\bmod\pi_i,\ g\bmod\pi_i))_i\in E_p,
+\]
+and nilpotent changes in \(f\) or \(g\) do not change \(e_{f,g}\).
+The coordinate-ring field operator is therefore
+\[
+  W_p(f,g):=W_p(e_{f,g}),
+\]
+with product law
+\[
+  W_p(f,g)W_p(f',g')
+  =
+  \left(\prod_i\psi_i((g\bmod\pi_i)(f'\bmod\pi_i))\right)
+  W_p(f+f',g+g').
+\]
+The commutator phase is
+\[
+  \prod_i\psi_i((g\bmod\pi_i)(f'\bmod\pi_i)
+        -(g'\bmod\pi_i)(f\bmod\pi_i)).
+\]
+
+Since \(X_p\) is discrete, every open set is \(U_J=\{x_i:i\in J\}\).  The
+open-local algebra is
+\[
+  \mathcal A(U_J)=\mathcal A(J)
+  =\bigotimes_{i\in J}\operatorname{End}_{\mathbb C}(\ell^2(K_i)),
+\]
+and \(J\subset J'\) gives the inclusion \(a\mapsto a\otimes\mathbf1\).  States
+on \(\mathcal A(U_J)\) are density matrices on \(\mathcal H(J)\), and
+restriction along \(J\subset J'\) is partial trace over \(J'\setminus J\).
+
+\subsection{Conclusion}
+For \(R_p=\mathbb F_3[t]/(p)\), the complete residue-qudit arithmetic field is
+the tensor product of one finite-field Weyl system for each distinct
+irreducible factor of \(p\).  The Weyl-Heisenberg
+representation is explicit on
+\(\bigotimes_i\ell^2(\mathbb F_3[t]/(\pi_i))\), spans the full matrix algebra,
+and is irreducible.  Repeated factors of \(p\) are not ignored: they are
+scheme-theoretic nilpotent thickening data in the coordinate ring.  They are
+invisible to the present residue-qudit Weyl labels because all such labels
+factor through the reduced quotient.  AQM-36 adds the nilpotent-sensitive
+thickened Weyl layer.

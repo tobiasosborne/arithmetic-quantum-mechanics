@@ -1,0 +1,277 @@
+% SHARD-ID: AQM-36-NILPOTENT-THICKENING-WEYL-FIELDS
+% SHARD-TITLE: Nilpotent Thickening Weyl Fields
+% SHARD-SUMMARY: Defines the nilpotent-sensitive Weyl layer for \(\mathbb F_3[t]/(\pi^e)\).
+% SHARD-SUMMARY: Proves the top-coefficient character is generating and gives an irreducible Weyl representation.
+% SHARD-SUMMARY: Interprets thickenings as jet degrees of freedom rather than additional closed points.
+% SHARD-KEYWORDS: nilpotent thickening, finite chain ring, Frobenius ring, Weyl-Heisenberg, jet, Artin ring
+
+\section{Nilpotent Thickening Weyl Fields}
+\label{sec:nilpotent-thickening-weyl-fields}
+
+\subsection{Status and Source Anchors}
+
+This shard adds the nilpotent-sensitive layer proposed after AQM-34 and
+AQM-35.  The finite Frobenius-ring source anchors are
+\path{references/heisenberg_weil/gluesing_luerssen_pllaha_1710_09884_source/StabCodesFrob5.tex},
+lines 224--249 for Frobenius rings and generating characters, lines
+286--323 for \(X(a)\) and \(Z(b)\), lines 353--355 for the multiplication
+law, and lines 436--452 for the error-basis statement.  Sidana--Kashyap,
+\path{references/heisenberg_weil/sidana_kashyap_2202_00248_source/EAQECCs_over_rings_v15.tex},
+lines 103--110 and 180--197, gives the same local Frobenius-ring Pauli
+framework.  The trace pairing input for residue fields is the Stacks Project
+snapshot \path{references/algebraic_geometry/stacks_project_algebra.tex},
+lines 45278--45284.  The explicit generating-character proof below is local
+to this shard.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_3,\ \pi\in k[t]\text{ monic irreducible},\
+      e\ge1,\ A=k[t]/(\pi^e).\\
+D2&:&\mathfrak m=(\pi)/(\pi^e),\ K=A/\mathfrak m=k[t]/(\pi),\
+      d=\deg\pi.\\
+L1&:&A\text{ has unique }\pi\text{-adic expansions and ideals }
+      \mathfrak m^r.\\
+D3&:&\lambda(a)=\Tr_{K/k}(a_{e-1})\text{ from the top }\pi\text{-coefficient},
+      \quad \chi(a)=\exp(2\pi i\lambda(a)/3).\\
+L2&:&\chi\text{ is generating: }b\ne0\Rightarrow
+      (a\mapsto\chi(ba))\text{ is nontrivial}.\\
+D4&:&\mathcal H_A=\ell^2(A),\quad E_A=A^2,\quad
+      W_A(q,p)=T(q)R(p).\\
+T1&:&W_A\text{ is a projective unitary Weyl representation with multiplier }
+      \chi(pq').\\
+T2&:&\{W_A(q,p):(q,p)\in A^2\}\text{ is an operator basis of }
+      \operatorname{End}_\mathbb C(\mathcal H_A).\\
+T3&:&\mathfrak m^r\text{ position jets pair with }
+      \mathfrak m^{e-1-r}\text{ momentum jets in the associated graded}.\\
+T4&:&\text{For }R_p=\mathbb F_3[t]/(p),\text{ the thickened layer has }
+      \dim\mathcal H=3^{\deg p}.
+\end{array}
+\]
+
+\subsection{The Local Artin Ring L1--L2}
+
+Let
+\[
+  A=A_{\pi,e}=k[t]/(\pi^e),\qquad
+  \mathfrak m=(\pi)/(\pi^e),\qquad K=k[t]/(\pi).
+\]
+Every class \(a\in A\) has a unique expansion
+\[
+  a=a_0+a_1\pi+\cdots+a_{e-1}\pi^{e-1},
+\]
+where each \(a_j\) is represented by a polynomial of degree \(<d=\deg\pi\).
+This follows by repeated Euclidean division by the monic polynomial \(\pi\).
+
+\paragraph{Lemma \(L1\).}
+The ideals of \(A\) are exactly
+\[
+  A=\mathfrak m^0\supset\mathfrak m\supset\cdots
+  \supset\mathfrak m^{e-1}\supset\mathfrak m^e=0.
+\]
+Every nonzero \(a\in A\) has a unique valuation \(v(a)=r\), \(0\le r<e\),
+with \(a=\pi^r u\) for a unit \(u\in A^\times\).
+
+\emph{Proof.}
+If \(a\ne0\), take the least \(r\) for which the coefficient \(a_r\) is
+nonzero.  Then \(a=\pi^r u\), where the residue of \(u\) in \(K\) is
+\(a_r\ne0\), so \(u\) is a unit.  Let \(I\subset A\) be a nonzero ideal and
+choose an element of minimal valuation \(r\).  Multiplying by the inverse of
+its unit part gives \(\pi^r\in I\), hence \(\mathfrak m^r\subset I\).
+Minimality of \(r\) gives \(I\subset\mathfrak m^r\), so \(I=\mathfrak m^r\).
+
+Define
+\[
+  \lambda(a)=\Tr_{K/k}(a_{e-1}),\qquad
+  \chi(a)=\exp\!\left(\frac{2\pi i}{3}\lambda(a)\right).
+\]
+Here \(a_{e-1}\in K\) is the top \(\pi\)-coefficient.  For \(e=1\) this is
+the residue-field character used in AQM-34.
+
+\paragraph{Lemma \(L2\).}
+If \(b\ne0\) in \(A\), then the additive character
+\[
+  a\longmapsto\chi(ba)
+\]
+is nontrivial.  Hence the map \(b\mapsto(a\mapsto\chi(ba))\) identifies \(A\)
+with the additive character group \(\widehat A\).
+
+\emph{Proof.}
+Write \(b=\pi^r u\) with \(u\in A^\times\).  Let \(\bar u\) be the residue of
+\(u\) in \(K\).  Since \(K\) is finite, Frobenius \(x\mapsto x^3\) is
+injective and hence surjective; thus \(K\) is perfect and \(K/k\) is finite
+separable.  The cited Stacks trace-pairing source says
+\((x,y)\mapsto\Tr_{K/k}(xy)\) is nondegenerate.
+Choose \(\bar c\in K\) with \(\Tr_{K/k}(\bar u\bar c)\ne0\), and lift it to
+\(c\in A\) of \(\pi\)-degree \(0\).  Set
+\[
+  a=\pi^{e-1-r}c.
+\]
+Then \(ba=\pi^{e-1}uc\) modulo \(\pi^e\), so the top coefficient of \(ba\) is
+\(\bar u\bar c\).  Therefore \(\chi(ba)\ne1\).  The map \(A\to\widehat A\) is
+injective, and both finite groups have cardinality \(|A|\), so it is an
+isomorphism.
+
+\subsection{The Thickened Weyl Representation T1--T2}
+
+Let
+\[
+  \mathcal H_A=\ell^2(A)
+\]
+with basis \(|s\rangle\), \(s\in A\).  For \(q,p\in A\), define
+\[
+  T(q)|s\rangle=|s+q\rangle,\qquad
+  R(p)|s\rangle=\chi(ps)|s\rangle,\qquad
+  W_A(q,p)=T(q)R(p).
+\]
+
+\paragraph{Theorem \(T1\).}
+For \(q,p,q',p'\in A\),
+\[
+  W_A(q,p)W_A(q',p')
+  =
+  \chi(pq')W_A(q+q',p+p')
+\]
+and
+\[
+  W_A(q,p)W_A(q',p')
+  =
+  \chi(pq'-p'q)W_A(q',p')W_A(q,p).
+\]
+Thus \(\mu_3\times A^2\), with multiplication
+\[
+  (\zeta,q,p)(\eta,q',p')
+  =
+  (\zeta\eta\chi(pq'),q+q',p+p'),
+\]
+acts unitarily on \(\mathcal H_A\) by
+\((\zeta,q,p)\mapsto\zeta W_A(q,p)\).
+
+\emph{Proof.}
+\(T(q)\) is a permutation unitary and \(R(p)\) is diagonal unitary.  Also
+\[
+  R(p)T(q')|s\rangle
+  =
+  \chi(p(s+q'))|s+q'\rangle
+  =
+  \chi(pq')T(q')R(p)|s\rangle .
+\]
+Substituting this identity into \(T(q)R(p)T(q')R(p')\) gives the product law.
+The commutator law follows by comparing with the same product law in reversed
+order.
+
+\paragraph{Theorem \(T2\).}
+\[
+  \operatorname{span}_{\mathbb C}\{W_A(q,p):(q,p)\in A^2\}
+  =
+  \operatorname{End}_{\mathbb C}(\mathcal H_A).
+\]
+Consequently the thickened Weyl representation is irreducible.
+
+\emph{Proof.}
+Use the Hilbert--Schmidt inner product on \(\operatorname{End}(\mathcal H_A)\).  If
+\(q\ne q'\), then \(T(q'-q)\) has no fixed basis vector, so
+\(\Tr(W_A(q,p)^*W_A(q',p'))=0\).  If \(q=q'\) but \(p\ne p'\), then the trace
+is
+\[
+  \sum_{s\in A}\chi((p'-p)s),
+\]
+which is \(0\) because \(s\mapsto\chi((p'-p)s)\) is a nontrivial character by
+L2.  Thus the \(|A|^2\) Weyl operators are pairwise orthogonal and nonzero.
+Since \(\dim_\mathbb C\operatorname{End}(\ell^2(A))=|A|^2\), they form a basis.  Any
+invariant subspace is invariant under this full matrix algebra, hence is
+\(0\) or \(\mathcal H_A\).
+
+\subsection{Jet Interpretation T3}
+
+The filtration
+\[
+  A\supset\mathfrak m\supset\cdots\supset\mathfrak m^{e-1}\supset0
+\]
+is the algebraic jet filtration.  Its associated graded ring is
+\[
+  \operatorname{gr}_{\mathfrak m}A
+  \cong K[\varepsilon]/(\varepsilon^e),
+\]
+with \(\mathfrak m^r/\mathfrak m^{r+1}\cong K\varepsilon^r\).
+
+\paragraph{Lemma \(L3\).}
+For \(0\le r\le e\), the annihilator of \(\mathfrak m^r\) under the pairing
+\[
+  A\times A\longrightarrow\mu_3,\qquad (x,y)\longmapsto\chi(xy)
+\]
+is \(\mathfrak m^{e-r}\).
+
+\emph{Proof.}
+If \(y\in\mathfrak m^{e-r}\), then \(xy\in\mathfrak m^e=0\) for all
+\(x\in\mathfrak m^r\), so \(y\) annihilates \(\mathfrak m^r\).  Conversely,
+if \(y\notin\mathfrak m^{e-r}\), write \(y=\pi^s u\) with \(s<e-r\).  Then
+\(x=\pi^{e-1-s}c\) lies in \(\mathfrak m^r\) for any \(c\in A\) of degree
+\(0\).  The proof of L2 chooses \(c\) so that \(\chi(xy)\ne1\).  Hence \(y\)
+does not annihilate \(\mathfrak m^r\).
+
+Thus a position jet in \(\mathfrak m^r/\mathfrak m^{r+1}\) pairs, in the
+associated graded, with a momentum jet in
+\(\mathfrak m^{e-1-r}/\mathfrak m^{e-r}\).  In particular, the ordinary
+residue value \(A/\mathfrak m\) is dual to the socle momentum layer
+\(\mathfrak m^{e-1}\), not to a new closed point.
+
+The old residue qutrit embeds as the zeroth-position/socle-momentum subsystem:
+choose lifts \(\tilde q,\tilde p\in A\) of \(q,p\in K\), and use
+\[
+  q\longmapsto \tilde q,\qquad p\longmapsto \pi^{e-1}\tilde p.
+\]
+On the subspace spanned by basis vectors with only degree-\(0\) coefficient,
+these operators reproduce the residue-field Weyl law.
+
+\subsection{Global Polynomial Quotients T4}
+
+For
+\[
+  p=\prod_{i=1}^r\pi_i^{e_i},
+\]
+set \(A_i=\mathbb F_3[t]/(\pi_i^{e_i})\).  By Chinese remainders,
+\[
+  R_p=\mathbb F_3[t]/(p)\cong\prod_iA_i.
+\]
+The thickened arithmetic field is
+\[
+  \mathcal H_p^{\rm thick}
+  =
+  \bigotimes_i\ell^2(A_i)
+  \cong \ell^2(R_p),
+\qquad
+  E_p^{\rm thick}=\bigoplus_i A_i^2\cong R_p^2.
+\]
+Its Weyl operators are tensor products of the local \(W_{A_i}\), equivalently
+translations and phase multiplications on \(\ell^2(R_p)\) using the product
+character.  The operator-basis theorem tensors over \(i\), so
+\[
+  \operatorname{span}\{W(e):e\in E_p^{\rm thick}\}
+  =
+  \operatorname{End}(\mathcal H_p^{\rm thick}).
+\]
+Finally,
+\[
+  \dim_\mathbb C\mathcal H_p^{\rm thick}
+  =
+  \prod_i |A_i|
+  =
+  \prod_i 3^{e_i\deg\pi_i}
+  =
+  3^{\deg p}
+  =
+  |R_p|.
+\]
+This is the sense in which thickenings add jet degrees of freedom at existing
+closed points.
+
+\subsection{Conclusion}
+
+Nilpotent thickenings should manifest as local jet degrees of freedom.  They
+do not create additional Zariski points.  The reduced theory records point
+values over residue fields; the thickened theory quantizes the local Artin
+rings and recovers the full coordinate-ring size.  The phase character detects
+the socle, so the jet filtration is symplectically paired from the outside in:
+order \(r\) position jets pair with order \(e-1-r\) momentum jets.

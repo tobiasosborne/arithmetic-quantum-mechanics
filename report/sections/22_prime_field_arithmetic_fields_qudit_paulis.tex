@@ -1,0 +1,280 @@
+% SHARD-ID: AQM-22-PRIME-FIELD-ARITHMETIC-FIELDS-QUDIT-PAULIS
+% SHARD-TITLE: Prime-Field Arithmetic Fields and Qudit Paulis
+% SHARD-SUMMARY: Separates the one-point spectrum of a prime field from its underlying set of elements.
+% SHARD-SUMMARY: Proves that the all-map arithmetic field on \(X=\mathbb F_p\) gives the \(p\)-qudit Pauli group.
+% SHARD-SUMMARY: Records the \(p=2\) phase edge case and the distinction between ambient Pauli groups and stabilizer choices.
+% SHARD-KEYWORDS: arithmetic quantum field, finite field, prime field, qudit, Pauli group, Weyl-Heisenberg, stabilizer
+
+\section{Prime-Field Arithmetic Fields and Qudit Paulis}
+\label{sec:prime-field-arithmetic-fields-qudit-paulis}
+
+\subsection{Status and Source Anchors}
+
+This shard stays below schemes and sheaves.  The only commutative rings are
+prime fields \(\mathbb F_p\).  The local Pauli/Weyl sources are
+Ashikhmin--Knill, \path{references/symplectic_qecc/ashikhmin_knill_0005008_source/n9.tex},
+lines 249--313 for \(T,R\), their product, and the tensor product rule;
+Gottesman's thesis,
+\path{references/symplectic_qecc/gottesman_9705052_source/Thesis.tex}, lines
+1627--1681 for qudits, nice error bases, phases, and \(C^aD^b\)
+commutation; and Bombin--Martin--Delgado,
+\path{references/toric_code/bombin_martin_delgado_0605094_source/HomologicalErrorCorrection6.tex},
+lines 1208--1259 for qudit Paulis, the symplectic commutator, the Pauli
+group, and the projection to \(\mathbb Z_D^{2n}\).
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&p\text{ is prime and }R=\mathbb F_p.\\
+L1&:&R\text{ has one prime ideal and }\operatorname{Frac}(R)=R.\\
+D2&:&X_{\rm sp}=\operatorname{Spec}R,\quad X_{\rm el}=R\text{ as a finite set.}\\
+D3&:&V=R_X\oplus R_Z,\quad
+       \omega_V((x,z),(x',z'))=zx'-xz'.\\
+D4&:&E_{\rm el}=\operatorname{Map}(X_{\rm el},V).\\
+D5&:&\Omega((\xi,\zeta),(\xi',\zeta'))=
+       \sum_{u\in X_{\rm el}}(\zeta(u)\xi'(u)-\xi(u)\zeta'(u)).\\
+D6&:&\mathcal H_X=\ell^2(R^{X_{\rm el}}),\quad W(\xi,\zeta)=T_\xi R_\zeta.\\
+L2&:&(V,\omega_V)\text{ and }(E_{\rm el},\Omega)\text{ are symplectic.}\\
+L3&:&W(\xi,\zeta)W(\xi',\zeta')
+       =\chi(\zeta\cdot\xi')W(\xi+\xi',\zeta+\zeta').\\
+T1&:&\langle\chi(c)I,W(E_{\rm el})\rangle
+       \text{ is the standard odd-}p\text{ qudit Pauli group on }p
+       \text{ qudits.}\\
+T2&:&\text{Stabilizers require an extra isotropic label subspace and phases.}\\
+L4&:&p=2\text{ has the same projective labels but needs the usual }\mu_4
+       \text{ Pauli phases for Hermitian }Y.
+\end{array}
+\]
+
+\subsection{Prime Field Points L1--D2}
+
+\paragraph{Lemma \(L1\).}
+The ring \(R=\mathbb F_p\) has exactly one prime ideal, namely \((0)\), and
+\(\operatorname{Frac}(R)=R\).
+
+\emph{Proof.}
+A field has only two ideals, \((0)\) and the whole field.  The whole field is
+not prime because prime ideals are proper.  The zero ideal is prime because
+the quotient \(R/(0)=R\) is an integral domain.  Thus
+\(\operatorname{Spec}R=\{(0)\}\).  The fraction field consists of symbols
+\(a/b\) with \(b\ne0\), and the map \(a/b\mapsto ab^{-1}\) is a well-defined
+field isomorphism \(\operatorname{Frac}(R)\cong R\).
+
+There are therefore two concrete point sets in play.  The spectrum
+\[
+  X_{\rm sp}=\operatorname{Spec}\mathbb F_p
+\]
+has one point.  The underlying set of field elements
+\[
+  X_{\rm el}=\mathbb F_p
+\]
+has \(p\) points.  The one-point choice gives one qudit.  The \(p\)-point
+choice is the one that can give the \(p\)-qudit Pauli group.
+
+\subsection{The All-Map Arithmetic Field D3--L2}
+
+Let
+\[
+  V=R_X\oplus R_Z
+\]
+with symplectic form
+\[
+  \omega_V((x,z),(x',z'))=zx'-xz'.
+\]
+For \(X=X_{\rm el}\), define
+\[
+  E_{\rm el}=\operatorname{Map}(X,V)
+  \cong R^X\oplus R^X.
+\]
+Write an element of \(E_{\rm el}\) as \((\xi,\zeta)\), where
+\(\xi,\zeta:X\to R\).  Define
+\[
+  \Omega((\xi,\zeta),(\xi',\zeta'))
+  =
+  \sum_{u\in X}\bigl(\zeta(u)\xi'(u)-\xi(u)\zeta'(u)\bigr).
+\]
+
+\paragraph{Lemma \(L2\).}
+\((V,\omega_V)\) and \((E_{\rm el},\Omega)\) are symplectic \(R\)-vector
+spaces.  Moreover \(E_{\rm el}\cong R^p\oplus R^p\).
+
+\emph{Proof.}
+The form \(\omega_V\) is bilinear.  It is alternating because
+\[
+  \omega_V((x,z),(x,z))=zx-xz=0.
+\]
+If \((x,z)\ne0\), then \(\omega_V((x,z),(1,0))=z\) and
+\(\omega_V((x,z),(0,1))=-x\), so some pairing is nonzero.  Thus \(V\) is
+symplectic.
+
+Since \(X\) has \(p\) elements, choosing any ordering of \(X\) identifies
+\(R^X\) with \(R^p\).  Hence \(E_{\rm el}\cong R^p\oplus R^p\).  The form
+\(\Omega\) is the direct sum of the pointwise symplectic forms.  If
+\((\xi,\zeta)\ne0\), choose \(u_0\) with \((\xi(u_0),\zeta(u_0))\ne0\) and use
+the previous paragraph to choose a value at \(u_0\) pairing nontrivially,
+with all other values zero.  Thus \(\Omega\) is nondegenerate and alternating.
+
+\paragraph{Map versus Hom.}
+The \(p\)-qudit statement uses all maps.  If instead one chooses the
+structure-preserving space
+\[
+  \operatorname{Hom}_R(R,V),
+\]
+where \(R\) is viewed as a one-dimensional \(R\)-vector space, then evaluation
+at \(1\) gives \(\operatorname{Hom}_R(R,V)\cong V\).  That smaller choice is
+the one-qudit label space, not the \(p\)-qudit label space.
+
+\subsection{Weyl Operators L3}
+
+Let \(\chi(t)=\exp(2\pi i\,\tilde t/p)\), where \(\tilde t\in\{0,\ldots,p-1\}\)
+represents \(t\in R\).  On the Hilbert space
+\[
+  \mathcal H_X=\ell^2(R^X),
+\]
+with basis \(\{|s\rangle:s:X\to R\}\), define
+\[
+  T_\xi|s\rangle=|s+\xi\rangle,\qquad
+  R_\zeta|s\rangle=\chi\!\left(\sum_{u\in X}\zeta(u)s(u)\right)|s\rangle,
+\]
+and
+\[
+  W(\xi,\zeta)=T_\xi R_\zeta.
+\]
+
+\paragraph{Lemma \(L3\).}
+For \(e=(\xi,\zeta)\) and \(f=(\xi',\zeta')\),
+\[
+  W(e)W(f)=\chi(\zeta\cdot\xi')W(e+f),
+\]
+where \(\zeta\cdot\xi'=\sum_u\zeta(u)\xi'(u)\).  Hence
+\[
+  W(e)W(f)=\chi(\Omega(e,f))W(f)W(e).
+\]
+
+\emph{Proof.}
+The translation operators add and the phase operators add:
+\[
+  T_\xi T_{\xi'}=T_{\xi+\xi'},\qquad
+  R_\zeta R_{\zeta'}=R_{\zeta+\zeta'}.
+\]
+Also
+\[
+\begin{aligned}
+  R_\zeta T_{\xi'}|s\rangle
+  &=R_\zeta|s+\xi'\rangle\\
+  &=\chi(\zeta\cdot s+\zeta\cdot\xi')|s+\xi'\rangle\\
+  &=\chi(\zeta\cdot\xi')T_{\xi'}R_\zeta|s\rangle .
+\end{aligned}
+\]
+Therefore
+\[
+  T_\xi R_\zeta T_{\xi'}R_{\zeta'}
+  =
+  \chi(\zeta\cdot\xi')T_{\xi+\xi'}R_{\zeta+\zeta'}.
+\]
+Swapping \(e\) and \(f\) gives the commutator factor
+\[
+  \chi(\zeta\cdot\xi'-\zeta'\cdot\xi)=\chi(\Omega(e,f)).
+\]
+
+\subsection{Identification with Qudit Paulis T1--T2}
+
+For each \(u\in X\), let \(\delta_u\in R^X\) be the delta function.  Define
+single-site operators
+\[
+  X_u=W(\delta_u,0),\qquad Z_u=W(0,\delta_u).
+\]
+Let \(\mathcal P_p^\chi(X)\) be the group generated by all \(X_u,Z_u\) and the
+central character phases \(\chi(c)I\), \(c\in R\).  For odd \(p\), this is the
+standard prime-dimensional qudit Pauli group in the source convention: one
+\(p\)-dimensional qudit for each \(u\in X\), shifts generated by \(X_u\), and
+phases generated by \(Z_u\).  For \(p=2\), it is the unphased Weyl group whose
+projective labels are the usual qubit Pauli labels; the conventional
+Hermitian \(Y\) convention is recorded in \(L4\).
+
+\paragraph{Theorem \(T1\).}
+For \(X=\mathbb F_p\) as a set of elements,
+\[
+  \langle \chi(c)I,\ W(e):c\in R,\ e\in E_{\rm el}\rangle
+  =
+  \mathcal P_p^\chi(X).
+\]
+Thus, for odd \(p\), the all-map arithmetic quantum field on
+\(X=\mathbb F_p\) with target
+\(\operatorname{Frac}(\mathbb F_p)^2=\mathbb F_p^2\) gives the ambient
+Gottesman/Ashikhmin--Knill \(p\)-qudit Pauli group for \(p\) qudits.  For
+\(p=2\), the projective statement is the same and the full conventional Pauli
+phase convention is \(L4\).
+
+\emph{Proof.}
+The operators \(W(\delta_u,0)\) and \(W(0,\delta_u)\) are among the arithmetic
+field Weyl operators, so \(\mathcal P_p^\chi(X)\) is contained in the generated
+arithmetic Weyl group.  Conversely, for any \((\xi,\zeta)\),
+\[
+  T_\xi=\prod_{u\in X}X_u^{\xi(u)},\qquad
+  R_\zeta=\prod_{u\in X}Z_u^{\zeta(u)},
+\]
+with any fixed site order, because different \(X_u\)'s commute and different
+\(Z_u\)'s commute.  Thus \(W(\xi,\zeta)=T_\xi R_\zeta\) lies in
+\(\mathcal P_p^\chi(X)\).  The two generated groups are equal.
+
+\paragraph{Theorem \(T2\).}
+The arithmetic field datum gives the ambient Pauli/Weyl group.  A stabilizer
+code is extra data: an isotropic label subspace \(L\leq E_{\rm el}\), plus a
+compatible choice of phases/eigenvalue character.
+
+\emph{Proof.}
+If \(S\leq\mathcal P_p^\chi(X)\) is Abelian, its image \(L\) in the projective label
+space \(E_{\rm el}\) satisfies \(\Omega(L,L)=0\) by Lemma \(L3\).  Conversely,
+if \(p\) is odd and \(L\leq E_{\rm el}\) is isotropic, define
+\[
+  \widetilde W(\xi,\zeta)=
+  \chi\!\left(\frac12\,\zeta\cdot\xi\right)W(\xi,\zeta).
+\]
+Using Lemma \(L3\),
+\[
+  \widetilde W(e)\widetilde W(f)
+  =
+  \chi\!\left(\frac12\Omega(e,f)\right)\widetilde W(e+f).
+\]
+On an isotropic \(L\), this becomes
+\(\widetilde W(e)\widetilde W(f)=\widetilde W(e+f)\).  Multiplying this lift by
+a character \(L\to\mathbb C^\times\) changes the stabilizer eigenvalues.  Thus
+the arithmetic field supplies the ambient labels and commutation form; the
+choice of stabilizer is a later choice of isotropic subspace and phases.
+
+\subsection{The p=2 Edge Case L4}
+
+For \(p=2\), the same label space \(E_{\rm el}\), the same Hilbert space, and
+the same commutator criterion
+\[
+  W(e)W(f)=(-1)^{\Omega(e,f)}W(f)W(e)
+\]
+remain valid.  The edge is the phase convention.  There is no element
+\(1/2\in\mathbb F_2\), and the unphased operator \(W(1,1)=XZ\) is not the
+Hermitian Pauli \(Y\).  The standard qubit Pauli group uses fourth roots of
+unity and the relabeling
+\[
+  \widehat W(\xi,\zeta)=
+  i^{\sum_u \xi(u)\zeta(u)}W(\xi,\zeta),
+\]
+so \(\widehat W(\delta_u,\delta_u)=Y_u\).  Hence \(p=2\) has the same
+projective arithmetic field labels and the same isotropy criterion, but the
+full conventional Pauli group has center \(\mu_4\), not only the character
+phases \(\mu_2\).
+
+\subsection{Conclusion}
+
+The conjecture is correct with one precision.  If \(X=\operatorname{Spec}
+\mathbb F_p\), the construction gives one qudit.  If \(X=\mathbb F_p\) is the
+underlying \(p\)-element set and \(E=\operatorname{Map}(X,\mathbb F_p^2)\), the
+Weyl--Heisenberg arithmetic field gives exactly the standard odd-\(p\) qudit
+Pauli group, and for \(p=2\) gives the same projective Pauli labels with the
+usual fourth-root phase adjustment.  In every prime case the projective labels
+are
+\[
+  E\cong\mathbb F_p^p\oplus\mathbb F_p^p.
+\]
+Actual stabilizer codes are not automatic fields; they are isotropic
+subspaces of this field label space together with phase/eigenvalue choices.

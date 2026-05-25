@@ -1,0 +1,189 @@
+% SHARD-ID: AQM-39-TWO-QUTRIT-STABILIZER-DESCENT-COUNTEREXAMPLE
+% SHARD-TITLE: Two-Qutrit Stabilizer Descent Counterexample
+% SHARD-SUMMARY: Gives an explicit global Lagrangian stabilizer with nonzero descent defect.
+% SHARD-SUMMARY: Shows that the associated two-qutrit stabilizer state has trivial one-site stabilizer restrictions.
+% SHARD-SUMMARY: Records the corrected local-to-global statement for Lagrangian stabilizers.
+% SHARD-KEYWORDS: qutrit, stabilizer, Lagrangian, descent defect, entanglement, local-to-global
+
+\section{Two-Qutrit Stabilizer Descent Counterexample}
+\label{sec:two-qutrit-stabilizer-descent-counterexample}
+
+\subsection{Status and Source Anchors}
+
+This shard is a checked finite calculation using the convention and theorems
+of AQM-38.  It is the promised counterexample to the overly strong claim that
+choosing a global Lagrangian stabilizer is the same thing as satisfying a
+local-to-global principle.  The Weyl commutation convention is the same
+prime-field convention as AQM-08, AQM-22, and \texttt{CONVENTIONS.md} (l).
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&U=A\sqcup B,\quad E(U)=\mathbb F_3^2\oplus\mathbb F_3^2.\\
+D2&:&\omega(e,e')=z_Ax_A'-x_Az_A'+z_Bx_B'-x_Bz_B'.\\
+D3&:&\ell_1=(1,0,-1,0),\quad \ell_2=(0,1,0,1),\quad
+      L=\langle\ell_1,\ell_2\rangle.\\
+L1&:&L\text{ is Lagrangian}.\\
+L2&:&L\cap E(A)=0\text{ and }L\cap E(B)=0.\\
+T1&:&D_U(L;\{A,B\})\cong L\ne0.\\
+T2&:&\text{The stabilizer state is entangled and has maximally mixed
+      one-site marginals}.\\
+T3&:&\text{A global Lagrangian is not the same as stabilizer descent.}
+\end{array}
+\]
+
+\subsection{The Label Calculation D1--T1}
+
+Let \(U=A\sqcup B\), with one qutrit on each site.  Write labels as
+\[
+  (x_A,z_A,x_B,z_B)\in
+  \mathbb F_3^2\oplus\mathbb F_3^2
+\]
+and use the direct-sum symplectic form
+\[
+  \omega(e,e')=
+  z_Ax_A'-x_Az_A' + z_Bx_B'-x_Bz_B' .
+\]
+Define
+\[
+  \ell_1=(1,0,-1,0),\qquad
+  \ell_2=(0,1,0,1),
+  \qquad
+  L=\langle \ell_1,\ell_2\rangle .
+\]
+
+\paragraph{Lemma \(L1\).}
+The subspace \(L\) is Lagrangian.
+
+\emph{Proof.}
+The only nontrivial generator pairing is
+\[
+  \omega(\ell_1,\ell_2)
+  =
+  0\cdot0-1\cdot1+0\cdot0-(-1)\cdot1
+  =
+  -1+1=0 .
+\]
+Same-generator pairings vanish because \(\omega\) is alternating, so \(L\) is
+isotropic.  The ambient symplectic vector space has dimension \(4\), and
+\(\ell_1,\ell_2\) are independent, so \(\dim L=2\).  Since the form is
+nondegenerate, \(\dim L+\dim L^\perp=4\), so \(\dim L^\perp=2\).  Isotropy
+gives \(L\subseteq L^\perp\), and equal dimensions give \(L=L^\perp\).  Hence
+\(L\) is Lagrangian.
+
+\paragraph{Lemma \(L2\).}
+\[
+  L\cap E(A)=0,\qquad L\cap E(B)=0.
+\]
+
+\emph{Proof.}
+A general element of \(L\) is
+\[
+  a\ell_1+b\ell_2=(a,b,-a,b).
+\]
+If it is supported only on \(A\), then \(-a=0\) and \(b=0\), hence
+\(a=b=0\).  If it is supported only on \(B\), then \(a=0\) and \(b=0\).  These
+are exactly the displayed intersections.
+
+\paragraph{Theorem \(T1\).}
+For the disjoint cover \(\{A,B\}\),
+\[
+  D_U(L;\{A,B\})\cong L.
+\]
+In particular the defect has \(\mathbb F_3\)-dimension \(2\).
+
+\emph{Proof.}
+By Lemma \(L2\),
+\[
+  \operatorname{Loc}_U(L;\{A,B\})
+  =
+  (L\cap E(A))+(L\cap E(B))=0.
+\]
+The definition from AQM-38 gives
+\[
+  D_U(L;\{A,B\})
+  =
+  L/\operatorname{Loc}_U(L;\{A,B\})
+  =
+  L.
+\]
+
+\subsection{The Stabilizer State T2}
+
+\paragraph{Theorem \(T2\).}
+With the standard qutrit Weyl lift, the stabilizer labels \(L\) define a full
+global stabilizer state, but no nonzero local stabilizer label on either
+single site is inherited from \(L\).
+
+\emph{Proof.}
+The two generator operators are
+\[
+  W(\ell_1)=X_AX_B^{-1},\qquad W(\ell_2)=Z_AZ_B .
+\]
+The Weyl multiplier is trivial on all of \(L\), because
+\[
+  (b,b)\cdot(a',-a')=0
+\]
+for \(a\ell_1+b\ell_2\) and \(a'\ell_1+b'\ell_2\).  Thus the phase
+\(\alpha=1\) satisfies the AQM-38 phase condition.  The two displayed
+operators commute by Lemma \(L1\).  The vector
+\[
+  |\Phi_-\rangle=\frac1{\sqrt3}\sum_{s\in\mathbb F_3}|s,-s\rangle
+\]
+is fixed by both operators.  Indeed, \(X_AX_B^{-1}\) sends
+\(|s,-s\rangle\) to \(|s+1,-s-1\rangle=|s+1,-(s+1)\rangle\), only
+reindexing the sum.  Also \(Z_AZ_B\) multiplies \(|s,-s\rangle\) by
+\(\chi(s-s)=1\).  Since \(L\) is Lagrangian, AQM-38 Theorem \(T1\) says the
+common stabilizer space is one-dimensional, so this is the full stabilizer
+state.
+
+The one-site density matrix on \(A\) is
+\[
+  \operatorname{Tr}_B(|\Phi_-\rangle\langle\Phi_-|)
+  =
+  \frac13\sum_{s\in\mathbb F_3}|s\rangle\langle s|
+  =
+  I_3/3,
+\]
+and the same computation gives \(I_3/3\) on \(B\).  Thus the one-site
+restrictions are maximally mixed.  This agrees with Lemma \(L2\): the global
+Lagrangian has no nonzero labels supported on a single site.
+
+\subsection{Corrected Local-to-Global Statement T3}
+
+\paragraph{Theorem \(T3\).}
+Choosing a full stabilizer is not equivalent to local-to-global gluing.  The
+correct label-level statement is:
+\[
+\begin{array}{c}
+\text{full global stabilizer state}\\
+\Longleftrightarrow\\
+\text{global phased Lagrangian }L\leq E(U),
+\end{array}
+\]
+whereas
+\[
+\begin{array}{c}
+\text{full global stabilizer generated from the cover }\mathcal U\\
+\Longleftrightarrow\\
+\text{global phased Lagrangian }L\leq E(U)\text{ with }
+D_U(L;\mathcal U)=0,
+\end{array}
+\]
+plus phase compatibility on overlaps.
+
+\emph{Proof.}
+The first equivalence is AQM-38 Theorem \(T1\).  The second equivalence is
+AQM-38 Theorem \(T2\) applied to a Lagrangian \(L\), with phase compatibility
+added because labels alone do not choose eigenvalues.  AQM-38 Theorem \(T3\)
+proves that product local stabilizer states satisfy the condition.  Theorem
+\(T1\) above proves that the Lagrangian condition alone does not imply it.
+
+\subsection{Conclusion}
+
+The broad equivalence must be rejected in this form.  A Lagrangian is a full
+global stabilizer.  A zero descent defect is the extra condition that this
+stabilizer is generated from the local pieces of a chosen cover.  Nonzero
+defect is the stabilizer-label analogue of the state-presheaf phenomenon from
+AQM-27: local restrictions can miss global correlations.

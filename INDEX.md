@@ -94,6 +94,32 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION` | `report/sections/16_projective_line_sheaf_field_calculation.tex` | Projective Line Sheaf Field Calculation |
 | `AQM-17-PROJECTIVE-LINE-STALKS` | `report/sections/17_projective_line_stalks.tex` | Projective Line Stalks |
 | `AQM-18-STALKS-AS-FIELD-GERMS` | `report/sections/18_stalks_as_field_germs.tex` | Stalks as Field Germs |
+| `AQM-19-CANONICAL-BOSON-FERMION-FIELD-COMPARISON` | `report/sections/19_canonical_boson_fermion_field_comparison.tex` | Canonical Boson and Fermion Fields as Field-Label Tests |
+| `AQM-20-GRASSMANN-WEYL-FERMION-DISPLACEMENTS` | `report/sections/20_grassmann_weyl_fermion_displacements.tex` | Grassmann-Weyl Fermion Displacements |
+| `AQM-21-GRASSMANN-WEYL-FERMION-DERIVATIONS` | `report/sections/21_grassmann_weyl_fermion_displacement_derivations.tex` | Grassmann-Weyl Fermion Displacement Derivations |
+| `AQM-22-PRIME-FIELD-ARITHMETIC-FIELDS-QUDIT-PAULIS` | `report/sections/22_prime_field_arithmetic_fields_qudit_paulis.tex` | Prime-Field Arithmetic Fields and Qudit Paulis |
+| `AQM-23-SPEC-Z6-RESIDUE-QUDIT-FACTORISATION` | `report/sections/23_spec_z6_residue_qudit_factorisation.tex` | Spec Z/6Z and Residue Qudit Factorisation |
+| `AQM-24-ZARISKI-OPENS-OBSERVABLE-NETS` | `report/sections/24_zariski_opens_observable_nets.tex` | Zariski Opens and Observable Nets |
+| `AQM-25-QUASILOCAL-ZARISKI-ALGEBRA` | `report/sections/25_quasilocal_zariski_algebra.tex` | Quasi-Local Zariski Algebra |
+| `AQM-26-PRESHEAVES-COSHEAVES-OBSERVABLE-NETS` | `report/sections/26_presheaves_cosheaves_observable_nets.tex` | Presheaves, Cosheaves, and Observable Nets |
+| `AQM-27-STATE-PRESHEAF-QUASILOCAL-ALGEBRA` | `report/sections/27_state_presheaf_quasilocal_algebra.tex` | State Presheaf of the Quasi-Local Algebra |
+| `AQM-28-CLOSED-POINT-AFFINE-ARITHMETIC-FIELDS` | `report/sections/28_closed_point_affine_arithmetic_fields.tex` | Closed-Point Affine Arithmetic Fields |
+| `AQM-29-SPEC-FQ-T-ARITHMETIC-FIELD` | `report/sections/29_spec_fq_t_arithmetic_field.tex` | The Arithmetic Field on \(\operatorname{Spec}\mathbb F_q[t]\) |
+| `AQM-30-SPEC-FQ-XY-ARITHMETIC-FIELD` | `report/sections/30_spec_fq_xy_arithmetic_field.tex` | The Arithmetic Field on \(\operatorname{Spec}\mathbb F_q[x,y]\) |
+| `AQM-31-WEYL-HEISENBERG-RESEARCH-STATUS-RINGS` | `report/sections/31_weyl_heisenberg_research_status_over_rings.tex` | Weyl-Heisenberg Representation Status over Rings and LCA Systems |
+| `AQM-32-WEYL-HEISENBERG-REPRESENTATIONS-FOR-KT` | `report/sections/32_weyl_heisenberg_representations_for_kt.tex` | Weyl-Heisenberg Representations for \(k(t)\) |
+| `AQM-33-FULL-DUAL-LOCAL-MODELS-FOR-KT` | `report/sections/33_full_dual_local_models_for_kt.tex` | Full-Dual and Local Models for \(k(t)\) |
+| `AQM-34-F3-POLYNOMIAL-QUOTIENT-ARITHMETIC-FIELDS` | `report/sections/34_f3_polynomial_quotient_arithmetic_fields.tex` | Polynomial-Quotient Arithmetic Fields over \(\mathbb F_3\) |
+| `AQM-35-TN-EQUALS-1-F3-ARITHMETIC-FIELD` | `report/sections/35_tn_equals_1_f3_arithmetic_field.tex` | The \(t^n=1\) Arithmetic Field over \(\mathbb F_3\) |
+| `AQM-36-NILPOTENT-THICKENING-WEYL-FIELDS` | `report/sections/36_nilpotent_thickening_weyl_fields.tex` | Nilpotent Thickening Weyl Fields |
+| `AQM-37-THICKENED-TN-EQUALS-1-EXAMPLES` | `report/sections/37_thickened_tn_equals_1_examples.tex` | Thickened \(t^n=1\) Examples |
+| `AQM-38-LAGRANGIAN-STABILIZER-DESCENT` | `report/sections/38_lagrangian_stabilizer_descent.tex` | Lagrangian Stabilizer Descent |
+| `AQM-39-TWO-QUTRIT-STABILIZER-DESCENT-COUNTEREXAMPLE` | `report/sections/39_two_qutrit_stabilizer_descent_counterexample.tex` | Two-Qutrit Stabilizer Descent Counterexample |
+| `AQM-40-PRODUCT-FIELD-SPECTRUM-QUDIT-STABILIZERS` | `report/sections/40_product_field_spectrum_qudit_stabilizers.tex` | Product-Field Spectra and \(n\)-Qudit Stabilizers |
+| `AQM-41-CECH-COHOMOLOGY-QUANTUM-DESCENT` | `report/sections/41_cech_cohomology_quantum_descent.tex` | Cech Cohomology and Quantum Descent |
+| `AQM-42-GAUSSIAN-CLIFFORD-DYNAMICS` | `report/sections/42_gaussian_clifford_dynamics.tex` | Gaussian and Clifford Dynamics |
+| `AQM-43-FINITE-FIELD-SCALE-CONTINUUM-LIMITS` | `report/sections/43_finite_field_scale_continuum_limits.tex` | Finite-Field Scales and Continuum Limits |
+| `AQM-44-TRACE-GAUGES-FULL-CONTINUUM-TOWERS` | `report/sections/44_trace_gauges_full_continuum_towers.tex` | Trace Gauges for Full Continuum Towers |
 
 ## Source Topics
 
@@ -104,6 +130,9 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Weil conjectures and zeta functions | _pending_ | No sources acquired. |
 | Arithmetic quantum mechanics | _pending_ | No sources acquired. |
 | Supersymmetric quantum mechanics | _pending_ | No sources acquired. |
+| Canonical bosonic and fermionic fields | `references/canonical_fields/SOURCES.md` | Derezinski, Bekka, Bravyi, Keyl-Schlingemann, and Cahill-Glauber sources acquired for CCR, CAR, Fock, Stone-von-Neumann, FLO, GAR, and Grassmann fermion displacement conventions. |
 | Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |
-| Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman and Ashikhmin-Knill arXiv source bundles acquired for stabilizer symplectic conventions. |
-| Algebraic geometry and sheaves | `references/algebraic_geometry/SOURCES.md` | Stacks Project TeX snapshot acquired for presheaves, sheaves, Proj, projective space, varieties, twists, and projective-space cohomology. |
+| Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman, Ashikhmin-Knill, and Gross arXiv source bundles acquired for stabilizer symplectic conventions, qudit error bases, finite Hudson/Gaussian states, and prime-field Pauli comparisons. |
+| Weyl-Heisenberg and Weil representations | `references/heisenberg_weil/SOURCES.md` | Prasad, Beny-Crann-Lee-Park-Youn, Bekka, Solomon, Lysenko, Sidana-Kashyap, Gluesing-Luerssen-Pllaha, Trias, Hashimoto-Horibe-Hayashi, Korbelar-Tolar, Galindo, Poonen, and Kudla sources acquired for LCA, ring, finite Frobenius-ring, finite Clifford, local, and adelic Weyl-Heisenberg representation conventions. |
+| Algebraic geometry and sheaves | `references/algebraic_geometry/SOURCES.md` | Stacks Project TeX snapshot acquired for spectra, Zariski topology, presheaves, sheaves, Proj, projective space, varieties, twists, Cech cohomology, projective-space cohomology, separable trace pairing, and Frobenius. |
+| Cosheaves | `references/cosheaves/SOURCES.md` | Curry arXiv source bundle acquired for precosheaf, cosheaf, colimit, and cover-coequalizer conventions. |

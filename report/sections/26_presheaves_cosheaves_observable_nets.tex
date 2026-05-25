@@ -1,0 +1,273 @@
+% SHARD-ID: AQM-26-PRESHEAVES-COSHEAVES-OBSERVABLE-NETS
+% SHARD-TITLE: Presheaves, Cosheaves, and Observable Nets
+% SHARD-SUMMARY: Defines presheaves, sheaves, precosheaves, and cosheaves before applying them to the observable net.
+% SHARD-SUMMARY: Proves that the open-local observable assignment is a precosheaf but not an ordinary cosheaf of unital \(*\)-algebras.
+% SHARD-SUMMARY: Shows that the Weyl label assignment is the cosheaf-like layer whose quantization gives additive local nets.
+% SHARD-KEYWORDS: presheaf, sheaf, precosheaf, copresheaf, cosheaf, local net, observable algebra, Weyl labels
+
+\section{Presheaves, Cosheaves, and Observable Nets}
+\label{sec:presheaves-cosheaves-observable-nets}
+
+\subsection{Status and Source Anchors}
+
+Stacks Project
+\path{references/algebraic_geometry/stacks_project_sheaves.tex} defines
+presheaves in lines 73--123, sheaves of sets in lines 500--525, and
+category-valued sheaves by an equalizer diagram in lines 719--736.  It also
+records that \(U\mapsto\bigoplus_{x\in U}M_x\) is generally not a sheaf in
+lines 622--637.
+
+Curry's cosheaf source
+\path{references/cosheaves/curry_1303_3255_source/ch_abstract_sheaves.tex}
+defines pre-sheaves and pre-cosheaves in lines 89--92, sheaves and cosheaves
+by cover limits and colimits in lines 102--118, and rewrites the cosheaf
+condition as a coequalizer in lines 184--218.  The vector-space exact sequence
+form is in lines 243--259.  Curry's category source
+\path{references/cosheaves/curry_1303_3255_source/ch_categories.tex} defines
+colimits in lines 337--358 and records coproducts and unions as colimits in
+lines 366--384.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&\mathsf O(X)\text{ is the category of open subsets ordered by inclusion.}\\
+D2&:&\text{A presheaf is a functor }\mathsf O(X)^{op}\to\mathcal C.\\
+D3&:&\text{A sheaf is a presheaf satisfying cover equalizer gluing.}\\
+D4&:&\text{A precosheaf is a functor }\mathsf O(X)\to\mathcal C.\\
+D5&:&\text{A cosheaf is a precosheaf satisfying cover coequalizer gluing.}\\
+D6&:&U\mapsto E(U)=\bigoplus_{x\in U}E_x\text{ is the label precosheaf.}\\
+D7&:&U\mapsto\mathcal A(U)\text{ is the open-local observable assignment.}\\
+L1&:&E\text{ satisfies the finite-cover cosheaf axiom in abelian groups.}\\
+L2&:&\mathcal A\text{ is a precosheaf of unital }*\text{-algebras.}\\
+L3&:&\mathcal A\text{ satisfies net additivity inside the ambient algebra.}\\
+T1&:&\mathcal A\text{ is not an ordinary cosheaf of unital }*\text{-algebras.}\\
+T2&:&\text{Quantization turns label cosheaf gluing into tensor-local net gluing.}
+\end{array}
+\]
+
+\subsection{Presheaves and Sheaves D1--D3}
+
+Let \(X\) be a topological space.  The category \(\mathsf O(X)\) has open
+sets \(U\subset X\) as objects and a unique morphism \(U\to V\) when
+\(U\subset V\).
+
+Let \(\mathcal C\) be a category.  A \(\mathcal C\)-valued presheaf on \(X\)
+is a contravariant functor
+\[
+  F:\mathsf O(X)^{op}\longrightarrow\mathcal C.
+\]
+Equivalently, for \(V\subset U\) it has restriction morphisms
+\[
+  \rho^U_V:F(U)\longrightarrow F(V)
+\]
+with \(\rho^U_U=\operatorname{id}\) and
+\(\rho^U_W=\rho^V_W\rho^U_V\) for \(W\subset V\subset U\).
+
+Assume \(\mathcal C\) has the products and equalizers needed for the displayed
+cover diagram.  A presheaf \(F\) is a sheaf if for every open cover
+\(U=\bigcup_iU_i\) the diagram
+\[
+  F(U)\longrightarrow \prod_i F(U_i)
+  \rightrightarrows \prod_{i,j}F(U_i\cap U_j)
+\]
+is an equalizer.  In sets this says that compatible local sections glue to a
+unique section over \(U\).
+
+\subsection{Precosheaves and Cosheaves D4--D5}
+
+We use ``precosheaf'' and ``copresheaf'' synonymously.  A
+\(\mathcal C\)-valued precosheaf on \(X\) is a covariant functor
+\[
+  G:\mathsf O(X)\longrightarrow\mathcal C.
+\]
+For \(V\subset U\) it has extension morphisms
+\[
+  r_{U,V}:G(V)\longrightarrow G(U)
+\]
+with \(r_{U,U}=\operatorname{id}\) and
+\(r_{U,W}=r_{U,V}r_{V,W}\) for \(W\subset V\subset U\).
+
+Assume \(\mathcal C\) has the coproducts and coequalizers needed for the
+displayed cover diagram.  A precosheaf \(G\) is a cosheaf if for every open
+cover \(U=\bigcup_iU_i\) the diagram
+\[
+  \coprod_{i,j}G(U_i\cap U_j)
+  \rightrightarrows
+  \coprod_iG(U_i)
+  \longrightarrow
+  G(U)
+\]
+is a coequalizer.  In an additive category such as abelian groups or vector
+spaces, the finite-cover form is the exact sequence
+\[
+  \bigoplus_{i,j}G(U_i\cap U_j)
+  \longrightarrow
+  \bigoplus_iG(U_i)
+  \longrightarrow
+  G(U)\longrightarrow0.
+\]
+The arrows identify data that have been counted twice on overlaps.
+
+\subsection{The Label Cosheaf D6--L1}
+
+At the finite residue-qudit level, each point \(x\in X\) has a local Weyl
+label group \(E_x=\kappa(x)^2\), regarded as an abelian group.  Define
+\[
+  E(U)=\bigoplus_{x\in U}E_x.
+\]
+For \(V\subset U\), the extension map \(E(V)\to E(U)\) is extension by zero
+outside \(V\).
+
+\paragraph{Lemma \(L1\).}
+For finite covers, \(E\) satisfies the cosheaf axiom in abelian groups.
+
+\emph{Proof.}
+Let \(U=\bigcup_iU_i\) be a finite open cover.  The map
+\[
+  \bigoplus_iE(U_i)\longrightarrow E(U)
+\]
+adds the extension-by-zero images.  It is surjective because every summand
+\(E_x\) with \(x\in U\) lies in at least one \(U_i\).
+
+The only relations needed are overlap relations.  If \(x\in U_i\cap U_j\),
+then the two copies of \(E_x\) inside \(E(U_i)\oplus E(U_j)\) have the same
+image in \(E(U)\), and their difference is exactly in the image of
+\(E(U_i\cap U_j)\).  Conversely, if a finite sum maps to zero in \(E(U)\),
+then for each point \(x\) the sum of its finitely many copies over the index
+set \(\{i:x\in U_i\}\) is zero.  This index set is connected through overlaps,
+because every pair \(i,j\) in it has \(x\in U_i\cap U_j\).  Hence the
+pointwise zero relation is generated by the pairwise overlap relations.  Since
+the direct sum over points separates these pointwise calculations, the
+displayed sequence is exact.
+
+\subsection{The Observable Precosheaf D7--L3}
+
+Let \(\mathcal A(U)\) be the open-local observable algebra from AQM-24.  For
+\(V\subset U\), define
+\[
+  \iota_{V,U}:\mathcal A(V)\hookrightarrow\mathcal A(U),
+  \qquad a\mapsto a\otimes\mathbf 1_{U\setminus V}.
+\]
+
+\paragraph{Lemma \(L2\).}
+\(U\mapsto\mathcal A(U)\) is a precosheaf of unital \(*\)-algebras.
+
+\emph{Proof.}
+The identity and composition laws are exactly Lemma \(L1\) of AQM-24:
+\[
+  \iota_{U,U}=\operatorname{id},\qquad
+  \iota_{V,W}\iota_{U,V}=\iota_{U,W}
+\]
+for \(U\subset V\subset W\).  Thus \(\mathcal A\) is a covariant functor from
+\(\mathsf O(X)\) to unital \(*\)-algebras.
+
+\paragraph{Lemma \(L3\).}
+For finite unions,
+\[
+  \mathcal A(U\cup V)
+  =
+  \mathcal A(U)\vee\mathcal A(V),
+\]
+where \(\vee\) denotes the unital \(*\)-subalgebra generated by the two images
+inside \(\mathcal A(U\cup V)\).  If \(U\cap V=\emptyset\), the two images
+commute and the generated algebra is the tensor product.
+
+\emph{Proof.}
+Every tensor factor of \(\mathcal A(U\cup V)\) belongs to \(U\) or to \(V\).
+Hence the images of \(\mathcal A(U)\) and \(\mathcal A(V)\) generate all local
+matrix factors in the union.  If \(U\cap V=\emptyset\), the two images act on
+disjoint tensor factors, so elementary tensors commute factor by factor.  The
+generated algebra is then the tensor product of the two local algebras.
+
+\subsection{Why This Is Not an Ordinary Cosheaf T1}
+
+\paragraph{Theorem \(T1\).}
+The observable precosheaf \(\mathcal A\) is not, in general, a cosheaf valued
+in the category of unital \(*\)-algebras with ordinary categorical colimits.
+
+\emph{Proof.}
+It is enough to use \(X=\operatorname{Spec}(\mathbb Z/6\mathbb Z)\).  Let
+\[
+  U=\{(2)\},\qquad V=\{(3)\}.
+\]
+Then \(U\cap V=\emptyset\), \(U\cup V=X\), and AQM-24 gives
+\[
+  \mathcal A(U)=M_2,\qquad
+  \mathcal A(V)=M_3,\qquad
+  \mathcal A(X)=M_2\otimes M_3.
+\]
+Since \(\mathcal A(\emptyset)=\mathbb C\), the cosheaf coequalizer for this
+cover is the coproduct of unital \(*\)-algebras amalgamated over the common
+unit:
+\[
+  M_2 *_\mathbb C M_3.
+\]
+This coproduct is not \(M_2\otimes M_3\).  Indeed, if it were the tensor
+product with the canonical embeddings, then every pair of unital
+\(*\)-homomorphisms \(M_2\to B\) and \(M_3\to B\) would have commuting images,
+because the two canonical tensor factors commute.
+
+Take \(B=M_6(\mathbb C)\), written as \(3\times3\) blocks in a \(2\times2\)
+matrix.  Let
+\[
+  f(a)=a\otimes I_3,
+  \qquad
+  g(b)=
+  \begin{bmatrix}
+    b&0\\
+    0&VbV^*
+  \end{bmatrix},
+\]
+where \(V\in M_3(\mathbb C)\) swaps the first two basis vectors.  These are
+unital \(*\)-homomorphisms.  For the matrix units \(e_{12}\in M_2\) and
+\(E_{11}\in M_3\),
+\[
+  f(e_{12})g(E_{11})
+  =
+  \begin{bmatrix}0&E_{22}\\0&0\end{bmatrix},
+  \qquad
+  g(E_{11})f(e_{12})
+  =
+  \begin{bmatrix}0&E_{11}\\0&0\end{bmatrix}.
+\]
+These are unequal.  Therefore the universal object for arbitrary unital
+\(*\)-homomorphisms cannot be the tensor product.  The cosheaf colimit in
+unital \(*\)-algebras is too free: it does not impose locality commutation.
+
+\subsection{Quantization and the Correct Dictionary T2}
+
+\paragraph{Theorem \(T2\).}
+The correct next-layer dictionary is:
+\[
+\begin{array}{rcl}
+E&:&\text{a cosheaf-like label object in abelian groups or vector spaces},\\
+\mathcal A&:&\text{a precosheaf/local net of observable algebras},\\
+&&\text{with additivity and locality imposed inside the ambient algebra.}
+\end{array}
+\]
+
+\emph{Proof.}
+Lemma \(L1\) proves that labels glue by the expected additive colimit.  Lemmas
+\(L2\) and \(L3\) prove that observable algebras form a covariant local net
+and satisfy the physical additivity relation
+\[
+  \mathcal A(U\cup V)=\mathcal A(U)\vee\mathcal A(V).
+\]
+Theorem \(T1\) proves that this additivity is not the ordinary cosheaf axiom
+in unital \(*\)-algebras: categorical coproducts give free products, whereas
+quantized independent labels give commuting tensor factors.  Thus quantization
+does not preserve the raw cosheaf colimit from labels to observable algebras;
+it turns additive label gluing into tensor-local algebra gluing.
+
+\subsection{Conclusion}
+
+The open-local observable assignment is naturally a precosheaf:
+\[
+  U\subset V\quad\Rightarrow\quad
+  \mathcal A(U)\hookrightarrow\mathcal A(V).
+\]
+It should not be called an ordinary cosheaf of unital \(*\)-algebras unless the
+target category or gluing notion is changed.  The label layer \(E\) is the
+cosheaf-like layer.  The observable layer is the AQFT-style net: isotone,
+local on disjoint opens, and additive by generated subalgebras.

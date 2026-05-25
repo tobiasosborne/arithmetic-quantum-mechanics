@@ -1,0 +1,234 @@
+% SHARD-ID: AQM-23-SPEC-Z6-RESIDUE-QUDIT-FACTORISATION
+% SHARD-TITLE: Spec Z/6Z and Residue Qudit Factorisation
+% SHARD-SUMMARY: Computes the prime ideals and residue fields of \(\operatorname{Spec}(\mathbb Z/6\mathbb Z)\).
+% SHARD-SUMMARY: Builds the residue-field Weyl label group and proves it quantizes to qubit tensor qutrit.
+% SHARD-SUMMARY: Separates the label direct sum from the Hilbert-space tensor product and rules out a Hilbert direct sum.
+% SHARD-KEYWORDS: arithmetic quantum field, Spec, residue field, Z/6Z, qubit, qutrit, tensor product, Weyl-Heisenberg
+
+\section{Spec Z/6Z and Residue Qudit Factorisation}
+\label{sec:spec-z6-residue-qudit-factorisation}
+
+\subsection{Status and Source Anchors}
+
+This shard records the morally preferred convention suggested by
+Section~\ref{sec:prime-field-arithmetic-fields-qudit-paulis}: for a field
+\(\mathbb F_p\), the arithmetic point space is \(\operatorname{Spec}\mathbb F_p\),
+so the local quantum system is one \(p\)-level qudit.  For a non-field finite
+ring there is no single quotient field.  The concrete replacement used here is
+one local phase space over each residue field.
+
+The ring calculation for \(\mathbb Z/6\mathbb Z\) is proved directly below.
+The Weyl/Pauli facts use the same local sources as AQM-22: Ashikhmin--Knill
+\path{references/symplectic_qecc/ashikhmin_knill_0005008_source/n9.tex},
+lines 249--313 for finite-field shift/phase bases and product laws, and
+Bombin--Martin--Delgado
+\path{references/toric_code/bombin_martin_delgado_0605094_source/HomologicalErrorCorrection6.tex},
+lines 1208--1259 for qudit Paulis, symplectic commutators, and projective
+label maps.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&R=\mathbb Z/6\mathbb Z.\\
+L1&:&R\cong\mathbb F_2\times\mathbb F_3\text{ by Chinese remainders.}\\
+L2&:&\operatorname{Spec}R=\{\mathfrak p_2=(2),\mathfrak p_3=(3)\}.\\
+D2&:&\kappa(\mathfrak p_2)=\mathbb F_2,\quad
+       \kappa(\mathfrak p_3)=\mathbb F_3.\\
+D3&:&E_R=\kappa(\mathfrak p_2)^2\oplus\kappa(\mathfrak p_3)^2.\\
+D4&:&\Omega_R=\Omega_2\oplus\Omega_3,\text{ with each }\Omega_i
+       \text{ the standard }zx'-xz'.\\
+L3&:&E_R\text{ is an orthogonal direct sum of local symplectic groups.}\\
+D5&:&\mathcal H_R=\ell^2(\mathbb F_2)\otimes\ell^2(\mathbb F_3).\\
+L4&:&W_R(e_2,e_3)=W_2(e_2)\otimes W_3(e_3)
+       \text{ has the product Weyl law.}\\
+T1&:&\operatorname{span}\{W_R(e):e\in E_R\}
+       \cong M_2(\mathbb C)\otimes M_3(\mathbb C)\cong M_6(\mathbb C).\\
+T2&:&\text{The Hilbert space is a tensor product, not }
+       \mathbb C^2\oplus\mathbb C^3.
+\end{array}
+\]
+
+\subsection{The Spectrum L1--D2}
+
+Let \(R=\mathbb Z/6\mathbb Z\).  Define
+\[
+  \Phi:R\longrightarrow\mathbb F_2\times\mathbb F_3,\qquad
+  \Phi(\bar n)=(\bar n\bmod 2,\bar n\bmod 3).
+\]
+
+\paragraph{Lemma \(L1\).}
+\(\Phi\) is a ring isomorphism.
+
+\emph{Proof.}
+It is a well-defined ring homomorphism because congruence modulo \(6\) implies
+congruence modulo \(2\) and modulo \(3\).  Its kernel consists of residue
+classes divisible by both \(2\) and \(3\), hence by \(6\), so the kernel is
+zero.  Both rings have six elements, so an injective map is bijective.
+
+\paragraph{Lemma \(L2\).}
+\[
+  \operatorname{Spec}R=\{\mathfrak p_2,\mathfrak p_3\},
+  \qquad
+  \mathfrak p_2=(2)=\{0,2,4\},\quad
+  \mathfrak p_3=(3)=\{0,3\}.
+\]
+Moreover \(R/\mathfrak p_2\cong\mathbb F_2\) and
+\(R/\mathfrak p_3\cong\mathbb F_3\).
+
+\emph{Proof.}
+Under \(\Phi\), the ideal \(\mathfrak p_2=(2)\) maps to
+\(0\times\mathbb F_3\), and \(\mathfrak p_3=(3)\) maps to
+\(\mathbb F_2\times0\).  The quotients are therefore \(\mathbb F_2\) and
+\(\mathbb F_3\), respectively, so both ideals are prime.
+
+Every ideal \(J\) of \(\mathbb F_2\times\mathbb F_3\) is \(I_2\times I_3\):
+if \((a,b)\in J\), then \((a,0)=(a,b)(1,0)\in J\) and
+\((0,b)=(a,b)(0,1)\in J\).  Thus the proper ideals are \(0\times0\),
+\(0\times\mathbb F_3\), and \(\mathbb F_2\times0\).  The quotient by
+\(0\times0\) is \(\mathbb F_2\times\mathbb F_3\), which is not a domain
+because \((1,0)(0,1)=0\).  Hence \(0\times0\) is not prime, and the two ideals
+listed above are the only prime ideals.
+
+The residue fields are
+\[
+  \kappa(\mathfrak p_2)=R/\mathfrak p_2\cong\mathbb F_2,\qquad
+  \kappa(\mathfrak p_3)=R/\mathfrak p_3\cong\mathbb F_3.
+\]
+
+\subsection{Residue-Field Phase Space D3--L3}
+
+For a point \(\mathfrak p\), define its local phase space by
+\[
+  V_{\mathfrak p}=\kappa(\mathfrak p)_X\oplus\kappa(\mathfrak p)_Z,
+  \qquad
+  \Omega_{\mathfrak p}((x,z),(x',z'))=zx'-xz'.
+\]
+For \(R=\mathbb Z/6\mathbb Z\), the global label group is
+\[
+  E_R=V_{\mathfrak p_2}\oplus V_{\mathfrak p_3}
+     =\mathbb F_2^2\oplus\mathbb F_3^2 .
+\]
+This is a direct sum of finite abelian groups, not a vector space over one
+field.  Define the alternating bicharacter
+\[
+  B_R(e,f)
+  =
+  (-1)^{\Omega_{\mathfrak p_2}(e_2,f_2)}
+  \exp\!\left(\frac{2\pi i}{3}\Omega_{\mathfrak p_3}(e_3,f_3)\right),
+\]
+where \(e=(e_2,e_3)\) and \(f=(f_2,f_3)\).
+
+\paragraph{Lemma \(L3\).}
+The two local summands are orthogonal and nondegenerate: if
+\(B_R(e,f)=1\) for all \(f\in E_R\), then \(e=0\).
+
+\emph{Proof.}
+Orthogonality is built into the formula: \(e_2\) only pairs with \(f_2\), and
+\(e_3\) only pairs with \(f_3\).  The local form is nondegenerate because a
+nonzero \((x,z)\) pairs nontrivially with either \((1,0)\) or \((0,1)\).  If
+\(B_R(e,f)=1\) for all \(f\), first take \(f_3=0\), forcing \(e_2=0\).  Then
+take \(f_2=0\), forcing \(e_3=0\).  Thus \(e=0\).
+
+\subsection{Weyl Representation L4--T1}
+
+Let
+\[
+  \mathcal H_2=\ell^2(\mathbb F_2),\qquad
+  \mathcal H_3=\ell^2(\mathbb F_3),\qquad
+  \mathcal H_R=\mathcal H_2\otimes\mathcal H_3.
+\]
+For \(i=2,3\), let \(W_i(x,z)=T_i(x)R_i(z)\) be the usual local
+shift-phase Weyl operator on \(\ell^2(\mathbb F_i)\).  Define
+\[
+  W_R(e_2,e_3)=W_2(e_2)\otimes W_3(e_3).
+\]
+
+\paragraph{Lemma \(L4\).}
+For \(e=(e_2,e_3)\) and \(f=(f_2,f_3)\),
+\[
+  W_R(e)W_R(f)=c_R(e,f)W_R(e+f),
+\]
+where
+\[
+  c_R(e,f)=(-1)^{z_2x'_2}
+  \exp\!\left(\frac{2\pi i}{3}z_3x'_3\right)
+\]
+if \(e_i=(x_i,z_i)\) and \(f_i=(x'_i,z'_i)\).  Consequently
+\[
+  W_R(e)W_R(f)=B_R(e,f)W_R(f)W_R(e).
+\]
+
+\emph{Proof.}
+The local Weyl laws give
+\[
+  W_i(e_i)W_i(f_i)=c_i(e_i,f_i)W_i(e_i+f_i).
+\]
+Tensoring the two equations gives the displayed product law with
+\(c_R=c_2c_3\).  Dividing the product law for \(e,f\) by the one for \(f,e\)
+gives the displayed commutator bicharacter.
+
+\paragraph{Theorem \(T1\).}
+\[
+  \operatorname{span}_{\mathbb C}\{W_R(e):e\in E_R\}
+  =
+  \operatorname{End}(\mathcal H_2)\otimes\operatorname{End}(\mathcal H_3)
+  \cong M_2(\mathbb C)\otimes M_3(\mathbb C)
+  \cong M_6(\mathbb C).
+\]
+
+\emph{Proof.}
+For a single \(p\)-level qudit, the local source records that the \(p^2\)
+operators \(T^xR^z\) form an operator basis.  Thus
+\(\{W_2(e_2)\}\) is a basis of \(M_2(\mathbb C)\), and \(\{W_3(e_3)\}\) is a
+basis of \(M_3(\mathbb C)\).  Tensor products of bases form a basis of the
+tensor product vector space, so the \(4\cdot9=36\) operators \(W_R(e_2,e_3)\)
+span \(M_2(\mathbb C)\otimes M_3(\mathbb C)\).  The last isomorphism is the
+standard Kronecker product identification.
+
+\subsection{Direct Sum or Tensor Product? T2}
+
+\paragraph{Theorem \(T2\).}
+The quantum system attached to \(\operatorname{Spec}(\mathbb Z/6\mathbb Z)\)
+by the residue-field Weyl rule is a qubit tensor a qutrit,
+\[
+  \mathcal H_R\cong\mathbb C^2\otimes\mathbb C^3\cong\mathbb C^6,
+\]
+not the Hilbert direct sum \(\mathbb C^2\oplus\mathbb C^3\).
+
+\emph{Proof.}
+The direct sum occurs in the label group:
+\[
+  E_R=\mathbb F_2^2\oplus\mathbb F_3^2.
+\]
+Weyl quantization sends an orthogonal direct sum of independent phase spaces
+to tensor products of the local Weyl representations, as shown explicitly in
+Lemma \(L4\).
+
+A Hilbert direct sum would have operator algebra
+\[
+  \operatorname{End}(\mathbb C^2)\oplus\operatorname{End}(\mathbb C^3)
+  \cong M_2(\mathbb C)\oplus M_3(\mathbb C),
+\]
+whose complex dimension is \(4+9=13\) and whose center is two-dimensional.
+The Weyl operators from \(E_R\) instead give \(36\) independent operators and
+the full matrix algebra \(M_6(\mathbb C)\), whose center is one-dimensional.
+Thus the direct-sum Hilbert interpretation is incompatible with the Weyl label
+count and with Theorem \(T1\).
+
+\subsection{Conclusion}
+
+The expectation "qutrit plus qubit" is correct only at the level of local
+factors.  The precise statement is
+\[
+  \operatorname{Spec}(\mathbb Z/6\mathbb Z)
+  =
+  \{\mathfrak p_2,\mathfrak p_3\},
+  \qquad
+  \kappa(\mathfrak p_2)=\mathbb F_2,\quad
+  \kappa(\mathfrak p_3)=\mathbb F_3,
+\]
+so the local systems are one qubit and one qutrit.  The global Weyl label
+space is their orthogonal direct sum, but the Hilbert space is their tensor
+product.  Equivalently, the observable algebra is \(M_2\otimes M_3\cong M_6\),
+not \(M_2\oplus M_3\).

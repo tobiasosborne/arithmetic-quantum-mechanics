@@ -1,0 +1,280 @@
+% SHARD-ID: AQM-43-FINITE-FIELD-SCALE-CONTINUUM-LIMITS
+% SHARD-TITLE: Finite-Field Scales and Continuum Limits
+% SHARD-SUMMARY: Defines base-extension scales \(X_r=X_0\times_{\mathbb F_q}\mathbb F_{q^r}\) and their closed-point Weyl nets.
+% SHARD-SUMMARY: Proves the trace obstruction to naive Weyl embeddings and the trace-normalized replacement.
+% SHARD-SUMMARY: Computes the point \(X_0=\operatorname{Spec}\mathbb F_3\), its prime-to-\(3\) continuum limit, and Frobenius action.
+% SHARD-KEYWORDS: continuum limit, finite field extension, base change, Weyl net, trace, Frobenius
+
+\section{Finite-Field Scales and Continuum Limits}
+\label{sec:finite-field-scale-continuum-limits}
+
+\subsection{Status and Source Anchors}
+
+This shard adds finite-field extension rank as the first arithmetic
+``scale'' parameter.  The closed-point Weyl net is AQM-28 and the dynamics
+language is AQM-42.  The scheme facts use the Stacks Project snapshot:
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+250--274, 2972--2983, 3104--3117, 3310--3350, 6520--6665, and 45278--45284.
+Frobenius is sourced from
+\path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
+7005--7112.  The finite-field trace formula also appears in
+\path{references/heisenberg_weil/sidana_kashyap_2202_00248_source/EAQECCs_over_rings_v15.tex},
+lines 789--801.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_q,\ k_r=\mathbb F_{q^r}\subset\bar k,\
+      k_r\subset k_s\Longleftrightarrow r\mid s.\\
+D2&:&X_r=X_0\times_{\Spec k}\Spec k_r,\
+      \pi_{s,r}:X_s\to X_r.\\
+D3&:&\mathcal A_r(U)\text{ is the AQM-28 closed-point Weyl net on }X_r.\\
+L1&:&\text{A closed point }x\in X_r\text{ splits over }k_s\text{ through }
+      B_x=\kappa(x)\otimes_{k_r}k_s.\\
+L2&:&\text{The naive diagonal label map multiplies the trace commutator by }
+      n=s/r.\\
+L3&:&\text{A trace-one element }c_x\in B_x\text{ gives a Weyl-compatible
+      label embedding.}\\
+T1&:&\text{Trace-normalized local embeddings induce monomorphisms of
+      open-local Weyl nets.}\\
+T2&:&\text{Prime-to-}p\text{ scales have canonical coherent embeddings.}\\
+T3&:&X_0=\Spec\mathbb F_3\text{ gives }
+      \varinjlim_{3\nmid r}M_{3^r}(\mathbb C).\\
+T4&:&\text{Frobenius acts by }W(q,p)\mapsto W(q^3,p^3).
+\end{array}
+\]
+
+\subsection{Scales and Closed-Point Nets D1--L1}
+
+Fix an algebraic closure \(\bar k\) of \(k=\mathbb F_q\), and let
+\(k_r=\mathbb F_{q^r}\) be the unique subfield of \(\bar k\) with \(q^r\)
+elements.  Then \(k_r\subset k_s\) exactly when \(r\mid s\).  For an affine
+\(k\)-scheme \(X_0=\Spec R\), define the rank-\(r\) scale
+\[
+  X_r=X_0\times_{\Spec k}\Spec k_r=\Spec(R\otimes_k k_r).
+\]
+If \(r\mid s\), base change along \(k_r\subset k_s\) gives
+\(\pi_{s,r}:X_s\to X_r\).
+
+For an open \(U\subset X_r\), \(\mathcal A_r(U)\) denotes the AQM-28
+closed-point Weyl algebra:
+\[
+  \mathcal A_r(U)=
+  \varinjlim_{S\Subset U\cap |X_r|_{\rm cl}}
+  \bigotimes_{x\in S}\operatorname{End}_{\mathbb C}\ell^2(\kappa(x)).
+\]
+Thus a scale change should compare \(\mathcal A_r(U)\) with
+\(\mathcal A_s(\pi_{s,r}^{-1}U)\).
+
+Let \(x\in |X_r|_{\rm cl}\), put \(K=\kappa(x)\), and write
+\(B_x=K\otimes_{k_r}k_s\).
+Since finite fields are separable,
+\(B_x\cong\prod_{y\mapsto x}\kappa(y)\), where \(y\) ranges over the closed
+points of \(X_s\) above \(x\).  This is the
+finite algebraic form of site splitting at finer scale.
+
+\subsection{The Trace Obstruction L2}
+
+The one-site character at \(x\) is
+\[
+  \psi_x(a)=\exp\!\left(\frac{2\pi i}{p}\Tr_{K/\mathbb F_p}(a)\right).
+\]
+The naive diagonal map sends \((q,p_0)\in K^2\) to
+\(\Delta_x(q,p_0)=((q_y,p_{0,y}))_{y\mapsto x}\),
+where \(q_y,p_{0,y}\) are the images in \(\kappa(y)\).  Let
+\(a=p_0q'-q p'_0\).
+The fine-scale commutator phase of the diagonal images is
+\[
+  \prod_{y\mapsto x}
+  \exp\!\left(\frac{2\pi i}{p}
+  \Tr_{\kappa(y)/\mathbb F_p}(a_y)\right).
+\]
+The exponent is
+\[
+  \Tr_{B_x/\mathbb F_p}(a\otimes1)
+  =
+  \Tr_{K/\mathbb F_p}\!\left(\Tr_{B_x/K}(a\otimes1)\right).
+\]
+As a \(K\)-algebra, \(B_x\) has dimension \(n=s/r\), and \(a\otimes1\) acts
+on it as scalar multiplication by \(a\).  Hence
+\[
+  \Tr_{B_x/K}(a\otimes1)=n a,
+\]
+so the fine phase is the coarse phase raised to the \(n\)-th power:
+\[
+  \prod_{y\mapsto x}\psi_y(a_y)=\psi_x(a)^n .
+\]
+Therefore the naive diagonal label map is Weyl-compatible for all labels only
+when \(n\equiv1\pmod p\).  The geometry is canonical, but the Weyl phases are
+not automatically compatible.
+
+\subsection{Trace-Normalized Embeddings L3--T1}
+
+Choose \(c_x=(c_y)_{y\mapsto x}\in B_x\) with
+\(\Tr_{B_x/K}(c_x)=1\).
+Such an element exists: for a finite separable field extension the trace
+pairing is nondegenerate, so the trace map is a nonzero \(K\)-linear map to
+the one-dimensional \(K\)-space \(K\), hence is surjective; products are
+handled componentwise.
+
+Define
+\[
+  \tau_{s,r,x}(q,p_0)=((q_y,c_y p_{0,y}))_{y\mapsto x}.
+\]
+For \(e=(q,p_0)\) and \(f=(q',p'_0)\), the fine exponent becomes
+\[
+\begin{aligned}
+  \sum_{y\mapsto x}
+  \Tr_{\kappa(y)/\mathbb F_p}
+  \bigl(c_y(p_{0,y}q'_y-q_y p'_{0,y})\bigr)
+  &=
+  \Tr_{K/\mathbb F_p}
+  \bigl(\Tr_{B_x/K}(c_x(a\otimes1))\bigr)\\
+  &=
+  \Tr_{K/\mathbb F_p}(a).
+\end{aligned}
+\]
+Thus \(\tau_{s,r,x}\) preserves the character-valued Weyl commutator.  It is
+injective because \(c_x\ne0\), so some component \(c_y\) is nonzero.
+
+Taking the direct sum of \(\tau_{s,r,x}\) over the finite support of a label
+gives
+\[
+  \tau_{s,r,U}:E_r(U)\to E_s(\pi_{s,r}^{-1}U).
+\]
+The Weyl relations are preserved on every finite support, so
+\[
+  \alpha_{s,r,U}(W_r(e))=W_s(\tau_{s,r,U}e)
+\]
+extends to a unital \(*\)-monomorphism
+\[
+  \alpha_{s,r,U}:\mathcal A_r(U)\hookrightarrow
+  \mathcal A_s(\pi_{s,r}^{-1}U).
+\]
+For \(U\subset V\), these maps commute with the open-local inclusions because
+both constructions are defined pointwise on closed supports.
+
+\subsection{Canonical and Noncanonical Continuum Systems T2}
+
+If \(p\nmid n=s/r\), then
+\[
+  c_x=n^{-1}\cdot1_{B_x}
+\]
+is canonical and has trace \(1\), because
+\(\Tr_{B_x/K}(1_{B_x})=n\).  These choices are coherent: for
+\(r\mid s\mid t\), the normalizing factors multiply as
+\[
+  (t/r)^{-1}=(s/r)^{-1}(t/s)^{-1}.
+\]
+Hence the scales \(r\) with \(p\nmid r\), ordered by divisibility, form a
+canonical directed subsystem of Weyl nets.  Its algebraic continuum net is the
+filtered colimit of these nets.
+
+For the full tower of all \(r\), the current trace-character convention
+requires extra data.  If \(p\mid n\), then \(n^{-1}\) does not exist.  A
+trace-one element still exists, but it is not canonical in the above data.
+The report therefore does not call the full all-rank tower canonical until a
+coherent trace-one system, or an alternative compatible-character convention,
+has been fixed.
+
+\subsection{The Point over \texorpdfstring{\(\mathbb F_3\)}{F3} T3}
+
+Let
+\[
+  X_0=\Spec\mathbb F_3,\qquad k_r=\mathbb F_{3^r}.
+\]
+Then \(X_r=\Spec k_r\) has one closed point and
+\[
+  E_r=k_r^2,\qquad
+  \mathcal H_r=\ell^2(k_r),\qquad
+  \mathcal A_r\cong M_{3^r}(\mathbb C).
+\]
+The character is
+\[
+  \psi_r(a)=\exp\!\left(\frac{2\pi i}{3}
+  \Tr_{k_r/\mathbb F_3}(a)\right).
+\]
+
+For \(r\mid s\), put \(n=s/r\).  The naive inclusion
+\((q,p)\mapsto(q,p)\) gives
+\[
+  \psi_s(pq'-q p')=\psi_r(pq'-q p')^n.
+\]
+Already \(r=1,s=2\) fails: \(\Tr_{\mathbb F_9/\mathbb F_3}(1)=2\), so the
+phase of \(1\) becomes \(\exp(4\pi i/3)\), not \(\exp(2\pi i/3)\).
+The canonical corrected map is
+\[
+  S_{s,r}(q,p)=(q,n^{-1}p)
+\]
+whenever \(3\nmid n\).  Consequently the canonical prime-to-\(3\) continuum
+algebra of the arithmetic point is
+\[
+  \mathcal A_{\infty}^{(3')}
+  =
+  \varinjlim_{\substack{r\ge1\\3\nmid r}} M_{3^r}(\mathbb C),
+\]
+with transition maps \(W_r(q,p)\mapsto W_s(q,n^{-1}p)\).  This is an
+algebraic colimit: every element is represented at a finite extension rank.
+No Hilbert space \(\ell^2(\bar{\mathbb F}_3)\) or C*-completion is part of the
+definition yet.
+
+For the first missing full-tower step, \(r=1,s=3\), the naive trace is zero on
+\(\mathbb F_3\) because \(\Tr_{\mathbb F_{27}/\mathbb F_3}(1)=3=0\).  A
+trace-one element exists but is a choice.  For example, if
+\(\theta^3+2\theta^2+1=0\), then this irreducible cubic has root trace
+\(\Tr(\theta)=1\), and \((q,p)\mapsto(q,\theta p)\) is a valid embedding
+\(\mathcal A_1\hookrightarrow\mathcal A_3\).  Choosing \(\theta\) is extra
+structure, not a canonical consequence of \(k\subset k_3\).
+
+\subsection{Frobenius on the Point Net T4}
+
+At scale \(r\), define
+\[
+  F_r:E_r\to E_r,\qquad F_r(q,p)=(q^3,p^3).
+\]
+The trace is Frobenius-invariant:
+\[
+  \Tr_{k_r/\mathbb F_3}(a^3)
+  =
+  \sum_{i=0}^{r-1}a^{3^{i+1}}
+  =
+  \sum_{i=0}^{r-1}a^{3^i}
+  =
+  \Tr_{k_r/\mathbb F_3}(a).
+\]
+Therefore \(F_r\) preserves the Weyl commutator and induces
+\[
+  \Phi_r(W_r(q,p))=W_r(q^3,p^3).
+\]
+This is a Clifford/Gaussian automorphism of order \(r\).  For
+\(k_2=\mathbb F_3[u]/(u^2+1)\), \(u^3=-u\), so
+\[
+  \Phi_2(W(a+bu,c+du))=W(a-bu,c-du).
+\]
+
+The prime-to-\(3\) embeddings are Frobenius-equivariant.  Indeed
+\[
+  S_{s,r}F_r(q,p)=(q^3,n^{-1}p^3)
+  =
+  F_sS_{s,r}(q,p),
+\]
+because \(n^{-1}\in\mathbb F_3\) is fixed by Frobenius.  Thus Frobenius acts
+on the canonical prime-to-\(3\) continuum algebra
+\(\mathcal A_{\infty}^{(3')}\).  In contrast, a noncanonical trace-one choice
+for a \(3\)-divisible step is generally moved by Frobenius, so full-tower
+Frobenius equivariance is additional structure.
+
+\subsection{Conclusion}
+
+Finite-field extension rank gives a precise arithmetic scale system.  Base
+change of schemes is canonical, and closed points split by the finite
+etale algebra \(\kappa(x)\otimes_{k_r}k_s\).  The Weyl net sees an extra
+phase constraint: absolute trace characters force trace-normalized embeddings.
+Therefore canonical continuum limits exist immediately on the prime-to-\(p\)
+subtower; the full tower exists only after coherent trace-one or compatible
+character data are added.  For the arithmetic point over \(\mathbb F_3\), the
+canonical continuum object currently justified by the report is the
+prime-to-\(3\) algebraic colimit of the matrix algebras \(M_{3^r}(\mathbb C)\),
+and Frobenius acts on it by the compatible Clifford automorphisms
+\(W(q,p)\mapsto W(q^3,p^3)\).

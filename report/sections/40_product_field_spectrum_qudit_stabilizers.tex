@@ -1,0 +1,277 @@
+% SHARD-ID: AQM-40-PRODUCT-FIELD-SPECTRUM-QUDIT-STABILIZERS
+% SHARD-TITLE: Product-Field Spectra and \(n\)-Qudit Stabilizers
+% SHARD-SUMMARY: Computes \(\operatorname{Spec}(k^n)\) for a finite field \(k=\mathbb F_q\).
+% SHARD-SUMMARY: Proves that the residue-qudit arithmetic field is the ambient \(n\)-qudit Weyl/Pauli system.
+% SHARD-SUMMARY: Separates the ambient \(n\)-qudit system from the extra choice of stabilizer labels and phases.
+% SHARD-KEYWORDS: finite field, product ring, spectrum, discrete scheme, qudit, stabilizer, Weyl-Heisenberg
+
+\section{Product-Field Spectra and n-Qudit Stabilizers}
+\label{sec:product-field-spectrum-qudit-stabilizers}
+
+\subsection{Status and Source Anchors}
+
+This shard studies \(X=\Spec R\) for
+\[
+  R=k^n=k\times\cdots\times k,\qquad k=\mathbb F_q.
+\]
+It is a finite reduced spectrum example in the residue-qudit convention of
+AQM-23, AQM-24, and AQM-28.  The Weyl operator formulas use the same finite
+field sources as AQM-22 and AQM-23: Ashikhmin--Knill,
+\path{references/symplectic_qecc/ashikhmin_knill_0005008_source/n9.tex},
+lines 249--313 for finite-field shift and phase operators, and
+Bombin--Martin--Delgado,
+\path{references/toric_code/bombin_martin_delgado_0605094_source/HomologicalErrorCorrection6.tex},
+lines 1208--1259 for qudit Paulis and symplectic commutators.
+
+The new product-field convention is \texttt{CONVENTIONS.md} (ad).  The key
+point is that \(\Spec(k^n)\) has \(n\) points, not \(q^n\) points.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_q,\ R=k^n,\ e_i=(0,\ldots,1,\ldots,0).\\
+L1&:&\operatorname{Spec}R=\{\mathfrak m_i=\ker(\operatorname{pr}_i)\}_{i=1}^n.\\
+L2&:&\kappa(\mathfrak m_i)=k,\quad D(e_i)=\{\mathfrak m_i\}.\\
+D2&:&U\subset X\text{ corresponds to }I_U\subset\{1,\ldots,n\}.\\
+D3&:&E(U)=\bigoplus_{i\in I_U}k^2
+      =k_X^{I_U}\oplus k_Z^{I_U}.\\
+D4&:&\mathcal H(U)=\bigotimes_{i\in I_U}\ell^2(k).\\
+L3&:&W_U(x,z)=T_xR_z\text{ satisfies the finite-field Weyl law}.\\
+T1&:&\operatorname{span}\{W_U(e):e\in E(U)\}
+      =\bigotimes_{i\in I_U}M_q(\mathbb C).\\
+D5&:&U\subset V\text{ gives extension by zero and tensoring by identities}.\\
+T2&:&X=\Spec(k^n)\text{ gives the ambient }n\text{-qudit Weyl net}.\\
+T3&:&\text{Stabilizer codes are extra isotropic labels plus phases.}
+\end{array}
+\]
+
+\subsection{The Product-Field Spectrum D1--L2}
+
+Let \(R=k^n\).  Write \(\operatorname{pr}_i:R\to k\) for the \(i\)-th
+projection and \(e_i\in R\) for the idempotent with \(1\) in the \(i\)-th
+coordinate and \(0\) elsewhere.
+
+\paragraph{Lemma \(L1\).}
+The prime ideals of \(R\) are exactly
+\[
+  \mathfrak m_i=\ker(\operatorname{pr}_i)
+  =
+  k\times\cdots\times k\times0\times k\times\cdots\times k .
+\]
+Hence \(\Spec R\) has \(n\) points.
+
+\emph{Proof.}
+First, \(R/\mathfrak m_i\cong k\), so each \(\mathfrak m_i\) is maximal and
+therefore prime.
+
+Conversely, let \(\mathfrak p\subset R\) be prime.  Since
+\[
+  e_ie_j=0\quad (i\ne j),\qquad 1=e_1+\cdots+e_n,
+\]
+at most one idempotent \(e_i\) can be outside \(\mathfrak p\): if
+\(e_i,e_j\notin\mathfrak p\) for \(i\ne j\), primeness would be contradicted
+by \(e_ie_j=0\in\mathfrak p\).  At least one \(e_i\) is outside
+\(\mathfrak p\), because otherwise \(1=\sum_ie_i\in\mathfrak p\).  Let this
+unique index be \(i\).  Then \(e_j\in\mathfrak p\) for \(j\ne i\).  Since
+\(e_iR\cong k\) is a field and \(\mathfrak p\cap e_iR\) is a proper ideal, it
+is \(0\).  Thus \(\mathfrak p\) is exactly the direct product of the
+\(j\ne i\) factors and \(0\) in the \(i\)-th factor, namely
+\(\mathfrak m_i\).
+
+\paragraph{Lemma \(L2\).}
+For every \(i\),
+\[
+  \kappa(\mathfrak m_i)\cong k,
+  \qquad
+  D(e_i)=\{\mathfrak m_i\}.
+\]
+Consequently \(X=\Spec R\) is a finite discrete topological space.
+
+\emph{Proof.}
+The quotient \(R/\mathfrak m_i\) is \(k\), so the residue field at
+\(\mathfrak m_i\) is \(k\).  The standard open \(D(e_i)\) consists of prime
+ideals not containing \(e_i\).  By the proof of Lemma \(L1\), \(e_i\notin
+\mathfrak m_i\), while \(e_i\in\mathfrak m_j\) for \(j\ne i\).  Hence
+\(D(e_i)=\{\mathfrak m_i\}\).  Since every singleton is open, every subset is
+open.
+
+\subsection{The Residue-Qudit Field D2--L3}
+
+Let \(U\subset X\), and let \(I_U\subset\{1,\ldots,n\}\) be the corresponding
+index set.  Define
+\[
+  E(U)=\bigoplus_{i\in I_U}\kappa(\mathfrak m_i)^2
+      =k_X^{I_U}\oplus k_Z^{I_U}.
+\]
+Write \(e=(x,z)\), with \(x,z:I_U\to k\).  Let
+\[
+  \chi(a)=\exp\!\left(\frac{2\pi i}{p}
+  \operatorname{Tr}_{k/\mathbb F_p}(a)\right)
+\]
+be the standard additive character.  Define
+\[
+  \Omega_U(e,f)=\sum_{i\in I_U}(z_ix'_i-x_iz'_i)\in k
+\]
+and the commutator bicharacter
+\[
+  B_U(e,f)=\chi(\Omega_U(e,f)).
+\]
+
+The Hilbert space is
+\[
+  \mathcal H(U)=\bigotimes_{i\in I_U}\ell^2(k)
+  \cong \ell^2(k^{I_U}).
+\]
+On the basis \(|s\rangle\), \(s:I_U\to k\), define
+\[
+  T_x|s\rangle=|s+x\rangle,\qquad
+  R_z|s\rangle=\chi\!\left(\sum_{i\in I_U}z_is_i\right)|s\rangle,
+\]
+and
+\[
+  W_U(x,z)=T_xR_z .
+\]
+
+\paragraph{Lemma \(L3\).}
+For \(e=(x,z)\) and \(f=(x',z')\),
+\[
+  W_U(e)W_U(f)
+  =
+  \chi\!\left(\sum_{i\in I_U}z_ix'_i\right)W_U(e+f),
+\]
+and
+\[
+  W_U(e)W_U(f)=B_U(e,f)W_U(f)W_U(e).
+\]
+
+\emph{Proof.}
+Translations add and phases add:
+\[
+  T_xT_{x'}=T_{x+x'},\qquad R_zR_{z'}=R_{z+z'}.
+\]
+Also
+\[
+\begin{aligned}
+  R_zT_{x'}|s\rangle
+  &=R_z|s+x'\rangle\\
+  &=\chi\!\left(\sum_i z_i(s_i+x'_i)\right)|s+x'\rangle\\
+  &=\chi\!\left(\sum_i z_ix'_i\right)T_{x'}R_z|s\rangle .
+\end{aligned}
+\]
+Multiplying \(T_xR_zT_{x'}R_{z'}\) gives the first formula.  Dividing this
+formula by the same formula with \(e\) and \(f\) exchanged gives the
+commutator factor \(\chi(\Omega_U(e,f))\).
+
+\subsection{Operator Algebra T1--T2}
+
+\paragraph{Theorem \(T1\).}
+\[
+  \operatorname{span}_{\mathbb C}\{W_U(e):e\in E(U)\}
+  =
+  \operatorname{End}(\mathcal H(U))
+  \cong
+  \bigotimes_{i\in I_U}M_q(\mathbb C).
+\]
+
+\emph{Proof.}
+There are \(|E(U)|=q^{2|I_U|}\) Weyl operators and
+\[
+  \dim_\mathbb C\operatorname{End}(\mathcal H(U))
+  =
+  (q^{|I_U|})^2
+  =
+  q^{2|I_U|}.
+\]
+It is enough to prove linear independence.  If \(e=(x,z)\) and
+\(f=(x',z')\), the trace of \(W_U(e)^*W_U(f)\) is zero when \(x\ne x'\),
+because the resulting translation has no fixed basis vector.  If \(x=x'\) but
+\(z\ne z'\), the trace is
+\[
+  \sum_{s\in k^{I_U}}\chi\!\left(\sum_i(z'_i-z_i)s_i\right)=0,
+\]
+because \(z'-z\) is a nonzero linear functional and \(\chi\) is nontrivial.
+If \(e=f\), the trace is \(q^{|I_U|}\).  Thus the Weyl operators are
+orthogonal and nonzero for the Hilbert-Schmidt pairing, hence form a basis.
+The tensor-product matrix identification follows from
+\(\mathcal H(U)=\bigotimes_{i\in I_U}\ell^2(k)\).
+
+\paragraph{Local net D5.}
+If \(U\subset V\), include \(E(U)\) in \(E(V)\) by extension by zero.  The
+operator inclusion is
+\[
+  \mathcal A(U)\longrightarrow\mathcal A(V),
+  \qquad
+  a\longmapsto a\otimes\mathbf 1_{I_V\setminus I_U}.
+\]
+The identity and composition laws are immediate from tensoring with identity
+operators on the missing tensor factors.  Since \(X\) is discrete, this is the
+usual tensor-factor local net over all subsets of \(\{1,\ldots,n\}\).
+
+\paragraph{Theorem \(T2\).}
+For \(X=\Spec(k^n)\), the residue-qudit arithmetic field is the ambient
+standard \(n\)-qudit Weyl/Pauli net for \(q\)-level qudits:
+\[
+  E(X)=k^n_X\oplus k^n_Z,\qquad
+  \mathcal H(X)=\ell^2(k)^{\otimes n},\qquad
+  \mathcal A(X)\cong M_{q^n}(\mathbb C).
+\]
+
+\emph{Proof.}
+By Lemma \(L1\), \(X\) has exactly the \(n\) points
+\(\mathfrak m_1,\ldots,\mathfrak m_n\).  By Lemma \(L2\), every residue field
+is \(k\), and the topology is discrete.  Therefore the full open \(X\) has
+label space
+\[
+  E(X)=\bigoplus_{i=1}^nk^2=k^n_X\oplus k^n_Z
+\]
+and Hilbert space \(\bigotimes_{i=1}^n\ell^2(k)\).  Lemma \(L3\) is exactly
+the finite-field multi-qudit Weyl law, and Theorem \(T1\) gives the full
+matrix algebra on \(n\) \(q\)-level tensor factors.
+
+\subsection{Stabilizer Comparison T3}
+
+\paragraph{Theorem \(T3\).}
+The ring \(k^n\) supplies the ambient \(n\)-qudit Weyl/Pauli system.  A
+stabilizer code is additional data: an isotropic additive subgroup
+\[
+  L\leq E(X)
+\]
+for the bicharacter \(B_X\), together with compatible phases/eigenvalues.  If
+one restricts \(L\) to be \(k\)-linear and requires \(\Omega_X(L,L)=0\) in
+\(k\), one gets the usual \(k\)-linear \(q\)-ary stabilizer subclass.  Allowing
+\(\mathbb F_p\)-additive \(L\) with
+\[
+  \operatorname{Tr}_{k/\mathbb F_p}\Omega_X(L,L)=0
+\]
+gives the standard finite-field additive stabilizer convention.
+
+\emph{Proof.}
+By Lemma \(L3\), two Weyl operators commute exactly when
+\[
+  B_X(e,f)=\chi(\Omega_X(e,f))=1.
+\]
+Thus an additive subgroup \(L\) gives commuting projective stabilizer labels
+exactly when \(B_X(e,f)=1\) for all \(e,f\in L\), equivalently
+\(\operatorname{Tr}_{k/\mathbb F_p}\Omega_X(e,f)=0\) for all \(e,f\in L\).
+The phases/eigenvalues are not determined by \(R\); as in AQM-22 and AQM-38,
+they are a separate lift of the commuting projective labels to actual
+operators with chosen joint eigenvalues.
+
+If \(L\) is a \(k\)-linear subspace and the stronger equality
+\(\Omega_X(L,L)=0\) holds in \(k\), then the trace condition holds
+automatically.  This is the \(k\)-linear stabilizer subclass.  Conversely, for
+general \(q=p^r\), the trace condition may hold for an \(\mathbb F_p\)-linear
+additive subgroup that is not closed under multiplication by \(k\).  Such
+subgroups are part of the standard additive finite-field stabilizer formalism
+but are not \(k\)-linear subspaces.  When \(q=p\) is prime, these two notions
+coincide.
+
+\subsection{Conclusion}
+
+For \(R=k^n\), with \(X=\Spec R\), the hoped-for statement is correct with the
+standard stabilizer caveat.  The product ring is the coordinate ring of a
+finite discrete \(n\)-point \(k\)-scheme.  Its residue-qudit arithmetic field
+is exactly the ambient \(n\) \(q\)-level qudit Weyl/Pauli system.  Stabilizer
+codes do not come for free from the ring: they are later choices of isotropic
+label subgroups and compatible phases.

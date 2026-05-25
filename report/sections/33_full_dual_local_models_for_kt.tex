@@ -1,0 +1,164 @@
+% SHARD-ID: AQM-33-FULL-DUAL-LOCAL-MODELS-FOR-KT
+% SHARD-TITLE: Full-Dual and Local Models for \(k(t)\)
+% SHARD-SUMMARY: Explains why the algebraic \(k(t)\) representation is not the full Stone-von Neumann theorem.
+% SHARD-SUMMARY: Records the full discrete-dual, local-field, and adelic completions where analytic uniqueness belongs.
+% SHARD-SUMMARY: Works explicit \(k=\mathbb F_3\) commutation examples.
+% SHARD-KEYWORDS: k(t), Pontryagin dual, local field, adele, Stone-von Neumann, F3, Weyl-Heisenberg
+
+\section{Full-Dual and Local Models for \texorpdfstring{\(k(t)\)}{k(t)}}
+\label{sec:full-dual-local-models-for-kt}
+
+\subsection{Status and Source Anchors}
+
+This shard completes AQM-32.  The full-dual LCA statement uses Prasad,
+\path{references/heisenberg_weil/prasad_0912_0574_source/SvN.tex}, lines
+95--107 and 164--190, and Beny--Crann--Lee--Park--Youn,
+\path{references/heisenberg_weil/beny_crann_lee_park_youn_2204_08162_source/main.tex},
+lines 461--473.  The warning about countably infinite discrete rings uses
+Bekka, \path{references/heisenberg_weil/bekka_2502_00387_source/CCR-GeneralRings-v5.tex},
+line 1014.  Local and adelic background is registered in
+\path{references/heisenberg_weil/SOURCES.md} from Poonen's Tate notes and
+Kudla's local theta notes.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&K_{\rm disc}\text{ is }K=k(t)\text{ with the discrete topology.}\\
+L1&:&K_{\rm disc}\not\simeq\widehat{K_{\rm disc}}\text{ as LCA groups.}\\
+D2&:&G_{\rm full}=K_{\rm disc}\times\widehat{K_{\rm disc}}\text{ is the full
+      LCA Weyl phase space.}\\
+L2&:&\text{The algebraic }K\text{-modulations form a dense subgroup of }
+      \widehat{K_{\rm disc}}.\\
+D3&:&K_\infty=k((t^{-1}))\text{ is the local completion at infinity.}\\
+T1&:&\text{Stone-von Neumann uniqueness belongs to }G_{\rm full}\text{ or
+      to local/adelic LCA completions.}\\
+E1&:&k=\mathbb F_3\text{ gives explicit }\omega\text{-commutation examples.}
+\end{array}
+\]
+
+\subsection{The Full Discrete-Dual Model D1--L2}
+
+The algebraic representation of AQM-32 is an algebraic Schrödinger
+representation theorem for the concrete group \(H_K\).  It is not the full LCA
+Stone-von Neumann theorem.  The reason is structural: if \(K\) is given the
+discrete topology, then its Pontryagin dual \(\widehat{K_{\rm disc}}\) is
+compact.  Since \(K\) is countably infinite, \(K\) is not isomorphic to
+\(\widehat{K_{\rm disc}}\) as an LCA group.  Bekka records the same obstruction
+for countably infinite discrete rings.
+
+The full LCA Weyl system with configuration group \(K_{\rm disc}\) is
+\[
+  G_{\rm full}=K_{\rm disc}\times\widehat{K_{\rm disc}}.
+\]
+It acts on \(\ell^2(K)\) by
+\[
+  W(a,\gamma)=T_aM_\gamma,\qquad
+  M_\gamma|\xi\rangle=\gamma(\xi)|\xi\rangle.
+\]
+Prasad's theorem applies to this \(G_{\rm full}\).  The algebraic \(H_K\) is
+the restriction to the subgroup of characters
+\[
+  \gamma_b(\xi)=\chi_K(b\xi),\qquad b\in K.
+\]
+By AQM-32 \(L1\), \(b\mapsto\gamma_b\) is injective.
+
+\paragraph{Density derivation.}
+Let \(\Gamma_K=\{\gamma_b:b\in K\}\subset\widehat{K_{\rm disc}}\).  Its
+annihilator in the double dual \(K_{\rm disc}\) is
+\[
+  \Gamma_K^\perp
+  =
+  \{\xi\in K:\gamma_b(\xi)=1\text{ for all }b\in K\}.
+\]
+By nondegeneracy of \((b,\xi)\mapsto\chi_K(b\xi)\), this annihilator is
+\(\{0\}\).  Pontryagin duality identifies the annihilator of the closure
+\(\overline{\Gamma_K}\) with \(\Gamma_K^\perp\).  Hence
+\(\overline{\Gamma_K}=\widehat{K_{\rm disc}}\).  The algebraic model therefore
+uses a dense rational-function family of modulations, while the full LCA
+theorem uses every continuous character of \(K_{\rm disc}\).
+
+\subsection{Local and Adelic Completions D3--T1}
+
+For analytic arithmetic quantum fields, the more natural locally compact
+configuration spaces are local completions such as
+\[
+  K_\infty=k((t^{-1}))
+\]
+or, later, the adele ring \(\mathbb A_K\).  A nontrivial continuous additive
+character identifies a local field with its Pontryagin dual, so the canonical
+Weyl system has phase space \(K_\infty\times K_\infty\) after that
+identification.  The Schrödinger representation then lives on
+\[
+  L^2(K_\infty).
+\]
+For the adelic theory, a residue character built from a differential gives the
+standard self-dual adelic setting; \(K\) embeds diagonally as arithmetic input,
+not as a replacement for the full dual phase group.
+
+Thus there are three honest objects:
+\[
+\begin{array}{ll}
+\ell^2(K): & \text{discrete algebraic rational-function representation;}\\
+\ell^2(K_{\rm disc})\text{ with }\widehat K: &
+  \text{full LCA discrete-dual Stone-von Neumann system;}\\
+L^2(K_\infty)\text{ or }L^2(\mathbb A_K): &
+  \text{local or global analytic arithmetic system.}
+\end{array}
+\]
+They should not be collapsed into one notation.
+
+\subsection{Concrete Examples for \texorpdfstring{\(k=\mathbb F_3\)}{k=F3} E1}
+
+Let \(k=\mathbb F_3\), \(K=\mathbb F_3(t)\), \(\tau=\operatorname{id}\), and
+\[
+  \omega=\exp(2\pi i/3).
+\]
+Then
+\[
+  \chi_K(f)=\omega^{[t^{-1}]f}.
+\]
+For \(a=1\) and \(b=t^{-1}\),
+\[
+  M_{t^{-1}}T_1=\omega\,T_1M_{t^{-1}}.
+\]
+Indeed, \(ba=t^{-1}\), whose \(t^{-1}\)-coefficient is \(1\).
+
+For \(a=t\) and \(b=t^{-1}\),
+\[
+  M_{t^{-1}}T_t=T_tM_{t^{-1}},
+\]
+because \(ba=1\) has \(t^{-1}\)-coefficient \(0\).  For \(a=t\) and
+\(b=t^{-2}\),
+\[
+  M_{t^{-2}}T_t=\omega\,T_tM_{t^{-2}},
+\]
+because \(ba=t^{-1}\).
+
+On basis vectors,
+\[
+  T_{t+1}|t^{-1}\rangle=|t+1+t^{-1}\rangle,
+\]
+\[
+  M_{t^{-1}}|1\rangle=\omega|1\rangle,\qquad
+  M_{t^{-1}}|t\rangle=|t\rangle,
+\]
+and
+\[
+  M_{t^{-2}}|t\rangle=\omega|t\rangle.
+\]
+Thus the rational-function Heisenberg group already contains infinitely many
+explicit qutrit-like commutation relations, indexed by rational functions
+rather than by closed points.  This is a different layer from the
+closed-point quasi-local field of \(\Spec\mathbb F_3[t]\), where each monic
+irreducible \(\pi\) contributes one finite qudit
+\(\ell^2(\mathbb F_3[t]/(\pi))\).
+
+\subsection{Conclusion}
+
+The concrete rational-function construction gives an irreducible unitary
+representation on \(\ell^2(k(t))\).  Stone-von Neumann uniqueness belongs to a
+larger or completed LCA object: the full discrete-dual system, a local
+completion, or an adelic completion.  The next arithmetic-field step should
+choose which completion is physically intended before importing Fourier
+transform, Gaussian, or Weil-representation statements.

@@ -1,0 +1,222 @@
+% SHARD-ID: AQM-32-WEYL-HEISENBERG-REPRESENTATIONS-FOR-KT
+% SHARD-TITLE: Weyl-Heisenberg Representations for \(k(t)\)
+% SHARD-SUMMARY: Defines the algebraic rational-function Heisenberg group using a coefficient character on \(k(t)\).
+% SHARD-SUMMARY: Proves the Schrödinger representation on \(\ell^2(k(t))\) is unitary and irreducible.
+% SHARD-SUMMARY: Leaves the full LCA, local-field, adelic, and \(k=\mathbb F_3\) examples to the following completion shard.
+% SHARD-KEYWORDS: k(t), rational function field, Weyl-Heisenberg, Schrödinger representation, Stone-von Neumann, F3, local field
+
+\section{Weyl-Heisenberg Representations for \texorpdfstring{\(k(t)\)}{k(t)}}
+\label{sec:weyl-heisenberg-representations-for-kt}
+
+\subsection{Status and Source Anchors}
+
+This shard uses convention (z).  The LCA uniqueness theorem is sourced from
+Prasad, \path{references/heisenberg_weil/prasad_0912_0574_source/SvN.tex},
+lines 164--190.  The canonical \(F\times\widehat F\) Weyl system is sourced
+from Beny--Crann--Lee--Park--Youn,
+\path{references/heisenberg_weil/beny_crann_lee_park_youn_2204_08162_source/main.tex},
+lines 461--473.  The locally compact ring theorem and the warning about
+countably infinite discrete rings are sourced from Bekka,
+\path{references/heisenberg_weil/bekka_2502_00387_source/CCR-GeneralRings-v5.tex},
+lines 319--350, 862--881, and 1014.  The local and adelic field background is
+registered in \path{references/heisenberg_weil/SOURCES.md} from Poonen and
+Kudla.  The algebraic \(k(t)\) calculations below are direct derivations from
+the displayed definitions.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&K=k(t),\quad \tau:k\to\mathbb F_p\text{ nonzero},\quad
+      \lambda_K(f)=\tau([t^{-1}]f).\\
+L1&:&(a,b)\mapsto\chi_K(ab)\text{ is a nondegenerate pairing on }K.\\
+D2&:&H_K=\mu_p\times K\times K
+      \text{ with cocycle }\chi_K(ba').\\
+L2&:&H_K\text{ is a class-two group with center }\mu_p.\\
+D3&:&T_a|\xi\rangle=|\xi+a\rangle,\quad
+      M_b|\xi\rangle=\chi_K(b\xi)|\xi\rangle.\\
+T1&:&\pi(z,a,b)=zT_aM_b\text{ is a unitary irreducible representation
+      of }H_K\text{ on }\ell^2(K).\\
+T2&:&\text{Stone-von Neumann uniqueness requires the full LCA dual or a
+      local/adelic completion.}\\
+E1&:&k=\mathbb F_3\text{ gives explicit }\omega\text{-commutation examples.}
+\end{array}
+\]
+
+\subsection{The Coefficient Character D1}
+
+Let \(k=\mathbb F_q\) have characteristic \(p\), and let \(K=k(t)\).  Fix a
+nonzero \(\mathbb F_p\)-linear functional
+\[
+  \tau:k\longrightarrow\mathbb F_p.
+\]
+For \(f\in K\), expand \(f\) as a Laurent series at infinity:
+\[
+  f=\sum_{n\le N} c_n t^n,\qquad c_n\in k.
+\]
+Only finitely many positive powers occur.  Define
+\[
+  [t^{-1}]f=c_{-1},
+  \qquad
+  \lambda_K(f)=\tau([t^{-1}]f).
+\]
+The associated additive character is
+\[
+  \chi_K(f)=\exp\!\left(\frac{2\pi i}{p}\lambda_K(f)\right).
+\]
+The trace \(\operatorname{Tr}_{k/\mathbb F_p}\) is a standard choice for
+\(\tau\) when a trace convention is wanted.  The proofs below require only
+that \(\tau\ne0\).
+
+\paragraph{Lemma \(L1\).}
+The pairing
+\[
+  B:K\times K\longrightarrow\mathbb C^\times,\qquad
+  B(a,b)=\chi_K(ab)
+\]
+is nondegenerate in each variable.
+
+\emph{Proof.}
+Let \(a\in K\) be nonzero.  Since \(\tau\ne0\), choose \(c\in k\) with
+\(\tau(c)\ne0\).  Put
+\[
+  b=\frac{c\,t^{-1}}{a}\in K.
+\]
+Then \(ab=c\,t^{-1}\), so
+\[
+  \lambda_K(ab)=\tau(c)\ne0.
+\]
+Thus \(\chi_K(ab)\ne1\).  This proves that no nonzero \(a\) is killed by all
+right pairings.  The same argument with the variables interchanged proves
+nondegeneracy in the second variable, because multiplication in \(K\) is
+commutative.
+
+\subsection{The Algebraic Heisenberg Group D2--L2}
+
+Let \(\mu_p=\{z\in\mathbb C:z^p=1\}\).  Define
+\[
+  H_K=\mu_p\times K\times K
+\]
+with multiplication
+\[
+  (z,a,b)(z',a',b')
+  =
+  \bigl(zz'\chi_K(ba'),\,a+a',\,b+b'\bigr).
+\]
+Here \(a\) is the translation coordinate and \(b\) is the modulation
+coordinate.
+
+\paragraph{Associativity.}
+Let \(h=(z,a,b)\), \(h'=(z',a',b')\), and \(h''=(z'',a'',b'')\).  The central
+factor in \((hh')h''\) is
+\[
+  zz'z''\chi_K(ba')\chi_K((b+b')a'')
+  =
+  zz'z''\chi_K(ba'+ba''+b'a'').
+\]
+The central factor in \(h(h'h'')\) is
+\[
+  zz'z''\chi_K(b'a'')\chi_K(b(a'+a''))
+  =
+  zz'z''\chi_K(b'a''+ba'+ba'').
+\]
+These are equal by additivity of \(\chi_K\).  Therefore the multiplication is
+associative.
+
+\paragraph{Identity and inverse.}
+The identity is \((1,0,0)\).  A direct multiplication gives
+\[
+  (z,a,b)^{-1}=\bigl(z^{-1}\chi_K(ba),-a,-b\bigr).
+\]
+
+\paragraph{Commutator and center.}
+From the multiplication law,
+\[
+  (1,a,b)(1,a',b')
+  =
+  \chi_K(ba')(1,a+a',b+b')
+\]
+and
+\[
+  (1,a',b')(1,a,b)
+  =
+  \chi_K(b'a)(1,a+a',b+b').
+\]
+Hence the commutator is the central element
+\[
+  [(1,a,b),(1,a',b')]
+  =
+  \bigl(\chi_K(ba'-b'a),0,0\bigr).
+\]
+If \((z,a,b)\) is central, then this phase is \(1\) for all \(a',b'\).  Taking
+\(b'=0\) gives \(\chi_K(ba')=1\) for all \(a'\), hence \(b=0\) by \(L1\).
+Taking \(a'=0\) then gives \(\chi_K(-b'a)=1\) for all \(b'\), hence \(a=0\).
+Thus
+\[
+  Z(H_K)=\mu_p\times\{0\}\times\{0\}.
+\]
+
+\subsection{The Schrödinger Representation D3--T1}
+
+Let \(\ell^2(K)\) have orthonormal basis \(\{|\xi\rangle:\xi\in K\}\).  Define
+\[
+  T_a|\xi\rangle=|\xi+a\rangle,
+  \qquad
+  M_b|\xi\rangle=\chi_K(b\xi)|\xi\rangle.
+\]
+Both are unitary: \(T_a\) permutes the basis and \(M_b\) is diagonal with
+unit-modulus diagonal entries.  Moreover,
+\[
+\begin{aligned}
+  M_bT_a|\xi\rangle
+  &=M_b|\xi+a\rangle                                      \\
+  &=\chi_K(b\xi+ba)|\xi+a\rangle                          \\
+  &=\chi_K(ba)T_aM_b|\xi\rangle.
+\end{aligned}
+\]
+Therefore
+\[
+  T_aM_bT_{a'}M_{b'}=\chi_K(ba')T_{a+a'}M_{b+b'}.
+\]
+The map
+\[
+  \pi_K:H_K\longrightarrow U(\ell^2(K)),\qquad
+  \pi_K(z,a,b)=zT_aM_b
+\]
+is a unitary representation with central character
+\[
+  \pi_K(z,0,0)=zI.
+\]
+
+\paragraph{Irreducibility.}
+Let \(A\) be a bounded operator on \(\ell^2(K)\) commuting with all
+\(T_a\) and \(M_b\).  Write
+\[
+  A_{\xi,\eta}=\langle \xi|A|\eta\rangle.
+\]
+Commutation with \(M_b\) gives
+\[
+  \chi_K(b\xi)A_{\xi,\eta}=\chi_K(b\eta)A_{\xi,\eta}
+\]
+for all \(b,\xi,\eta\).  If \(\xi\ne\eta\), then \(L1\) gives \(b\) such that
+\(\chi_K(b(\xi-\eta))\ne1\), so \(A_{\xi,\eta}=0\).  Thus \(A\) is diagonal.
+Write \(A_{\xi,\xi}=d_\xi\).  Commutation with \(T_a\) gives
+\[
+  d_{\xi+a}=d_\xi
+\]
+for all \(a,\xi\).  Since the additive group of \(K\) acts transitively on
+itself by translations, all \(d_\xi\) are equal.  Thus the commutant of
+\(\pi_K(H_K)\) is \(\mathbb C I\).  If a closed subspace were invariant, its
+orthogonal projection would commute with the representation, hence would be
+\(0\) or \(I\).  Therefore \(\pi_K\) is irreducible.
+
+\subsection{Conclusion}
+
+The concrete rational-function answer is:
+\[
+  H_{\mathbb F_q(t)}=\mu_p\times k(t)\times k(t),
+  \qquad
+  (z,a,b)(z',a',b')=(zz'\chi_K(ba'),a+a',b+b'),
+\]
+with irreducible Schrödinger representation on \(\ell^2(k(t))\).  The analytic
+Stone-von Neumann answer is separate and is recorded in the following shard.

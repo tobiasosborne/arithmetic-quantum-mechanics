@@ -51,3 +51,196 @@ presheaf, sheaf, stalk, projective space, varieties, twists, and
 for \(d=0,\ldots,4\), including the \(d=1\) pairing radical, the \(d=4\)
 evaluation kernel, the local germs whose residues give the evaluation rows,
 and the full \(d=0,\ldots,4\) scalar residue table.
+
+\subsection*{2026-05-25 Canonical Boson/Fermion Field Test}
+
+Section~\ref{sec:canonical-boson-fermion-field-comparison} adds a sourced
+finite-mode comparison with standard canonical fields.  The bosonic test uses
+\(\operatorname{Map}(X,\mathbb R_q\oplus\mathbb R_p)\) with the summed
+symplectic form and Stone--von Neumann uniqueness.  The fermionic test uses
+CAR data on \(\operatorname{Re}(Z\oplus\overline Z)\) and the antisymmetric
+Fock space.  The naive proposal that Grassmann numbers are a drop-in target
+replacement is rejected in this strict Weyl-projective sense; Grassmann
+variables remain a sourced GAR/fermionic phase-space calculus for later work.
+
+Sections~\ref{sec:grassmann-weyl-fermion-displacements} and
+\ref{sec:grassmann-weyl-fermion-displacement-derivations} correct the
+Grassmann displacement question using Cahill--Glauber's Physical Review A
+source converted with \texttt{marker}.  The abstract displacement symbols are
+represented by
+\(D(\gamma)=\exp(\sum_i(a_i^\dagger\gamma_i-\gamma_i^*a_i))\) inside the
+Grassmann-extended finite CAR algebra.  The derivation shard proves unitarity,
+the operator shifts \(a_i\mapsto a_i+\gamma_i\), and the Grassmann-valued ray
+composition law, while retaining only the ordinary complex-Hilbert-space
+caveat as a boundary statement.
+
+Section~\ref{sec:prime-field-arithmetic-fields-qudit-paulis} returns to
+arithmetic quantum fields in the prime-field case.  It separates
+\(\operatorname{Spec}\mathbb F_p\), which has one point and gives one qudit,
+from the underlying set \(\mathbb F_p\), which has \(p\) points.  For
+\(X=\mathbb F_p\) as a set and \(E=\operatorname{Map}(X,\mathbb F_p^2)\), the
+shard proves that the arithmetic Weyl--Heisenberg group is exactly the
+standard odd-\(p\) qudit Pauli group, with the same projective labels and the
+\(p=2\) fourth-root phase caveat for qubits.
+
+Section~\ref{sec:spec-z6-residue-qudit-factorisation} then computes the first
+mixed finite affine spectrum, \(R=\mathbb Z/6\mathbb Z\).  The prime ideals are
+\((2)\) and \((3)\), with residue fields \(\mathbb F_2\) and \(\mathbb F_3\).
+Thus the local factors are a qubit and a qutrit.  The label group is their
+orthogonal direct sum, but the Weyl representation lives on
+\(\mathbb C^2\otimes\mathbb C^3\), so the observable algebra is \(M_6\), not
+\(M_2\oplus M_3\).
+
+Section~\ref{sec:zariski-opens-observable-nets} adds the finite Zariski-open
+observable-net convention.  The open-local assignment
+\(U\mapsto\mathcal A(U)\) is proved covariant under inclusions of opens, while
+the closed-complement assignment \(U\mapsto\mathcal A(X\setminus U)\) is
+recorded as a useful but contravariant vanishing-locus convention.  The field
+edge case has only \(\emptyset\) and \(X\); for
+\(\operatorname{Spec}(\mathbb Z/6\mathbb Z)\), the singleton opens give the
+commuting local subalgebras \(M_2\otimes\mathbf 1_3\) and
+\(\mathbf 1_2\otimes M_3\), which generate \(M_6\).
+
+Section~\ref{sec:quasilocal-zariski-algebra} records the directed-system
+choice needed for a quasi-local algebra.  The primary construction is the
+filtered colimit over quasi-compact Zariski opens,
+\(\varinjlim_U\mathcal A(U)\), with inclusions following open inclusion.
+The closed-complement construction is retained only after reindexing by
+closed supports ordered by inclusion, as a separate vanishing-locus or defect
+algebra.
+
+Section~\ref{sec:presheaves-cosheaves-observable-nets} begins the
+presheaf/cosheaf layer.  It defines presheaves, sheaves, precosheaves, and
+cosheaves from local Stacks and Curry sources.  The open-local observable
+assignment is proved to be a precosheaf/local net, but not an ordinary cosheaf
+of unital \(*\)-algebras: for the \(\mathbb Z/6\mathbb Z\) two-point cover,
+the cosheaf coproduct would be \(M_2*_{\mathbb C}M_3\), while the physical
+observable algebra is \(M_2\otimes M_3\).  The Weyl label assignment
+\(E(U)=\bigoplus_{x\in U}E_x\) is identified as the cosheaf-like layer.
+
+Section~\ref{sec:state-presheaf-quasilocal-algebra} adds the state side.  The
+local state assignment \(U\mapsto\operatorname{State}(\mathcal A(U))\) is a
+presheaf of convex sets by restriction of functionals, equivalently by partial
+trace in finite tensor products.  It is not generally a sheaf: the
+\(\mathbb Z/6\mathbb Z\) two-point system gives two different global density
+matrices with the same local marginals, and a three-qubit overlap example
+shows that compatible marginals need not admit any global state.  For the
+algebraic quasi-local algebra, global states are exactly compatible inverse
+limit families of local states.
+
+Sections~\ref{sec:closed-point-affine-arithmetic-fields},
+\ref{sec:spec-fq-t-arithmetic-field}, and
+\ref{sec:spec-fq-xy-arithmetic-field} extend the arithmetic-field programme
+from finite spectra to affine schemes of finite type over \(\mathbb F_q\).
+The new convention indexes finite Weyl/qudit sites by closed points, whose
+residue fields are finite by the Nullstellensatz.  For
+\(\Spec\mathbb F_q[t]\), closed points are monic irreducible polynomials and
+the point \(x_\pi\) carries a \(q^{\deg\pi}\)-level qudit.  For
+\(\Spec\mathbb F_q[x,y]\), rational points give a finite \(q^2\)-site
+truncation, but the full quasi-local algebra ranges over all closed points of
+all degrees.  Generic and curve-generic points remain geometric/topological
+points rather than finite Weyl sites, and regular polynomial profiles are
+recorded as formal infinite-support fields rather than quasi-local operators.
+
+Sections~\ref{sec:weyl-heisenberg-research-status-rings},
+\ref{sec:weyl-heisenberg-representations-for-kt}, and
+\ref{sec:full-dual-local-models-for-kt} add the rational-function
+Weyl-Heisenberg layer.  A new local source manifest registers LCA,
+locally compact ring, finite Frobenius-ring, finite Clifford/Weil, local-field,
+and adelic sources.  The report now separates the algebraic
+\(K=k(t)\) Heisenberg group, which has an explicit irreducible unitary
+Schrödinger representation on \(\ell^2(K)\), from the full LCA Stone-von
+Neumann setting \(K_{\rm disc}\times\widehat{K_{\rm disc}}\) and from local or
+adelic completions.  The \(k=\mathbb F_3\) examples compute concrete
+\(\omega\)-commutation relations for rational-function labels.
+
+Sections~\ref{sec:f3-polynomial-quotient-arithmetic-fields} and
+\ref{sec:tn-equals-1-f3-arithmetic-field} return to concrete finite affine
+examples.  For \(R_p=\mathbb F_3[t]/(p)\), the report computes the spectrum
+from the irreducible factorization of \(p\), proves the Chinese-remainder and
+reduced-quotient descriptions, and gives the complete residue-field
+Weyl-Heisenberg representation on
+\(\bigotimes_\pi\ell^2(\mathbb F_3[t]/(\pi))\).  The \(t^n=1\) shard records
+the characteristic-\(3\) formula \(t^n-1=(t^m-1)^{3^{v_3(n)}}\), the
+cyclotomic degree count via \(\operatorname{ord}_d(3)\), and the resulting
+dimension \(\dim\mathcal H=3^m\), with nilpotent multiplicities retained as
+coordinate-ring data but invisible to the present residue-qudit labels.
+
+Sections~\ref{sec:nilpotent-thickening-weyl-fields} and
+\ref{sec:thickened-tn-equals-1-examples} add the nilpotent-sensitive layer.
+For a local factor \(A=\mathbb F_3[t]/(\pi^e)\), the report defines the
+top-coefficient character, proves it is generating, and constructs the
+projective unitary Weyl representation on \(\ell^2(A)\).  The Weyl operators
+span the full matrix algebra, so the representation is irreducible.  The
+\(\mathfrak m\)-adic filtration is interpreted as a jet filtration: position
+jets of order \(r\) pair with momentum jets of order \(e-1-r\).  For
+\(t^n=1\), this thickened layer has dimension \(3^n\), while the reduced
+residue layer has dimension \(3^m\) for \(m=n/3^{v_3(n)}\).
+
+Sections~\ref{sec:lagrangian-stabilizer-descent} and
+\ref{sec:two-qutrit-stabilizer-descent-counterexample} add the stabilizer
+local-to-global layer.  A phased Lagrangian label subspace is proved to give a
+rank-one full stabilizer state, while vanishing stabilizer descent defect is
+the separate condition that the global stabilizer labels are generated from a
+chosen cover.  The two-qutrit example over \(\mathbb F_3\), generated by
+\((1,0,-1,0)\) and \((0,1,0,1)\), is Lagrangian but has zero intersection
+with both one-site label spaces, so its descent defect has dimension \(2\).
+Thus the broad equivalence between choosing a full stabilizer and satisfying
+local-to-global gluing is rejected; the corrected statement requires both a
+global Lagrangian and zero descent defect, plus phase compatibility on
+overlaps.
+
+Section~\ref{sec:product-field-spectrum-qudit-stabilizers} treats the missing
+finite product-field example.  For \(R=k^n\), with \(k=\mathbb F_q\), the
+spectrum has \(n\) points \(\mathfrak m_i=\ker(\operatorname{pr}_i)\), each
+with residue field \(k\), and the idempotents \(e_i\) make the topology
+discrete.  Hence the residue-qudit field on \(X=\Spec R\) has
+\[
+  E(X)=k_X^n\oplus k_Z^n,\qquad
+  \mathcal H(X)=\ell^2(k)^{\otimes n},\qquad
+  \mathcal A(X)\cong M_{q^n}(\mathbb C).
+\]
+Thus \(X=\Spec(k^n)\) gives exactly the ambient \(n\) \(q\)-level qudit
+Weyl/Pauli net.  Stabilizer codes remain additional data: isotropic additive
+label subgroups and compatible phases, with the \(k\)-linear stabilizers as a
+subclass when \(q\) is not prime.
+
+Section~\ref{sec:cech-cohomology-quantum-descent} starts the Cech layer.  A
+new Stacks Cohomology source is registered for the standard Cech complex,
+\(H^0\) gluing, refinements, and ordered Cech cochains, with Curry supplying
+the dual cosheaf homology convention.  The report proves that the full
+residue-label cosheaf \(E(U)=\bigoplus_{x\in U}E_x\) has
+\(\check H_0(\mathcal U,E)\cong E(U)\) and no higher Cech homology on finite
+covers, by decomposing pointwise into full simplices.  The quantum
+counterparts are then separated by layer: stabilizer descent is a genuine
+abelian cokernel of zeroth Cech generation, state descent is the marginal
+comparison map, and observable descent is the comparison from ordinary
+algebraic cover colimits to the physical local net.
+
+Section~\ref{sec:gaussian-clifford-dynamics} starts the dynamics layer.
+Gross's arXiv TeX source for finite-dimensional Hudson theory is registered
+locally.  The report fixes the odd-characteristic half-Weyl normalization,
+then proves that every symplectic morphism of nondegenerate finite label
+spaces induces a unital \(*\)-monomorphism of Weyl observable algebras, and
+that symplectic automorphisms induce Gaussian/quasi-free automorphisms.
+Gross's Clifford theorem supplies projective unitary implementations, while
+Gross-Hudson identifies pure finite Gaussian states with stabilizer states.
+
+Section~\ref{sec:finite-field-scale-continuum-limits} starts the finite-field
+scale or continuum-limit layer.  For \(X_0/\mathbb F_q\), the rank-\(r\)
+scale is \(X_r=X_0\times_{\mathbb F_q}\mathbb F_{q^r}\).  The report proves
+that base change of schemes is canonical but naive diagonal Weyl-label
+embeddings multiply absolute-trace commutators by \(s/r\).  Trace-normalized
+embeddings repair this and are canonical on the prime-to-\(p\) subtower.  For
+\(\Spec\mathbb F_3\), the current canonical continuum algebra is the
+prime-to-\(3\) filtered colimit of \(M_{3^r}(\mathbb C)\), and Frobenius acts
+by \(W(q,p)\mapsto W(q^3,p^3)\).
+
+Section~\ref{sec:trace-gauges-full-continuum-towers} proves that the remaining
+full-tower trace choices are coherent gauge data rather than an obstruction.
+The key object is a trace-density system \(a_r\in\mathbb F_{q^r}\) satisfying
+\(\Tr_{\mathbb F_{q^s}/\mathbb F_{q^r}}(a_s)=a_r\) for every \(r\mid s\).
+Such systems exist by a factorial-tower trace-surjectivity construction, and
+they define coherent normalizers \(c_{s,r}=a_s/a_r\).  Frobenius acts on this
+space of gauges; for \(p\mid s/r\), no trace-one scalar fixed by the relative
+Frobenius group exists.

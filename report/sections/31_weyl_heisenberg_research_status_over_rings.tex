@@ -1,0 +1,223 @@
+% SHARD-ID: AQM-31-WEYL-HEISENBERG-RESEARCH-STATUS-RINGS
+% SHARD-TITLE: Weyl-Heisenberg Representation Status over Rings and LCA Systems
+% SHARD-SUMMARY: Separates the LCA, locally compact ring, finite Frobenius-ring, and finite Clifford/Weil representation literatures.
+% SHARD-SUMMARY: Records which theorems support Stone-von Neumann uniqueness and which only support Pauli/stabilizer or Clifford-extension structure.
+% SHARD-SUMMARY: Sets the ground-truth boundary for the rational-function field \(k(t)\) construction.
+% SHARD-KEYWORDS: Weyl-Heisenberg, commutative rings, Frobenius rings, LCA groups, Stone-von Neumann, Clifford group, Weil representation
+
+\section{Weyl-Heisenberg Representation Status over Rings and LCA Systems}
+\label{sec:weyl-heisenberg-research-status-rings}
+
+\subsection{Status and Source Anchors}
+
+This shard records the source status needed before defining a Weyl-Heisenberg
+system for \(k(t)\).  The LCA baseline is Prasad's
+\path{references/heisenberg_weil/prasad_0912_0574_source/SvN.tex}, lines
+95--107 and 164--190.  The modern LCA quantum-kinematical source is
+\path{references/heisenberg_weil/beny_crann_lee_park_youn_2204_08162_source/main.tex},
+lines 305--328, 411--444, and 461--473.  The locally compact ring source is
+\path{references/heisenberg_weil/bekka_2502_00387_source/CCR-GeneralRings-v5.tex},
+lines 287--350, 862--881, 997--1038, and 1048--1150.  The finite
+Frobenius-ring Pauli sources are
+\path{references/heisenberg_weil/gluesing_luerssen_pllaha_1710_09884_source/StabCodesFrob5.tex},
+lines 224--249, 286--323, 353--355, 412--423, and 469--504, and
+\path{references/heisenberg_weil/sidana_kashyap_2202_00248_source/EAQECCs_over_rings_v15.tex},
+lines 103--145 and 180--197.  The finite generalized-Heisenberg source is
+\path{references/heisenberg_weil/solomon_2501_00650_source/TotslipVersion5_Aug_25.tex},
+lines 315--318, 904--981, 1127--1136, 1637--1649, and 1677--1718.
+Finite Clifford/Weil splitting results are registered from Lysenko, Trias,
+Hashimoto--Horibe--Hayashi, Korbelar--Tolar, and Galindo in
+\path{references/heisenberg_weil/SOURCES.md}.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&\text{An LCA Weyl system uses }F\times\widehat F\text{, not }F\times F
+      \text{ unless }F\simeq\widehat F.\\
+L1&:&\text{For an LCA group }F,\ W(x,\gamma)=T_xM_\gamma
+      \text{ is the canonical irreducible Weyl representation.}\\
+D2&:&\text{For a locally compact ring }R,\text{ a character }\lambda
+      \text{ defines CCR by }\lambda(a\cdot b).\\
+L2&:&\text{Bekka's strong ring Stone-von Neumann theorem requires
+      symmetry and }R\simeq\widehat R.\\
+D3&:&\text{For a finite Frobenius ring }R,\ X(a),Z(b)\text{ give a
+      Pauli/error basis.}\\
+L3&:&\text{Commutation is controlled by the character-symplectic pairing.}\\
+D4&:&\text{Finite Clifford/Weil splitting is an additional structure,
+      not automatic from the Pauli basis.}\\
+T1&:&\text{For }K=k(t),\text{ the honest analytic uniqueness theorem
+      applies after choosing a full LCA phase space.}
+\end{array}
+\]
+
+\subsection{LCA Weyl Systems D1--L1}
+
+Let \(F\) be a locally compact abelian group.  Its Pontryagin dual
+\(\widehat F\) is the group of continuous characters \(F\to \mathbb T\).  The
+canonical Weyl phase space is
+\[
+  G_F=F\times\widehat F.
+\]
+For \((x,\gamma),(x',\gamma')\in G_F\), define
+\[
+  \sigma_{\rm can}((x,\gamma),(x',\gamma'))=\gamma(x').
+\]
+This is the source convention of Beny--Crann--Lee--Park--Youn, lines
+461--465.
+
+The representation space is \(L^2(F)\).  For \(f\in L^2(F)\),
+\[
+  (T_xf)(y)=f(y-x),\qquad (M_\gamma f)(y)=\gamma(y)f(y).
+\]
+Define
+\[
+  W(x,\gamma)=T_xM_\gamma .
+\]
+Then
+\[
+\begin{aligned}
+  W(x,\gamma)W(x',\gamma')
+  &=T_xM_\gamma T_{x'}M_{\gamma'}                       \\
+  &=\gamma(x')T_{x+x'}M_{\gamma+\gamma'}                 \\
+  &=\sigma_{\rm can}((x,\gamma),(x',\gamma'))W(x+x',
+    \gamma+\gamma').
+\end{aligned}
+\]
+Thus \(W\) is a projective representation with multiplier
+\(\sigma_{\rm can}\).  The commutator bicharacter is
+\[
+  \Delta((x,\gamma),(x',\gamma'))
+  =\gamma(x')\overline{\gamma'(x)}.
+\]
+
+Prasad's Stone-von Neumann-Mackey theorem, lines 181--190, states that the
+canonical representation on \(L^2(F)\) is irreducible and that any continuous
+unitary representation of the corresponding Heisenberg group with the standard
+central character decomposes as copies of it.  This is the clean theorem we
+may use when the phase space is \(F\times\widehat F\).
+
+\subsection{Locally Compact Rings D2--L2}
+
+Let \(R\) be a unital second-countable locally compact ring.  Let
+\(\lambda\in\widehat R\) be a unitary character of the additive group of \(R\).
+For \(d\ge1\), Bekka defines a pair of unitary representations \(U,V\) of
+\(R^d\) to satisfy
+\[
+  U(a)V(b)=\lambda(a\cdot b)V(b)U(a),\qquad
+  a\cdot b=\sum_{i=1}^d a_i b_i .
+\]
+The Schrödinger pair on \(L^2(R^d)\) is
+\[
+  (U_{\rm Schr}(a)f)(x)=f(x+a),\qquad
+  (V_{\rm Schr}(b)f)(x)=\lambda(x\cdot b)f(x).
+\]
+
+The strong theorem in Bekka, lines 319--350, assumes
+\[
+  \lambda(ab)=\lambda(ba)
+\]
+and that
+\[
+  \nabla_\lambda:R\longrightarrow\widehat R,\qquad
+  a\longmapsto(x\mapsto\lambda(xa))
+\]
+is a topological group isomorphism.  Under these hypotheses, every separable
+CCR pair decomposes into copies of the Schrödinger pair.  The source lists
+local fields, finite fields, finite products of finite fields, \(\mathbb Z/N\),
+matrix algebras over local fields, and adeles as examples where the relevant
+self-duality hypotheses hold in the stated forms.
+
+The warning for \(k(t)\) appears already in the same source: for a countably
+infinite ring with the discrete topology, line 1014 records that no character
+can satisfy the isomorphism condition.  Therefore a bare discrete
+\(K=k(t)\) cannot be treated as a self-dual locally compact ring in this
+strong theorem.  It may still support an explicit algebraic representation,
+but the LCA uniqueness theorem must be applied to \(K_{\rm disc}\times
+\widehat{K_{\rm disc}}\), to a local completion, or to an adelic completion.
+
+\subsection{Finite Frobenius Rings D3--L3}
+
+Let \(R\) be a finite commutative Frobenius ring with generating character
+\(\chi\).  On the Hilbert space with basis \(\{v_x:x\in R^n\}\), define
+\[
+  X(a)v_x=v_{x+a},\qquad Z(b)v_x=\chi(b\cdot x)v_x
+\]
+for \(a,b,x\in R^n\), where \(b\cdot x=\sum_i b_i x_i\).  For \(P=X(a)Z(b)\) and
+\(P'=X(a')Z(b')\), the cited sources compute
+\[
+  PP'=\chi(b\cdot a')X(a+a')Z(b+b')
+\]
+and hence
+\[
+  PP'=\chi(b\cdot a'-b'\cdot a)P'P.
+\]
+The symplectic inner product used for stabilizer theory is
+\[
+  \langle(a,b),(a',b')\rangle_s=b\cdot a'-b'\cdot a.
+\]
+The Pauli group is obtained by adjoining the necessary scalar roots of unity.
+In characteristic \(2\), this scalar group is larger than the characteristic
+roots; this is exactly the finite-ring version of the even-phase caveat.
+
+Thus finite Frobenius-ring literature strongly supports the Pauli/error-basis
+and stabilizer layer: generating characters identify the ring with its
+character module, the \(X/Z\) operators are unitary, and commutation is
+controlled by the character-symplectic form.  This is not, by itself, a full
+Clifford or Weil representation classification over every commutative
+Frobenius ring.
+
+\subsection{Finite Generalized Heisenberg and Clifford Status D4}
+
+Solomon's generalized Heisenberg group starts from finite abelian groups
+\(A,B,C\) and a bilinear pairing \(\lambda:A\times B\to C\):
+\[
+  h(a,b,c)h(a',b',c')
+  =
+  h(a+a',b+b',c+c'+\lambda(a,b')).
+\]
+The commutator is
+\[
+  [h(a,b,c),h(a',b',c')]
+  =
+  h(0,0,\lambda(a,b')-\lambda(a',b)).
+\]
+If \(A,B\) are finite modules over a commutative ring \(R\) and \(\lambda\)
+is \(R\)-balanced, the quotient by the center inherits \(R\)-module
+structure.  A character \(p:C\to\mathbb C^\times\) gives the left
+Schrödinger representation on functions on \(A\):
+\[
+  (h(a,b,c)\cdot f)(x)=p(\lambda(x,b)+c)f(x+a).
+\]
+This is a direct finite algebraic analogue of translations and modulations.
+
+The Clifford/Weil layer is subtler.  Lysenko constructs canonical
+representations for finite Heisenberg groups of odd exponent, explicitly
+leaving the even-order case open in the cited introduction.  Trias constructs
+Weil modules over coefficient rings for finite or local nonarchimedean fields
+of characteristic not \(2\).  Hashimoto--Horibe--Hayashi, Korbelar--Tolar,
+and Galindo analyze projective Clifford extensions and splitting.  Galindo's
+2026 result states that for a finite abelian group \(A\), the Clifford
+extension splits iff \(4\nmid |A|\).  This is important status information:
+the obstruction is not a defect of notation but a genuine finite-even
+phenomenon.
+
+\subsection{Conclusion for \texorpdfstring{\(k(t)\)}{k(t)} T1}
+
+The sourced status is therefore:
+\[
+\begin{array}{ll}
+\text{LCA groups/local fields:} & \text{full Stone-von Neumann uniqueness is
+available.}\\
+\text{Locally compact rings:} & \text{strong uniqueness requires
+}R\simeq\widehat R\text{ via }\lambda.\\
+\text{Finite Frobenius rings:} & \text{Pauli/stabilizer theory is robust.}\\
+\text{Finite Clifford/Weil:} & \text{splitting and even-order issues are
+genuine extra data.}
+\end{array}
+\]
+For \(K=k(t)\), the next shard must therefore distinguish: the algebraic
+discrete \(K\)-label Heisenberg group; the full discrete-LCA system
+\(K_{\rm disc}\times\widehat{K_{\rm disc}}\); and the local or adelic
+completion where \(K\) becomes arithmetic input inside a self-dual LCA
+configuration space.

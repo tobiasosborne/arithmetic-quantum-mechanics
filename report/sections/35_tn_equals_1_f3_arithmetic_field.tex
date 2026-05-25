@@ -1,0 +1,246 @@
+% SHARD-ID: AQM-35-TN-EQUALS-1-F3-ARITHMETIC-FIELD
+% SHARD-TITLE: The \(t^n=1\) Arithmetic Field over \(\mathbb F_3\)
+% SHARD-SUMMARY: Factors \(t^n-1\) over \(\mathbb F_3\), including the characteristic-\(3\) repeated-factor case.
+% SHARD-SUMMARY: Gives the complete finite residue-field Weyl-Heisenberg representation for \(R_n=\mathbb F_3[t]/(t^n-1)\).
+% SHARD-SUMMARY: Works small examples \(n=1,2,3,4,6\) and records when nilpotents are invisible to Weyl labels.
+% SHARD-KEYWORDS: finite field, polynomial quotient, t^n=1, Weyl-Heisenberg, cyclotomic, nilpotents
+
+\section{The \texorpdfstring{\(t^n=1\)}{t to the n equals 1} Arithmetic Field over \texorpdfstring{\(\mathbb F_3\)}{F3}}
+\label{sec:tn-equals-1-f3-arithmetic-field}
+
+\subsection{Status and Source Anchors}
+
+This shard specializes AQM-34 to
+\[
+  R_n=\mathbb F_3[t]/(t^n-1).
+\]
+The input facts are the direct polynomial derivations of AQM-29 and AQM-34:
+irreducible factors of \(k[t]\) give closed points, residue fields are the
+corresponding finite quotients, and the Weyl representation is the tensor
+product of the one-site finite-field Weyl systems from AQM-28.  No new external
+source is used in this specialization.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&n\ge1,\quad R_n=\mathbb F_3[t]/(t^n-1),\quad X_n=\Spec R_n.\\
+D2&:&n=3^s m,\quad s=v_3(n),\quad 3\nmid m.\\
+L1&:&t^n-1=(t^m-1)^{3^s},\quad t^m-1\text{ is squarefree}.\\
+L2&:&\text{Closed Weyl sites are the irreducible factors of }t^m-1.\\
+L3&:&\text{The degrees of these factors are determined by }
+      \operatorname{ord}_d(3)\text{ for }d\mid m.\\
+D3&:&E_n=\bigoplus_{\pi\mid t^m-1}K_\pi^2,\quad
+      \mathcal H_n=\bigotimes_{\pi\mid t^m-1}\ell^2(K_\pi).\\
+T1&:&W_n\text{ is the complete projective unitary Weyl representation on }
+      \mathcal H_n.\\
+T2&:&\dim_{\mathbb C}\mathcal H_n=3^m,\quad
+      \mathcal A_n\cong M_{3^m}(\mathbb C).
+\end{array}
+\]
+
+\subsection{Factorization in Characteristic \texorpdfstring{\(3\)}{3} L1--L3}
+
+Let \(n=3^s m\), with \(s=v_3(n)\) and \(3\nmid m\).  In characteristic
+\(3\), Frobenius gives
+\[
+  t^n-1=(t^m)^{3^s}-1=(t^m-1)^{3^s}.
+\]
+The derivative of \(t^m-1\) is \(m t^{m-1}\), and \(m\ne0\) in
+\(\mathbb F_3\).  Since \(t\) does not divide \(t^m-1\), the greatest common
+divisor of \(t^m-1\) and \(m t^{m-1}\) is \(1\).  Thus \(t^m-1\) is
+squarefree.  Consequently the closed points of \(X_n\) are exactly the
+irreducible factors of \(t^m-1\), while each such point is thickened in
+\(R_n\) to multiplicity \(3^s\).
+
+For \(d\mid m\), \(d>1\), let
+\[
+  o_d=\operatorname{ord}_d(3).
+\]
+A primitive \(d\)-th root \(\alpha\) lies in \(\mathbb F_{3^r}\) exactly when
+\(\alpha^{3^r}=\alpha\), equivalently \(d\mid 3^r-1\).  Hence the degree of
+\(\alpha\) over \(\mathbb F_3\) is \(o_d\).  The Frobenius orbit of
+\(\alpha\) has \(o_d\) elements, so the \(\varphi(d)\) primitive \(d\)-th
+roots produce
+\[
+  \frac{\varphi(d)}{o_d}
+\]
+irreducible factors of degree \(o_d\).  For \(d=1\), the factor is \(t-1\).
+The sum of all factor degrees is
+\[
+  \sum_{d\mid m}\varphi(d)=m.
+\]
+
+\subsection{The Complete Weyl-Heisenberg Representation T1--T2}
+
+Let \(\mathcal P_n\) be the set of monic irreducible factors of \(t^m-1\).
+For \(\pi\in\mathcal P_n\), write
+\[
+  K_\pi=\mathbb F_3[t]/(\pi),\qquad d_\pi=\deg\pi.
+\]
+The closed point is \(x_\pi=(\pi)/(t^n-1)\), and its residue field is
+\(\kappa(x_\pi)=K_\pi\).
+
+Define
+\[
+  E_n=\bigoplus_{\pi\in\mathcal P_n}K_\pi^2,\qquad
+  \mathcal H_n=\bigotimes_{\pi\in\mathcal P_n}\ell^2(K_\pi).
+\]
+For \(a,b,s\in K_\pi\), set
+\[
+  \psi_\pi(c)=
+  \exp\!\left(\frac{2\pi i}{3}\Tr_{K_\pi/\mathbb F_3}(c)\right),
+\]
+\[
+  T_\pi(a)|s\rangle=|s+a\rangle,\qquad
+  R_\pi(b)|s\rangle=\psi_\pi(bs)|s\rangle,\qquad
+  W_\pi(a,b)=T_\pi(a)R_\pi(b).
+\]
+For \(e=((a_\pi,b_\pi))_\pi\in E_n\), put
+\[
+  W_n(e)=\bigotimes_{\pi\in\mathcal P_n}W_\pi(a_\pi,b_\pi).
+\]
+
+\paragraph{Theorem \(T1\).}
+For \(e=((a_\pi,b_\pi))\) and \(f=((a'_\pi,b'_\pi))\),
+\[
+  W_n(e)W_n(f)
+  =
+  \left(\prod_{\pi\in\mathcal P_n}\psi_\pi(b_\pi a'_\pi)\right)
+  W_n(e+f),
+\]
+and
+\[
+  W_n(e)W_n(f)
+  =
+  \left(\prod_{\pi\in\mathcal P_n}
+  \psi_\pi(b_\pi a'_\pi-b'_\pi a_\pi)\right)
+  W_n(f)W_n(e).
+\]
+The central extension
+\[
+  H_n^{\rm WH}=\mu_3\times E_n,\qquad
+  (\zeta,e)(\eta,f)=(\zeta\eta c_n(e,f),e+f),
+\]
+with
+\[
+  c_n(e,f)=\prod_{\pi\in\mathcal P_n}\psi_\pi(b_\pi a'_\pi),
+\]
+is represented unitarily by \(\rho_n(\zeta,e)=\zeta W_n(e)\).
+
+\emph{Proof.}
+This is AQM-34 applied to \(p=t^n-1\).  The one-site identity
+\[
+  R_\pi(b)T_\pi(a')=\psi_\pi(ba')T_\pi(a')R_\pi(b)
+\]
+gives the multiplier, and tensoring over all factors gives the displayed laws.
+
+\paragraph{Theorem \(T2\).}
+\[
+  \operatorname{span}_{\mathbb C}\{W_n(e):e\in E_n\}
+  =
+  \operatorname{End}_{\mathbb C}(\mathcal H_n),
+\]
+so the representation is irreducible, and
+\[
+  \dim_{\mathbb C}\mathcal H_n
+  =\prod_{\pi\in\mathcal P_n}3^{d_\pi}
+  =3^m,\qquad
+  \mathcal A_n\cong M_{3^m}(\mathbb C).
+\]
+
+\emph{Proof.}
+At each \(\pi\), the finite-field Weyl operators span
+\(\operatorname{End}(\ell^2(K_\pi))\).  Tensor products span the tensor-product
+matrix algebra.  Any invariant subspace is therefore invariant under the full
+matrix algebra and is \(0\) or \(\mathcal H_n\).  The dimension formula uses
+\(\sum_{\pi\in\mathcal P_n}d_\pi=\deg(t^m-1)=m\).
+
+The coordinate ring has \(3^n\) elements, but the current residue-qudit Hilbert
+space has dimension \(3^m\).  They agree exactly when \(s=0\), i.e. when
+\(3\nmid n\).  If \(s>0\), the nilradical is generated by the class of
+\(t^m-1\), and coordinate-ring field labels factor through
+\[
+  R_n/(t^m-1)\cong \mathbb F_3[t]/(t^m-1).
+\]
+
+\subsection{Open Sets and States}
+
+Because \(X_n\) is a finite set of closed points, it is discrete.  For
+\(J\subset\mathcal P_n\),
+\[
+  U_J=\{x_\pi:\pi\in J\}
+\]
+is open, and
+\[
+  \mathcal A(U_J)=
+  \bigotimes_{\pi\in J}\operatorname{End}_{\mathbb C}(\ell^2(K_\pi)).
+\]
+The inclusion \(J\subset J'\) sends \(a\) to
+\(a\otimes\mathbf1_{J'\setminus J}\).  States on \(\mathcal A(U_J)\) are
+density matrices on \(\bigotimes_{\pi\in J}\ell^2(K_\pi)\), and restriction is
+partial trace over omitted factors.
+
+\subsection{Small Cases}
+
+For \(n=1\), \(t^n-1=t-1\).  There is one \(\mathbb F_3\) site:
+\[
+  \mathcal H_1\cong\mathbb C^3,\qquad
+  \mathcal A_1\cong M_3(\mathbb C).
+\]
+
+For \(n=2\),
+\[
+  t^2-1=(t-1)(t+1),
+\]
+so there are two \(\mathbb F_3\) sites and
+\[
+  \mathcal H_2\cong\mathbb C^3\otimes\mathbb C^3,\qquad
+  \mathcal A_2\cong M_9(\mathbb C).
+\]
+
+For \(n=3\),
+\[
+  t^3-1=(t-1)^3.
+\]
+The scheme is a triple thickening of the point \(t=1\), but the residue-qudit
+layer is one qutrit.  If \(u=t-1\), then \(u^3=0\) in \(R_3\), and \(u\) has
+zero residue at the unique Weyl site.
+
+For \(n=4\),
+\[
+  t^4-1=(t-1)(t+1)(t^2+1),
+\]
+and \(t^2+1\) has no root in \(\mathbb F_3\).  Thus
+\[
+  \mathcal H_4\cong
+  \mathbb C^3\otimes\mathbb C^3\otimes\mathbb C^9,\qquad
+  \mathcal A_4\cong M_{81}(\mathbb C).
+\]
+On the \(\mathbb F_9=\mathbb F_3[u]/(u^2+1)\) factor, Frobenius sends
+\(u\mapsto u^3=-u\), so
+\[
+  \Tr_{\mathbb F_9/\mathbb F_3}(a+bu)=2a
+\]
+for \(a,b\in\mathbb F_3\).  This determines the explicit phase character on
+that \(9\)-level site.
+
+For \(n=6\), \(n=3\cdot2\), so \(m=2\) and
+\[
+  t^6-1=(t^2-1)^3=(t-1)^3(t+1)^3.
+\]
+There are still exactly two residue Weyl sites, both \(\mathbb F_3\)-sites:
+\[
+  \mathcal H_6\cong\mathbb C^3\otimes\mathbb C^3,\qquad
+  \mathcal A_6\cong M_9(\mathbb C),
+\]
+although the coordinate ring has \(3^6\) elements.
+
+\subsection{Conclusion}
+
+The \(t^n=1\) example makes the characteristic-\(3\) issue explicit.  The
+residue-qudit field depends on the squarefree part \(t^m-1\), where
+\(m=n/3^{v_3(n)}\).  The full coordinate ring still records the repeated
+factors of \(t^n-1\) as nilpotents, but in the residue-qudit layer those
+nilpotents have zero residues and therefore no separate residue Weyl
+operators.  AQM-36 adds the separate nilpotent-sensitive layer.

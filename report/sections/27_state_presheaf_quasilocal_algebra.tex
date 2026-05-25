@@ -1,0 +1,268 @@
+% SHARD-ID: AQM-27-STATE-PRESHEAF-QUASILOCAL-ALGEBRA
+% SHARD-TITLE: State Presheaf of the Quasi-Local Algebra
+% SHARD-SUMMARY: Defines local quantum state spaces for the Zariski observable net and proves they form a presheaf.
+% SHARD-SUMMARY: Proves that the state presheaf is not generally a sheaf, by explicit finite marginal counterexamples.
+% SHARD-SUMMARY: Identifies global states on the algebraic quasi-local algebra with compatible inverse-limit families of local states.
+% SHARD-KEYWORDS: quantum state, density matrix, presheaf, sheaf failure, marginal, partial trace, quasi-local algebra
+
+\section{State Presheaf of the Quasi-Local Algebra}
+\label{sec:state-presheaf-quasilocal-algebra}
+
+\subsection{Status and Source Anchors}
+
+This shard adds the state side of AQM-26.  Derezinski records that normal
+states on \(B(\mathcal H)\) are given by trace-class functionals
+\(\psi(A)=\operatorname{Tr}(\gamma A)\), with positive trace-one operators
+\(\gamma\) called density matrices, in
+\path{references/canonical_fields/derezinski_math_ph_0511030_source/derezinski.tex},
+lines 3141--3149.  Gottesman records the finite quantum-information
+convention that density matrices are positive trace-one operators and that a
+subsystem density matrix is obtained by tracing out the remaining degrees of
+freedom in
+\path{references/symplectic_qecc/gottesman_9705052_source/Thesis.tex},
+lines 404--411.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&\operatorname{State}(A)=
+      \{\omega:A\to\mathbb C\mid \omega(1)=1,\
+      \omega(a^*a)\geq0\}.\\
+D2&:&\text{For }A=\operatorname{End}(\mathcal H),\
+      \omega(a)=\operatorname{Tr}(\rho a),\quad
+      \rho\geq0,\ \operatorname{Tr}\rho=1.\\
+D3&:&\mathsf S(U)=\operatorname{State}(\mathcal A(U)).\\
+L1&:&U\subset V\Rightarrow
+      \mathsf S(V)\to\mathsf S(U),\ \omega\mapsto
+      \omega\circ\iota_{U,V},\text{ is a state restriction.}\\
+T1&:&\mathsf S\text{ is a presheaf of convex sets.}\\
+T2&:&\mathsf S\text{ is not generally separated, hence not a sheaf.}\\
+T3&:&\text{Compatible overlapping marginals need not glue to a global state.}\\
+T4&:&\operatorname{State}(\mathcal A_{\rm qloc}(X))
+      \cong\varprojlim_U\operatorname{State}(\mathcal A(U))
+      \text{ for the algebraic filtered colimit.}
+\end{array}
+\]
+
+\subsection{State Spaces D1--D3}
+
+Let \(A\) be a unital \(*\)-algebra.  A state on \(A\) is a linear functional
+\(\omega:A\to\mathbb C\) such that
+\[
+  \omega(1)=1,\qquad \omega(a^*a)\geq0\quad\text{for all }a\in A.
+\]
+For a finite-dimensional Hilbert space \(\mathcal H\) and
+\(A=\operatorname{End}(\mathcal H)\), we use the density-matrix
+representation
+\[
+  \omega_\rho(a)=\operatorname{Tr}(\rho a),
+  \qquad \rho\geq0,\quad \operatorname{Tr}\rho=1.
+\]
+The state space is convex: if \(\omega_0,\omega_1\) are states and
+\(0\leq t\leq1\), then \(t\omega_0+(1-t)\omega_1\) is again normalized and
+positive.
+
+For the open-local observable net \(U\mapsto\mathcal A(U)\), define
+\[
+  \mathsf S(U)=\operatorname{State}(\mathcal A(U)).
+\]
+
+\subsection{Restriction Is a Presheaf L1--T1}
+
+\paragraph{Lemma \(L1\).}
+If \(U\subset V\), then
+\[
+  \rho^V_U:\mathsf S(V)\longrightarrow\mathsf S(U),
+  \qquad
+  \rho^V_U(\omega)=\omega\circ\iota_{U,V}
+\]
+is a well-defined affine map.
+
+\emph{Proof.}
+The inclusion \(\iota_{U,V}\) is a unital \(*\)-homomorphism by AQM-24.  Thus
+\[
+  \rho^V_U(\omega)(1)=\omega(\iota_{U,V}(1))=\omega(1)=1.
+\]
+For \(a\in\mathcal A(U)\),
+\[
+  \rho^V_U(\omega)(a^*a)
+  =
+  \omega(\iota_{U,V}(a^*a))
+  =
+  \omega(\iota_{U,V}(a)^*\iota_{U,V}(a))\geq0.
+\]
+Hence \(\rho^V_U(\omega)\) is a state.  Affineness follows from linearity of
+composition with \(\iota_{U,V}\).
+
+When \(V=U\sqcup W\), the same restriction is the density-matrix partial
+trace.  If \(\omega_\rho\) is a state on
+\(\mathcal A(U)\otimes\mathcal A(W)\), then the restricted state on
+\(\mathcal A(U)\) is represented by
+\[
+  \rho_U=\operatorname{Tr}_W(\rho),
+\]
+because \(\operatorname{Tr}(\rho(a\otimes1_W))
+=\operatorname{Tr}(\rho_Ua)\).
+
+\paragraph{Theorem \(T1\).}
+\(\mathsf S\) is a presheaf of convex sets on \(X\).
+
+\emph{Proof.}
+For \(U\subset V\subset W\),
+\[
+  \rho^W_U(\omega)
+  =
+  \omega\circ\iota_{U,W}
+  =
+  \omega\circ\iota_{V,W}\circ\iota_{U,V}
+  =
+  \rho^V_U(\rho^W_V(\omega)),
+\]
+using functoriality of \(\iota\) from AQM-24.  Also
+\(\rho^U_U=\operatorname{id}\).  The restriction maps are affine by Lemma
+\(L1\), so this is a contravariant functor from opens to convex sets.
+
+\subsection{Failure of Separatedness T2}
+
+\paragraph{Theorem \(T2\).}
+\(\mathsf S\) is not generally a sheaf.  In fact it is not generally
+separated: two global states can have the same restrictions to an open cover.
+
+\emph{Proof.}
+Use \(X=\operatorname{Spec}(\mathbb Z/6\mathbb Z)\), with the two singleton
+opens
+\[
+  U=\{(2)\},\qquad V=\{(3)\},\qquad X=U\sqcup V.
+\]
+Then \(\mathcal A(X)=M_2\otimes M_3\).  Choose bases
+\(|0\rangle,|1\rangle\) of \(\mathbb C^2\) and
+\(|0\rangle,|1\rangle,|2\rangle\) of \(\mathbb C^3\), and set
+\[
+  |\psi\rangle=\frac{|0,0\rangle+|1,1\rangle}{\sqrt2},
+  \qquad
+  \rho=|\psi\rangle\langle\psi|.
+\]
+Its restrictions are
+\[
+  \rho_U=\frac{I_2}{2},\qquad
+  \rho_V=\frac{|0\rangle\langle0|+|1\rangle\langle1|}{2}.
+\]
+Now define the product density matrix
+\[
+  \sigma=\rho_U\otimes\rho_V.
+\]
+The density matrices \(\rho\) and \(\sigma\) have the same restrictions to
+\(U\) and to \(V\) by construction.  They are not equal: \(\rho\) has the
+off-diagonal matrix entry \(|0,0\rangle\langle1,1|/2\), while \(\sigma\) has
+no such entry.  Thus the two global states agree on the cover
+\(\{U,V\}\) but differ globally.  The uniqueness part of the sheaf condition
+fails.
+
+\subsection{Failure of Existence for Overlapping Marginals T3}
+
+\paragraph{Theorem \(T3\).}
+Even when local states agree on an overlap, a global extending state need not
+exist.
+
+\emph{Proof.}
+Consider a discrete three-point finite spectrum with qubit factors labelled
+\(A,B,C\).  For example, one may take
+\(\operatorname{Spec}(\mathbb F_2\times\mathbb F_2\times\mathbb F_2)\).
+Let
+\[
+  U=\{A,B\},\qquad V=\{B,C\},\qquad U\cap V=\{B\}.
+\]
+On \(AB\), take the Bell state
+\[
+  \rho_{AB}=|\Phi_{AB}\rangle\langle\Phi_{AB}|,\qquad
+  |\Phi_{AB}\rangle=\frac{|0,0\rangle+|1,1\rangle}{\sqrt2}.
+\]
+On \(BC\), take
+\[
+  \rho_{BC}=|\Phi_{BC}\rangle\langle\Phi_{BC}|,\qquad
+  |\Phi_{BC}\rangle=\frac{|0,0\rangle+|1,1\rangle}{\sqrt2}.
+\]
+Both restrict to \(I_2/2\) on the overlap \(B\).
+
+Assume a density matrix \(\theta_{ABC}\) extends both.  Since
+\(\operatorname{Tr}_C\theta_{ABC}=\rho_{AB}\) is the rank-one projection
+\(P_{AB}=|\Phi_{AB}\rangle\langle\Phi_{AB}|\), positivity forces
+\(\theta_{ABC}\) to be supported on
+\(\operatorname{ran}(P_{AB})\otimes\mathbb C^2_C\).  Indeed,
+\[
+  \operatorname{Tr}\bigl(((1-P_{AB})\otimes1_C)\theta_{ABC}\bigr)
+  =
+  \operatorname{Tr}((1-P_{AB})\rho_{AB})=0,
+\]
+and a positive operator with zero trace is zero on that positive part.
+Therefore
+\[
+  \theta_{ABC}=P_{AB}\otimes\tau_C
+\]
+for some density matrix \(\tau_C\).  Its \(BC\)-marginal is then
+\[
+  \operatorname{Tr}_A(\theta_{ABC})
+  =
+  \frac{I_2}{2}\otimes\tau_C,
+\]
+which is a product state.  It cannot equal the pure entangled Bell state
+\(\rho_{BC}\).  Hence the compatible pair \((\rho_{AB},\rho_{BC})\) does not
+glue to a state on \(ABC\).
+
+\subsection{Global States as an Inverse Limit T4}
+
+Let \(\mathsf K(X)\) be the directed poset of quasi-compact opens used in
+AQM-25, and let
+\[
+  \mathcal A_{\rm qloc}(X)=\varinjlim_{U\in\mathsf K(X)}\mathcal A(U)
+\]
+be the algebraic quasi-local \(*\)-algebra.  Since the structure maps are
+injective, we may regard \(\mathcal A_{\rm qloc}(X)\) as the algebraic union
+of the local algebras.
+
+\paragraph{Theorem \(T4\).}
+There is a natural affine bijection
+\[
+  \operatorname{State}(\mathcal A_{\rm qloc}(X))
+  \cong
+  \varprojlim_{U\in\mathsf K(X)}
+  \operatorname{State}(\mathcal A(U)).
+\]
+
+\emph{Proof.}
+Given a state \(\omega\) on \(\mathcal A_{\rm qloc}(X)\), restrict it to each
+\(\mathcal A(U)\).  These restrictions are compatible by functoriality of
+restriction, so they define an element of the inverse limit.
+
+Conversely, let \((\omega_U)_U\) be a compatible family of local states.  If
+\(a\in\mathcal A_{\rm qloc}(X)\), choose \(U\) and \(a_U\in\mathcal A(U)\)
+representing it, and define
+\[
+  \omega(a)=\omega_U(a_U).
+\]
+This is independent of the representative: if \(a_U\) and \(a_V\) represent
+the same quasi-local element, choose \(W\supset U,V\); their images in
+\(\mathcal A(W)\) agree, and compatibility gives the same value.  Linearity
+follows after moving two representatives to a common \(W\).  Normalization is
+\(\omega(1)=1\).  Positivity holds because if
+\(a\in\mathcal A(U)\), then \(a^*a\in\mathcal A(U)\) and
+\[
+  \omega(a^*a)=\omega_U(a^*a)\geq0.
+\]
+The two constructions are inverse to each other.
+
+\subsection{Conclusion}
+
+The state side reverses the observable-net arrows:
+\[
+  U\subset V\quad\Rightarrow\quad
+  \operatorname{State}(\mathcal A(V))
+  \longrightarrow
+  \operatorname{State}(\mathcal A(U)).
+\]
+Thus local quantum states form a presheaf of convex sets.  They do not form a
+sheaf in general: uniqueness fails because marginals do not determine
+correlations, and existence fails because compatible overlapping marginals may
+not have a joint quantum state.  The correct quasi-local replacement is the
+inverse-limit statement of Theorem \(T4\), not an ordinary sheaf gluing axiom.
