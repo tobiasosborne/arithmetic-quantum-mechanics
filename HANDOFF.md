@@ -298,25 +298,36 @@ subtheory.
   `p | s/r`, no relative-Frobenius-fixed trace-one scalar exists, so Frobenius
   is naturally gauge-covariant rather than strict on an arbitrary full-tower
   presentation.
+- Added convention `(ai)` plus `AQM-45-SPEC-Z-ARITHMETIC-QUANTUM-FIELD`:
+  `Spec(Z)` now has a closed-prime residue-qudit AQF with one `l`-level qudit
+  at each rational prime and an optional separate generic `Q` Weyl sector.
+  The shard proves that `z -> z+1` is not a scheme automorphism of `Spec(Z)`.
+  It then defines the internal residue-translation action of `Z` on the
+  prime-qudit algebra, proves the finite-support profinite periods, and proves
+  that nonzero translations are not implemented in the `|0>` incomplete tensor
+  sector.
 
 ## Next Useful Steps
 
-1. Decide whether the next \(k(t)\) layer should be the local completion
+1. Acquire sources for adelic self-dual models and Bost--Connes-style
+   arithmetic \(C^*\)-dynamical systems before turning the `Spec(Z)`
+   speculative questions into claims.
+2. Decide whether the next \(k(t)\) layer should be the local completion
    \(k((t^{-1}))\), the finite-place family, or the adele ring.
-2. Decide whether thickened state restriction should use explicit jet partial
+3. Decide whether thickened state restriction should use explicit jet partial
    traces, conditional expectations to the reduced sublayer, or both.
-3. Decide whether to linearize the state marginal comparison using ordered
+4. Decide whether to linearize the state marginal comparison using ordered
    real vector spaces of Hermitian functionals, or keep it as a convex
    feasibility problem.
-4. Extend stabilizer descent from finite vector spaces to mixed residue fields,
+5. Extend stabilizer descent from finite vector spaces to mixed residue fields,
    finite Frobenius modules, and overlapping-cover phase compatibility.
-5. Extend dynamics beyond the odd finite-field half-Weyl case: even
+6. Extend dynamics beyond the odd finite-field half-Weyl case: even
    characteristic, mixed residue fields, finite Frobenius modules, and
    support-preserving versus nonlocal global symplectic automorphisms.
-6. Decide whether to keep full finite-field continuum limits gauge-covariant,
+7. Decide whether to keep full finite-field continuum limits gauge-covariant,
    or impose a specific additional Frobenius-compatible gauge-fixing rule where
    possible.
-7. Decide first fixed conventions: zeta normalization, Frobenius direction,
+8. Decide first fixed conventions: zeta normalization, Frobenius direction,
    SUSY-QM grading/signs, and lattice-model boundary/orientation conventions.
-8. Create the first run bundle only when there is a concrete source-backed
+9. Create the first run bundle only when there is a concrete source-backed
    invariant to compute.

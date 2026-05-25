@@ -1,0 +1,277 @@
+% SHARD-ID: AQM-45-SPEC-Z-ARITHMETIC-QUANTUM-FIELD
+% SHARD-TITLE: The Arithmetic Quantum Field on \(\Spec\mathbb Z\)
+% SHARD-SUMMARY: Builds the closed-prime residue-qudit net for \(\Spec\mathbb Z\) and separates the generic \(\mathbb Q\) sector.
+% SHARD-SUMMARY: Proves that \(z\mapsto z+1\) is not a scheme automorphism of \(\Spec\mathbb Z\).
+% SHARD-SUMMARY: Defines the internal integer residue-translation action and proves its profinite, nonlocal character.
+% SHARD-KEYWORDS: Spec Z, prime qudits, generic point, incomplete tensor product, translation, profinite integers
+
+\section[The Arithmetic Quantum Field on Spec Z]{The Arithmetic Quantum Field on \(\Spec\mathbb Z\)}
+\label{sec:spec-z-arithmetic-quantum-field}
+\subsection{Status and Source Anchors}
+
+This shard extends \texttt{CONVENTIONS.md} (u)--(y) and (ai).  The
+source-local scheme facts are from
+\path{references/algebraic_geometry/stacks_project_algebra.tex}: lines
+120--158, 250--274, 2972--2983, 3104--3160, 3251--3298, 3310--3342, and
+4657--4703 cover prime ideals, residue fields, \(\Spec\), Zariski opens,
+functoriality, quasi-compact opens, and generic points.  AQM-28 supplies the
+finite closed-residue Weyl net, and AQM-42 supplies finite-support dynamics.
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&X=\Spec\mathbb Z,\quad \eta=(0),\quad x_\ell=(\ell).\\
+L1&:&\operatorname{Prime}(\mathbb Z)=\{0\}\cup\{(\ell):\ell\text{ prime}\}.\\
+L2&:&\kappa(\eta)=\mathbb Q,\quad \kappa(x_\ell)=\mathbb F_\ell.\\
+L3&:&\text{Nonempty opens are }\{\eta\}\cup\{x_\ell:\ell\notin S\}
+      \text{ with }S\text{ finite}.\\
+D2&:&E_{\rm cl}(U)=\bigoplus_{x_\ell\in U}\mathbb F_\ell^2,\quad
+      \mathcal A_{\rm cl}(U)=\varinjlim_{S\Subset U_{\rm cl}}\bigotimes_{\ell\in S}M_\ell(\mathbb C).\\
+T1&:&U\mapsto\mathcal A_{\rm cl}(U)\text{ is the closed-prime open-local AQF}.\\
+D3&:&\mathcal H^\Omega_{\rm cl}=\ell^2(\bigoplus_\ell\mathbb F_\ell).\\
+L4&:&\eta\text{ is a }\mathbb Q\text{-Weyl sector, not a finite qudit.}\\
+T2&:&\operatorname{End}_{\rm Sch}(\Spec\mathbb Z)=\{\mathrm{id}\}.\\
+D4&:&\alpha_n=\prod_\ell^{\rm loc}\operatorname{Ad}T_\ell(n\bmod \ell).\\
+T3&:&\alpha:\mathbb Z\curvearrowright\mathcal A_{\rm cl}(X)
+      \text{ is faithful and extends profinitely.}\\
+T4&:&\alpha_n,\ n\ne0,\text{ is not implemented in the }|0\rangle\text{ sector.}
+\end{array}
+\]
+
+\subsection{The Point Set and Topology D1--L3}
+Every ideal of \(\mathbb Z\) has the form \((n)\).  If \((n)\) is prime, then
+\(\mathbb Z/(n)\) is a domain by the source-local prime-ideal criterion.  This
+happens exactly for \(n=0\) or for \(n=\pm \ell\) with \(\ell\) a rational
+prime.  Hence
+\[
+  X=\Spec\mathbb Z=\{\eta\}\cup\{x_\ell:\ell\text{ prime}\},
+  \qquad \eta=(0),\quad x_\ell=(\ell).
+\]
+The point \(\eta\) is generic because
+\(\overline{\{\eta\}}=V(0)=X\), using the Stacks closure formula
+\(\overline{\{\mathfrak p\}}=V(\mathfrak p)\).
+
+\paragraph{Lemma \(L2\).}
+The residue fields are
+\[
+  \kappa(\eta)=\mathbb Q,\qquad \kappa(x_\ell)=\mathbb F_\ell .
+\]
+
+\emph{Proof.}
+By the Stacks residue-field definition,
+\(\kappa(\mathfrak p)\) is the fraction field of
+\(\mathbb Z/\mathfrak p\).  For \(\mathfrak p=(0)\) this is
+\(\operatorname{Frac}(\mathbb Z)=\mathbb Q\).  For
+\(\mathfrak p=(\ell)\) this is
+\(\operatorname{Frac}(\mathbb Z/\ell\mathbb Z)=\mathbb F_\ell\).
+
+\paragraph{Lemma \(L3\).}
+The nonempty Zariski opens of \(X\) are exactly
+\[
+  U_S=X\setminus\{x_\ell:\ell\in S\}
+     =\{\eta\}\cup\{x_\ell:\ell\notin S\},
+  \qquad S\Subset\{\text{rational primes}\}.
+\]
+
+\emph{Proof.}
+Closed subsets are \(V(n)\).  If \(n=0\), then \(V(n)=X\).  If \(n=\pm1\),
+then \(V(n)=\emptyset\).  If \(n\ne0,\pm1\), then \(x_\ell\in V(n)\) exactly
+when \(\ell\mid n\), and \(\eta\notin V(n)\).  Thus every proper nonempty
+closed subset is a finite set of closed prime points.  Taking complements gives
+the displayed opens.
+
+\subsection{Closed-Prime Qudit Field D2--T1}
+For a prime \(\ell\), attach
+\[
+  E_\ell=\mathbb F_\ell^2,\qquad
+  \mathcal H_\ell=\ell^2(\mathbb F_\ell),\qquad
+  \mathcal A_\ell=\operatorname{End}_{\mathbb C}(\mathcal H_\ell)\cong M_\ell(\mathbb C).
+\]
+Write a label \(e_\ell=(q_\ell,r_\ell)\).  The local Weyl operators are
+\[
+  T_\ell(q)|s\rangle=|s+q\rangle,\qquad
+  R_\ell(r)|s\rangle=\exp(2\pi i\,rs/\ell)|s\rangle,\qquad
+  W_\ell(q,r)=T_\ell(q)R_\ell(r).
+\]
+For a finite set \(S\) of primes,
+\[
+  E(S)=\bigoplus_{\ell\in S}\mathbb F_\ell^2,\quad
+  \mathcal H(S)=\bigotimes_{\ell\in S}\mathcal H_\ell,\quad
+  \mathcal A(S)=\bigotimes_{\ell\in S}\mathcal A_\ell .
+\]
+The Weyl commutator is
+\[
+  W_S(e)W_S(f)=
+  \prod_{\ell\in S}\exp(2\pi i(r_\ell q'_\ell-q_\ell r'_\ell)/\ell)\,
+  W_S(f)W_S(e),
+\]
+by the one-site calculation of AQM-28.
+
+For an open \(U\), let \(U_{\rm cl}=U\cap\{x_\ell\}\), set
+\(E_{\rm cl}(U)=\bigoplus_{x_\ell\in U_{\rm cl}}\mathbb F_\ell^2\) with finite
+support, and define
+\[
+  \mathcal A_{\rm cl}(U)=
+  \varinjlim_{S\Subset U_{\rm cl}}\mathcal A(S),
+  \qquad a\mapsto a\otimes\mathbf 1\text{ for }S\subset S'.
+\]
+
+\paragraph{Theorem \(T1\).}
+The assignment \(U\mapsto\mathcal A_{\rm cl}(U)\) is the closed-prime
+open-local arithmetic quantum field on \(\Spec\mathbb Z\).  In particular,
+\[
+  \mathcal A_{\rm cl}(X)=
+  \varinjlim_{S\Subset\{\ell\}}\bigotimes_{\ell\in S}M_\ell(\mathbb C),
+\]
+the algebraic infinite tensor product of one \(\ell\)-level qudit for each
+rational prime \(\ell\).
+
+\emph{Proof.}
+This is AQM-28 applied to the finite-residue closed points of \(X\).  If
+\(U\subset V\), then \(U_{\rm cl}\subset V_{\rm cl}\), so extension by identity
+gives a unital injective \(*\)-homomorphism
+\(\mathcal A_{\rm cl}(U)\hookrightarrow\mathcal A_{\rm cl}(V)\).  Disjoint
+finite supports commute because their Weyl commutator has no nontrivial local
+factor.  If \(U=\bigcup_iU_i\), every label has finite support, so each support
+point may be assigned to some \(U_i\); the same additive proof as AQM-28 shows
+that \(\mathcal A_{\rm cl}(U)\) is generated by the images of the
+\(\mathcal A_{\rm cl}(U_i)\).
+
+\subsection{Incomplete Tensor Representation D3}
+The algebra \(\mathcal A_{\rm cl}(X)\) is representation-independent.  To get a
+Hilbert space, choose reference vectors
+\(\Omega_\ell=|0\rangle\in\mathcal H_\ell\).  Let
+\[
+  \Gamma_{\rm fin}=\bigoplus_\ell\mathbb F_\ell
+  =
+  \{s=(s_\ell):s_\ell=0\text{ for all but finitely many }\ell\}.
+\]
+Define
+\[
+  \mathcal H^\Omega_{\rm cl}=\ell^2(\Gamma_{\rm fin}),
+  \qquad |s\rangle=\bigotimes_\ell |s_\ell\rangle
+\]
+with the understood convention that all but finitely many tensor factors are
+\(|0\rangle\).  A finite-support algebra \(\mathcal A(S)\) acts on the
+coordinates in \(S\) and fixes the others.  These actions are compatible, so
+\(\mathcal H^\Omega_{\rm cl}\) represents \(\mathcal A_{\rm cl}(X)\).
+Changing the reference product state changes this Hilbert-space realization;
+it is not extra geometry of \(\Spec\mathbb Z\).
+
+\subsection{The Generic Point L4}
+The generic point has residue field \(\mathbb Q\), so it is not a finite qudit.
+If one includes it, the separate rational Weyl sector is
+\[
+  E_\eta=\mathbb Q^2,\qquad \mathcal H_\eta=\ell^2(\mathbb Q),
+  \qquad \chi_\mathbb Q(a)=\exp(2\pi i a).
+\]
+With
+\[
+  T_\mathbb Q(q)|s\rangle=|s+q\rangle,\qquad
+  R_\mathbb Q(r)|s\rangle=\chi_\mathbb Q(rs)|s\rangle,
+\]
+the same calculation gives \(R_\mathbb Q(r)T_\mathbb Q(q)
+=\chi_\mathbb Q(rq)T_\mathbb Q(q)R_\mathbb Q(r)\).  The pairing is
+nondegenerate: if \(q\ne0\), choose \(r=(2q)^{-1}\); if \(r\ne0\), choose
+\(q=(2r)^{-1}\).
+
+Because every nonempty open contains \(\eta\), the generic-sector local rule is
+\[
+  \mathcal A_{\rm gen}(U)=
+  \begin{cases}\mathbb C,&U=\emptyset,\\
+  \mathcal A_\eta\otimes\mathcal A_{\rm cl}(U),&U\ne\emptyset.\end{cases}
+\]
+Thus the generic sector is present in every nonempty local algebra.  It is a
+global generic-fibre layer, not another prime-local qudit.
+
+\subsection[No Scheme Translation on X]{No Scheme Translation \(z\mapsto z+1\) on \(X\) T2}
+\paragraph{Theorem \(T2\).}
+Every scheme endomorphism of \(\Spec\mathbb Z\) is the identity.  Therefore
+there is no nontrivial scheme-theoretic translation \(z\mapsto z+1\) on
+\(\Spec\mathbb Z\).
+
+\emph{Proof.}
+By affine functoriality, scheme endomorphisms of \(\Spec\mathbb Z\) correspond
+contravariantly to unital ring endomorphisms \(\varphi:\mathbb Z\to\mathbb Z\).
+Such a \(\varphi\) satisfies \(\varphi(1)=1\), hence
+\(\varphi(n)=n\varphi(1)=n\) for all \(n\in\mathbb Z\).  Thus
+\(\varphi=\mathrm{id}\), and the induced scheme map is the identity.
+
+Consequently the expression \(z\mapsto z+1\) belongs to
+\(\mathbb A^1_\mathbb Z=\Spec\mathbb Z[z]\), where \(z\) is a coordinate.  It
+does not define a self-map of the base scheme \(\Spec\mathbb Z\).
+
+\subsection{Internal Integer Translation D4--T4}
+There is nevertheless a canonical internal residue translation on the
+closed-prime qudit algebra.  For \(n\in\mathbb Z\), define at prime \(\ell\)
+\[
+  U_\ell(n)=T_\ell(n\bmod \ell).
+\]
+For finite support \(S\), set
+\[
+  \alpha_n^S(a)=
+  \left(\bigotimes_{\ell\in S}U_\ell(n)\right)
+  a
+  \left(\bigotimes_{\ell\in S}U_\ell(n)\right)^* .
+\]
+These maps are compatible with \(a\mapsto a\otimes\mathbf 1\), hence define an
+automorphism \(\alpha_n\) of \(\mathcal A_{\rm cl}(X)\).  On one Weyl operator,
+\[
+  \alpha_n(W_\ell(q,r))
+  =
+  \exp(-2\pi i\,nr/\ell)\,W_\ell(q,r).
+\]
+
+\paragraph{Theorem \(T3\).}
+The maps \(n\mapsto\alpha_n\) define a faithful action of \(\mathbb Z\) on
+\(\mathcal A_{\rm cl}(X)\).  On \(\mathcal A(S)\) the action factors through
+\(\mathbb Z/N_S\mathbb Z\), where \(N_S=\prod_{\ell\in S}\ell\).  Therefore it
+extends to the compact residue product \(\prod_\ell\mathbb F_\ell\), and hence
+to \(\widehat{\mathbb Z}\) after reducing each \(p\)-adic coordinate modulo
+\(p\).
+
+\emph{Proof.}
+The group law follows from \(T_\ell(n)T_\ell(m)=T_\ell(n+m)\).  If
+\(\alpha_n\) is the identity, then for every prime \(\ell\) and every
+\(r\in\mathbb F_\ell\) the factor \(\exp(-2\pi i nr/\ell)\) is \(1\).  Hence
+\(n\equiv0\pmod\ell\) for every \(\ell\), so \(n=0\).  On finite \(S\), only
+the residues \(n\bmod\ell\) for \(\ell\in S\) matter, which is the same as
+\(n\bmod N_S\) by the Chinese remainder theorem.  The same finite-coordinate
+dependence gives the continuous extension to the product of residue fields.
+
+\paragraph{Theorem \(T4\).}
+For \(n\ne0\), the automorphism \(\alpha_n\) is not implemented by a unitary in
+the reference-vector incomplete tensor representation
+\(\mathcal H^\Omega_{\rm cl}\).
+
+\emph{Proof.}
+Let \(P_\ell(a)\) be the rank-one projection onto \(|a\rangle\).  If a unitary
+\(U\) implemented \(\alpha_n\), then
+\[
+  U P_\ell(0) U^*=P_\ell(n\bmod\ell).
+\]
+Since \(P_\ell(0)\Omega=\Omega\), the vector \(U\Omega\) would satisfy
+\[
+  P_\ell(n\bmod\ell)U\Omega=U\Omega
+\]
+for every prime \(\ell\).  For \(n\ne0\), \(n\bmod\ell\ne0\) for all but
+finitely many \(\ell\).  But \(\mathcal H^\Omega_{\rm cl}\) has basis indexed
+by configurations that are zero at all but finitely many primes.  No nonzero
+vector can be supported only on configurations with \(s_\ell=n\bmod\ell\) for
+infinitely many \(\ell\).  Hence \(U\Omega=0\), impossible for a unitary.
+
+\subsection{Speculative Directions}
+The checked surprise is that the scheme has no translation, while the quantum
+closed-prime field has a faithful arithmetic translation action by residues.
+Finite experiments see only \(\mathbb Z/N_S\mathbb Z\), while the infinite
+algebra sees the profinite completion.  The global translation by \(1\) is an
+automorphism of the quasi-local algebra but not a unitary in the
+finite-excitation vacuum sector: a large arithmetic symmetry, not a local
+observable.
+
+Source-gated questions now become visible.  Should the generic \(\mathbb Q\)
+sector be replaced by an adelic self-dual sector?  Can a sourced
+C\(^*\)-dynamical system with prime-indexed dimensions and \(\log\ell\) energy
+weights recover Euler-product or zeta data without inserting them by hand?  Is
+the nonimplementability of \(\alpha_1\) the first arithmetic superselection
+sector in this programme?  These are questions, not conclusions.

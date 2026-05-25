@@ -402,3 +402,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves that coherent trace data always exist and give coherent Weyl-net embeddings.
 - Summary: Identifies the arbitrariness as trace gauge freedom and records the Frobenius obstruction.
 - Keywords: continuum limit, trace gauge, finite field, Weyl net, Frobenius, coherence
+
+## `AQM-45-SPEC-Z-ARITHMETIC-QUANTUM-FIELD`
+
+- Source: `report/sections/45_spec_z_arithmetic_quantum_field.tex`
+- Title: The Arithmetic Quantum Field on \(\Spec\mathbb Z\)
+- Summary: Builds the closed-prime residue-qudit net for \(\Spec\mathbb Z\) and separates the generic \(\mathbb Q\) sector.
+- Summary: Proves that \(z\mapsto z+1\) is not a scheme automorphism of \(\Spec\mathbb Z\).
+- Summary: Defines the internal integer residue-translation action and proves its profinite, nonlocal character.
+- Keywords: Spec Z, prime qudits, generic point, incomplete tensor product, translation, profinite integers

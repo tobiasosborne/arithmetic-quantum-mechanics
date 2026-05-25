@@ -62,6 +62,7 @@ before treating report edits as complete.
 | 42 | `AQM-42-GAUSSIAN-CLIFFORD-DYNAMICS` | `report/sections/42_gaussian_clifford_dynamics.tex` | Gaussian and Clifford Dynamics |
 | 43 | `AQM-43-FINITE-FIELD-SCALE-CONTINUUM-LIMITS` | `report/sections/43_finite_field_scale_continuum_limits.tex` | Finite-Field Scales and Continuum Limits |
 | 44 | `AQM-44-TRACE-GAUGES-FULL-CONTINUUM-TOWERS` | `report/sections/44_trace_gauges_full_continuum_towers.tex` | Trace Gauges for Full Continuum Towers |
+| 45 | `AQM-45-SPEC-Z-ARITHMETIC-QUANTUM-FIELD` | `report/sections/45_spec_z_arithmetic_quantum_field.tex` | The Arithmetic Quantum Field on \(\operatorname{Spec}\mathbb Z\) |
 
 ## Maintenance Rules
 

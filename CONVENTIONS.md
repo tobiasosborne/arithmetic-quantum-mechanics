@@ -1253,3 +1253,77 @@ relative-Frobenius-fixed trace-one element can lie in the base field, because
 space of trace gauges; a strict Frobenius action on a fixed full-tower
 presentation requires an additional Frobenius-compatible gauge convention,
 which is not fixed here.
+
+## (ai) `Spec(Z)` Closed-Prime Field And Translation Convention
+
+For the first arithmetic base-space model over the integers, write
+
+```text
+X = Spec(Z),        eta = (0),        x_l = (l) for rational primes l.
+```
+
+The closed points are the `x_l`, with residue fields `kappa(x_l)=F_l`.
+The generic point has residue field `kappa(eta)=Q`.
+
+The primary finite-qudit layer is the closed-prime layer:
+
+```text
+E_cl(U) = direct_sum_{x_l in U} F_l^2       finite support only,
+H_l = ell^2(F_l),
+A_cl(U) = colim_{S finite subset U cap {x_l}} tensor_{x_l in S} End(H_l).
+```
+
+Thus `Spec(Z)` carries one `l`-level qudit at each rational prime `l`.
+For `X` itself this is the algebraic infinite tensor product over all prime
+dimensions, i.e. the filtered colimit over finite sets of primes. A Hilbert
+space representation of this algebra is not canonical. If a reference vector
+`Omega_l=|0>` is chosen at every prime, the reference-vector incomplete tensor
+representation has orthonormal basis indexed by finite-support residue
+configurations
+
+```text
+s = (s_l)_l,      s_l in F_l,      s_l = 0 for all but finitely many l.
+```
+
+The generic point is not a finite qudit site. If it is included, it is a
+separate rational Weyl sector:
+
+```text
+E_eta = Q^2,      H_eta = ell^2(Q),
+chi_Q(a) = exp(2*pi*i*a),
+T_Q(q)|s> = |s+q>,      R_Q(r)|s> = chi_Q(rs)|s>.
+```
+
+Every nonempty open of `Spec(Z)` contains `eta`, so this rational sector is
+present in every nonempty local algebra. It is therefore a global generic-fibre
+layer, not a prime-local qudit.
+
+There is no scheme-theoretic translation `z |-> z+1` on `Spec(Z)`: affine
+self-maps of `Spec(Z)` come from unital ring endomorphisms of `Z`, and the only
+such endomorphism is the identity. The expression `z |-> z+1` belongs
+scheme-theoretically to `A^1_Z = Spec(Z[z])`, not to `Spec(Z)`.
+
+There is, however, an internal residue-translation action of the additive
+group `Z` on the closed-prime qudit algebra. For `n in Z`, at the prime `l`
+use the local shift
+
+```text
+U_l(n) = T_l(n mod l).
+```
+
+On a finite support `S`, set
+
+```text
+alpha_n^S = Ad(tensor_{l in S} U_l(n)).
+```
+
+These finite-support automorphisms are compatible under tensoring identities,
+so they define an automorphism `alpha_n` of the algebraic closed-prime
+quasi-local algebra. The action is faithful as a `Z`-action, locally periodic
+with period `product_{l in S} l` on a finite support `S`, and extends
+continuously through the diagonal residue map to the compact product
+`product_l F_l`; equivalently it extends to `hat{Z}` after reduction modulo
+each prime. For `n != 0`, the automorphism is not implemented by the naive
+infinite product of shifts in the `|0>` reference-vector tensor sector:
+it sends the vacuum configuration to one with nonzero residues at all but
+finitely many primes.
