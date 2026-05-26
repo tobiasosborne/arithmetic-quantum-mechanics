@@ -76,6 +76,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | Document | Topic | Status |
 |---|---|---|
 | `docs/finite_commutative_ring_database_prd.md` | Finite commutative ring database and quantisation pipeline | PRD only; no producer or run bundle yet. |
+| `docs/finite_commutative_ring_database_implementation_plan.md` | Red-green implementation chain for the finite commutative ring database | Beads chain `aqm-pa0` through `aqm-6t4`; no implementation yet. |
 
 ## Report Shards
 

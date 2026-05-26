@@ -157,6 +157,12 @@ and their residue/thickened Weyl quantisation records. It adds
 database producer, schema entry, run bundle, or report shard has been created
 yet; those are implementation milestones, not completed work.
 
+The finite-ring database implementation plan now lives at
+`docs/finite_commutative_ring_database_implementation_plan.md`. Beads has been
+initialized with prefix `aqm`; the implementation chain is `aqm-pa0` through
+`aqm-6t4`, with each step depending on the previous one. The only ready bead
+at plan creation is `aqm-pa0`.
+
 ## Most Recent Session
 
 **2026-05-25 - Canonical boson/fermion field comparison.**
