@@ -1,0 +1,14 @@
+# in-memory MVP review export from local finite_ring_mvp_* helpers; finite_rings.sqlite is not read or written; schema/index registration deferred to 16c
+ring_id,representative_name,presentation_count,source_names,order_exact,characteristic_exact,additive_invariants_json,local_status,reduced_status,field_status,product_status,frobenius_status,generating_character_status,residue_field_sizes_json,audit_status
+ring:fcd580ceb627f5b86c87117afd6a277198272c54d72792768df9448054f64ea8,zero_ring,1,"[""zero_ring""]",1,1,[],unknown,unknown,unknown,unknown,unknown,unknown,[],not_audited
+ring:532e6eb83d02b10883ad914404e41114ac3f888ce4097bf751978050c77bfc2f,F_2,1,"[""F_2""]",2,2,[2],unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:02a6812becb7ebafd7ef3280b97ebf4f8634da4caab0eaad51e5f2569ea1b8a8,F_3,1,"[""F_3""]",3,3,[3],unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:2ba1fcde75f79acef9a9463aeeba0a9bcef5822115f07ac1ecf07e9ab5c88bb5,F_5,1,"[""F_5""]",5,5,[5],unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:907489c7cc1599b299c1a37f0da70863a5d326d5442c19ba4364be42146a790c,Z/4Z,1,"[""Z/4Z""]",4,4,[4],unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:4d485354ced18f95307a18eb7c3ced79d2624de3d1b09cbdca99a2f7da16a59b,Z/6Z,2,"[""Z/6Z"",""F_2xF_3""]",6,6,[6],unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:237bad4c5b342c2f72111fa53d1d31eb687d1e7741c1cf5c8eaf587077389b14,Z/8Z,1,"[""Z/8Z""]",8,8,[8],unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:24c6ba79d7964c38dddc2f0f9bb289378cee7aa595f875657462db7e90908eb5,Z/9Z,1,"[""Z/9Z""]",9,9,[9],unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:b8a4b39f9d8c45148bca959fcefda70172655b1b9a5c25e9a58230c6658eb108,F_2[e]/(e^2),1,"[""F_2[e]/(e^2)""]",4,2,"[2,2]",unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:5863e071dc60abc381e24d4efb8e14add303c631125ae9a96f81b503b345028e,F_3[e]/(e^2),1,"[""F_3[e]/(e^2)""]",9,3,"[3,3]",unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:0aa5c251a3f477e7c5513307d47e406e3657188e7f5ee728ead10a3396d31499,F_2xF_2,1,"[""F_2xF_2""]",4,2,"[2,2]",unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited
+ring:1daf259eea320ff7bb4570b15bdc9602c35c53903943bf1ae076303f2b5f382c,F_3xF_3,1,"[""F_3xF_3""]",9,3,"[3,3]",unknown,unknown,unknown,unknown,unknown,unknown,"""unknown""",not_audited

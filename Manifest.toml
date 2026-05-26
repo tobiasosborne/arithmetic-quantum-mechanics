@@ -2,9 +2,14 @@
 
 julia_version = "1.12.3"
 manifest_format = "2.0"
-project_hash = "4d14576d2fb3c65b9d41ff0743f3ed23c6d5b52e"
+project_hash = "ed34afd60dd229ac6665f7207d2bd5cb105e83d0"
 
 [[deps.ArithmeticQuantumMechanics]]
+deps = ["SHA"]
 path = "."
 uuid = "153a0210-f8bb-4d5c-a8b6-fe591b6cc79e"
 version = "0.1.0"
+
+[[deps.SHA]]
+uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+version = "0.7.0"

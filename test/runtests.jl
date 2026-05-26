@@ -45,8 +45,31 @@ function _frdb_build_cli_result(args...)
     return (; ok, stdout=String(take!(stdout)), stderr=String(take!(stderr)))
 end
 
+function _frdb_audit_cli_result(args...)
+    stdout = IOBuffer()
+    stderr = IOBuffer()
+    julia_path = first(Base.julia_cmd().exec)
+    script = joinpath("scripts", "arithmetic", "finite_ring_db_audit.jl")
+    cmd = Cmd(Cmd([julia_path, "--project=.", script, String.(args)...]); dir=project_root())
+    ok = try
+        success(pipeline(cmd; stdout=stdout, stderr=stderr))
+    catch err
+        print(stderr, sprint(showerror, err))
+        false
+    end
+    return (; ok, stdout=String(take!(stdout)), stderr=String(take!(stderr)))
+end
+
 function _frdb_temp_slug(label)
     return "2099-01-01-frdb-cli-$(label)-$(getpid())-$(time_ns())"
+end
+
+function _frdb_sql_text(value)
+    return "'" * replace(String(value), "'" => "''") * "'"
+end
+
+function _frdb_sql_json(value)
+    return _frdb_sql_text(finite_ring_database_canonical_json(value))
 end
 
 @testset "scaffold paths" begin
@@ -57,25 +80,132 @@ end
           joinpath(root, "runs", "2099-01-01-example")
 end
 
+@testset "finite ring database export producer registration" begin
+    root = project_root()
+    run_slug = "2026-05-26-finite-ring-database"
+    run_path = "runs/$(run_slug)"
+    finite_ring_csvs = [
+        "ring_summary.csv",
+        "ring_presentations.csv",
+        "ring_isomorphism_certificates.csv",
+        "ring_quantization_summary.csv",
+        "ring_quantization_obstruction.csv",
+    ]
+
+    run_all = read(joinpath(root, "scripts", "run_all.jl"), String)
+    readme = read(joinpath(root, run_path, "README.md"), String)
+    schema = read(joinpath(root, "data", "SCHEMA.md"), String)
+    index = read(joinpath(root, "INDEX.md"), String)
+    prd = read(joinpath(root, "docs", "finite_commutative_ring_database_prd.md"), String)
+
+    @test occursin("finite_ring_db_exports", run_all)
+    @test occursin("arithmetic/finite_ring_db_exports.jl", run_all)
+    @test occursin("ring_summary.csv", readme)
+    @test occursin("ring_quantization_obstruction.csv", readme)
+    @test occursin("Twenty-two CSV outputs exist.", schema)
+    @test occursin(
+        "| `scripts/arithmetic/finite_ring_db_exports.jl` | Julia | `$(run_path)/` |",
+        index,
+    )
+    @test occursin(
+        "schema-only smoke build, audit gate, and in-memory MVP review exports exist",
+        index,
+    )
+    @test !occursin(
+        "No database, producer script, or generated run bundle exists yet.",
+        prd,
+    )
+
+    for csv in finite_ring_csvs
+        @test occursin("## $(csv)", schema)
+        @test occursin("`data/$(csv)`", index)
+        @test occursin(
+            "| `$(run_path)/data/$(csv)` | `scripts/arithmetic/finite_ring_db_exports.jl` | `$(csv)` |",
+            index,
+        )
+    end
+end
+
 @testset "finite ring database planning policies" begin
     root = project_root()
     conventions = read(joinpath(root, "CONVENTIONS.md"), String)
     prd = read(joinpath(root, "docs", "finite_commutative_ring_database_prd.md"), String)
+    plan = read(
+        joinpath(root, "docs", "finite_commutative_ring_database_implementation_plan.md"),
+        String,
+    )
+    schema_integrity_marker =
+        "finite_ring_db.schema_integrity_policy = relational_checks_in_schema_json_and_open_enums_in_audit"
 
     @test occursin("finite_ring_db.zero_ring_policy = include", conventions)
+    @test occursin("finite_ring_db.zero_ring_characteristic_exact = 1", conventions)
+    @test occursin("finite_ring_db.zero_ring_residue_field_sizes_json = []", conventions)
+    @test occursin(
+        "finite_ring_db.zero_ring_quantization_policy = not_applicable_until_layer_semantics",
+        conventions,
+    )
+    @test occursin("finite_ring_db.unimplemented_invariant_status = unknown", conventions)
+    @test occursin("invariant-factor form", conventions)
+    @test occursin("dml_behboodi_finite_rings.pdf", conventions)
+    @test occursin("primary cyclic groups", conventions)
+    @test occursin("literal string sentinel `unknown`", conventions)
+    @test occursin("`finite_ring_dual_numbers(p)` uses ordered\nbasis `[1,e]`", conventions)
+    @test occursin("`finite_ring_product` preserves argument\norder", conventions)
+    @test occursin("concatenates factor coordinate blocks", conventions)
+    @test occursin("finite_ring_db.zero_ring_characteristic_exact = 1", prd)
+    @test occursin("finite_ring_db.zero_ring_residue_field_sizes_json = []", prd)
+    @test occursin(
+        "finite_ring_db.zero_ring_quantization_policy = not_applicable_until_layer_semantics",
+        prd,
+    )
+    @test occursin("finite_ring_db.zero_ring_characteristic_exact = 1", plan)
+    @test occursin("finite_ring_db.zero_ring_residue_field_sizes_json = []", plan)
+    @test occursin(
+        "finite_ring_db.zero_ring_quantization_policy =\nnot_applicable_until_layer_semantics",
+        plan,
+    )
     @test occursin(
         "finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy",
+        conventions,
+    )
+    @test occursin(
+        "finite_ring_db.sqlite_build_rerun_policy = fail_existing_sqlite_unless_force",
+        conventions,
+    )
+    @test occursin(schema_integrity_marker, conventions)
+    @test occursin(schema_integrity_marker, prd)
+    @test occursin("certificate-link foreign key", prd)
+    @test occursin("invariant\nring-or-presentation anchor", prd)
+    @test occursin("canonical JSON validity", prd)
+    @test occursin("open/evolving status-token vocabulary", conventions)
+    @test occursin("No JSON1 `json_valid` schema checks", conventions)
+    @test occursin("No JSON1 `json_valid` schema constraints", prd)
+    @test isfile(joinpath(root, "scripts", "arithmetic", "finite_ring_db_audit.jl"))
+    @test occursin("finite_ring_db_audit.jl", prd)
+    @test occursin(
+        "finite_ring_db.thickened_frobenius_quantization_helper_scope = mvp_source_backed_only",
+        conventions,
+    )
+    @test occursin(
+        "finite_ring_db.gap_small_ring_import_helper_scope = installed_tool_reconciliation_metadata_only",
         conventions,
     )
     @test !occursin(
         "The one-element zero ring is an open decision. Do not include it until",
         prd,
     )
+    @test !occursin("tracked separately by\n`aqm-3cm`", prd)
+    @test !occursin("Which zero-ring characteristic, residue, and quantisation fields", prd)
+    @test !occursin("is not decided by\n  `aqm-pa0`; `aqm-3cm` tracks it", plan)
     @test occursin("- the one-element zero ring;", prd)
     @test occursin(
         "finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy",
         prd,
     ) || occursin("local run artifact", prd)
+    @test occursin(
+        "finite_ring_db.sqlite_build_rerun_policy = fail_existing_sqlite_unless_force",
+        prd,
+    )
 end
 
 @testset "finite ring database ground-truth preflight" begin
@@ -111,6 +241,132 @@ end
     @test length(preflight.tools) == length(tools)
 end
 
+@testset "finite ring database GAP small-ring import status" begin
+    root = project_root()
+    conventions = read(joinpath(root, "CONVENTIONS.md"), String)
+    @test occursin(
+        "finite_ring_db.gap_small_ring_import_helper_scope = installed_tool_reconciliation_metadata_only",
+        conventions,
+    )
+    @test occursin("certifies_completeness=false", conventions)
+    @test occursin("imports no presentations", conventions)
+
+    skipped = finite_ring_gap_small_ring_import_status(3; gap_path=nothing)
+    @test skipped.status == "skipped"
+    @test skipped.reason == "gap_not_available"
+    @test skipped.requested_max_order == 3
+    @test skipped.tool_status == "missing"
+    @test isempty(skipped.rows)
+    @test isempty(skipped.imported_presentations)
+    @test skipped.certifies_completeness == false
+    @test occursin("references/finite_ring_database/SOURCES.md", skipped.source_locator)
+    @test occursin("gap_rings_chapter_56.html", skipped.source_locator)
+
+    mktempdir() do dir
+        missing = finite_ring_gap_small_ring_import_status(2; gap_path=joinpath(dir, "gap"))
+        @test missing.status == "skipped"
+        @test missing.reason == "gap_not_available"
+        @test isempty(missing.rows)
+        @test isempty(missing.imported_presentations)
+    end
+
+    @test_throws ArgumentError finite_ring_gap_small_ring_import_status(0; gap_path=nothing)
+    @test_throws ArgumentError finite_ring_gap_small_ring_import_status(16; gap_path=nothing)
+
+    gap_path = Sys.which("gap")
+    if gap_path === nothing
+        @test_skip gap_path !== nothing
+    else
+        status = finite_ring_gap_small_ring_import_status(1; gap_path=gap_path)
+        @test status.status == "reconciled"
+        @test status.tool_status == "available"
+        @test status.requested_max_order == 1
+        @test status.small_ring_library_max_order == 15
+        @test length(status.rows) == 1
+        @test status.rows[1].order == 1
+        @test status.rows[1].total_count == 1
+        @test status.rows[1].scoped_commutative_unital_count >= 0
+        @test status.certifies_completeness == false
+        @test isempty(status.imported_presentations)
+        @test status.tool_version isa AbstractString
+        @test !isempty(status.tool_version)
+        @test occursin("gap_rings_chapter_56.html", status.source_locator)
+    end
+end
+
+@testset "finite ring database quotient constructor status" begin
+    root = project_root()
+    conventions = read(joinpath(root, "CONVENTIONS.md"), String)
+    @test occursin(
+        "finite_ring_db.quotient_constructor_helper_scope = mvp_exact_in_memory_local_core_status_only",
+        conventions,
+    )
+    @test occursin("not a general quotient-ring\nengine", conventions)
+
+    status = finite_ring_quotient_constructor_status()
+    @test status.certifies_backend_completeness == false
+    @test [row.name for row in status.quotient_examples] ==
+          ["F_2[x]/(x^2+x)", "F_3[e]/(e^2)", "Z/6Z"]
+
+    expected = Dict(
+        "F_2[x]/(x^2+x)" => (order=4, characteristic=2),
+        "F_3[e]/(e^2)" => (order=9, characteristic=3),
+        "Z/6Z" => (order=6, characteristic=6),
+    )
+    examples = Dict(row.name => row for row in status.quotient_examples)
+    for row in status.quotient_examples
+        wanted = expected[row.name]
+        @test row.status == "available"
+        @test row.backend == "local_core"
+        @test row.expected_order == wanted.order
+        @test row.expected_characteristic == wanted.characteristic
+        @test finite_ring_order(row.ring) == wanted.order
+        @test finite_ring_characteristic_exact(row.ring) == wanted.characteristic
+        @test occursin("finite_commutative_ring_database_prd.md", row.source_locator)
+        @test occursin("CONVENTIONS.md (an)", row.source_locator)
+    end
+
+    f2_product = finite_ring_product(finite_ring_prime_field(2), finite_ring_prime_field(2))
+    f2_certificate = finite_ring_find_isomorphism_certificate(
+        examples["F_2[x]/(x^2+x)"].ring,
+        f2_product,
+    )
+    @test f2_certificate !== nothing
+    @test finite_ring_verify_isomorphism_certificate(
+        examples["F_2[x]/(x^2+x)"].ring,
+        f2_product,
+        f2_certificate,
+    ).ok
+
+    @test finite_ring_verify_isomorphism_certificate(
+        examples["F_3[e]/(e^2)"].ring,
+        finite_ring_dual_numbers(3),
+        [1 0; 0 1],
+    ).ok
+
+    f2xf3 = finite_ring_product(finite_ring_prime_field(2), finite_ring_prime_field(3))
+    z6_certificate = finite_ring_find_isomorphism_certificate(examples["Z/6Z"].ring, f2xf3)
+    @test z6_certificate !== nothing
+    @test finite_ring_verify_isomorphism_certificate(
+        examples["Z/6Z"].ring,
+        f2xf3,
+        z6_certificate,
+    ).ok
+    z6_dedup = finite_ring_deduplicate_small_rings(["Z/6Z" => examples["Z/6Z"].ring, "F_2xF_3" => f2xf3])
+    @test length(z6_dedup.merges) == 1
+    @test only(z6_dedup.merges).certificate_check.ok
+
+    skipped = finite_ring_quotient_constructor_status(
+        sage_path=nothing,
+        oscar_available=false,
+        nemo_available=false,
+    )
+    @test [row.backend for row in skipped.optional_backend_rows] == ["sage", "Oscar", "Nemo"]
+    @test all(row -> row.status == "skipped", skipped.optional_backend_rows)
+    @test all(row -> row.reason == "tool_not_available", skipped.optional_backend_rows)
+    @test all(row -> row.certifies_completeness == false, skipped.optional_backend_rows)
+end
+
 @testset "finite ring database schema migration" begin
     prd_tables = finite_ring_database_prd_table_names()
     version_table = "finite_ring_database_schema_version"
@@ -135,7 +391,14 @@ end
     end
     @test occursin("CREATE TABLE IF NOT EXISTS $(version_table)", sql)
     @test occursin("VALUES ('finite_ring_database', 1)", sql)
-    @test !occursin("FOREIGN KEY(certificate_id)", sql)
+    @test occursin(
+        "FOREIGN KEY(certificate_id) REFERENCES isomorphism_certificate(certificate_id)",
+        sql,
+    )
+    @test occursin("CHECK(ring_id IS NOT NULL OR presentation_id IS NOT NULL)", sql)
+    @test occursin("is_commutative INTEGER NOT NULL CHECK(is_commutative IN (0, 1))", sql)
+    @test occursin("has_one INTEGER NOT NULL CHECK(has_one IN (0, 1))", sql)
+    @test !occursin("json_valid", lowercase(sql))
 
     err = try
         migrate_finite_ring_database_schema!(tempname(); sqlite3_path=nothing)
@@ -213,14 +476,635 @@ end
                     "SELECT COUNT(*) FROM ring_presentation_link;",
                 ),
             ) == "0"
+
+            fixture_insert = _sqlite3_test_result(
+                sqlite3_path,
+                db_path,
+                """
+                PRAGMA foreign_keys=ON;
+                INSERT INTO build_run
+                  (run_id, run_path, command_line, tool_versions_json, created_utc, scope_json)
+                VALUES ('run:test', 'runs/test', 'cmd', '{}', '2099-01-01T00:00:00Z', '{}');
+                INSERT INTO presentation
+                  (presentation_id, run_id, presentation_type, parsed_status)
+                VALUES ('pres:test', 'run:test', 'manual', 'parsed');
+                INSERT INTO ring
+                  (ring_id, canonical_presentation_id, order_exact, characteristic_exact,
+                   additive_invariants_json, is_commutative, has_one, local_status,
+                   reduced_status, field_status, frobenius_status,
+                   generating_character_status, audit_status)
+                VALUES ('ring:test', 'pres:test', '1', '1', '[]', 1, 1, 'unknown',
+                        'unknown', 'unknown', 'unknown', 'unknown', 'pending');
+                """,
+            )
+            @test fixture_insert.ok
+
+            missing_certificate = _sqlite3_test_result(
+                sqlite3_path,
+                db_path,
+                """
+                PRAGMA foreign_keys=ON;
+                INSERT INTO ring_presentation_link
+                  (ring_id, presentation_id, link_status, certificate_id)
+                VALUES ('ring:test', 'pres:test', 'canonical', 'iso:missing');
+                """,
+            )
+            @test !missing_certificate.ok
+            @test strip(
+                _sqlite3_test_output(
+                    sqlite3_path,
+                    db_path,
+                    "SELECT COUNT(*) FROM ring_presentation_link;",
+                ),
+            ) == "0"
+
+            nullable_certificate = _sqlite3_test_result(
+                sqlite3_path,
+                db_path,
+                """
+                PRAGMA foreign_keys=ON;
+                INSERT INTO ring_presentation_link
+                  (ring_id, presentation_id, link_status)
+                VALUES ('ring:test', 'pres:test', 'canonical');
+                """,
+            )
+            @test nullable_certificate.ok
+
+            unanchored_invariant = _sqlite3_test_result(
+                sqlite3_path,
+                db_path,
+                """
+                INSERT INTO invariant
+                  (invariant_id, invariant_name, invariant_value_json, method)
+                VALUES ('inv:unanchored', 'order', '1', 'test');
+                """,
+            )
+            @test !unanchored_invariant.ok
+
+            invalid_commutative_boolean = _sqlite3_test_result(
+                sqlite3_path,
+                db_path,
+                """
+                PRAGMA foreign_keys=ON;
+                INSERT INTO ring
+                  (ring_id, canonical_presentation_id, order_exact, characteristic_exact,
+                   additive_invariants_json, is_commutative, has_one, local_status,
+                   reduced_status, field_status, frobenius_status,
+                   generating_character_status, audit_status)
+                VALUES ('ring:bad-commutative', 'pres:test', '1', '1', '[]', 2, 1,
+                        'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'pending');
+                """,
+            )
+            @test !invalid_commutative_boolean.ok
+
+            invalid_has_one_boolean = _sqlite3_test_result(
+                sqlite3_path,
+                db_path,
+                """
+                PRAGMA foreign_keys=ON;
+                INSERT INTO ring
+                  (ring_id, canonical_presentation_id, order_exact, characteristic_exact,
+                   additive_invariants_json, is_commutative, has_one, local_status,
+                   reduced_status, field_status, frobenius_status,
+                   generating_character_status, audit_status)
+                VALUES ('ring:bad-has-one', 'pres:test', '1', '1', '[]', 1, -1,
+                        'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'pending');
+                """,
+            )
+            @test !invalid_has_one_boolean.ok
         end
     end
+end
+
+@testset "finite ring database canonical IDs" begin
+    left = Dict(
+        "presentation_type" => "quotient",
+        "generators" => ["x"],
+        "relations" => ["x^2"],
+        "metadata" => Dict(:has_one => true, "source_rank" => 2, :note => nothing),
+    )
+    right = Dict(
+        :metadata => Dict("source_rank" => 2, :note => nothing, "has_one" => true),
+        :relations => ("x^2",),
+        :generators => ["x"],
+        :presentation_type => "quotient",
+    )
+
+    @test finite_ring_database_canonical_json(left) ==
+          finite_ring_database_canonical_json(right)
+    @test finite_ring_database_canonical_json((b=1, a=["q", false, nothing])) ==
+          "{\"a\":[\"q\",false,null],\"b\":1}"
+
+    presentation_id = finite_ring_presentation_id(left)
+    @test presentation_id == finite_ring_presentation_id(right)
+    @test startswith(presentation_id, "pres:")
+    @test length(presentation_id) == length("pres:") + 64
+    @test presentation_id != finite_ring_presentation_id(merge(left, Dict("relations" => ["x^3"])))
+
+    certificate_id = finite_ring_certificate_id((map=[1, 2], verdict="isomorphic"))
+    @test startswith(certificate_id, "iso:")
+    @test length(certificate_id) == length("iso:") + 64
+
+    representative = (presentation_id=presentation_id, additive_invariants=[2, 2])
+    scope = (commutative=true, unital=true, zero_ring_policy="include")
+    ring_id = finite_ring_id(representative, scope)
+    @test startswith(ring_id, "ring:")
+    @test length(ring_id) == length("ring:") + 64
+    @test ring_id == finite_ring_id(
+        Dict(:additive_invariants => [2, 2], "presentation_id" => presentation_id),
+        Dict("zero_ring_policy" => "include", :unital => true, :commutative => true),
+    )
+    @test ring_id != finite_ring_id(
+        representative,
+        (commutative=true, unital=true, zero_ring_policy="exclude"),
+    )
+
+    @test finite_ring_quantization_id(ring_id, "residue", "v1") ==
+          "quant:$(ring_id):residue:v1"
+    @test_throws ArgumentError finite_ring_database_canonical_json((a=1.5,))
+    @test_throws ArgumentError finite_ring_database_canonical_json(Dict(1 => "unsupported key"))
+    @test_throws ArgumentError finite_ring_database_canonical_json(Dict(:a => 1, "a" => 2))
+    @test_throws ArgumentError finite_ring_quantization_id(ring_id, "bad:layer", "v1")
+end
+
+@testset "finite ring database structure constants" begin
+    z4_products = reshape([1], 1, 1, 1)
+    z4 = finite_ring_structure_constants([4], [1], z4_products)
+    @test finite_ring_order(z4) == 4
+    @test finite_ring_zero(z4) == [0]
+    @test finite_ring_one(z4) == [1]
+    @test finite_ring_add(z4, [3], [2]) == [1]
+    @test finite_ring_neg(z4, [3]) == [1]
+    @test finite_ring_mul(z4, [2], [3]) == [2]
+    @test finite_ring_elements(z4) == [[0], [1], [2], [3]]
+
+    dual_products = zeros(Int, 2, 2, 2)
+    dual_products[1, 1, 1] = 1
+    dual_products[1, 2, 2] = 1
+    dual_products[2, 1, 2] = 1
+    dual = finite_ring_structure_constants([2, 2], [1, 0], dual_products)
+    @test finite_ring_order(dual) == 4
+    @test finite_ring_add(dual, [1, 1], [0, 1]) == [1, 0]
+    @test finite_ring_mul(dual, [1, 1], [1, 1]) == [1, 0]
+    @test finite_ring_mul(dual, [0, 1], [0, 1]) == [0, 0]
+    @test length(finite_ring_elements(dual)) == 4
+
+    noncommutative = zeros(Int, 3, 3, 3)
+    noncommutative[1, 1, 1] = 1
+    for i in 2:3
+        noncommutative[1, i, i] = 1
+        noncommutative[i, 1, i] = 1
+    end
+    noncommutative[3, 2, 2] = 1
+    @test_throws ArgumentError finite_ring_structure_constants(
+        [2, 2, 2],
+        [1, 0, 0],
+        noncommutative,
+    )
+
+    nonassociative = zeros(Int, 3, 3, 3)
+    nonassociative[1, 1, 1] = 1
+    for i in 2:3
+        nonassociative[1, i, i] = 1
+        nonassociative[i, 1, i] = 1
+    end
+    nonassociative[2, 2, 3] = 1
+    nonassociative[2, 3, 1] = 1
+    nonassociative[3, 2, 1] = 1
+    @test_throws ArgumentError finite_ring_structure_constants(
+        [2, 2, 2],
+        [1, 0, 0],
+        nonassociative,
+    )
+
+    @test_throws ArgumentError finite_ring_structure_constants([2], [2], reshape([1], 1, 1, 1))
+    @test_throws ArgumentError finite_ring_structure_constants([4], [0], z4_products)
+
+    incompatible = zeros(Int, 2, 2, 2)
+    incompatible[1, 2, 2] = 1
+    @test_throws ArgumentError finite_ring_structure_constants([2, 4], [0, 0], incompatible)
+end
+
+@testset "finite ring database manual MVP constructors" begin
+    expected = [
+        "zero_ring" => (order=1, characteristic=1),
+        "F_2" => (order=2, characteristic=2),
+        "F_3" => (order=3, characteristic=3),
+        "F_5" => (order=5, characteristic=5),
+        "Z/4Z" => (order=4, characteristic=4),
+        "Z/6Z" => (order=6, characteristic=6),
+        "Z/8Z" => (order=8, characteristic=8),
+        "Z/9Z" => (order=9, characteristic=9),
+        "F_2[e]/(e^2)" => (order=4, characteristic=2),
+        "F_3[e]/(e^2)" => (order=9, characteristic=3),
+        "F_2xF_2" => (order=4, characteristic=2),
+        "F_2xF_3" => (order=6, characteristic=6),
+        "F_3xF_3" => (order=9, characteristic=3),
+    ]
+
+    examples = finite_ring_mvp_examples()
+    @test first.(examples) == first.(expected)
+    @test length(examples) == 13
+    by_name = Dict(examples)
+
+    for (name, invariants) in expected
+        R = by_name[name]
+        @test finite_ring_order(R) == invariants.order
+        @test finite_ring_characteristic_exact(R) == invariants.characteristic
+    end
+
+    z6 = finite_ring_zn(6)
+    @test finite_ring_one(z6) == [1]
+    @test finite_ring_mul(z6, [4], [5]) == [2]
+
+    dual_f3 = finite_ring_dual_numbers(3)
+    @test finite_ring_mul(dual_f3, [0, 1], [0, 1]) == [0, 0]
+    @test finite_ring_mul(dual_f3, [2, 1], [2, 2]) == [1, 0]
+
+    f2xf3 = finite_ring_product(finite_ring_prime_field(2), finite_ring_prime_field(3))
+    @test finite_ring_order(f2xf3) == 6
+    @test finite_ring_characteristic_exact(f2xf3) == 6
+    @test finite_ring_mul(f2xf3, [1, 2], [1, 2]) == [1, 1]
+    @test finite_ring_mul(f2xf3, [1, 0], [0, 1]) == [0, 0]
+
+    @test_throws ArgumentError finite_ring_prime_field(4)
+    @test_throws ArgumentError finite_ring_dual_numbers(1)
+end
+
+@testset "finite ring database basic invariants" begin
+    expected = [
+        "zero_ring" => (order=1, characteristic=1, additive=Int[]),
+        "F_2" => (order=2, characteristic=2, additive=[2]),
+        "F_3" => (order=3, characteristic=3, additive=[3]),
+        "F_5" => (order=5, characteristic=5, additive=[5]),
+        "Z/4Z" => (order=4, characteristic=4, additive=[4]),
+        "Z/6Z" => (order=6, characteristic=6, additive=[6]),
+        "Z/8Z" => (order=8, characteristic=8, additive=[8]),
+        "Z/9Z" => (order=9, characteristic=9, additive=[9]),
+        "F_2[e]/(e^2)" => (order=4, characteristic=2, additive=[2, 2]),
+        "F_3[e]/(e^2)" => (order=9, characteristic=3, additive=[3, 3]),
+        "F_2xF_2" => (order=4, characteristic=2, additive=[2, 2]),
+        "F_2xF_3" => (order=6, characteristic=6, additive=[6]),
+        "F_3xF_3" => (order=9, characteristic=3, additive=[3, 3]),
+    ]
+
+    examples = Dict(finite_ring_mvp_examples())
+    @test length(examples) == 13
+    for (name, wanted) in expected
+        invariants = finite_ring_basic_invariants(examples[name])
+        @test invariants.order_exact == wanted.order
+        @test invariants.characteristic_exact == wanted.characteristic
+        @test invariants.additive_invariant_factors == wanted.additive
+        @test finite_ring_additive_invariant_factors(examples[name]) == wanted.additive
+        @test invariants.local_status == "unknown"
+        @test invariants.reduced_status == "unknown"
+        @test invariants.field_status == "unknown"
+        @test invariants.product_status == "unknown"
+        @test invariants.frobenius_status == "unknown"
+        @test invariants.generating_character_status == "unknown"
+    end
+
+    z0 = finite_ring_basic_invariants(examples["zero_ring"])
+    @test z0.maximal_ideals == []
+    @test z0.residue_field_sizes == Int[]
+
+    nonzero = finite_ring_basic_invariants(examples["F_2"])
+    @test nonzero.maximal_ideals == :unknown
+    @test nonzero.residue_field_sizes == :unknown
+end
+
+@testset "finite ring database isomorphism certificates" begin
+    root = project_root()
+    conventions = read(joinpath(root, "CONVENTIONS.md"), String)
+    @test occursin("`additive_generator_image_matrix`, rows are\nsource additive generators", conventions)
+    @test occursin("Row `i` is the\ncanonical target coordinate vector", conventions)
+    @test occursin("first local deduplication search is a bounded MVP", conventions)
+    @test occursin("deterministic input order", conventions)
+
+    dual_f2 = finite_ring_dual_numbers(2)
+    identity_dual = [[1, 0], [0, 1]]
+    dual_check = finite_ring_verify_isomorphism_certificate(dual_f2, dual_f2, identity_dual)
+    @test dual_check.ok
+    @test dual_check.well_defined_additive_map
+    @test dual_check.bijective_additive_map
+    @test dual_check.identity_preserved
+    @test dual_check.multiplication_preserved
+    @test isempty(dual_check.failure_reasons)
+    @test finite_ring_apply_generator_image_matrix(dual_f2, dual_f2, identity_dual, [1, 1]) ==
+          [1, 1]
+
+    z6 = finite_ring_zn(6)
+    f2xf3 = finite_ring_product(finite_ring_prime_field(2), finite_ring_prime_field(3))
+    crt_matrix = [1 1]
+    crt_check = finite_ring_verify_isomorphism_certificate(z6, f2xf3, crt_matrix)
+    @test crt_check.ok
+    @test finite_ring_apply_generator_image_matrix(z6, f2xf3, crt_matrix, [5]) == [1, 2]
+
+    bad_additive = finite_ring_verify_isomorphism_certificate(
+        finite_ring_zn(2),
+        finite_ring_zn(4),
+        [1;;],
+    )
+    @test !bad_additive.ok
+    @test !bad_additive.well_defined_additive_map
+    @test occursin("not well-defined", join(bad_additive.failure_reasons, "; "))
+
+    non_bijective = finite_ring_verify_isomorphism_certificate(
+        dual_f2,
+        dual_f2,
+        [[1, 0], [0, 0]],
+    )
+    @test !non_bijective.ok
+    @test non_bijective.well_defined_additive_map
+    @test !non_bijective.bijective_additive_map
+    @test non_bijective.identity_preserved
+
+    moves_one = finite_ring_verify_isomorphism_certificate(
+        dual_f2,
+        dual_f2,
+        [[1, 1], [0, 1]],
+    )
+    @test !moves_one.ok
+    @test moves_one.bijective_additive_map
+    @test !moves_one.identity_preserved
+
+    breaks_multiplication = finite_ring_verify_isomorphism_certificate(
+        dual_f2,
+        dual_f2,
+        [[1, 0], [1, 1]],
+    )
+    @test !breaks_multiplication.ok
+    @test breaks_multiplication.bijective_additive_map
+    @test breaks_multiplication.identity_preserved
+    @test !breaks_multiplication.multiplication_preserved
+
+    noncanonical_row = finite_ring_verify_isomorphism_certificate(
+        finite_ring_zn(2),
+        finite_ring_zn(2),
+        [2;;],
+    )
+    @test !noncanonical_row.ok
+    @test occursin("canonical coordinate", join(noncanonical_row.failure_reasons, "; "))
+end
+
+@testset "finite ring database small-ring dedup search" begin
+    z6 = finite_ring_zn(6)
+    f2xf3 = finite_ring_product(finite_ring_prime_field(2), finite_ring_prime_field(3))
+    certificate = finite_ring_find_isomorphism_certificate(z6, f2xf3)
+    @test certificate !== nothing
+    @test finite_ring_verify_isomorphism_certificate(z6, f2xf3, certificate).ok
+
+    dedup = finite_ring_deduplicate_small_rings(finite_ring_mvp_examples())
+    merge_pairs = Set((merge.source_name, merge.target_name) for merge in dedup.merges)
+    @test merge_pairs == Set([("F_2xF_3", "Z/6Z")])
+    @test length(dedup.representatives) == length(finite_ring_mvp_examples()) - 1
+    @test all(merge -> merge.certificate_check.ok, dedup.merges)
+
+    representative_names = first.(dedup.representatives)
+    @test "Z/4Z" in representative_names
+    @test "F_2[e]/(e^2)" in representative_names
+    @test "F_3[e]/(e^2)" in representative_names
+    @test "F_3xF_3" in representative_names
+
+    examples = Dict(finite_ring_mvp_examples())
+    @test finite_ring_find_isomorphism_certificate(
+        examples["F_3[e]/(e^2)"],
+        examples["F_3xF_3"],
+    ) === nothing
+    @test finite_ring_find_isomorphism_certificate(
+        examples["Z/4Z"],
+        examples["F_2[e]/(e^2)"],
+    ) === nothing
+    @test_throws ArgumentError finite_ring_find_isomorphism_certificate(
+        finite_ring_zn(8),
+        finite_ring_zn(8);
+        max_order=7,
+    )
+end
+
+@testset "finite ring database residue quantization records" begin
+    root = project_root()
+    conventions = read(joinpath(root, "CONVENTIONS.md"), String)
+    @test occursin(
+        "finite_ring_db.residue_quantization_helper_scope = mvp_source_backed_only",
+        conventions,
+    )
+    @test occursin("this helper is not a general maximal-ideal algorithm", conventions)
+
+    records = Dict(finite_ring_mvp_residue_quantization_records())
+    @test Set(keys(records)) == Set(first.(finite_ring_mvp_examples()))
+
+    f3 = records["F_3"]
+    @test f3.layer == "residue"
+    @test f3.status == "available"
+    @test f3.residue_qudit_dims == [3]
+    @test f3.hilbert_dim_exact == 3
+    @test f3.label_group_order_exact == 9
+    @test f3.observable_basis_dim_exact == 9
+    @test occursin("CONVENTIONS.md (u)", f3.source_locator)
+
+    z6 = records["Z/6Z"]
+    @test z6.residue_qudit_dims == [2, 3]
+    @test z6.hilbert_dim_exact == 6
+    @test z6.label_group_order_exact == 36
+    @test z6.observable_basis_dim_exact == 36
+    @test occursin("23_spec_z6_residue_qudit_factorisation.tex", z6.source_locator)
+
+    f3xf3 = records["F_3xF_3"]
+    @test f3xf3.residue_qudit_dims == [3, 3]
+    @test f3xf3.hilbert_dim_exact == 9
+    @test f3xf3.label_group_order_exact == 81
+    @test f3xf3.observable_basis_dim_exact == 81
+    @test occursin("40_product_field_spectrum_qudit_stabilizers.tex", f3xf3.source_locator)
+
+    zero = records["zero_ring"]
+    @test zero.status == "not_applicable_until_layer_semantics"
+    @test zero.layer == "residue"
+    @test !(:residue_qudit_dims in propertynames(zero))
+    @test !(:hilbert_dim_exact in propertynames(zero))
+    @test occursin("zero_ring_quantization_policy", zero.obstruction)
+
+    blocked = records["Z/4Z"]
+    @test blocked.status == "blocked"
+    @test !(:residue_qudit_dims in propertynames(blocked))
+    @test !(:hilbert_dim_exact in propertynames(blocked))
+    @test blocked.obstruction == "missing_certified_maximal_ideal_decomposition_in_this_slice"
+
+    dual_blocked = records["F_3[e]/(e^2)"]
+    @test dual_blocked.status == "blocked"
+    @test !(:residue_qudit_dims in propertynames(dual_blocked))
+    @test !(:hilbert_dim_exact in propertynames(dual_blocked))
+
+    @test_throws ArgumentError finite_ring_residue_quantization_record(
+        "empty",
+        Int[];
+        source_locator="CONVENTIONS.md (u)",
+    )
+    @test_throws ArgumentError finite_ring_blocked_residue_quantization_record(
+        "bad",
+        "obstruction";
+        status="available",
+    )
+end
+
+@testset "finite ring database thickened Frobenius quantization records" begin
+    root = project_root()
+    conventions = read(joinpath(root, "CONVENTIONS.md"), String)
+    @test occursin(
+        "finite_ring_db.thickened_frobenius_quantization_helper_scope = mvp_source_backed_only",
+        conventions,
+    )
+    @test occursin("Frobenius-ring recognizer", conventions)
+
+    records = Dict(finite_ring_mvp_thickened_frobenius_quantization_records())
+    @test Set(keys(records)) == Set(first.(finite_ring_mvp_examples()))
+
+    dual_f3 = records["F_3[e]/(e^2)"]
+    @test dual_f3.name == "F_3[e]/(e^2)"
+    @test dual_f3.layer == "thickened_frobenius"
+    @test dual_f3.status == "available"
+    @test dual_f3.hilbert_dim_exact == 9
+    @test dual_f3.label_group_order_exact == 81
+    @test dual_f3.observable_basis_dim_exact == 81
+    @test occursin("36_nilpotent_thickening_weyl_fields.tex", dual_f3.source_locator)
+    @test occursin("AQM-36", dual_f3.source_locator)
+
+    z9 = records["Z/9Z"]
+    @test z9.layer == "thickened_frobenius"
+    @test z9.status == "blocked"
+    @test z9.obstruction == "missing_certified_generating_character_in_this_slice"
+    @test !(:hilbert_dim_exact in propertynames(z9))
+    @test !(:label_group_order_exact in propertynames(z9))
+    @test !(:observable_basis_dim_exact in propertynames(z9))
+
+    z4 = records["Z/4Z"]
+    @test z4.status == "blocked"
+    @test !(:hilbert_dim_exact in propertynames(z4))
+    @test !(:label_group_order_exact in propertynames(z4))
+    @test !(:observable_basis_dim_exact in propertynames(z4))
+
+    f3 = records["F_3"]
+    @test f3.status == "blocked"
+    @test f3.obstruction == "missing_thickened_frobenius_policy_in_this_slice"
+    @test !(:hilbert_dim_exact in propertynames(f3))
+
+    zero = records["zero_ring"]
+    @test zero.status == "not_applicable_until_layer_semantics"
+    @test zero.layer == "thickened_frobenius"
+    @test !(:hilbert_dim_exact in propertynames(zero))
+    @test !(:label_group_order_exact in propertynames(zero))
+    @test !(:observable_basis_dim_exact in propertynames(zero))
+    @test occursin("zero_ring_quantization_policy", zero.obstruction)
+
+    @test_throws ArgumentError finite_ring_thickened_frobenius_quantization_record(
+        "bad",
+        1;
+        source_locator="report/sections/36_nilpotent_thickening_weyl_fields.tex",
+    )
+    @test_throws ArgumentError finite_ring_thickened_frobenius_quantization_record(
+        "bad",
+        9;
+        source_locator="",
+    )
+    @test_throws ArgumentError finite_ring_thickened_frobenius_quantization_record(
+        "",
+        9;
+        source_locator="report/sections/36_nilpotent_thickening_weyl_fields.tex",
+    )
+    @test_throws ArgumentError finite_ring_thickened_frobenius_quantization_record(
+        "bad",
+        9;
+        source_locator="report/sections/36_nilpotent_thickening_weyl_fields.tex",
+        construction="",
+    )
+    @test_throws ArgumentError finite_ring_blocked_thickened_frobenius_quantization_record(
+        "bad",
+        "",
+    )
+    @test_throws ArgumentError finite_ring_blocked_thickened_frobenius_quantization_record(
+        "bad",
+        "obstruction";
+        status="available",
+    )
+end
+
+@testset "finite ring database prime-field Weyl matrix artifacts" begin
+    root = project_root()
+    conventions = read(joinpath(root, "CONVENTIONS.md"), String)
+    @test occursin(
+        "finite_ring_db.prime_field_weyl_matrix_materialization_helper_scope",
+        conventions,
+    )
+
+    source = "report/sections/22_prime_field_arithmetic_fields_qudit_paulis.tex (AQM-22 L3)"
+    artifact = finite_ring_prime_field_weyl_matrix_materialization(
+        3;
+        matrix_dump_threshold=3,
+        source_locator=source,
+    )
+
+    @test artifact.layer == "matrix_artifact"
+    @test artifact.status == "available"
+    @test artifact.base_layer == "residue"
+    @test artifact.field_size == 3
+    @test artifact.hilbert_dim_exact == 3
+    @test artifact.matrix_count_exact == 9
+    @test artifact.cyclotomic_encoding == "zero_or_exponent_mod_p"
+    @test length(artifact.matrix_payload.matrices) == 9
+    @test all(getfield(artifact.checks, key) for key in keys(artifact.checks))
+    @test startswith(artifact.artifact_id, "matrix_artifact:")
+    @test startswith(artifact.artifact_path, "matrix_artifacts/")
+    @test endswith(artifact.artifact_path, ".json")
+    @test artifact.artifact_path ==
+          finite_ring_prime_field_weyl_matrix_materialization(
+        3;
+        matrix_dump_threshold=3,
+        source_locator=source,
+    ).artifact_path
+
+    w10 = only(filter(
+        matrix -> matrix.q == 1 && matrix.m == 0,
+        artifact.matrix_payload.matrices,
+    ))
+    @test w10.row_index_by_column == [2, 3, 1]
+
+    w01 = only(filter(
+        matrix -> matrix.q == 0 && matrix.m == 1,
+        artifact.matrix_payload.matrices,
+    ))
+    @test w01.row_index_by_column == [1, 2, 3]
+    @test w01.phase_exponent_by_column == [0, 1, 2]
+
+    blocked = finite_ring_prime_field_weyl_matrix_materialization(
+        5;
+        matrix_dump_threshold=3,
+        source_locator=source,
+    )
+    @test blocked.status == "blocked"
+    @test blocked.obstruction == "matrix_dump_threshold_exceeded"
+    @test blocked.checks == (threshold=false,)
+    @test !(:matrix_payload in propertynames(blocked))
+    @test !(:matrices in propertynames(blocked))
+    @test !(:artifact_path in propertynames(blocked))
+
+    @test_throws ArgumentError finite_ring_prime_field_weyl_matrix_materialization(
+        4;
+        matrix_dump_threshold=4,
+        source_locator=source,
+    )
+    @test_throws ArgumentError finite_ring_prime_field_weyl_matrix_materialization(
+        3;
+        matrix_dump_threshold=1,
+        source_locator=source,
+    )
 end
 
 @testset "finite ring database build CLI argument validation" begin
     help = _frdb_build_cli_result("--help")
     @test help.ok
     @test occursin("Usage:", help.stdout)
+    @test occursin("--force", help.stdout)
+    @test occursin("no-overwrite", help.stdout)
 
     unknown = _frdb_build_cli_result("--unknown")
     @test !unknown.ok
@@ -297,6 +1181,363 @@ end
             rm(run_dir; recursive=true, force=true)
         end
     end
+end
+
+@testset "finite ring database build CLI rerun policy" begin
+    sqlite3_path = Sys.which("sqlite3")
+    if sqlite3_path === nothing
+        @test_skip sqlite3_path !== nothing
+    else
+        root = project_root()
+        slug = _frdb_temp_slug("rerun-policy")
+        run_dir = joinpath(root, "runs", slug)
+        db_path = joinpath(run_dir, "data", "finite_rings.sqlite")
+        readme_path = joinpath(run_dir, "README.md")
+        keep_path = joinpath(run_dir, "data", "keep.txt")
+
+        try
+            mkpath(run_dir)
+            write(readme_path, "# Temporary finite-ring rerun policy test\n")
+
+            first = _frdb_build_cli_result("--run", "runs/$(slug)")
+            @test first.ok
+            if first.ok
+                @test isfile(db_path)
+                @test strip(
+                    _sqlite3_test_output(
+                        sqlite3_path,
+                        db_path,
+                        "SELECT COUNT(*) FROM build_run WHERE run_id='$(slug)';",
+                    ),
+                ) == "1"
+            end
+
+            write(keep_path, "preserve sibling data artifact\n")
+
+            second = _frdb_build_cli_result("--run", "runs/$(slug)")
+            @test !second.ok
+            @test occursin("existing SQLite database", second.stderr)
+            @test occursin("no-overwrite", second.stderr)
+            @test strip(
+                _sqlite3_test_output(
+                    sqlite3_path,
+                    db_path,
+                    "SELECT COUNT(*) FROM build_run WHERE run_id='$(slug)';",
+                ),
+            ) == "1"
+
+            forced = _frdb_build_cli_result("--run", "runs/$(slug)", "--force")
+            @test forced.ok
+            if forced.ok
+                @test isfile(db_path)
+                @test isfile(readme_path)
+                @test read(keep_path, String) == "preserve sibling data artifact\n"
+                @test strip(
+                    _sqlite3_test_output(
+                        sqlite3_path,
+                        db_path,
+                        "SELECT COUNT(*) FROM build_run;",
+                    ),
+                ) == "1"
+                @test strip(
+                    _sqlite3_test_output(
+                        sqlite3_path,
+                        db_path,
+                        "SELECT COUNT(*) FROM build_run WHERE run_id='$(slug)';",
+                    ),
+                ) == "1"
+            end
+        finally
+            rm(run_dir; recursive=true, force=true)
+        end
+    end
+end
+
+@testset "finite ring database audit CLI argument validation" begin
+    help = _frdb_audit_cli_result("--help")
+    @test help.ok
+    @test occursin("Usage:", help.stdout)
+    @test occursin("--db", help.stdout)
+
+    missing = _frdb_audit_cli_result()
+    @test !missing.ok
+    @test occursin("--db <path> is required", missing.stderr)
+
+    positional = _frdb_audit_cli_result("runs/not-a-flag")
+    @test !positional.ok
+    @test occursin("positional arguments are not accepted", positional.stderr)
+end
+
+@testset "finite ring database audit CLI canonical JSON checks" begin
+    sqlite3_path = Sys.which("sqlite3")
+    if sqlite3_path === nothing
+        @test_skip sqlite3_path !== nothing
+    else
+        root = project_root()
+        slug = _frdb_temp_slug("audit-json")
+        run_dir = joinpath(root, "runs", slug)
+        db_path = joinpath(run_dir, "data", "finite_rings.sqlite")
+
+        try
+            mkpath(run_dir)
+            write(joinpath(run_dir, "README.md"), "# Temporary finite-ring audit CLI test\n")
+
+            build = _frdb_build_cli_result("--run", "runs/$(slug)")
+            @test build.ok
+            if build.ok
+                pass = _frdb_audit_cli_result("--db", db_path)
+                @test pass.ok
+                @test occursin("finite_ring_db_audit.jl: ok", pass.stdout)
+                @test occursin("json_cells=2", pass.stdout)
+
+                malformed_update = _sqlite3_test_result(
+                    sqlite3_path,
+                    db_path,
+                    """
+                    UPDATE build_run
+                    SET scope_json = '{"a":';
+                    """,
+                )
+                @test malformed_update.ok
+                malformed = _frdb_audit_cli_result("--db", db_path)
+                @test !malformed.ok
+                @test occursin("build_run", malformed.stderr)
+                @test occursin("scope_json", malformed.stderr)
+                @test occursin("malformed JSON", malformed.stderr)
+
+                noncanonical_update = _sqlite3_test_result(
+                    sqlite3_path,
+                    db_path,
+                    """
+                    UPDATE build_run
+                    SET scope_json = '{"b":1,"a":2}';
+                    """,
+                )
+                @test noncanonical_update.ok
+                noncanonical = _frdb_audit_cli_result("--db", db_path)
+                @test !noncanonical.ok
+                @test occursin("build_run", noncanonical.stderr)
+                @test occursin("scope_json", noncanonical.stderr)
+                @test occursin("noncanonical JSON", noncanonical.stderr)
+                @test occursin("expected canonical form", noncanonical.stderr)
+            end
+        finally
+            rm(run_dir; recursive=true, force=true)
+        end
+    end
+end
+
+@testset "finite ring database audit semantic populated checks" begin
+    sqlite3_path = Sys.which("sqlite3")
+    if sqlite3_path === nothing
+        @test_skip sqlite3_path !== nothing
+    else
+        empty_object = _frdb_sql_json(Dict{String,Any}())
+        empty_array = _frdb_sql_json(Any[])
+
+        function audit_fixture(sql)
+            mktempdir() do dir
+                db_path = joinpath(dir, "finite_rings.sqlite")
+                migrate_finite_ring_database_schema!(db_path; sqlite3_path=sqlite3_path)
+                insert = _sqlite3_test_result(sqlite3_path, db_path, "PRAGMA foreign_keys=ON;\n$(sql)")
+                @test insert.ok
+                insert.ok || error("fixture insert failed: $(insert.stderr)")
+                return _frdb_audit_cli_result("--db", db_path)
+            end
+        end
+
+        build_run_sql = """
+        INSERT INTO build_run
+          (run_id, run_path, command_line, tool_versions_json, created_utc, scope_json)
+        VALUES ('run:test', 'runs/test', 'cmd', $(empty_object), '2099-01-01T00:00:00Z', $(empty_object));
+        """
+        source_sql = """
+        INSERT INTO source
+          (source_id, citation_key, local_path, retrieved_date, license_status)
+        VALUES ('src:test', 'Fixture source', 'references/finite_ring_database/SOURCES.md',
+                '2099-01-01', 'local_fixture');
+        """
+        presentation_sql = """
+        INSERT INTO presentation
+          (presentation_id, source_id, run_id, presentation_type, payload_json, parsed_status)
+        VALUES ('pres:canonical', 'src:test', 'run:test', 'manual', $(empty_object), 'parsed');
+        """
+        ring_sql = """
+        INSERT INTO ring
+          (ring_id, canonical_presentation_id, order_exact, characteristic_exact,
+           additive_invariants_json, is_commutative, has_one, local_status,
+           reduced_status, field_status, frobenius_status,
+           generating_character_status, audit_status)
+        VALUES ('ring:test', 'pres:canonical', '2', '2', $(empty_array), 1, 1,
+                'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'pending');
+        INSERT INTO ring_presentation_link
+          (ring_id, presentation_id, link_status)
+        VALUES ('ring:test', 'pres:canonical', 'canonical');
+        """
+        partial_batch_sql = """
+        INSERT INTO enumeration_batch
+          (batch_id, run_id, source_id, scope_json, completeness_status,
+           input_count_exact, certified_ring_count_exact, unresolved_count_exact)
+        VALUES ('batch:test', 'run:test', 'src:test', $(empty_object), 'partial', '1', '1', '0');
+        """
+        available_quantization_sql = """
+        INSERT INTO quantization
+          (quantization_id, ring_id, layer, status, hilbert_dim_exact,
+           label_group_order_exact, observable_basis_dim_exact)
+        VALUES ('quant:test', 'ring:test', 'residue', 'available', '2', '4', '4');
+        """
+
+        function populated_fixture_sql(; batch_sql=partial_batch_sql, quantization_sql=available_quantization_sql, extra_sql="")
+            return build_run_sql * source_sql * presentation_sql * ring_sql *
+                   batch_sql * quantization_sql * extra_sql
+        end
+
+        missing_source = audit_fixture(
+            build_run_sql *
+            """
+            INSERT INTO presentation
+              (presentation_id, run_id, presentation_type, payload_json, parsed_status)
+            VALUES ('pres:missing-source', 'run:test', 'manual', $(empty_object), 'parsed');
+            """,
+        )
+        @test !missing_source.ok
+        @test occursin("presentation", missing_source.stderr)
+        @test occursin("source_id", missing_source.stderr)
+
+        invalid_source = audit_fixture(
+            build_run_sql *
+            """
+            INSERT INTO source
+              (source_id, citation_key, retrieved_date, license_status)
+            VALUES ('src:bad', 'Fixture source', '2099-01-01', '');
+            """,
+        )
+        @test !invalid_source.ok
+        @test occursin("source", invalid_source.stderr)
+        @test occursin("license_status", invalid_source.stderr)
+
+        no_cert = audit_fixture(
+            populated_fixture_sql(
+                extra_sql="""
+                INSERT INTO presentation
+                  (presentation_id, source_id, run_id, presentation_type, payload_json, parsed_status)
+                VALUES ('pres:duplicate', 'src:test', 'run:test', 'manual', $(empty_object), 'parsed');
+                INSERT INTO ring_presentation_link
+                  (ring_id, presentation_id, link_status)
+                VALUES ('ring:test', 'pres:duplicate', 'merged');
+                """,
+            ),
+        )
+        @test !no_cert.ok
+        @test occursin("ring_presentation_link", no_cert.stderr)
+        @test occursin("certificate_id", no_cert.stderr)
+
+        bad_cert = audit_fixture(
+            populated_fixture_sql(
+                extra_sql="""
+                INSERT INTO presentation
+                  (presentation_id, source_id, run_id, presentation_type, payload_json, parsed_status)
+                VALUES ('pres:bad-cert', 'src:test', 'run:test', 'manual', $(empty_object), 'parsed');
+                INSERT INTO isomorphism_certificate
+                  (certificate_id, presentation_id_a, presentation_id_b, verdict,
+                   certificate_type, certificate_json, tool, checked_by, checker_result)
+                VALUES ('iso:bad', 'pres:canonical', 'pres:bad-cert', 'unknown',
+                        'fixture', $(empty_object), 'test', 'test', 'failed');
+                INSERT INTO ring_presentation_link
+                  (ring_id, presentation_id, link_status, certificate_id)
+                VALUES ('ring:test', 'pres:bad-cert', 'merged', 'iso:bad');
+                """,
+            ),
+        )
+        @test !bad_cert.ok
+        @test occursin("checker_result=ok", bad_cert.stderr)
+        @test occursin("verdict=isomorphic", bad_cert.stderr)
+
+        no_quantization = audit_fixture(populated_fixture_sql(quantization_sql=""))
+        @test !no_quantization.ok
+        @test occursin("quantization", no_quantization.stderr)
+
+        no_batch = audit_fixture(populated_fixture_sql(batch_sql=""))
+        @test !no_batch.ok
+        @test occursin("enumeration_batch", no_batch.stderr)
+
+        blocked_without_obstruction = audit_fixture(
+            populated_fixture_sql(
+                quantization_sql="""
+                INSERT INTO quantization
+                  (quantization_id, ring_id, layer, status)
+                VALUES ('quant:blocked', 'ring:test', 'residue', 'blocked');
+                """,
+            ),
+        )
+        @test !blocked_without_obstruction.ok
+        @test occursin("quantization", blocked_without_obstruction.stderr)
+        @test occursin("obstruction", blocked_without_obstruction.stderr)
+
+        available_missing_dims = audit_fixture(
+            populated_fixture_sql(
+                quantization_sql="""
+                INSERT INTO quantization
+                  (quantization_id, ring_id, layer, status, hilbert_dim_exact,
+                   label_group_order_exact)
+                VALUES ('quant:missing-dims', 'ring:test', 'residue', 'available', '2', '4');
+                """,
+            ),
+        )
+        @test !available_missing_dims.ok
+        @test occursin("quantization", available_missing_dims.stderr)
+        @test occursin("hilbert_dim_exact", available_missing_dims.stderr)
+
+        incomplete_claim = audit_fixture(
+            populated_fixture_sql(
+                batch_sql="""
+                INSERT INTO enumeration_batch
+                  (batch_id, run_id, source_id, scope_json, completeness_status,
+                   input_count_exact, certified_ring_count_exact, unresolved_count_exact,
+                   reconciliation_json)
+                VALUES ('batch:complete', 'run:test', 'src:test', $(empty_object),
+                        'complete', '1', '1', '1', $(empty_object));
+                """,
+            ),
+        )
+        @test !incomplete_claim.ok
+        @test occursin("enumeration_batch", incomplete_claim.stderr)
+        @test occursin("unresolved_count_exact", incomplete_claim.stderr)
+
+        valid = audit_fixture(populated_fixture_sql())
+        @test valid.ok
+        @test occursin("finite_ring_db_audit.jl: ok", valid.stdout)
+    end
+end
+
+@testset "finite ring database smoke build registration" begin
+    root = project_root()
+    run_slug = "2026-05-26-finite-ring-database"
+    run_path = "runs/$(run_slug)"
+    audit_db_path = "$(run_path)/data/finite_rings.sqlite"
+
+    run_all = read(joinpath(root, "scripts", "run_all.jl"), String)
+    @test occursin("finite_ring_db_build_smoke", run_all)
+    @test occursin("finite_ring_db_audit_smoke", run_all)
+    @test occursin("arithmetic/finite_ring_db_audit.jl", run_all)
+    @test occursin(audit_db_path, run_all)
+    @test occursin(run_path, run_all)
+    @test occursin("--force", run_all)
+
+    index = read(joinpath(root, "INDEX.md"), String)
+    @test occursin("`$(run_path)/`", index)
+    @test occursin("scripts/arithmetic/finite_ring_db_build.jl", index)
+    @test occursin("scripts/arithmetic/finite_ring_db_audit.jl", index)
+    @test occursin("writes local `data/finite_rings.sqlite`", index)
+
+    readme = read(joinpath(root, run_path, "README.md"), String)
+    @test occursin("finite_rings.sqlite", readme)
+    @test occursin("finite_ring_db_audit.jl", readme)
+    @test occursin("canonical JSON", readme)
+    @test occursin("schema-only", readme)
+
+    gitignore = read(joinpath(root, ".gitignore"), String)
+    @test occursin("runs/**/data/finite_rings.sqlite", gitignore)
 end
 
 @testset "algebraic toric-code ghost boundary supercharge" begin

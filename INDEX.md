@@ -20,6 +20,7 @@ Generated data and figures will live under
 | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/` | Steane code / Clifford group ghost Gaussians | Exact generator-level validation of arbitrary Clifford covariance and elementary GL6 ghost-Gaussian presentation moves. |
 | `runs/2026-05-24-arithmetic-quantum-fields/` | Arithmetic quantum fields / finite function spaces | Exact `F_3` validation of pointwise symplectic function spaces, radicals, reduced Weyl labels, and observable algebra dimensions. |
 | `runs/2026-05-24-projective-line-sheaf-fields/` | Projective arithmetic fields / sheaves | Exact `F_3` validation of \(\mathbf P^1\), \(H^0(\mathcal O(d))\otimes\mathbb F_3^2\), finite point evaluations, stalk germs, radicals, and reduced Weyl labels. |
+| `runs/2026-05-26-finite-ring-database/` | Finite commutative ring database | Schema-only SQLite smoke build, audit gate on the schema-only smoke artifact, and in-memory MVP CSV review exports; `finite_rings.sqlite` remains schema-only/local and no populated/audited database is claimed. |
 
 ## Quick Start
 
@@ -32,8 +33,8 @@ julia --project=. scripts/run_all.jl --fast
 
 ## Script To Output Manifest
 
-One row per script that writes files. Add rows in the same change that adds a
-producer.
+One row per script that writes files or gates a run bundle. Add rows in the
+same change that adds a producer or gate.
 
 | Script | Tool | Run bundle | CSV outputs | Figures | Report shard |
 |---|---|---|---|---|---|
@@ -46,6 +47,9 @@ producer.
 | `scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl` | Julia | `runs/2026-05-24-steane-all-clifford-ghost-gaussians/` | `data/steane_all_clifford_generator_summary.csv`, `data/steane_all_clifford_generator_images.csv`, `data/steane_ghost_gaussian_elementaries.csv` | _none_ | `AQM-13-CLIFFORD-GROUP-GHOST-GAUSSIAN-THEOREM` |
 | `scripts/bridges/arithmetic_quantum_fields.jl` | Julia | `runs/2026-05-24-arithmetic-quantum-fields/` | `data/arithmetic_quantum_field_examples.csv`, `data/arithmetic_quantum_field_bases.csv` | _none_ | `AQM-14-ARITHMETIC-QUANTUM-FIELDS` |
 | `scripts/bridges/projective_line_sheaf_fields.jl` | Julia | `runs/2026-05-24-projective-line-sheaf-fields/` | `data/projective_line_sheaf_field_summary.csv`, `data/projective_line_sheaf_field_basis_rows.csv`, `data/projective_line_stalk_rows.csv` | _none_ | `AQM-15-PROJECTIVE-SHEAF-FIELD-DEFINITIONS`, `AQM-16-PROJECTIVE-LINE-SHEAF-FIELD-CALCULATION`, `AQM-17-PROJECTIVE-LINE-STALKS`, `AQM-18-STALKS-AS-FIELD-GERMS` |
+| `scripts/arithmetic/finite_ring_db_build.jl` | Julia | `runs/2026-05-26-finite-ring-database/` | _none_ (writes local `data/finite_rings.sqlite`) | _none_ | _pending_ |
+| `scripts/arithmetic/finite_ring_db_audit.jl` | Julia | `runs/2026-05-26-finite-ring-database/` | _none_ (audits local `data/finite_rings.sqlite`; writes no artifact in this MVP slice) | _none_ | _pending_ |
+| `scripts/arithmetic/finite_ring_db_exports.jl` | Julia | `runs/2026-05-26-finite-ring-database/` | `data/ring_summary.csv`, `data/ring_presentations.csv`, `data/ring_isomorphism_certificates.csv`, `data/ring_quantization_summary.csv`, `data/ring_quantization_obstruction.csv` | _none_ | _pending_ |
 
 ## CSV Reverse Lookup
 
@@ -70,13 +74,18 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_summary.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | `projective_line_sheaf_field_summary.csv` |
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_basis_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | `projective_line_sheaf_field_basis_rows.csv` |
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_stalk_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | `projective_line_stalk_rows.csv` |
+| `runs/2026-05-26-finite-ring-database/data/ring_summary.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | `ring_summary.csv` |
+| `runs/2026-05-26-finite-ring-database/data/ring_presentations.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | `ring_presentations.csv` |
+| `runs/2026-05-26-finite-ring-database/data/ring_isomorphism_certificates.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | `ring_isomorphism_certificates.csv` |
+| `runs/2026-05-26-finite-ring-database/data/ring_quantization_summary.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | `ring_quantization_summary.csv` |
+| `runs/2026-05-26-finite-ring-database/data/ring_quantization_obstruction.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | `ring_quantization_obstruction.csv` |
 
 ## Planning Documents
 
 | Document | Topic | Status |
 |---|---|---|
-| `docs/finite_commutative_ring_database_prd.md` | Finite commutative ring database and quantisation pipeline | PRD only; no producer or run bundle yet. |
-| `docs/finite_commutative_ring_database_implementation_plan.md` | Red-green implementation chain for the finite commutative ring database | Beads chain `aqm-pa0` through `aqm-6t4`; no implementation yet. |
+| `docs/finite_commutative_ring_database_prd.md` | Finite commutative ring database and quantisation pipeline | PRD plus schema-only smoke build, audit gate, and in-memory MVP review exports exist; populated/audited ring database remains pending. |
+| `docs/finite_commutative_ring_database_implementation_plan.md` | Red-green implementation chain for the finite commutative ring database | Beads chain `aqm-pa0` through `aqm-6t4`; schema-only smoke build, schema-only/MVP malformed audit gate, and in-memory MVP review exports exist, while populated/audited ring database remains pending. |
 
 ## Report Shards
 

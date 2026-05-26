@@ -31,6 +31,32 @@ export finite_ring_database_schema_version
 export finite_ring_database_prd_table_names
 export finite_ring_database_schema_sql
 export migrate_finite_ring_database_schema!
+export finite_ring_database_canonical_json
+export finite_ring_presentation_id
+export finite_ring_certificate_id
+export finite_ring_id
+export finite_ring_quantization_id
+export FiniteRingStructureConstants
+export finite_ring_structure_constants
+export finite_ring_zero, finite_ring_one, finite_ring_order
+export finite_ring_add, finite_ring_neg, finite_ring_mul, finite_ring_elements
+export finite_ring_characteristic_exact
+export finite_ring_zero_ring, finite_ring_zn, finite_ring_prime_field
+export finite_ring_dual_numbers, finite_ring_product, finite_ring_mvp_examples
+export finite_ring_additive_invariant_factors, finite_ring_basic_invariants
+export finite_ring_apply_generator_image_matrix
+export finite_ring_verify_isomorphism_certificate
+export finite_ring_find_isomorphism_certificate
+export finite_ring_deduplicate_small_rings
+export finite_ring_residue_quantization_record
+export finite_ring_blocked_residue_quantization_record
+export finite_ring_mvp_residue_quantization_records
+export finite_ring_thickened_frobenius_quantization_record
+export finite_ring_blocked_thickened_frobenius_quantization_record
+export finite_ring_mvp_thickened_frobenius_quantization_records
+export finite_ring_prime_field_weyl_matrix_materialization
+export finite_ring_gap_small_ring_import_status
+export finite_ring_quotient_constructor_status
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")
@@ -55,5 +81,15 @@ run_bundle_path(run::AbstractString) = joinpath(project_root(), "runs", run)
 
 include("ArithmeticQuantumMechanics/FiniteRingDatabasePreflight.jl")
 include("ArithmeticQuantumMechanics/FiniteRingDatabaseSchema.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseIds.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseStructures.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseConstructors.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseQuotientConstructors.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseInvariants.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseCertificates.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseDedup.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseQuantization.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseMatrixArtifacts.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseGapImporter.jl")
 
 end

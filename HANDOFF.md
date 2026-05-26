@@ -10,14 +10,13 @@ source manifests for that.
 implementation chain, not older report-frontier material, unless the user
 redirects. Start from `docs/finite_commutative_ring_database_prd.md`,
 `docs/finite_commutative_ring_database_implementation_plan.md`, convention
-`(an)` in `CONVENTIONS.md`, and the current Beads state. The mainline chain has
-completed `aqm-pa0`, `aqm-8dl`, `aqm-4fi`, and `aqm-775`; the next mainline
-bead is `aqm-0zl`, `FRDB 05 add canonical JSON and ID hashing`. Orchestration
-was stopped by user request before any `aqm-0zl` implementation patch landed.
-Auxiliary open beads raised during orchestration are `aqm-3cm` (zero-ring
-invariant conventions before manual constructors), `aqm-4eq`
-(certificate-link/schema integrity decisions before audit hardening), and
-`aqm-zky` (build CLI rerun/overwrite policy before final acceptance).
+`(an)` in `CONVENTIONS.md`, the current Beads state, and the finite-ring run
+bundle at `runs/2026-05-26-finite-ring-database/`. The main finite-ring chain
+has progressed through acceptance bead `aqm-6t4`. Unless new beads are raised,
+the only known follow-up is `aqm-tcv`, the GAP-enabled host validation for
+optional GAP small-ring status. Do not add report shards from this slice: the
+SQLite file is still schema-only/local, no populated or audited ring database
+exists, and no completeness claim is available.
 
 Initial infrastructure is in place for a lab-book style research workspace
 about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
@@ -167,17 +166,58 @@ database. The PRD lives at `docs/finite_commutative_ring_database_prd.md`; the
 implementation plan lives at
 `docs/finite_commutative_ring_database_implementation_plan.md`; Beads tracks
 the mainline chain `aqm-pa0` through `aqm-6t4`. Current implementation state:
-`CONVENTIONS.md` fixes the one-element zero-ring inclusion policy and generated
-SQLite artifact policy; `src/ArithmeticQuantumMechanics/FiniteRingDatabasePreflight.jl`
-checks local source/tool ground truth; `src/ArithmeticQuantumMechanics/FiniteRingDatabaseSchema.jl`
-emits and migrates the PRD SQLite schema; and
-`scripts/arithmetic/finite_ring_db_build.jl` is a schema-only run-bundle CLI
-skeleton that refuses to write without `runs/<slug>/README.md`, creates
-`data/finite_rings.sqlite`, inserts one `build_run` row, and inserts no ring
-rows. No persistent finite-ring run bundle, CSV export, quantisation output, or
-report shard has been created yet.
+convention `(an)` fixes the zero-ring policy, generated SQLite artifact policy,
+build rerun policy, schema-integrity split, and MVP helper scopes; the code now
+has canonical JSON/ID helpers, a structure-constant ring model, manual MVP
+constructors, invariant helpers, certificate verification, bounded dedup,
+residue and thickened-Frobenius quantisation helpers, prime-field Weyl matrix
+metadata, optional GAP and quotient helper status paths, `run_all`/export
+wiring, and an audit gate. The run bundle
+`runs/2026-05-26-finite-ring-database/` records passing acceptance for the
+schema-only SQLite smoke build and in-memory CSV review exports. The SQLite
+file remains local/ignored and contains one `build_run` row with zero `ring`
+and `presentation` rows; no populated/audited ring database or completeness
+claim exists yet, and report integration is deferred.
 
 ## Most Recent Session
+
+**2026-05-26 - Finite-ring database Steps 05-18 acceptance outcome.**
+
+- Continued the mainline finite-ring chain from `aqm-0zl` through acceptance
+  bead `aqm-6t4`. Canonical JSON and ID hashing now cover presentation, ring,
+  certificate, and quantisation payloads.
+- Added the structure-constant model, manual MVP constructors, invariant
+  helpers, verifier-checked isomorphism certificates, and bounded dedup search.
+  Invariants filter candidate comparisons; verifier-approved certificates prove
+  MVP merges.
+- Added MVP residue and thickened-Frobenius quantisation helpers. Unavailable
+  cases emit explicit obstruction/blocking rows, and the zero ring remains
+  `not_applicable_until_layer_semantics` with no Hilbert-space claim.
+- Added optional prime-field Weyl matrix metadata, GAP small-ring status, and
+  quotient-constructor status helpers. This host has no GAP, so only the
+  explicit skip path was exercised locally; `aqm-tcv` remains open for
+  GAP-enabled validation.
+- Recorded the rerun policy and schema-integrity split in convention `(an)`:
+  build fails on an existing SQLite file unless `--force`; stable relational
+  checks live in schema, while canonical JSON and open/evolving status tokens
+  are audit-owned.
+- Wired the schema-only build, audit gate, and in-memory CSV exports into
+  `scripts/run_all.jl`, `INDEX.md`, and `data/SCHEMA.md`.
+- Acceptance recorded in `runs/2026-05-26-finite-ring-database/README.md`:
+  `julia --project=. scripts/run_all.jl --fast` passed with `12 ok, 0 failed,
+  0 skipped`; `git diff --check` was clean; and
+  `julia --project=. -e 'using Pkg; Pkg.test()'` passed with the existing GAP
+  availability check still marked Broken/`@test_skip`.
+- Audit summary from the orchestrator run:
+  `finite_ring_db_audit.jl: ok ... tables=11/11 schema_version=1 build_runs=1
+  json_cells=2`.
+- Current boundary: `finite_rings.sqlite` is schema-only/local/ignored with
+  `build_run=1`, `ring=0`, and `presentation=0`. CSV data rows are
+  `ring_summary=12`, `ring_presentations=13`,
+  `ring_isomorphism_certificates=1`, `ring_quantization_summary=26`, and
+  `ring_quantization_obstruction=18`. This is not a populated/audited
+  finite-ring database and makes no completeness claim; no report shard was
+  added.
 
 **2026-05-26 - Finite-ring database orchestration through build CLI skeleton.**
 

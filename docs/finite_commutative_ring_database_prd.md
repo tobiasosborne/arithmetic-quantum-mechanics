@@ -1,7 +1,8 @@
 # Finite Commutative Ring Database PRD
 
-Status: planning artifact. No database, producer script, or generated run
-bundle exists yet.
+Status: planning artifact. The PRD, schema-only smoke build, audit gate, and
+in-memory MVP review exports exist; a populated/audited ring database remains
+pending, and no completeness claim is made.
 
 Primary sources:
 `references/finite_ring_database/SOURCES.md`,
@@ -110,12 +111,19 @@ Generated SQLite files follow:
 
 ```text
 finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy
+finite_ring_db.sqlite_build_rerun_policy = fail_existing_sqlite_unless_force
 ```
 
 That is, `finite_rings.sqlite` is an ordinary local run artifact and should
 not be committed in normal development until a release artifact policy is
 recorded. Source manifests, run READMEs, audit outputs, and review-sized
 exports remain commit candidates.
+
+Build reruns are no-append by default for the MVP. If
+`runs/<slug>/data/finite_rings.sqlite` already exists, the build CLI must fail
+before schema migration or inserts with a clear no-overwrite error. An explicit
+`--force` may remove only that SQLite file and rebuild `schema` plus
+`build_run`; it must preserve the run directory, run README, and sibling files.
 
 ### PRD-FR-003: Ring Identity Contract
 
@@ -299,7 +307,8 @@ The first implementation should expose:
 julia --project=. scripts/arithmetic/finite_ring_db_build.jl \
   --run runs/<date>-finite-ring-database \
   --max-order 15 \
-  --sources gap-small,manual-examples
+  --sources gap-small,manual-examples \
+  [--force]
 
 julia --project=. scripts/arithmetic/finite_ring_db_quantize.jl \
   --run runs/<date>-finite-ring-database \
@@ -329,7 +338,8 @@ Every CSV export must have sentinel-row handling documented in `data/SCHEMA.md`.
 ## 5. Proposed SQLite Schema
 
 Column types are SQLite storage classes. JSON columns use canonical UTF-8 JSON
-with sorted object keys.
+with sorted object keys; canonical JSON validity is audited rather than
+enforced by JSON1 schema constraints in this MVP.
 
 ```sql
 CREATE TABLE source (
@@ -374,8 +384,8 @@ CREATE TABLE ring (
   order_exact TEXT NOT NULL,
   characteristic_exact TEXT NOT NULL,
   additive_invariants_json TEXT NOT NULL,
-  is_commutative INTEGER NOT NULL,
-  has_one INTEGER NOT NULL,
+  is_commutative INTEGER NOT NULL CHECK(is_commutative IN (0, 1)),
+  has_one INTEGER NOT NULL CHECK(has_one IN (0, 1)),
   identity_vector_json TEXT,
   local_status TEXT NOT NULL,
   reduced_status TEXT NOT NULL,
@@ -398,7 +408,8 @@ CREATE TABLE ring_presentation_link (
   certificate_id TEXT,
   PRIMARY KEY(ring_id, presentation_id),
   FOREIGN KEY(ring_id) REFERENCES ring(ring_id),
-  FOREIGN KEY(presentation_id) REFERENCES presentation(presentation_id)
+  FOREIGN KEY(presentation_id) REFERENCES presentation(presentation_id),
+  FOREIGN KEY(certificate_id) REFERENCES isomorphism_certificate(certificate_id)
 );
 
 CREATE TABLE invariant (
@@ -409,6 +420,7 @@ CREATE TABLE invariant (
   invariant_value_json TEXT NOT NULL,
   method TEXT NOT NULL,
   certificate_artifact_path TEXT,
+  CHECK(ring_id IS NOT NULL OR presentation_id IS NOT NULL),
   FOREIGN KEY(ring_id) REFERENCES ring(ring_id),
   FOREIGN KEY(presentation_id) REFERENCES presentation(presentation_id)
 );
@@ -470,7 +482,21 @@ CREATE TABLE matrix_artifact (
   verification_json TEXT NOT NULL,
   FOREIGN KEY(quantization_id) REFERENCES quantization(quantization_id)
 );
+
+CREATE TABLE finite_ring_database_schema_version (
+  component TEXT PRIMARY KEY,
+  version INTEGER NOT NULL
+);
 ```
+
+Schema integrity follows
+`finite_ring_db.schema_integrity_policy = relational_checks_in_schema_json_and_open_enums_in_audit`.
+The SQLite schema owns the certificate-link foreign key, the invariant
+ring-or-presentation anchor, and the `0`/`1` checks for `ring.is_commutative`
+and `ring.has_one`. The later audit gate owns canonical JSON validity and the
+open/evolving status-token vocabulary until producers freeze those
+vocabularies. No JSON1 `json_valid` schema constraints are part of this MVP,
+and the migration remains schema version `1`.
 
 ## 6. Canonical IDs
 
@@ -498,9 +524,23 @@ MVP-1 must include:
 - GAP small-ring rows for orders `1..15` when GAP is installed, filtered to
   commutative unital rings by explicit predicates.
 
-Zero-ring characteristic, residue-field, and quantisation-field conventions
-are implementation-specific invariant policies tracked separately by
-`aqm-3cm`; this PRD only fixes inclusion in scope and MVP.
+Zero-ring invariant policy is fixed by `CONVENTIONS.md` convention `(an)`:
+
+```text
+finite_ring_db.zero_ring_characteristic_exact = 1
+finite_ring_db.zero_ring_residue_field_sizes_json = []
+finite_ring_db.zero_ring_quantization_policy = not_applicable_until_layer_semantics
+```
+
+Here `characteristic_exact` is the local database invariant defined as the
+additive order of the stored identity coordinate vector in the
+structure-constant model. For the one-element zero ring `1=0`, so this stores
+`characteristic_exact = 1`. Because the local Stacks source says the zero ring
+has no prime ideal, zero-ring maximal/residue data are empty. Quantisation
+implementation is still deferred: zero-ring quantisation rows must be explicit
+`not_applicable_until_layer_semantics` obstruction records until a later
+quantisation bead defines layer semantics, and no Hilbert-space claim is made
+here.
 
 The first completeness claim should be limited to the GAP-backed order range
 that the implementation can filter and audit. Any Nowicki ingestion should be
@@ -594,8 +634,6 @@ verification until row-import rights are explicit.
 - The exact `matrix_dump_threshold`.
 - Whether SQLite access is implemented through Julia `SQLite.jl`, Python's
   standard `sqlite3`, or a tiny SQL emitter plus `sqlite3` CLI.
-- Which zero-ring characteristic, residue, and quantisation fields are encoded
-  before manual constructors; tracked by `aqm-3cm`.
 - Whether Magma will be supported as an optional oracle.
 - Which exact local source will justify a general finite local/product
   decomposition theorem for report-level prose beyond the PRD.

@@ -3,7 +3,7 @@
 Generated CSVs live under `runs/<YYYY-MM-DD>-<slug>/data/`; this file records
 their schemas.
 
-Seventeen CSV outputs exist.
+Twenty-two CSV outputs exist.
 
 ## Common Rules
 
@@ -34,6 +34,11 @@ Seventeen CSV outputs exist.
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_summary.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_basis_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_stalk_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | Active |
+| `runs/2026-05-26-finite-ring-database/data/ring_summary.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | Active |
+| `runs/2026-05-26-finite-ring-database/data/ring_presentations.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | Active |
+| `runs/2026-05-26-finite-ring-database/data/ring_isomorphism_certificates.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | Active |
+| `runs/2026-05-26-finite-ring-database/data/ring_quantization_summary.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | Active |
+| `runs/2026-05-26-finite-ring-database/data/ring_quantization_obstruction.csv` | `scripts/arithmetic/finite_ring_db_exports.jl` | Active |
 
 ## toric_supercharge_summary.csv
 
@@ -459,3 +464,118 @@ finite pairing.
 | y_exponent | int | Exponent of `Y` in the monomial section. |
 | germ_in_frame | string | Germ of the monomial written in the chosen local frame. |
 | residue_value | int | Image of the germ in the residue field after setting the local coordinate to its point value. |
+
+## ring_summary.csv
+
+Produced by: `scripts/arithmetic/finite_ring_db_exports.jl`
+Run bundle: `runs/2026-05-26-finite-ring-database/`
+Report shard: _pending_
+Sentinel note: row 1 begins with `#` and states that this is an in-memory MVP
+review export from local `finite_ring_mvp_*` helpers. It does not populate or
+read `finite_rings.sqlite`.
+
+| column | type | description |
+|---|---|---|
+| ring_id | string | Stable canonical ring ID for the deduplicated representative. |
+| representative_name | string | Local MVP representative name retained after deduplication. |
+| presentation_count | int | Number of local MVP presentations attached to this representative, including certified merges. |
+| source_names | string | Canonical JSON array of local presentation/example names attached to the representative. |
+| order_exact | string | Exact finite cardinality of the ring as a decimal string. |
+| characteristic_exact | string | Exact characteristic as a decimal string; the zero-ring convention stores `1`. |
+| additive_invariants_json | string | Canonical JSON array of additive invariant factors. |
+| local_status | string | Open status token for the local-ring predicate; `unknown` in this MVP export. |
+| reduced_status | string | Open status token for the reduced-ring predicate; `unknown` in this MVP export. |
+| field_status | string | Open status token for the field predicate; `unknown` in this MVP export. |
+| product_status | string | Open status token for the product-decomposition predicate; `unknown` in this MVP export. |
+| frobenius_status | string | Open status token for the Frobenius-ring predicate; `unknown` in this MVP export. |
+| generating_character_status | string | Open status token for certified generating-character data; `unknown` in this MVP export. |
+| residue_field_sizes_json | string | Canonical JSON array of residue-field sizes, empty array for the zero ring, or JSON string `"unknown"` when not certified. |
+| audit_status | string | Audit state for this row; `not_audited` in this MVP export. |
+
+## ring_presentations.csv
+
+Produced by: `scripts/arithmetic/finite_ring_db_exports.jl`
+Run bundle: `runs/2026-05-26-finite-ring-database/`
+Report shard: _pending_
+Sentinel note: row 1 begins with `#` and states that this is an in-memory MVP
+review export from local `finite_ring_mvp_*` helpers. It does not populate or
+read `finite_rings.sqlite`.
+
+| column | type | description |
+|---|---|---|
+| presentation_id | string | Stable presentation ID derived from the canonical JSON presentation payload. |
+| name | string | Local MVP presentation name. |
+| canonical_ring_id | string | Stable ring ID of the canonical deduplicated representative. |
+| canonical_name | string | Representative presentation name after deduplication. |
+| link_status | string | Presentation-to-representative status, currently `canonical` or `certified_isomorphic_merge`. |
+| presentation_type | string | Local construction class, currently `manual_mvp_structure_constants`. |
+| order_exact | string | Exact finite cardinality of the presentation as a decimal string. |
+| characteristic_exact | string | Exact characteristic as a decimal string; the zero-ring convention stores `1`. |
+| additive_invariants_json | string | Canonical JSON array of additive invariant factors. |
+| source_locator | string | Local source and convention locator for the presentation payload. |
+
+## ring_isomorphism_certificates.csv
+
+Produced by: `scripts/arithmetic/finite_ring_db_exports.jl`
+Run bundle: `runs/2026-05-26-finite-ring-database/`
+Report shard: _pending_
+Sentinel note: row 1 begins with `#` and states that this is an in-memory MVP
+review export from local `finite_ring_mvp_*` helpers. It does not populate or
+read `finite_rings.sqlite`.
+
+| column | type | description |
+|---|---|---|
+| certificate_id | string | Stable ID for the verifier-approved isomorphism certificate row. |
+| source_presentation_id | string | Presentation ID for the presentation being merged. |
+| target_presentation_id | string | Presentation ID for the canonical target presentation. |
+| source_name | string | Local MVP name of the source presentation. |
+| target_name | string | Local MVP name of the target presentation. |
+| verdict | string | Certificate verdict; `isomorphic` for rows emitted by this MVP exporter. |
+| certificate_type | string | Certificate payload type, currently `additive_generator_image_matrix`. |
+| additive_generator_image_matrix_json | string | Canonical JSON matrix whose rows give source additive-generator images in target coordinates. |
+| checked_by | string | Verifier helper that checked the certificate. |
+| checker_result | string | Verifier result token, currently `ok` for emitted rows. |
+| identity_preserved | bool | Whether the certificate sends the source identity to the target identity. |
+| addition_preserved | bool | Whether the additive generator map is well-defined/addition-preserving. |
+| multiplication_preserved | bool | Whether the certificate preserves multiplication. |
+| bijective_additive_map | bool | Whether the additive map is bijective. |
+
+## ring_quantization_summary.csv
+
+Produced by: `scripts/arithmetic/finite_ring_db_exports.jl`
+Run bundle: `runs/2026-05-26-finite-ring-database/`
+Report shard: _pending_
+Sentinel note: row 1 begins with `#` and states that this is an in-memory MVP
+review export from local `finite_ring_mvp_*` helpers. It does not populate or
+read `finite_rings.sqlite`.
+
+| column | type | description |
+|---|---|---|
+| quantization_id | string | Stable quantization row ID built from the canonical ring ID, layer, and MVP name segment. |
+| canonical_ring_id | string | Stable ring ID of the canonical deduplicated representative. |
+| presentation_name | string | Local MVP presentation name for the quantization record. |
+| layer | string | Quantization layer, currently `residue` or `thickened_frobenius`. |
+| status | string | Row status, currently `available`, `blocked`, or `not_applicable_until_layer_semantics`. |
+| hilbert_dim_exact | string | Exact Hilbert dimension when available; blank for blocked or not-applicable rows. |
+| label_group_order_exact | string | Exact Weyl-label group order when available; blank for blocked or not-applicable rows. |
+| observable_basis_dim_exact | string | Exact observable-basis dimension when available; blank for blocked or not-applicable rows. |
+| construction | string | Construction label for available rows; blank for obstruction-only rows. |
+| source_locator | string | Local source, convention, or report locator for available rows; blank when the row only records an obstruction. |
+| obstruction | string | Obstruction code for non-available rows; blank when `status` is `available`. |
+
+## ring_quantization_obstruction.csv
+
+Produced by: `scripts/arithmetic/finite_ring_db_exports.jl`
+Run bundle: `runs/2026-05-26-finite-ring-database/`
+Report shard: _pending_
+Sentinel note: row 1 begins with `#` and states that this is an in-memory MVP
+review export from local `finite_ring_mvp_*` helpers. It does not populate or
+read `finite_rings.sqlite`.
+
+| column | type | description |
+|---|---|---|
+| canonical_ring_id | string | Stable ring ID of the canonical deduplicated representative. |
+| presentation_name | string | Local MVP presentation name for the obstructed quantization record. |
+| layer | string | Quantization layer, currently `residue` or `thickened_frobenius`. |
+| status | string | Non-available row status, currently `blocked` or `not_applicable_until_layer_semantics`. |
+| obstruction | string | Obstruction code explaining why this layer is not available in the MVP export. |

@@ -60,11 +60,17 @@ Green:
 - Keep the policy in `CONVENTIONS.md` and align the PRD MVP dataset and
   generated-database artifact policy with it.
 
-Unclear:
-
-- The remaining implementation-specific zero-ring invariant policy
-  (characteristic, residue fields, and quantisation fields) is not decided by
-  `aqm-pa0`; `aqm-3cm` tracks it before manual constructors.
+Follow-up decision recorded by `aqm-3cm`: convention `(an)` fixes the
+zero-ring invariant markers
+`finite_ring_db.zero_ring_characteristic_exact = 1`,
+`finite_ring_db.zero_ring_residue_field_sizes_json = []`, and
+`finite_ring_db.zero_ring_quantization_policy =
+not_applicable_until_layer_semantics`. Manual constructors and invariant tests
+should therefore expect order `1`, characteristic `1`, and empty
+maximal/residue data for the one-element zero ring. Quantisation implementation
+remains deferred to the quantisation beads and must use an explicit
+`not_applicable_until_layer_semantics` obstruction marker until layer semantics
+exist.
 
 ## Step 02: Pin Source and Tool Ground Truth
 
@@ -177,11 +183,14 @@ Red:
 
 - Add tests that the MVP constructors are absent or fail to produce the
   expected order and characteristic.
+- Include the one-element zero ring in those expectations with order `1` and
+  `characteristic_exact = 1`.
 
 Green:
 
 - Implement constructors for prime fields, `Z/nZ` examples, dual-number
-  examples, and finite products listed in the PRD MVP dataset.
+  examples, finite products listed in the PRD MVP dataset, and the
+  one-element zero ring with identity vector equal to zero.
 
 ## Step 08: Add Invariant Engine
 
@@ -370,17 +379,24 @@ Green:
 Ground truth first:
 
 - Re-read PRD acceptance criteria and all implemented schema contracts.
+- Re-read convention `(an)` marker
+  `finite_ring_db.schema_integrity_policy =
+  relational_checks_in_schema_json_and_open_enums_in_audit`; the schema already
+  owns the certificate-link foreign key, invariant row anchor, and `0`/`1`
+  ring booleans.
 
 Red:
 
-- Add tests where an intentionally malformed database fails audit: duplicate
-  uncertified presentations, missing quantisation or obstruction rows, missing
-  source provenance, and unresolved completeness claims.
+- Add tests where an intentionally malformed database fails audit: malformed
+  or noncanonical JSON payloads, unresolved open/evolving status-token
+  vocabularies once producers freeze them, duplicate uncertified
+  presentations, missing quantisation or obstruction rows, missing source
+  provenance, and unresolved completeness claims.
 
 Green:
 
 - Implement `finite_ring_db_audit.jl` and make it fail loud on every violated
-  invariant.
+  invariant not already rejected by the schema migration.
 
 ## Step 18: Run Acceptance Bundle and Document Outcome
 

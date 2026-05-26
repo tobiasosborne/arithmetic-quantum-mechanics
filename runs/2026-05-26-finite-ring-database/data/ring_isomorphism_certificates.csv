@@ -1,0 +1,3 @@
+# in-memory MVP review export from local finite_ring_mvp_* helpers; finite_rings.sqlite is not read or written; schema/index registration deferred to 16c
+certificate_id,source_presentation_id,target_presentation_id,source_name,target_name,verdict,certificate_type,additive_generator_image_matrix_json,checked_by,checker_result,identity_preserved,addition_preserved,multiplication_preserved,bijective_additive_map
+iso:89c8a0568bc9e17ec30dd23072077590b93df8ba57ab1f6bbdbd263451fc0087,pres:2007f2be905089024b9210ab4cc3b0ffd491d261e304ae00b102f440aed6ff72,pres:3879c5d2cd25d0bbceea535fc52deb6bf4f116387ecbd14e4b32b8440a4dbfa8,F_2xF_3,Z/6Z,isomorphic,additive_generator_image_matrix,"[[3],[4]]",finite_ring_verify_isomorphism_certificate,ok,true,true,true,true

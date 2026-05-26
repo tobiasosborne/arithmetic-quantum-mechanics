@@ -1585,8 +1585,38 @@ source row must record whether the source uses this same ring scope.
 
 ```text
 finite_ring_db.zero_ring_policy = include
+finite_ring_db.zero_ring_characteristic_exact = 1
+finite_ring_db.zero_ring_residue_field_sizes_json = []
+finite_ring_db.zero_ring_quantization_policy = not_applicable_until_layer_semantics
+finite_ring_db.unimplemented_invariant_status = unknown
 finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy
+finite_ring_db.sqlite_build_rerun_policy = fail_existing_sqlite_unless_force
+finite_ring_db.schema_integrity_policy = relational_checks_in_schema_json_and_open_enums_in_audit
+finite_ring_db.residue_quantization_helper_scope = mvp_source_backed_only
+finite_ring_db.thickened_frobenius_quantization_helper_scope = mvp_source_backed_only
+finite_ring_db.prime_field_weyl_matrix_materialization_helper_scope = mvp_exact_in_memory_metadata_only
+finite_ring_db.gap_small_ring_import_helper_scope = installed_tool_reconciliation_metadata_only
+finite_ring_db.quotient_constructor_helper_scope = mvp_exact_in_memory_local_core_status_only
 ```
+
+Build CLI reruns follow the marker
+`finite_ring_db.sqlite_build_rerun_policy = fail_existing_sqlite_unless_force`:
+without `--force`, `finite_ring_db_build.jl` must fail before schema migration
+or inserts if `runs/<slug>/data/finite_rings.sqlite` already exists; with
+`--force`, it may remove only that SQLite file and must preserve the run README
+and sibling run-bundle artifacts. No append mode is part of this MVP policy.
+
+Schema integrity follows the marker
+`finite_ring_db.schema_integrity_policy = relational_checks_in_schema_json_and_open_enums_in_audit`.
+The schema owns stable relational and row-shape constraints:
+`ring_presentation_link.certificate_id` is nullable, but any non-null value
+must reference `isomorphism_certificate(certificate_id)`; every `invariant`
+row must reference at least one `ring_id` or `presentation_id`; and the stable
+SQLite boolean columns `ring.is_commutative` and `ring.has_one` are integer
+columns checked to the values `0` or `1`. The later audit gate owns canonical
+JSON validity and the open/evolving status-token vocabulary until producers
+freeze those vocabularies. No JSON1 `json_valid` schema checks are part of this
+MVP schema slice.
 
 Zero-ring edge case: include the one-element zero ring in finite-ring database
 scope and in the MVP dataset. Source-local justification: the GAP rings manual
@@ -1597,9 +1627,75 @@ GAP `NumberSmallRings` example beginning at line 1075 records one stored ring
 of order `1`; and the Stacks algebra conventions state that rings are
 commutative with `1` and that the zero ring is a ring
 (`references/algebraic_geometry/stacks_project_algebra.tex`, line 36). This
-does not decide zero-ring characteristic, residue-field, or quantisation-field
-columns; `aqm-3cm` tracks those implementation-specific invariant conventions
-before manual constructors.
+also fixes the database invariant edge policy for the one-element zero ring.
+For database invariant fields, `characteristic_exact` is an operational local
+database invariant: the additive order of the stored identity coordinate vector
+in the structure-constant model, not an external theorem claim. Since `1=0`
+in the one-element zero ring, this convention stores
+`characteristic_exact = 1`. Since the Stacks algebra convention states that
+the zero ring is the only ring without a prime ideal
+(`references/algebraic_geometry/stacks_project_algebra.tex`, lines 36-37),
+zero-ring maximal/residue data are empty: no maximal ideals and
+`residue_field_sizes_json = []`. Zero-ring quantisation rows remain explicit
+`not_applicable_until_layer_semantics` obstruction records until the later
+quantisation layer defines layer semantics; this marker makes no Hilbert-space
+claim.
+
+Structure-constant presentations use an ordered additive decomposition
+
+```text
+Z/d_1 Z direct_sum ... direct_sum Z/d_r Z
+```
+
+with ordered generators `e_1,...,e_r`. The table entry
+`products[i,j,k]` is the canonical coefficient of `e_k` in `e_i*e_j`,
+reduced modulo `d_k`; element coordinates are canonical integers
+`0 <= x_i < d_i`; and the identity is stored as a coordinate vector in this
+same ordered basis. Source-local justification: Behboodi--Beyranvand--
+Hashemi--Khabazian display quasi-basis products
+`a_i a_j = sum_k w_ijk a_k` and the induced multiplication formula, then state
+well-definedness and associativity conditions
+(`references/finite_ring_database/dml_behboodi_finite_rings.pdf`, pages
+643-644); GAP `RingByStructureConstants` records the cross-tool shape as
+`moduli` plus a structure-constants table
+(`references/finite_ring_database/gap_rings_chapter_56.html`, lines
+1131-1132).
+
+Manual MVP constructors from PRD section 7 use the following local database
+coordinate layouts, matching the structure-constant convention above and the
+local examples in AQM-23, AQM-34, AQM-36, and AQM-40. These are data-layout
+choices for the database implementation, not new classification claims.
+`finite_ring_zero_ring()` is the rank-zero structure-constant model with empty
+moduli, empty identity coordinate vector, empty product table, and
+order/`characteristic_exact` equal to `1` by the zero-ring policy above.
+`finite_ring_zn(n)` uses moduli `[n]`, ordered basis `[1]`, identity `[1]`,
+and product table entry `1*1=1`. `finite_ring_dual_numbers(p)` uses ordered
+basis `[1,e]`, moduli `[p,p]`, identity `[1,0]`, products `1*1=1`,
+`1*e=e`, `e*1=e`, and `e^2=0`. `finite_ring_product` preserves argument
+order, concatenates factor coordinate blocks, concatenates factor identity
+vectors, copies each factor product table into its coordinate block, and sets
+cross-factor products to zero.
+
+Additive invariant factors emitted by the finite-ring database invariant
+engine are in invariant-factor form
+
+```text
+n_1 | ... | n_s
+```
+
+with trivial factors omitted. The zero additive group is encoded as `[]`.
+Source-local justification for the decomposition input: Behboodi--Beyranvand--
+Hashemi--Khabazian recall the finite abelian-group theorem as a direct sum of
+primary cyclic groups (`references/finite_ring_database/dml_behboodi_finite_rings.pdf`,
+page 641, also registered in
+`references/finite_ring_database/SOURCES.md`). The displayed
+`n_1 | ... | n_s` invariant-factor list is this database's local
+normalization emitted from that primary cyclic data; this sentence does not
+claim that the source uses the same output notation. Unimplemented invariant
+statuses use the literal string sentinel `unknown`, not `false`, because an
+uncomputed invariant is not a negative mathematical claim. The zero-ring
+residue sizes remain `[]` by the existing zero-ring maximal/residue policy
+above.
 
 The generated database is a run artifact, not hand-edited top-level data:
 
@@ -1628,6 +1724,30 @@ to `1`, and checks multiplication preservation. A CAS identifier such as a GAP
 small-ring ID may be stored as oracle evidence only with tool name, version,
 scope, and source locator.
 
+For the local certificate field `additive_generator_image_matrix`, rows are
+source additive generators and columns are target coordinates. Row `i` is the
+canonical target coordinate vector for the image of the source additive basis
+generator `e_i`; therefore the matrix shape is
+`(length(source.moduli), length(target.moduli))`. The verifier must check the
+well-defined additive map, additive bijection, identity preservation, and
+multiplication preservation independently of any certificate producer flags.
+Source-local justification: PRD-FR-006 requires independently checked
+certificates for deduplication, and the GAP ring-homomorphism documentation
+states that ring homomorphisms respect addition and multiplication
+(`references/finite_ring_database/gap_rings_chapter_56.html`, line 997) and
+that generator-image data fail when the generators do not generate or do not
+define a homomorphism (same file, lines 1014-1019).
+
+The first local deduplication search is a bounded MVP, not a classification
+algorithm. It is exhaustive over additive-generator image matrices for finite
+rings with `order <= max_order`. Candidate comparisons are filtered first by
+the cheap invariant tuple `(order, characteristic, additive invariant
+factors)`. A merge is recorded only when
+`finite_ring_verify_isomorphism_certificate(...).ok` is true. Representative
+choice is deterministic input order for this MVP slice. Failure to find a
+certificate in this bounded exhaustive search is only a local checked
+non-merge for that bounded comparison, not a global classification theorem.
+
 Quantisation records are layer-labelled. The `residue` layer uses conventions
 `(u)` and `(y)`: residue fields at maximal ideals give qudit dimensions and
 the Weyl label group is the direct sum of the residue-field phase spaces. The
@@ -1636,3 +1756,55 @@ Pauli convention recorded in `AQM-31`; it requires a certified generating
 character. If a ring lacks the data required for a layer, the database stores a
 `blocked` quantisation row with an explicit obstruction rather than silently
 omitting the ring.
+
+The first in-memory residue-quantisation helper is deliberately MVP-scoped:
+available residue records are emitted only for source-backed cases already
+fixed in this lab book: prime fields from convention `(u)`, `Z/6Z` from
+`report/sections/23_spec_z6_residue_qudit_factorisation.tex`, and explicit
+finite product fields from convention `(ad)` and
+`report/sections/40_product_field_spectrum_qudit_stabilizers.tex`. The zero
+ring emits `not_applicable_until_layer_semantics` with no Hilbert-space claim.
+Other MVP rings such as `Z/4Z`, `Z/8Z`, `Z/9Z`, and dual-number examples emit
+`blocked` until a certified maximal-ideal/residue-field decomposition is added;
+this helper is not a general maximal-ideal algorithm.
+
+The first in-memory thickened-Frobenius quantisation helper is likewise
+MVP-scoped. In this slice, the only available row is the AQM-36
+`F_3[e]/(e^2)` top-coefficient Artin-Weyl example. The zero ring emits
+`not_applicable_until_layer_semantics` with no Hilbert-space claim. Other MVP
+rings, including `Z/4Z`, `Z/8Z`, `Z/9Z`, `F_2[e]/(e^2)`, fields, and product
+fields, emit `blocked` until a certified generating character or a wider
+thickened-Frobenius policy is added; this helper is not a general
+Frobenius-ring recognizer.
+
+The first prime-field Weyl matrix materialisation helper is deliberately
+MVP-scoped. It applies only to the one-qudit prime-field Weyl system of
+AQM-22, with basis ordered `[0,1,...,p-1]` and operator order
+`W(q,m)=T(q)R(m)`. It emits exact in-memory monomial payloads whose nonzero
+entries are encoded as exponents of `zeta_p`, never dense floating complex
+matrices. The caller-supplied `matrix_dump_threshold` is mandatory; if
+`p > matrix_dump_threshold`, the helper returns a `blocked` record with
+obstruction `matrix_dump_threshold_exceeded` and no matrix payload or artifact
+path. Any `artifact_path` it reports is deterministic content-addressed
+metadata only; this helper performs no filesystem or database writes and is
+not a general finite-ring matrix materialiser.
+
+The first GAP small-ring helper is installed-tool reconciliation metadata only.
+It may query a locally installed GAP for `NumberSmallRings(s)` and
+`SmallRing(s,i)` over orders `1 <= s <= 15`, then count only rings satisfying
+GAP's `IsRingWithOne` and installed commutativity predicate. Its status rows
+carry `certifies_completeness=false`; the helper writes no SQLite rows, emits
+no structure constants, imports no presentations, creates no certificates, and
+creates no run artifacts. Missing GAP is represented by the explicit
+`gap_not_available` skip reason. Source scope is pinned to
+`references/finite_ring_database/SOURCES.md` lines 103-118 and
+`references/finite_ring_database/gap_rings_chapter_56.html` lines 472-477,
+1041-1071, and 1115-1131.
+
+The first quotient-constructor helper is exact in-memory local-core status only.
+It emits only the three PRD MVP quotient examples `F_2[x]/(x^2+x)`,
+`F_3[e]/(e^2)`, and `Z/6Z` through the manual structure-constant constructors
+above, reports Sage/OSCAR/Nemo availability or `tool_not_available` skips, and
+certifies no backend completeness; this helper is not a general quotient-ring
+engine and performs no SQLite writes, quotient-basis extraction, Groebner-basis
+extraction, generated certificate creation, or run-artifact creation.

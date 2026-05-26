@@ -66,8 +66,8 @@ function finite_ring_database_schema_sql()
       order_exact TEXT NOT NULL,
       characteristic_exact TEXT NOT NULL,
       additive_invariants_json TEXT NOT NULL,
-      is_commutative INTEGER NOT NULL,
-      has_one INTEGER NOT NULL,
+      is_commutative INTEGER NOT NULL CHECK(is_commutative IN (0, 1)),
+      has_one INTEGER NOT NULL CHECK(has_one IN (0, 1)),
       identity_vector_json TEXT,
       local_status TEXT NOT NULL,
       reduced_status TEXT NOT NULL,
@@ -90,7 +90,8 @@ function finite_ring_database_schema_sql()
       certificate_id TEXT,
       PRIMARY KEY(ring_id, presentation_id),
       FOREIGN KEY(ring_id) REFERENCES ring(ring_id),
-      FOREIGN KEY(presentation_id) REFERENCES presentation(presentation_id)
+      FOREIGN KEY(presentation_id) REFERENCES presentation(presentation_id),
+      FOREIGN KEY(certificate_id) REFERENCES isomorphism_certificate(certificate_id)
     );
 
     CREATE TABLE IF NOT EXISTS invariant (
@@ -101,6 +102,7 @@ function finite_ring_database_schema_sql()
       invariant_value_json TEXT NOT NULL,
       method TEXT NOT NULL,
       certificate_artifact_path TEXT,
+      CHECK(ring_id IS NOT NULL OR presentation_id IS NOT NULL),
       FOREIGN KEY(ring_id) REFERENCES ring(ring_id),
       FOREIGN KEY(presentation_id) REFERENCES presentation(presentation_id)
     );

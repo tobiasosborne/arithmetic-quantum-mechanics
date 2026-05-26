@@ -15,7 +15,42 @@ const SCRIPTS_DIR = @__DIR__
 #   tool   - :julia, :sage, :gap, or :shell
 #   fast   - include in --fast mode?
 #   entry  - optional Julia function to call after include, default :main
+#   args   - optional Julia argument vector passed as main(args)
 const ALL_ENTRIES = [
+    (
+        topic = "arithmetic",
+        label = "finite_ring_db_build_smoke",
+        path = "arithmetic/finite_ring_db_build.jl",
+        tool = :julia,
+        fast = true,
+        args = [
+            "--run",
+            "runs/2026-05-26-finite-ring-database",
+            "--max-order",
+            "15",
+            "--sources",
+            "gap-small,manual-examples",
+            "--force",
+        ],
+    ),
+    (
+        topic = "arithmetic",
+        label = "finite_ring_db_audit_smoke",
+        path = "arithmetic/finite_ring_db_audit.jl",
+        tool = :julia,
+        fast = true,
+        args = [
+            "--db",
+            "runs/2026-05-26-finite-ring-database/data/finite_rings.sqlite",
+        ],
+    ),
+    (
+        topic = "arithmetic",
+        label = "finite_ring_db_exports",
+        path = "arithmetic/finite_ring_db_exports.jl",
+        tool = :julia,
+        fast = true,
+    ),
     (
         topic = "lattice codes",
         label = "toric_supercharge_validation",
@@ -100,7 +135,11 @@ function executable_available(exe::String)::Bool
     end
 end
 
-function run_julia_script(path::String, entry::Symbol)::Tuple{Symbol,Float64,String}
+function run_julia_script(
+    path::String,
+    entry::Symbol,
+    args::Union{Nothing,Vector{String}},
+)::Tuple{Symbol,Float64,String}
     abs_path = joinpath(SCRIPTS_DIR, path)
     isfile(abs_path) || return (:failed, 0.0, "file not found: $abs_path")
 
@@ -111,7 +150,12 @@ function run_julia_script(path::String, entry::Symbol)::Tuple{Symbol,Float64,Str
             Base.include(mod, abs_path)
             isdefined(mod, entry) || error("entry function $(entry) not defined in $path")
             func = Base.invokelatest(getproperty, mod, entry)
-            Base.invokelatest(func)
+            result = if args === nothing
+                Base.invokelatest(func)
+            else
+                Base.invokelatest(func, args)
+            end
+            result === false && error("entry function $(entry) returned false")
         end
         return (:ok, elapsed, "")
     catch e
@@ -154,9 +198,11 @@ function run_entry(entry)::RunResult
     label = String(entry.label)
     topic = String(entry.topic)
     entryfn = entry_get(entry, :entry, :main)
+    args = entry_get(entry, :args, nothing)
+    args = args === nothing ? nothing : collect(String.(args))
 
     if tool == :julia
-        status, elapsed, notes = run_julia_script(path, entryfn)
+        status, elapsed, notes = run_julia_script(path, entryfn, args)
     else
         status, elapsed, notes = run_external(path, tool)
     end

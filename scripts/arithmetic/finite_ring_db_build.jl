@@ -9,18 +9,25 @@ struct BuildOptions
     run_path::String
     max_order::Int
     sources::Vector{String}
+    force::Bool
 end
 
 function usage()
     return """
     Usage:
-      julia --project=. scripts/arithmetic/finite_ring_db_build.jl --run runs/<slug> [--max-order <n>] [--sources <csv>]
+      julia --project=. scripts/arithmetic/finite_ring_db_build.jl --run runs/<slug> [--max-order <n>] [--sources <csv>] [--force]
 
     Options:
       --run <path>      Required project-relative run bundle path runs/<slug>.
       --max-order <n>   Positive integer order bound. Default: $(DEFAULT_MAX_ORDER).
       --sources <csv>   Comma-separated nonempty source tokens. Default: $(DEFAULT_SOURCES).
+      --force           Remove only data/finite_rings.sqlite before rebuilding.
       --help            Print this help text.
+
+    Rerun policy:
+      The default no-overwrite policy refuses an existing
+      runs/<slug>/data/finite_rings.sqlite. Use --force to rebuild that SQLite
+      artifact while preserving the run bundle README and sibling files.
     """
 end
 
@@ -30,6 +37,7 @@ function parse_args(args::Vector{String})
     run_path = nothing
     max_order = DEFAULT_MAX_ORDER
     sources = parse_sources(DEFAULT_SOURCES)
+    force = false
 
     index = firstindex(args)
     while index <= lastindex(args)
@@ -44,6 +52,9 @@ function parse_args(args::Vector{String})
         elseif arg == "--sources"
             value, index = require_flag_value(args, index, arg)
             sources = parse_sources(value)
+        elseif arg == "--force"
+            force && error("duplicate --force")
+            force = true
         elseif startswith(arg, "--")
             error("unknown flag: $(arg)")
         else
@@ -54,7 +65,7 @@ function parse_args(args::Vector{String})
 
     run_path === nothing && error("--run runs/<slug> is required")
     run_slug, normalized_run_path = parse_run_path(String(run_path))
-    return BuildOptions(run_slug, normalized_run_path, max_order, sources)
+    return BuildOptions(run_slug, normalized_run_path, max_order, sources, force)
 end
 
 function require_flag_value(args::Vector{String}, index::Int, flag::String)
@@ -160,7 +171,7 @@ end
 
 function tool_versions_json()
     rows = finite_ring_database_tool_preflight()
-    return json_value([
+    return finite_ring_database_canonical_json([
         (;
             name=row.name,
             status=String(row.status),
@@ -174,7 +185,7 @@ function tool_versions_json()
 end
 
 function scope_json(options::BuildOptions)
-    return json_value((
+    return finite_ring_database_canonical_json((
         build_stage="schema_only",
         requested_max_order=options.max_order,
         requested_sources=options.sources,
@@ -183,52 +194,6 @@ function scope_json(options::BuildOptions)
         certifies_completeness=false,
         writes_ring_rows=false,
     ))
-end
-
-function json_value(value)
-    value === nothing && return "null"
-    value isa AbstractString && return json_string(value)
-    value isa Symbol && return json_string(String(value))
-    value isa Bool && return value ? "true" : "false"
-    value isa Integer && return string(value)
-    if value isa NamedTuple
-        pairs = String[]
-        for key in keys(value)
-            push!(pairs, json_string(String(key)) * ":" * json_value(getfield(value, key)))
-        end
-        return "{" * join(pairs, ",") * "}"
-    end
-    value isa AbstractVector && return "[" * join(json_value.(value), ",") * "]"
-    value isa Tuple && return "[" * join(json_value.(value), ",") * "]"
-    error("unsupported JSON value type: $(typeof(value))")
-end
-
-function json_string(value::AbstractString)
-    io = IOBuffer()
-    print(io, '"')
-    for char in value
-        if char == '"'
-            print(io, "\\\"")
-        elseif char == '\\'
-            print(io, "\\\\")
-        elseif char == '\b'
-            print(io, "\\b")
-        elseif char == '\f'
-            print(io, "\\f")
-        elseif char == '\n'
-            print(io, "\\n")
-        elseif char == '\r'
-            print(io, "\\r")
-        elseif char == '\t'
-            print(io, "\\t")
-        elseif char < ' '
-            print(io, "\\u", lpad(string(Int(char), base=16), 4, '0'))
-        else
-            print(io, char)
-        end
-    end
-    print(io, '"')
-    return String(take!(io))
 end
 
 function sql_literal(value)
@@ -281,8 +246,18 @@ end
 function build_database(options::BuildOptions, args::Vector{String})
     run_dir = require_run_readme(options)
     db_path = joinpath(run_dir, "data", "finite_rings.sqlite")
+    existing_db = isfile(db_path)
+    if existing_db && !options.force
+        error(
+            "existing SQLite database at $(db_path); default no-overwrite policy " *
+            "refuses to rerun. Pass --force to remove only this SQLite artifact " *
+            "and rebuild.",
+        )
+    end
+
     sqlite3_path = Sys.which("sqlite3")
     sqlite3_path === nothing && error("sqlite3 executable not found; install sqlite3")
+    existing_db && options.force && rm(db_path)
 
     migrate_finite_ring_database_schema!(db_path; sqlite3_path=sqlite3_path)
     insert_build_run!(String(sqlite3_path), db_path, options, args)

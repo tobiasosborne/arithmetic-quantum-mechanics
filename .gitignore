@@ -19,6 +19,9 @@
 .julia/
 *.ji
 
+# Local generated finite-ring database artifacts
+runs/**/data/finite_rings.sqlite
+
 # Python/Sage caches
 __pycache__/
 *.py[cod]
