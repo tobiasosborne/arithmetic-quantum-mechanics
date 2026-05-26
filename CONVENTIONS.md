@@ -1790,25 +1790,30 @@ metadata only; this helper performs no filesystem or database writes and is
 not a general finite-ring matrix materialiser.
 
 The first GAP small-ring helper is installed-tool reconciliation metadata only.
-It is order-1 metadata only: it may query a locally installed GAP for
-`NumberSmallRings(1)` and `SmallRing(1,1)`. `SmallRing(1,1)` is counted by
-the local zero-ring policy above even on GAP builds whose
-`IsRingWithOne(SmallRing(1,1))` returns false. The registered GAP manual
-documents a small-ring library through order `15`, but this helper must not
-expose scoped counts beyond order `1`; those counts are deferred pending an
-exact element-level unit-detection/import path rather than GAP
-`IsRingWithOne(SmallRing(s,i))` on the audited small-ring library objects.
+It may query a locally installed GAP for `NumberSmallRings(s)` and
+`SmallRing(s,i)` for orders `1..15`, the range documented by the registered
+GAP small-ring manual snapshot. Its scoped status count is computed by an
+exact element-level two-sided identity detector: enumerate `Elements(R)`, test
+each candidate `e` by GAP equality after both products `e*x` and `x*e` for
+all enumerated elements `x`, reject multiple identities, and then combine the
+result with `IsCommutative(R)`. This deliberately does not use
+`IsRingWithOne(SmallRing(s,i))` as the scoped-count filter. `SmallRing(1,1)`
+is counted by the same identity law under the local zero-ring policy, and the
+helper must fail loudly if that order-1 check is inconsistent.
+
 The helper invokes GAP as an argv command with `--bare -q` for this status
 metadata query, because the status helper needs only core GAP ring operations
 and this avoids package autoload/startup failures observed with the local Nix
 GAP build. Its status rows carry `certifies_completeness=false`; the helper
 writes no SQLite rows, emits no structure constants, imports no presentations,
-creates no certificates, and creates no run artifacts. Missing GAP is
-represented by the explicit `gap_not_available` skip reason. Source scope is
-pinned to
-`references/finite_ring_database/SOURCES.md` lines 103-118 and
+creates no certificates, creates no run artifacts, and makes no database
+completeness claim. Missing GAP is represented by the explicit
+`gap_not_available` skip reason. Source scope is pinned to
+`references/finite_ring_database/SOURCES.md` lines 103-160,
 `references/finite_ring_database/gap_rings_chapter_56.html` lines 472-477,
-1041-1071, and 1115-1131.
+1041-1071, and 1115-1131, and the registered GAP collection/domain/magma
+manual snapshots covering `Elements(R)`, element equality, element
+multiplication, ring/magma closure, and the two-sided identity law.
 
 The first quotient-constructor helper is exact in-memory local-core status only.
 It emits only the three PRD MVP quotient examples `F_2[x]/(x^2+x)`,

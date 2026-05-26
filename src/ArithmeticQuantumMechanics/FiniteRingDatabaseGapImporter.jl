@@ -1,7 +1,8 @@
 const FINITE_RING_DATABASE_GAP_SMALL_RING_SOURCE_LOCATOR =
-    "references/finite_ring_database/SOURCES.md lines 103-118; " *
+    "references/finite_ring_database/SOURCES.md lines 103-120; " *
     "references/finite_ring_database/gap_rings_chapter_56.html lines " *
-    "472-477, 1041-1071, 1115-1131"
+    "472-477, 1041-1071, 1115-1131; " *
+    "references/finite_ring_database/SOURCES.md lines 122-160"
 
 const FINITE_RING_DATABASE_GAP_SMALL_RING_MAX_ORDER = 15
 
@@ -47,12 +48,9 @@ function _frdb_gap_small_ring_max_order(max_order)::Int
         throw(ArgumentError("max_order must be a positive integer"))
     max_order >= 1 ||
         throw(ArgumentError("max_order must be a positive integer"))
-    max_order == 1 || throw(ArgumentError(
-        "GAP scoped counts beyond order 1 are deferred pending exact " *
-        "element-level unit detection/import; pass max_order=1 for " *
-        "installed-tool metadata only",
-    ))
-    return 1
+    max_order <= FINITE_RING_DATABASE_GAP_SMALL_RING_MAX_ORDER ||
+        throw(ArgumentError("max_order must be at most 15 for GAP SmallRing"))
+    return Int(max_order)
 end
 
 function _frdb_gap_path(gap_path)
@@ -114,27 +112,77 @@ end
 function _frdb_gap_small_ring_status_script(max_order::Int)::String
     requested_max_order = _frdb_gap_small_ring_max_order(max_order)
     return """
+    if not IsBoundGlobal("NumberSmallRings") then
+      Print("AQM_FRDB_ERROR|missing_small_ring_counter|NumberSmallRings\\n");
+      QUIT_GAP(1);
+    fi;
+    if not IsBoundGlobal("SmallRing") then
+      Print("AQM_FRDB_ERROR|missing_small_ring_constructor|SmallRing\\n");
+      QUIT_GAP(1);
+    fi;
+    if not IsBoundGlobal("Elements") then
+      Print("AQM_FRDB_ERROR|missing_elements_operation|Elements\\n");
+      QUIT_GAP(1);
+    fi;
     if not IsBoundGlobal("IsCommutative") then
       Print("AQM_FRDB_ERROR|missing_commutativity_predicate|IsCommutative\\n");
-      QUIT;
+      QUIT_GAP(1);
     fi;
-    if not IsBoundGlobal("IsRingWithOne") then
-      Print("AQM_FRDB_ERROR|missing_unital_predicate|IsRingWithOne\\n");
-      QUIT;
-    fi;
+    AqmFrdbTwoSidedIdentities := function(xs)
+      local identities, e, x, is_identity;
+      identities := [];
+      for e in xs do
+        is_identity := true;
+        for x in xs do
+          if not ((e * x = x) and (x * e = x)) then
+            is_identity := false;
+            break;
+          fi;
+        od;
+        if is_identity then
+          Add(identities, e);
+        fi;
+      od;
+      return identities;
+    end;;
     Print("AQM_FRDB_GAP_VERSION|", GAPInfo.Version, "\\n");
     for s in [1..$(requested_max_order)] do
       total := NumberSmallRings(s);
       scoped := 0;
+      unital := 0;
+      commutative := 0;
       for i in [1..total] do
         R := SmallRing(s, i);
-        if s = 1 and i = 1 then
-          scoped := scoped + 1;
-        elif IsRingWithOne(R) and IsCommutative(R) then
+        elements := Elements(R);
+        if Length(elements) <> s then
+          Print("AQM_FRDB_ERROR|element_count_mismatch|", s, "|", i, "|",
+                Length(elements), "\\n");
+          QUIT_GAP(1);
+        fi;
+        identities := AqmFrdbTwoSidedIdentities(elements);
+        if Length(identities) > 1 then
+          Print("AQM_FRDB_ERROR|multiple_two_sided_identities|", s, "|", i,
+                "|", Length(identities), "\\n");
+          QUIT_GAP(1);
+        fi;
+        has_one := Length(identities) = 1;
+        if s = 1 and i = 1 and not has_one then
+          Print("AQM_FRDB_ERROR|order_one_zero_ring_identity_inconsistent\\n");
+          QUIT_GAP(1);
+        fi;
+        is_commutative := IsCommutative(R);
+        if has_one then
+          unital := unital + 1;
+        fi;
+        if is_commutative then
+          commutative := commutative + 1;
+        fi;
+        if has_one and is_commutative then
           scoped := scoped + 1;
         fi;
       od;
-      Print("AQM_FRDB_ROW|", s, "|", total, "|", scoped, "\\n");
+      Print("AQM_FRDB_ROW|", s, "|", total, "|", scoped, "|", unital, "|",
+            commutative, "\\n");
     od;
     QUIT;
     """
@@ -170,16 +218,22 @@ end
 
 function _frdb_parse_gap_small_ring_row(line::AbstractString)::NamedTuple
     fields = split(line, '|')
-    length(fields) == 4 || error("malformed GAP small-ring status row: $(line)")
+    length(fields) == 6 || error("malformed GAP small-ring status row: $(line)")
     order = parse(Int, fields[2])
     total_count = parse(Int, fields[3])
     scoped_count = parse(Int, fields[4])
-    0 <= scoped_count <= total_count ||
+    exact_unital_count = parse(Int, fields[5])
+    commutative_count = parse(Int, fields[6])
+    0 <= scoped_count <= exact_unital_count <= total_count ||
         error("invalid GAP small-ring scoped count in row: $(line)")
+    scoped_count <= commutative_count <= total_count ||
+        error("invalid GAP small-ring commutative count in row: $(line)")
     return (
         order=order,
         total_count=total_count,
         scoped_commutative_unital_count=scoped_count,
+        exact_unital_count=exact_unital_count,
+        commutative_count=commutative_count,
     )
 end
 

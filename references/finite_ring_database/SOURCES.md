@@ -104,7 +104,9 @@ Retrieval date for this manifest: 2026-05-26.
 
 - Bibliographic key: GAP Reference Manual, Chapter 56, "Rings".
 - Access route: official GAP documentation,
-  `https://docs.gap-system.org/doc/ref/chap56_mj.html`.
+  `https://docs.gap-system.org/doc/ref/chap56_mj.html`. The local file hash
+  also matches the installed Nix GAP 4.15.1 manual at
+  `/nix/store/8258fn4pnvb59wizgwm82r4103gara2j-gap-4.15.1/share/gap/doc/ref/chap56_mj.html`.
 - Local file:
   `references/finite_ring_database/gap_rings_chapter_56.html`.
 - SHA256:
@@ -116,6 +118,46 @@ Retrieval date for this manifest: 2026-05-26.
   - Lines 1041-1071 document the small-rings library, `SmallRing`, and
     `NumberSmallRings`.
   - Lines 1115-1131 document `DirectSum` and `RingByStructureConstants`.
+
+### GAP reference manual, collections, domains/elements, and magmas
+
+- Bibliographic key: GAP Reference Manual, Chapters 30, 31, and 35,
+  "Collections", "Domains and their Elements", and "Magmas".
+- Access route: installed Nix GAP 4.15.1 reference manual at
+  `/nix/store/8258fn4pnvb59wizgwm82r4103gara2j-gap-4.15.1/share/gap/doc/ref/`.
+- Local files:
+  - `references/finite_ring_database/gap_collections_chapter_30_nix_gap_4_15_1.html`
+  - `references/finite_ring_database/gap_domains_elements_chapter_31_nix_gap_4_15_1.html`
+  - `references/finite_ring_database/gap_magmas_chapter_35_nix_gap_4_15_1.html`
+- SHA256:
+  - Collections chapter 30:
+    `a75a70ce14f43dcfe16da61127a91ea741c66e707b1a34e27421ba91e0018c5a`
+  - Domains/elements chapter 31:
+    `9a298c04eb3a82f464a97e06d7981ec3fafaa1a4bc865b19729c089259374160`
+  - Magmas chapter 35:
+    `e32d4b8921d7601932c2803b9de7f0721ea876e10f5d13e267653b830f9f64d3`
+- Local anchors:
+  - Collections chapter 30 lines 107-109 state that domains are collections
+    and that finite-collection operations can delegate through enumerators.
+  - Collections chapter 30 lines 426-434 document `AsSSortedList` as a dense,
+    immutable, duplicate-free, strictly sorted list of the collection elements.
+  - Collections chapter 30 lines 450-455 document `Elements(C)` as the same
+    strictly sorted element list, with `AsList` suggested when sortedness is
+    unnecessary.
+  - Domains/elements chapter 31 lines 570-580 document element equality `=`
+    as the underlying comparison operation.
+  - Domains/elements chapter 31 lines 606-619 document binary arithmetic
+    operations on elements, including multiplication `*`.
+  - Magmas chapter 35 lines 86-97 state that rings are magmas and that a
+    magma is a domain closed under multiplication `*`.
+  - Magmas chapter 35 lines 103-108 document magma-with-one identity semantics:
+    the identity element `e` satisfies `e*m = m = m*e` for all elements `m`.
+- Notes:
+  These locators are sufficient source groundwork for an exact finite
+  `SmallRing(s,i)` two-sided identity detector that enumerates
+  `Elements(R)` and tests candidates by GAP equality after left and right
+  multiplication. They support status-count metadata only; they do not import
+  presentations or certify completeness of any imported small-ring table.
 
 ### GAP reference manual, character tables
 

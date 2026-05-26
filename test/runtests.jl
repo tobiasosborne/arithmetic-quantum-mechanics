@@ -250,15 +250,14 @@ end
     )
     @test occursin("certifies_completeness=false", conventions)
     @test occursin("imports no presentations", conventions)
-    @test occursin("`SmallRing(1,1)` is counted", conventions)
+    @test occursin("exact element-level two-sided identity detector", conventions)
     @test occursin("`--bare -q`", conventions)
-    @test occursin("It is order-1 metadata only", conventions)
-    @test occursin("expose scoped counts beyond order `1`", conventions)
+    @test occursin("orders `1..15`", conventions)
 
-    skipped = finite_ring_gap_small_ring_import_status(1; gap_path=nothing)
+    skipped = finite_ring_gap_small_ring_import_status(15; gap_path=nothing)
     @test skipped.status == "skipped"
     @test skipped.reason == "gap_not_available"
-    @test skipped.requested_max_order == 1
+    @test skipped.requested_max_order == 15
     @test skipped.tool_status == "missing"
     @test isempty(skipped.rows)
     @test isempty(skipped.imported_presentations)
@@ -267,9 +266,10 @@ end
     @test occursin("gap_rings_chapter_56.html", skipped.source_locator)
 
     mktempdir() do dir
-        missing = finite_ring_gap_small_ring_import_status(1; gap_path=joinpath(dir, "gap"))
+        missing = finite_ring_gap_small_ring_import_status(12; gap_path=joinpath(dir, "gap"))
         @test missing.status == "skipped"
         @test missing.reason == "gap_not_available"
+        @test missing.requested_max_order == 12
         @test isempty(missing.rows)
         @test isempty(missing.imported_presentations)
     end
@@ -278,26 +278,29 @@ end
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(-1; gap_path=nothing)
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(true; gap_path=nothing)
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(1.0; gap_path=nothing)
-    @test_throws ArgumentError finite_ring_gap_small_ring_import_status(2; gap_path=nothing)
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(16; gap_path=nothing)
     err = try
-        finite_ring_gap_small_ring_import_status(2; gap_path=nothing)
+        finite_ring_gap_small_ring_import_status(16; gap_path=nothing)
         nothing
     catch caught
         caught
     end
     @test err isa ArgumentError
-    @test occursin("GAP scoped counts beyond order 1 are deferred", sprint(showerror, err))
-    @test occursin("exact element-level unit detection/import", sprint(showerror, err))
+    @test occursin("max_order must be at most 15", sprint(showerror, err))
 
     gap_command = ArithmeticQuantumMechanics._frdb_gap_small_ring_command("gap")
     @test gap_command.exec == ["gap", "--bare", "-q"]
 
-    gap_script = ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(1)
-    @test occursin("missing_unital_predicate|IsRingWithOne", gap_script)
-    @test occursin("if s = 1 and i = 1 then", gap_script)
-    @test occursin("elif IsRingWithOne(R) and IsCommutative(R) then", gap_script)
-    @test_throws ArgumentError ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(2)
+    gap_script = ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(15)
+    @test occursin("missing_elements_operation|Elements", gap_script)
+    @test occursin("AqmFrdbTwoSidedIdentities := function", gap_script)
+    @test occursin("elements := Elements(R)", gap_script)
+    @test occursin("e * x = x", gap_script)
+    @test occursin("x * e = x", gap_script)
+    @test occursin("has_one and is_commutative", gap_script)
+    @test occursin("order_one_zero_ring_identity_inconsistent", gap_script)
+    @test !occursin("IsRingWithOne(R) and IsCommutative(R)", gap_script)
+    @test_throws ArgumentError ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(16)
 
     parse_status =
         ArithmeticQuantumMechanics._frdb_parse_gap_small_ring_status_output
@@ -309,12 +312,15 @@ end
         1,
     )
     @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1")
-    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1|1|extra")
-    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|0|1")
-    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1|-1")
-    @test_throws ErrorException parse_status("AQM_FRDB_ROW|1|1|1\n", "", 1)
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1|1|1|1|extra")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|0|1|1|1")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|2|2|1|2")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|2|1|1|0")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|2|1|1|3")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1|-1|1|1")
+    @test_throws ErrorException parse_status("AQM_FRDB_ROW|1|1|1|1|1\n", "", 1)
     @test_throws ErrorException parse_status(
-        "AQM_FRDB_GAP_VERSION|4.14\nAQM_FRDB_ROW|1|1|1\n",
+        "AQM_FRDB_GAP_VERSION|4.14\nAQM_FRDB_ROW|1|1|1|1|1\n",
         "",
         2,
     )
@@ -323,15 +329,23 @@ end
     if gap_path === nothing
         @test_skip gap_path !== nothing
     else
-        status = finite_ring_gap_small_ring_import_status(1; gap_path=gap_path)
+        expected_total_counts = [1, 2, 2, 11, 2, 4, 2, 52, 11, 4, 2, 22, 2, 4, 4]
+        expected_scoped_counts = [1, 1, 1, 4, 1, 1, 1, 10, 4, 1, 1, 4, 1, 1, 1]
+        expected_unital_counts = [1, 1, 1, 4, 1, 1, 1, 11, 4, 1, 1, 4, 1, 1, 1]
+        expected_commutative_counts = [1, 2, 2, 9, 2, 4, 2, 34, 9, 4, 2, 18, 2, 4, 4]
+
+        status = finite_ring_gap_small_ring_import_status(15; gap_path=gap_path)
         @test status.status == "reconciled"
         @test status.tool_status == "available"
-        @test status.requested_max_order == 1
+        @test status.requested_max_order == 15
         @test status.small_ring_library_max_order == 15
-        @test length(status.rows) == 1
-        @test status.rows[1].order == 1
-        @test status.rows[1].total_count == 1
-        @test status.rows[1].scoped_commutative_unital_count == 1
+        @test length(status.rows) == 15
+        @test [row.order for row in status.rows] == collect(1:15)
+        @test [row.total_count for row in status.rows] == expected_total_counts
+        @test [row.scoped_commutative_unital_count for row in status.rows] ==
+              expected_scoped_counts
+        @test [row.exact_unital_count for row in status.rows] == expected_unital_counts
+        @test [row.commutative_count for row in status.rows] == expected_commutative_counts
         @test status.certifies_completeness == false
         @test isempty(status.imported_presentations)
         @test status.tool_version isa AbstractString

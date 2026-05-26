@@ -14,13 +14,13 @@ redirects. Start from `docs/finite_commutative_ring_database_prd.md`,
 bundle at `runs/2026-05-26-finite-ring-database/`. The main finite-ring chain
 has progressed through acceptance bead `aqm-6t4`, and the order-1 GAP-enabled
 validation bead `aqm-tcv` is closed. The current finite-ring follow-up
-`aqm-f8p` takes the conservative path: the GAP small-ring status helper is
-order-1 metadata only, and scoped counts beyond order `1` are deferred until
-an exact element-level unit-detection/import path exists. The next bead should
-target that exact import path, not broad report integration. Do not add report
-shards from this slice: the SQLite file is still schema-only/local, no
-populated or audited ring database exists, and no completeness claim is
-available.
+`aqm-cbz` replaces the conservative order-1 GAP status limitation with exact
+element-level `SmallRing` identity status counts for orders `1..15`, using the
+registered `Elements(R)`, equality, multiplication, and identity-law source
+locators. This is still installed-tool metadata only: no presentations are
+imported, no SQLite rows are written, and no populated/audited finite-ring
+database completeness claim is available. Do not add report shards from this
+slice unless a later task asks for report integration.
 
 Initial infrastructure is in place for a lab-book style research workspace
 about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
@@ -184,6 +184,29 @@ and `presentation` rows; no populated/audited ring database or completeness
 claim exists yet, and report integration is deferred.
 
 ## Most Recent Session
+
+**2026-05-26 - Exact GAP small-ring identity status counts.**
+
+- Resolving `aqm-cbz` by replacing the conservative order-1 GAP
+  `SmallRing` status limitation with exact element-level identity detection
+  for `max_order` values `1..15`.
+- The generated GAP script enumerates `Elements(R)` for each `SmallRing(s,i)`,
+  tests every candidate by the two-sided identity law `e*x=x=x*e`, rejects
+  multiple detected identities, and combines exact unitality with
+  `IsCommutative(R)` for `scoped_commutative_unital_count`. `SmallRing(1,1)`
+  is counted by this same identity law under the local zero-ring policy.
+- The helper remains status metadata only: no SQLite writes, no structure
+  constants, no imported presentations, no certificates, no run artifacts,
+  and `certifies_completeness=false`.
+- GAP-enabled validation with
+  `/nix/store/6pk86ycv8x8xaw1a76chmxv23w61l52r-gap-4.15.1/bin/gap` returned
+  scoped commutative-unital counts
+  `[1,1,1,4,1,1,1,10,4,1,1,4,1,1,1]` and total counts
+  `[1,2,2,11,2,4,2,52,11,4,2,22,2,4,4]` for orders `1..15`.
+- Validation:
+  `PATH="/nix/store/6pk86ycv8x8xaw1a76chmxv23w61l52r-gap-4.15.1/bin:$PATH" julia --project=. -e 'using Pkg; Pkg.test()'`
+  passed, including `finite ring database GAP small-ring import status` with
+  `63` passes; `git diff --check` was clean.
 
 **2026-05-26 - Conservative GAP small-ring status limitation.**
 

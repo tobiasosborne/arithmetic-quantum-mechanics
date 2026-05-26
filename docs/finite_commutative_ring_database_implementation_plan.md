@@ -317,26 +317,41 @@ Ground truth first:
 
 - Re-read GAP source locators for `SmallRing`, `NumberSmallRings`,
   `IsRingWithOne`, `DirectSum`, and `RingByStructureConstants`.
+- Re-read GAP source locators for `Elements`, element equality `=`, element
+  multiplication `*`, and magma-with-one identity semantics before replacing
+  the previous order-1 metadata helper with exact two-sided identity detection
+  over `Elements(R)`.
 
 Red:
 
 - Add tests that the importer records an explicit skip when GAP is missing.
-- When GAP is available, add an order-1 smoke test reconciling
-  `NumberSmallRings(1)` with the local zero-ring policy.
-- Add a fail-loud test that `max_order > 1` is rejected until exact
-  element-level unit detection/import is available.
+- When GAP is available, add tests reconciling `NumberSmallRings(s)` for
+  `1 <= s <= 15` with the exact identity detector and the local zero-ring
+  policy.
+- Add fail-loud tests for invalid `max_order` values outside `1..15`.
+- Add parser tests for malformed status rows and inconsistent count fields.
 
 Green:
 
 - Implement `gap-small` status metadata behind optional-tool detection.
+- Implement exact element-level two-sided identity detection over
+  `Elements(R)` and combine it with `IsCommutative(R)` for scoped
+  commutative-unital counts through order `15`.
 - Import no presentations and certify no completeness from this status helper.
 
 Unclear:
 
-- GAP's small-ring library scope beyond order `1` needs an exact
-  element-level unit-detection/import path before the project can expose
-  scoped commutative-unital counts or claim completeness for any imported
-  order.
+- Presentation import and any audited small-ring completeness claim remain
+  pending; the status helper is exact metadata only.
+
+CBZ-02 update: source locators for `Elements(R)`, element equality, element
+multiplication, ring/magma closure, and the two-sided identity law are
+registered in `references/finite_ring_database/SOURCES.md`. The helper now
+accepts `max_order` values `1..15`, computes exact GAP-side identity status
+counts by enumerating `SmallRing(s,i)` elements, naturally counts
+`SmallRing(1,1)` through the same identity law, and still writes no SQLite
+rows, imports no presentations, creates no certificates, and sets
+`certifies_completeness=false`.
 
 ## Step 15: Add Optional Quotient-Ring Constructors
 

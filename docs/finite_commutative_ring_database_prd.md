@@ -66,9 +66,12 @@ custom isomorphism checker.
 GAP is installed-tool metadata for the first slice, not a complete database
 engine: the registered GAP manual snapshot states that the built-in
 small-ring library covers rings of order up to 15 and documents `SmallRing`
-and `NumberSmallRings`, but the current status helper exposes only order-1
-metadata. Scoped commutative-unital counts beyond order `1` are deferred until
-an exact element-level unit-detection/import path exists.
+and `NumberSmallRings`. The current status helper exposes exact
+element-level scoped counts for orders `1..15` by enumerating `Elements(R)`,
+testing the two-sided identity law with GAP equality and multiplication, and
+combining that detector with `IsCommutative(R)`. These are source-backed
+installed-tool status counts only: no presentations are imported and no
+database completeness claim is made.
 
 Sage, OSCAR, Nemo, AbstractAlgebra, and FLINT are construction and exact
 algebra backends. No registered source currently shows that any one of them
@@ -297,7 +300,8 @@ Required project additions for implementation:
 
 Optional wrappers:
 
-- GAP order-1 metadata smoke tests for `SmallRing` and `NumberSmallRings`;
+- GAP exact status-count metadata for `SmallRing` and `NumberSmallRings`
+  through order `15`;
 - Sage cross-checks for quotient-ring examples;
 - OSCAR/Nemo constructors for polynomial quotient and residue rings;
 - Magma only as an optional non-required oracle when a license exists.
@@ -524,10 +528,11 @@ MVP-1 must include:
 - `Z/4Z`, `Z/6Z`, `Z/8Z`, `Z/9Z`;
 - `F_2[e]/(e^2)`, `F_3[e]/(e^2)`;
 - `F_2 x F_2`, `F_2 x F_3`, `F_3 x F_3`;
-- one GAP order-1 status metadata row when GAP is installed, reconciling
-  `NumberSmallRings(1)` with the local zero-ring policy. This status helper
-  imports no presentations, certifies no completeness, and exposes no scoped
-  counts beyond order `1`.
+- GAP status metadata rows for orders `1..15` when GAP is installed,
+  reconciling `NumberSmallRings(s)` with exact element-level two-sided
+  identity detection and the local zero-ring policy. This status helper
+  imports no presentations, certifies no completeness, and makes no populated
+  database completeness claim.
 
 Zero-ring invariant policy is fixed by `CONVENTIONS.md` convention `(an)`:
 
@@ -548,10 +553,9 @@ quantisation bead defines layer semantics, and no Hilbert-space claim is made
 here.
 
 The first completeness claim cannot come from the GAP status helper alone.
-Completeness for any GAP-backed order beyond the order-1 metadata smoke needs
-an exact element-level unit-detection/import path plus audited deduplication.
-Any Nowicki ingestion should be a later milestone after license and
-transcription checks.
+Completeness for any GAP-backed order needs imported presentations plus audited
+deduplication and reconciliation evidence. Any Nowicki ingestion should be a
+later milestone after license and transcription checks.
 
 ## 8. Validation Plan
 
@@ -562,9 +566,11 @@ Small exact tests:
 - `F_2[x]/(x^2+x)` has two idempotent factors and matches `F_2 x F_2`.
 - `Z/6Z` matches `F_2 x F_3` by Chinese remainder data and must dedup.
 - `F_3[e]/(e^2)` is not reduced and must not merge with `F_3 x F_3`.
-- GAP `NumberSmallRings(1)` must reconcile with the local zero-ring policy
-  where GAP is installed. Audited scoped counts beyond order `1` are deferred
-  pending exact element-level unit detection/import.
+- GAP `NumberSmallRings(s)` for `1 <= s <= 15` must reconcile with the exact
+  element-level two-sided identity detector and the local zero-ring policy
+  where GAP is installed. These checks are status metadata only; audited
+  database completeness remains pending imported presentations and
+  deduplication evidence.
 
 Quantisation tests:
 
@@ -603,10 +609,9 @@ M2: Hand examples
 : Manual constructors for the MVP rings, invariant computation, and direct
   isomorphism certificates.
 
-M3: GAP order-1 metadata
-: Optional GAP order-1 status metadata, with no imported presentations and no
-  completeness claim; broader scoped counts need exact element-level unit
-  detection/import first.
+M3: GAP exact status-count metadata
+: Optional GAP status metadata through order `15`, with exact element-level
+  identity detection, no imported presentations, and no completeness claim.
 
 M4: Polynomial quotient constructors
 : Sage/OSCAR/Nemo-backed constructors for quotient rings used by the report.
