@@ -121,6 +121,15 @@ three-site shard is explicitly only a finite-support truncation.  The full
 zero-reference incomplete tensor Hilbert representation, the implementing
 unitaries, and the generic-point caveat.
 
+The newest regular-function layer is
+`AQM-49-REGULAR-FUNCTIONS-AFFINE-LINE-WEYL-LABELS` and
+`AQM-50-F3-REGULAR-FUNCTIONS-LINE-BY-LINE`.  It records that regular functions
+on the affine line give residue profiles, usually with cofinite closed support,
+not quasi-local Weyl observables.  A polynomial \(h\) gives a finite quantum
+system only when used as a support selector \(Z_{\rm cl}(h)\); reduced smeared
+operators depend on labels modulo \(\operatorname{rad}(h)\), while repeated
+factors are visible only in the Artin-ring thickened layer.
+
 ## Most Recent Session
 
 **2026-05-25 - Canonical boson/fermion field comparison.**

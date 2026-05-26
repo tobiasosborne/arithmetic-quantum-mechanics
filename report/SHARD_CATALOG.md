@@ -438,3 +438,21 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Builds the zero-reference incomplete tensor Hilbert representation and proves the affine symmetry implementation.
 - Summary: Identifies the generic point as fixed but not part of the finite-residue Weyl net.
 - Keywords: F3, affine line, full net, incomplete tensor product, generic point, Clifford
+
+## `AQM-49-REGULAR-FUNCTIONS-AFFINE-LINE-WEYL-LABELS`
+
+- Source: `report/sections/49_regular_functions_affine_line_weyl_labels.tex`
+- Title: Regular Functions, Supports, and Weyl Labels on the Affine Line
+- Summary: Separates regular functions as residue profiles from finite-support Weyl labels.
+- Summary: Defines polynomial zero sets as finite closed supports and proves the Chinese-remainder independence of their qudits.
+- Summary: Distinguishes reduced smearing over \(Z(h)\) from multiplicity-sensitive Artin-ring thickening.
+- Keywords: regular function, affine line, closed support, Chinese remainder, Weyl label, thickening
+
+## `AQM-50-F3-REGULAR-FUNCTIONS-LINE-BY-LINE`
+
+- Source: `report/sections/50_f3_regular_functions_line_by_line.tex`
+- Title: Regular Functions on \(\mathbb F_3[x]\) Line by Line
+- Summary: Works through regular functions on \(\mathbf A^1_{\mathbb F_3}\) as residue profiles and finite support selectors.
+- Summary: Computes explicit reduced smeared Weyl labels for rational and quadratic supports.
+- Summary: Shows exactly where repeated factors force the Artin-ring thickened layer.
+- Keywords: F3, regular function, residue profile, smearing, Chinese remainder, Artin ring

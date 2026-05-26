@@ -1,0 +1,228 @@
+% SHARD-ID: AQM-49-REGULAR-FUNCTIONS-AFFINE-LINE-WEYL-LABELS
+% SHARD-TITLE: Regular Functions, Supports, and Weyl Labels on the Affine Line
+% SHARD-SUMMARY: Separates regular functions as residue profiles from finite-support Weyl labels.
+% SHARD-SUMMARY: Defines polynomial zero sets as finite closed supports and proves the Chinese-remainder independence of their qudits.
+% SHARD-SUMMARY: Distinguishes reduced smearing over \(Z(h)\) from multiplicity-sensitive Artin-ring thickening.
+% SHARD-KEYWORDS: regular function, affine line, closed support, Chinese remainder, Weyl label, thickening
+
+\section{Regular Functions, Supports, and Weyl Labels on the Affine Line}
+\label{sec:regular-functions-affine-line-weyl-labels}
+
+\subsection{Status and Source Anchors}
+This shard fixes the current meaning of ``regular function'' in the
+closed-point Weyl-net layer.  It refines AQM-28 and AQM-29.  The source-local
+facts are Stacks: affine-scheme global sections in
+\path{references/algebraic_geometry/stacks_project_schemes.tex}, lines
+670--719; \(\Spec\), \(D(f)\), and \(V(I)\) in
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+2972--3023 and 3104--3211; residue fields in the same file, lines 250--274
+and 3310--3350.  Finite-field Weyl operators are AQM-28, sourced from
+Ashikhmin--Knill as recorded there.  The Artin-ring layer is AQM-36.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_Q,\quad R=k[x],\quad X=\Spec R,\quad
+      \mathcal P=\{\pi\in R:\pi\text{ monic irreducible}\}.\\
+D2&:&x_\pi=(\pi),\quad K_\pi=R/(\pi).\\
+D3&:&h\ne0,\quad D(h)=\{\mathfrak p:h\notin\mathfrak p\},\quad
+      \Gamma(D(h),\mathcal O_X)=R_h.\\
+D4&:&\operatorname{ev}_U(F,G)_\pi=(F\bmod\pi,G\bmod\pi)
+      \in K_\pi^2,\quad x_\pi\in U.\\
+L1&:&\text{A nonzero regular-function pair on nonempty }D(h)
+      \text{ has cofinite closed support in }D(h).\\
+T1&:&\operatorname{ev}_U(F,G)\in E(U)\text{ iff }(F,G)=(0,0).\\
+D5&:&Z_{\rm cl}(h)=\{x_\pi:\pi\mid h\},\quad
+      \operatorname{rad}(h)=\prod_{\pi\mid h}\pi.\\
+L2&:&Z_{\rm cl}(h)\text{ is finite and depends only on }
+      \operatorname{rad}(h).\\
+D6&:&E_h^{\rm red}=\bigoplus_{\pi\mid h}K_\pi^2,\quad
+      W_h^{\rm red}(F,G)=W_{Z_{\rm cl}(h)}((F\bmod\pi,G\bmod\pi)_\pi).\\
+L3&:&W_h^{\rm red}(F,G)\text{ depends only on }F,G\bmod\operatorname{rad}(h).\\
+T2&:&\text{Every finite closed-support Weyl label is represented by
+      polynomial pairs modulo the squarefree support polynomial.}\\
+D7&:&h=\prod_i\pi_i^{e_i}\text{ also defines the thickened rings }
+      R/(\pi_i^{e_i}).\\
+T3&:&\text{Multiplicities }e_i\text{ are invisible in }E_h^{\rm red}
+      \text{ and visible only in the Artin-ring layer.}
+\end{array}
+\]
+
+\subsection{Regular Functions as Residue Profiles D1--T1}
+Let \(k=\mathbb F_Q\), \(R=k[x]\), and \(X=\Spec R\).  By the Stacks affine
+source,
+\[
+  \Gamma(X,\mathcal O_X)=R.
+\]
+More generally, on the nonempty standard open \(D(h)\), \(h\ne0\), the regular
+functions are the localized ring
+\[
+  \Gamma(D(h),\mathcal O_X)=R_h.
+\]
+For \(h=1\), this is the global case.
+
+Let \(U=D(h)\ne\emptyset\).  A closed point of \(U\) is \(x_\pi\) with
+\(\pi\nmid h\).  For \(F=u/h^m\in R_h\), define
+\[
+  F(x_\pi)=(u\bmod\pi)(h\bmod\pi)^{-m}\in K_\pi .
+\]
+This is well-defined because \(h\bmod\pi\ne0\) in the field \(K_\pi\).
+For a pair \((F,G)\in R_h^2\), define the residue profile
+\[
+  \operatorname{ev}_U(F,G)_\pi=(F(x_\pi),G(x_\pi))\in K_\pi^2.
+\]
+
+\paragraph{Lemma \(L1\).}
+If \((F,G)\ne(0,0)\) in \(R_h^2\), then the set of closed points
+\[
+  \{\pi:\pi\nmid h,\ \operatorname{ev}_U(F,G)_\pi\ne(0,0)\}
+\]
+is cofinite in \(\{\pi:\pi\nmid h\}\).
+
+\emph{Proof.}
+Write \(F=u/h^m\) and \(G=v/h^n\).  The profile is zero at \(x_\pi\in U\)
+exactly when \(u\bmod\pi=0\) and \(v\bmod\pi=0\).  This means that \(\pi\)
+divides both \(u\) and \(v\).  If \((F,G)\ne(0,0)\), then at least one of
+\(u,v\) is nonzero after localization.  A nonzero polynomial has only finitely
+many monic irreducible divisors.  Hence only finitely many \(\pi\nmid h\) can
+make both residues zero.
+
+\paragraph{Theorem \(T1\).}
+Under the current closed-point Weyl-net convention,
+\[
+  \operatorname{ev}_U(F,G)\in E(U)
+  \quad\Longleftrightarrow\quad
+  (F,G)=(0,0).
+\]
+
+\emph{Proof.}
+By AQM-28,
+\[
+  E(U)=\bigoplus_{x_\pi\in U}K_\pi^2
+\]
+means finite closed support.  If \((F,G)=(0,0)\), the profile has empty support.
+If \((F,G)\ne(0,0)\), Lemma \(L1\) gives cofinite support in the infinite
+closed-point set of \(U\); AQM-29 proves that \(D(h)\) omits only finitely many
+closed points from the infinite set \(\mathcal P\).  Hence the profile is not
+finite-support and is not an element of \(E(U)\).
+
+Thus a regular function is a classical global or local residue profile.  It is
+not, by itself, a quasi-local Weyl observable.
+
+\subsection{Polynomials as Finite Closed Supports D5--L2}
+Now let \(h\in R\) be nonzero and factor
+\[
+  h=c\prod_{i=1}^r\pi_i^{e_i},
+  \qquad c\in k^\times,\quad e_i\ge1,
+\]
+with distinct monic irreducibles \(\pi_i\).  Define
+\[
+  Z_{\rm cl}(h)=\{x_{\pi_i}:1\le i\le r\},
+  \qquad
+  \operatorname{rad}(h)=\prod_{i=1}^r\pi_i .
+\]
+
+\paragraph{Lemma \(L2\).}
+\(Z_{\rm cl}(h)\) is finite and depends only on \(\operatorname{rad}(h)\), not
+on the exponents \(e_i\).
+
+\emph{Proof.}
+A closed point \(x_\pi\) lies in \(V(h)\) exactly when \(h\in(\pi)\), which is
+equivalent to \(\pi\mid h\).  The factorization of a nonzero polynomial has
+only finitely many irreducible factors.  Replacing \(h\) by
+\(\operatorname{rad}(h)\) preserves the same divisibility relation
+\(\pi\mid h\).
+
+This is the first quantum use of a polynomial: it selects a finite closed
+support.  It does not yet choose a Weyl operator.
+
+\subsection{Reduced Smearing over a Support D6--T2}
+Define the reduced support label space
+\[
+  E_h^{\rm red}=\bigoplus_{\pi\mid h}K_\pi^2.
+\]
+For polynomial pairs \((F,G)\in R^2\), define the reduced smeared label
+\[
+  e_h^{\rm red}(F,G)=((F\bmod\pi,\ G\bmod\pi))_{\pi\mid h}\in E_h^{\rm red}
+\]
+and the reduced smeared Weyl operator
+\[
+  W_h^{\rm red}(F,G)=W_{Z_{\rm cl}(h)}(e_h^{\rm red}(F,G)).
+\]
+
+\paragraph{Lemma \(L3\).}
+\(e_h^{\rm red}(F,G)\), hence \(W_h^{\rm red}(F,G)\), depends only on the
+classes of \(F\) and \(G\) modulo \(\operatorname{rad}(h)\).
+
+\emph{Proof.}
+The label at \(x_\pi\) is obtained by reducing modulo \(\pi\).  Two polynomials
+have the same reduction modulo every \(\pi\mid h\) iff their difference is
+divisible by every \(\pi\mid h\).  Since these irreducibles are pairwise
+coprime, this is equivalent to divisibility by \(\operatorname{rad}(h)\).
+
+\paragraph{Theorem \(T2\).}
+For every finite closed support \(S=\{x_{\pi_1},\ldots,x_{\pi_r}\}\) and every
+label
+\[
+  e=((q_i,p_i))_{i=1}^r\in\bigoplus_{i=1}^rK_{\pi_i}^2,
+\]
+there exist polynomials \(F,G\in R\) with
+\[
+  F\bmod\pi_i=q_i,\qquad G\bmod\pi_i=p_i
+  \quad\text{for every }i.
+\]
+Thus distinct closed-point qudits have no finite compatibility condition in
+the reduced Weyl net.
+
+\emph{Proof.}
+The ideals \((\pi_i)\) are pairwise coprime.  The Chinese remainder theorem
+therefore gives a surjection
+\[
+  R\longrightarrow\prod_{i=1}^r R/(\pi_i)=\prod_{i=1}^rK_{\pi_i}.
+\]
+Choose \(F\) mapping to \((q_i)_i\) and \(G\) mapping to \((p_i)_i\).  These
+polynomials have the required residues.  Since every finite label is obtained
+this way, the qudit factors indexed by distinct irreducibles are independent
+inside the finite-support Weyl algebra.
+
+\subsection{Multiplicity and the Artin-Ring Layer D7--T3}
+The same polynomial \(h=\prod_i\pi_i^{e_i}\) may also be read as a closed
+subscheme with multiplicity.  Then the local rings
+\[
+  A_i=R/(\pi_i^{e_i})
+\]
+are finite local Artin rings supported at the same closed points \(x_{\pi_i}\).
+AQM-36 quantizes this thickened layer by
+\[
+  E_h^{\rm thick}=\bigoplus_i A_i^2,\qquad
+  \mathcal H_h^{\rm thick}=\bigotimes_i\ell^2(A_i).
+\]
+
+\paragraph{Theorem \(T3\).}
+The reduced support operator \(W_h^{\rm red}(F,G)\) forgets all multiplicities
+\(e_i\).  Multiplicities become quantum degrees of freedom only after replacing
+the residue fields \(K_{\pi_i}\) by the Artin rings \(A_i\).
+
+\emph{Proof.}
+By Lemma \(L3\), the reduced label only uses \(F,G\) modulo
+\(\operatorname{rad}(h)=\prod_i\pi_i\).  Therefore \(h\) and
+\(\operatorname{rad}(h)\) give the same reduced label space, the same Hilbert
+space \(\bigotimes_i\ell^2(K_{\pi_i})\), and the same reduced Weyl operators.
+AQM-36 instead uses \(R/(\pi_i^{e_i})\), whose cardinality is
+\(Q^{e_i\deg\pi_i}\).  These larger rings record nilpotent jet coefficients at
+the same closed point.  They are not additional Zariski points.
+
+\subsection{Conclusion}
+In the present framing, regular functions have three separate roles:
+\[
+\begin{array}{rcl}
+\text{profile} &:& (F,G)\in\Gamma(U,\mathcal O_X)^2
+        \mapsto \operatorname{ev}_U(F,G),\text{ usually infinite support};\\
+\text{support selector} &:& h\ne0\mapsto Z_{\rm cl}(h),\text{ a finite closed
+        support};\\
+\text{smeared operator} &:& (h,F,G)\mapsto W_h^{\rm red}(F,G),
+        \text{ or }W_h^{\rm thick}(F,G)\text{ after Artin thickening}.
+\end{array}
+\]
+Only the last line is a Weyl observable, and only after a finite support or a
+thickened finite scheme has been chosen.

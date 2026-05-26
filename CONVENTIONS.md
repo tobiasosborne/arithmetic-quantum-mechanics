@@ -1418,3 +1418,41 @@ and lies in every nonempty open, but it is not a finite-residue qudit site. A
 generic rational-function Weyl sector uses convention `(z)` and requires a
 separate additive-character and dual-label convention; the finite-residue
 pushforward on both `q` and `p` labels is not automatically symplectic there.
+
+## (ak) Regular-Function Profile and Smearing Convention
+
+For `X = Spec(F_q[x])`, a global regular function is an element of `F_q[x]`.
+On a standard open `D(h)`, regular functions are elements of the localization
+`F_q[x]_h`. A pair of regular functions on `U` defines a residue profile
+
+```text
+ev_U(F,G)_(x_pi) = (F mod pi, G mod pi) in kappa(x_pi)^2,
+```
+
+where denominators are inverted at closed points lying in `U`. Except for the
+zero pair, this profile has cofinite closed support in every nonempty standard
+open. Therefore regular-function profiles are generally formal infinite-volume
+fields, not elements of the algebraic finite-support Weyl label group `E(U)`.
+
+A nonzero polynomial `h` has a second role as a support selector:
+
+```text
+Z_cl(h) = {x_pi : pi divides h},       rad(h) = product_{pi divides h} pi.
+```
+
+The reduced finite smearing over this support uses
+
+```text
+E_h^red = direct_sum_{pi divides h} kappa(x_pi)^2,
+W_h^red(F,G) = W_(Z_cl(h))((F mod pi, G mod pi)_(pi divides h)).
+```
+
+It depends only on `F,G mod rad(h)`. By the Chinese remainder theorem, every
+finite closed-support label is represented by some polynomial pair modulo the
+squarefree support polynomial, so distinct closed-point qudits have no finite
+compatibility condition in the reduced Weyl net.
+
+If `h = product_i pi_i^(e_i)`, the exponents `e_i` are invisible to the
+reduced support net. They are visible only in the nilpotent-sensitive layer
+where the residue fields `kappa(x_pi_i)` are replaced by local Artin rings
+`F_q[x]/(pi_i^(e_i))`.

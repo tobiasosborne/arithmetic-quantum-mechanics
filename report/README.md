@@ -66,6 +66,8 @@ before treating report edits as complete.
 | 46 | `AQM-46-AFFINE-LINE-SYMMETRY-WEYL-NET` | `report/sections/46_affine_line_symmetry_weyl_net.tex` | Affine-Line Symmetries and Weyl-Net Automorphisms |
 | 47 | `AQM-47-F3-AFFINE-LINE-SYMMETRY-EXAMPLE` | `report/sections/47_f3_affine_line_symmetry_example.tex` | The \(\mathbb F_3\) Rational-Support Affine-Line Symmetry Example |
 | 48 | `AQM-48-F3-FULL-AFFINE-LINE-NET-HILBERT-ACTION` | `report/sections/48_f3_full_affine_line_net_hilbert_action.tex` | The Full \(\mathbb F_3\) Affine-Line Net and Hilbert Action |
+| 49 | `AQM-49-REGULAR-FUNCTIONS-AFFINE-LINE-WEYL-LABELS` | `report/sections/49_regular_functions_affine_line_weyl_labels.tex` | Regular Functions, Supports, and Weyl Labels on the Affine Line |
+| 50 | `AQM-50-F3-REGULAR-FUNCTIONS-LINE-BY-LINE` | `report/sections/50_f3_regular_functions_line_by_line.tex` | Regular Functions on \(\mathbb F_3[x]\) Line by Line |
 
 ## Maintenance Rules
 
