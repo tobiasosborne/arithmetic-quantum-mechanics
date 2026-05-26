@@ -1792,11 +1792,17 @@ not a general finite-ring matrix materialiser.
 The first GAP small-ring helper is installed-tool reconciliation metadata only.
 It may query a locally installed GAP for `NumberSmallRings(s)` and
 `SmallRing(s,i)` over orders `1 <= s <= 15`, then count only rings satisfying
-GAP's `IsRingWithOne` and installed commutativity predicate. Its status rows
-carry `certifies_completeness=false`; the helper writes no SQLite rows, emits
-no structure constants, imports no presentations, creates no certificates, and
-creates no run artifacts. Missing GAP is represented by the explicit
-`gap_not_available` skip reason. Source scope is pinned to
+GAP's `IsRingWithOne` and installed commutativity predicate, except that
+`SmallRing(1,1)` is counted in this scoped count by the local zero-ring policy
+above even on GAP builds whose `IsRingWithOne(SmallRing(1,1))` returns false.
+The helper invokes GAP as an argv command with `--bare -q` for this status
+metadata query, because the status helper needs only core GAP ring operations
+and this avoids package autoload/startup failures observed with the local Nix
+GAP build. Its status rows carry `certifies_completeness=false`; the helper
+writes no SQLite rows, emits no structure constants, imports no presentations,
+creates no certificates, and creates no run artifacts. Missing GAP is
+represented by the explicit `gap_not_available` skip reason. Source scope is
+pinned to
 `references/finite_ring_database/SOURCES.md` lines 103-118 and
 `references/finite_ring_database/gap_rings_chapter_56.html` lines 472-477,
 1041-1071, and 1115-1131.

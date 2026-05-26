@@ -88,7 +88,7 @@ end
 function _frdb_run_gap_small_ring_status_script(gap_path::AbstractString, max_order::Int)
     stdout = IOBuffer()
     stderr = IOBuffer()
-    command = Cmd([String(gap_path), "-q"])
+    command = _frdb_gap_small_ring_command(gap_path)
     ok = try
         success(
             pipeline(
@@ -109,10 +109,18 @@ function _frdb_run_gap_small_ring_status_script(gap_path::AbstractString, max_or
     return (stdout=stdout_text, stderr=stderr_text)
 end
 
+function _frdb_gap_small_ring_command(gap_path::AbstractString)::Cmd
+    return Cmd([String(gap_path), "--bare", "-q"])
+end
+
 function _frdb_gap_small_ring_status_script(max_order::Int)::String
     return """
     if not IsBoundGlobal("IsCommutative") then
       Print("AQM_FRDB_ERROR|missing_commutativity_predicate|IsCommutative\\n");
+      QUIT;
+    fi;
+    if not IsBoundGlobal("IsRingWithOne") then
+      Print("AQM_FRDB_ERROR|missing_unital_predicate|IsRingWithOne\\n");
       QUIT;
     fi;
     Print("AQM_FRDB_GAP_VERSION|", GAPInfo.Version, "\\n");
@@ -121,7 +129,9 @@ function _frdb_gap_small_ring_status_script(max_order::Int)::String
       scoped := 0;
       for i in [1..total] do
         R := SmallRing(s, i);
-        if IsRingWithOne(R) and IsCommutative(R) then
+        if s = 1 and i = 1 then
+          scoped := scoped + 1;
+        elif IsRingWithOne(R) and IsCommutative(R) then
           scoped := scoped + 1;
         fi;
       od;

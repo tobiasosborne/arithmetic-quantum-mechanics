@@ -250,6 +250,8 @@ end
     )
     @test occursin("certifies_completeness=false", conventions)
     @test occursin("imports no presentations", conventions)
+    @test occursin("`SmallRing(1,1)` is counted", conventions)
+    @test occursin("`--bare -q`", conventions)
 
     skipped = finite_ring_gap_small_ring_import_status(3; gap_path=nothing)
     @test skipped.status == "skipped"
@@ -273,6 +275,34 @@ end
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(0; gap_path=nothing)
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(16; gap_path=nothing)
 
+    gap_command = ArithmeticQuantumMechanics._frdb_gap_small_ring_command("gap")
+    @test gap_command.exec == ["gap", "--bare", "-q"]
+
+    gap_script = ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(2)
+    @test occursin("missing_unital_predicate|IsRingWithOne", gap_script)
+    @test occursin("if s = 1 and i = 1 then", gap_script)
+    @test occursin("elif IsRingWithOne(R) and IsCommutative(R) then", gap_script)
+
+    parse_status =
+        ArithmeticQuantumMechanics._frdb_parse_gap_small_ring_status_output
+    parse_row = ArithmeticQuantumMechanics._frdb_parse_gap_small_ring_row
+
+    @test_throws ErrorException parse_status(
+        "AQM_FRDB_ERROR|missing_commutativity_predicate|IsCommutative\n",
+        "",
+        1,
+    )
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1|1|extra")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|0|1")
+    @test_throws ErrorException parse_row("AQM_FRDB_ROW|1|1|-1")
+    @test_throws ErrorException parse_status("AQM_FRDB_ROW|1|1|1\n", "", 1)
+    @test_throws ErrorException parse_status(
+        "AQM_FRDB_GAP_VERSION|4.14\nAQM_FRDB_ROW|1|1|1\n",
+        "",
+        2,
+    )
+
     gap_path = Sys.which("gap")
     if gap_path === nothing
         @test_skip gap_path !== nothing
@@ -285,11 +315,12 @@ end
         @test length(status.rows) == 1
         @test status.rows[1].order == 1
         @test status.rows[1].total_count == 1
-        @test status.rows[1].scoped_commutative_unital_count >= 0
+        @test status.rows[1].scoped_commutative_unital_count == 1
         @test status.certifies_completeness == false
         @test isempty(status.imported_presentations)
         @test status.tool_version isa AbstractString
         @test !isempty(status.tool_version)
+        @test occursin("references/finite_ring_database/SOURCES.md", status.source_locator)
         @test occursin("gap_rings_chapter_56.html", status.source_locator)
     end
 end
