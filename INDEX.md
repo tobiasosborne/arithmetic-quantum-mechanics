@@ -71,6 +71,12 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_basis_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | `projective_line_sheaf_field_basis_rows.csv` |
 | `runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_stalk_rows.csv` | `scripts/bridges/projective_line_sheaf_fields.jl` | `projective_line_stalk_rows.csv` |
 
+## Planning Documents
+
+| Document | Topic | Status |
+|---|---|---|
+| `docs/finite_commutative_ring_database_prd.md` | Finite commutative ring database and quantisation pipeline | PRD only; no producer or run bundle yet. |
+
 ## Report Shards
 
 | Label | Source | Title |
@@ -146,5 +152,6 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |
 | Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman, Ashikhmin-Knill, and Gross arXiv source bundles acquired for stabilizer symplectic conventions, qudit error bases, finite Hudson/Gaussian states, and prime-field Pauli comparisons. |
 | Weyl-Heisenberg and Weil representations | `references/heisenberg_weil/SOURCES.md` | Prasad, Beny-Crann-Lee-Park-Youn, Bekka, Solomon, Lysenko, Sidana-Kashyap, Gluesing-Luerssen-Pllaha, Trias, Hashimoto-Horibe-Hayashi, Korbelar-Tolar, Galindo, Poonen, and Kudla sources acquired for LCA, ring, finite Frobenius-ring, finite Clifford, local, and adelic Weyl-Heisenberg representation conventions. |
+| Finite commutative ring database | `references/finite_ring_database/SOURCES.md` | Nowicki, Behboodi-Beyranvand-Hashemi-Khabazian, Blackburn-McLean, Alabiad-Alkhamees, GAP, Sage, OSCAR, Nemo, FLINT, and SQLite sources acquired for finite-ring catalogue planning, tooling, and storage choices. |
 | Algebraic geometry and sheaves | `references/algebraic_geometry/SOURCES.md` | Stacks Project TeX snapshot acquired for spectra, Zariski topology, affine-scheme functoriality, presheaves, sheaves, Proj, projective space, varieties, twists, Cech cohomology, projective-space cohomology, separable trace pairing, and Frobenius. |
 | Cosheaves | `references/cosheaves/SOURCES.md` | Curry arXiv source bundle acquired for precosheaf, cosheaf, colimit, and cover-coequalizer conventions. |

@@ -149,6 +149,14 @@ forced fermion modes, while `Spt_(F_3)`,
 `Pi Omega^1_(F_3[epsilon]/epsilon^2/F_3)`, and the log-spin datum
 `(P^1_(F_3), {0,infty}, O)` each provide one catalogue mode.
 
+The newest planning frontier is
+`docs/finite_commutative_ring_database_prd.md`: a PRD for a reproducible
+SQLite run-bundle database of finite commutative unital rings up to isomorphism
+and their residue/thickened Weyl quantisation records. It adds
+`references/finite_ring_database/SOURCES.md` and convention `(an)`. No
+database producer, schema entry, run bundle, or report shard has been created
+yet; those are implementation milestones, not completed work.
+
 ## Most Recent Session
 
 **2026-05-25 - Canonical boson/fermion field comparison.**

@@ -1569,3 +1569,48 @@ where `C` is a curve, `D` is a divisor with logarithmic one-forms defined, and
 `P^1_k` with `D={0,infty}`, the form `dlog x` trivializes
 `Omega^1(log D)`, so `S=O` is a log-spin datum and the mode source is
 `Gamma(P^1,O)=k`.
+
+## (an) Finite Commutative Ring Database Convention
+
+For the finite-ring database PRD and its later implementation, the default word
+`ring` means:
+
+```text
+finite, commutative, associative, unital ring,
+```
+
+and isomorphisms are required to preserve `1`. Nonunital rings are excluded
+until a separate convention and schema extension are declared. Any imported
+source row must record whether the source uses this same ring scope.
+
+The generated database is a run artifact, not hand-edited top-level data:
+
+```text
+runs/<YYYY-MM-DD>-finite-ring-database/data/finite_rings.sqlite
+```
+
+The SQLite file is canonical only inside its run bundle and only together with
+the run README, source manifest, tool-version record, and audit output.
+
+A presentation hash or invariant tuple is never an isomorphism proof. The
+deduplication convention is:
+
+```text
+invariants filter candidates;
+certificates prove merges or certified non-isomorphism decisions.
+```
+
+The first certificate format records a map on ordered additive generators,
+checks that it is bijective as an additive-group map, checks that it sends `1`
+to `1`, and checks multiplication preservation. A CAS identifier such as a GAP
+small-ring ID may be stored as oracle evidence only with tool name, version,
+scope, and source locator.
+
+Quantisation records are layer-labelled. The `residue` layer uses conventions
+`(u)` and `(y)`: residue fields at maximal ideals give qudit dimensions and
+the Weyl label group is the direct sum of the residue-field phase spaces. The
+`thickened_frobenius` layer uses convention `(ab)` or the finite Frobenius-ring
+Pauli convention recorded in `AQM-31`; it requires a certified generating
+character. If a ring lacks the data required for a layer, the database stores a
+`blocked` quantisation row with an explicit obstruction rather than silently
+omitting the ring.
