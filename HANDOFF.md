@@ -6,6 +6,15 @@ source manifests for that.
 
 ## Current Frontier
 
+**Next-agent default task:** work on the finite commutative ring database, not
+older report-frontier material, unless the user redirects. Start from
+`docs/finite_commutative_ring_database_prd.md` and
+`docs/finite_commutative_ring_database_implementation_plan.md`, then take the
+first ready Beads item `aqm-pa0`:
+`FRDB 01 decide finite-ring scope edge cases`. This first step is deliberately
+a ground-truth decision step: source and record the one-element-ring policy and
+generated SQLite artifact policy before any database coding.
+
 Initial infrastructure is in place for a lab-book style research workspace
 about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
 mechanics, and Kitaev/Levin-Wen/toric-code models. The current arithmetic-field
