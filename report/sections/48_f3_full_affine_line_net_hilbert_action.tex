@@ -1,0 +1,279 @@
+% SHARD-ID: AQM-48-F3-FULL-AFFINE-LINE-NET-HILBERT-ACTION
+% SHARD-TITLE: The Full \(\mathbb F_3\) Affine-Line Net and Hilbert Action
+% SHARD-SUMMARY: Separates the rational three-site truncation from the full countable closed-point net on \(\mathbf A^1_{\mathbb F_3}\).
+% SHARD-SUMMARY: Builds the zero-reference incomplete tensor Hilbert representation and proves the affine symmetry implementation.
+% SHARD-SUMMARY: Identifies the generic point as fixed but not part of the finite-residue Weyl net.
+% SHARD-KEYWORDS: F3, affine line, full net, incomplete tensor product, generic point, Clifford
+
+\section{The Full \texorpdfstring{\(\mathbb F_3\)}{F3} Affine-Line Net and Hilbert Action}
+\label{sec:f3-full-affine-line-net-hilbert-action}
+
+\subsection{Status and Source Anchors}
+This shard corrects the scope of AQM-47.  The three-rational-point calculation
+there is a finite closed-support truncation.  It is not the full local net on
+\(\mathbf A^1_{\mathbb F_3}\).  The full closed-point net uses every monic
+irreducible polynomial in \(\mathbb F_3[x]\).  AQM-28 supplies the
+closed-point quasi-local convention, AQM-29 supplies the point and open-set
+calculation for \(\Spec k[t]\), AQM-45 supplies the reference-vector incomplete
+tensor representation pattern, and AQM-46 supplies the affine symmetry action.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_3,\quad R=k[x],\quad X=\Spec R.\\
+D2&:&\eta=(0),\quad \mathcal P=\{\pi\in k[x]:\pi
+      \text{ monic irreducible}\}.\\
+L1&:&X=\{\eta\}\cup\{x_\pi=(\pi):\pi\in\mathcal P\},\quad
+      \mathcal P\text{ is countably infinite}.\\
+D3&:&K_\pi=R/(\pi),\quad \mathcal H_\pi=\ell^2(K_\pi),\quad
+      \mathcal A_\pi=\operatorname{End}(\mathcal H_\pi).\\
+D4&:&E(U)=\bigoplus_{x_\pi\in U}K_\pi^2,\quad
+      \mathcal A(U)=\varinjlim_{S\Subset C(U)}
+      \bigotimes_{x_\pi\in S}\mathcal A_\pi.\\
+L2&:&\text{Every nonempty open }U\text{ has cofinite }
+      C(U)\subset\mathcal P.\\
+T1&:&\mathcal A(X)\text{ is an algebraic infinite tensor product over }
+      \mathcal P.\\
+D5&:&\Gamma_{\rm fin}=\bigoplus_{\pi\in\mathcal P}K_\pi,\quad
+      \mathcal H^0=\ell^2(\Gamma_{\rm fin}).\\
+L3&:&\mathcal H^0\text{ is countably infinite-dimensional and represents }
+      \mathcal A(X).\\
+D6&:&G=\{g_{a,b}:x\mapsto ax+b,\ a\in\mathbb F_3^\times,\ b\in\mathbb F_3\}.\\
+D7&:&(V_gs)_{\pi^g}=\tau_{g,\pi}^{-1}(s_\pi),\quad
+      U_g|s\rangle=|V_gs\rangle.\\
+T2&:&U_g\mathcal A(U)U_g^*=\mathcal A(gU),\quad
+      U_gW_U(e)U_g^*=W_{gU}(S_ge).\\
+L4&:&g(\eta)=\eta,\quad \eta\in U\text{ for every nonempty open }U.\\
+T3&:&\eta\text{ is not a finite-residue qudit site in this net.}
+\end{array}
+\]
+
+\subsection{The Countable Closed-Point Set D1--L1}
+Let
+\[
+  R=\mathbb F_3[x],\qquad X=\Spec R.
+\]
+The zero ideal is prime because \(R\) is a domain; write
+\[
+  \eta=(0).
+\]
+For each monic irreducible \(\pi\in R\), write
+\[
+  x_\pi=(\pi).
+\]
+
+\paragraph{Lemma \(L1\).}
+The points of \(X\) are exactly
+\[
+  \{\eta\}\cup\{x_\pi:\pi\in\mathcal P\}.
+\]
+The set \(\mathcal P\) is countably infinite.
+
+\emph{Proof.}
+The point classification is AQM-29 with \(k=\mathbb F_3\).  Directly:
+\(\mathbb F_3[x]\) is Euclidean, so every nonzero prime ideal has a monic
+generator.  The generator must be irreducible, and every monic irreducible
+generates a maximal, hence prime, ideal.
+
+For countability, \(R\) is the union over degrees \(n\ge0\) of the finite sets
+of polynomials of degree at most \(n\).  Hence \(R\), and therefore
+\(\mathcal P\), is countable.  For infinitude, suppose
+\(\pi_1,\ldots,\pi_m\) were all monic irreducibles.  Then
+\[
+  F=\pi_1\cdots\pi_m+1
+\]
+is nonconstant.  Choose a monic nonconstant divisor \(\rho\) of \(F\) with
+least degree; then \(\rho\) is irreducible.  No \(\pi_i\) divides \(F\),
+because \(\pi_i\) divides \(F-1\).  Thus \(\rho\) is a new monic irreducible, a
+contradiction.
+
+\subsection{The Full Closed-Point Net D3--T1}
+At the closed point \(x_\pi\), put
+\[
+  K_\pi=R/(\pi).
+\]
+If \(\deg\pi=d\), then \(K_\pi\) has \(3^d\) elements.  Define
+\[
+  \mathcal H_\pi=\ell^2(K_\pi),\qquad
+  \mathcal A_\pi=\operatorname{End}_{\mathbb C}(\mathcal H_\pi)
+  \cong M_{3^d}(\mathbb C).
+\]
+For a finite closed support \(S\Subset\mathcal P\), set
+\[
+  \mathcal A(S)=\bigotimes_{\pi\in S}\mathcal A_\pi.
+\]
+
+For an open \(U\subset X\), define
+\[
+  C(U)=\{\pi\in\mathcal P:x_\pi\in U\}.
+\]
+The label group and local algebra are
+\[
+  E(U)=\bigoplus_{\pi\in C(U)}K_\pi^2,
+  \qquad
+  \mathcal A(U)=
+  \varinjlim_{S\Subset C(U)}\mathcal A(S),
+\]
+where the transition maps are \(a\mapsto a\otimes\mathbf 1\).
+
+\paragraph{Lemma \(L2\).}
+If \(U\ne\emptyset\), then \(C(U)\) is cofinite in \(\mathcal P\).  If
+\(U=\emptyset\), then \(C(U)=\emptyset\).
+
+\emph{Proof.}
+Every closed subset of \(\Spec R\) has the form \(V(I)\).  Since \(R\) is a
+principal ideal domain, \(I=(h)\).  Thus every open is \(D(h)\).  If \(h=0\),
+then \(D(h)=\emptyset\).  If \(h\ne0\), then
+\[
+  x_\pi\notin D(h)\quad\Longleftrightarrow\quad h\in(\pi)
+  \quad\Longleftrightarrow\quad \pi\mid h.
+\]
+A nonzero polynomial has only finitely many monic irreducible divisors.  Hence
+the closed points omitted by \(D(h)\) are finite.
+
+\paragraph{Theorem \(T1\).}
+The global closed-point algebra is
+\[
+  \mathcal A(X)=
+  \varinjlim_{S\Subset\mathcal P}
+  \bigotimes_{\pi\in S}M_{3^{\deg\pi}}(\mathbb C).
+\]
+It is an algebraic infinite tensor product over all closed points.  The
+rational three-site algebra of AQM-47 is only the finite subalgebra for
+\[
+  S_{\rm rat}=\{x,x-1,x-2\}\subset\mathcal P.
+\]
+
+\emph{Proof.}
+For \(X=D(1)\), \(C(X)=\mathcal P\), so the displayed formula is Definition
+\(D4\).  Since \(\mathcal P\) is infinite by Lemma \(L1\), this is not a finite
+matrix algebra.  The rational support is a finite subset of \(\mathcal P\), so
+\(\mathcal A(S_{\rm rat})\) maps into the filtered colimit.  It does not equal
+the colimit, because any irreducible \(\pi\notin S_{\rm rat}\) contributes the
+nontrivial one-site algebra \(\mathcal A_\pi\).
+
+\subsection{The Infinite Hilbert Representation D5--L3}
+The algebraic net above is defined before choosing any Hilbert-space
+completion.  To get the standard reference representation, choose the reference
+vector \(|0\rangle_\pi\in\mathcal H_\pi\) at every closed point.  Define
+\[
+  \Gamma_{\rm fin}
+  =
+  \bigoplus_{\pi\in\mathcal P}K_\pi
+  =
+  \{s=(s_\pi)_\pi:s_\pi=0\text{ for all but finitely many }\pi\}.
+\]
+Set
+\[
+  \mathcal H^0=\ell^2(\Gamma_{\rm fin}),\qquad
+  |s\rangle=\bigotimes_{\pi\in\mathcal P}|s_\pi\rangle,
+\]
+with all but finitely many tensor factors equal to \(|0\rangle_\pi\).
+
+\paragraph{Lemma \(L3\).}
+\(\mathcal H^0\) is countably infinite-dimensional, and it represents
+\(\mathcal A(X)\).
+
+\emph{Proof.}
+The set of finite subsets of the countable set \(\mathcal P\) is countable.
+For a fixed finite support \(S\), the set \(\prod_{\pi\in S}K_\pi\) is finite.
+Thus \(\Gamma_{\rm fin}\), a countable union of finite sets, is countable.
+It is infinite because the configurations supported at one closed point with
+value \(1\) are distinct as \(\pi\) varies.  Hence
+\(\ell^2(\Gamma_{\rm fin})\) has a countably infinite orthonormal basis.
+
+For finite \(S\), \(\mathcal A(S)\) acts on the coordinates in \(S\) and fixes
+all other coordinates.  If \(S\subset T\), this action agrees with the action
+of \(a\otimes\mathbf 1_{\mathcal H(T\setminus S)}\).  Therefore the compatible
+finite-support actions define a representation of the filtered colimit
+\(\mathcal A(X)\).
+
+\subsection{The Full Affine Symmetry Implementation D6--T2}
+Let
+\[
+  G=\operatorname{Aut}_{\mathbb F_3}(X)
+   =\{g_{a,b}:x\mapsto ax+b,\ a\in\mathbb F_3^\times,\ b\in\mathbb F_3\}.
+\]
+For \(\pi\in\mathcal P\), AQM-46 gives
+\[
+  g(x_\pi)=x_{\pi^g},\qquad
+  \pi^g(X)=a^{\deg\pi}\pi((X-b)/a),
+\]
+and a residue-field isomorphism
+\[
+  \tau_{g,\pi}:K_{\pi^g}\to K_\pi,\qquad
+  \tau_{g,\pi}([X])=a[X]+b.
+\]
+Define a map on finite-support configurations by
+\[
+  (V_gs)_{\pi^g}=\tau_{g,\pi}^{-1}(s_\pi).
+\]
+Because \(\tau_{g,\pi}^{-1}(0)=0\), \(V_g\) sends finite-support configurations
+to finite-support configurations.  It is bijective, with inverse
+\(V_{g^{-1}}\).  Hence
+\[
+  U_g|s\rangle=|V_gs\rangle
+\]
+defines a unitary on \(\mathcal H^0\).
+
+\paragraph{Theorem \(T2\).}
+For every open \(U\subset X\) and every \(e\in E(U)\),
+\[
+  U_gW_U(e)U_g^*=W_{gU}(S_ge).
+\]
+Consequently
+\[
+  U_g\mathcal A(U)U_g^*=\mathcal A(gU),
+\]
+and \(g\mapsto U_g\) is a unitary implementation of the full closed-point
+net action in the zero-reference representation.
+
+\emph{Proof.}
+At one closed point, the basis relabelling
+\(|s\rangle\mapsto|\tau_{g,\pi}^{-1}s\rangle\) carries translation by \(q\) to
+translation by \(\tau_{g,\pi}^{-1}q\).  It carries the phase labelled by \(p\)
+to the phase labelled by \(\tau_{g,\pi}^{-1}p\), because AQM-46 proves
+absolute-trace preservation for \(\tau_{g,\pi}\).  Thus the formula holds on a
+one-site Weyl operator.  Tensoring over the finite support of \(e\) proves the
+displayed Weyl formula.  The Weyl operators span each finite-support algebra,
+so the algebra statement follows.  The maps \(V_g\) compose because the residue
+maps \(\tau_{g,\pi}\) compose, again by AQM-46; hence the \(U_g\) compose on the
+basis of \(\mathcal H^0\).
+
+\subsection{The Generic Point L4--T3}
+\paragraph{Lemma \(L4\).}
+The generic point \(\eta=(0)\) is fixed by every \(g\in G\), and every nonempty
+open \(U\subset X\) contains \(\eta\).
+
+\emph{Proof.}
+The coordinate pullback of \(g\) is an automorphism of the domain
+\(\mathbb F_3[x]\), so the inverse image of the zero ideal is the zero ideal.
+Thus \(g(\eta)=\eta\).  By Lemma \(L2\), every nonempty open is \(D(h)\) with
+\(h\ne0\).  Since \(h\notin(0)\), the point \(\eta\) lies in \(D(h)\).
+
+\paragraph{Theorem \(T3\).}
+The generic point is not a tensor factor of the finite-residue Weyl net above.
+
+\emph{Proof.}
+Its residue field is
+\[
+  \kappa(\eta)=\mathbb F_3(x),
+\]
+the fraction field of \(\mathbb F_3[x]\).  This field is infinite.  Convention
+(y) attaches finite Weyl sites only to closed points, whose residue fields are
+finite.  Therefore \(\eta\) affects the topology of opens, but it contributes
+no factor \(K_\eta^2\), no finite qudit \(\ell^2(K_\eta)\), and no coordinate
+of \(\Gamma_{\rm fin}\) in the closed-point net.
+
+If one adds the rational-function sector of convention (z), an additional
+choice of additive character is required.  The closed-point rule
+\((q,p)\mapsto(\tau^{-1}q,\tau^{-1}p)\) must not be copied blindly.  For the
+default functional \(\lambda\) that extracts the coefficient of \(x^{-1}\) at
+infinity, let \(\rho:x\mapsto2x\).  Then \(\tau_\rho^{-1}(x^{-1})=2x^{-1}\), so
+\[
+  \lambda(1\cdot x^{-1})=1,\qquad
+  \lambda(\tau_\rho^{-1}(1)\tau_\rho^{-1}(x^{-1}))=2.
+\]
+The multiplier changes.  Thus a generic-sector affine action needs a separate
+dual-label or character-invariance convention before it can be called part of
+the Weyl-net symmetry theorem.

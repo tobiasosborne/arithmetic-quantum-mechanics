@@ -10,7 +10,7 @@ book. TeX source snapshots are preferred over PDF extraction.
 | Citation key | `stacks-project-2026-05-24` |
 | Bibliographic data | The Stacks Project Authors, *The Stacks Project*, source snapshot. |
 | Locator | <https://github.com/stacks/stacks-project>, git commit `6f5d1e4a38235e8fdd7095029e146c40e69564b7` |
-| Retrieved | 2026-05-24 |
+| Retrieved | 2026-05-24; missing `algebra.tex`, `cohomology.tex`, and `schemes.tex` snapshots reacquired from the same commit on 2026-05-26 |
 | Access route | `git clone --depth 1 --filter=blob:none --sparse https://github.com/stacks/stacks-project.git /tmp/aqm-stacks-project` |
 
 | Local file | SHA256 | Notes |
@@ -21,3 +21,4 @@ book. TeX source snapshots are preferred over PDF extraction.
 | `references/algebraic_geometry/stacks_project_coherent.tex` | `ea1346fd054eb3791525bb29040372bfa9c392597bfdd7d802634ca1e7202ec8` | Cohomology of projective space and \(H^0(\mathbf P^n,\mathcal O(d))\) computation lines 1557-1622. |
 | `references/algebraic_geometry/stacks_project_cohomology.tex` | `02ea6ae53a05d7708c34aceb8c9bffcb38b9aa2372d8ab8d79fd161cc2fd4662` | Cech complex and cohomology definitions lines 868-924; sheaf \(H^0\) criterion lines 926-946; comparison with sheaf cohomology and torsors lines 1404-1582; refinement/direct-limit construction lines 2438-2517; ordered Cech complex lines 4071-4165. |
 | `references/algebraic_geometry/stacks_project_algebra.tex` | `b1d926cbe1ecee2f8ca076068f1c65bd90312411098a350f910e9d04a2711dd3` | Prime and maximal ideal characterizations lines 120-158; residue field definition lines 250-274 and 3310-3350; spectrum, \(V(T)\), and \(D(f)\) definitions lines 2972-2983; Zariski topology and standard opens lines 3104-3117; localization and standard-open spectra lines 3165-3211; elementary \(D(f)\), \(V(I)\), and basis properties lines 2986-3023; quasi-compactness and quasi-compact open basis lines 3251-3298; irreducible closed subsets and generic points lines 4657-4712; example description of \(\operatorname{Spec}k[x,y]\) lines 4889-4927; Hilbert Nullstellensatz and finite closed-point residue extensions lines 6520-6665; closed points as maximal ideals lines 6653-6665; separable trace pairing nondegeneracy lines 45278-45284. |
+| `references/algebraic_geometry/stacks_project_schemes.tex` | `08475a01cf0ddf69734fd7ebc0d14d3831148c25a2ef82aaafdb65666f8fce47` | Structure sheaf and global sections of affine schemes lines 670-719; affine scheme and morphism definitions lines 730-736; morphisms into affine schemes and the affine-scheme anti-equivalence lines 841-963. |

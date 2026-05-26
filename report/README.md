@@ -63,6 +63,9 @@ before treating report edits as complete.
 | 43 | `AQM-43-FINITE-FIELD-SCALE-CONTINUUM-LIMITS` | `report/sections/43_finite_field_scale_continuum_limits.tex` | Finite-Field Scales and Continuum Limits |
 | 44 | `AQM-44-TRACE-GAUGES-FULL-CONTINUUM-TOWERS` | `report/sections/44_trace_gauges_full_continuum_towers.tex` | Trace Gauges for Full Continuum Towers |
 | 45 | `AQM-45-SPEC-Z-ARITHMETIC-QUANTUM-FIELD` | `report/sections/45_spec_z_arithmetic_quantum_field.tex` | The Arithmetic Quantum Field on \(\operatorname{Spec}\mathbb Z\) |
+| 46 | `AQM-46-AFFINE-LINE-SYMMETRY-WEYL-NET` | `report/sections/46_affine_line_symmetry_weyl_net.tex` | Affine-Line Symmetries and Weyl-Net Automorphisms |
+| 47 | `AQM-47-F3-AFFINE-LINE-SYMMETRY-EXAMPLE` | `report/sections/47_f3_affine_line_symmetry_example.tex` | The \(\mathbb F_3\) Rational-Support Affine-Line Symmetry Example |
+| 48 | `AQM-48-F3-FULL-AFFINE-LINE-NET-HILBERT-ACTION` | `report/sections/48_f3_full_affine_line_net_hilbert_action.tex` | The Full \(\mathbb F_3\) Affine-Line Net and Hilbert Action |
 
 ## Maintenance Rules
 
@@ -74,4 +77,6 @@ before treating report edits as complete.
   `SHARD-SUMMARY` lines, and `SHARD-KEYWORDS`.
 - When adding, removing, renaming, or reordering shards, update this map,
   update `report/SHARD_CATALOG.md`, and run `make check-report-shards`.
-- The rebuilt `report.pdf` and LaTeX build products are generated artifacts.
+- The rebuilt root `report.pdf` is the committed main report artifact. Build it
+  with `make report` after report-source changes and include it in the same
+  commit and push as the sources. LaTeX temporary products remain ignored.

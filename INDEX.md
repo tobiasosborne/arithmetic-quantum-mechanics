@@ -121,6 +121,9 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-43-FINITE-FIELD-SCALE-CONTINUUM-LIMITS` | `report/sections/43_finite_field_scale_continuum_limits.tex` | Finite-Field Scales and Continuum Limits |
 | `AQM-44-TRACE-GAUGES-FULL-CONTINUUM-TOWERS` | `report/sections/44_trace_gauges_full_continuum_towers.tex` | Trace Gauges for Full Continuum Towers |
 | `AQM-45-SPEC-Z-ARITHMETIC-QUANTUM-FIELD` | `report/sections/45_spec_z_arithmetic_quantum_field.tex` | The Arithmetic Quantum Field on \(\operatorname{Spec}\mathbb Z\) |
+| `AQM-46-AFFINE-LINE-SYMMETRY-WEYL-NET` | `report/sections/46_affine_line_symmetry_weyl_net.tex` | Affine-Line Symmetries and Weyl-Net Automorphisms |
+| `AQM-47-F3-AFFINE-LINE-SYMMETRY-EXAMPLE` | `report/sections/47_f3_affine_line_symmetry_example.tex` | The \(\mathbb F_3\) Rational-Support Affine-Line Symmetry Example |
+| `AQM-48-F3-FULL-AFFINE-LINE-NET-HILBERT-ACTION` | `report/sections/48_f3_full_affine_line_net_hilbert_action.tex` | The Full \(\mathbb F_3\) Affine-Line Net and Hilbert Action |
 
 ## Source Topics
 
@@ -135,5 +138,5 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |
 | Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman, Ashikhmin-Knill, and Gross arXiv source bundles acquired for stabilizer symplectic conventions, qudit error bases, finite Hudson/Gaussian states, and prime-field Pauli comparisons. |
 | Weyl-Heisenberg and Weil representations | `references/heisenberg_weil/SOURCES.md` | Prasad, Beny-Crann-Lee-Park-Youn, Bekka, Solomon, Lysenko, Sidana-Kashyap, Gluesing-Luerssen-Pllaha, Trias, Hashimoto-Horibe-Hayashi, Korbelar-Tolar, Galindo, Poonen, and Kudla sources acquired for LCA, ring, finite Frobenius-ring, finite Clifford, local, and adelic Weyl-Heisenberg representation conventions. |
-| Algebraic geometry and sheaves | `references/algebraic_geometry/SOURCES.md` | Stacks Project TeX snapshot acquired for spectra, Zariski topology, presheaves, sheaves, Proj, projective space, varieties, twists, Cech cohomology, projective-space cohomology, separable trace pairing, and Frobenius. |
+| Algebraic geometry and sheaves | `references/algebraic_geometry/SOURCES.md` | Stacks Project TeX snapshot acquired for spectra, Zariski topology, affine-scheme functoriality, presheaves, sheaves, Proj, projective space, varieties, twists, Cech cohomology, projective-space cohomology, separable trace pairing, and Frobenius. |
 | Cosheaves | `references/cosheaves/SOURCES.md` | Curry arXiv source bundle acquired for precosheaf, cosheaf, colimit, and cover-coequalizer conventions. |

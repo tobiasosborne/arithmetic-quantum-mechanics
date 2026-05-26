@@ -1327,3 +1327,94 @@ each prime. For `n != 0`, the automorphism is not implemented by the naive
 infinite product of shifts in the `|0>` reference-vector tensor sector:
 it sends the vacuum configuration to one with nonzero residues at all but
 finitely many primes.
+
+## (aj) Affine-Line Automorphism Weyl-Net Convention
+
+For `k = F_q`, the affine line is the `k`-scheme
+
+```text
+A1_k = Spec(k[x]).
+```
+
+The base-preserving symmetry group used in this repo is
+
+```text
+Aut_k(A1_k) = Aff_1(k) = {g_(a,b) : x |-> a*x + b,
+                          a in k^*, b in k}.
+```
+
+Equivalently, the coordinate pullback is the `k`-algebra automorphism
+
+```text
+theta_(a,b) : k[x] -> k[x],      theta_(a,b)(x) = a*x + b.
+```
+
+This is a base-fixed statement. The affine-line Weyl-net shards do not
+classify absolute scheme automorphisms that are allowed to move the
+coefficient field.
+
+For a closed point `x_pi = (pi)` with `pi` monic irreducible of degree `d`,
+the image under `g_(a,b)` is
+
+```text
+g_(a,b)(x_pi) = x_(pi^g),
+pi^g(X) = a^d * pi((X - b)/a),
+```
+
+where `pi^g` is monic irreducible. The induced residue-field pullback is
+
+```text
+tau_(g,pi) : k[x]/(pi^g) -> k[x]/(pi),
+tau_(g,pi)([X]) = a*[X] + b.
+```
+
+The Weyl label pushforward sends a finite-support label
+`e = (q_pi,p_pi)_pi` on an open `U` to the label `S_g e` on `g(U)` defined by
+
+```text
+(S_g e)_(g pi) =
+  (tau_(g,pi)^(-1)(q_pi), tau_(g,pi)^(-1)(p_pi)).
+```
+
+This preserves the finite-residue Weyl multiplier and commutator, hence
+defines a covariant net automorphism
+
+```text
+alpha_g^U : A(U) -> A(gU),       alpha_g^U(W_U(e)) = W_(gU)(S_g e).
+```
+
+For every finite closed support it is implemented by a tensor-factor
+permutation together with the residue-field relabelling induced by
+`tau_(g,pi)^(-1)`. In odd characteristic this is a finite Clifford/Gaussian
+implementation in the sense of convention `(af)`. In even characteristic the
+algebra automorphism remains valid, but any half-Weyl or Gross-Hudson
+Clifford language requires a separate phase convention.
+
+If the closed-point set is infinite, as for `Spec(F_q[x])`, the full
+closed-point algebra is the algebraic infinite tensor product
+
+```text
+A(X) = colim_{S finite subset |X|_cl} tensor_{x_pi in S} End(ell^2(K_pi)).
+```
+
+Finite rational-point calculations are finite-support approximants, not the
+full Zariski-open local algebra. A reference-vector Hilbert representation is
+obtained only after choosing `Omega_pi = |0>` at every closed point:
+
+```text
+Gamma_fin = direct_sum_{x_pi in |X|_cl} K_pi,
+H^0 = ell^2(Gamma_fin).
+```
+
+Because every residue relabelling sends `0` to `0`, affine symmetries preserve
+this zero-reference sector and are implemented by the basis permutation
+
+```text
+(V_g s)_(pi^g) = tau_(g,pi)^(-1)(s_pi),      U_g |s> = |V_g s>.
+```
+
+The generic point `eta=(0)` is fixed by every base-preserving affine symmetry
+and lies in every nonempty open, but it is not a finite-residue qudit site. A
+generic rational-function Weyl sector uses convention `(z)` and requires a
+separate additive-character and dual-label convention; the finite-residue
+pushforward on both `q` and `p` labels is not automatically symplectic there.

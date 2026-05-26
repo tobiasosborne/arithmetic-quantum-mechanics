@@ -2,7 +2,7 @@ REPORT_TEX := report.tex
 REPORT_SHARDS := $(shell find report/sections -type f -name '*.tex' 2>/dev/null | sort)
 REPORT_PDF := report.pdf
 
-.PHONY: report check-report-shards ci-before-push tool-versions clean-report test
+.PHONY: report check-report-shards ci-before-push tool-versions clean-report clobber-report test
 
 report: $(REPORT_PDF)
 
@@ -22,5 +22,8 @@ test:
 	julia --project=. -e 'using Pkg; Pkg.test()'
 
 clean-report:
+	latexmk -c $(REPORT_TEX)
+
+clobber-report:
 	latexmk -C $(REPORT_TEX)
 	rm -f $(REPORT_PDF)

@@ -1,0 +1,279 @@
+% SHARD-ID: AQM-46-AFFINE-LINE-SYMMETRY-WEYL-NET
+% SHARD-TITLE: Affine-Line Symmetries and Weyl-Net Automorphisms
+% SHARD-SUMMARY: Proves that the base-preserving automorphism group of \(\mathbf A^1_{\mathbb F_q}\) is \(x\mapsto ax+b\).
+% SHARD-SUMMARY: Defines the induced action on closed points, residue fields, finite Weyl labels, and local algebras.
+% SHARD-SUMMARY: Proves the resulting covariant Weyl-net automorphism and finite-support Clifford implementation.
+% SHARD-KEYWORDS: affine line, automorphism group, finite field, Weyl net, Clifford, symplectic map
+
+\section{Affine-Line Symmetries and Weyl-Net Automorphisms}
+\label{sec:affine-line-symmetry-weyl-net}
+
+\subsection{Status and Source Anchors}
+
+This shard extends AQM-29.  It fixes the word ``symmetry'' to mean a
+base-preserving \(k\)-scheme automorphism of
+\(\mathbf A^1_k=\Spec k[x]\), where \(k=\mathbb F_q\).  The affine-space
+definition is source-local from the Stacks Project snapshot
+\path{references/algebraic_geometry/stacks_project_constructions.tex}, lines
+733--758.  The affine-scheme anti-equivalence and morphism-to-affine theorem
+are in \path{references/algebraic_geometry/stacks_project_schemes.tex},
+lines 841--963.  Spectrum, \(D(f)\), and functoriality are in
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+2972--2983 and 3123--3160.  The finite Weyl operators use
+Ashikhmin--Knill,
+\path{references/symplectic_qecc/ashikhmin_knill_0005008_source/n9.tex},
+lines 249--313.  Odd-characteristic Clifford language is grounded by Gross,
+\path{references/symplectic_qecc/gross_0602001_source/poswig.tex}, lines
+340--537.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_q,\quad X=\mathbf A^1_k=\Spec k[x].\\
+D2&:&\operatorname{Aut}_k(X)\text{ means automorphisms over }\Spec k.\\
+L1&:&\operatorname{Aut}_k(X)=
+      \{g_{a,b}:x\mapsto ax+b,\ a\in k^\times,\ b\in k\}.\\
+D3&:&x_\pi=(\pi),\quad K_\pi=k[x]/(\pi),\quad
+      \pi\text{ monic irreducible}.\\
+L2&:&g_{a,b}(x_\pi)=x_{\pi^g},\quad
+      \pi^g(X)=a^{\deg\pi}\pi((X-b)/a).\\
+D4&:&\tau_{g,\pi}:K_{\pi^g}\to K_\pi,\quad
+      \tau_{g,\pi}([X])=a[X]+b.\\
+L3&:&\tau_{g,\pi}\text{ is a }k\text{-field isomorphism and preserves
+      absolute traces.}\\
+D5&:&E(U)=\bigoplus_{x_\pi\in U}K_\pi^2,\quad
+      \mathcal A(U)=\operatorname{span}\{W_U(e):e\in E(U)\}.\\
+D6&:&S_g:E(U)\to E(gU)\text{ is residue pushforward by }\tau^{-1}.\\
+T1&:&S_g\text{ preserves the Weyl multiplier and commutator}.\\
+T2&:&\alpha_g^U(W_U(e))=W_{gU}(S_g e)\text{ is a covariant net
+      }*\text{-isomorphism}.\\
+T3&:&\text{On finite supports, }\alpha_g\text{ has a tensor-permutation
+      Clifford implementation.}
+\end{array}
+\]
+
+\subsection{The Base-Preserving Symmetry Group D1--L1}
+
+Let \(k=\mathbb F_q\).  By the Stacks affine-space source,
+\[
+  \mathbf A^1_k=\Spec k[x].
+\]
+A base-preserving symmetry means an automorphism of this affine scheme over
+\(\Spec k\).  By the affine-scheme anti-equivalence, this is the same data as
+a \(k\)-algebra automorphism
+\[
+  \theta:k[x]\longrightarrow k[x].
+\]
+
+\paragraph{Lemma \(L1\).}
+Every \(k\)-scheme automorphism of \(\mathbf A^1_k\) is uniquely
+\[
+  g_{a,b}:x\longmapsto ax+b,
+  \qquad a\in k^\times,\ b\in k.
+\]
+The group law is
+\[
+  g_{a,b}g_{c,d}=g_{ac,ad+b}.
+\]
+
+\emph{Proof.}
+Let \(\theta:k[x]\to k[x]\) be a \(k\)-algebra automorphism.  Put
+\(h=\theta(x)\).  Since \(k[x]\) is generated as a \(k\)-algebra by \(x\),
+\(\theta\) is determined by \(h\).  Let \(\psi=\theta^{-1}\) and put
+\(r=\psi(x)\).  Then
+\[
+  x=(\theta\psi)(x)=\theta(r)=r(h).
+\]
+If \(\deg h=m\) and \(\deg r=n\), then \(\deg r(h)=mn\).  Since
+\(\deg x=1\), we have \(mn=1\).  Thus \(m=n=1\), so \(h=ax+b\) with
+\(a\ne0\).  Conversely, every polynomial \(ax+b\) with \(a\ne0\) gives the
+inverse \(x\mapsto a^{-1}(x-b)\).  Composition of functions gives the
+displayed law.
+
+This proves the user's proposed group exactly in the base-preserving sense.
+Absolute automorphisms that are allowed to move the coefficient field are a
+different question and are not used in this shard.
+
+\subsection{Closed Points and Residue Fields D3--L3}
+
+By AQM-29, the closed points of \(X\) are
+\[
+  x_\pi=(\pi),\qquad \pi\in k[x]\text{ monic irreducible}.
+\]
+The residue field at \(x_\pi\) is
+\[
+  K_\pi=\kappa(x_\pi)=k[x]/(\pi).
+\]
+Let \(g=g_{a,b}\).  Its coordinate pullback is
+\[
+  \theta_g(f)(x)=f(ax+b).
+\]
+
+\paragraph{Lemma \(L2\).}
+If \(\pi\) is monic irreducible of degree \(d\), then
+\[
+  g(x_\pi)=x_{\pi^g},\qquad
+  \pi^g(X)=a^d\pi((X-b)/a).
+\]
+The polynomial \(\pi^g\) is monic and irreducible.
+
+\emph{Proof.}
+Let \(\alpha=[x]\in K_\pi\).  The point image is the prime
+\(\theta_g^{-1}((\pi))\).  A polynomial \(f\) lies in that prime exactly when
+\[
+  f(a\alpha+b)=0\quad\text{in }K_\pi.
+\]
+Thus the image closed point is the minimal polynomial over \(k\) of
+\(\beta=a\alpha+b\).  The displayed \(\pi^g\) is monic, because the leading
+coefficient is \(a^d a^{-d}=1\), and \(\pi^g(\beta)=0\).  Since
+\(\alpha=a^{-1}(\beta-b)\), the fields \(k(\alpha)\) and \(k(\beta)\) are
+equal.  Hence \(\beta\) has degree \(d\), so \(\pi^g\) is its irreducible
+minimal polynomial.
+
+\paragraph{Definition \(D4\).}
+The residue pullback at \(x_\pi\) is
+\[
+  \tau_{g,\pi}:K_{\pi^g}\longrightarrow K_\pi,\qquad
+  \tau_{g,\pi}([X])=a[X]+b.
+\]
+
+\paragraph{Lemma \(L3\).}
+\(\tau_{g,\pi}\) is a \(k\)-field isomorphism.  For every
+\(u\in K_{\pi^g}\),
+\[
+  \operatorname{Tr}_{K_{\pi^g}/\mathbb F_p}(u)
+  =
+  \operatorname{Tr}_{K_\pi/\mathbb F_p}(\tau_{g,\pi}u).
+\]
+
+\emph{Proof.}
+The relation \(\pi^g(X)=0\) is sent to
+\(\pi^g(a\alpha+b)=0\), so the displayed formula defines a homomorphism.
+It is onto because \(\alpha=a^{-1}(\tau([X])-b)\) lies in its image.  The two
+finite fields have the same size \(q^d\), hence the map is an isomorphism.
+As a \(k\)-linear isomorphism, it conjugates the \(k\)-linear multiplication
+map \(m_u\) on \(K_{\pi^g}\) to \(m_{\tau u}\) on \(K_\pi\).  Conjugate
+linear maps have the same trace over \(k\); composing with
+\(\operatorname{Tr}_{k/\mathbb F_p}\) gives the absolute-trace identity.
+
+\subsection{The Weyl Label Pushforward D5--T1}
+
+For an open \(U\subset X\), define
+\[
+  E(U)=\bigoplus_{x_\pi\in U}K_\pi^2
+\]
+with finite support.  A label is written
+\[
+  e=(q_\pi,p_\pi)_\pi .
+\]
+At \(x_\pi\), use
+\[
+  T_\pi(q)|s\rangle=|s+q\rangle,\qquad
+  R_\pi(p)|s\rangle=
+  \exp\!\left(\frac{2\pi i}{p_0}
+  \operatorname{Tr}_{K_\pi/\mathbb F_{p_0}}(ps)\right)|s\rangle,
+\]
+where \(p_0=\operatorname{char}k\), and \(W_\pi(q,p)=T_\pi(q)R_\pi(p)\).
+For finite support, \(W_U(e)\) is the tensor product of the local operators.
+
+\paragraph{Definition \(D6\).}
+The pushforward
+\[
+  S_g:E(U)\longrightarrow E(gU)
+\]
+is defined by
+\[
+  (S_g e)_{\pi^g}
+  =
+  \bigl(\tau_{g,\pi}^{-1}(q_\pi),
+        \tau_{g,\pi}^{-1}(p_\pi)\bigr).
+\]
+
+\paragraph{Theorem \(T1\).}
+\(S_g\) preserves the Weyl multiplier and commutator.  In particular,
+\[
+  W_{gU}(S_ge)W_{gU}(S_gf)
+\]
+has the same scalar multiplier as \(W_U(e)W_U(f)\).
+
+\emph{Proof.}
+It is enough to check one closed point.  Let
+\((Q,P)=\tau^{-1}(q,p)\) and \((Q',P')=\tau^{-1}(q',p')\).  By Lemma \(L3\),
+\[
+  \operatorname{Tr}_{K_{\pi^g}/\mathbb F_{p_0}}(PQ')
+  =
+  \operatorname{Tr}_{K_\pi/\mathbb F_{p_0}}(pq').
+\]
+The same identity with \(P,Q\) and \(P',Q'\) exchanged gives preservation of
+\[
+  \operatorname{Tr}(PQ'-QP').
+\]
+These are exactly the local multiplier and commutator exponents.  Multiplying
+over the finite support proves the claim.
+
+\subsection{Net Automorphism and Clifford Implementation T2--T3}
+
+\paragraph{Theorem \(T2\).}
+For every \(g\in\operatorname{Aut}_k(X)\) and open \(U\), the rule
+\[
+  \alpha_g^U(W_U(e))=W_{gU}(S_ge)
+\]
+extends uniquely to a unital \(*\)-isomorphism
+\[
+  \alpha_g^U:\mathcal A(U)\longrightarrow\mathcal A(gU).
+\]
+These maps are covariant for inclusions and satisfy
+\[
+  \alpha_g^{hU}\alpha_h^U=\alpha_{gh}^U.
+\]
+
+\emph{Proof.}
+The Weyl operators form a basis on every finite support, and
+\(\mathcal A(U)\) is the union of the finite-support algebras.  Theorem \(T1\)
+shows that the assignment respects products and adjoints on each finite
+support, hence on the union.  It is bijective because \(S_{g^{-1}}\) is the
+inverse label map.  If \(U\subset V\), extension by zero commutes with
+pushforward of finite supports, so the square
+\[
+  \mathcal A(U)\to\mathcal A(V),\qquad
+  \mathcal A(gU)\to\mathcal A(gV)
+\]
+commutes.  The residue maps \(\tau\) compose because the coordinate pullbacks
+\(\theta_g\) compose; therefore \(S_gS_h=S_{gh}\), and the displayed group law
+follows on the Weyl basis.
+
+\paragraph{Theorem \(T3\).}
+For a finite closed support \(S\), the finite-volume map
+\[
+  \alpha_g^S:\mathcal A(S)\to\mathcal A(gS)
+\]
+is implemented by a unitary tensor relabelling.  If
+\[
+  \mathcal H(S)=\bigotimes_{x_\pi\in S}\ell^2(K_\pi),
+\]
+define
+\[
+  U_g^S\left(\bigotimes_{x_\pi\in S}|s_\pi\rangle\right)
+  =
+  \bigotimes_{x_{\pi^g}\in gS}
+  |\tau_{g,\pi}^{-1}(s_\pi)\rangle .
+\]
+Then
+\[
+  U_g^S W_S(e)(U_g^S)^*=W_{gS}(S_ge).
+\]
+
+\emph{Proof.}
+At one site, residue relabelling sends
+\(|s\rangle\) to \(|\tau^{-1}s\rangle\).  It carries translation by \(q\) to
+translation by \(\tau^{-1}q\).  It carries the phase
+\(\exp(2\pi i\,\operatorname{Tr}(ps)/p_0)\) to the phase with
+\(\tau^{-1}p\) and \(\tau^{-1}s\), by Lemma \(L3\).  Tensoring the one-site
+calculation over \(S\) proves the formula.
+
+Thus the affine-line symmetry acts on the Weyl local net by symplectic
+finite-support label maps.  In odd characteristic, Gross's Clifford structure
+theorem makes each finite-volume implementation a Clifford unitary.  In even
+characteristic, the algebra automorphism above is still proved, but the
+half-Weyl Clifford convention is not imported.

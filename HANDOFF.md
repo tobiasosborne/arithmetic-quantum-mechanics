@@ -104,6 +104,23 @@ irreducible `pi`; `Spec(F_q[x,y])` gives a full closed-point quasi-local
 algebra whose rational-point truncation is only the finite `q^2`-site
 subtheory.
 
+The newest affine-line symmetry layer is
+`AQM-46-AFFINE-LINE-SYMMETRY-WEYL-NET`,
+`AQM-47-F3-AFFINE-LINE-SYMMETRY-EXAMPLE`, and
+`AQM-48-F3-FULL-AFFINE-LINE-NET-HILBERT-ACTION`: for
+\(\mathbf A^1_{\mathbb F_q}\), the base-preserving automorphism group is
+proved to be \(x\mapsto ax+b\), with \(a\in\mathbb F_q^\times\) and
+\(b\in\mathbb F_q\).  The action on a closed point \((\pi)\) sends it to
+\((a^{\deg\pi}\pi((X-b)/a))\), and the induced residue-field isomorphisms
+push Weyl labels forward to give covariant local-net automorphisms.  On finite
+supports these are implemented by tensor-factor permutation and residue-field
+relabeling unitaries; in odd characteristic this is the finite Clifford
+implementation covered by the Gross convention.  The \(\mathbb F_3\) rational
+three-site shard is explicitly only a finite-support truncation.  The full
+\(\mathbb F_3\) shard gives the countable closed-point algebra, the
+zero-reference incomplete tensor Hilbert representation, the implementing
+unitaries, and the generic-point caveat.
+
 ## Most Recent Session
 
 **2026-05-25 - Canonical boson/fermion field comparison.**

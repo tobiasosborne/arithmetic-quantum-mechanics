@@ -50,7 +50,7 @@
 | Title | Hudson's Theorem for finite-dimensional quantum systems |
 | Venue/version/year | arXiv:quant-ph/0602001; published version Journal of Mathematical Physics 47, 122107 (2006) |
 | DOI/arXiv/URL/ISBN | arXiv: `quant-ph/0602001`; arXiv URL: <https://arxiv.org/abs/quant-ph/0602001> |
-| Retrieved | 2026-05-25 |
+| Retrieved | 2026-05-25; missing local archive reacquired from the same arXiv e-print route on 2026-05-26 |
 | Access route | arXiv e-print source from <https://arxiv.org/e-print/quant-ph/0602001> |
 | Local file | `references/symplectic_qecc/gross_0602001_source.tar`; extracted source at `references/symplectic_qecc/gross_0602001_source/poswig.tex` |
 | SHA256 | archive `1c5371144c5b8b58fb6a8272546fdee54de0045e7dad3c9135a507d987ca9dfe`; extracted TeX `31684a5e30c3f1f2d35ad23a31afef1712a9af4b2d5f96b0691d98788b7465a9` |

@@ -411,3 +411,30 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves that \(z\mapsto z+1\) is not a scheme automorphism of \(\Spec\mathbb Z\).
 - Summary: Defines the internal integer residue-translation action and proves its profinite, nonlocal character.
 - Keywords: Spec Z, prime qudits, generic point, incomplete tensor product, translation, profinite integers
+
+## `AQM-46-AFFINE-LINE-SYMMETRY-WEYL-NET`
+
+- Source: `report/sections/46_affine_line_symmetry_weyl_net.tex`
+- Title: Affine-Line Symmetries and Weyl-Net Automorphisms
+- Summary: Proves that the base-preserving automorphism group of \(\mathbf A^1_{\mathbb F_q}\) is \(x\mapsto ax+b\).
+- Summary: Defines the induced action on closed points, residue fields, finite Weyl labels, and local algebras.
+- Summary: Proves the resulting covariant Weyl-net automorphism and finite-support Clifford implementation.
+- Keywords: affine line, automorphism group, finite field, Weyl net, Clifford, symplectic map
+
+## `AQM-47-F3-AFFINE-LINE-SYMMETRY-EXAMPLE`
+
+- Source: `report/sections/47_f3_affine_line_symmetry_example.tex`
+- Title: The \(\mathbb F_3\) Rational-Support Affine-Line Symmetry Example
+- Summary: Works through the finite rational-support truncation of \(\mathbf A^1_{\mathbb F_3}\) step by step.
+- Summary: Lists the six affine maps, their rational-point action, and their action on the first quadratic closed points.
+- Summary: Computes the rational three-site symplectic map, Weyl automorphism, and Clifford permutation unitary explicitly.
+- Keywords: F3, affine line, AGL1, rational points, quadratic points, symplectic permutation, Clifford
+
+## `AQM-48-F3-FULL-AFFINE-LINE-NET-HILBERT-ACTION`
+
+- Source: `report/sections/48_f3_full_affine_line_net_hilbert_action.tex`
+- Title: The Full \(\mathbb F_3\) Affine-Line Net and Hilbert Action
+- Summary: Separates the rational three-site truncation from the full countable closed-point net on \(\mathbf A^1_{\mathbb F_3}\).
+- Summary: Builds the zero-reference incomplete tensor Hilbert representation and proves the affine symmetry implementation.
+- Summary: Identifies the generic point as fixed but not part of the finite-residue Weyl net.
+- Keywords: F3, affine line, full net, incomplete tensor product, generic point, Clifford

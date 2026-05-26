@@ -114,8 +114,10 @@ convention layer around any library result.
 
 10. **Maintain the lab book.** `report.tex` is the master include-order file.
 Body prose belongs in `report/sections/*.tex` and is mapped by
-`report/README.md` plus `report/SHARD_CATALOG.md`. Do not commit rebuilt PDF
-or LaTeX artifacts.
+`report/README.md` plus `report/SHARD_CATALOG.md`. The root `report.pdf` is
+the main distributable artifact: rebuild it after report-source changes and
+include it in the same commit and push as the sources. Keep LaTeX temporary
+files ignored.
 
 11. **Respect run-bundle discipline.** Create
 `runs/<YYYY-MM-DD>-<slug>/{data,figures}/` and its `README.md` before writing a

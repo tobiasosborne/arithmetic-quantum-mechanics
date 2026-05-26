@@ -12,6 +12,9 @@
 *.toc
 *.pdf
 
+# The root lab-book PDF is the committed main report artifact.
+!/report.pdf
+
 # Julia
 .julia/
 *.ji

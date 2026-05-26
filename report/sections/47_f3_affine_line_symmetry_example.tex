@@ -1,0 +1,273 @@
+% SHARD-ID: AQM-47-F3-AFFINE-LINE-SYMMETRY-EXAMPLE
+% SHARD-TITLE: The \(\mathbb F_3\) Rational-Support Affine-Line Symmetry Example
+% SHARD-SUMMARY: Works through the finite rational-support truncation of \(\mathbf A^1_{\mathbb F_3}\) step by step.
+% SHARD-SUMMARY: Lists the six affine maps, their rational-point action, and their action on the first quadratic closed points.
+% SHARD-SUMMARY: Computes the rational three-site symplectic map, Weyl automorphism, and Clifford permutation unitary explicitly.
+% SHARD-KEYWORDS: F3, affine line, AGL1, rational points, quadratic points, symplectic permutation, Clifford
+
+\section{The \texorpdfstring{\(\mathbb F_3\)}{F3} Rational-Support Affine-Line Symmetry Example}
+\label{sec:f3-affine-line-symmetry-example}
+\subsection{Status and Source Anchors}
+This shard is the finite rational-support line-by-line example for
+\[
+  k=\mathbb F_3,\qquad X=\mathbf A^1_{\mathbb F_3}=\Spec\mathbb F_3[x].
+\]
+It uses the definitions and proofs of AQM-29 and AQM-46.  The full countable
+closed-point Hilbert representation is AQM-48.  No new general claim is
+introduced here.  The source anchors remain Stacks for
+\(\Spec\), affine space, affine-scheme functoriality, and standard opens;
+Ashikhmin--Knill for finite-field shift and phase operators; and Gross for
+the odd-qudit Clifford interpretation.
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_3,\quad X=\Spec k[x].\\
+D2&:&G=\operatorname{Aut}_k(X)=\{g_{a,b}:x\mapsto ax+b\}.\\
+L1&:&G=\{x,x+1,x+2,2x,2x+1,2x+2\}.\\
+D3&:&x_r=(x-r),\ r=0,1,2,\text{ are the rational closed points}.\\
+L2&:&g_{a,b}(x_r)=x_{ar+b}.\\
+D4&:&S_{\rm rat}=\{x_0,x_1,x_2\},\quad
+      E_{\rm rat}=\mathbb F_3^3\oplus\mathbb F_3^3.\\
+L3&:&S_g(q_0,q_1,q_2,p_0,p_1,p_2)
+      =(q_{g^{-1}0},q_{g^{-1}1},q_{g^{-1}2},
+        p_{g^{-1}0},p_{g^{-1}1},p_{g^{-1}2}).\\
+T1&:&S_g\text{ preserves }\Omega(e,f)=\sum_r(p_rq'_r-q_rp'_r).\\
+T2&:&\alpha_g(W(e))=W(S_ge)\text{ is a Weyl algebra automorphism}.\\
+T3&:&U_g|s_0,s_1,s_2\rangle=
+      |s_{g^{-1}0},s_{g^{-1}1},s_{g^{-1}2}\rangle
+      \text{ implements }\alpha_g.
+\end{array}
+\]
+\subsection{Step 1: The Space D1}
+The coordinate ring is
+\[
+  R=\mathbb F_3[x].
+\]
+The affine line is
+\[
+  X=\Spec R.
+\]
+The closed points of \(X\) are ideals \((\pi)\), where \(\pi\) is monic
+irreducible in \(\mathbb F_3[x]\).  The residue field is
+\[
+  K_\pi=\mathbb F_3[x]/(\pi).
+\]
+At a degree \(d\) point, \(K_\pi\) has \(3^d\) elements, so the site carries
+one \(3^d\)-level qudit.
+\subsection{Step 2: The Symmetry Group D2--L1}
+By AQM-46,
+\[
+  G=\operatorname{Aut}_{\mathbb F_3}(X)
+   =
+  \{g_{a,b}:x\mapsto ax+b,\ a\in\mathbb F_3^\times,\ b\in\mathbb F_3\}.
+\]
+Since
+\[
+  \mathbb F_3^\times=\{1,2\},
+\]
+there are \(2\cdot3=6\) symmetries:
+\[
+\begin{array}{c|c|c}
+\text{name}&(a,b)&\text{map}\\
+\hline
+e&(1,0)&x\\
+\tau&(1,1)&x+1\\
+\tau^2&(1,2)&x+2\\
+\rho&(2,0)&2x\\
+\rho\tau&(2,1)&2x+1\\
+\rho\tau^2&(2,2)&2x+2
+\end{array}
+\]
+The group law is
+\[
+  g_{a,b}g_{c,d}=g_{ac,ad+b}.
+\]
+For example,
+\[
+  \tau\rho=g_{1,1}g_{2,0}=g_{2,1},
+  \qquad
+  \rho\tau=g_{2,0}g_{1,1}=g_{2,2}.
+\]
+Thus the group is nonabelian and has six elements.
+\subsection{Step 3: Rational Closed Points D3--L2}
+For \(r\in\mathbb F_3\), define
+\[
+  x_r=(x-r).
+\]
+The residue field is
+\[
+  K_r=\mathbb F_3[x]/(x-r)\cong\mathbb F_3.
+\]
+For \(g_{a,b}\), AQM-46 gives
+\[
+  g_{a,b}(x_r)=x_{ar+b}.
+\]
+The six rational-point permutations are
+\[
+\begin{array}{c|ccc}
+g&x_0&x_1&x_2\\
+\hline
+x&x_0&x_1&x_2\\
+x+1&x_1&x_2&x_0\\
+x+2&x_2&x_0&x_1\\
+2x&x_0&x_2&x_1\\
+2x+1&x_1&x_0&x_2\\
+2x+2&x_2&x_1&x_0
+\end{array}
+\]
+At rational points the residue-field isomorphism is the identity map on
+\(\mathbb F_3\), because every \(K_r\) is canonically \(\mathbb F_3\) after
+evaluation at \(r\).
+\subsection{Step 4: Quadratic Closed Points}
+The monic irreducible quadratics over \(\mathbb F_3\) are
+\[
+  q_0=x^2+1,\qquad q_1=x^2+x+2,\qquad q_2=x^2+2x+2.
+\]
+They are irreducible because none has a root in \(\mathbb F_3\).  For a
+quadratic \(\pi\), the transformation rule of AQM-46 is
+\[
+  \pi^g(X)=a^2\pi((X-b)/a).
+\]
+In \(\mathbb F_3\), \(a^2=1\) for \(a=1,2\).  The action is
+\[
+\begin{array}{c|ccc}
+g&q_0&q_1&q_2\\
+\hline
+x&q_0&q_1&q_2\\
+x+1&q_1&q_2&q_0\\
+x+2&q_2&q_0&q_1\\
+2x&q_0&q_2&q_1\\
+2x+1&q_1&q_0&q_2\\
+2x+2&q_2&q_1&q_0
+\end{array}
+\]
+Example: for \(g=x+1\),
+\[
+  q_0^g(X)=q_0(X-1)=(X-1)^2+1=X^2+X+2=q_1.
+\]
+\subsection{Step 5: The Rational Three-Site Label Space D4}
+Restrict now to the finite rational closed support
+\[
+  S_{\rm rat}=\{x_0,x_1,x_2\}.
+\]
+The label space is
+\[
+  E_{\rm rat}
+  =
+  \bigoplus_{r=0}^2\mathbb F_3^2
+  =
+  \mathbb F_{3,q}^3\oplus\mathbb F_{3,p}^3.
+\]
+Write a label as
+\[
+  e=(q_0,q_1,q_2,p_0,p_1,p_2).
+\]
+The symplectic form is
+\[
+  \Omega(e,f)=
+  \sum_{r=0}^2(p_rq'_r-q_rp'_r).
+\]
+This is the direct sum of the three one-qutrit forms.
+\subsection{Step 6: The Symplectic Map L3--T1}
+For \(g\in G\), the label pushforward is
+\[
+  (S_ge)_{g(r)}=e_r
+\]
+on both the \(q\)-coordinates and the \(p\)-coordinates.  Equivalently,
+\[
+  S_g(q_0,q_1,q_2,p_0,p_1,p_2)
+  =
+  (q_{g^{-1}0},q_{g^{-1}1},q_{g^{-1}2},
+   p_{g^{-1}0},p_{g^{-1}1},p_{g^{-1}2}).
+\]
+For \(\tau:x\mapsto x+1\),
+\[
+  \tau^{-1}(0)=2,\quad \tau^{-1}(1)=0,\quad \tau^{-1}(2)=1,
+\]
+so
+\[
+  S_\tau(e)=(q_2,q_0,q_1,p_2,p_0,p_1).
+\]
+For \(\rho:x\mapsto2x\),
+\[
+  \rho^{-1}=\rho,
+  \qquad
+  S_\rho(e)=(q_0,q_2,q_1,p_0,p_2,p_1).
+\]
+
+\paragraph{Check.}
+\[
+\begin{aligned}
+  \Omega(S_ge,S_gf)
+  &=
+  \sum_y\bigl((S_gp)_y(S_gq')_y-(S_gq)_y(S_gp')_y\bigr)\\
+  &=
+  \sum_y\bigl(p_{g^{-1}y}q'_{g^{-1}y}
+       -q_{g^{-1}y}p'_{g^{-1}y}\bigr)\\
+  &=
+  \sum_r(p_rq'_r-q_rp'_r)
+  =
+  \Omega(e,f).
+\end{aligned}
+\]
+Thus \(S_g\) is symplectic.
+\subsection{Step 7: The Weyl Operators T2}
+The Hilbert space is
+\[
+  \mathcal H_{\rm rat}=
+  \ell^2(\mathbb F_3)^{\otimes3}
+\]
+with basis \(|s_0,s_1,s_2\rangle\).  At site \(r\),
+\[
+  T_r(q)|s_r\rangle=|s_r+q\rangle,\qquad
+  R_r(p)|s_r\rangle=\omega^{ps_r}|s_r\rangle,
+  \qquad \omega=e^{2\pi i/3}.
+\]
+For \(e=(q_0,q_1,q_2,p_0,p_1,p_2)\),
+\[
+  W(e)=\bigotimes_{r=0}^2T_r(q_r)R_r(p_r).
+\]
+The Weyl law is
+\[
+  W(e)W(f)=
+  \omega^{\sum_r p_rq'_r}W(e+f).
+\]
+Because \(S_g\) preserves the exponent, the formula
+\[
+  \alpha_g(W(e))=W(S_ge)
+\]
+defines an algebra automorphism.  For \(\tau\),
+\[
+  \alpha_\tau(W(q_0,q_1,q_2,p_0,p_1,p_2))
+  =
+  W(q_2,q_0,q_1,p_2,p_0,p_1).
+\]
+\subsection{Step 8: The Clifford Unit T3}
+Define
+\[
+  U_g|s_0,s_1,s_2\rangle
+  =
+  |s_{g^{-1}0},s_{g^{-1}1},s_{g^{-1}2}\rangle .
+\]
+For \(\tau\),
+\[
+  U_\tau|s_0,s_1,s_2\rangle=|s_2,s_0,s_1\rangle.
+\]
+For \(\rho\),
+\[
+  U_\rho|s_0,s_1,s_2\rangle=|s_0,s_2,s_1\rangle.
+\]
+These are permutation matrices, hence unitaries.  Directly,
+\[
+  U_gT_r(q)U_g^*=T_{g(r)}(q),
+  \qquad
+  U_gR_r(p)U_g^*=R_{g(r)}(p).
+\]
+Multiplying over \(r=0,1,2\) gives
+\[
+  U_gW(e)U_g^*=W(S_ge)=\alpha_g(W(e)).
+\]
+Since \(3\) is odd, Gross's finite Clifford theorem applies: this finite
+rational-support implementation is a Clifford unitary.  This is only a
+finite-volume truncation; AQM-48 gives the full countable closed-point net,
+its infinite Hilbert representation, and the generic-point caveat.
