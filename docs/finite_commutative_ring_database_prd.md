@@ -63,9 +63,12 @@ classification by finite abelian groups, quasi bases, structure constants, and
 isomorphism criteria. This should guide the presentation layer and the small
 custom isomorphism checker.
 
-GAP is a small-order oracle, not a complete database engine: the registered
-GAP manual snapshot states that the built-in small-ring library covers rings
-of order up to 15 and documents `SmallRing` and `NumberSmallRings`.
+GAP is installed-tool metadata for the first slice, not a complete database
+engine: the registered GAP manual snapshot states that the built-in
+small-ring library covers rings of order up to 15 and documents `SmallRing`
+and `NumberSmallRings`, but the current status helper exposes only order-1
+metadata. Scoped commutative-unital counts beyond order `1` are deferred until
+an exact element-level unit-detection/import path exists.
 
 Sage, OSCAR, Nemo, AbstractAlgebra, and FLINT are construction and exact
 algebra backends. No registered source currently shows that any one of them
@@ -294,7 +297,7 @@ Required project additions for implementation:
 
 Optional wrappers:
 
-- GAP smoke tests for `SmallRing` and `NumberSmallRings`;
+- GAP order-1 metadata smoke tests for `SmallRing` and `NumberSmallRings`;
 - Sage cross-checks for quotient-ring examples;
 - OSCAR/Nemo constructors for polynomial quotient and residue rings;
 - Magma only as an optional non-required oracle when a license exists.
@@ -307,7 +310,7 @@ The first implementation should expose:
 julia --project=. scripts/arithmetic/finite_ring_db_build.jl \
   --run runs/<date>-finite-ring-database \
   --max-order 15 \
-  --sources gap-small,manual-examples \
+  --sources manual-examples \
   [--force]
 
 julia --project=. scripts/arithmetic/finite_ring_db_quantize.jl \
@@ -521,8 +524,10 @@ MVP-1 must include:
 - `Z/4Z`, `Z/6Z`, `Z/8Z`, `Z/9Z`;
 - `F_2[e]/(e^2)`, `F_3[e]/(e^2)`;
 - `F_2 x F_2`, `F_2 x F_3`, `F_3 x F_3`;
-- GAP small-ring rows for orders `1..15` when GAP is installed, filtered to
-  commutative unital rings by explicit predicates.
+- one GAP order-1 status metadata row when GAP is installed, reconciling
+  `NumberSmallRings(1)` with the local zero-ring policy. This status helper
+  imports no presentations, certifies no completeness, and exposes no scoped
+  counts beyond order `1`.
 
 Zero-ring invariant policy is fixed by `CONVENTIONS.md` convention `(an)`:
 
@@ -542,9 +547,11 @@ implementation is still deferred: zero-ring quantisation rows must be explicit
 quantisation bead defines layer semantics, and no Hilbert-space claim is made
 here.
 
-The first completeness claim should be limited to the GAP-backed order range
-that the implementation can filter and audit. Any Nowicki ingestion should be
-a later milestone after license and transcription checks.
+The first completeness claim cannot come from the GAP status helper alone.
+Completeness for any GAP-backed order beyond the order-1 metadata smoke needs
+an exact element-level unit-detection/import path plus audited deduplication.
+Any Nowicki ingestion should be a later milestone after license and
+transcription checks.
 
 ## 8. Validation Plan
 
@@ -555,8 +562,9 @@ Small exact tests:
 - `F_2[x]/(x^2+x)` has two idempotent factors and matches `F_2 x F_2`.
 - `Z/6Z` matches `F_2 x F_3` by Chinese remainder data and must dedup.
 - `F_3[e]/(e^2)` is not reduced and must not merge with `F_3 x F_3`.
-- GAP `NumberSmallRings(n)` must reconcile for any audited order `n <= 15`
-  where GAP is installed and the ring-scope filter is recorded.
+- GAP `NumberSmallRings(1)` must reconcile with the local zero-ring policy
+  where GAP is installed. Audited scoped counts beyond order `1` are deferred
+  pending exact element-level unit detection/import.
 
 Quantisation tests:
 
@@ -595,9 +603,10 @@ M2: Hand examples
 : Manual constructors for the MVP rings, invariant computation, and direct
   isomorphism certificates.
 
-M3: GAP small-order oracle
-: Optional GAP importer for orders up to 15, with scope filtering and count
-  reconciliation.
+M3: GAP order-1 metadata
+: Optional GAP order-1 status metadata, with no imported presentations and no
+  completeness claim; broader scoped counts need exact element-level unit
+  detection/import first.
 
 M4: Polynomial quotient constructors
 : Sage/OSCAR/Nemo-backed constructors for quotient rings used by the report.

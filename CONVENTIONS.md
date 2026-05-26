@@ -1790,11 +1790,14 @@ metadata only; this helper performs no filesystem or database writes and is
 not a general finite-ring matrix materialiser.
 
 The first GAP small-ring helper is installed-tool reconciliation metadata only.
-It may query a locally installed GAP for `NumberSmallRings(s)` and
-`SmallRing(s,i)` over orders `1 <= s <= 15`, then count only rings satisfying
-GAP's `IsRingWithOne` and installed commutativity predicate, except that
-`SmallRing(1,1)` is counted in this scoped count by the local zero-ring policy
-above even on GAP builds whose `IsRingWithOne(SmallRing(1,1))` returns false.
+It is order-1 metadata only: it may query a locally installed GAP for
+`NumberSmallRings(1)` and `SmallRing(1,1)`. `SmallRing(1,1)` is counted by
+the local zero-ring policy above even on GAP builds whose
+`IsRingWithOne(SmallRing(1,1))` returns false. The registered GAP manual
+documents a small-ring library through order `15`, but this helper must not
+expose scoped counts beyond order `1`; those counts are deferred pending an
+exact element-level unit-detection/import path rather than GAP
+`IsRingWithOne(SmallRing(s,i))` on the audited small-ring library objects.
 The helper invokes GAP as an argv command with `--bare -q` for this status
 metadata query, because the status helper needs only core GAP ring operations
 and this avoids package autoload/startup failures observed with the local Nix

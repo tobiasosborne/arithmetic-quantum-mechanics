@@ -252,11 +252,13 @@ end
     @test occursin("imports no presentations", conventions)
     @test occursin("`SmallRing(1,1)` is counted", conventions)
     @test occursin("`--bare -q`", conventions)
+    @test occursin("It is order-1 metadata only", conventions)
+    @test occursin("expose scoped counts beyond order `1`", conventions)
 
-    skipped = finite_ring_gap_small_ring_import_status(3; gap_path=nothing)
+    skipped = finite_ring_gap_small_ring_import_status(1; gap_path=nothing)
     @test skipped.status == "skipped"
     @test skipped.reason == "gap_not_available"
-    @test skipped.requested_max_order == 3
+    @test skipped.requested_max_order == 1
     @test skipped.tool_status == "missing"
     @test isempty(skipped.rows)
     @test isempty(skipped.imported_presentations)
@@ -265,7 +267,7 @@ end
     @test occursin("gap_rings_chapter_56.html", skipped.source_locator)
 
     mktempdir() do dir
-        missing = finite_ring_gap_small_ring_import_status(2; gap_path=joinpath(dir, "gap"))
+        missing = finite_ring_gap_small_ring_import_status(1; gap_path=joinpath(dir, "gap"))
         @test missing.status == "skipped"
         @test missing.reason == "gap_not_available"
         @test isempty(missing.rows)
@@ -273,15 +275,29 @@ end
     end
 
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(0; gap_path=nothing)
+    @test_throws ArgumentError finite_ring_gap_small_ring_import_status(-1; gap_path=nothing)
+    @test_throws ArgumentError finite_ring_gap_small_ring_import_status(true; gap_path=nothing)
+    @test_throws ArgumentError finite_ring_gap_small_ring_import_status(1.0; gap_path=nothing)
+    @test_throws ArgumentError finite_ring_gap_small_ring_import_status(2; gap_path=nothing)
     @test_throws ArgumentError finite_ring_gap_small_ring_import_status(16; gap_path=nothing)
+    err = try
+        finite_ring_gap_small_ring_import_status(2; gap_path=nothing)
+        nothing
+    catch caught
+        caught
+    end
+    @test err isa ArgumentError
+    @test occursin("GAP scoped counts beyond order 1 are deferred", sprint(showerror, err))
+    @test occursin("exact element-level unit detection/import", sprint(showerror, err))
 
     gap_command = ArithmeticQuantumMechanics._frdb_gap_small_ring_command("gap")
     @test gap_command.exec == ["gap", "--bare", "-q"]
 
-    gap_script = ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(2)
+    gap_script = ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(1)
     @test occursin("missing_unital_predicate|IsRingWithOne", gap_script)
     @test occursin("if s = 1 and i = 1 then", gap_script)
     @test occursin("elif IsRingWithOne(R) and IsCommutative(R) then", gap_script)
+    @test_throws ArgumentError ArithmeticQuantumMechanics._frdb_gap_small_ring_status_script(2)
 
     parse_status =
         ArithmeticQuantumMechanics._frdb_parse_gap_small_ring_status_output

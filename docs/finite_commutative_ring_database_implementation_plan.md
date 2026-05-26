@@ -321,18 +321,22 @@ Ground truth first:
 Red:
 
 - Add tests that the importer records an explicit skip when GAP is missing.
-- When GAP is available, add a small order smoke test with count
-  reconciliation for the audited scope.
+- When GAP is available, add an order-1 smoke test reconciling
+  `NumberSmallRings(1)` with the local zero-ring policy.
+- Add a fail-loud test that `max_order > 1` is rejected until exact
+  element-level unit detection/import is available.
 
 Green:
 
-- Implement `gap-small` import behind optional-tool detection.
-- Filter explicitly to finite commutative unital rings before insertion.
+- Implement `gap-small` status metadata behind optional-tool detection.
+- Import no presentations and certify no completeness from this status helper.
 
 Unclear:
 
-- GAP's small-ring library scope must be verified in the installed GAP version
-  before claiming completeness for any imported order.
+- GAP's small-ring library scope beyond order `1` needs an exact
+  element-level unit-detection/import path before the project can expose
+  scoped commutative-unital counts or claim completeness for any imported
+  order.
 
 ## Step 15: Add Optional Quotient-Ring Constructors
 

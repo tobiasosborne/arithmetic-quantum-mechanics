@@ -44,17 +44,15 @@ end
 
 function _frdb_gap_small_ring_max_order(max_order)::Int
     max_order isa Integer && !(max_order isa Bool) ||
-        throw(ArgumentError("max_order must be a positive integer no larger than 15"))
-    requested_max_order = try
-        Int(max_order)
-    catch
-        throw(ArgumentError("max_order must be a positive integer no larger than 15"))
-    end
-    requested_max_order >= 1 ||
         throw(ArgumentError("max_order must be a positive integer"))
-    requested_max_order <= FINITE_RING_DATABASE_GAP_SMALL_RING_MAX_ORDER ||
-        throw(ArgumentError("max_order must be no larger than 15"))
-    return requested_max_order
+    max_order >= 1 ||
+        throw(ArgumentError("max_order must be a positive integer"))
+    max_order == 1 || throw(ArgumentError(
+        "GAP scoped counts beyond order 1 are deferred pending exact " *
+        "element-level unit detection/import; pass max_order=1 for " *
+        "installed-tool metadata only",
+    ))
+    return 1
 end
 
 function _frdb_gap_path(gap_path)
@@ -114,6 +112,7 @@ function _frdb_gap_small_ring_command(gap_path::AbstractString)::Cmd
 end
 
 function _frdb_gap_small_ring_status_script(max_order::Int)::String
+    requested_max_order = _frdb_gap_small_ring_max_order(max_order)
     return """
     if not IsBoundGlobal("IsCommutative") then
       Print("AQM_FRDB_ERROR|missing_commutativity_predicate|IsCommutative\\n");
@@ -124,7 +123,7 @@ function _frdb_gap_small_ring_status_script(max_order::Int)::String
       QUIT;
     fi;
     Print("AQM_FRDB_GAP_VERSION|", GAPInfo.Version, "\\n");
-    for s in [1..$(max_order)] do
+    for s in [1..$(requested_max_order)] do
       total := NumberSmallRings(s);
       scoped := 0;
       for i in [1..total] do

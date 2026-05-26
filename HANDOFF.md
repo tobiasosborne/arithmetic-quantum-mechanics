@@ -13,11 +13,14 @@ redirects. Start from `docs/finite_commutative_ring_database_prd.md`,
 `(an)` in `CONVENTIONS.md`, the current Beads state, and the finite-ring run
 bundle at `runs/2026-05-26-finite-ring-database/`. The main finite-ring chain
 has progressed through acceptance bead `aqm-6t4`, and the order-1 GAP-enabled
-validation bead `aqm-tcv` is closed. The current finite-ring follow-up is
-`aqm-f8p`: investigate GAP small-ring unital filtering beyond order `1` before
-using GAP scoped counts for larger orders. Do not add report shards from this
-slice: the SQLite file is still schema-only/local, no populated or audited ring
-database exists, and no completeness claim is available.
+validation bead `aqm-tcv` is closed. The current finite-ring follow-up
+`aqm-f8p` takes the conservative path: the GAP small-ring status helper is
+order-1 metadata only, and scoped counts beyond order `1` are deferred until
+an exact element-level unit-detection/import path exists. The next bead should
+target that exact import path, not broad report integration. Do not add report
+shards from this slice: the SQLite file is still schema-only/local, no
+populated or audited ring database exists, and no completeness claim is
+available.
 
 Initial infrastructure is in place for a lab-book style research workspace
 about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
@@ -182,6 +185,21 @@ claim exists yet, and report integration is deferred.
 
 ## Most Recent Session
 
+**2026-05-26 - Conservative GAP small-ring status limitation.**
+
+- Resolving `aqm-f8p` by limiting
+  `finite_ring_gap_small_ring_import_status(max_order; ...)` to `max_order=1`.
+  Requests beyond order `1` now fail loudly until exact element-level
+  unit-detection/import is available.
+- The status helper remains installed-tool metadata only: `gap --bare -q`,
+  `SmallRing(1,1)` counted by the local zero-ring policy,
+  `certifies_completeness=false`, and no imported presentations.
+- Validation: `julia --project=. -e 'using Pkg; Pkg.test()'` passed; on this
+  host the GAP testset reported `41` passes and `1` broken skip because GAP is
+  not on `PATH`.
+- Next finite-ring follow-up should be the exact unit-detection/import path
+  needed before any GAP scoped counts beyond order `1`, not broad report work.
+
 **2026-05-26 - GAP-enabled finite-ring small-ring validation.**
 
 - Closed `aqm-tcv`: with `PATH` prefixed by the Nix GAP 4.15.1 store path,
@@ -201,8 +219,8 @@ claim exists yet, and report integration is deferred.
   `12 ok, 0 failed, 0 skipped`; `git diff --check` was clean.
 - Raised `aqm-f8p` because direct GAP probes under `--bare` showed
   `IsRingWithOne(SmallRing(s,i))` returning false for sampled orders `2..5`.
-  Do not rely on GAP scoped counts beyond the order-1 smoke until that bead is
-  resolved or a separate exact unit-detection/import path exists.
+  Do not rely on GAP scoped counts beyond the order-1 smoke until an exact
+  unit-detection/import path exists.
 
 **2026-05-26 - Finite-ring database Steps 05-18 acceptance outcome.**
 
@@ -218,8 +236,8 @@ claim exists yet, and report integration is deferred.
   `not_applicable_until_layer_semantics` with no Hilbert-space claim.
 - Added optional prime-field Weyl matrix metadata, GAP small-ring status, and
   quotient-constructor status helpers. The later `aqm-tcv` validation now
-  covers the GAP-enabled order-1 status branch; broader GAP scoped counts are
-  tracked in `aqm-f8p`.
+  covers the GAP-enabled order-1 status branch; `aqm-f8p` limits broader GAP
+  scoped counts pending exact unit-detection/import.
 - Recorded the rerun policy and schema-integrity split in convention `(an)`:
   build fails on an existing SQLite file unless `--force`; stable relational
   checks live in schema, while canonical JSON and open/evolving status tokens
