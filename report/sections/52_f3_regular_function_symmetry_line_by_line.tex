@@ -1,0 +1,227 @@
+% SHARD-ID: AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE
+% SHARD-TITLE: The \(\mathbb F_3\) Regular-Function Symmetry Action Line by Line
+% SHARD-SUMMARY: Computes \(g_\#F=F\circ g^{-1}\) for all six affine symmetries of \(\mathbf A^1_{\mathbb F_3}\).
+% SHARD-SUMMARY: Checks residue-profile covariance at rational and quadratic closed points.
+% SHARD-SUMMARY: Computes the transformed reduced Weyl smearings and the repeated-factor Artin support transport.
+% SHARD-KEYWORDS: F3, affine symmetry, regular function, residue profile, Weyl smearing, Artin ring
+
+\section{The \texorpdfstring{\(\mathbb F_3\)}{F3} Regular-Function Symmetry Action Line by Line}
+\label{sec:f3-regular-function-symmetry-line-by-line}
+
+\subsection{Status and Source Anchors}
+This is the \(k=\mathbb F_3\) companion to AQM-51.  It uses AQM-46 for the
+affine symmetry group, AQM-48 for the full closed-point Hilbert action,
+AQM-49 for regular functions and reduced smearing, and AQM-50 for the concrete
+regular-function examples.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&R=\mathbb F_3[x],\ X=\Spec R,\ G=\{g_{a,b}:x\mapsto ax+b\}.\\
+D2&:&g_\#F=F(a^{-1}(x-b)).\\
+L1&:&g_\#x=a^{-1}(x-b)\text{ for all six }g.\\
+D3&:&\tau:x\mapsto x+1,\quad \rho:x\mapsto2x.\\
+T1&:&\operatorname{ev}(g_\#F)=S_g^\Pi\operatorname{ev}(F)\text{ at rational points.}\\
+D4&:&h=x(x-1),\quad F=1,\quad G=x+1.\\
+T2&:&\alpha_\tau W_h^{\rm red}(F,G)=W_{\tau_\#h}^{\rm red}(\tau_\#F,\tau_\#G).\\
+D5&:&q_0=x^2+1,\quad q_1=x^2+x+2.\\
+T3&:&\tau_\#q_0=q_1\text{ and quadratic labels transform by }\tau_{g,\pi}^{-1}.\\
+D6&:&m=x^2q_0^3.\\
+T4&:&\tau_\#m=(x-1)^2q_1^3,\text{ preserving reduced and thickened dimensions.}
+\end{array}
+\]
+
+\subsection{Step 1: The Six Symmetries D1--L1}
+For \(k=\mathbb F_3\),
+\[
+  G=\operatorname{Aut}_{\mathbb F_3}(X)=
+  \{g_{a,b}:x\mapsto ax+b,\ a\in\{1,2\},\ b\in\mathbb F_3\}.
+\]
+By AQM-51,
+\[
+  g_\#F=F\circ g^{-1},\qquad g_\#F(x)=F(a^{-1}(x-b)).
+\]
+Since \(1^{-1}=1\) and \(2^{-1}=2\) in \(\mathbb F_3\),
+\[
+\begin{array}{c|c|c}
+g&(a,b)&g_\#x\\
+\hline
+x&(1,0)&x\\
+x+1&(1,1)&x-1=x+2\\
+x+2&(1,2)&x-2=x+1\\
+2x&(2,0)&2x\\
+2x+1&(2,1)&2(x-1)=2x+1\\
+2x+2&(2,2)&2(x-2)=2x+2
+\end{array}
+\]
+
+\paragraph{Lemma \(L1\).}
+The table gives \(g_\#x=g^{-1}(x)\) in every case.
+
+\emph{Proof.}
+The inverse of \(g_{a,b}\) is \(g_{a^{-1},-a^{-1}b}\).  Therefore
+\(g_\#x=a^{-1}(x-b)\).  Substituting the six pairs \((a,b)\) gives the table.
+
+\subsection{Step 2: Translation and Reflection D3}
+Write
+\[
+  \tau:x\mapsto x+1,\qquad \rho:x\mapsto2x.
+\]
+Then \(\tau_\#F=F(x-1)\) and \(\rho_\#F=F(2x)\).  For \(F=x\),
+\[
+  \tau_\#x=x-1,\qquad \rho_\#x=2x.
+\]
+For the local regular function \(x^{-1}\in\Gamma(D(x),\mathcal O_X)\),
+\[
+  \tau_\#(x^{-1})=(x-1)^{-1}\in\Gamma(D(x-1),\mathcal O_X),
+  \rho_\#(x^{-1})=(2x)^{-1}=2x^{-1}\in\Gamma(D(x),\mathcal O_X).
+\]
+The open \(D(x)\) moves to \(D(x-1)\) under \(\tau\), because \(x_0\) moves to
+\(x_1\).  It is fixed by \(\rho\), because \(x_0\) is fixed by \(\rho\).
+
+\subsection{Step 3: Rational-Point Profile Check T1}
+The rational closed points are \(x_r=(x-r)\), \(r=0,1,2\).  The translation
+\(\tau\) sends \(x_r\mapsto x_{r+1}\).
+At rational points the residue fields are all \(\mathbb F_3\), and the
+residue-field isomorphism is the identity after evaluation.
+
+Check \(F=x\).  The source value at \(x_r\) is \(r\).  The transformed function
+is \(\tau_\#F=x-1\).  At \(x_{r+1}\), \((\tau_\#F)(x_{r+1})=(r+1)-1=r\).
+Line by line,
+\[
+\begin{array}{c|c|c|c}
+\text{source}&F&\text{target}&\tau_\#F\\
+\hline
+x_0&0&x_1&1-1=0\\
+x_1&1&x_2&2-1=1\\
+x_2&2&x_0&0-1=2
+\end{array}
+\]
+This is exactly \(\operatorname{ev}(\tau_\#F)=S_\tau^\Pi\operatorname{ev}(F)\).
+
+For \(x^{-1}\) on \(D(x)\), the source points are \(x_1,x_2\).  They move to
+\(x_2,x_0\).  The values are
+\[
+\begin{array}{c|c|c|c}
+\text{source}&x^{-1}&\text{target}&(x-1)^{-1}\\
+\hline
+x_1&1&x_2&(2-1)^{-1}=1\\
+x_2&2&x_0&(0-1)^{-1}=2
+\end{array}
+\]
+Thus local regular functions satisfy the same covariance rule.
+
+\subsection{Step 4: A Reduced Two-Qutrit Smearing D4--T2}
+Use the AQM-50 support and labels
+\[
+  h=x(x-1),\qquad F=1,\qquad G=x+1.
+\]
+The support is \(Z_{\rm cl}(h)=\{x_0,x_1\}\).  The source labels are
+\(x_0:(1,1)\) and \(x_1:(1,2)\).
+Under \(\tau\),
+\[
+  \tau_\#h=(x-1)(x-2),\qquad \tau_\#F=1,\qquad \tau_\#G=x.
+\]
+The target support is \(Z_{\rm cl}(\tau_\#h)=\{x_1,x_2\}\).  At \(x_1\) and
+\(x_2\), the target labels are \((1,1)\) and \((1,2)\).
+
+\paragraph{Theorem \(T2\).}
+\[
+  \alpha_\tau W_{x(x-1)}^{\rm red}(1,x+1)=
+  W_{(x-1)(x-2)}^{\rm red}(1,x).
+\]
+
+\emph{Proof.}
+The source label \(((1,1),(1,2))\) at \((x_0,x_1)\) has just been carried to
+the same ordered values at \((x_1,x_2)\).  AQM-46 says
+\(\alpha_\tau W(e)=W(S_\tau e)\), and AQM-51 identifies
+\(S_\tau e\) with the reduced label of \((1,x)\) on the transformed support.
+
+\subsection{Step 5: Quadratic Closed Point D5--T3}
+Let \(q_0=x^2+1\) and \(q_1=x^2+x+2\).
+For \(\tau\),
+\[
+  \tau_\#q_0=q_0(x-1)=(x-1)^2+1=x^2+x+2=q_1.
+\]
+Let \(K_{q_0}=\mathbb F_3[\alpha]\), \(\alpha^2=2\), and
+\(K_{q_1}=\mathbb F_3[\beta]\), \(\beta^2+\beta+2=0\).
+The residue pullback is
+\[
+  \tau_{\tau,q_0}:K_{q_1}\to K_{q_0},\qquad
+  \beta\longmapsto\alpha+1.
+\]
+Hence \(\tau_{\tau,q_0}^{-1}(\alpha)=\beta-1=\beta+2\).
+
+Use the AQM-50 labels
+\[
+  F=x+1,\qquad G=2x
+\]
+on \(q_0\).  The source label is \((\alpha+1,\ 2\alpha)\).  The transformed
+functions are \(\tau_\#F=x\) and \(\tau_\#G=2x+1\), giving
+\((\beta,\ 2\beta+1)\) at \(q_1\).
+
+\paragraph{Theorem \(T3\).}
+\[
+  (\beta,\ 2\beta+1)=
+  \bigl(\tau_{\tau,q_0}^{-1}(\alpha+1),
+        \tau_{\tau,q_0}^{-1}(2\alpha)\bigr).
+\]
+
+\emph{Proof.}
+Since \(\tau_{\tau,q_0}^{-1}(\alpha)=\beta+2\),
+\[
+  \tau_{\tau,q_0}^{-1}(\alpha+1)=\beta,\qquad
+  \tau_{\tau,q_0}^{-1}(2\alpha)=2(\beta+2)=2\beta+1.
+\]
+These are exactly the target residues of \(x\) and \(2x+1\) at \(q_1\).
+
+\subsection{Step 6: Repeated Factors D6--T4}
+Take the AQM-50 repeated-factor polynomial \(m=x^2q_0^3\).
+Under \(\tau\),
+\[
+  \tau_\#m=(x-1)^2q_1^3.
+\]
+The reduced source support is \(\{x_0,x_{q_0}\}\), and the reduced target
+support is \(\{x_1,x_{q_1}\}\).  The reduced Hilbert dimension is unchanged:
+\[
+  3\cdot9=27.
+\]
+The thickened source rings are \(\mathbb F_3[x]/(x^2)\) and
+\(\mathbb F_3[x]/(q_0^3)\).  The target rings are
+\(\mathbb F_3[x]/((x-1)^2)\) and \(\mathbb F_3[x]/(q_1^3)\).  The map
+\(F\mapsto F(x-1)\) gives ring isomorphisms from source to target.  Therefore
+the thickened dimension is also unchanged:
+\[
+  3^2\cdot3^6=3^8=6561.
+\]
+
+\paragraph{Theorem \(T4\).}
+The affine action preserves the exponents \(2\) and \(3\).  It moves the
+closed support and the thickened Artin rings, but it does not turn a repeated
+factor into extra closed points.
+
+\emph{Proof.}
+The equality \(\tau_\#m=(x-1)^2q_1^3\) shows that exponents are carried with
+their irreducible factors.  The reduced support keeps only the distinct
+factors, giving one \(3\)-level site and one \(9\)-level site before and after
+translation.  The thickened rings keep the powers, so their sizes remain
+\(3^2\) and \(3^6\).  Thus multiplicity is preserved as Artin-ring thickness,
+not converted into a larger closed-point set.
+
+\subsection{Step 7: The Full Hilbert-Space Statement}
+The full closed-point Hilbert representation from AQM-48 is
+\[
+  \mathcal H^0=\ell^2\!\left(\bigoplus_{\pi}K_\pi\right),
+\]
+where \(\pi\) runs over all monic irreducibles and vectors have finite closed
+support.  The affine unitary satisfies
+\[
+  U_gW_h^{\rm red}(F,G)U_g^*=W_{g_\#h}^{\rm red}(g_\#F,g_\#G)
+\]
+for every finite support selector \(h\) and polynomial labels \(F,G\).
+
+There is no operator \(W(\operatorname{ev}(x))\) in the algebraic
+finite-support Weyl net, because AQM-50 proves that \(x\) has infinite closed
+support.  The symmetry acts on that infinite profile by relabelling it, but
+the Weyl operator exists only after choosing a finite support such as \(h\), or
+after adding a new infinite-volume completion convention.

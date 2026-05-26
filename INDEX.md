@@ -126,6 +126,8 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-48-F3-FULL-AFFINE-LINE-NET-HILBERT-ACTION` | `report/sections/48_f3_full_affine_line_net_hilbert_action.tex` | The Full \(\mathbb F_3\) Affine-Line Net and Hilbert Action |
 | `AQM-49-REGULAR-FUNCTIONS-AFFINE-LINE-WEYL-LABELS` | `report/sections/49_regular_functions_affine_line_weyl_labels.tex` | Regular Functions, Supports, and Weyl Labels on the Affine Line |
 | `AQM-50-F3-REGULAR-FUNCTIONS-LINE-BY-LINE` | `report/sections/50_f3_regular_functions_line_by_line.tex` | Regular Functions on \(\mathbb F_3[x]\) Line by Line |
+| `AQM-51-REGULAR-FUNCTION-AFFINE-SYMMETRY-ACTION` | `report/sections/51_regular_function_affine_symmetry_action.tex` | Affine Symmetry Action on Regular Functions |
+| `AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE` | `report/sections/52_f3_regular_function_symmetry_line_by_line.tex` | The \(\mathbb F_3\) Regular-Function Symmetry Action Line by Line |
 
 ## Source Topics
 

@@ -130,6 +130,16 @@ system only when used as a support selector \(Z_{\rm cl}(h)\); reduced smeared
 operators depend on labels modulo \(\operatorname{rad}(h)\), while repeated
 factors are visible only in the Artin-ring thickened layer.
 
+The newest affine action on regular functions is
+`AQM-51-REGULAR-FUNCTION-AFFINE-SYMMETRY-ACTION` and
+`AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE`.  The rule is
+`g_#F = F circ g^(-1)` and `g_#h = h circ g^(-1)`.  Residue profiles transform
+by the same `S_g` relabelling as closed-point Weyl labels, so
+`alpha_g(W_h^red(F,G)) = W_(g_#h)^red(g_#F,g_#G)`.  The Artin-ring factors
+`F_q[x]/(pi^e)` are transported to `F_q[x]/((pi^g)^e)` with the exponent
+preserved; thickened Weyl covariance still requires transported generating
+characters or an explicit dual momentum correction.
+
 ## Most Recent Session
 
 **2026-05-25 - Canonical boson/fermion field comparison.**

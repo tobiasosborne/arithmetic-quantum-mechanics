@@ -1,0 +1,251 @@
+% SHARD-ID: AQM-51-REGULAR-FUNCTION-AFFINE-SYMMETRY-ACTION
+% SHARD-TITLE: Affine Symmetry Action on Regular Functions
+% SHARD-SUMMARY: Defines the pushforward action \(g_\#F=F\circ g^{-1}\) on regular functions over standard opens.
+% SHARD-SUMMARY: Proves compatibility with residue profiles, finite Weyl labels, and reduced smeared operators.
+% SHARD-SUMMARY: Separates the canonical Artin-ring transport from any extra thickened Weyl character convention.
+% SHARD-KEYWORDS: regular function, affine symmetry, residue profile, Weyl net, smearing, Artin ring
+
+\section{Affine Symmetry Action on Regular Functions}
+\label{sec:regular-function-affine-symmetry-action}
+
+\subsection{Status and Source Anchors}
+This shard extends AQM-46 and AQM-49.  The group
+\(\operatorname{Aut}_k(\mathbf A^1_k)\), its action on closed points, and the
+residue-field isomorphisms \(\tau_{g,\pi}\) are those of AQM-46.  Regular
+functions, residue profiles, reduced supports, and reduced smearing are those
+of AQM-49.  The Artin-ring layer is AQM-36.  No new external source is used;
+the new assertions below are checked algebraic consequences of those shards.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_q,\quad R=k[x],\quad X=\Spec R,\quad
+      g=g_{a,b}:x\mapsto ax+b.\\
+D2&:&\theta_g(f)(x)=f(ax+b),\quad
+      \sigma_g=\theta_{g^{-1}},\quad F^g=\sigma_g(F).\\
+L1&:&\sigma_g:R_h\to R_{\sigma_g(h)}\text{ is an isomorphism and }
+      gD(h)=D(\sigma_g(h)).\\
+D3&:&\operatorname{Prof}(U)=\prod_{x_\pi\in U}K_\pi^2.\\
+D4&:&(S_g^\Pi e)_{\pi^g}=
+      (\tau_{g,\pi}^{-1}q_\pi,\tau_{g,\pi}^{-1}p_\pi).\\
+T1&:&\operatorname{ev}_{gU}(F^g,G^g)=
+      S_g^\Pi\operatorname{ev}_U(F,G).\\
+T2&:&\text{The affine action preserves the distinction between profiles and
+      finite Weyl labels.}\\
+D5&:&h^g=\sigma_g(h),\quad
+      W_h^{\rm red}(F,G)=W_{Z_{\rm cl}(h)}(e_h^{\rm red}(F,G)).\\
+T3&:&\alpha_g(W_h^{\rm red}(F,G))=
+      W_{h^g}^{\rm red}(F^g,G^g).\\
+D6&:&A_{\pi,e}=R/(\pi^e),\quad
+      A_{\pi^g,e}=R/((\pi^g)^e).\\
+T4&:&\sigma_g\text{ induces }A_{\pi,e}\simeq A_{\pi^g,e}
+      \text{ and preserves the multiplicity }e.
+\end{array}
+\]
+
+\subsection{Pushforward of Regular Functions D1--L1}
+Let \(g=g_{a,b}\), with \(a\in k^\times\) and \(b\in k\).  Its pullback on the
+coordinate ring is
+\[
+  \theta_g:R\longrightarrow R,\qquad \theta_g(f)(x)=f(ax+b).
+\]
+For regular functions we use the covariant, or pushforward, notation
+\[
+  F^g=g_\#F:=\sigma_g(F),\qquad \sigma_g=\theta_{g^{-1}}.
+\]
+Thus, as a function on points,
+\[
+  (g_\#F)(y)=F(g^{-1}y).
+\]
+
+\paragraph{Lemma \(L1\).}
+If \(h\ne0\), then \(\sigma_g\) extends to a ring isomorphism
+\[
+  \sigma_g:R_h\longrightarrow R_{\sigma_g(h)}
+\]
+by
+\[
+  \sigma_g(u/h^m)=\sigma_g(u)/\sigma_g(h)^m.
+\]
+Moreover
+\[
+  g(D(h))=D(\sigma_g(h)).
+\]
+
+\emph{Proof.}
+The map \(\sigma_g\) is a \(k\)-algebra automorphism of \(R\), with inverse
+\(\theta_g\).  It sends the multiplicative set
+\(\{1,h,h^2,\ldots\}\) bijectively to
+\(\{1,\sigma_g(h),\sigma_g(h)^2,\ldots\}\), so it extends uniquely to the
+displayed localization isomorphism.
+
+For a point \(y\in X\),
+\[
+  y\in g(D(h))
+  \Longleftrightarrow
+  g^{-1}y\in D(h)
+  \Longleftrightarrow
+  h(g^{-1}y)\ne0
+  \Longleftrightarrow
+  \sigma_g(h)(y)\ne0.
+\]
+This is exactly \(y\in D(\sigma_g(h))\).
+
+Composition has the expected order:
+\[
+  (gh)_\#=g_\#h_\#,
+\]
+because \((gh)^{-1}=h^{-1}g^{-1}\).
+
+\subsection{Residue Profiles D3--T2}
+For an open \(U\), define the full residue-profile set
+\[
+  \operatorname{Prof}(U)=\prod_{x_\pi\in U}K_\pi^2.
+\]
+The finite-support Weyl label group \(E(U)\) of AQM-46 and AQM-49 is the
+subgroup of \(\operatorname{Prof}(U)\) with finite closed support.
+
+Define
+\[
+  S_g^\Pi:\operatorname{Prof}(U)\longrightarrow\operatorname{Prof}(gU)
+\]
+by
+\[
+  (S_g^\Pi e)_{\pi^g}
+  =
+  \bigl(\tau_{g,\pi}^{-1}(q_\pi),
+        \tau_{g,\pi}^{-1}(p_\pi)\bigr),
+\]
+where \(e_\pi=(q_\pi,p_\pi)\).  On finite-support profiles this is the
+finite Weyl-label map \(S_g\) from AQM-46.
+
+\paragraph{Theorem \(T1\).}
+For \(F,G\in\Gamma(U,\mathcal O_X)\),
+\[
+  \operatorname{ev}_{gU}(F^g,G^g)=
+  S_g^\Pi\operatorname{ev}_U(F,G).
+\]
+
+\emph{Proof.}
+It is enough to check one closed point \(x_\pi\in U\).  Let
+\(x_{\pi^g}=g(x_\pi)\).  The residue map
+\(\tau_{g,\pi}:K_{\pi^g}\to K_\pi\) is induced by \(\theta_g\).  Therefore,
+for every \(H\in\Gamma(gU,\mathcal O_X)\),
+\[
+  \tau_{g,\pi}(H(x_{\pi^g}))=(\theta_gH)(x_\pi).
+\]
+Apply this to \(H=F^g=\sigma_g(F)\).  Since \(\theta_g\sigma_g=\operatorname{id}\),
+\[
+  \tau_{g,\pi}(F^g(x_{\pi^g}))=F(x_\pi).
+\]
+Thus \(F^g(x_{\pi^g})=\tau_{g,\pi}^{-1}(F(x_\pi))\).  The same argument applies
+to \(G\), proving the displayed profile identity.
+
+\paragraph{Theorem \(T2\).}
+The affine action never turns a nonzero regular-function profile into a
+finite Weyl label, and never turns the zero profile into a nonzero one.
+
+\emph{Proof.}
+The map \(S_g^\Pi\) is a bijection of closed-point profiles.  It sends the zero
+profile to the zero profile.  It sends a finite-support profile to a
+finite-support profile because \(x_\pi\mapsto x_{\pi^g}\) is a bijection of
+closed points.  It sends an infinite-support profile to an infinite-support
+profile for the same reason.  AQM-49 proves that a nonzero regular-function
+pair on a nonempty standard open has cofinite, hence infinite, closed support.
+Therefore the profile/operator distinction is invariant under \(g\).
+
+\subsection{Reduced Smeared Operators D5--T3}
+For a nonzero polynomial \(h\), put
+\[
+  h^g=\sigma_g(h).
+\]
+This polynomial need not be monic.  Multiplying it by a nonzero scalar does
+not change \(D(h^g)\), \(Z_{\rm cl}(h^g)\), or the reduced Weyl support.  If
+\(\pi\) is monic irreducible, then \(\pi\mid h\) exactly when
+\(\pi^g\mid h^g\), so
+\[
+  g(Z_{\rm cl}(h))=Z_{\rm cl}(h^g).
+\]
+
+\paragraph{Theorem \(T3\).}
+For \(F,G\in R\),
+\[
+  \alpha_g\!\left(W_h^{\rm red}(F,G)\right)
+  =
+  W_{h^g}^{\rm red}(F^g,G^g).
+\]
+
+\emph{Proof.}
+At the source point \(x_\pi\in Z_{\rm cl}(h)\), the reduced label is
+\[
+  (F\bmod\pi,\ G\bmod\pi)\in K_\pi^2.
+\]
+At the target point \(x_{\pi^g}\), Theorem \(T1\) gives the label
+\[
+  (F^g\bmod\pi^g,\ G^g\bmod\pi^g)
+  =
+  \bigl(\tau_{g,\pi}^{-1}(F\bmod\pi),
+        \tau_{g,\pi}^{-1}(G\bmod\pi)\bigr).
+\]
+Thus
+\[
+  e_{h^g}^{\rm red}(F^g,G^g)=S_g e_h^{\rm red}(F,G).
+\]
+AQM-46 proves
+\[
+  \alpha_g(W(e))=W(S_ge)
+\]
+on finite supports.  Substituting the displayed labels proves the theorem.
+
+Consequently the rule is simple: move the support by \(g\), and precompose the
+regular functions by \(g^{-1}\).
+
+\subsection{Artin-Ring Transport D6--T4}
+Let \(h=\prod_i\pi_i^{e_i}\).  AQM-49 records that the reduced theory sees
+only the distinct \(\pi_i\), while the thickened layer uses
+\[
+  A_{\pi_i,e_i}=R/(\pi_i^{e_i}).
+\]
+
+\paragraph{Theorem \(T4\).}
+For each \((\pi,e)\), the automorphism \(\sigma_g\) induces a ring
+isomorphism
+\[
+  \bar\sigma_{g,\pi,e}:R/(\pi^e)\longrightarrow R/((\pi^g)^e).
+\]
+It sends the class of \(F\) to the class of \(F^g\), and it preserves the
+exponent \(e\).
+
+\emph{Proof.}
+AQM-46 gives
+\[
+  \pi^g=a^{\deg\pi}\sigma_g(\pi).
+\]
+Hence the ideals \((\sigma_g(\pi)^e)\) and \(((\pi^g)^e)\) are equal, because
+they differ by a unit.  Therefore \(\sigma_g\) descends to the displayed
+quotient isomorphism.  The exponent remains \(e\) because an isomorphism sends
+the \(e\)-th power of the source ideal to the \(e\)-th power of the target
+ideal.
+
+This is the canonical thickened support transport.  A thickened Weyl
+automorphism also needs a character statement.  If the target generating
+character is transported through \(\bar\sigma_{g,\pi,e}\), the same proof as
+AQM-36 gives Weyl covariance.  If one insists on separately chosen default
+top-coefficient characters at source and target, a dual momentum-label
+correction must be supplied before claiming character preservation.
+
+\subsection{Conclusion}
+The affine symmetry action on regular functions is:
+\[
+  (h,F,G)\longmapsto(h^g,F^g,G^g)
+  =
+  (\sigma_g(h),\sigma_g(F),\sigma_g(G)).
+\]
+On profiles it is the product residue relabelling \(S_g^\Pi\).  On finite
+reduced Weyl smearings it is exactly the local-net automorphism of AQM-46:
+\[
+  \alpha_gW_h^{\rm red}(F,G)=W_{h^g}^{\rm red}(F^g,G^g).
+\]
+Thus the symmetry does not add compatibility conditions between closed-point
+qudits.  It only permutes the closed supports and relabels each residue field
+by the induced field isomorphism.

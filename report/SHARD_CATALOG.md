@@ -456,3 +456,21 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Computes explicit reduced smeared Weyl labels for rational and quadratic supports.
 - Summary: Shows exactly where repeated factors force the Artin-ring thickened layer.
 - Keywords: F3, regular function, residue profile, smearing, Chinese remainder, Artin ring
+
+## `AQM-51-REGULAR-FUNCTION-AFFINE-SYMMETRY-ACTION`
+
+- Source: `report/sections/51_regular_function_affine_symmetry_action.tex`
+- Title: Affine Symmetry Action on Regular Functions
+- Summary: Defines the pushforward action \(g_\#F=F\circ g^{-1}\) on regular functions over standard opens.
+- Summary: Proves compatibility with residue profiles, finite Weyl labels, and reduced smeared operators.
+- Summary: Separates the canonical Artin-ring transport from any extra thickened Weyl character convention.
+- Keywords: regular function, affine symmetry, residue profile, Weyl net, smearing, Artin ring
+
+## `AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE`
+
+- Source: `report/sections/52_f3_regular_function_symmetry_line_by_line.tex`
+- Title: The \(\mathbb F_3\) Regular-Function Symmetry Action Line by Line
+- Summary: Computes \(g_\#F=F\circ g^{-1}\) for all six affine symmetries of \(\mathbf A^1_{\mathbb F_3}\).
+- Summary: Checks residue-profile covariance at rational and quadratic closed points.
+- Summary: Computes the transformed reduced Weyl smearings and the repeated-factor Artin support transport.
+- Keywords: F3, affine symmetry, regular function, residue profile, Weyl smearing, Artin ring

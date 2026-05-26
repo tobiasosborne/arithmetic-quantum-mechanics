@@ -1456,3 +1456,59 @@ If `h = product_i pi_i^(e_i)`, the exponents `e_i` are invisible to the
 reduced support net. They are visible only in the nilpotent-sensitive layer
 where the residue fields `kappa(x_pi_i)` are replaced by local Artin rings
 `F_q[x]/(pi_i^(e_i))`.
+
+## (al) Regular-Function Affine Action Convention
+
+For `g = g_(a,b) : x |-> a*x + b` in `Aut_(F_q)(A1)`, write
+
+```text
+theta_g(f)(x) = f(a*x + b),        sigma_g = theta_(g^(-1)).
+```
+
+Regular functions are pushed forward by the inverse map:
+
+```text
+g_# F = sigma_g(F) = F(g^(-1)(x)).
+```
+
+For a nonzero support or denominator polynomial `h`,
+
+```text
+g_# : F_q[x]_h -> F_q[x]_(g_# h),
+g_#(u/h^m) = (g_#u)/(g_#h)^m,
+g(D(h)) = D(g_#h).
+```
+
+Residue profiles transform by the same residue-field relabelling as Weyl
+labels:
+
+```text
+ev_(gU)(g_#F,g_#G) = S_g^Pi ev_U(F,G),
+(S_g^Pi e)_(pi^g) =
+  (tau_(g,pi)^(-1)(q_pi), tau_(g,pi)^(-1)(p_pi)).
+```
+
+`S_g^Pi` acts on the full product of residue profiles and restricts to the
+finite-support Weyl label map `S_g` of convention `(aj)`. Therefore affine
+symmetries preserve the distinction between regular-function profiles and
+quasi-local Weyl labels: a nonzero regular-function profile remains infinite
+support on every nonempty standard open.
+
+For reduced finite smearing,
+
+```text
+alpha_g(W_h^red(F,G)) = W_(g_#h)^red(g_#F,g_#G).
+```
+
+For thickenings, `sigma_g` induces
+
+```text
+F_q[x]/(pi^e) ~= F_q[x]/((pi^g)^e),
+```
+
+so affine symmetries preserve the multiplicity `e` as Artin-ring thickness.
+At the thickened Weyl level, one must either transport the chosen generating
+character through this ring isomorphism or provide the corresponding dual
+momentum-label correction. The reduced residue-field covariance does not by
+itself prove that independently chosen top-coefficient Artin characters are
+fixed.
