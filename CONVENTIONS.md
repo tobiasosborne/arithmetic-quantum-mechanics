@@ -1583,6 +1583,24 @@ and isomorphisms are required to preserve `1`. Nonunital rings are excluded
 until a separate convention and schema extension are declared. Any imported
 source row must record whether the source uses this same ring scope.
 
+```text
+finite_ring_db.zero_ring_policy = include
+finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy
+```
+
+Zero-ring edge case: include the one-element zero ring in finite-ring database
+scope and in the MVP dataset. Source-local justification: the GAP rings manual
+states that zero and identity in a ring-with-one need not be distinct and that
+a one-element zero ring can be a ring-with-one
+(`references/finite_ring_database/gap_rings_chapter_56.html`, line 477); the
+GAP `NumberSmallRings` example beginning at line 1075 records one stored ring
+of order `1`; and the Stacks algebra conventions state that rings are
+commutative with `1` and that the zero ring is a ring
+(`references/algebraic_geometry/stacks_project_algebra.tex`, line 36). This
+does not decide zero-ring characteristic, residue-field, or quantisation-field
+columns; `aqm-3cm` tracks those implementation-specific invariant conventions
+before manual constructors.
+
 The generated database is a run artifact, not hand-edited top-level data:
 
 ```text
@@ -1591,6 +1609,10 @@ runs/<YYYY-MM-DD>-finite-ring-database/data/finite_rings.sqlite
 
 The SQLite file is canonical only inside its run bundle and only together with
 the run README, source manifest, tool-version record, and audit output.
+Generated `finite_rings.sqlite` files are ordinary local run artifacts and
+should not be committed in normal development until a release artifact policy
+is recorded. Manifests, run READMEs, audit outputs, and review-sized export
+summaries remain commit candidates.
 
 A presentation hash or invariant tuple is never an isomorphism proof. The
 deduplication convention is:

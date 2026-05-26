@@ -24,6 +24,13 @@ export projective_line_sheaf_field_examples
 export projective_line_sheaf_field_summary_rows
 export projective_line_sheaf_field_basis_rows
 export projective_line_stalk_rows
+export finite_ring_database_source_preflight
+export finite_ring_database_tool_preflight
+export finite_ring_database_preflight
+export finite_ring_database_schema_version
+export finite_ring_database_prd_table_names
+export finite_ring_database_schema_sql
+export migrate_finite_ring_database_schema!
 
 include("ArithmeticQuantumMechanics/ToricCodeSupercharge.jl")
 include("ArithmeticQuantumMechanics/SymplecticCssBridge.jl")
@@ -45,5 +52,8 @@ project_root() = normpath(joinpath(@__DIR__, ".."))
 Return the absolute path to `runs/<run>` without creating it.
 """
 run_bundle_path(run::AbstractString) = joinpath(project_root(), "runs", run)
+
+include("ArithmeticQuantumMechanics/FiniteRingDatabasePreflight.jl")
+include("ArithmeticQuantumMechanics/FiniteRingDatabaseSchema.jl")
 
 end

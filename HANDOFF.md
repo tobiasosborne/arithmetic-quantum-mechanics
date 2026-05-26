@@ -6,14 +6,18 @@ source manifests for that.
 
 ## Current Frontier
 
-**Next-agent default task:** work on the finite commutative ring database, not
-older report-frontier material, unless the user redirects. Start from
-`docs/finite_commutative_ring_database_prd.md` and
-`docs/finite_commutative_ring_database_implementation_plan.md`, then take the
-first ready Beads item `aqm-pa0`:
-`FRDB 01 decide finite-ring scope edge cases`. This first step is deliberately
-a ground-truth decision step: source and record the one-element-ring policy and
-generated SQLite artifact policy before any database coding.
+**Next-agent default task:** continue the finite commutative ring database
+implementation chain, not older report-frontier material, unless the user
+redirects. Start from `docs/finite_commutative_ring_database_prd.md`,
+`docs/finite_commutative_ring_database_implementation_plan.md`, convention
+`(an)` in `CONVENTIONS.md`, and the current Beads state. The mainline chain has
+completed `aqm-pa0`, `aqm-8dl`, `aqm-4fi`, and `aqm-775`; the next mainline
+bead is `aqm-0zl`, `FRDB 05 add canonical JSON and ID hashing`. Orchestration
+was stopped by user request before any `aqm-0zl` implementation patch landed.
+Auxiliary open beads raised during orchestration are `aqm-3cm` (zero-ring
+invariant conventions before manual constructors), `aqm-4eq`
+(certificate-link/schema integrity decisions before audit hardening), and
+`aqm-zky` (build CLI rerun/overwrite policy before final acceptance).
 
 Initial infrastructure is in place for a lab-book style research workspace
 about Weil/zeta functions, arithmetic quantum mechanics, supersymmetric quantum
@@ -158,21 +162,65 @@ forced fermion modes, while `Spt_(F_3)`,
 `Pi Omega^1_(F_3[epsilon]/epsilon^2/F_3)`, and the log-spin datum
 `(P^1_(F_3), {0,infty}, O)` each provide one catalogue mode.
 
-The newest planning frontier is
-`docs/finite_commutative_ring_database_prd.md`: a PRD for a reproducible
-SQLite run-bundle database of finite commutative unital rings up to isomorphism
-and their residue/thickened Weyl quantisation records. It adds
-`references/finite_ring_database/SOURCES.md` and convention `(an)`. No
-database producer, schema entry, run bundle, or report shard has been created
-yet; those are implementation milestones, not completed work.
-
-The finite-ring database implementation plan now lives at
-`docs/finite_commutative_ring_database_implementation_plan.md`. Beads has been
-initialized with prefix `aqm`; the implementation chain is `aqm-pa0` through
-`aqm-6t4`, with each step depending on the previous one. The only ready bead
-at plan creation is `aqm-pa0`.
+The newest planning-and-implementation frontier is the finite commutative ring
+database. The PRD lives at `docs/finite_commutative_ring_database_prd.md`; the
+implementation plan lives at
+`docs/finite_commutative_ring_database_implementation_plan.md`; Beads tracks
+the mainline chain `aqm-pa0` through `aqm-6t4`. Current implementation state:
+`CONVENTIONS.md` fixes the one-element zero-ring inclusion policy and generated
+SQLite artifact policy; `src/ArithmeticQuantumMechanics/FiniteRingDatabasePreflight.jl`
+checks local source/tool ground truth; `src/ArithmeticQuantumMechanics/FiniteRingDatabaseSchema.jl`
+emits and migrates the PRD SQLite schema; and
+`scripts/arithmetic/finite_ring_db_build.jl` is a schema-only run-bundle CLI
+skeleton that refuses to write without `runs/<slug>/README.md`, creates
+`data/finite_rings.sqlite`, inserts one `build_run` row, and inserts no ring
+rows. No persistent finite-ring run bundle, CSV export, quantisation output, or
+report shard has been created yet.
 
 ## Most Recent Session
+
+**2026-05-26 - Finite-ring database orchestration through build CLI skeleton.**
+
+- Worked as orchestrator with serial subagent delegation, then stopped by user
+  request before implementing `aqm-0zl`.
+- Closed `aqm-pa0`: convention `(an)` now includes
+  `finite_ring_db.zero_ring_policy = include` and
+  `finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy`.
+  The one-element zero ring is included in finite-ring DB scope/MVP, sourced
+  to local GAP and Stacks locators. Generated `finite_rings.sqlite` files are
+  local run artifacts until a release artifact policy exists.
+- Raised `aqm-3cm` for zero-ring invariant-field conventions before manual
+  constructors need `characteristic_exact`, residue, or quantisation decisions.
+- Closed `aqm-8dl`: added Base-only finite-ring DB source/tool preflight
+  helpers and tests. The source contract requires 15 tracked finite-ring
+  source files and treats the two ignored local PDFs as documented non-required
+  local artifacts. Tool preflight reports `julia`, `gap`, `sage`, `python`,
+  `sqlite3`, `Oscar`, and `Nemo` as available/missing with version/path or
+  skip reason. `scripts/tool_versions.sh` now reports `python`, `sqlite3`,
+  `Oscar`, and `Nemo` too.
+- Closed `aqm-4fi`: added `FiniteRingDatabaseSchema.jl` with the ten PRD
+  tables, PRD foreign keys exactly as written, a
+  `finite_ring_database_schema_version` table at version `1`, and a `sqlite3`
+  CLI migration helper. Tests cover idempotent migration and rejection of an
+  invalid `ring_presentation_link`.
+- Raised `aqm-4eq` for later schema/audit decisions: whether
+  `ring_presentation_link.certificate_id` should become a foreign key, where
+  invariant at-least-one-reference checks belong, and which enum/JSON
+  integrity checks should live in schema versus audit.
+- Closed `aqm-775`: added `scripts/arithmetic/finite_ring_db_build.jl`, a
+  schema-only CLI accepting `--run runs/<slug>`, `--max-order`, `--sources`,
+  and `--help`. It checks for `README.md` before any write, migrates the
+  schema, inserts one conservative `build_run` row, and writes no ring rows.
+  Tests cover bad arguments, missing-README no-write behavior, and a valid
+  temporary run bundle with one `build_run` row and zero `ring` rows.
+- Raised `aqm-zky` for build CLI rerun/overwrite semantics; duplicate `run_id`
+  failure is intentionally not solved in the skeleton.
+- Validation run after the latest changes:
+  `git diff --check`; `bash scripts/tool_versions.sh`;
+  `julia --project=. -e 'using Pkg; Pkg.test()'`. The Julia tests included
+  real `sqlite3` schema migration, foreign-key rejection, and temporary build
+  CLI run-bundle checks. No temporary `runs/2099-01-01-frdb-cli-*` directories
+  remained after tests.
 
 **2026-05-25 - Canonical boson/fermion field comparison.**
 

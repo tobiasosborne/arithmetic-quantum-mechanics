@@ -1,12 +1,302 @@
 using Test
 using ArithmeticQuantumMechanics
 
+function _sqlite3_test_result(sqlite3_path, db_path, sql)
+    stdout = IOBuffer()
+    stderr = IOBuffer()
+    ok = success(
+        pipeline(
+            Cmd([String(sqlite3_path), String(db_path)]);
+            stdin=IOBuffer(sql),
+            stdout=stdout,
+            stderr=stderr,
+        ),
+    )
+    return (; ok, stdout=String(take!(stdout)), stderr=String(take!(stderr)))
+end
+
+function _sqlite3_test_output(sqlite3_path, db_path, sql)
+    result = _sqlite3_test_result(sqlite3_path, db_path, sql)
+    result.ok || error("sqlite3 test query failed: $(strip(result.stderr))")
+    return result.stdout
+end
+
+function _sqlite3_test_tables(sqlite3_path, db_path)
+    output = _sqlite3_test_output(
+        sqlite3_path,
+        db_path,
+        "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;",
+    )
+    return Set(filter(!isempty, split(chomp(output), '\n')))
+end
+
+function _frdb_build_cli_result(args...)
+    stdout = IOBuffer()
+    stderr = IOBuffer()
+    julia_path = first(Base.julia_cmd().exec)
+    script = joinpath("scripts", "arithmetic", "finite_ring_db_build.jl")
+    cmd = Cmd(Cmd([julia_path, "--project=.", script, String.(args)...]); dir=project_root())
+    ok = try
+        success(pipeline(cmd; stdout=stdout, stderr=stderr))
+    catch err
+        print(stderr, sprint(showerror, err))
+        false
+    end
+    return (; ok, stdout=String(take!(stdout)), stderr=String(take!(stderr)))
+end
+
+function _frdb_temp_slug(label)
+    return "2099-01-01-frdb-cli-$(label)-$(getpid())-$(time_ns())"
+end
+
 @testset "scaffold paths" begin
     root = project_root()
     @test isfile(joinpath(root, "report.tex"))
     @test isdir(joinpath(root, "report", "sections"))
     @test run_bundle_path("2099-01-01-example") ==
           joinpath(root, "runs", "2099-01-01-example")
+end
+
+@testset "finite ring database planning policies" begin
+    root = project_root()
+    conventions = read(joinpath(root, "CONVENTIONS.md"), String)
+    prd = read(joinpath(root, "docs", "finite_commutative_ring_database_prd.md"), String)
+
+    @test occursin("finite_ring_db.zero_ring_policy = include", conventions)
+    @test occursin(
+        "finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy",
+        conventions,
+    )
+    @test !occursin(
+        "The one-element zero ring is an open decision. Do not include it until",
+        prd,
+    )
+    @test occursin("- the one-element zero ring;", prd)
+    @test occursin(
+        "finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy",
+        prd,
+    ) || occursin("local run artifact", prd)
+end
+
+@testset "finite ring database ground-truth preflight" begin
+    sources = finite_ring_database_source_preflight()
+
+    @test count(row -> row.kind == :tracked, sources) == 15
+    @test count(row -> row.kind == :ignored_pdf, sources) == 2
+    @test all(row -> row.ok, sources)
+    @test all(row -> row.existence_required, filter(row -> row.kind == :tracked, sources))
+    @test all(row -> !row.existence_required, filter(row -> row.kind == :ignored_pdf, sources))
+
+    tools = finite_ring_database_tool_preflight()
+    @test [row.name for row in tools] ==
+          ["julia", "gap", "sage", "python", "sqlite3", "Oscar", "Nemo"]
+    @test all(row -> row.status in (:available, :missing), tools)
+    @test all(row -> row.status == :available || row.skip_reason !== nothing, tools)
+    @test all(row -> :version in propertynames(row), tools)
+    executable_tools = filter(row -> row.name in ("julia", "python", "sqlite3"), tools)
+    @test all(
+        row -> row.status != :available ||
+               (row.version isa AbstractString && !isempty(row.version)),
+        executable_tools,
+    )
+    @test all(
+        row -> row.status != :missing ||
+               (row.version === nothing && row.skip_reason !== nothing),
+        tools,
+    )
+
+    preflight = finite_ring_database_preflight()
+    @test propertynames(preflight) == (:sources, :tools)
+    @test length(preflight.sources) == length(sources)
+    @test length(preflight.tools) == length(tools)
+end
+
+@testset "finite ring database schema migration" begin
+    prd_tables = finite_ring_database_prd_table_names()
+    version_table = "finite_ring_database_schema_version"
+    sql = finite_ring_database_schema_sql()
+
+    @test finite_ring_database_schema_version() == 1
+    @test prd_tables == (
+        "source",
+        "build_run",
+        "presentation",
+        "ring",
+        "ring_presentation_link",
+        "invariant",
+        "isomorphism_certificate",
+        "enumeration_batch",
+        "quantization",
+        "matrix_artifact",
+    )
+    @test occursin("PRAGMA foreign_keys=ON;", sql)
+    for table in prd_tables
+        @test occursin("CREATE TABLE IF NOT EXISTS $(table)", sql)
+    end
+    @test occursin("CREATE TABLE IF NOT EXISTS $(version_table)", sql)
+    @test occursin("VALUES ('finite_ring_database', 1)", sql)
+    @test !occursin("FOREIGN KEY(certificate_id)", sql)
+
+    err = try
+        migrate_finite_ring_database_schema!(tempname(); sqlite3_path=nothing)
+        nothing
+    catch caught
+        caught
+    end
+    @test err isa ErrorException
+    @test occursin("sqlite3", sprint(showerror, err))
+
+    sqlite3_path = Sys.which("sqlite3")
+    if sqlite3_path === nothing
+        @test_skip sqlite3_path !== nothing
+    else
+        mktempdir() do dir
+            db_path = joinpath(dir, "finite_rings.sqlite")
+            before_tables = _sqlite3_test_tables(sqlite3_path, db_path)
+            expected_tables = Set((prd_tables..., version_table))
+
+            @test isempty(intersect(Set(prd_tables), before_tables))
+            @test !(version_table in before_tables)
+
+            migration = migrate_finite_ring_database_schema!(
+                db_path;
+                sqlite3_path=sqlite3_path,
+            )
+            @test migration.status == :ok
+            @test migration.db_path == abspath(db_path)
+            @test migration.schema_version == 1
+            @test Set(migration.tables) == expected_tables
+
+            after_tables = _sqlite3_test_tables(sqlite3_path, db_path)
+            @test issubset(expected_tables, after_tables)
+            @test strip(
+                _sqlite3_test_output(
+                    sqlite3_path,
+                    db_path,
+                    """
+                    SELECT version
+                    FROM finite_ring_database_schema_version
+                    WHERE component='finite_ring_database';
+                    """,
+                ),
+            ) == "1"
+
+            migration_again = migrate_finite_ring_database_schema!(
+                db_path;
+                sqlite3_path=sqlite3_path,
+            )
+            @test migration_again == migration
+            @test _sqlite3_test_tables(sqlite3_path, db_path) == after_tables
+            @test strip(
+                _sqlite3_test_output(
+                    sqlite3_path,
+                    db_path,
+                    "SELECT COUNT(*) FROM finite_ring_database_schema_version;",
+                ),
+            ) == "1"
+
+            invalid_insert = _sqlite3_test_result(
+                sqlite3_path,
+                db_path,
+                """
+                PRAGMA foreign_keys=ON;
+                INSERT INTO ring_presentation_link
+                  (ring_id, presentation_id, link_status, certificate_id)
+                VALUES ('missing-ring', 'missing-presentation', 'invalid', 'missing-cert');
+                """,
+            )
+            @test !invalid_insert.ok
+            @test strip(
+                _sqlite3_test_output(
+                    sqlite3_path,
+                    db_path,
+                    "SELECT COUNT(*) FROM ring_presentation_link;",
+                ),
+            ) == "0"
+        end
+    end
+end
+
+@testset "finite ring database build CLI argument validation" begin
+    help = _frdb_build_cli_result("--help")
+    @test help.ok
+    @test occursin("Usage:", help.stdout)
+
+    unknown = _frdb_build_cli_result("--unknown")
+    @test !unknown.ok
+    @test occursin("unknown flag", unknown.stderr)
+
+    positional = _frdb_build_cli_result("runs/not-a-flag")
+    @test !positional.ok
+    @test occursin("positional arguments are not accepted", positional.stderr)
+end
+
+@testset "finite ring database build CLI run-bundle guard" begin
+    root = project_root()
+    slug = _frdb_temp_slug("missing-readme")
+    run_dir = joinpath(root, "runs", slug)
+    db_path = joinpath(run_dir, "data", "finite_rings.sqlite")
+
+    try
+        mkpath(run_dir)
+        result = _frdb_build_cli_result("--run", "runs/$(slug)")
+        @test !result.ok
+        @test occursin("missing run bundle README", result.stderr)
+        @test !isdir(joinpath(run_dir, "data"))
+        @test !isfile(db_path)
+    finally
+        rm(run_dir; recursive=true, force=true)
+    end
+end
+
+@testset "finite ring database build CLI valid run" begin
+    sqlite3_path = Sys.which("sqlite3")
+    if sqlite3_path === nothing
+        @test_skip sqlite3_path !== nothing
+    else
+        root = project_root()
+        slug = _frdb_temp_slug("valid")
+        run_dir = joinpath(root, "runs", slug)
+        db_path = joinpath(run_dir, "data", "finite_rings.sqlite")
+
+        try
+            mkpath(run_dir)
+            write(joinpath(run_dir, "README.md"), "# Temporary finite-ring CLI test\n")
+
+            result = _frdb_build_cli_result(
+                "--run", "runs/$(slug)",
+                "--max-order", "15",
+                "--sources", "manual-examples",
+            )
+            @test result.ok
+            if result.ok
+                @test isfile(db_path)
+                @test strip(
+                    _sqlite3_test_output(
+                        sqlite3_path,
+                        db_path,
+                        "SELECT COUNT(*) FROM build_run;",
+                    ),
+                ) == "1"
+                @test strip(
+                    _sqlite3_test_output(
+                        sqlite3_path,
+                        db_path,
+                        "SELECT COUNT(*) FROM ring;",
+                    ),
+                ) == "0"
+                @test strip(
+                    _sqlite3_test_output(
+                        sqlite3_path,
+                        db_path,
+                        "SELECT run_id || '|' || run_path FROM build_run;",
+                    ),
+                ) == "$(slug)|runs/$(slug)"
+            end
+        finally
+            rm(run_dir; recursive=true, force=true)
+        end
+    end
 end
 
 @testset "algebraic toric-code ghost boundary supercharge" begin

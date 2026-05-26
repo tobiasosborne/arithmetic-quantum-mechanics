@@ -38,29 +38,33 @@ engineering dependency graph, but it keeps the first pass auditably linear.
 
 ## Step 01: Decide Finite-Ring Scope Edge Cases
 
+Decision recorded by `aqm-pa0`: include the one-element zero ring in scope and
+MVP, and keep generated SQLite files as local run artifacts until a release
+artifact policy exists.
+
 Ground truth first:
 
 - Re-read `CONVENTIONS.md` convention `(an)`.
 - Re-read `references/finite_ring_database/SOURCES.md` entries for Nowicki,
   GAP, and Behboodi--Beyranvand--Hashemi--Khabazian.
-- Find or acquire a local source before deciding whether the one-element ring
-  is included as a unital ring in this project.
+- Verify that `aqm-pa0` records the one-element zero-ring inclusion policy and
+  generated-SQLite commit policy in convention `(an)` and the PRD.
 
 Red:
 
-- Add a pending decision check that fails while the one-element-ring policy and
-  generated-SQLite commit policy are unset.
+- Add a documentation check that fails if the one-element zero-ring policy or
+  generated-SQLite commit policy marker is missing.
 
 Green:
 
-- Record the one-element-ring policy and generated-database artifact policy in
-  `CONVENTIONS.md` or the implementation docs.
-- Update the PRD only if the decision changes its MVP dataset.
+- Keep the policy in `CONVENTIONS.md` and align the PRD MVP dataset and
+  generated-database artifact policy with it.
 
 Unclear:
 
-- The one-element ring is intentionally undecided in the PRD. This step cannot
-  be implemented without a source-backed decision.
+- The remaining implementation-specific zero-ring invariant policy
+  (characteristic, residue fields, and quantisation fields) is not decided by
+  `aqm-pa0`; `aqm-3cm` tracks it before manual constructors.
 
 ## Step 02: Pin Source and Tool Ground Truth
 

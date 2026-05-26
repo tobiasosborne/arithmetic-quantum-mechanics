@@ -78,6 +78,11 @@ form is the relevant composite-modulus path.
 SQLite is the storage target because the registered SQLite source describes a
 self-contained, serverless, zero-configuration single-file database.
 
+By `CONVENTIONS.md` convention `(an)`, the finite-ring database includes the
+one-element zero ring: GAP allows a ring-with-one to have zero equal to
+identity, GAP's small-ring example records one stored ring of order `1`, and
+the Stacks algebra convention states that the zero ring is a ring.
+
 ## 4. Product Requirements
 
 ### PRD-FR-001: Source Registry
@@ -100,6 +105,17 @@ runs/<YYYY-MM-DD>-finite-ring-database/data/finite_rings.sqlite
 The run bundle must have a README before any script writes output. The README
 must record hypothesis, command line, tool versions, scope bounds, headline
 counts, failed checks, and next steps.
+
+Generated SQLite files follow:
+
+```text
+finite_ring_db.sqlite_commit_policy = local_run_artifact_until_release_policy
+```
+
+That is, `finite_rings.sqlite` is an ordinary local run artifact and should
+not be committed in normal development until a release artifact policy is
+recorded. Source manifests, run READMEs, audit outputs, and review-sized
+exports remain commit candidates.
 
 ### PRD-FR-003: Ring Identity Contract
 
@@ -474,6 +490,7 @@ checker result.
 
 MVP-1 must include:
 
+- the one-element zero ring;
 - prime fields `F_2`, `F_3`, `F_5`;
 - `Z/4Z`, `Z/6Z`, `Z/8Z`, `Z/9Z`;
 - `F_2[e]/(e^2)`, `F_3[e]/(e^2)`;
@@ -481,8 +498,9 @@ MVP-1 must include:
 - GAP small-ring rows for orders `1..15` when GAP is installed, filtered to
   commutative unital rings by explicit predicates.
 
-The one-element zero ring is an open decision. Do not include it until the
-unital convention is made explicit for that edge case.
+Zero-ring characteristic, residue-field, and quantisation-field conventions
+are implementation-specific invariant policies tracked separately by
+`aqm-3cm`; this PRD only fixes inclusion in scope and MVP.
 
 The first completeness claim should be limited to the GAP-backed order range
 that the implementation can filter and audit. Any Nowicki ingestion should be
@@ -556,8 +574,8 @@ M7: Report integration
 ## 10. Risks
 
 The word "ring" is overloaded across sources. Every import must record whether
-it is unital, associative, commutative, and whether the one-element ring is
-included.
+it is unital, associative, commutative, and whether its one-element-ring policy
+matches convention `(an)`.
 
 Finite-ring isomorphism can be expensive. The implementation must make
 completeness claims only within certified bounds.
@@ -573,12 +591,11 @@ verification until row-import rights are explicit.
 
 ## 11. Open Decisions
 
-- Whether the one-element zero ring is included under the unital convention.
 - The exact `matrix_dump_threshold`.
 - Whether SQLite access is implemented through Julia `SQLite.jl`, Python's
   standard `sqlite3`, or a tiny SQL emitter plus `sqlite3` CLI.
-- Whether to commit generated SQLite run artifacts or keep them as local run
-  outputs until a release policy exists.
+- Which zero-ring characteristic, residue, and quantisation fields are encoded
+  before manual constructors; tracked by `aqm-3cm`.
 - Whether Magma will be supported as an optional oracle.
 - Which exact local source will justify a general finite local/product
   decomposition theorem for report-level prose beyond the PRD.
