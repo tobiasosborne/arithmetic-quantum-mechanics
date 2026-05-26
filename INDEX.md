@@ -128,6 +128,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-50-F3-REGULAR-FUNCTIONS-LINE-BY-LINE` | `report/sections/50_f3_regular_functions_line_by_line.tex` | Regular Functions on \(\mathbb F_3[x]\) Line by Line |
 | `AQM-51-REGULAR-FUNCTION-AFFINE-SYMMETRY-ACTION` | `report/sections/51_regular_function_affine_symmetry_action.tex` | Affine Symmetry Action on Regular Functions |
 | `AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE` | `report/sections/52_f3_regular_function_symmetry_line_by_line.tex` | The \(\mathbb F_3\) Regular-Function Symmetry Action Line by Line |
+| `AQM-53-MINIMAL-FERMION-GEOMETRY-CATALOGUE` | `report/sections/53_minimal_fermion_geometry_catalogue.tex` | Minimal Fermion Geometry Catalogue |
 
 ## Source Topics
 
@@ -139,6 +140,9 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Arithmetic quantum mechanics | _pending_ | No sources acquired. |
 | Supersymmetric quantum mechanics | _pending_ | No sources acquired. |
 | Canonical bosonic and fermionic fields | `references/canonical_fields/SOURCES.md` | Derezinski, Bekka, Bravyi, Keyl-Schlingemann, and Cahill-Glauber sources acquired for CCR, CAR, Fock, Stone-von-Neumann, FLO, GAR, and Grassmann fermion displacement conventions. |
+| Supergeometry | `references/supergeometry/SOURCES.md` | Witten source bundle acquired for supermanifold coordinates, reduced spaces, parity reversal, and Clifford quantization of odd variables. |
+| Spin geometry | `references/spin_geometry/SOURCES.md` | Atiyah PDF and text extraction acquired for Riemann-surface spin structures as square roots of canonical line bundles and spinor-parity statements. |
+| Log geometry | `references/log_geometry/SOURCES.md` | Stacks tag 0FMU HTML snapshot acquired for logarithmic differentials, \(d\log\), residues, and the log-pole exact sequence. |
 | Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |
 | Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman, Ashikhmin-Knill, and Gross arXiv source bundles acquired for stabilizer symplectic conventions, qudit error bases, finite Hudson/Gaussian states, and prime-field Pauli comparisons. |
 | Weyl-Heisenberg and Weil representations | `references/heisenberg_weil/SOURCES.md` | Prasad, Beny-Crann-Lee-Park-Youn, Bekka, Solomon, Lysenko, Sidana-Kashyap, Gluesing-Luerssen-Pllaha, Trias, Hashimoto-Horibe-Hayashi, Korbelar-Tolar, Galindo, Poonen, and Kudla sources acquired for LCA, ring, finite Frobenius-ring, finite Clifford, local, and adelic Weyl-Heisenberg representation conventions. |

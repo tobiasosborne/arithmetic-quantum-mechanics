@@ -1,0 +1,277 @@
+% SHARD-ID: AQM-53-MINIMAL-FERMION-GEOMETRY-CATALOGUE
+% SHARD-TITLE: Minimal Fermion Geometry Catalogue
+% SHARD-SUMMARY: Separates ordinary points, even nilpotents, odd variables, parity-shifted differentials, and spin data.
+% SHARD-SUMMARY: Proves the minimal one-mode CAR, the dual-number differential calculation, and the finite-field scalar caveat.
+% SHARD-SUMMARY: Gives concrete \(k=\mathbb F_3\) catalogue entries for the superpoint, the dual-number point, and a two-puncture log-spin curve.
+% SHARD-KEYWORDS: fermion, superpoint, parity shift, Kahler differentials, spin structure, log form, CAR, F3
+
+\section{Minimal Fermion Geometry Catalogue}
+\label{sec:minimal-fermion-geometry-catalogue}
+
+\subsection{Status and Source Anchors}
+This shard is a definition catalogue for later fermion constructions.  It
+does not assert that ordinary arithmetic quantum fields automatically contain
+fermions.  The CAR input is AQM-19 and
+\path{references/canonical_fields/SOURCES.md}.  Supergeometric odd variables,
+reduced spaces, parity reversal, and Clifford quantization are sourced from
+\path{references/supergeometry/SOURCES.md}.  K\"ahler differentials use
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+33793--33853, 33856--33866, 34103--34120, 34310--34315, and 34392--34415.
+Spin structures as square roots of the canonical line bundle use
+\path{references/spin_geometry/SOURCES.md}.  Logarithmic differentials use
+\path{references/log_geometry/SOURCES.md}.  The nilpotent Weyl layer is
+AQM-36.  The identity \(\Gamma(\mathbf P^1,\mathcal O)=k\) is sourced by
+\path{references/algebraic_geometry/SOURCES.md}.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&\text{One complex fermion mode is the one-mode CAR representation.}\\
+L1&:&D1\text{ satisfies }c^2=(c^*)^2=0,\ \{c,c^*\}=I.\\
+D2&:&\text{A supercommutative }k\text{-algebra is }\mathbb Z/2\text{-graded}.\\
+L2&:&\operatorname{char}k\ne2\text{ and }\theta\text{ odd imply }\theta^2=0.\\
+D3&:&\mathsf{Spt}_k=(\Spec k,k[\theta])\text{ is the algebraic superpoint.}\\
+D4&:&\Pi\Omega^1_{A/k}\text{ is the cotangent parity-shift mode source.}\\
+L3&:&\Omega^1_{k/k}=0.\\
+L4&:&\Omega^1_{k[\epsilon]/(\epsilon^2)/k}\cong k\,\mathrm d\epsilon
+      \text{ when }\operatorname{char}k\ne2.\\
+D5&:&(C,D,S,\mu:S^{\otimes2}\cong\Omega^1_C(\log D))
+      \text{ is a log-spin datum.}\\
+L5&:&(\mathbf P^1_k,\{0,\infty\},\mathcal O,\mathrm d\log x)
+      \text{ is a log-spin datum.}\\
+L6&:&\mathbb F_3\text{-vector spaces do not canonically scalar-extend to }
+      \mathbb C\text{-Hilbert spaces.}\\
+T1&:&\Spec k\text{ has no forced fermion in this catalogue.}\\
+T2&:&\mathsf{Spt}_{\mathbb F_3},\ \Pi\Omega^1_{\mathbb F_3[\epsilon]/(\epsilon^2)/\mathbb F_3},
+      \text{ and }(\mathbf P^1_{\mathbb F_3},\{0,\infty\},\mathcal O)
+      \text{ give one mode each.}
+\end{array}
+\]
+
+\subsection{The One-Mode CAR D1--L1}
+Let
+\[
+  \mathcal H_1=\mathbb C|0\rangle\oplus\mathbb C|1\rangle .
+\]
+Define linear maps \(c,c^*:\mathcal H_1\to\mathcal H_1\) by
+\[
+  c|0\rangle=0,\quad c|1\rangle=|0\rangle,\quad
+  c^*|0\rangle=|1\rangle,\quad c^*|1\rangle=0 .
+\]
+The catalogue phrase ``one fermion mode'' means this CAR representation, or a
+unitarily isomorphic copy.  For \(r\) modes it means the antisymmetric Fock
+space \(\bigwedge^\bullet\mathbb C^r\), as in AQM-19.
+
+\paragraph{Lemma \(L1\).}
+The operators \(c,c^*\) satisfy
+\[
+  c^2=(c^*)^2=0,\qquad cc^*+c^*c=I_{\mathcal H_1}.
+\]
+
+\emph{Proof.}
+Both \(c^2\) and \((c^*)^2\) kill \(|0\rangle\) and \(|1\rangle\), so they are
+zero.  Also
+\[
+  (cc^*+c^*c)|0\rangle=c|1\rangle+0=|0\rangle
+\]
+and
+\[
+  (cc^*+c^*c)|1\rangle=0+c^*|0\rangle=|1\rangle .
+\]
+The two basis vectors span \(\mathcal H_1\), hence \(cc^*+c^*c=I\).
+
+\subsection{Odd Variables and the Superpoint D2--D3}
+Assume \(\operatorname{char}k\ne2\) in this subsection.  A
+supercommutative \(k\)-algebra is a \(\mathbb Z/2\)-graded algebra
+\[
+  A=A_{\bar0}\oplus A_{\bar1}
+\]
+such that homogeneous elements satisfy
+\[
+  uv=(-1)^{|u||v|}vu .
+\]
+Elements of \(A_{\bar0}\) are even; elements of \(A_{\bar1}\) are odd.
+
+\paragraph{Lemma \(L2\).}
+If \(\theta\in A_{\bar1}\), then \(\theta^2=0\).
+
+\emph{Proof.}
+Supercommutativity gives \(\theta\theta=(-1)\theta\theta\).  Hence
+\(2\theta^2=0\).  Since \(2\in k^\times\), multiplication by \(2\) is
+injective, so \(\theta^2=0\).
+
+Define
+\[
+  k[\theta]=k\oplus k\theta,\qquad |\theta|=\bar1,\qquad \theta^2=0 .
+\]
+The algebraic superpoint is the locally ringed graded object
+\[
+  \mathsf{Spt}_k=(\Spec k,k[\theta]).
+\]
+Its reduced ordinary point is obtained by quotienting by the odd ideal:
+\[
+  k[\theta]/(\theta)\cong k .
+\]
+For \(k=\mathbb F_3\), the ungraded ring underlying \(k[\theta]\) is
+isomorphic to the even dual-number ring \(k[\epsilon]/(\epsilon^2)\), by
+\(\theta\mapsto\epsilon\).  The difference is the parity assignment, not the
+ungraded multiplication table.
+
+The CAR quantization convention for \(\mathsf{Spt}_k\) assigns the odd line
+\(k\theta\) one complex fermion mode \(D1\).  This is a catalogue convention:
+the standard Hilbert-space CAR is complex, while the odd geometric line is a
+\(k\)-vector space.
+
+\subsection{Cotangent Parity Shift D4--L4}
+Let \(A\) be a commutative \(k\)-algebra.  The module of K\"ahler differentials
+\(\Omega^1_{A/k}\) is the universal target for \(k\)-derivations
+\(A\to M\), as recorded in the Stacks source.  The cotangent parity-shift
+catalogue entry is
+\[
+  \Pi\Omega^1_{A/k},
+\]
+meaning that the module \(\Omega^1_{A/k}\) is treated as odd.  If
+\(\dim_k\Omega^1_{A/k}=r<\infty\), the standard complex CAR realization uses
+\(r\) complex fermion modes.
+
+\paragraph{Lemma \(L3\).}
+\(\Omega^1_{k/k}=0\).
+
+\emph{Proof.}
+Every \(k\)-derivation \(D:k\to M\) kills all elements of \(k\) by definition.
+Thus the functor \(M\mapsto\operatorname{Der}_k(k,M)\) is the zero functor.
+The zero module represents this functor, so the universal module
+\(\Omega^1_{k/k}\) is zero.
+
+\paragraph{Lemma \(L4\).}
+Let \(A=k[\epsilon]/(\epsilon^2)\) and assume \(\operatorname{char}k\ne2\).
+Then
+\[
+  \Omega^1_{A/k}\cong k\,\mathrm d\epsilon .
+\]
+
+\emph{Proof.}
+Let \(S=k[t]\) and \(I=(t^2)\), so \(A=S/I\).  The Stacks polynomial-ring
+lemma gives \(\Omega^1_{S/k}=S\,\mathrm dt\).  The quotient exact sequence for
+differentials gives
+\[
+  I/I^2\longrightarrow \Omega^1_{S/k}\otimes_S A
+  \longrightarrow \Omega^1_{A/k}\longrightarrow0,
+\]
+where \(t^2\mapsto \mathrm d(t^2)=2t\,\mathrm dt\).  Therefore
+\[
+  \Omega^1_{A/k}\cong A\,\mathrm d\epsilon/(2\epsilon\,\mathrm d\epsilon).
+\]
+Since \(2\in k^\times\), this is
+\[
+  A\,\mathrm d\epsilon/(\epsilon\,\mathrm d\epsilon)\cong (A/(\epsilon))\,
+  \mathrm d\epsilon\cong k\,\mathrm d\epsilon .
+\]
+
+For \(k=\mathbb F_3\), the even thickened point
+\(\Spec(\mathbb F_3[\epsilon]/(\epsilon^2))\) has two distinct catalogue
+layers:
+\[
+  \ell^2(\mathbb F_3[\epsilon]/(\epsilon^2))
+\]
+is the \(9\)-dimensional even Artin-Weyl layer of AQM-36, while
+\(\Pi\Omega^1_{A/k}\cong\mathbb F_3\,\mathrm d\epsilon\) supplies one optional
+fermion mode by the cotangent parity-shift convention.
+
+\subsection{Log-Spin Datum D5--L5}
+Let \(C\) be a smooth curve over \(k\), and let \(D\) be an effective divisor
+for which the logarithmic one-forms \(\Omega^1_C(\log D)\) are defined.  A
+log-spin datum in this catalogue is
+\[
+  (C,D,S,\mu),\qquad
+  \mu:S^{\otimes2}\xrightarrow{\sim}\Omega^1_C(\log D),
+\]
+where \(S\) is a line bundle on \(C\).  Its algebraic mode source is
+\[
+  \Gamma(C,S).
+\]
+If \(\dim_k\Gamma(C,S)=r<\infty\), the standard complex CAR realization uses
+\(r\) complex fermion modes.  Atiyah's source supports the square-root spin
+dictionary over compact complex curves; the logarithmic variant is local.
+
+\paragraph{Lemma \(L5\).}
+Let \(C=\mathbf P^1_k\) with affine coordinate \(x\), and let
+\[
+  D=\{0,\infty\}.
+\]
+Then \(\Omega^1_C(\log D)\cong\mathcal O_C\), generated by
+\[
+  \omega=\mathrm d\log x .
+\]
+Consequently \((C,D,\mathcal O_C,\mu)\), with
+\(\mu(1\otimes1)=\omega\), is a log-spin datum.
+
+\emph{Proof.}
+On \(U_0=\Spec k[x]\), the divisor point \(0\) has local equation \(x\).
+The Stacks log source says logarithmic one-forms are generated by ordinary
+forms and \(\mathrm d\log x=x^{-1}\mathrm dx\).  Since
+\(\mathrm dx=x\,\mathrm d\log x\), the module is generated by
+\(\mathrm d\log x\) on \(U_0\).  On \(U_\infty=\Spec k[u]\), with \(u=x^{-1}\),
+the divisor point \(\infty\) has local equation \(u\), and
+\[
+  \mathrm d\log x=\mathrm d\log(u^{-1})=-\mathrm d\log u .
+\]
+Thus the same form generates the logarithmic module on \(U_\infty\).  The two
+descriptions agree on \(U_0\cap U_\infty\), so they glue to a global basis of
+\(\Omega^1_C(\log D)\).  Therefore \(\Omega^1_C(\log D)\cong\mathcal O_C\).
+The map \(\mu:\mathcal O_C^{\otimes2}\to\Omega^1_C(\log D)\) sending
+\(1\otimes1\) to \(\omega\) is an isomorphism.
+
+\subsection{Finite-Field Scalar Caveat L6}
+\paragraph{Lemma \(L6\).}
+There is no unital field homomorphism \(\mathbb F_3\to\mathbb C\).
+
+\emph{Proof.}
+If \(\iota:\mathbb F_3\to\mathbb C\) were unital, then
+\[
+  0=\iota(0)=\iota(1+1+1)=1+1+1=3,
+\]
+which is false in \(\mathbb C\).
+
+Therefore an \(\mathbb F_3\)-vector-space mode source \(V\) does not
+canonically become a complex one-particle Hilbert space by scalar extension.
+The catalogue records \(r=\dim_{\mathbb F_3}V\) and then uses a chosen complex
+Hilbert space \(\mathbb C^r\) for the standard CAR realization.  A genuinely
+\(\mathbb F_3\)-linear Clifford theory is a different algebraic layer and is
+not defined here.
+
+\subsection{Catalogue Consequences T1--T2}
+\paragraph{Theorem \(T1\).}
+The ordinary point \(\Spec k\) has no forced fermion mode in this catalogue.
+
+\emph{Proof.}
+The superpoint entry requires an odd structure sheaf \(k[\theta]\); the
+ordinary structure sheaf \(k\) has no odd part.  The cotangent parity-shift
+entry gives no mode by Lemma \(L3\).  The log-spin entry requires a curve,
+a divisor, and a square-root line bundle; none is part of the ordinary point
+\(\Spec k\).  Thus no catalogue mechanism above assigns a nonzero fermion
+mode to \(\Spec k\) without extra data.
+
+\paragraph{Theorem \(T2\).}
+For \(k=\mathbb F_3\), the following are the minimal one-mode entries:
+\[
+\begin{array}{c|c|c|c}
+\text{geometric datum}&\text{mode source}&\mathbb F_3\text{-dimension}
+&\text{complex CAR Hilbert space}\\
+\hline
+\mathsf{Spt}_{\mathbb F_3}&\mathbb F_3\theta&1&\mathcal H_1\\
+\Spec(\mathbb F_3[\epsilon]/(\epsilon^2))\text{ with }\Pi\Omega^1
+&\mathbb F_3\,\mathrm d\epsilon&1&\mathcal H_1\\
+(\mathbf P^1_{\mathbb F_3},\{0,\infty\},\mathcal O)&
+\Gamma(\mathbf P^1,\mathcal O)=\mathbb F_3&1&\mathcal H_1
+\end{array}
+\]
+The ordinary closed point \(\Spec\mathbb F_3\) contributes zero fermion modes.
+
+\emph{Proof.}
+The superpoint row is Definition \(D3\).  The dual-number row is Lemma \(L4\).
+The log-spin row is Lemma \(L5\) plus the cited projective-space cohomology
+calculation \(\Gamma(\mathbf P^1,\mathcal O)=\mathbb F_3\).  Lemma \(L6\)
+explains why each row determines the standard complex CAR Hilbert space only
+through the dimension-one mode count.  The last sentence is Theorem \(T1\)
+with \(k=\mathbb F_3\).

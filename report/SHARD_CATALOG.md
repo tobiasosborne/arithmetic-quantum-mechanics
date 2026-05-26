@@ -474,3 +474,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Checks residue-profile covariance at rational and quadratic closed points.
 - Summary: Computes the transformed reduced Weyl smearings and the repeated-factor Artin support transport.
 - Keywords: F3, affine symmetry, regular function, residue profile, Weyl smearing, Artin ring
+
+## `AQM-53-MINIMAL-FERMION-GEOMETRY-CATALOGUE`
+
+- Source: `report/sections/53_minimal_fermion_geometry_catalogue.tex`
+- Title: Minimal Fermion Geometry Catalogue
+- Summary: Separates ordinary points, even nilpotents, odd variables, parity-shifted differentials, and spin data.
+- Summary: Proves the minimal one-mode CAR, the dual-number differential calculation, and the finite-field scalar caveat.
+- Summary: Gives concrete \(k=\mathbb F_3\) catalogue entries for the superpoint, the dual-number point, and a two-puncture log-spin curve.
+- Keywords: fermion, superpoint, parity shift, Kahler differentials, spin structure, log form, CAR, F3

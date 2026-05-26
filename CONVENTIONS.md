@@ -1512,3 +1512,60 @@ character through this ring isomorphism or provide the corresponding dual
 momentum-label correction. The reduced residue-field covariance does not by
 itself prove that independently chosen top-coefficient Artin characters are
 fixed.
+
+## (am) Minimal Fermion Geometry Catalogue Convention
+
+In this catalogue, a standard Hilbert-space fermion mode means the complex CAR
+mode
+
+```text
+H_1 = C|0> direct_sum C|1>,
+c|0>=0, c|1>=|0>, c^*|0>=|1>, c^*|1>=0.
+```
+
+An algebraic source over a field `k` supplies such modes only after a separate
+mode-count step. If `V` is a finite-dimensional `k`-vector space used as an
+odd, parity-shifted, or spinor mode source, the current complex CAR
+realization records `r = dim_k(V)` and chooses `C^r` as the one-particle
+space. For `k=F_3` this is not scalar extension: there is no unital field map
+`F_3 -> C`.
+
+For `char(k) != 2`, a local algebraic superpoint is
+
+```text
+Spt_k = (Spec k, k[theta]),      |theta| = odd,      theta^2 = 0.
+```
+
+For `k=F_3`, its underlying ungraded ring is isomorphic to the even
+dual-number ring `F_3[epsilon]/(epsilon^2)`, but the parity assignment is part
+of the data. Even nilpotents alone are not fermions in this convention.
+
+For an ordinary commutative `k`-algebra `A`, the cotangent parity-shift entry is
+
+```text
+Pi Omega^1_(A/k).
+```
+
+If this vector space is finite-dimensional over `k`, its dimension is the CAR
+mode count. Thus `Omega^1_(k/k)=0`, while for `char(k) != 2`
+
+```text
+Omega^1_(k[epsilon]/(epsilon^2)/k) ~= k d epsilon.
+```
+
+The existing Artin-Weyl layer of convention `(ab)` remains an even
+finite-ring Weyl layer. For `A=F_3[epsilon]/(epsilon^2)`, it gives
+`ell^2(A)` of dimension `9`; the optional `Pi Omega^1` construction is an
+additional one-mode CAR layer, not the same object.
+
+A log-spin datum is
+
+```text
+(C, D, S, mu),       mu: S tensor S ~= Omega^1_C(log D),
+```
+
+where `C` is a curve, `D` is a divisor with logarithmic one-forms defined, and
+`S` is a line bundle. Its algebraic mode source is `Gamma(C,S)`. For
+`P^1_k` with `D={0,infty}`, the form `dlog x` trivializes
+`Omega^1(log D)`, so `S=O` is a log-spin datum and the mode source is
+`Gamma(P^1,O)=k`.

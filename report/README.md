@@ -70,6 +70,7 @@ before treating report edits as complete.
 | 50 | `AQM-50-F3-REGULAR-FUNCTIONS-LINE-BY-LINE` | `report/sections/50_f3_regular_functions_line_by_line.tex` | Regular Functions on \(\mathbb F_3[x]\) Line by Line |
 | 51 | `AQM-51-REGULAR-FUNCTION-AFFINE-SYMMETRY-ACTION` | `report/sections/51_regular_function_affine_symmetry_action.tex` | Affine Symmetry Action on Regular Functions |
 | 52 | `AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE` | `report/sections/52_f3_regular_function_symmetry_line_by_line.tex` | The \(\mathbb F_3\) Regular-Function Symmetry Action Line by Line |
+| 53 | `AQM-53-MINIMAL-FERMION-GEOMETRY-CATALOGUE` | `report/sections/53_minimal_fermion_geometry_catalogue.tex` | Minimal Fermion Geometry Catalogue |
 
 ## Maintenance Rules
 

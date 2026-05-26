@@ -140,6 +140,15 @@ by the same `S_g` relabelling as closed-point Weyl labels, so
 preserved; thickened Weyl covariance still requires transported generating
 characters or an explicit dual momentum correction.
 
+The newest fermion groundwork is
+`AQM-53-MINIMAL-FERMION-GEOMETRY-CATALOGUE`.  It registers local sources for
+supergeometry, spin structures, and logarithmic forms, then separates ordinary
+points, even nilpotents, odd superpoints, cotangent parity shifts, and
+spin/log-spin data.  The current convention says that `Spec(F_3)` has zero
+forced fermion modes, while `Spt_(F_3)`,
+`Pi Omega^1_(F_3[epsilon]/epsilon^2/F_3)`, and the log-spin datum
+`(P^1_(F_3), {0,infty}, O)` each provide one catalogue mode.
+
 ## Most Recent Session
 
 **2026-05-25 - Canonical boson/fermion field comparison.**

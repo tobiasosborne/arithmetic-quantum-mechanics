@@ -1,0 +1,749 @@
+A NNALES SCIENTIFIQUES DE L’É.N.S.
+
+
+
+
+ M ICHAEL F. ATIYAH
+ Riemann surfaces and spin structures
+ Annales scientifiques de l’É.N.S. 4e série, tome 4, no 1 (1971), p. 47-62
+ <http://www.numdam.org/item?id=ASENS_1971_4_4_1_47_0>
+
+
+
+
+      © Gauthier-Villars (Éditions scientifiques et médicales Elsevier), 1971, tous droits réservés.
+      L’accès aux archives de la revue « Annales scientifiques de l’É.N.S. » (http://www.
+      elsevier.com/locate/ansens) implique l’accord avec les conditions générales d’utilisation
+      (http://www.numdam.org/conditions). Toute utilisation commerciale ou impression systé-
+      matique est constitutive d’une infraction pénale. Toute copie ou impression de ce fi-
+      chier doit contenir la présente mention de copyright.
+
+
+
+
+                                 Article numérisé dans le cadre du programme
+                               Numérisation de documents anciens mathématiques
+                                             http://www.numdam.org/
+   Ann. sclent. EC. Norm. Sup.,
+ 4® serie, t. 4, 1971, p. 47 h 62.
+
+
+
+
+         RTEMANN SURFACES AND SPIN STRUCTURES
+
+                                     BY MICHAEL F. ATIYAH.
+
+
+
+
+                                      INTRODUCTION.
+
+   The purpose of this paper is to reprove some classical results on compact
+Riemann surfaces using elliptic operators, and to show how these results
+fit naturally into the general context of spin-manifolds. This programme
+was stimulated by discussion with D. Mumford and I am greatly indebted
+to him for information about the classical theory. Moreover, in [8],
+Mumford gives new algebraic proofs of the theorems in question, rather
+in the spirit of this paper.
+   The theorems we have in mind concern the division of the canonical
+divisor class K by 2 (or, multiplicatively, taking the square root of the
+canonical line bundle). If g is the genus of the Riemann surface then
+there are tlclg solutions of the equation 2 D== K — in the divisor class
+group. These solutions are by no means equivalent to one another.
+For example the complete linear systems D may have quite different
+dimensions, for the different choices of D — as is already seen for the
+case g = i, when D == o differs from the other three solutions.
+   If the complex structure on our Riemann surface varies continuously
+with some parameter t then the 2 2 ^ divisor classes above will also vary
+continuously. The dimensions of the linear systems D( are not in general
+constant functions of t — they can jump. In fact this is related to the
+fact mentioned above (that dim D | depends on the choice of D) because
+dim Dt is a multi-valued function of t and, as we go round a closed
+path in ^-space, we may take one choice of D into another.
+                                      M. F. ATIYAH.
+
+
+   If we reduce all dimensions modulo two then there are some remarkable
+classical theorems concerning this situation. In the first place we have
+stability under deformation :
+
+  THEOREM 1. — Let X( be a holomorphic family of compact Riemann
+surfaces (<€C, 1 1 < i) and let D( be a holomorphic family of divisor classes
+on Xt such that 2D(== K( (where K( is the canonical divisor class). Then
+dim [ D( j mod 2 is independent of t.
+   Remarks. — A holomorphic family means that X^ is the fibre of a
+proper holomorphic map f: Y -> C where Y is a complex analytic surface
+ and df^ o. To define a holomorphic family of divisor classes it is best
+to pass to the point of view of line-bundles. Thus if (by abuse of nota-
+tion) K( now denotes the canonical line of X^, then we have a holomorphic
+line-bundle K on Y (with K(= K | X^), and a holomorphic line-bundle L
+on Y with L 2 ^ K defines a family L( of line-bundles corresponding to
+the divisor classes D(. It is uniquely determined by the choice of Lo.
+With this notation | D^ is the projective space associated to the vector
+space F(L() of holomorphic sections of L^, so that dim) D(| = dimT{Lt) — i.
+From now on we shall use the line-bundle terminology.
+   To explain the second result let us denote by S(X) the set of line-
+bundles (up to isomorphism) which are square roots of the canonical line
+bundle of X. This set has 2 2 ^ elements. In fact it is clearly a principal
+homogeneous space for the group of line bundles of order 2. This group
+is naturally isomorphic with H^X, F^) which is a vector space over Fa
+(the integers mod 2). Thus S(X) has a natural structure of afflne space
+over Fa with IP(X, F^) as its group of translations. Then the second
+classical result is
+
+  THEOREM 2. — The function y : '§{X)->F^ defined &y<p(L) = dimr(L)
+mod 2 is a quadratic function whose associated bilinear form is the cup-pro'
+duct {^on H^X.F^).
+   Remarks. — If A is an affine space over Fa a function y : A -> Fa is
+called quadratic if, for all a € A and x, y € T ( A ) (the vector space space
+of translations of A),
+            IL(^ y) ==(p(a+^+j) — 9 ( 0 4 - ^ ) — ^ ( < % + j ) +q?(<2)
+
+
+is a bilinear form on T(A). It then follows that Ha is independent of a :
+it is called the associated bilinear form. If 9(0) = o and we identify A
+
+ (1) We identify H^X, F2) with F-z.
+                               SPIN STRUCTURES.                          49
+
+
+with T(A) by a <-> a 4- x then y becomes a quadratic function on T(A),
+in the usual sense, with associated form H. If H is non-degenerate there
+are essentially just two possible quadratic functions. These are distin-
+guished by their Art invariant or alternatively by the number of zeros
+of <p. Art invariant zero is equivalent to the existence of an isotropic
+subspace of dimension g . (where dim A = 2 g) : in this case <p has
+2^-l(2^4- i) zeros. The function 9 + 1 on A then has ^""^^— i) zeros
+and corresponds to a quadratic form on T(A) of Art invariant one.
+The identification of the function © in Theorem 2 is then completed by
+
+  THEOREM 3. — The function y in Theorem 2 has i^1^-}- i) zeros.
+   For example, if g = i, the three non-trivial square roots L of K
+(== i in this case) have y(L) = o, whereas <p(i) == i. For g = 3 there
+are 28 values of L with y(L) = i : these correspond to the famous 28 bitan-
+gents of a plane quartic.
+   Theorem 1 shows that the function <p in Theorem 2 does not depend
+on the complex structure of X (since the space of moduli is connected).
+To prove Theorems 2 and 3 therefore we could choose a particular complex
+structure which simplified the calculations. In fact hyperelliptic curves
+(double coverings of the protective line) provide convenient models and
+Theorems 2 and 3 reduce to combinatorial calculations involving the
+branch points of the double covering X —^ Pi. However our methods
+will give natural proofs of all three theorems.
+   We shall begin, in paragraph 1, with a simple direct analytical proof
+of Theorem 1. These methods, with a little extra topology, will then be
+extended in paragraph 2 to prove Theorem 2. In paragraph 3 we shall
+show how the problems and methods of the first two sections fit into the
+general theory of spin-manifolds. Using this general theory we shall
+then in paragraph 4 prove Theorem 3. We shall also give a natural
+generalization of Theorem 2 to spin-manifolds.
+   Finally in paragraph 5, following a suggestion of J.-P. Serre, we shall
+deduce the following theorem as a purely algebraic consequence of Theo-
+rems 1-3 :
+
+   THEOREM 4. — Let X( be a holomorphic family of compact Riemann
+surfaces parametrized by the punctured unit disc : o << 1 1 < i. Then
+there is a holomorphic family of line-bundles Lit on X^ such that L^2 ^ K(.
+
+  Remarks. — 1. We shall in fact prove a slightly stronger differentiable
+version of this theorem : this also applies to Theorem 1.
+50                                           M. F; AT1YAH.
+
+
+  2. Theorem 4 seems not to have been observed before, although a formal
+analogue for curves over finite fields was known (see § 5).
+
+  1. Mod 2 STABILITY. — The proof of Theorem 1 depends on the following
+simple lemma of functional analysis :
+
+  LEMMA ( l . i ) . — Let H be a complex Hilbert space and denote by 9€ the
+space of all continuous ^{-linear operators T on H such that ( 2 ) :
+       (i) T(ih) =-iT(h) (AeH);
+      (ii) T * = — T ;
+     (iii) o is an isolated point of finite multiplicity in the spectrum of T.
+  Then T h-> dime KerT mods defines a continuous (and therefore locally
+constant) map ^€ — Fa, where 3i is given the uniform (operator norm}
+topology.
+  This lemma is proved in ([6], (5. i)] as part of a more general result about
+spaces ^ (the 3€ of Lemma ( l . i ) is ^ 2 of [6]). Roughly speaking the
+proof goes as follows.
+     For S sufficiently close to T in 3C we have
+
+                                   dim^KerT== ^ dim^E),,
+                                                    O^A<£
+
+
+
+
+where E/^ is the real subspace of H which complexifies to give the ^ i \A-
+eigenspaces of S. By (i) all E), admit multiplication by i and so are
+complex subspaces of H. Since Eo== KerS the lemma will be proved if
+we can show that every other E),(A > o) has a quarternion structure.
+                                    S                   .   S2
+To do this for E), define j = —= and we have j ^ y ^ ^ — i and
+ji =-ij [by (i)].
+   Let us return now to a compact Riemann surface X with canonical
+line bundle K and let L be a square root of K. Consider the ^-operator on L
+                                    ^: C ' ( L ) - ^ C ' ( L ( g ) K ) .
+
+The holomorphic sections of L are the solutions ot^u==o.                   For any u,
+peC°°(L) we have a product u^eC°°(L 2 ) = (^(K) and so
+
+(1.2)                     / ^ . P + / U.~^V= f3(^):= Cd(l/v)==0.
+                         ^x         ^x           ^x             ^x
+
+
+     ( 2 ) In (ii), (iii) we consider H as a real Hilbert space.
+                                         SPIN STRUCTURES.                                51
+
+
+Now choose a hermitian metric on X : this induces one on K and L and
+gives rise to an anti-linear isomorphism
+
+                                h:       (^(L^K)-^ 3 0 ^)
+defined by
+                 <^, /^(w)>=: Cuw,            u^C^ (L),     weC^L^K),
+                                17
+                                     x
+
+where <( , )> denotes the hermitian inner product on C^L) induced by the
+metric. The composition P = h^^ is therefore an anti-linear map
+C^L) -> C^L) and, for u, ^eC°°(L), we have
+
+                                 <^P^>4-<^P^>=o.
+
+Taking real parts this gives
+                      Re<^, P ^ > = — R e < F , P ^ > = — R e < P ^ F>.
+
+Since Re<( u, ^ )> is the euclidean inner product on H (considered as real
+space) this implies that P* == — P, where P* is the formal adjoint of the
+unbounded operator P.
+  Now P is a first order elliptic differential operator.                  As usual ( 3 ) we
+associate to it the bounded operator T = (i + P^P^P. Then T = — T*
+and is an anti-linear Fredholm operator ( 4 ), which is equivalent to saying
+that T lies in the space ^Cof Lemma (1. i). Moreover KerT= K e r P = F ( L )
+(since all solutions of Pu = o are C 30 ).
+  Given now a holomorphic family of Riemann surfaces X^ as in Theorem 1
+with a family of line-bundles L( (such that Lj = K() we obtain a family
+of bounded operators T(. Moreover T< is continuous in t (see [3]).
+Theorem 1 now follows by applying Lemma (1. i). Actually this requires
+an extra argument because the Hilbert space H^ on which T( acts also
+varies continuously ( ) ) with t. However this is taken care of by the
+observation that, given a continuous family of hermitian operators A/
+(on a Hilbert space H) we can, for small t, find a continuous family of
+invertible operators P( such that A(= P^AoP^ 1 : the details are left to
+the reader.
+
+
+  (3) See [3] for a general summary of elliptic operator theory.
+  ( 4 ) i. e. T has closed range and dim KerT = dim KerT* < oo.
+  (5) Since the family X/ is locally a C30 product the space H/ is fixed (independent of t)
+but the inner product varies.
+52                                        M. F. ATIYAH.
+
+
+  Note that, in this proof of Theorem 2, it is enough that the X^ should
+form a differentiable family of (complex) Riemann surfaces : it is not neces-
+sary to have the family holomorphic.
+
+   2. THE QUADRATIC FUNCTION ( 6 ). — In this section we shall investi-
+gate the function y : S(X) -> F^ of Theorem 2. By definition, for any
+LeS(X) (i.e. L ^ K ) we have y(L) = dimr(L) mod 2. In the pro-
+ceeding section we saw that a hermitian metric on X defines an anti-
+linear bounded operator T ===== TL and that
+                                  cp (L) == KerTLinoda.
+
+TL is an operator on the square-integrable sections of L. To study 9
+we shall first generalize it slightly.
+  Suppose now that E is any real vector bundle over X. Then using a
+partition of unity (or a connection in E) we can define an extended
+^-operator
+                       ^(E):     C^L^E^C^L^cK^KE).
+
+Using-metrics on X and E this defines, as in paragraph 1, an anti-linear
+operator TL(E) on the space of square-integrable sections of L (^nE.
+Since ^L is skew-symmetric [see (1.2)] ^(E) will be skew-symmetric
+modulo o-order terms, hence TL(E) is skew-adjoint modulo compact
+operators.    Replacing Ti,(E) by ^(T^E) — T ^ ( E ) ) -- which is still Fred-
+holm — we may therefore assume that TL(E) is strictly skew-adjoint.
+Hence it belongs to the space S€ of Lemma ( l . i ) (for H the space of
+square-integrable sections of L0RE). Because of Lemma ( l . i ) the
+function
+                          E h> cpL (E) == dime KerTL (E) mod 2
+
+is independent of the various choices made (metrics and connections).
+Clearly
+                             ^(E^E')=:^(E)-+-^(E!)
+
+and so ^ extends by linearity to a group homomorphism
+                                   cpL:   KO(X)-^
+
+where KO(X) is the Grothendieck group of real vector bundles on X
+{see [1]). From its definition we have 9r,(i) == ^(L).
+
+
+ (") It is interesting to compare this section with the corresponding section (§ 3) in [8].
+                                     SPIN STRUCTURES.                                 53
+
+
+   If in particular we take E to be a real line-bundle then E 2 ^ i (the
+trivial line-bundle) and so L ' = L 0 K E is another square root of K.
+Moreover since the coordinate transformations of E can be taken as cons-
+tants (in fact ± i) we do not need a partition of unity to define ^i,(E) :
+in f a c t ^ ( E ) = ^ . Hence T^E) = T^ and so ^(E) = y(L'). Thus
+we have proved
+
+  PROPOSITION (2.i). — We have a commutative diagram
+
+                                   Pic.K(X)-^-VcS(X)
+
+                                         ^          Y
+
+                                   KO(X)————F2
+
+where Pic^X) is the multiplicative group of real line-bundles over X {iso-
+morphic to the additive group H^X, Fs)) and PicR(X) ->- KO(X) is the
+natural inclusion into the multiplicative group of units of the ring KO(X).
+
+  Since yr. is an additive homomorphism while PicR(X) -> KO(X) is
+multiplicative this Proposition really explains the algebraic nature of y.
+We proceed to elucidate this further.
+  Since dimX = 2 the augmentation ideal KO(X) has cube equal to
+zero. This implies that the composite map
+                          a : H1 (X, F,) ^ PICK (X) -> KO (X)
+
+is (affine) quadratic. Since Qpj^ is additive (and(^)L is bijective) this
+implies that y is quadratic, which is the first assertion of Theorem 2.
+To prove the second part of Theorem 2 we have to show that the bilinear
+form on H1 (X, F^) given by
+                    (^j) h>9L[a(^+j) — a ( ^ ) — a ( j ) + a ( o ) J
+
+coincides with the cup-product [identifying H^X, F2) with F2).                   This
+will follow from two lemmas.
+
+  LEMMA (2.2). — Let uGKO(X) be the pull back of the generator of
+KO(S 2 ) ^ Fa by a map X -> S 2 of degree one.           Then
+
+                     a(^+,r) — a ( ^ ) — a ( j ) + a (o) = {xy) u,
+
+where a : H'(X, F.,) ^ KO(X) and H^X, F,) is identified with Fa.
+
+  LEMMA (2.3). — Let u be the element defined in (2.2).                Then ^^(u) = i.
+   Ann. 6c. Norm., (4), IV. — FASC. 1.                                            8
+31
+                                          M. F. ATIYAH.
+
+
+   To prove (2.2) let / ' . - X - ^ X S 1 be a map such that x=f^{a),
+V /*(6) where a, b come from generators of H^S^ F^) by the two pro-
+     ===
+
+jections. By naturality it is then enough to prove (2.2) with (X, x, y)
+replaced by (S 4 X S1, a, &), but this is equivalent to saying that
+
+                                KO(S 1 )(g)K l D'(S l )->KO(S 2 )
+
+is an isomorphism (all groups being ^ F,), which is well-known (see for
+example [2]).
+
+   Remark. — It is not difficult to prove that the total Stiefel-Whitney
+class
+                       co : KO (X) -. i © Hi (X, F,) © H2 (X, F,)
+
+
+is in this case an isomorphism [of the additive group KO(X) onto the
+multiplicative group of the cohomology ring]. This implies (2.2).
+  To prove (2.3) we give another description of the element u. Let P
+be a holomorphic line-bundle on X corresponding to a point divisor.
+Regarded simply as continuous line-bundle P is then induced from the
+corresponding line-bundle Q on the 2-sphere S 2 by a map X -> S 2 of
+degree one.     Since Q - 2 generates KO(S 2 ) - where we regard Q as a
+2-dimensional real bundle — it follows that u == P — 2 € K O ( X ) .               Since
+
+                        9L(P-2)==^(P) _^(2)==cp^(P)eF,
+
+we have just to show that y^(P) == i. Now since P is holomorphic^
+has a natural extension to L (g)^P ^ L (g)cP © L (g)cP* : it coincides
+with the       ^-operator of       the    holomorphic         bundle L (g)cP © L (g)cP*.
+Hence
+                    cpL(P) ^dimI^L^^) +dimr(L(g)cP*) mod 2.
+
+By Serre duality we have (since L*(g) K ^ L)
+
+                           dimr (L (g)c?*) = dimH' (X, L (g),:P)
+and so
+                cpL(P) FEE dim IP (X, L(g)cP) - dimH 1 (X, L ( g ) c P ) m o d 2
+                       := deg (L (g) P) — g + i     by Riemann-Roch
+                       =
+                           ^—^+I=I
+
+as required.     This completes the proof of Lemma (2.3) and hence of
+Theorem 2.
+                                   SPIN STRUCTURES.                                  55
+
+
+   3. RELATION WITH SPIN-MANIFOLDS. — In this section we shall set the
+proceeding discussion of Riemann surfaces into the general context of
+spin-manifolds. We begin by recalling a few basic facts [see [7]).
+   Let Spin(M) -> S0(n) be the standard double covering and let
+gGH^SO^), F^) be its corresponding cohomology class. Let X be an
+oriented Riemannian M-dimensional manifold, and let P be its principal
+tangent S0(n)-bundle. Then a spin-structure on X is a double covering
+Q -> P whose restriction to each fibre of P is the standard covering
+(of course isomorphic double coverings are regarded as defining the same
+spin-structure). Q is then a principal Spin(n)-bundle over X. Consi-
+dering the exact sequence
+(3.i)       o -> H1 (X, F,) -> H1 (P, FO -> H1 (SO (n), F,) 4 H2 (X, F,)
+
+arising from the fibration S0(n) -> P ->- X, we see that
+  (i) a spin-structure exists <=>S(g) == o;
+ (ii) if S(g) = o the spin-structures are             classified   by      a coset   of
+H^X.F,) in H^P.F,).
+  The class §(g) is the second Stiefel-Whitney class co^(X). Note that
+the Riemannian metric is not really essential in these considerations :
+we can consider the double covering of GL^TZ, R) instead of Spin(n).
+  Suppose now that X is an almost complex manifold so that the struc-
+ture group of its principal SO {in) -bundle P reduces to U(n). Since the
+two homomorphisms
+                        U(^)->SO(272),          U^^L^I)
+
+
+
+both induce isomorphism in H^ , F^) it follows [using ( 3 . i ) and analo-
+gous sequences for V{n) and U (i)] that the spin-structures on X corres-
+pond bijectively to those double coverings of the U (i)-bundle detP
+which restrict to the squaring map U ( i ) -> U ( i ) on each fibre. If X
+is a complex manifold with canonical line-bundle K it follows that the
+spin-structures on X correspond bijectively to isomorphism classes of
+pairs (L, a) where L is a continuous line-bundle and a : L 2 —^ K is a conti-
+nuous isomorphism. Now given a, L inherits a holomorphic structure
+from K (making a a holomorphic isomorphism). Conversely, if X is
+compact, the holomorphic structure on L uniquely determines a up to a
+constant ( 7 ) (on each component of X). Replacing a by ca, where c is
+
+
+  (7) Because the holomorphic automorphisms of a line-bundle are just the non-zero
+holomorphic functions.
+56                              M. F. AT1YAH.
+
+                                                                j,
+a non-zero constant just corresponds to the isomorphism c2 : L -> L.
+Thus we have
+
+   PROPOSITION (3.2). — The spin-structures on a compact complex mani-
+fold correspond bijecti^ely to the isomorphism classes of holomorphic line
+bundles L with L 2 ^ K, where K is the canonical line-bundle.
+
+  Remark. — It is easy to check that the bisection of (3.2) is compatible
+with the natural action of H^X, Fa).
+  Proposition (3.2) shows that the setS(X) of square roots of K (for X
+a Riemann surface) has a natural generalization as the set of spin-struc-
+tures on any manifold X with 002 '==- o. We shall now show that the
+function 9 : 2>(X) -> F^ of Theorem 2 also has a natural generalization
+provided dim X = 2 mod 8.
+  We begin by recalling a few facts about the Clifford algebras Cn of the
+                   n
+
+quadratic form —^^2 on R" {see [2])^ For n = Sk + 2, Cn is a matrix
+                     i
+algebra over the quarternions H == C + j C , and the even part C^ is a
+matrix algebra over C. Let M be an irreducible C^-module (so the com-
+muting algebra is H) and decompose it in the form M = M°(]) M1 where M°,
+M1 are the (^: i)-eigenspaces of the operator ej where e^I^CCn is a
+unit vector (ej)<l= e2^=— i . — i = + I ) - This grading is independent
+of e and makes M a Pa-graded C^-module. M° and M1 are irreducible
+C^-modules and x \-> jx establishes a C,°-module isomorphism between
+them. The complex structure on M° and M1 is given by the element
+CD = eie^ . . . e^ where the ei are an orthonormal basis of R71. Note
+that (o is in the centre of C°, but anti-commutes with the ei so that
+x h-> CiX is an anti-linear map M ° — M 1 . Restricting to Spin(7z)CC°, the
+modules M°, M1 become representations of Spin(n) : they are isomorphic
+complex representations.
+   Suppose now that X is a (Riemannian) spin-manifold of dimension
+n = Sk 4- 2 ? and let P be its principal Spin(7z)-bundle. Then form the
+associated complex vector bundle
+                        E =:Pxspin(.)M=E°®E 1
+where
+                        E^PXspin^               (i==0, I).
+
+
+
+As explained in [4] the Dirac operator D is then defined acting on C°°(E).
+It is an elliptic first-order differential operator defined by
+
+                              Ds==^ei(()iS),
+                                SPIN STRUCTURES.                           57
+
+
+where ^5 is the covariant of 5 in the direction e^ d{ ) denotes Clifford
+multiplication and the ei are an orthonormal basis of tangent vectors.
+D is (formally) self-adjoint and interchanges E° and E1. Moreover, since
+^co = — (o^, D is anti-linear. Now define
+                            P : G^E^-^C'CE 0 )
+
+to be the composition jD. Since jD = Dj and j2=— i (and jj* = i)
+it follows that P* == — P. Since j is complex-linear P is still anti-linear
+and of course P is also elliptic.
+   It is easy to check that, in the case of Riemann surfaces, this operator P
+coincides with that defined in paragraph 1. Exactly as in the proof
+of Theorem 1 [i. e. using Lemma (l.i)] it follows that dimcKerP mod2
+is independent of the choice of metric and depends only on the spin-struc-
+ture. Note that
+                       KerP ^ KerD°= Kei^D^D 0 ^ H,
+
+where D° denotes the restriction of D to E° : H is the space of harmonic
+spinors on X. Thus we have
+
+   PROPOSITION (3.3). — On a [Riemannian) spin-manifold of dimen-
+sion 8 A * + 2 the harmonic spinors H form a complex vector space and
+dime H mod 2 is independent of the Riemannian metric.
+   Thus if S(X) denotes the set of spin-structures on X we have a func-
+tion 9 : S(X)-> Fa defined by s ^ dim^H, mod2, where Hy denotes
+the harmonic spinors for the spin-structure s (and some metric). This
+generalizes the function 9 of Theorem 2.
+   Just as in paragraph 2 we can extend 9 to define a homomorphism
+                              cp,:   KO(X)-->F,
+
+for each ^eS(X) and we have the analogue of Proposition ( 2 . i ) . In the
+next section we shall use the results of [5] to derive more information
+about 9,. In particular we shall prove Theorem 3.
+
+   4. APPLICATIONS OF THE INDEX THEOREM. — The index theorem of [3]
+has been extended in [5] and enables us to compute " mod2 indices
+of elliptic operators in terms of K-theory. In particular the homomor-
+phism 9, defined at the end of paragraph 3 coincides with the direct
+image homomorphism f; for spin-manifolds ([5], Theorem (3.3)], where f
+is the map X -> point and we identify K0~ 2 (point) with F^. In particular
+it follows that 9^(1) is an invariant of spin-cobordism. Now in dimen-
+ 58                                    M. F. ATIYAH.
+
+
+ sion 2 the spin-cobordism group has just two elements f7]. Since
+ y( 5 ) == y.(i) is not identically zero (for example take X an elliptic curve)
+ it follows that we have.
+
+   PROPOSITION (4.i). — For a Riemann surface X with spin-structure s
+ we have f{s) = o if and only if (X, s) is a spin-boundary.
+   Using (4. i) we will now prove Theorem 3. We take a standard embed-
+ding X C R 3 as a sphere with g handles. Then X = ^Y, Y the interior,
+and we have the standard symplectic basis ( ^ i , . . . , ^ . , ^ / i , . . . , ^ . )
+of H^X.F,) in which ^ i , . . . , ^ . extend to elements of H^Y, F^).
+We give X the spin-structure s induced by the spin-structure of R 3 .
+Identifying H^X, F^) withS(X) by means of s the function (p : S(X) -> F^
+gives a function ^ : H^X, F^) -> F^. By (4. i) we have ^(o) == ^(^) = o
+(i = i, . . ., g). Hence the quadratic function ^ has Art invariant
+
+                             M^^^O^CrO^o.
+
+This implies that ^, and so y, has 2^- l (^+ i) zeros, proving Theorem 3.
+In view of ( 4 . i ) this may be rephrased as
+
+  THEOREM 3'. — On a compact orientable surface of genus g there are
+precisely s^-^^ i) spin-structures which bound.
+
+  Returning to the general case of a spin-manifold of dimension n = 8k + 2
+we observe that the function y : ^(X) — F^ is not in general quadratic.
+Since (KO (X))^ 1 ^ o it follows that 9 is a polynomial of degree ^ n.
+If however we assume that IP(X, Z) -. H^X, F^) is surjective (as
+happens for Riemann surfaces) then we can again prove that cp is qua-
+dratic. In view of Proposition ( 2 . i ) it is enough to prove that for any
+three real line-bundles ^, YJ, ^ on X we have
+
+(4-2)                         a-l)(Y?-l)(^-l)==0.
+
+
+
+Now our hypothesis on H^X, F^) implies that all line-bundles on X come
+from the line-bundles on S1 by maps X -> S1. Hence it is enough to
+prove that (4.2) holds when X = S 4 X S 4 X S1 and ^ Y], ^ come from S1
+by the three projections, i. e. that the product
+
+                      KO(S 1 ) (g)KO(S 1 ) (g) KO(S 1 ) -.KO(S 3 )
+
+is zero — which is trivially true because KO(S 3 ) = o. Since y is qua-
+dratic in this situation it is reasonable to ask for an explicit description
+                                         SPIN STRUCTURES.                        59
+
+
+of it and in particular of its associated bilinear form, thus generalizing
+Theorems 2 and 3. To do this let us first write Spin(X) ==/*,(i) for any
+spin-manifold of dimension n, where f^: KO(X) -> KO"" (point) is the
+direct-image homomorphism. This is zero unless n = o, i, 2 or 4 mod 8.
+For n =. i mod 8 it is the invariant we have been discussing. For
+n = i mod 8 it also has an interpretation as a mod 2 dimension of harmonic
+spinors ([5];(3.i)]. For n =. o mod8 it is equal to A(X), while for
+                               T   y\.                      y\    ^    ^
+
+n^^modS it is equal t o - A ( X ) , where A is given by a certain poly-
+nomial in the Pontrjagin classes of X (see [4]). Then we have the following
+theorem :
+
+    THEOREM 5. — Let X be a spin-manifold of dimension 8k 4- 2 ^n(^
+assume that H^X, Z) -> H^X, Fa) is surjective. Then the function
+<p : S(X) -> Fa is quadratic. If we fix a spin-structure on X and use this
+to identify S(X) with H^X, F^) = H^X, Z) mod2, then in terms of a
+basis e^y . . ., e,n of H^X, Z) (p is given by
+
+         cp( V Xtd ) = Spin (X) +Y ^-Spin (Y;) 4-Y ^^ySpin (Y^) mods,
+                                                                 i<7
+
+
+where Y^ is a submanifold dual to e^ Y^== YiHYy {assuming transversal
+intersections) and Y(, Y^- are given the induced spin-structure. The bili-
+
+near form y^^ySpin(Y^) can be given cohomologically by
+
+                     a,b^^(X)ab[X\,                    ^eH^X.Z).
+
+  Proof. — The quadratic nature of y has already been proved. For the
+next part let a, f c e H ^ X , Z), let A, B be transversal submanifolds repre-
+senting a, b and denote by a, ^ the line-bundles defined by a, &. If j^
+denotes the inclusion map A -> X, then a — i === ry^ (i), where T] is the
+generator of K0~1 (point) : this follows by considering the map X-^ S1
+corresponding to a. Similarly P — i = r\j^(i) and (a — i) ((3 — i)== ^^'^(i),
+where 7° : B — X, j^: A n B — X are the inclusions. Hence ( 8 ), if />x
+denotes the mapX -> point, etc.
+           cp^+^/^ap)
+
+                    ^(i) +/? (^ - i) +/ X (P - i) +/ x (^ - i) (P - i))
+                    ^^(i) + ^(i) +^(1) 4- Y^^eKO- 2 (point)
+                    =Spin(X) + Spin (A) +Spin(B) + Spin (An B) eF.2.
+
+
+  (8) We use the functoriality of the direct image homomorphism, so that ft == f^J\-
+60                                              M. F. ATIYAH.
+
+
+Since <p is quadratic this formula is equivalent to the one in terms of a
+basis. For the last part we have
+            Spin(AnB) =:^-(AnB) [AnBJ
+                          =-=iVs^-(X) [AnB]          since A n B has trivial normal bundle
+                          ==^,(X)ab[X].
+
+
+  Remarks. — 1. The proof shows that the rational class ^Ls/^X) ab is
+always integral, so that it may be reduced modulo 2.
+  2. If d i m X = o m o d 4 , then the cohomological formula shows that
+Spin X is independent of the choice of spin-structure. For dim X == 2 mod 8,
+Theorem 5 (and in particular Theorem 2) shows that this is not so.
+   3. The bilinear form in Theorem 5 may be degenerate. An example
+is given by taking X = Y x Z where Z is a Riemann surface and Y is
+a spin-manifold of dimension 8/c with H^Y, F^) 7^0. In fact the spin
+number is multiplicative so that
+                                  Spin (X) == Spin (Y) X Spin (Z)
+
+and hence this is independent of the choice of spin structure in Y
+(Remark 2). Thus rank y = 2 genus Z < dimH^X, Fa).
+
+   5. INVARIANT SPIN-STRUCTURES. — As we have seen the set S(X) of
+spin-structures on a Riemann surface is an affine space over F^ endowed
+with a non-degenerate quadratic function. Rather surprisingly such an
+algebraic structure has the fixed-point property, namely we have the
+following algebraic lemma ( 9 ) :
+
+   LEMMA (5. i). — Let V be a finite-dimensional vector space over the field F^
+and let y : V -> F^ he a quadratic function whose associated bilinear
+form H(rp, y) is non-degenerate. Then any affine transformation x \-> Ax -[~ B
+o/*V which preserves the function y has a fixed point.
+
+      Proof. — By hypothesis we have
+                    <p(^) = = : c p ( A . r + B ) = = c p ( A ^ ) + c p ( B ) + H (A.r, B ) .
+
+Putting x = o we get <p(B) == o and so
+(i)                                cp(^) = c o ( A ^ ) + H ( A ^ B ) .
+
+
+     (9) I owe this lemma to J.-P. Serre,
+                                   SPIN STRUCTURES.                                 61
+
+
+This implies ( i o ) H(rr, y) = H(A^, Ay) and so i = A* A, where A* is
+the adjoint of A with respect to the non-degenerate inner product H [x, y).
+Hence
+                  ^x=x      ==>   k.x=x     -==^   H(.a?,B)=o   by(i).
+Thus B is orthogonal to Ker(A — I)* and so lies in the image of A — I.
+Thus there exists y € V with B = (A — I) y or equivalently y = Ay 4- B.
+This is the required fixed-point.
+  Applying this to Riemann surfaces we deduce
+  PROPOSITION (5.2). — Any orientation preserving diffeomorphism of a
+compact oriented surface leaves fixed some spin-structure.
+   Now a diffeomorphism of X corresponds to a differentiable fibration
+over the circle with X as fibre. Hence this Proposition — together
+with (3.2) — implies Theorem 4. In fact it implies a stronger version
+in which the family X^ need only vary differentiably with t.
+
+   Remarks. — 1. We can apply ( 5 . i ) to a spin manifold X of dimension
+8 k + 2 provided it satisfies the hypothesis of Theorem 5 and provided
+also that the bilinear form of Theorem 5 is non-degenerate. We then
+obtain a result like (5.2).
+   2. Since Mumford in [8] has now established the analogue of Theorem 2
+for algebraic curves over algebraically closed fields (of characteristic 7^ 2),
+we can also apply Lemma (5.i) to that context. Thus, let k be a field
+(of characteristic 7^ 2) such that every finite separable extension is cyclic
+and let X be an algebraic curve over k, then the canonical line bundle K
+of X has a square root invariant (up to isomorphism) by the Galois group
+of k. If the Brauer group of k is trivial (or if X has a rational point
+over k) this square root can be defined over A*. This applies in particular
+to a finite field (in which case the result was already known, cf. [9]; p. 291,
+and to the field of power series Ya^t" convergent near t = o (which is
+                                       —N
+essentially the case of Theorem 4).
+   The case when k == R is interesting : this involves a Riemann surface
+with a complex conjugation, and the existence of an invariant square
+root of K can also be proved analytically by extending (5.2) to orien-
+tation reversing diffeomorphisms — the essential point being that the
+homomorphism <PL '- KO(X) -> Fg of paragraph 2 is independent of the
+
+  (10) This is just verifying (what we have already observed) that the bilinear form is
+canonically associated to the affine quadratic function.
+    Ann. J^c. Norm., (4), IV. — FASC. 1.                                          9
+62                                       M. F. ATIYAH.
+
+
+orientation of X. Since the Brauer group of R is isomorphic to F^ an
+invariant square root of K, on a curve without real points, may not be
+definable over R. In fact it is not difficult to show that a line bundle L
+defined over R has, in this case, a square root defined also over R if and
+only if
+                                 ^(V)=o       inH^X^F^),
+
+where X' is the non-orientable surface representing the pairs of complex
+conjugate points of X, L' is the non-oriented R'-bundle over X' defined
+by L and co^ is the second Stiefel-Whitney class. For L = K, L'= K'
+is the tangent bundle of X', hence co^K') is equal to the Euler
+number e mod 2 and so co^K') = e{X') = ^(X) = i — gmods, where
+g is the genus of X and we identify H^X', F^) with F^. Thus, on
+a real curve X without real points the canonical line bundle K has a
+real square root if and only if g is odd. One can also show (by using a
+hyperelliptic curve or an embedding in R 3 ) that, for odd g, there are ^
+real square roots of K and that the quadratic function y of Theorem 2
+takes the value zero for just half of these square roots. For example
+(taking g == 3) a real non-singular plane quartic with no real points has
+precisely four real bitangents.
+
+                                      REFERENCES.
+
+[1] M. F. ATIYAH, K-Theory, Benjamin, 1967.
+[2] M. F. ATIYAH, R. BOTT and A. SHAPIRO, Clifford modules (Topology, vol. 3, 1964,
+      Suppl. 1, p. 3-38).
+[3] M. F. ATIYAH and I. M. SINGER, The index of elliptic operators I (Ann. Math., vol. 87,
+       1968, p. 484-53o).
+[4] M. F. ATIYAH and I. M. SINGER, The index of elliptic operators I I I (Ann. Math., vol. 87
+       1968, p. 546-60.1).
+[5] M. F. ATIYAH and I. M. SINGER, The index of elliptic operators V (Ann. Math., vol. 93,
+       1971, p. 139-149).
+[6] M. F. ATIYAH and I. M. SINGER, Index theory for skew-adjoint Fredholm operators,
+      Publ. Math. Inst. Hautes Etudes ScL, Paris, No. 37, 1969.
+[7] J. MILNOR, Remarks concerning spin manifolds. Differential and Combinatorial Topo-
+      logy (in honour of Marston Morse), Princeton, 1965.
+[8] D. MUMFORD, Theta-characteristics of an algebraic curve (Ann. scient. jBc. Norm. Sup.,
+      4, 1971, fasc. 2, p. 181-191).
+[9] A. WEIL, Basic Number Theory, Springer, 1967.
+
+                                               (Manuscrit recu Ie i5 novembre 1970.)
+            Michael F. ATIYAH,
+     The Institute for Advanced Study,
+          Princeton, N. J. o854o,
+                 U. S. A.
+
