@@ -1,0 +1,229 @@
+% SHARD-ID: AQM-59-FINITE-FIELD-CIRCLE-QUANTUM-SPACE
+% SHARD-TITLE: The Finite-Field Circle and Its Complete Quantum Space
+% SHARD-SUMMARY: Computes the affine circle \(x^2+y^2=1\) over \(\mathbb F_q\), separating odd and even characteristic.
+% SHARD-SUMMARY: Derives rational point counts, cotangent fibres, and the nonreduced characteristic-two pathology.
+% SHARD-SUMMARY: Describes the complete closed-point Weyl quantum space and its finite rational-point truncations.
+% SHARD-KEYWORDS: finite field, circle, conic, cotangent, closed points, Weyl net, rational truncation, characteristic two
+\section{The Finite-Field Circle and Its Complete Quantum Space}
+\label{sec:finite-field-circle-quantum-space}
+\subsection{Status and Source Anchors}
+Let \(k=\mathbb F_q\) and
+\[
+  A_q=k[x,y]/(x^2+y^2-1),\qquad C_q=\Spec A_q.
+\]
+This shard uses Stacks algebra lines 34103--34120 for quotient differentials,
+34310--34340 for polynomial differentials, and 34388--34524 for the de Rham
+complex.  The closed-point finite-residue Weyl layer is convention (y) and
+AQM-28--AQM-30.  The product-ring comparison for finite rational truncations
+is AQM-40 and AQM-58.
+\subsection{Odd Characteristic: Geometry and Differentials}
+Assume \(q\) is odd.  In
+\[
+  S=k[x,y],\qquad f=x^2+y^2-1,\qquad A_q=S/(f),
+\]
+the quotient exact sequence gives
+\[
+  \Omega^1_{A_q/k}=
+  (A_q\,dx\oplus A_q\,dy)/(2x\,dx+2y\,dy).
+\]
+Because \(2\in k^\times\), this is equivalently
+\[
+  x\,dx+y\,dy=0.
+\]
+At a \(k\)-rational point \(P=(a,b)\), the cotangent fibre is
+\[
+  T^*_{C_q/k,P}
+  =
+  (k\,dx\oplus k\,dy)/(a\,dx+b\,dy).
+\]
+Since \(a^2+b^2=1\), the pair \((a,b)\) is not \((0,0)\).  Thus the relation
+has rank \(1\), and
+\[
+  \dim_k T^*_{C_q/k,P}=1,\qquad \dim_k T_{C_q/k,P}=1.
+\]
+Concrete bases are:
+\[
+\begin{array}{ll}
+b\ne0: & T^*_{P}=k\,dx,\quad dy=-(a/b)\,dx,\\
+b=0: & a=\pm1,\quad T^*_{P}=k\,dy,\quad dx=0.
+\end{array}
+\]
+The same calculation over any closed point \(P\), with residue field
+\(\kappa(P)\), gives a one-dimensional cotangent fibre over \(\kappa(P)\).
+\subsection{Odd Characteristic: Rational Points as \texorpdfstring{\(q\)}{q} Varies}
+The point \((1,0)\) lies on \(C_q\).  Draw a line of slope \(t\in k\) through
+it:
+\[
+  y=t(x-1).
+\]
+Substitute into \(x^2+y^2=1\):
+\[
+  x^2+t^2(x-1)^2-1=(x-1)\bigl((1+t^2)x+(1-t^2)\bigr).
+\]
+One intersection is \(x=1\).  The second, when \(1+t^2\ne0\), is
+\[
+  x=\frac{t^2-1}{t^2+1},\qquad
+  y=t(x-1)=\frac{-2t}{t^2+1}.
+\]
+This parametrizes all rational points except \((1,0)\), unless
+\(1+t^2=0\), in which case the line passes through a missing point at
+infinity and gives no second affine point.
+
+Therefore
+\[
+  |C_q(k)|=1+\#\{t\in k:1+t^2\ne0\}.
+\]
+If \(-1\) is not a square in \(k\), then \(1+t^2\) never vanishes and
+\[
+  |C_q(k)|=q+1.
+\]
+If \(-1\) is a square, there are two roots of \(1+t^2\), and
+\[
+  |C_q(k)|=q-1.
+\]
+Equivalently, for odd \(q\),
+\[
+  |C_q(\mathbb F_q)|=q-\chi_q(-1),
+\]
+where \(\chi_q\) is the quadratic character on \(k^\times\).
+The same calculation over the extension field \(\mathbb F_{q^m}\) gives
+\[
+  a_m(q):=|C_q(\mathbb F_{q^m})|=q^m-\chi_{q^m}(-1).
+\]
+If \(-1\) is already a square in \(k\), then \(\chi_{q^m}(-1)=1\) for every
+\(m\), so \(a_m(q)=q^m-1\).  If \(-1\) is not a square in \(k\), then it
+becomes a square exactly over even-degree extensions, so
+\[
+  a_m(q)=q^m-(-1)^m.
+\]
+\subsection{Even Characteristic: The Double Line}
+Assume \(q\) is even.  Then
+\[
+  x^2+y^2-1=(x+y+1)^2.
+\]
+Thus
+\[
+  A_q=k[x,y]/((x+y+1)^2)
+\]
+is nonreduced.  Its reduced coordinate ring is
+\[
+  A_{q,\mathrm{red}}=k[x,y]/(x+y+1)\cong k[x],
+\]
+so the topological closed points are those of an affine line.  Rationally,
+\[
+  C_q(k)=\{(a,b)\in k^2:a+b+1=0\},
+\]
+and hence
+\[
+  |C_q(k)|=q.
+\]
+Over \(\mathbb F_{q^m}\), the same reduced line has
+\[
+  a_m(q)=q^m
+\]
+points.
+The derivative pathology is sharper.  The relation is \(g^2=0\), where
+\(g=x+y+1\), but
+\[
+  d(g^2)=2g\,dg=0
+\]
+in characteristic \(2\).  Hence the quotient differential relation imposes
+nothing:
+\[
+  \Omega^1_{A_q/k}=A_q\,dx\oplus A_q\,dy.
+\]
+At a rational point \(P\), the residue field kills the nilpotent \(g\), but
+the cotangent fibre remains
+\[
+  T^*_{C_q/k,P}=k\,dx\oplus k\,dy,
+\]
+of dimension \(2\).  The reduced line would have the relation \(dx+dy=0\) and
+one-dimensional cotangent fibre.  The unreduced circle therefore has the same
+closed-point Weyl sites as a line but a thicker cotangent geometry.
+\subsection{Closed Points and the Complete Quantum Space}
+The complete finite-residue quantum space is not only the rational-point set.
+Let \(|C_q|_{\rm cl}\) be the closed points of \(C_q\).  For each closed point
+\(P\), convention (y) assigns
+\[
+  E_P=\kappa(P)^2,\qquad
+  \mathcal H_P=\ell^2(\kappa(P)),\qquad
+  \mathcal A_P=\operatorname{End}_{\mathbb C}\mathcal H_P.
+\]
+The global algebraic quasi-local observable algebra is
+\[
+  \mathcal A(C_q)=
+  \varinjlim_{S\Subset |C_q|_{\rm cl}}
+  \bigotimes_{P\in S}\operatorname{End}_{\mathbb C}\ell^2(\kappa(P)).
+\]
+Equivalently, the Weyl label group is
+\[
+  E(C_q)=\bigoplus_{P\in |C_q|_{\rm cl}}\kappa(P)^2.
+\]
+After choosing the zero reference vector at every closed point, the
+incomplete tensor Hilbert representation is
+\[
+  \mathcal H^0(C_q)=
+  \ell^2\!\left(\bigoplus_{P\in |C_q|_{\rm cl}}\kappa(P)\right).
+\]
+This is the complete closed-point quantum space in the current report
+convention.
+
+Let \(N_d(q)\) be the number of degree-\(d\) closed points.  If
+\[
+  a_m(q)=|C_q(\mathbb F_{q^m})|,
+\]
+then every degree-\(d\) closed point contributes \(d\) points over
+\(\mathbb F_{q^m}\) exactly when \(d\mid m\).  Hence
+\[
+  a_m(q)=\sum_{d\mid m}d\,N_d(q),
+  \qquad
+  N_d(q)=\frac1d\sum_{r\mid d}\mu(r)\,a_{d/r}(q).
+\]
+Thus the complete quantum space contains \(N_d(q)\) sites of local Hilbert
+dimension \(q^d\) for each \(d\ge1\).
+
+The rational truncation keeps only \(N_1(q)=|C_q(k)|\) sites:
+\[
+  \mathcal H_{\rm rat}(C_q)=
+  \bigotimes_{P\in C_q(k)}\ell^2(k),
+  \qquad
+  \dim\mathcal H_{\rm rat}(C_q)=q^{|C_q(k)|}.
+\]
+For odd \(q\), this is \(q^{q-\chi_q(-1)}\).  For even \(q\), it is \(q^q\).
+\subsection{Increasing \texorpdfstring{\(q\)}{q}: First Values}
+\[
+\begin{array}{c|c|c|c}
+q & \operatorname{char} k & |C_q(k)| & \dim \mathcal H_{\rm rat}\\ \hline
+2 & 2 & 2 & 2^2\\
+3 & \text{odd},\ -1\text{ nonsquare} & 4 & 3^4\\
+4 & 2 & 4 & 4^4\\
+5 & \text{odd},\ -1\text{ square} & 4 & 5^4\\
+7 & \text{odd},\ -1\text{ nonsquare} & 8 & 7^8\\
+8 & 2 & 8 & 8^8\\
+9 & \text{odd},\ -1\text{ square} & 8 & 9^8\\
+11 & \text{odd},\ -1\text{ nonsquare} & 12 & 11^{12}\\
+13 & \text{odd},\ -1\text{ square} & 12 & 13^{12}
+\end{array}
+\]
+This table is only the rational finite truncation.  The complete quantum space
+also has degree-\(d\) closed-point sites for every \(d\ge2\), counted by the
+M\"obius formula above.
+\subsection{Derivative Dynamics Versus Rational Truncation}
+There is a subtle but important distinction.  If one replaces the rational
+point set \(C_q(k)\) by its coordinate algebra of functions
+\[
+  k^{C_q(k)},
+\]
+then AQM-58 applies: this product ring has
+\[
+  \Omega^1_{k^{C_q(k)}/k}=0.
+\]
+So the rational finite set has trivial de Rham CSS dynamics.
+
+The scheme \(C_q=\Spec A_q\) is different.  For odd \(q\), it is a smooth
+affine curve with one-dimensional cotangent fibre at every closed point.  For
+even \(q\), it is a nonreduced double line with two-dimensional cotangent
+fibres before reduction.  Thus the complete closed-point Weyl quantum space
+is built from residue fields at closed points, while the derivative geometry
+is carried by \(\Omega^1_{A_q/k}\).  The former supplies the quantum sites;
+the latter is the candidate source of dynamics.

@@ -1,0 +1,156 @@
+% SHARD-ID: AQM-62-TANGENT-COTANGENT-WEYL-KINEMATICS-MORE-EXAMPLES
+% SHARD-TITLE: More Tangent-Cotangent Weyl Kinematical Examples
+% SHARD-SUMMARY: Continues AQM-61 with affine-line, affine-plane, crossing, and circle examples.
+% SHARD-SUMMARY: Describes the actual Hilbert spaces for rational supports and finite-residue closed points.
+% SHARD-SUMMARY: Confirms again that tangent-cotangent Weyl data are kinematics, not dynamics.
+% SHARD-KEYWORDS: tangent, cotangent, Weyl, Hilbert space, F3, F5, affine line, affine plane, crossing, circle
+
+\section{More Tangent-Cotangent Weyl Kinematical Examples}
+\label{sec:tangent-cotangent-weyl-kinematics-more-examples}
+
+\subsection{Status and Source Anchors}
+
+This shard continues AQM-61 and uses the same local sources.  The operative
+recipe is:
+\[
+  T_P^*X=\Omega^1_{A/k}\otimes_A\kappa(P),\qquad
+  T_PX=\operatorname{Hom}_{\kappa(P)}(T_P^*X,\kappa(P)),
+\]
+\[
+  E_P^{\rm geom}=T_PX\oplus T_P^*X,\qquad
+  \mathcal H_P^{\rm geom}=\ell^2(T_PX).
+\]
+For a finite rational support \(S\),
+\[
+  \mathcal H_S^{\rm geom}=\bigotimes_{P\in S}\mathcal H_P^{\rm geom}.
+\]
+
+\subsection{Examples 6--10}
+
+\paragraph{6. The affine line over \(\mathbb F_3\).}
+Let \(X=\Spec k[x]\), \(k=\mathbb F_3\).  At the rational point \(P_a=(x-a)\),
+\[
+  T_{P_a}^*X=k\,dx,\qquad T_{P_a}X=k\,\partial_x.
+\]
+Thus each rational point contributes
+\[
+  \mathcal H_{P_a}^{\rm geom}=\ell^2(k)\cong\mathbb C^3.
+\]
+For the rational support \(S=\mathbb A^1(k)=\{0,1,2\}\),
+\[
+  \mathcal H_S^{\rm geom}\cong(\mathbb C^3)^{\otimes3},
+  \qquad \dim\mathcal H_S^{\rm geom}=3^3.
+\]
+For a closed point of degree \(d\), \(K=\mathbb F_{3^d}\), \(T_PX=K\), and
+\[
+  \mathcal H_P^{\rm geom}=\ell^2(\mathbb F_{3^d})
+  \cong\mathbb C^{3^d}.
+\]
+
+\paragraph{7. The affine plane over \(\mathbb F_3\).}
+Let \(X=\Spec k[x,y]\), \(k=\mathbb F_3\).  At any rational point \(P=(a,b)\),
+\[
+  T_P^*X=k\,dx\oplus k\,dy,\qquad
+  T_PX=k\,\partial_x\oplus k\,\partial_y.
+\]
+Hence
+\[
+  \mathcal H_P^{\rm geom}=\ell^2(k^2)\cong\mathbb C^9.
+\]
+For the rational support \(S=k^2\), there are nine sites, each with Hilbert
+space \(\mathbb C^9\), so
+\[
+  \mathcal H_S^{\rm geom}\cong(\mathbb C^9)^{\otimes9},
+  \qquad \dim\mathcal H_S^{\rm geom}=9^9=3^{18}.
+\]
+
+\paragraph{8. The crossing \(xy=0\) over \(\mathbb F_3\).}
+Let
+\[
+  A=k[x,y]/(xy),\qquad k=\mathbb F_3.
+\]
+At a rational point \(P=(a,b)\) on \(xy=0\), the tangent equation is
+\[
+  b\,u+a\,v=0.
+\]
+At the origin this imposes no equation, so
+\[
+  T_{(0,0)}X=k^2,\qquad
+  \mathcal H_{(0,0)}^{\rm geom}\cong\mathbb C^9.
+\]
+At the four other rational points
+\[
+  (1,0),(2,0),(0,1),(0,2)
+\]
+the tangent space is one-dimensional, so each contributes \(\mathbb C^3\).
+For all rational points,
+\[
+  \mathcal H_{X(k)}^{\rm geom}\cong
+  \mathbb C^9\otimes(\mathbb C^3)^{\otimes4},
+  \qquad \dim\mathcal H_{X(k)}^{\rm geom}=3^6.
+\]
+
+\paragraph{9. The circle over \(\mathbb F_3\).}
+Let
+\[
+  C=\Spec k[x,y]/(x^2+y^2-1),\qquad k=\mathbb F_3.
+\]
+The rational points are
+\[
+  (1,0),(2,0),(0,1),(0,2).
+\]
+At \(P=(a,b)\), the tangent equation is
+\[
+  a\,u+b\,v=0,
+\]
+because \(2\) is invertible in \(k\).  Each point is smooth and has
+\(\dim_kT_PC=1\).  Therefore each site has
+\[
+  \mathcal H_P^{\rm geom}\cong\mathbb C^3.
+\]
+For the rational support,
+\[
+  \mathcal H_{C(k)}^{\rm geom}\cong(\mathbb C^3)^{\otimes4},
+  \qquad \dim\mathcal H_{C(k)}^{\rm geom}=3^4.
+\]
+
+\paragraph{10. The circle over \(\mathbb F_5\).}
+Let
+\[
+  C=\Spec \mathbb F_5[x,y]/(x^2+y^2-1).
+\]
+Since \(-1\) is a square in \(\mathbb F_5\), AQM-59 gives four rational points:
+\[
+  (1,0),(4,0),(0,1),(0,4).
+\]
+At \(P=(a,b)\), the tangent equation is again
+\[
+  a\,u+b\,v=0,
+\]
+so every rational tangent space is one-dimensional over \(\mathbb F_5\).
+Consequently
+\[
+  \mathcal H_P^{\rm geom}=\ell^2(\mathbb F_5)\cong\mathbb C^5
+\]
+at each rational point, and
+\[
+  \mathcal H_{C(\mathbb F_5)}^{\rm geom}
+  \cong(\mathbb C^5)^{\otimes4},\qquad
+  \dim\mathcal H_{C(\mathbb F_5)}^{\rm geom}=5^4.
+\]
+
+\subsection{End Summary}
+
+The actual Hilbert space in this kinematics is determined by tangent dimension,
+not by the residue field alone:
+\[
+\begin{array}{c|c|c}
+\text{local tangent dimension }m & \mathcal H_P^{\rm geom}
+  & \text{qudit reading over }K\\ \hline
+0 & \mathbb C & \text{no local qudit}\\
+1 & \ell^2(K) & \text{one }|K|\text{-level qudit}\\
+2 & \ell^2(K^2) & \text{two }|K|\text{-level qudits after a basis choice}.
+\end{array}
+\]
+Dynamics remains separate.  The de Rham CSS construction may later suggest
+constraints on these kinematical spaces, but this shard does not impose them.

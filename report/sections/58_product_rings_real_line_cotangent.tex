@@ -1,0 +1,181 @@
+% SHARD-ID: AQM-58-PRODUCT-RINGS-REAL-LINE-COTANGENT
+% SHARD-TITLE: Product Rings and the Formal Real Affine Line
+% SHARD-SUMMARY: Proves that \(k^n\) has trivial K\"ahler differentials and hence no de Rham CSS dynamics.
+% SHARD-SUMMARY: Computes \(\Omega^1_{\mathbb R[x]/\mathbb R}\), cotangent fibres, and tangent vectors for the real affine line.
+% SHARD-SUMMARY: Separates the algebraic cotangent phase space from the analytic Schr\"odinger quantisation choices.
+% SHARD-KEYWORDS: product ring, real line, cotangent, tangent, Kahler differentials, de Rham CSS, Schrodinger
+\section{Product Rings and the Formal Real Affine Line}
+\label{sec:product-rings-real-line-cotangent}
+\subsection{Status and Source Anchors}
+This shard answers two follow-up questions about convention
+\texttt{CONVENTIONS.md} (ao).  K\"ahler differentials, polynomial
+differentials, and the de Rham complex use the Stacks algebra snapshot
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+33793--33872, 34310--34340, and 34388--34524.  Tangent space by dual numbers
+and cotangent-tangent duality use
+\path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
+2915--3019.  The product-ring Weyl layer is AQM-40 and convention (ad).  The
+real Weyl/Schr\"odinger representation statement is the finite-dimensional
+CCR layer of AQM-19, sourced there from Derezinski and Bekka.
+\subsection{Part I: Product Rings Have Trivial Derivative Dynamics}
+Let \(k\) be a field and
+\[
+  A=k^n=k e_1\oplus\cdots\oplus k e_n,
+\]
+where \(e_i\) is the idempotent with \(1\) in the \(i\)-th factor and \(0\)
+elsewhere.  Let \(M\) be any \(A\)-module and let \(D:A\to M\) be a
+\(k\)-derivation.  We first prove \(D(e_i)=0\) without assuming anything
+about the characteristic.  Since \(e_i^2=e_i\),
+\[
+  D(e_i)=D(e_i^2)=e_iD(e_i)+e_iD(e_i).
+\]
+Multiplying by \(e_i\) gives
+\[
+  e_iD(e_i)=2e_iD(e_i),
+\]
+so \(e_iD(e_i)=0\).  Multiplying the displayed derivation equation by
+\(1-e_i\) gives
+\[
+  (1-e_i)D(e_i)=0.
+\]
+Adding the two pieces gives \(D(e_i)=0\).
+
+Every element of \(A\) is \(a=\sum_i a_i e_i\) with \(a_i\in k\).  Because
+\(D\) is a \(k\)-derivation, \(D(a_i)=0\), and hence
+\[
+  D(a)=\sum_i a_iD(e_i)=0.
+\]
+Thus \(\operatorname{Der}_k(A,M)=0\) for every \(M\).  By the universal
+property,
+\[
+  \Omega^1_{A/k}=0.
+\]
+Consequently
+\[
+  A\longrightarrow 0\longrightarrow0
+\]
+is the de Rham complex, and the de Rham CSS test has
+\[
+  C^1=0,\qquad R_X=0,\qquad R_Z=0.
+\]
+So \(k^n\) has trivial derivative dynamics in exactly the same sense as the
+single field \(k\).  This does not erase the kinematics.  By AQM-40,
+\[
+  \Spec(k^n)=\{x_1,\ldots,x_n\},\qquad \kappa(x_i)=k,
+\]
+and the residue-Weyl layer is the ambient \(n\)-qudit system
+\[
+  \mathcal H=\ell^2(k)^{\otimes n},\qquad
+  \mathcal A=\bigotimes_{i=1}^n\operatorname{End}_{\mathbb C}\ell^2(k).
+\]
+The conclusion is therefore sharp: the product ring supplies positions and
+the ambient Weyl/Pauli kinematics, but the K\"ahler derivative proposal
+selects no stabilizer and no Hamiltonian.
+\subsection{Part II: Cotangent Data on \texorpdfstring{\(\operatorname{Spec}\mathbb R[x]\)}{Spec R[x]}}
+Let
+\[
+  A=\mathbb R[x],\qquad X=\Spec A.
+\]
+The polynomial differential source gives
+\[
+  \Omega^1_{A/\mathbb R}=A\,dx=\mathbb R[x]\,dx.
+\]
+The universal derivation is the formal derivative:
+\[
+  d(f(x))=f'(x)\,dx.
+\]
+The algebraic de Rham complex begins
+\[
+  \mathbb R[x]\xrightarrow{d_0}\mathbb R[x]\,dx\longrightarrow0.
+\]
+Since every polynomial \(g(x)\) has the polynomial antiderivative
+\[
+  \int g(x)\,dx
+\]
+over \(\mathbb R\), the map \(d_0\) is onto \(\mathbb R[x]\,dx\).  Its kernel
+is the constants.  Hence
+\[
+  H^0_{\rm dR}(\mathbb R[x]/\mathbb R)=\mathbb R,\qquad
+  H^1_{\rm dR}(\mathbb R[x]/\mathbb R)=0.
+\]
+This is only a formal algebraic calculation; it is not an analytic statement
+about domains of differential operators.
+
+Now compute fibres.  At the real closed point
+\[
+  a\in\mathbb R,\qquad \mathfrak m_a=(x-a),
+\]
+the residue field is \(\kappa(\mathfrak m_a)=\mathbb R\).  The cotangent
+fibre is
+\[
+  T^*_{X/\mathbb R,a}
+  =
+  \Omega^1_{A/\mathbb R}\otimes_A\mathbb R
+  =
+  \mathbb R\,dx_a.
+\]
+The tangent space is the dual line
+\[
+  T_{X/\mathbb R,a}
+  =
+  \operatorname{Hom}_{\mathbb R}(\mathbb R\,dx_a,\mathbb R)
+  \cong\mathbb R.
+\]
+The tangent vector \(v\) with \(v(dx_a)=1\) corresponds to the derivation
+\[
+  D_v(f)=f'(a).
+\]
+More generally \(c\,v\) corresponds to \(D_{c v}(f)=c f'(a)\).
+
+There are also non-real closed points.  If
+\[
+  \pi(x)=x^2+b x+c
+\]
+is irreducible over \(\mathbb R\), then
+\[
+  \kappa(\pi)=\mathbb R[x]/(\pi)\cong\mathbb C,
+\]
+and
+\[
+  T^*_{X/\mathbb R,\pi}\cong \mathbb C\,dx_\pi,\qquad
+  T_{X/\mathbb R,\pi}\cong \operatorname{Hom}_{\mathbb C}(\mathbb C\,dx_\pi,
+  \mathbb C).
+\]
+The generic point has residue field \(\mathbb R(x)\), so its cotangent fibre is
+\[
+  T^*_{X/\mathbb R,\eta}\cong\mathbb R(x)\,dx.
+\]
+\subsection{Predicted Quantisation}
+The cotangent construction says that the algebraic phase space of the real
+affine line is the total cotangent bundle
+\[
+  T^*X=\Spec\operatorname{Sym}_A(\Omega^1_{A/\mathbb R})
+  \cong \Spec\mathbb R[x,p].
+\]
+Here \(x\) is the position coordinate and \(p\) is the fibre-linear momentum
+coordinate dual to \(dx\).  Its canonical algebraic symplectic form is
+\[
+  dp\wedge dx.
+\]
+Thus the cotangent-Weyl prediction is the usual one-dimensional CCR phase
+space with labels \((q,p)\in\mathbb R^2\), symplectic form
+\[
+  \Omega((q,p),(q',p'))=p q'-p'q.
+\]
+By the AQM-19 finite-mode CCR convention, the irreducible regular
+representation is the Schr\"odinger representation on \(L^2(\mathbb R)\):
+position is multiplication by \(x\), and momentum is represented formally by
+\[
+  -i\,\frac{d}{dx}.
+\]
+The word ``formally'' is essential here.  The cotangent calculation supplies
+the phase-space geometry and the CCR labels.  It does not by itself choose
+self-adjoint domains, a Hamiltonian such as \(-d^2/dx^2+V(x)\), boundary
+conditions, or a measure beyond the standard analytic Schr\"odinger choice.
+
+The de Rham CSS proposal is different.  Applied literally to
+\(\mathbb R[x]\), it is infinite-dimensional and outside the finite-qudit
+scope.  Moreover \(d_0\) is surjective, so a naive finite-dimensional
+truncation would tend to impose all \(C^1\) directions as \(X\)-checks.  The
+physical particle-on-a-line quantisation therefore belongs to the
+cotangent-Weyl branch, not to the finite de Rham CSS stabilizer test.

@@ -519,3 +519,57 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Shows explicitly that the examples are entangled stabilizer codes but still have distance-one logical operators.
 - Summary: Includes an 18-qubit fat-rectangle example with two forced Bell pairs and five logical qubits.
 - Keywords: F2, qubit, de Rham, CSS, stabilizer code, entanglement, Bell pair, distance
+
+## `AQM-58-PRODUCT-RINGS-REAL-LINE-COTANGENT`
+
+- Source: `report/sections/58_product_rings_real_line_cotangent.tex`
+- Title: Product Rings and the Formal Real Affine Line
+- Summary: Proves that \(k^n\) has trivial K\"ahler differentials and hence no de Rham CSS dynamics.
+- Summary: Computes \(\Omega^1_{\mathbb R[x]/\mathbb R}\), cotangent fibres, and tangent vectors for the real affine line.
+- Summary: Separates the algebraic cotangent phase space from the analytic Schr\"odinger quantisation choices.
+- Keywords: product ring, real line, cotangent, tangent, Kahler differentials, de Rham CSS, Schrodinger
+
+## `AQM-59-FINITE-FIELD-CIRCLE-QUANTUM-SPACE`
+
+- Source: `report/sections/59_finite_field_circle_quantum_space.tex`
+- Title: The Finite-Field Circle and Its Complete Quantum Space
+- Summary: Computes the affine circle \(x^2+y^2=1\) over \(\mathbb F_q\), separating odd and even characteristic.
+- Summary: Derives rational point counts, cotangent fibres, and the nonreduced characteristic-two pathology.
+- Summary: Describes the complete closed-point Weyl quantum space and its finite rational-point truncations.
+- Keywords: finite field, circle, conic, cotangent, closed points, Weyl net, rational truncation, characteristic two
+
+## `AQM-60-PREQUANTISATION-POLARISATION-DERHAM-CSS`
+
+- Source: `report/sections/60_prequantisation_polarisation_derham_css.tex`
+- Title: Prequantisation, Polarisation, and the de Rham CSS Test
+- Summary: Separates closed-point Weyl prequantisation, tangent-cotangent polarisation, and the finite de Rham CSS test.
+- Summary: Proves that tangent and cotangent spaces give natural local Lagrangians but not a dynamical principle by themselves.
+- Summary: Works out product-ring, finite-field circle, and formal real-line examples illustrating the distinction.
+- Keywords: prequantisation, polarisation, tangent, cotangent, Weyl, de Rham CSS, circle, real line
+
+## `AQM-61-TANGENT-COTANGENT-WEYL-KINEMATICS-EXAMPLES`
+
+- Source: `report/sections/61_tangent_cotangent_weyl_kinematics_examples.tex`
+- Title: Tangent-Cotangent Weyl Kinematics: Recipe and First Examples
+- Summary: Defines the tangent-cotangent Weyl kinematical recipe with Hilbert space \(\ell^2(T_PX)\).
+- Summary: Computes the first five finite \(\mathbb F_3\) examples with explicit tangent, cotangent, phase, and Hilbert spaces.
+- Summary: Separates this kinematics from any de Rham CSS or Hamiltonian dynamics.
+- Keywords: tangent, cotangent, Weyl, Hilbert space, F3, circle, singularity, nilpotent, kinematics
+
+## `AQM-62-TANGENT-COTANGENT-WEYL-KINEMATICS-MORE-EXAMPLES`
+
+- Source: `report/sections/62_tangent_cotangent_weyl_kinematics_more_examples.tex`
+- Title: More Tangent-Cotangent Weyl Kinematical Examples
+- Summary: Continues AQM-61 with affine-line, affine-plane, crossing, and circle examples.
+- Summary: Describes the actual Hilbert spaces for rational supports and finite-residue closed points.
+- Summary: Confirms again that tangent-cotangent Weyl data are kinematics, not dynamics.
+- Keywords: tangent, cotangent, Weyl, Hilbert space, F3, F5, affine line, affine plane, crossing, circle
+
+## `AQM-63-EVALUATED-DERHAM-CONSTRAINTS-TANGENT-WEYL`
+
+- Source: `report/sections/63_evaluated_derham_constraints_tangent_weyl.tex`
+- Title: Evaluated de Rham Constraints on Tangent-Weyl Kinematics
+- Summary: Reformulates exact de Rham one-forms as cotangent Weyl constraints on \(\ell^2(TX)\).
+- Summary: Proves the compatibility statement and separates it from a full CSS rule requiring extra tangent labels.
+- Summary: Works through finite examples showing that unrestricted exact forms often collapse finite rational supports.
+- Keywords: de Rham, tangent Weyl, cotangent constraints, stabilizer, F3, circle, affine line, crossing

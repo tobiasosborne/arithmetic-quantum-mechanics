@@ -75,6 +75,12 @@ before treating report edits as complete.
 | 55 | `AQM-55-DERHAM-CSS-MORE-F3-EXAMPLES` | `report/sections/55_derham_css_more_f3_examples.tex` | More \(\mathbb F_3\) Examples for the de Rham CSS Test |
 | 56 | `AQM-56-DERHAM-CSS-F2-QUBIT-EXAMPLES` | `report/sections/56_derham_css_f2_qubit_examples.tex` | \(\mathbb F_2\) Qubit Examples for the de Rham CSS Test |
 | 57 | `AQM-57-DERHAM-CSS-F2-ENTANGLEMENT-CODES` | `report/sections/57_derham_css_f2_entanglement_codes.tex` | Entanglement and Code Properties in \(\mathbb F_2\) de Rham CSS Examples |
+| 58 | `AQM-58-PRODUCT-RINGS-REAL-LINE-COTANGENT` | `report/sections/58_product_rings_real_line_cotangent.tex` | Product Rings and the Formal Real Affine Line |
+| 59 | `AQM-59-FINITE-FIELD-CIRCLE-QUANTUM-SPACE` | `report/sections/59_finite_field_circle_quantum_space.tex` | The Finite-Field Circle and Its Complete Quantum Space |
+| 60 | `AQM-60-PREQUANTISATION-POLARISATION-DERHAM-CSS` | `report/sections/60_prequantisation_polarisation_derham_css.tex` | Prequantisation, Polarisation, and the de Rham CSS Test |
+| 61 | `AQM-61-TANGENT-COTANGENT-WEYL-KINEMATICS-EXAMPLES` | `report/sections/61_tangent_cotangent_weyl_kinematics_examples.tex` | Tangent-Cotangent Weyl Kinematics: Recipe and First Examples |
+| 62 | `AQM-62-TANGENT-COTANGENT-WEYL-KINEMATICS-MORE-EXAMPLES` | `report/sections/62_tangent_cotangent_weyl_kinematics_more_examples.tex` | More Tangent-Cotangent Weyl Kinematical Examples |
+| 63 | `AQM-63-EVALUATED-DERHAM-CONSTRAINTS-TANGENT-WEYL` | `report/sections/63_evaluated_derham_constraints_tangent_weyl.tex` | Evaluated de Rham Constraints on Tangent-Weyl Kinematics |
 
 ## Maintenance Rules
 

@@ -1591,6 +1591,92 @@ derivations into `kappa(x)` under the Stacks tangent-space convention. This
 cotangent object is geometric data, not by itself the Weyl-Heisenberg momentum
 label group.
 
+This project now separates three layers which earlier exploratory prose may
+have kept too close together.
+
+```text
+residue-Weyl prequantisation:
+  E_x^res = kappa(x)_q direct_sum kappa(x)_p,
+  H_x^res = l2(kappa(x)).
+
+geometric tangent-cotangent phase space:
+  V_x = T_(Spec A/k,x),
+  V_x^* = T^*_(Spec A/k,x),
+  E_x^geom = V_x direct_sum V_x^*,
+  omega((v,alpha),(w,beta)) = beta(v) - alpha(w).
+
+finite de Rham CSS test:
+  C^0=A -> C^1=Omega^1_(A/k) -> C^2=Omega^2_(A/k),
+  R_X=im(d0), R_Z=im(transpose(d1)).
+```
+
+The residue-Weyl layer is the finite local Heisenberg system attached to the
+residue field. The geometric tangent-cotangent layer is the infinitesimal
+phase-space object attached to the scheme. They agree only after additional
+choices in special cases; for example, at a smooth curve point
+`dim_kappa(x) T_x = 1`, choosing a tangent basis identifies
+`T_x direct_sum T_x^*` with `kappa(x)^2`. For higher-dimensional, singular, or
+nonreduced points, the geometric phase space has dimension
+`2 dim_kappa(x) T_x`, and can differ from the residue-Weyl space
+`kappa(x)^2`.
+
+The subspaces `T_x direct_sum 0` and `0 direct_sum T_x^*` are natural
+Lagrangian polarisations of `E_x^geom`. Treating one of these full
+polarisations as stabilizer support gives a pointwise polarisation state after
+phases are chosen; it does not by itself supply a Hamiltonian, an action
+functional, propagation, an entangling constraint, or a code with nontrivial
+logical distance. A dynamical principle must be additional data, such as a
+global Lagrangian relation, a Hamiltonian/action, a connection, or a checked
+finite chain-complex rule.
+
+The named kinematical recipe `tangent_cotangent_weyl_kinematics` is:
+
+```text
+Input: a finite-residue point x in Spec(A), K=kappa(x),
+       finite-dimensional K-vector space V_x=T_(Spec A/k,x).
+
+Phase labels:
+  E_x^geom = V_x direct_sum V_x^*.
+
+Hilbert space:
+  H_x^geom = l2(V_x).
+
+Weyl operators:
+  T(w)|v> = |v+w>,
+  R(alpha)|v> = psi_K(alpha(v))|v>,
+  W(w,alpha)=T(w)R(alpha).
+```
+
+For a finite set of finite-residue points `S`, use the direct sum of phase
+labels and the tensor product of Hilbert spaces:
+
+```text
+E_S^geom = direct_sum_(x in S) E_x^geom,
+H_S^geom = tensor_product_(x in S) H_x^geom.
+```
+
+For `K=F_(p^r)`, `psi_K(a)=exp(2*pi*i*Tr_(K/F_p)(a)/p)`. If
+`dim_K V_x=m`, then `H_x^geom ~= l2(K^m)` has dimension `|K|^m`; after choosing
+a `K`-basis of `V_x`, it is `m` qudits of local dimension `|K|`.
+
+The compatible de Rham selection test for this kinematics is called
+`evaluated_de_rham_momentum_constraints`. For a finite support `S` of
+finite-residue points, evaluate exact one-forms fibrewise:
+
+```text
+ev_S^1 : Omega^1_(A/k) -> direct_sum_(x in S) T_x^*,
+L_Z^dR(S) = ev_S^1(dA).
+```
+
+The labels `L_Z^dR(S)` are cotangent/momentum labels, hence define commuting
+`Z`-type Weyl constraints on `H_S^geom`. Their `+1` space is the span of basis
+vectors `|v>` with `v in direct_sum T_x` annihilated by all labels in
+`L_Z^dR(S)` under the trace character pairing. This is compatible with
+`tangent_cotangent_weyl_kinematics`. It is not by itself a full CSS rule:
+`X`-type tangent labels require extra data, for example a chosen subspace of
+the annihilator of `L_Z^dR(S)`, a metric/Hodge identification, or a separately
+justified dynamical principle.
+
 The first derivative-stabilizer test is a proposal, not a settled dynamical
 principle. For finite-dimensional `k`-vector spaces obtained from the
 algebraic de Rham complex
