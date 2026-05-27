@@ -71,6 +71,10 @@ before treating report edits as complete.
 | 51 | `AQM-51-REGULAR-FUNCTION-AFFINE-SYMMETRY-ACTION` | `report/sections/51_regular_function_affine_symmetry_action.tex` | Affine Symmetry Action on Regular Functions |
 | 52 | `AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE` | `report/sections/52_f3_regular_function_symmetry_line_by_line.tex` | The \(\mathbb F_3\) Regular-Function Symmetry Action Line by Line |
 | 53 | `AQM-53-MINIMAL-FERMION-GEOMETRY-CATALOGUE` | `report/sections/53_minimal_fermion_geometry_catalogue.tex` | Minimal Fermion Geometry Catalogue |
+| 54 | `AQM-54-DERIVATIVE-DYNAMICS-F3-EXAMPLES` | `report/sections/54_derivative_dynamics_f3_examples.tex` | Derivative Dynamics from Kähler Differentials over \(\mathbb F_3\) |
+| 55 | `AQM-55-DERHAM-CSS-MORE-F3-EXAMPLES` | `report/sections/55_derham_css_more_f3_examples.tex` | More \(\mathbb F_3\) Examples for the de Rham CSS Test |
+| 56 | `AQM-56-DERHAM-CSS-F2-QUBIT-EXAMPLES` | `report/sections/56_derham_css_f2_qubit_examples.tex` | \(\mathbb F_2\) Qubit Examples for the de Rham CSS Test |
+| 57 | `AQM-57-DERHAM-CSS-F2-ENTANGLEMENT-CODES` | `report/sections/57_derham_css_f2_entanglement_codes.tex` | Entanglement and Code Properties in \(\mathbb F_2\) de Rham CSS Examples |
 
 ## Maintenance Rules
 

@@ -483,3 +483,39 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves the minimal one-mode CAR, the dual-number differential calculation, and the finite-field scalar caveat.
 - Summary: Gives concrete \(k=\mathbb F_3\) catalogue entries for the superpoint, the dual-number point, and a two-puncture log-spin curve.
 - Keywords: fermion, superpoint, parity shift, Kahler differentials, spin structure, log form, CAR, F3
+
+## `AQM-54-DERIVATIVE-DYNAMICS-F3-EXAMPLES`
+
+- Source: `report/sections/54_derivative_dynamics_f3_examples.tex`
+- Title: Derivative Dynamics from Kähler Differentials over \(\mathbb F_3\)
+- Summary: Assembles the derivative, cotangent, tangent, and de Rham definitions needed for finite-ring dynamics.
+- Summary: Proposes the de Rham CSS test as a calculable stabilizer-selection mechanism, with its extra choices explicit.
+- Summary: Computes the line-by-line examples \(\mathbb F_3\) and \(\mathbb F_3[\epsilon]/(\epsilon^2)\).
+- Keywords: derivative, Kahler differentials, cotangent, tangent, de Rham, CSS, stabilizer, F3, dual numbers
+
+## `AQM-55-DERHAM-CSS-MORE-F3-EXAMPLES`
+
+- Source: `report/sections/55_derham_css_more_f3_examples.tex`
+- Title: More \(\mathbb F_3\) Examples for the de Rham CSS Test
+- Summary: Computes the de Rham CSS test for five finite \(\mathbb F_3\)-coordinate rings cut out by linear and quadratic equations.
+- Summary: Separates the squarefree reduced cases, where \(\Omega^1\) vanishes, from nilpotent quadratic cases with derivative stabilizers.
+- Summary: Lists the qutrits and explicit \(X\)- and \(Z\)-stabilizer generators selected in each example.
+- Keywords: F3, de Rham, CSS, stabilizer, Kahler differentials, finite rings, quadratic, nilpotent
+
+## `AQM-56-DERHAM-CSS-F2-QUBIT-EXAMPLES`
+
+- Source: `report/sections/56_derham_css_f2_qubit_examples.tex`
+- Title: \(\mathbb F_2\) Qubit Examples for the de Rham CSS Test
+- Summary: Computes five characteristic-two examples for the de Rham CSS proposal, with 5, 6, 8, 9, and 10 qubits.
+- Summary: Records the main edge case \(d(t^2)=0\), which makes square-zero equations fail to impose first-differential relations.
+- Summary: Lists explicit \(C^1\)-qubits and the selected \(X\)- and \(Z\)-stabilizer generators for each example.
+- Keywords: F2, qubit, de Rham, CSS, stabilizer, Kahler differentials, characteristic two, nilpotent
+
+## `AQM-57-DERHAM-CSS-F2-ENTANGLEMENT-CODES`
+
+- Source: `report/sections/57_derham_css_f2_entanglement_codes.tex`
+- Title: Entanglement and Code Properties in \(\mathbb F_2\) de Rham CSS Examples
+- Summary: Derives Bell-pair sectors and code parameters for three \(\mathbb F_2\) de Rham CSS examples.
+- Summary: Shows explicitly that the examples are entangled stabilizer codes but still have distance-one logical operators.
+- Summary: Includes an 18-qubit fat-rectangle example with two forced Bell pairs and five logical qubits.
+- Keywords: F2, qubit, de Rham, CSS, stabilizer code, entanglement, Bell pair, distance

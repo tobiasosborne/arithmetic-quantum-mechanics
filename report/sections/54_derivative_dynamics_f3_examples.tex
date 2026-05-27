@@ -1,0 +1,259 @@
+% SHARD-ID: AQM-54-DERIVATIVE-DYNAMICS-F3-EXAMPLES
+% SHARD-TITLE: Derivative Dynamics from Kähler Differentials over \(\mathbb F_3\)
+% SHARD-SUMMARY: Assembles the derivative, cotangent, tangent, and de Rham definitions needed for finite-ring dynamics.
+% SHARD-SUMMARY: Proposes the de Rham CSS test as a calculable stabilizer-selection mechanism, with its extra choices explicit.
+% SHARD-SUMMARY: Computes the line-by-line examples \(\mathbb F_3\) and \(\mathbb F_3[\epsilon]/(\epsilon^2)\).
+% SHARD-KEYWORDS: derivative, Kahler differentials, cotangent, tangent, de Rham, CSS, stabilizer, F3, dual numbers
+
+\section{Derivative Dynamics from Kähler Differentials over \texorpdfstring{\(\mathbb F_3\)}{F3}}
+\label{sec:derivative-dynamics-f3-examples}
+
+\subsection{Status and Source Anchors}
+
+This shard is a checked definition-and-example shard plus one labelled
+proposal.  The definitions of derivation, Kähler differentials, their
+universal property, the quotient exact sequence, polynomial differentials, and
+the de Rham complex are sourced from the Stacks algebra snapshot
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+33793--33872, 34103--34120, 34310--34340, and 34388--34524.  Tangent space by
+dual numbers and the cotangent-tangent duality are sourced from
+\path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
+2915--3019.  Residue fields are sourced from
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+250--278.  AQM-08 and AQM-09 supply the CSS/stabilizer dictionary, AQM-36
+supplies the even Artin-Weyl layer for dual numbers, and AQM-53 supplies the
+cotangent parity-shift comparison.  The convention for this shard is
+\texttt{CONVENTIONS.md} (ao).
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_3,\quad A\text{ is a finite commutative }k\text{-algebra}.\\
+D2&:&\operatorname{Der}_k(A,M)\text{ is the }A\text{-module of }
+      k\text{-derivations }A\to M.\\
+D3&:&\Omega^1_{A/k}\text{ represents }M\mapsto\operatorname{Der}_k(A,M).\\
+D4&:&T^*_{A/k,x}=\Omega^1_{A/k}\otimes_A\kappa(x),\quad
+      T_{A/k,x}=\operatorname{Hom}_A(\Omega^1_{A/k},\kappa(x)).\\
+D5&:&A\xrightarrow{d_0}\Omega^1_{A/k}\xrightarrow{d_1}
+      \Omega^2_{A/k}\to\cdots\text{ is the algebraic de Rham complex.}\\
+P1&:&\text{The de Rham CSS test puts qudits on }C^1=\Omega^1_{A/k}.\\
+L1&:&\Omega^1_{\mathbb F_3/\mathbb F_3}=0.\\
+L2&:&\Omega^1_{\mathbb F_3[\epsilon]/(\epsilon^2)/\mathbb F_3}
+      \cong \mathbb F_3\,d\epsilon.\\
+T1&:&\text{For }A=\mathbb F_3[\epsilon]/(\epsilon^2),\text{ the de Rham CSS}
+      \text{ test has one }X\text{-check and no logical qudit.}
+\end{array}
+\]
+
+\subsection{Definitions D1--D5}
+
+Let \(k\to A\) be a ring map and let \(M\) be an \(A\)-module.  A
+\(k\)-derivation is an additive map \(D:A\to M\) satisfying
+\[
+  D(c)=0\quad(c\in k),\qquad
+  D(ab)=aD(b)+bD(a).
+\]
+The Stacks source denotes the resulting \(A\)-module by
+\(\operatorname{Der}_k(A,M)\).
+
+The module of Kähler differentials \(\Omega^1_{A/k}\), with universal
+derivation \(d:A\to\Omega^1_{A/k}\), is characterized by the functorial
+identity
+\[
+  \operatorname{Hom}_A(\Omega^1_{A/k},M)
+  \cong
+  \operatorname{Der}_k(A,M).
+\]
+Thus \(\Omega^1_{A/k}\) is the algebraic cotangent object before any
+quantization choice.
+
+If \(x\in\Spec A\), with residue field \(\kappa(x)\), the cotangent fibre is
+\[
+  T^*_{A/k,x}=\Omega^1_{A/k}\otimes_A\kappa(x),
+\]
+and the tangent space is
+\[
+  T_{A/k,x}=\operatorname{Hom}_A(\Omega^1_{A/k},\kappa(x)).
+\]
+This is the derivative geometry missing from the bare Weyl-Heisenberg
+kinematics: Weyl labels give conjugate translations and phases, while
+\(\Omega^1\) records which first-order directions are geometric.
+
+The algebraic de Rham complex is
+\[
+  A=\Omega^0_{A/k}\xrightarrow{d_0}\Omega^1_{A/k}
+  \xrightarrow{d_1}\Omega^2_{A/k}\xrightarrow{d_2}\cdots,
+\]
+where \(\Omega^i_{A/k}=\wedge_A^i\Omega^1_{A/k}\).  The Stacks construction
+gives \(d_{i+1}d_i=0\).  For finite \(k\)-algebras, each term is a finite
+\(k\)-vector space in the examples below.
+
+\subsection{Calculable Dynamical Proposals P1}
+
+The first proposal to test is the \emph{de Rham CSS test}.  Choose finite
+\(k\)-bases for
+\[
+  C^0=A,\qquad C^1=\Omega^1_{A/k},\qquad C^2=\Omega^2_{A/k}.
+\]
+Put qudits on \(C^1\).  With the basis dot pairing, form
+\[
+  R_X=\operatorname{im}(d_0)\subset C^1,\qquad
+  R_Z=\operatorname{im}(d_1^T)\subset C^1.
+\]
+Since \(d_1d_0=0\), every element of \(R_X\) is orthogonal to every element of
+\(R_Z\).  By AQM-08, this is exactly the CSS isotropy condition.  After
+choosing phases, this gives commuting stabilizer equations.  This is a
+candidate dynamical principle: exact one-forms and coexact one-forms become
+local checks, and the remaining logical labels are controlled by the finite
+de Rham cohomology
+\[
+  H^1_{\rm dR}(A/k)=\ker d_1/\operatorname{im}d_0.
+\]
+
+This test deliberately does not claim that the ring alone chooses all phases,
+a Hamiltonian normalization, or a metric.  Three further calculable branches
+are therefore left as proposals:
+\[
+\begin{array}{ll}
+\text{cotangent-Weyl test:} & \text{quantize }T^*_{A/k,x}\text{ or }
+  \Omega^1_{A/k}\text{ directly;}\\
+\text{Artin-jet comparison:} & \text{compare }\Omega^1\text{ with the even }
+  A\text{-Weyl layer of AQM-36;}\\
+\text{Hodge/Laplacian test:} & \text{add a pairing or trace density and form }
+  d^*d+dd^*.
+\end{array}
+\]
+The last branch is least canonical because \(d^*\) requires extra metric or
+pairing data.
+
+\subsection{Example 1: The Field \texorpdfstring{\(A=\mathbb F_3\)}{A=F3} L1}
+
+Let \(A=k=\mathbb F_3\).  A \(k\)-derivation \(D:k\to M\) must annihilate every
+element of the image of \(k\).  Since the image is all of \(A\),
+\[
+  D(0)=D(1)=D(2)=0.
+\]
+Therefore \(\operatorname{Der}_k(k,M)=0\) for every \(k\)-module \(M\).
+By the universal property,
+\[
+  \operatorname{Hom}_k(\Omega^1_{k/k},M)=0
+  \quad\text{for all }M,
+\]
+so
+\[
+  \Omega^1_{k/k}=0.
+\]
+The unique point is \(x=(0)\), with \(\kappa(x)=k\).  Hence
+\[
+  T^*_{k/k,x}=0\otimes_k k=0,\qquad
+  T_{k/k,x}=\operatorname{Hom}_k(0,k)=0.
+\]
+The de Rham complex begins and ends as
+\[
+  k\longrightarrow0\longrightarrow0.
+\]
+The de Rham CSS test has no \(C^1\) site.  Thus a reduced one-point field
+contributes no intrinsic derivative stabilizer.  This agrees with AQM-40's
+caveat: the ambient Weyl system may exist, but stabilizer data do not come for
+free from a geometrically discrete point.
+
+\subsection{Example 2: \texorpdfstring{\(A=\mathbb F_3[\epsilon]/(\epsilon^2)\)}{A=F3[epsilon]/epsilon2} L2--T1}
+
+Let
+\[
+  A=k[\epsilon]/(\epsilon^2),\qquad k=\mathbb F_3.
+\]
+Write \(A=k\oplus k\epsilon\), with \(\epsilon^2=0\).  Present \(A\) as
+\[
+  S/I,\qquad S=k[t],\quad I=(t^2),
+\]
+and let \(\epsilon\) be the image of \(t\).  The Stacks polynomial-ring lemma
+gives
+\[
+  \Omega^1_{S/k}=S\,dt.
+\]
+The quotient exact sequence gives
+\[
+  I/I^2\longrightarrow \Omega^1_{S/k}\otimes_S A
+  \longrightarrow \Omega^1_{A/k}\longrightarrow0,
+\]
+where \(t^2\in I\) maps to
+\[
+  d(t^2)\otimes1=2t\,dt\otimes1=2\epsilon\,d\epsilon.
+\]
+In \(\mathbb F_3\), the scalar \(2\) is invertible.  Thus the relation is
+\[
+  \epsilon\,d\epsilon=0.
+\]
+Consequently
+\[
+  \Omega^1_{A/k}\cong A\,d\epsilon/(\epsilon\,d\epsilon)
+  \cong (A/(\epsilon))\,d\epsilon
+  \cong k\,d\epsilon.
+\]
+The universal derivation is explicit:
+\[
+  d(a+b\epsilon)=b\,d\epsilon,\qquad a,b\in k.
+\]
+
+The spectrum has one prime, \(\mathfrak m=(\epsilon)\), and its residue field
+is
+\[
+  \kappa(\mathfrak m)=A/\mathfrak m\cong k.
+\]
+Therefore the cotangent fibre is
+\[
+  T^*_{A/k,\mathfrak m}
+  =
+  \Omega^1_{A/k}\otimes_A k
+  \cong k\,d\epsilon,
+\]
+and the tangent space is one-dimensional:
+\[
+  T_{A/k,\mathfrak m}
+  =
+  \operatorname{Hom}_A(\Omega^1_{A/k},k)
+  \cong k.
+\]
+The tangent vector \(v\) with \(v(d\epsilon)=1\) corresponds to the derivation
+\[
+  D_v(a+b\epsilon)=b.
+\]
+
+Since \(\Omega^1_{A/k}\) is generated by one element, its exterior square is
+zero:
+\[
+  \Omega^2_{A/k}=0.
+\]
+Thus the de Rham complex is
+\[
+  A\xrightarrow{d_0}k\,d\epsilon\longrightarrow0,
+  \qquad
+  d_0(a+b\epsilon)=b\,d\epsilon.
+\]
+The kernel is \(k\), the image is all of \(k\,d\epsilon\), and hence
+\[
+  H^0_{\rm dR}(A/k)=k,\qquad
+  H^1_{\rm dR}(A/k)=0.
+\]
+
+Now apply the de Rham CSS test.  Choose the basis \(d\epsilon\) of
+\(C^1=k\,d\epsilon\).  Then
+\[
+  R_X=\operatorname{im}d_0=k\,d\epsilon,\qquad
+  R_Z=0.
+\]
+The Pauli label space for the single \(C^1\)-qutrit is \(k\oplus k\), and the
+candidate stabilizer label subspace is
+\[
+  L=(R_X\oplus0)=k\oplus0.
+\]
+It is isotropic because all \(X\)-type labels commute with each other.  Its
+rank is \(1\), so the corresponding all-\(+1\) stabilizer space has dimension
+\[
+  3^{1-1}=1.
+\]
+This is the first toy calculation where the nilpotent first-order geometry
+selects a nontrivial stabilizer equation.  It is not yet a general dynamical
+law; it is a checked finite test case for convention (ao).

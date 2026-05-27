@@ -1,0 +1,246 @@
+% SHARD-ID: AQM-56-DERHAM-CSS-F2-QUBIT-EXAMPLES
+% SHARD-TITLE: \(\mathbb F_2\) Qubit Examples for the de Rham CSS Test
+% SHARD-SUMMARY: Computes five characteristic-two examples for the de Rham CSS proposal, with 5, 6, 8, 9, and 10 qubits.
+% SHARD-SUMMARY: Records the main edge case \(d(t^2)=0\), which makes square-zero equations fail to impose first-differential relations.
+% SHARD-SUMMARY: Lists explicit \(C^1\)-qubits and the selected \(X\)- and \(Z\)-stabilizer generators for each example.
+% SHARD-KEYWORDS: F2, qubit, de Rham, CSS, stabilizer, Kahler differentials, characteristic two, nilpotent
+\section{\texorpdfstring{\(\mathbb F_2\)}{F2} Qubit Examples for the de Rham CSS Test}
+\label{sec:derham-css-f2-qubit-examples}
+\subsection{Status, Sources, and Characteristic-Two Warning}
+This shard continues AQM-54 and AQM-55 with \(k=\mathbb F_2\).  The source
+anchors are unchanged: Stacks algebra lines 33793--33872 for derivations and
+K\"ahler differentials, 34103--34120 for the quotient exact sequence,
+34310--34340 for polynomial differentials, and 34388--34524 for the de Rham
+complex.  AQM-08 supplies the CSS/stabilizer dictionary, and
+\texttt{CONVENTIONS.md} (ao) names the \(\texttt{de\_rham\_css\_test}\).
+The characteristic-two edge case is immediate from the polynomial rule:
+\[
+  d(t^2)=2t\,dt=0.
+\]
+Thus a square-zero equation \(t^2=0\) imposes no relation on \(t\,dt\).  This
+is the opposite of the \(\mathbb F_3\) dual-number calculation in AQM-54,
+where \(2\) is invertible and \(\epsilon\,d\epsilon=0\).  A squarefree control
+still behaves normally: for \(k[t]/(t^2+t)\), \(d(t^2+t)=dt\), hence
+\(\Omega^1=0\).  The examples below deliberately use nilpotent quadratic
+relations, because those are where the qubit CSS test sees structure.
+\subsection{Lamport Registers}
+\[
+\begin{array}{rcl}
+F0&:&A_0=k[t]/(t^6),\quad 6\text{ qubits}.\\
+F1&:&A_1=k[t]/(t^{10}),\quad 10\text{ qubits}.\\
+F2&:&A_2=k[x,y]/(x^2,y^2,xy),\quad 5\text{ qubits}.\\
+F3&:&A_3=k[x,y]/(x^2,y^2),\quad 8\text{ qubits}.\\
+F4&:&A_4=k[x,y,z]/(x,y,z)^2,\quad 9\text{ qubits}.
+\end{array}
+\]
+For a \(C^1\)-basis vector \(e_i\), write \(X_i=X(e_i)\) and \(Z_i=Z(e_i)\).
+All stabilizers below have \(+1\) phase; the ring calculation fixes only the
+support spaces.
+\subsection{F0: The Length-Six Fat Line}
+Let \(A_0=k[t]/(t^6)\), and write \(\tau=t\bmod(t^6)\).  The \(k\)-basis is
+\[
+  1,\tau,\tau^2,\tau^3,\tau^4,\tau^5.
+\]
+The quotient rule gives
+\[
+  \Omega^1_{A_0/k}=A_0\,d\tau/(d(\tau^6)).
+\]
+Since \(d(\tau^6)=6\tau^5\,d\tau=0\) in \(k\), no relation is imposed.  Set
+\[
+  e_i=\tau^{i-1}d\tau,\qquad 1\le i\le 6.
+\]
+Then \(C^1=\Omega^1_{A_0/k}\cong k^6\), so there are six qubits.  The
+universal derivation is
+\[
+  d_0(\tau^j)=j\,\tau^{j-1}d\tau,
+\]
+so only odd \(j\) contribute:
+\[
+  d_0(\tau)=e_1,\quad d_0(\tau^3)=e_3,\quad d_0(\tau^5)=e_5.
+\]
+Hence
+\[
+  R_X=\langle e_1,e_3,e_5\rangle,\qquad R_Z=0,
+\]
+because a cyclic one-form module has \(\Omega^2=0\).  The selected
+stabilizers are
+\[
+  X_1,\qquad X_3,\qquad X_5.
+\]
+The rank is \(3\) on \(6\) qubits, leaving \(6-3=3\) logical qubits.
+\subsection{F1: The Length-Ten Fat Line}
+Let \(A_1=k[t]/(t^{10})\), with \(\tau=t\bmod(t^{10})\).  Its basis is
+\[
+  1,\tau,\tau^2,\tau^3,\tau^4,\tau^5,\tau^6,\tau^7,\tau^8,\tau^9.
+\]
+Again
+\[
+  d(\tau^{10})=10\tau^9\,d\tau=0,
+\]
+so \(\Omega^1_{A_1/k}=A_1\,d\tau\).  Set
+\[
+  e_i=\tau^{i-1}d\tau,\qquad 1\le i\le 10.
+\]
+Thus \(C^1\cong k^{10}\), giving ten qubits.  The same parity calculation
+gives
+\[
+  d_0(\tau)=e_1,\quad d_0(\tau^3)=e_3,\quad d_0(\tau^5)=e_5,\quad
+  d_0(\tau^7)=e_7,\quad d_0(\tau^9)=e_9,
+\]
+while \(d_0(1),d_0(\tau^2),d_0(\tau^4),d_0(\tau^6),d_0(\tau^8)\) vanish.
+Therefore
+\[
+  R_X=\langle e_1,e_3,e_5,e_7,e_9\rangle,\qquad R_Z=0.
+\]
+The selected stabilizers are
+\[
+  X_1,\qquad X_3,\qquad X_5,\qquad X_7,\qquad X_9.
+\]
+The stabilizer rank is \(5\) on \(10\) qubits, so the code space has
+\(10-5=5\) logical qubits.
+\subsection{F2: The Two-Variable Square-Zero Point}
+Let
+\[
+  A_2=k[x,y]/(x^2,y^2,xy).
+\]
+The basis is \(1,x,y\).  The square relations give no differential relation:
+\[
+  d(x^2)=0,\qquad d(y^2)=0.
+\]
+The mixed relation gives
+\[
+  d(xy)=x\,dy+y\,dx=0.
+\]
+Thus \(x\,dy=y\,dx\).  A \(C^1\)-basis is
+\[
+  e_1=dx,\quad e_2=x\,dx,\quad e_3=dy,\quad e_4=y\,dy,\quad
+  e_5=x\,dy=y\,dx.
+\]
+There are five qubits.  The derivation on the basis of \(A_2\) is
+\[
+  d_0(1)=0,\qquad d_0(x)=e_1,\qquad d_0(y)=e_3,
+\]
+so
+\[
+  R_X=\langle e_1,e_3\rangle.
+\]
+Let \(\omega=dx\wedge dy\).  Wedging \(x\,dy+y\,dx=0\) with \(dx\) and \(dy\)
+gives \(x\omega=0\) and \(y\omega=0\), so \(C^2=k\omega\).  Now
+\[
+  d_1(e_1)=d_1(e_2)=d_1(e_3)=d_1(e_4)=0,\qquad d_1(e_5)=\omega.
+\]
+Hence \(R_Z=\langle e_5\rangle\).  The selected stabilizers are
+\[
+  X_1,\qquad X_3,\qquad Z_5.
+\]
+The rank is \(3\) on \(5\) qubits, leaving \(2\) logical qubits.
+\subsection{F3: The Two-Variable Quadratic Fat Point}
+Let
+\[
+  A_3=k[x,y]/(x^2,y^2).
+\]
+The basis is \(1,x,y,xy\).  Since \(d(x^2)=d(y^2)=0\), the module
+\(\Omega^1_{A_3/k}\) is freely generated over \(A_3\) by \(dx,dy\).  Use
+\[
+\begin{array}{llll}
+e_1=dx,& e_2=x\,dx,& e_3=y\,dx,& e_4=xy\,dx,\\
+e_5=dy,& e_6=x\,dy,& e_7=y\,dy,& e_8=xy\,dy.
+\end{array}
+\]
+Thus there are eight qubits.  The derivation is
+\[
+  d_0(x)=e_1,\qquad d_0(y)=e_5,\qquad d_0(xy)=x\,dy+y\,dx=e_6+e_3.
+\]
+Therefore
+\[
+  R_X=\langle e_1,e_5,e_3+e_6\rangle.
+\]
+Let \(\omega=dx\wedge dy\); then \(C^2=A_3\omega\) has basis
+\(\omega,x\omega,y\omega,xy\omega\).  The nonzero \(d_1\)-values are
+\[
+  d_1(e_3)=\omega,\quad d_1(e_4)=x\omega,\quad
+  d_1(e_6)=\omega,\quad d_1(e_8)=y\omega.
+\]
+Hence
+\[
+  R_Z=\langle e_3+e_6,\ e_4,\ e_8\rangle.
+\]
+The shared support \(e_3+e_6\) is not a mistake: in characteristic two its
+self-dot-product is \(1+1=0\).  The selected stabilizers are
+\[
+  X_1,\qquad X_5,\qquad X_3X_6,\qquad Z_3Z_6,\qquad Z_4,\qquad Z_8.
+\]
+The rank is \(6\) on \(8\) qubits, leaving \(2\) logical qubits.
+\subsection{F4: The Three-Variable Square-Zero Tangent Space}
+Let
+\[
+  A_4=k[x,y,z]/(x,y,z)^2.
+\]
+The basis is \(1,x,y,z\).  The relations \(x^2=y^2=z^2=xy=xz=yz=0\) give
+\[
+  x\,dy=y\,dx,\qquad x\,dz=z\,dx,\qquad y\,dz=z\,dy,
+\]
+while the square relations again give no \(x\,dx\), \(y\,dy\), or \(z\,dz\)
+relation.  Choose
+\[
+\begin{array}{lll}
+e_1=dx,& e_2=dy,& e_3=dz,\\
+e_4=x\,dx,& e_5=y\,dy,& e_6=z\,dz,\\
+e_7=x\,dy=y\,dx,& e_8=x\,dz=z\,dx,& e_9=y\,dz=z\,dy.
+\end{array}
+\]
+Thus \(C^1\cong k^9\), so there are nine qubits.  The image of \(d_0\) is
+\[
+  R_X=\langle e_1,e_2,e_3\rangle.
+\]
+For \(C^2\), set
+\[
+  \omega_{xy}=dx\wedge dy,\quad \omega_{xz}=dx\wedge dz,\quad
+  \omega_{yz}=dy\wedge dz.
+\]
+The wedged mixed relations make the coefficient terms compatible; the only
+extra coefficient direction needed below is
+\[
+  \eta=x\omega_{yz}=y\omega_{xz}=z\omega_{xy}.
+\]
+Indeed, wedging \(x\,dy+y\,dx=0\), \(x\,dz+z\,dx=0\), and
+\(y\,dz+z\,dy=0\) with \(dx,dy,dz\) gives
+\[
+\begin{array}{lll}
+x\omega_{xy}=0,&y\omega_{xy}=0,&x\omega_{yz}=y\omega_{xz},\\
+x\omega_{xz}=0,&z\omega_{xz}=0,&x\omega_{yz}=z\omega_{xy},\\
+y\omega_{yz}=0,&z\omega_{yz}=0,&y\omega_{xz}=z\omega_{xy}.
+\end{array}
+\]
+The \(d_1\)-values relevant for \(R_Z\) are
+\[
+  d_1(e_7)=\omega_{xy},\qquad
+  d_1(e_8)=\omega_{xz},\qquad
+  d_1(e_9)=\omega_{yz},
+\]
+and \(d_1(e_i)=0\) for \(1\le i\le6\).  Therefore
+\[
+  R_Z=\langle e_7,e_8,e_9\rangle.
+\]
+The selected stabilizers are
+\[
+  X_1,\qquad X_2,\qquad X_3,\qquad Z_7,\qquad Z_8,\qquad Z_9.
+\]
+The rank is \(6\) on \(9\) qubits, leaving \(3\) logical qubits.
+\subsection{End Summary: Qubits and de Rham CSS Stabilizers}
+{\scriptsize
+\[
+\begin{array}{c|c|c|c|c}
+\text{ex.} & A & \#C^1 & X\text{-checks} & Z\text{-checks}\\ \hline
+F0&k[t]/(t^6)&6&X_1,X_3,X_5&\text{none}\\
+F1&k[t]/(t^{10})&10&X_1,X_3,X_5,X_7,X_9&\text{none}\\
+F2&k[x,y]/(x^2,y^2,xy)&5&X_1,X_3&Z_5\\
+F3&k[x,y]/(x^2,y^2)&8&X_1,X_5,X_3X_6&Z_3Z_6,Z_4,Z_8\\
+F4&k[x,y,z]/(x,y,z)^2&9&X_1,X_2,X_3&Z_7,Z_8,Z_9
+\end{array}
+\]
+}
+The qubit lesson is sharper than the odd-characteristic lesson: in
+characteristic two, quadratic nilpotent equations can leave more one-form
+directions alive, so the de Rham CSS test naturally produces medium-sized
+qubit stabilizer systems from very small finite coordinate rings.

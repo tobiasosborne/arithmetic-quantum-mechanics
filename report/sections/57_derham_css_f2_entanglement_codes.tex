@@ -1,0 +1,217 @@
+% SHARD-ID: AQM-57-DERHAM-CSS-F2-ENTANGLEMENT-CODES
+% SHARD-TITLE: Entanglement and Code Properties in \(\mathbb F_2\) de Rham CSS Examples
+% SHARD-SUMMARY: Derives Bell-pair sectors and code parameters for three \(\mathbb F_2\) de Rham CSS examples.
+% SHARD-SUMMARY: Shows explicitly that the examples are entangled stabilizer codes but still have distance-one logical operators.
+% SHARD-SUMMARY: Includes an 18-qubit fat-rectangle example with two forced Bell pairs and five logical qubits.
+% SHARD-KEYWORDS: F2, qubit, de Rham, CSS, stabilizer code, entanglement, Bell pair, distance
+\section{Entanglement and Code Properties in \texorpdfstring{\(\mathbb F_2\)}{F2} de Rham CSS Examples}
+\label{sec:derham-css-f2-entanglement-codes}
+\subsection{Status and Local Test for Entanglement}
+This shard continues AQM-54--AQM-56.  It uses the same source anchors:
+Stacks algebra lines 33793--33872, 34103--34120, 34310--34340, and
+34388--34524 for K\"ahler differentials and the de Rham complex, AQM-08 for
+the CSS/stabilizer dictionary, and \texttt{CONVENTIONS.md} (ao) for the
+de Rham CSS test.  The new claims in this shard are not imported code facts:
+they are direct solutions of the displayed stabilizer equations.
+The local entanglement test used below is the following.  If two qubits \(p,q\)
+are constrained by
+\[
+  X_pX_q=+1,\qquad Z_pZ_q=+1,
+\]
+and no other displayed generator touches them, then their joint state is
+\[
+  |\Phi^+\rangle_{pq}=\frac{|00\rangle+|11\rangle}{\sqrt2}.
+\]
+Indeed, \(Z_pZ_q=+1\) removes the \(|01\rangle\) and \(|10\rangle\)
+amplitudes, while \(X_pX_q=+1\) makes the \(|00\rangle\) and \(|11\rangle\)
+amplitudes equal.  The reduced density matrix on either qubit is
+\[
+  \operatorname{diag}(1/2,1/2),
+\]
+so the state is not a product state.  This is the only entanglement criterion
+used in the examples.
+\subsection{Example C0: The Eight-Qubit Square Fat Point}
+Let
+\[
+  A_0=\mathbb F_2[x,y]/(x^2,y^2).
+\]
+Use the \(C^1=\Omega^1_{A_0/\mathbb F_2}\) basis
+\[
+\begin{array}{llll}
+e_1=dx,&e_2=x\,dx,&e_3=y\,dx,&e_4=xy\,dx,\\
+e_5=dy,&e_6=x\,dy,&e_7=y\,dy,&e_8=xy\,dy.
+\end{array}
+\]
+This is the eight-qubit example from AQM-56.  The de Rham CSS images are
+\[
+  R_X=\langle e_1,\ e_5,\ e_3+e_6\rangle,\qquad
+  R_Z=\langle e_3+e_6,\ e_4,\ e_8\rangle.
+\]
+Thus the selected stabilizer generators are
+\[
+  X_1,\qquad X_5,\qquad X_3X_6,\qquad
+  Z_3Z_6,\qquad Z_4,\qquad Z_8.
+\]
+The six generators are independent and commute; independence is visible from
+the private supports \(1,5,4,8\) plus the common two-qubit support \(3,6\).
+Therefore the code parameters are
+\[
+  [[8,\ 8-6,\ d]]=[[8,2,d]].
+\]
+The pair \(3,6\) is forced to be
+\[
+  |\Phi^+\rangle_{3,6}.
+\]
+The remaining pinned qubits are
+\[
+  |+\rangle_1,\quad |+\rangle_5,\quad |0\rangle_4,\quad |0\rangle_8.
+\]
+Qubits \(2\) and \(7\) are untouched by every generator, so a code basis is
+\[
+  |+\rangle_1\,|\alpha\rangle_2\,|\Phi^+\rangle_{3,6}\,
+  |0\rangle_4\,|+\rangle_5\,|\beta\rangle_7\,|0\rangle_8,
+\]
+where \(\alpha,\beta\in\{0,1\}\).  The logical operators may be chosen as
+\[
+  \bar X_1=X_2,\quad \bar Z_1=Z_2,\qquad
+  \bar X_2=X_7,\quad \bar Z_2=Z_7.
+\]
+Hence \(d=1\).  This is an entangled stabilizer code, but not an
+error-correcting code.
+\subsection{Example C1: A Ten-Qubit Fat Rectangle}
+Let
+\[
+  A_1=\mathbb F_2[x,y]/(x^3,y^2).
+\]
+Since \(d(x^3)=x^2dx\) and \(d(y^2)=0\), the \(dx\)-part has coefficients
+\(1,x,y,xy\), while the \(dy\)-part has coefficients
+\(1,x,x^2,y,xy,x^2y\).  Use
+\[
+\begin{array}{llll}
+a_0=dx,&a_1=x\,dx,&b_0=y\,dx,&b_1=xy\,dx,\\
+c_0=dy,&c_1=x\,dy,&c_2=x^2dy,&d_0=y\,dy,\\
+d_1=xy\,dy,&d_2=x^2y\,dy.&
+\end{array}
+\]
+There are ten qubits.  The \(d_0\)-image is
+\[
+  d(x)=a_0,\quad d(y)=c_0,\quad
+  d(xy)=b_0+c_1,\quad d(x^2y)=c_2,
+\]
+so
+\[
+  R_X=\langle a_0,\ c_0,\ b_0+c_1,\ c_2\rangle.
+\]
+For \(C^2\), write \(\omega=dx\wedge dy\).  The relation \(x^2dx=0\)
+implies \(x^2\omega=0\).  The nonzero \(d_1\)-values are
+\[
+  d_1(b_0)=\omega,\quad d_1(c_1)=\omega,\quad
+  d_1(b_1)=x\omega,\quad d_1(d_1)=y\omega.
+\]
+Thus
+\[
+  R_Z=\langle b_0+c_1,\ b_1,\ d_1\rangle.
+\]
+The selected stabilizers are
+\[
+  X_{a_0},\ X_{c_0},\ X_{b_0}X_{c_1},\ X_{c_2},\qquad
+  Z_{b_0}Z_{c_1},\ Z_{b_1},\ Z_{d_1}.
+\]
+Their rank is \(4+3=7\), so the code is
+\[
+  [[10,\ 10-7,\ d]]=[[10,3,d]].
+\]
+The pair \(b_0,c_1\) is forced to be a Bell pair.  The pinned single-qubit
+states are
+\[
+  |+\rangle_{a_0},\quad |+\rangle_{c_0},\quad |+\rangle_{c_2},\quad
+  |0\rangle_{b_1},\quad |0\rangle_{d_1}.
+\]
+The untouched qubits \(a_1,d_0,d_2\) give logical operators
+\[
+  X_{a_1},Z_{a_1},\qquad X_{d_0},Z_{d_0},\qquad X_{d_2},Z_{d_2}.
+\]
+Therefore \(d=1\).  The code has a real Bell sector but no single-qubit error
+protection.
+\subsection{Example C2: An Eighteen-Qubit Fat Rectangle}
+Let
+\[
+  A_2=\mathbb F_2[x,y]/(x^5,y^2).
+\]
+The relation \(d(x^5)=x^4dx\) removes \(x^4dx\) and \(x^4y\,dx\), while
+\(d(y^2)=0\).  Use the \(18\) basis one-forms
+\[
+\begin{array}{llll}
+a_i=x^i dx\ (0\le i\le3),&
+b_i=x^iy\,dx\ (0\le i\le3),\\
+c_i=x^i dy\ (0\le i\le4),&
+d_i=x^iy\,dy\ (0\le i\le4).
+\end{array}
+\]
+The nonzero \(d_0\)-images needed for \(R_X\) are
+\[
+\begin{array}{rclcrcl}
+d(x)&=&a_0,&&d(x^3)&=&a_2,\\
+d(y)&=&c_0,&&d(xy)&=&b_0+c_1,\\
+d(x^2y)&=&c_2,&&d(x^3y)&=&b_2+c_3,\\
+d(x^4y)&=&c_4.&&&
+\end{array}
+\]
+Hence
+\[
+  R_X=\langle a_0,a_2,c_0,c_2,c_4,b_0+c_1,b_2+c_3\rangle.
+\]
+Again let \(\omega=dx\wedge dy\), with \(x^4\omega=0\).  The nonzero
+\(d_1\)-rows are
+\[
+\begin{array}{rclcrcl}
+d_1(b_0)&=&\omega,&&d_1(c_1)&=&\omega,\\
+d_1(b_1)&=&x\omega,&&d_1(b_2)&=&x^2\omega,\\
+d_1(c_3)&=&x^2\omega,&&d_1(b_3)&=&x^3\omega,\\
+d_1(d_1)&=&y\omega,&&d_1(d_3)&=&x^2y\omega.
+\end{array}
+\]
+Thus
+\[
+  R_Z=\langle b_0+c_1,\ b_1,\ b_2+c_3,\ b_3,\ d_1,\ d_3\rangle.
+\]
+The selected stabilizers are therefore
+\[
+\begin{array}{l}
+X_{a_0},X_{a_2},X_{c_0},X_{c_2},X_{c_4},
+X_{b_0}X_{c_1},X_{b_2}X_{c_3},\\
+Z_{b_0}Z_{c_1},Z_{b_1},Z_{b_2}Z_{c_3},Z_{b_3},Z_{d_1},Z_{d_3}.
+\end{array}
+\]
+The rank is \(7+6=13\), so this is an
+\[
+  [[18,\ 18-13,\ d]]=[[18,5,d]]
+\]
+CSS code.  The two disjoint pairs \(b_0,c_1\) and \(b_2,c_3\) are forced to be
+\[
+  |\Phi^+\rangle_{b_0,c_1}\otimes|\Phi^+\rangle_{b_2,c_3}.
+\]
+The untouched qubits
+\[
+  a_1,\quad a_3,\quad d_0,\quad d_2,\quad d_4
+\]
+give five weight-one logical \(X/Z\) pairs, so \(d=1\).  This example reaches
+the requested \(15+\)-qubit scale and shows the same diagnosis: the de Rham
+CSS test naturally creates entangled stabilizer sectors, but these fat
+rectangles still carry unprotected differential logicals.
+\subsection{Summary}
+The three examples have parameters
+\[
+\begin{array}{c|c|c|c}
+\text{ring} & \text{qubits} & \text{Bell sectors} & [[n,k,d]]\\ \hline
+\mathbb F_2[x,y]/(x^2,y^2) & 8 & (y\,dx,\ x\,dy) & [[8,2,1]]\\
+\mathbb F_2[x,y]/(x^3,y^2) & 10 & (y\,dx,\ x\,dy) & [[10,3,1]]\\
+\mathbb F_2[x,y]/(x^5,y^2) & 18 &
+  (y\,dx,\ x\,dy),\ (x^2y\,dx,\ x^3dy) & [[18,5,1]]
+\end{array}
+\]
+So the first qubit-code conclusion is mixed.  Entanglement is already present
+and exactly derivable from the de Rham CSS stabilizers.  However, the same
+characteristic-two pathology that creates many one-form qubits also leaves
+weight-one logical operators.  These examples are entangled stabilizer codes,
+not useful distance codes.

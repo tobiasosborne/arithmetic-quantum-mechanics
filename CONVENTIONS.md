@@ -1570,6 +1570,49 @@ where `C` is a curve, `D` is a divisor with logarithmic one-forms defined, and
 `Omega^1(log D)`, so `S=O` is a log-spin datum and the mode source is
 `Gamma(P^1,O)=k`.
 
+## (ao) Derivative/Cotangent Dynamics Proposal Convention
+
+For a finite commutative `k`-algebra `A`, the intrinsic first derivative
+object is the module of Kahler differentials
+
+```text
+Omega^1_(A/k)
+```
+
+with universal `k`-derivation `d : A -> Omega^1_(A/k)`. At a point
+`x in Spec(A)` the cotangent fibre is
+
+```text
+T^*_(Spec A/k,x) = Omega^1_(A/k) tensor_A kappa(x),
+```
+
+and the tangent space is its `kappa(x)`-dual, equivalently the local
+derivations into `kappa(x)` under the Stacks tangent-space convention. This
+cotangent object is geometric data, not by itself the Weyl-Heisenberg momentum
+label group.
+
+The first derivative-stabilizer test is a proposal, not a settled dynamical
+principle. For finite-dimensional `k`-vector spaces obtained from the
+algebraic de Rham complex
+
+```text
+C^0 = A  --d0-->  C^1 = Omega^1_(A/k)  --d1-->  C^2 = Omega^2_(A/k),
+```
+
+one may choose finite `k`-bases and the corresponding dot pairing, put qudits
+on `C^1`, and form the CSS support spaces
+
+```text
+R_X = im(d0),          R_Z = im(transpose(d1)).
+```
+
+The equation `d1*d0 = 0` gives CSS orthogonality by convention `(b)` and
+AQM-08, so this produces an isotropic stabilizer after the basis/pairing and
+phase choices are fixed. This construction is called the `de_rham_css_test`.
+It is separate from the even Artin-Weyl layer of convention `(ab)` and from the
+fermion parity-shift catalogue of convention `(am)`. A report shard may use it
+only as a checked finite example or as an explicitly labelled proposal.
+
 ## (an) Finite Commutative Ring Database Convention
 
 For the finite-ring database PRD and its later implementation, the default word
