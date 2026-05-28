@@ -1,18 +1,21 @@
 % SHARD-ID: AQM-57-DERHAM-CSS-F2-ENTANGLEMENT-CODES
-% SHARD-TITLE: Entanglement and Code Properties in \(\mathbb F_2\) de Rham CSS Examples
-% SHARD-SUMMARY: Derives Bell-pair sectors and code parameters for three \(\mathbb F_2\) de Rham CSS examples.
-% SHARD-SUMMARY: Shows explicitly that the examples are entangled stabilizer codes but still have distance-one logical operators.
-% SHARD-SUMMARY: Includes an 18-qubit fat-rectangle example with two forced Bell pairs and five logical qubits.
+% SHARD-TITLE: Entanglement Inside the \(\mathbb F_2\) de Rham CSS Prototype
+% SHARD-SUMMARY: Derives Bell-pair sectors and code parameters for three prototype \(\mathbb F_2\) de Rham CSS examples.
+% SHARD-SUMMARY: Shows explicitly that the prototype examples are entangled stabilizer codes but still have distance-one logical operators.
+% SHARD-SUMMARY: Includes an 18 auxiliary-qubit fat-rectangle example with two forced Bell pairs and five logical qubits.
 % SHARD-KEYWORDS: F2, qubit, de Rham, CSS, stabilizer code, entanglement, Bell pair, distance
-\section{Entanglement and Code Properties in \texorpdfstring{\(\mathbb F_2\)}{F2} de Rham CSS Examples}
+\section{Entanglement Inside the \texorpdfstring{\(\mathbb F_2\)}{F2} de Rham CSS Prototype}
 \label{sec:derham-css-f2-entanglement-codes}
 \subsection{Status and Local Test for Entanglement}
-This shard continues AQM-54--AQM-56.  It uses the same source anchors:
+This shard continues the finite \(C^1\)-basis CSS prototype of AQM-54--AQM-56.
+Its qubits and Bell sectors are conditional on the displayed prototype
+stabilizers; they are not canonical tangent-Weyl consequences of
+\(\Spec A\).  It uses the same source anchors:
 Stacks algebra lines 33793--33872, 34103--34120, 34310--34340, and
 34388--34524 for K\"ahler differentials and the de Rham complex, AQM-08 for
 the CSS/stabilizer dictionary, and \texttt{CONVENTIONS.md} (ao) for the
-de Rham CSS test.  The new claims in this shard are not imported code facts:
-they are direct solutions of the displayed stabilizer equations.
+de Rham CSS test.  The new claims in this shard are direct solutions of the
+displayed prototype stabilizer equations.
 The local entanglement test used below is the following.  If two qubits \(p,q\)
 are constrained by
 \[
@@ -42,7 +45,8 @@ e_1=dx,&e_2=x\,dx,&e_3=y\,dx,&e_4=xy\,dx,\\
 e_5=dy,&e_6=x\,dy,&e_7=y\,dy,&e_8=xy\,dy.
 \end{array}
 \]
-This is the eight-qubit example from AQM-56.  The de Rham CSS images are
+This is the eight auxiliary-qubit example from AQM-56.  The de Rham CSS images
+are
 \[
   R_X=\langle e_1,\ e_5,\ e_3+e_6\rangle,\qquad
   R_Z=\langle e_3+e_6,\ e_4,\ e_8\rangle.
@@ -76,8 +80,8 @@ where \(\alpha,\beta\in\{0,1\}\).  The logical operators may be chosen as
   \bar X_1=X_2,\quad \bar Z_1=Z_2,\qquad
   \bar X_2=X_7,\quad \bar Z_2=Z_7.
 \]
-Hence \(d=1\).  This is an entangled stabilizer code, but not an
-error-correcting code.
+Hence \(d=1\).  Inside the prototype this is an entangled stabilizer code, but
+not an error-correcting code.
 \subsection{Example C1: A Ten-Qubit Fat Rectangle}
 Let
 \[
@@ -93,7 +97,7 @@ c_0=dy,&c_1=x\,dy,&c_2=x^2dy,&d_0=y\,dy,\\
 d_1=xy\,dy,&d_2=x^2y\,dy.&
 \end{array}
 \]
-There are ten qubits.  The \(d_0\)-image is
+There are ten auxiliary prototype qubits.  The \(d_0\)-image is
 \[
   d(x)=a_0,\quad d(y)=c_0,\quad
   d(xy)=b_0+c_1,\quad d(x^2y)=c_2,
@@ -131,8 +135,8 @@ The untouched qubits \(a_1,d_0,d_2\) give logical operators
 \[
   X_{a_1},Z_{a_1},\qquad X_{d_0},Z_{d_0},\qquad X_{d_2},Z_{d_2}.
 \]
-Therefore \(d=1\).  The code has a real Bell sector but no single-qubit error
-protection.
+Therefore \(d=1\).  The prototype code has a real Bell sector but no
+single-qubit error protection.
 \subsection{Example C2: An Eighteen-Qubit Fat Rectangle}
 Let
 \[
@@ -200,7 +204,7 @@ the requested \(15+\)-qubit scale and shows the same diagnosis: the de Rham
 CSS test naturally creates entangled stabilizer sectors, but these fat
 rectangles still carry unprotected differential logicals.
 \subsection{Summary}
-The three examples have parameters
+The three prototype examples have parameters
 \[
 \begin{array}{c|c|c|c}
 \text{ring} & \text{qubits} & \text{Bell sectors} & [[n,k,d]]\\ \hline
@@ -210,8 +214,8 @@ The three examples have parameters
   (y\,dx,\ x\,dy),\ (x^2y\,dx,\ x^3dy) & [[18,5,1]]
 \end{array}
 \]
-So the first qubit-code conclusion is mixed.  Entanglement is already present
-and exactly derivable from the de Rham CSS stabilizers.  However, the same
-characteristic-two pathology that creates many one-form qubits also leaves
-weight-one logical operators.  These examples are entangled stabilizer codes,
-not useful distance codes.
+So the first prototype qubit-code conclusion is mixed.  Entanglement is exactly
+derivable from the displayed \(C^1\)-CSS stabilizers.  However, the same
+characteristic-two pathology that creates many global one-form qubits also
+leaves weight-one logical operators.  These are prototype entangled stabilizer
+codes, not canonical tangent-Weyl dynamics and not useful distance codes.

@@ -1,0 +1,222 @@
+% SHARD-ID: AQM-60-TANGENT-WEYL-OPERATOR-PRINCIPLE
+% SHARD-TITLE: Tangent-Weyl Operator Principle and de Rham CSS Prototype
+% SHARD-SUMMARY: States the corrected workflow from schemes to tangent-cotangent Weyl operator labels and Hilbert carriers.
+% SHARD-SUMMARY: Separates residue-Weyl comparisons and finite \(C^1\)-CSS prototypes from the canonical tangent-Weyl recipe.
+% SHARD-SUMMARY: Reworks product-ring, finite-field circle, and formal real-line examples under the operator-selection principle.
+% SHARD-KEYWORDS: tangent, cotangent, Weyl, projective representation, stabilizer, de Rham CSS, circle, real line
+
+\section{Tangent-Weyl Operator Principle and de Rham CSS Prototype}
+\label{sec:tangent-weyl-operator-principle}
+
+\subsection{Status and Source Anchors}
+
+\begin{sloppypar}
+This shard corrects the interpretation of AQM-54--AQM-59.  K\"ahler
+differentials are sourced from
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+33793--33872 and 34310--34340.  Tangent spaces are sourced from
+\path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
+2915--3019.  Finite Weyl operators use AQM-28.  The stabilizer/CSS isotropy
+dictionary is AQM-08.  The real CCR comparison is AQM-19.
+\end{sloppypar}
+
+The corrected principle is not ``put a Hilbert space on the tangent space'' and
+not a separate geometric intermediate step.  The principle is: compute the
+pointwise symplectic label spaces, quantise those label spaces by
+Weyl-Heisenberg projective unitary representations, and only then ask for a
+selection principle choosing commuting Weyl operators.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&X=\Spec A,\quad P\in X,\quad K=\kappa(P).\\
+D2&:&V_P^*=T_P^*X=\Omega^1_{A/k}\otimes_AK.\\
+D3&:&V_P=T_PX=\operatorname{Hom}_K(V_P^*,K).\\
+D4&:&E_P=V_P\oplus V_P^*.\\
+D5&:&\omega((v,\alpha),(w,\beta))=\beta(v)-\alpha(w).\\
+D6&:&\rho_P:E_P\to PU(\mathcal H_{\rho_P})
+      \text{ is a Weyl-Heisenberg projective representation}.\\
+D7&:&e\in E_P\text{ labels a Weyl operator }W_P(e)\text{ on }
+      \mathcal H_{\rho_P}.\\
+D8&:&E_S=\bigoplus_{P\in S}E_P,\quad
+      \rho_S=\bigotimes_{P\in S}\rho_P
+      \text{ for finite }S.\\
+D9&:&L\subset E_S\text{ isotropic } \Rightarrow
+      \{W(e):e\in L\}\text{ is a commuting family after phases}.\\
+D10&:&\text{Chosen phases for }L\text{ define a stabilizer eigenspace}.\\
+D11&:&C^0=A\to C^1=\Omega^1_{A/k}\to C^2=\Omega^2_{A/k}
+      \text{ is a separate finite CSS prototype}.\\
+T1&:&D1\text{--}D10\text{ are the tangent-Weyl operator workflow}.\\
+T2&:&D11\text{ and residue-Weyl constructions are comparison/prototype layers}.
+\end{array}
+\]
+
+\subsection{The Local Symplectic Label Space}
+
+Let \(V=V_P=T_PX\) and \(V^*=V_P^*=T_P^*X\).  Define
+\[
+  E_P=V\oplus V^*
+\]
+and
+\[
+  \omega((v,\alpha),(w,\beta))=\beta(v)-\alpha(w).
+\]
+The form is bilinear and alternating because
+\[
+  \omega((v,\alpha),(v,\alpha))=\alpha(v)-\alpha(v)=0.
+\]
+It is nondegenerate: if \(v\ne0\), choose \(\beta\in V^*\) with
+\(\beta(v)\ne0\); if \(\alpha\ne0\), choose \(w\in V\) with
+\(\alpha(w)\ne0\).  Pairing with \((0,\beta)\) or \((w,0)\) gives a nonzero
+value.  Hence \(E_P\) is the local symplectic label space.
+
+For finite \(K\), the Weyl-Heisenberg step constructs projective unitary
+representations of \(E_P\).  With central character
+\[
+  \psi_K(a)=\exp\!\left(\frac{2\pi i}{p}
+    \operatorname{Tr}_{K/\mathbb F_p}(a)\right),
+\]
+the irreducible finite representation has carrier dimension
+\[
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=|K|^{\dim_K V}.
+\]
+This is where Hilbert carriers enter the recipe: they are carriers of the
+Weyl-Heisenberg projective representation.  They are not assigned directly to
+\(T_PX\).
+
+\subsection{Stabilizer Selection Is the Isotropic Step}
+
+A stabilizer principle chooses label data
+\[
+  L\subset E_S=\bigoplus_{P\in S}E_P
+\]
+whose symplectic pairings vanish.  This isotropy condition is exactly what is
+needed for the corresponding Weyl operators to commute, up to the central
+phases fixed by the representation convention.  After the selection principle
+also fixes eigenvalue phases, the selected stabilizer subspace is the joint
+eigenspace inside the carrier of \(\rho_S\).
+
+Thus the role previously being described by the wrong geometric word is played
+by the stabilizer-selection principle itself.  A maximal isotropic choice is a
+Lagrangian-type stabilizer choice, but it is still a choice of commuting Weyl
+operators, not an extra canonical step between geometry and representation.
+
+\subsection{Comparison Layers}
+
+The older residue-Weyl comparison attaches to a finite residue field \(K\) the
+label shape \(K_q\oplus K_p\) and a carrier such as \(\ell^2(K)\).  This is a
+valid comparison layer from AQM-28--AQM-30, but it uses only \(K\).  It does
+not see whether \(P\) is smooth, singular, reduced, nonreduced, tangent-rich, or
+tangent-zero.
+
+The finite de Rham CSS prototype is also separate.  It uses
+\[
+  C^0=A\xrightarrow{d_0}C^1=\Omega^1_{A/k}
+       \xrightarrow{d_1}C^2=\Omega^2_{A/k}
+\]
+when these are finite-dimensional \(k\)-vector spaces, chooses a \(C^1\)-basis,
+and forms
+\[
+  R_X=\operatorname{im}d_0,\qquad R_Z=\operatorname{im}d_1^T.
+\]
+The equation \(d_1d_0=0\) proves CSS isotropy for that auxiliary
+chain-complex construction.  It is useful, but it is not the canonical
+pointwise tangent-Weyl quantisation of \(X\).
+
+\subsection{Example I: Product Fields}
+
+Let
+\[
+  A=k^n=k e_1\oplus\cdots\oplus k e_n .
+\]
+AQM-58 proves that every \(k\)-derivation \(D:A\to M\) vanishes.  Hence
+\[
+  \Omega^1_{A/k}=0.
+\]
+At the \(i\)-th point \(P_i\),
+\[
+  V_{P_i}^*=0,\qquad V_{P_i}=0,\qquad E_{P_i}=0.
+\]
+The tangent-Weyl representation is therefore trivial at every point: there are
+no nontrivial geometric Weyl operator labels to select.  The older residue-Weyl
+comparison would attach one \(k\)-level carrier per residue point, but that is
+not the corrected tangent-cotangent construction.  The de Rham CSS prototype
+also selects no stabilizer because \(C^1=0\).
+
+\subsection{Example II: The Odd Finite-Field Circle}
+
+Let \(k=\mathbb F_q\) with \(q\) odd and
+\[
+  C=\Spec k[x,y]/(x^2+y^2-1).
+\]
+For a rational point \(P=(a,b)\), AQM-59 computes
+\[
+  V_P^*=(k\,dx\oplus k\,dy)/(a\,dx+b\,dy).
+\]
+The tangent space is
+\[
+  V_P=\{(u,v)\in k^2:au+bv=0\}.
+\]
+Since \(a^2+b^2=1\), both spaces are one-dimensional.  Hence
+\[
+  E_P=V_P\oplus V_P^*
+\]
+is a two-dimensional symplectic \(k\)-label space, and the finite
+Weyl-Heisenberg carrier has dimension \(q\).  For
+\[
+  C(\mathbb F_3)=\{(1,0),(2,0),(0,1),(0,2)\},
+\]
+the rational tangent-Weyl support has four local carriers of dimension \(3\).
+This is still only kinematics.  A code or state appears only after a principle
+selects an isotropic subset of the four-point label space
+\[
+  \bigoplus_{P\in C(\mathbb F_3)}(V_P\oplus V_P^*).
+\]
+
+\subsection{Example III: The Formal Real Affine Line}
+
+Let
+\[
+  A=\mathbb R[x],\qquad X=\Spec A.
+\]
+AQM-58 computes
+\[
+  \Omega^1_{A/\mathbb R}=A\,dx.
+\]
+At the real point \(P_a=(x-a)\),
+\[
+  V_{P_a}^*=\mathbb R\,dx_a,\qquad
+  V_{P_a}=\mathbb R\,\partial_x|_a .
+\]
+The local operator-label space is
+\[
+  E_{P_a}=\mathbb R\,\partial_x|_a\oplus\mathbb R\,dx_a,
+\]
+with symplectic form
+\[
+  \omega((r\partial_x,s\,dx),(r'\partial_x,s'\,dx))=s'r-sr'.
+\]
+The Weyl/CCR representation theory supplies Hilbert carriers for this label
+space; the usual \(L^2(\mathbb R)\) realization is an analytic model, not a
+stabilizer-selection principle.  It does not choose the free-particle
+Hamiltonian, a potential, a domain, boundary conditions, or a distinguished
+commuting operator family.
+
+\subsection{Operational Conclusion}
+
+The corrected workflow is:
+\[
+\begin{array}{ll}
+1. & \text{Choose }X=\Spec A.\\
+2. & \text{Compute points }P\text{ and residue fields }\kappa(P).\\
+3. & \text{Compute }T_PX\text{ and }T_P^*X.\\
+4. & \text{Build }E_P=T_PX\oplus T_P^*X.\\
+5. & \text{Quantise }E_P\text{ by Weyl-Heisenberg projective representations}.\\
+6. & \text{Use a separate principle to select isotropic Weyl labels}.\\
+7. & \text{Take the joint eigenspace of the selected commuting operators}.
+\end{array}
+\]
+AQM-61--AQM-63 use this workflow.  AQM-55--AQM-57 remain useful only as
+finite \(C^1\)-CSS prototype calculations unless they are explicitly pushed
+through the pointwise tangent-Weyl representation layer.

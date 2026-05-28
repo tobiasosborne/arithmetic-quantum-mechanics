@@ -1,8 +1,8 @@
 % SHARD-ID: AQM-63-EVALUATED-DERHAM-CONSTRAINTS-TANGENT-WEYL
 % SHARD-TITLE: Evaluated de Rham Constraints on Tangent-Weyl Kinematics
-% SHARD-SUMMARY: Reformulates exact de Rham one-forms as cotangent Weyl constraints on \(\ell^2(TX)\).
+% SHARD-SUMMARY: Reformulates exact de Rham one-forms as cotangent Weyl-operator labels in the tangent-cotangent representation.
 % SHARD-SUMMARY: Proves the compatibility statement and separates it from a full CSS rule requiring extra tangent labels.
-% SHARD-SUMMARY: Works through finite examples showing that unrestricted exact forms often collapse finite rational supports.
+% SHARD-SUMMARY: Works through finite examples showing that unrestricted exact forms often select a one-dimensional stabilizer subspace.
 % SHARD-KEYWORDS: de Rham, tangent Weyl, cotangent constraints, stabilizer, F3, circle, affine line, crossing
 
 \section{Evaluated de Rham Constraints on Tangent-Weyl Kinematics}
@@ -11,12 +11,12 @@
 \subsection{Status and Source Anchors}
 
 This shard refines the compatibility question left open by AQM-60--AQM-62.
-The tangent-cotangent Hilbert space is the AQM-61 convention
-\(\mathcal H_P^{\rm geom}=\ell^2(T_PX)\).  The de Rham source is AQM-54:
-exact one-forms come from \(d:A\to\Omega^1_{A/k}\), and \(d_1d_0=0\) gives
-the old finite CSS row-orthogonality test.  The present shard keeps only the
-part which is canonical for the new kinematics: evaluate exact one-forms at
-finite-residue points and use them as cotangent, hence \(Z\)-type, Weyl labels.
+The tangent-cotangent kinematics first constructs the full symplectic label
+space and its Weyl-Heisenberg projective representation.  Exact one-forms from
+AQM-54 give a possible stabilizer-selection rule only after they are evaluated
+as cotangent labels at finite-residue points.  The old finite \(C^1\)-CSS rule
+remains a prototype; the fibrewise rule below is the part compatible with the
+corrected tangent-Weyl principle.
 
 \subsection{Definition: Evaluated Exact-One-Form Constraints}
 
@@ -28,82 +28,72 @@ and
 \[
   V_S=\bigoplus_{P\in S}V_P,\qquad
   V_S^*=\bigoplus_{P\in S}V_P^*,\qquad
-  \mathcal H_S=\ell^2(V_S).
+  E_S=V_S\oplus V_S^*.
 \]
-For \(\omega\in\Omega^1_{A/k}\), define its fibrewise evaluation
+Let
+\[
+  \rho_S:E_S\to PU(\mathcal H_{\rho_S})
+\]
+be the Weyl-Heisenberg projective representation.  For
+\(\omega\in\Omega^1_{A/k}\), define its fibrewise evaluation
 \[
   \operatorname{ev}^1_S(\omega)=
   (\omega\otimes1)_P{}_{P\in S}\in V_S^*.
 \]
-The compatible de Rham momentum label space is
+The evaluated exact-one-form label space is
 \[
-  L_Z^{\rm dR}(S)=\operatorname{ev}^1_S(dA)\subset V_S^*.
+  L_{\rm dR}(S)=\operatorname{ev}^1_S(dA)\subset 0\oplus V_S^*\subset E_S.
 \]
-For \(\alpha=(\alpha_P)\in V_S^*\), the Weyl phase operator is
+Since \(0\oplus V_S^*\) is isotropic, the Weyl operators
 \[
-  R(\alpha)|v\rangle
-  =
-  \prod_{P\in S}\psi_{K_P}(\alpha_P(v_P))\,|v\rangle,
-  \qquad v=(v_P)\in V_S.
+  \{W(0,\alpha):\alpha\in L_{\rm dR}(S)\}
 \]
-All such \(R(\alpha)\) commute with each other.  Therefore
-\[
-  \{R(\alpha):\alpha\in L_Z^{\rm dR}(S)\}
-\]
-is a valid commuting stabilizer family after the \(+1\) phases are chosen.
+commute after the central phases are fixed.  Choosing eigenvalue phases then
+defines a stabilizer subspace of \(\mathcal H_{\rho_S}\).
 
-The joint \(+1\) space is explicit.  Define the annihilator
+For explicit finite-field calculations one may use the standard coordinate
+display.  With \(+1\) phases, define
 \[
   A_S^{\rm dR}=
   \{v\in V_S:
     \prod_{P\in S}\psi_{K_P}(\alpha_P(v_P))=1
-    \text{ for every }\alpha\in L_Z^{\rm dR}(S)\}.
+    \text{ for every }\alpha\in L_{\rm dR}(S)\}.
 \]
-Then
+In that coordinate display, the selected subspace is
 \[
-  \mathcal H_S^{Z{\rm dR}}=\ell^2(A_S^{\rm dR})\subset\ell^2(V_S).
+  \mathcal H_S^{\rm dR}=\ell^2(A_S^{\rm dR}).
 \]
 When all points are \(k=\mathbb F_p\)-rational, this is the simpler condition
 \[
   \sum_{P\in S}\alpha_P(v_P)=0
-  \qquad\text{for all }\alpha\in L_Z^{\rm dR}(S).
+  \qquad\text{for all }\alpha\in L_{\rm dR}(S).
 \]
 
 \subsection{Why This Is Compatible but Not Yet Full CSS}
 
 The construction is compatible because exact one-forms evaluate to cotangent
-vectors, and cotangent vectors are exactly the phase labels in
-\[
-  T_PX\oplus T_P^*X.
-\]
-No basis of \(\Omega^1_{A/k}\) is needed, and no artificial copy of
-\(\Omega^1\) is used as a tangent configuration space.
+vectors, and cotangent vectors are labels in \(T_PX\oplus T_P^*X\).  No basis of
+\(\Omega^1_{A/k}\) is used as a list of physical qubits.
 
-It is not yet the old full de Rham CSS rule.  An \(X\)-type label must be a
-tangent vector \(w\in V_S\).  It commutes with all de Rham \(Z\)-constraints
-exactly when
+It is not yet the old full de Rham CSS rule.  A tangent-type label
+\(w\in V_S\) commutes with all evaluated exact one-form labels exactly when
 \[
-  w\in A_S^{\rm dR}.
+  \alpha(w)=0\qquad\text{for every }\alpha\in L_{\rm dR}(S).
 \]
-Thus any chosen subspace
-\[
-  L_X\subset A_S^{\rm dR}
-\]
-gives a genuine CSS completion, but this \(L_X\) is extra data.  Possible
-sources are a metric, Hodge star, action functional, Lagrangian correspondence,
-or a deliberately chosen subspace of the annihilator.  Without such data the
-canonical output is the \(Z\)-constraint space \(\ell^2(A_S^{\rm dR})\), not a
-full dynamical code.
+Thus a choice of tangent labels commuting with \(L_{\rm dR}(S)\) is extra data.
+Possible sources are a metric, Hodge star, action functional, correspondence,
+or a deliberately chosen subspace of the annihilator.  Without such data, the
+output is only the cotangent operator family and its stabilizer subspace.
 
 \subsection{Example 1: A Reduced Point}
 
 Let \(A=k=\mathbb F_3\).  Then \(\Omega^1_{k/k}=0\), \(V_P=0\), and
 \[
-  \mathcal H_P=\ell^2(0)\cong\mathbb C.
+  E_P=0,\qquad \dim_{\mathbb C}\mathcal H_{\rho_P}=1.
 \]
 Also \(dA=0\), so
 \[
-  L_Z^{\rm dR}=0,\qquad A_P^{\rm dR}=0.
+  L_{\rm dR}=0.
 \]
 The evaluated de Rham constraint does nothing, as it should.
 
@@ -116,7 +106,7 @@ Let
 AQM-61 gives
 \[
   V_P=k\,\partial_\epsilon,\qquad V_P^*=k\,d\epsilon,\qquad
-  \mathcal H_P=\ell^2(k)\cong\mathbb C^3.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3.
 \]
 For \(f=a+b\epsilon\),
 \[
@@ -124,20 +114,16 @@ For \(f=a+b\epsilon\),
 \]
 Therefore
 \[
-  L_Z^{\rm dR}=k\,d\epsilon=V_P^*.
+  L_{\rm dR}=k\,d\epsilon=V_P^*.
 \]
-For \(v=r\partial_\epsilon\),
+For \(v=r\partial_\epsilon\), \(d\epsilon(v)=r\).  The annihilator condition is
+\(br=0\) for all \(b\in k\), hence \(r=0\).  Thus the selected stabilizer
+subspace is one-dimensional; in the coordinate display it is
 \[
-  d\epsilon(v)=r.
+  \mathcal H_P^{\rm dR}=\mathbb C|0\rangle.
 \]
-The annihilator condition is \(br=0\) for all \(b\in k\), hence \(r=0\).  Thus
-\[
-  A_P^{\rm dR}=0,\qquad
-  \mathcal H_P^{Z{\rm dR}}=\mathbb C|0\rangle.
-\]
-This is compatible with tangent-Weyl kinematics, but it is a \(Z\)-phase
-constraint.  The old AQM-54 \(X\)-check is its Fourier-dual presentation, not
-the canonical tangent-coordinate reading.
+The old AQM-54 \(X\)-check is a Fourier-dual presentation of this prototype,
+not the canonical tangent-coordinate reading.
 
 \subsection{Example 3: The Rational Affine Line over F3}
 
@@ -145,9 +131,9 @@ Let \(X=\Spec k[x]\), \(k=\mathbb F_3\), and take rational support
 \[
   S=\{0,1,2\}.
 \]
-AQM-62 gives
+AQM-62 gives \(V_S=k^3\) and
 \[
-  V_S=k^3,\qquad \mathcal H_S\cong(\mathbb C^3)^{\otimes3}.
+  \dim_{\mathbb C}\mathcal H_{\rho_S}=3^3.
 \]
 The exact one-form \(df=f'(x)\,dx\) evaluates to
 \[
@@ -164,15 +150,12 @@ x^5 & (0,2,2).
 \]
 The determinant of these three rows is \(2\in\mathbb F_3^\times\), so
 \[
-  L_Z^{\rm dR}(S)=V_S^*.
+  L_{\rm dR}(S)=V_S^*.
 \]
-Consequently
+Consequently the stabilizer subspace is one-dimensional; in coordinates it is
 \[
-  A_S^{\rm dR}=0,\qquad
-  \mathcal H_S^{Z{\rm dR}}=\mathbb C|0,0,0\rangle.
+  \mathcal H_S^{\rm dR}=\mathbb C|0,0,0\rangle.
 \]
-This is the first warning: unrestricted exact forms on a finite rational
-support can be too strong as a dynamical selection principle.
 
 \subsection{Example 4: Two Independent Dual Directions}
 
@@ -183,18 +166,14 @@ Let
 AQM-61 computes
 \[
   V_P=k\,\partial_u\oplus k\,\partial_v,\qquad
-  \mathcal H_P=\ell^2(k^2)\cong\mathbb C^9.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3^2=9.
 \]
 The exact forms \(du\) and \(dv\) occur as \(d(u)\) and \(d(v)\).  Hence
 \[
-  L_Z^{\rm dR}=k\,du\oplus k\,dv=V_P^*.
+  L_{\rm dR}=k\,du\oplus k\,dv=V_P^*.
 \]
-The annihilator is zero, so
-\[
-  \mathcal H_P^{Z{\rm dR}}=\mathbb C|0,0\rangle.
-\]
-Again the construction is compatible, but unrestricted exact one-forms freeze
-all tangent coordinates.
+The annihilator is zero, so the stabilizer subspace is one-dimensional; in
+coordinates it is \(\mathbb C|0,0\rangle\).
 
 \subsection{Example 5: The Crossing over F3}
 
@@ -203,7 +182,7 @@ two-dimensional tangent at the origin and four one-dimensional tangents away
 from it:
 \[
   V_S\cong k^6,\qquad
-  \mathcal H_S\cong\mathbb C^9\otimes(\mathbb C^3)^{\otimes4}.
+  \dim_{\mathbb C}\mathcal H_{\rho_S}=3^6.
 \]
 A function on the crossing is represented by an \(x\)-axis polynomial and a
 \(y\)-axis polynomial with the same constant term.  Its differential along the
@@ -212,14 +191,12 @@ Its differential along the \(y\)-axis gives arbitrary derivative values at
 \(y=0,1,2\), again by Example 3.  These six derivatives are exactly the six
 cotangent coordinates dual to \(V_S\).  Hence
 \[
-  L_Z^{\rm dR}(S)=V_S^*,\qquad A_S^{\rm dR}=0,
+  L_{\rm dR}(S)=V_S^*.
 \]
-and
+The stabilizer subspace is one-dimensional; in coordinates it is
 \[
-  \mathcal H_S^{Z{\rm dR}}=\mathbb C|0,0,0,0,0,0\rangle.
+  \mathbb C|0,0,0,0,0,0\rangle.
 \]
-The singular tangent at the origin is real kinematics, but exact one-forms on
-the full rational support still kill it.
 
 \subsection{Example 6: The Circle over F3}
 
@@ -231,9 +208,9 @@ Use the rational point order
 \[
   (1,0),(2,0),(0,1),(0,2).
 \]
-AQM-62 gives
+AQM-62 gives \(V_S\cong k^4\) and
 \[
-  V_S\cong k^4,\qquad \mathcal H_S\cong(\mathbb C^3)^{\otimes4}.
+  \dim_{\mathbb C}\mathcal H_{\rho_S}=3^4.
 \]
 Use tangent bases \((0,1)\) at the first two points and \((1,0)\) at the last
 two.  The following exact forms evaluate to cotangent rows:
@@ -250,28 +227,24 @@ The determinant of this \(4\times4\) row matrix is \(2\), so the rows span
 \[
   V_S^*.
 \]
-Thus
-\[
-  L_Z^{\rm dR}(S)=V_S^*,\qquad
-  \mathcal H_S^{Z{\rm dR}}=\mathbb C|0,0,0,0\rangle.
-\]
-So on the finite rational circle, the naive unrestricted exact-form principle
-again selects the zero tangent state.
+Thus \(L_{\rm dR}(S)=V_S^*\), and the stabilizer subspace is one-dimensional;
+in coordinates it is \(\mathbb C|0,0,0,0\rangle\).
 
 \subsection{Conclusion}
 
 The compatibility result is positive but austere:
 \[
-  dA\quad\leadsto\quad L_Z^{\rm dR}(S)\subset
+  dA\quad\leadsto\quad L_{\rm dR}(S)\subset
   \bigoplus_{P\in S}T_P^*X
 \]
-is canonical and acts on the tangent-Weyl Hilbert space.  However, the examples
-show that using all exact forms on a finite rational support often gives
+is a canonical cotangent-label construction inside the tangent-cotangent Weyl
+projective representation.  The examples show that using all exact forms on a
+finite rational support often gives
 \[
-  L_Z^{\rm dR}(S)=V_S^*
+  L_{\rm dR}(S)=V_S^*
 \]
-and therefore a one-dimensional zero-tangent state.  A nontrivial dynamical
+and therefore a one-dimensional stabilizer subspace.  A nontrivial dynamical
 principle must restrict the allowed exact forms, add an action/Hamiltonian, or
-choose additional \(X\)-type tangent constraints from a justified source.  The
-old de Rham CSS test is therefore compatible only after this fibrewise
+choose additional tangent-type constraints from a justified source.  The old de
+Rham CSS test is therefore compatible only after this fibrewise
 reinterpretation, and it remains a prototype rather than a final dynamics.

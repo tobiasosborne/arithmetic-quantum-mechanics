@@ -1,9 +1,9 @@
 % SHARD-ID: AQM-62-TANGENT-COTANGENT-WEYL-KINEMATICS-MORE-EXAMPLES
 % SHARD-TITLE: More Tangent-Cotangent Weyl Kinematical Examples
 % SHARD-SUMMARY: Continues AQM-61 with affine-line, affine-plane, crossing, and circle examples.
-% SHARD-SUMMARY: Describes the actual Hilbert spaces for rational supports and finite-residue closed points.
+% SHARD-SUMMARY: Describes Weyl-Heisenberg carrier dimensions for rational supports and finite-residue closed points.
 % SHARD-SUMMARY: Confirms again that tangent-cotangent Weyl data are kinematics, not dynamics.
-% SHARD-KEYWORDS: tangent, cotangent, Weyl, Hilbert space, F3, F5, affine line, affine plane, crossing, circle
+% SHARD-KEYWORDS: tangent, cotangent, Weyl, projective representation, F3, F5, affine line, affine plane, crossing, circle
 
 \section{More Tangent-Cotangent Weyl Kinematical Examples}
 \label{sec:tangent-cotangent-weyl-kinematics-more-examples}
@@ -16,13 +16,18 @@ recipe is:
   T_P^*X=\Omega^1_{A/k}\otimes_A\kappa(P),\qquad
   T_PX=\operatorname{Hom}_{\kappa(P)}(T_P^*X,\kappa(P)),
 \]
+The full symplectic label space is
 \[
-  E_P^{\rm geom}=T_PX\oplus T_P^*X,\qquad
-  \mathcal H_P^{\rm geom}=\ell^2(T_PX).
+  E_P^{\rm geom}=T_PX\oplus T_P^*X.
 \]
-For a finite rational support \(S\),
+The Weyl-Heisenberg step chooses a projective representation
 \[
-  \mathcal H_S^{\rm geom}=\bigotimes_{P\in S}\mathcal H_P^{\rm geom}.
+  \rho_P:E_P^{\rm geom}\to PU(\mathcal H_{\rho_P}).
+\]
+For a finite rational support \(S\), use
+\[
+  E_S^{\rm geom}=\bigoplus_{P\in S}E_P^{\rm geom},\qquad
+  \rho_S=\bigotimes_{P\in S}\rho_P .
 \]
 
 \subsection{Examples 6--10}
@@ -32,19 +37,17 @@ Let \(X=\Spec k[x]\), \(k=\mathbb F_3\).  At the rational point \(P_a=(x-a)\),
 \[
   T_{P_a}^*X=k\,dx,\qquad T_{P_a}X=k\,\partial_x.
 \]
-Thus each rational point contributes
+Thus each rational point has a one-dimensional tangent label direction and
 \[
-  \mathcal H_{P_a}^{\rm geom}=\ell^2(k)\cong\mathbb C^3.
+  \dim_{\mathbb C}\mathcal H_{\rho_{P_a}}=3.
 \]
 For the rational support \(S=\mathbb A^1(k)=\{0,1,2\}\),
 \[
-  \mathcal H_S^{\rm geom}\cong(\mathbb C^3)^{\otimes3},
-  \qquad \dim\mathcal H_S^{\rm geom}=3^3.
+  \dim_{\mathbb C}\mathcal H_{\rho_S}=3^3.
 \]
 For a closed point of degree \(d\), \(K=\mathbb F_{3^d}\), \(T_PX=K\), and
 \[
-  \mathcal H_P^{\rm geom}=\ell^2(\mathbb F_{3^d})
-  \cong\mathbb C^{3^d}.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3^d.
 \]
 
 \paragraph{7. The affine plane over \(\mathbb F_3\).}
@@ -55,13 +58,12 @@ Let \(X=\Spec k[x,y]\), \(k=\mathbb F_3\).  At any rational point \(P=(a,b)\),
 \]
 Hence
 \[
-  \mathcal H_P^{\rm geom}=\ell^2(k^2)\cong\mathbb C^9.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3^2=9.
 \]
-For the rational support \(S=k^2\), there are nine sites, each with Hilbert
-space \(\mathbb C^9\), so
+For the rational support \(S=k^2\), there are nine sites, each with carrier
+dimension \(9\), so
 \[
-  \mathcal H_S^{\rm geom}\cong(\mathbb C^9)^{\otimes9},
-  \qquad \dim\mathcal H_S^{\rm geom}=9^9=3^{18}.
+  \dim_{\mathbb C}\mathcal H_{\rho_S}=9^9=3^{18}.
 \]
 
 \paragraph{8. The crossing \(xy=0\) over \(\mathbb F_3\).}
@@ -76,18 +78,16 @@ At a rational point \(P=(a,b)\) on \(xy=0\), the tangent equation is
 At the origin this imposes no equation, so
 \[
   T_{(0,0)}X=k^2,\qquad
-  \mathcal H_{(0,0)}^{\rm geom}\cong\mathbb C^9.
+  \dim_{\mathbb C}\mathcal H_{\rho_{(0,0)}}=9.
 \]
 At the four other rational points
 \[
   (1,0),(2,0),(0,1),(0,2)
 \]
-the tangent space is one-dimensional, so each contributes \(\mathbb C^3\).
+the tangent space is one-dimensional, so each carrier has dimension \(3\).
 For all rational points,
 \[
-  \mathcal H_{X(k)}^{\rm geom}\cong
-  \mathbb C^9\otimes(\mathbb C^3)^{\otimes4},
-  \qquad \dim\mathcal H_{X(k)}^{\rm geom}=3^6.
+  \dim_{\mathbb C}\mathcal H_{\rho_{X(k)}}=9\cdot3^4=3^6.
 \]
 
 \paragraph{9. The circle over \(\mathbb F_3\).}
@@ -106,12 +106,11 @@ At \(P=(a,b)\), the tangent equation is
 because \(2\) is invertible in \(k\).  Each point is smooth and has
 \(\dim_kT_PC=1\).  Therefore each site has
 \[
-  \mathcal H_P^{\rm geom}\cong\mathbb C^3.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3.
 \]
 For the rational support,
 \[
-  \mathcal H_{C(k)}^{\rm geom}\cong(\mathbb C^3)^{\otimes4},
-  \qquad \dim\mathcal H_{C(k)}^{\rm geom}=3^4.
+  \dim_{\mathbb C}\mathcal H_{\rho_{C(k)}}=3^4.
 \]
 
 \paragraph{10. The circle over \(\mathbb F_5\).}
@@ -130,27 +129,25 @@ At \(P=(a,b)\), the tangent equation is again
 so every rational tangent space is one-dimensional over \(\mathbb F_5\).
 Consequently
 \[
-  \mathcal H_P^{\rm geom}=\ell^2(\mathbb F_5)\cong\mathbb C^5
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=5
 \]
 at each rational point, and
 \[
-  \mathcal H_{C(\mathbb F_5)}^{\rm geom}
-  \cong(\mathbb C^5)^{\otimes4},\qquad
-  \dim\mathcal H_{C(\mathbb F_5)}^{\rm geom}=5^4.
+  \dim_{\mathbb C}\mathcal H_{\rho_{C(\mathbb F_5)}}=5^4.
 \]
 
 \subsection{End Summary}
 
-The actual Hilbert space in this kinematics is determined by tangent dimension,
-not by the residue field alone:
+The Weyl-Heisenberg carrier dimension is determined by tangent dimension, not
+by the residue field alone:
 \[
 \begin{array}{c|c|c}
-\text{local tangent dimension }m & \mathcal H_P^{\rm geom}
+\text{local tangent dimension }m & \dim_{\mathbb C}\mathcal H_{\rho_P}
   & \text{qudit reading over }K\\ \hline
-0 & \mathbb C & \text{no local qudit}\\
-1 & \ell^2(K) & \text{one }|K|\text{-level qudit}\\
-2 & \ell^2(K^2) & \text{two }|K|\text{-level qudits after a basis choice}.
+0 & 1 & \text{no nontrivial local Weyl label}\\
+1 & |K| & \text{one }|K|\text{-level carrier dimension}\\
+2 & |K|^2 & \text{two }|K|\text{-level carrier dimensions}.
 \end{array}
 \]
 Dynamics remains separate.  The de Rham CSS construction may later suggest
-constraints on these kinematical spaces, but this shard does not impose them.
+commuting Weyl operators, but this shard does not impose them.

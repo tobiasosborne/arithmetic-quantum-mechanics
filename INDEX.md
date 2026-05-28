@@ -146,12 +146,12 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-52-F3-REGULAR-FUNCTION-SYMMETRY-LINE-BY-LINE` | `report/sections/52_f3_regular_function_symmetry_line_by_line.tex` | The \(\mathbb F_3\) Regular-Function Symmetry Action Line by Line |
 | `AQM-53-MINIMAL-FERMION-GEOMETRY-CATALOGUE` | `report/sections/53_minimal_fermion_geometry_catalogue.tex` | Minimal Fermion Geometry Catalogue |
 | `AQM-54-DERIVATIVE-DYNAMICS-F3-EXAMPLES` | `report/sections/54_derivative_dynamics_f3_examples.tex` | Derivative Dynamics from Kähler Differentials over \(\mathbb F_3\) |
-| `AQM-55-DERHAM-CSS-MORE-F3-EXAMPLES` | `report/sections/55_derham_css_more_f3_examples.tex` | More \(\mathbb F_3\) Examples for the de Rham CSS Test |
-| `AQM-56-DERHAM-CSS-F2-QUBIT-EXAMPLES` | `report/sections/56_derham_css_f2_qubit_examples.tex` | \(\mathbb F_2\) Qubit Examples for the de Rham CSS Test |
-| `AQM-57-DERHAM-CSS-F2-ENTANGLEMENT-CODES` | `report/sections/57_derham_css_f2_entanglement_codes.tex` | Entanglement and Code Properties in \(\mathbb F_2\) de Rham CSS Examples |
+| `AQM-55-DERHAM-CSS-MORE-F3-EXAMPLES` | `report/sections/55_derham_css_more_f3_examples.tex` | More \(\mathbb F_3\) Examples for the de Rham CSS Prototype |
+| `AQM-56-DERHAM-CSS-F2-QUBIT-EXAMPLES` | `report/sections/56_derham_css_f2_qubit_examples.tex` | \(\mathbb F_2\) Qubit Examples for the de Rham CSS Prototype |
+| `AQM-57-DERHAM-CSS-F2-ENTANGLEMENT-CODES` | `report/sections/57_derham_css_f2_entanglement_codes.tex` | Entanglement Inside the \(\mathbb F_2\) de Rham CSS Prototype |
 | `AQM-58-PRODUCT-RINGS-REAL-LINE-COTANGENT` | `report/sections/58_product_rings_real_line_cotangent.tex` | Product Rings and the Formal Real Affine Line |
-| `AQM-59-FINITE-FIELD-CIRCLE-QUANTUM-SPACE` | `report/sections/59_finite_field_circle_quantum_space.tex` | The Finite-Field Circle and Its Complete Quantum Space |
-| `AQM-60-PREQUANTISATION-POLARISATION-DERHAM-CSS` | `report/sections/60_prequantisation_polarisation_derham_css.tex` | Prequantisation, Polarisation, and the de Rham CSS Test |
+| `AQM-59-FINITE-FIELD-CIRCLE-TANGENT-WEYL-LABELS` | `report/sections/59_finite_field_circle_quantum_space.tex` | The Finite-Field Circle: Tangent-Weyl Labels |
+| `AQM-60-TANGENT-WEYL-OPERATOR-PRINCIPLE` | `report/sections/60_tangent_weyl_operator_principle.tex` | Tangent-Weyl Operator Principle and de Rham CSS Prototype |
 | `AQM-61-TANGENT-COTANGENT-WEYL-KINEMATICS-EXAMPLES` | `report/sections/61_tangent_cotangent_weyl_kinematics_examples.tex` | Tangent-Cotangent Weyl Kinematics: Recipe and First Examples |
 | `AQM-62-TANGENT-COTANGENT-WEYL-KINEMATICS-MORE-EXAMPLES` | `report/sections/62_tangent_cotangent_weyl_kinematics_more_examples.tex` | More Tangent-Cotangent Weyl Kinematical Examples |
 | `AQM-63-EVALUATED-DERHAM-CONSTRAINTS-TANGENT-WEYL` | `report/sections/63_evaluated_derham_constraints_tangent_weyl.tex` | Evaluated de Rham Constraints on Tangent-Weyl Kinematics |

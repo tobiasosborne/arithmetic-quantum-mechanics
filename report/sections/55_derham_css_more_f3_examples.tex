@@ -1,31 +1,31 @@
 % SHARD-ID: AQM-55-DERHAM-CSS-MORE-F3-EXAMPLES
-% SHARD-TITLE: More \(\mathbb F_3\) Examples for the de Rham CSS Test
-% SHARD-SUMMARY: Computes the de Rham CSS test for five finite \(\mathbb F_3\)-coordinate rings cut out by linear and quadratic equations.
+% SHARD-TITLE: More \(\mathbb F_3\) Examples for the de Rham CSS Prototype
+% SHARD-SUMMARY: Computes the finite de Rham CSS prototype for five finite \(\mathbb F_3\)-coordinate rings cut out by linear and quadratic equations.
 % SHARD-SUMMARY: Separates the squarefree reduced cases, where \(\Omega^1\) vanishes, from nilpotent quadratic cases with derivative stabilizers.
-% SHARD-SUMMARY: Lists the qutrits and explicit \(X\)- and \(Z\)-stabilizer generators selected in each example.
+% SHARD-SUMMARY: Lists the auxiliary \(C^1\)-qutrits and explicit \(X\)- and \(Z\)-stabilizer generators inside this prototype.
 % SHARD-KEYWORDS: F3, de Rham, CSS, stabilizer, Kahler differentials, finite rings, quadratic, nilpotent
-\section{More \texorpdfstring{\(\mathbb F_3\)}{F3} Examples for the de Rham CSS Test}
+\section{More \texorpdfstring{\(\mathbb F_3\)}{F3} Examples for the de Rham CSS Prototype}
 \label{sec:derham-css-more-f3-examples}
 \subsection{Status, Sources, and Common Rule}
-This shard is a follow-up calculation shard for the proposal in
-AQM-54 and convention \texttt{CONVENTIONS.md} (ao).  All rings below are
+This shard is a follow-up calculation for the finite chain-complex prototype in
+AQM-54 and convention \texttt{CONVENTIONS.md} (ao), not the canonical
+tangent-cotangent Weyl quantisation.  The prototype chooses a finite
+\(C^1=\Omega^1_{A/k}\) basis, attaches auxiliary qudits to it, and tests whether
+the de Rham differential selects commuting Pauli operators.  All rings below are
 finite-dimensional coordinate rings over
 \[
   k=\mathbb F_3.
 \]
 The derivative input is the module of K\"ahler differentials
-\(\Omega^1_{A/k}\); the dynamical test puts qutrits on
-\(C^1=\Omega^1_{A/k}\) and selects CSS support spaces
+\(\Omega^1_{A/k}\); the prototype uses auxiliary \(C^1\)-qutrits and selects CSS
+support spaces
 \[
   R_X=\operatorname{im}(d_0:C^0\to C^1),\qquad
   R_Z=\operatorname{im}(d_1^T:C^2{}^*\to C^1{}^*),
 \]
-with \(d_1d_0=0\) giving the CSS commutation check.  The source anchors are
-the same as AQM-54: Stacks algebra lines 33793--33872 for derivations and
-K\"ahler differentials, lines 34103--34120 for the quotient exact sequence,
-lines 34310--34340 for polynomial differentials, and lines 34388--34524 for
-the de Rham complex and \(d^2=0\).  AQM-08 supplies the CSS stabilizer
-dictionary.
+with \(d_1d_0=0\) giving the CSS commutation check.  The source anchors are the
+same as AQM-54: Stacks algebra lines 33793--33872, 34103--34120, 34310--34340,
+and 34388--34524.  AQM-08 supplies the CSS stabilizer dictionary.
 The common one-variable calculation is this.  Let
 \(A=k[t]/(f)\), \(\tau=t\bmod(f)\).  For \(S=k[t]\), the polynomial
 differential rule gives \(\Omega^1_{S/k}=S\,dt\).  The quotient exact
@@ -158,7 +158,8 @@ Because \(C^1\) has one generator, \(C^2=\Omega^2_{A_3/k}=0\), so
 \[
   R_Z=0.
 \]
-With one qutrit labelled by \(e_1=d\epsilon\), the selected stabilizer is
+In the prototype, with one auxiliary qutrit labelled by \(e_1=d\epsilon\), the
+selected stabilizer is
 \[
   X(e_1).
 \]
@@ -198,7 +199,8 @@ The \(A_4\,du\) part has basis \(du,v\,du\), since \(u\,du=0\) and hence
 \[
   e_1=du,\quad e_2=v\,du,\quad e_3=dv,\quad e_4=u\,dv.
 \]
-Thus \(C^1=\Omega^1_{A_4/k}\cong k^4\), so the test has four qutrits.
+Thus \(C^1=\Omega^1_{A_4/k}\cong k^4\), so the prototype has four auxiliary
+qutrits.
 The derivation \(d_0:A_4\to C^1\) is fixed on the basis:
 \[
 \begin{array}{rcl}
@@ -253,7 +255,7 @@ Their rank is \(4\), so the all-\(+1\) stabilizer space has dimension
 \[
   3^{4-4}=1.
 \]
-\subsection{End Summary: Qudits and Selected Stabilizers}
+\subsection{End Summary: Prototype Qudits and Stabilizers}
 For \(C^1\)-basis vector \(e_i\), write \(X_i=X(e_i)\) and
 \(Z_i=Z(e_i)\).  The de Rham CSS test gives:
 {\scriptsize
@@ -272,6 +274,7 @@ E4:\ k[u,v]/(u^2,v^2) &
 \end{array}
 \]
 }
-Thus the first sharp lesson is not that every finite ring supplies dynamics.
-It is that the de Rham CSS proposal detects nilpotent or singular first-order
-geometry and is silent on these squarefree finite reduced examples.
+Thus this prototype detects nilpotent or singular first-order algebra in
+\(C^1\) and is silent on these squarefree finite reduced examples.  The
+canonical tangent-Weyl reading must instead pass through the pointwise spaces
+\(T_PX\oplus T_P^*X\) and their Weyl representations.

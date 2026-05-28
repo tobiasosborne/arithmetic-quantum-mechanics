@@ -1,10 +1,10 @@
-% SHARD-ID: AQM-59-FINITE-FIELD-CIRCLE-QUANTUM-SPACE
-% SHARD-TITLE: The Finite-Field Circle and Its Complete Quantum Space
+% SHARD-ID: AQM-59-FINITE-FIELD-CIRCLE-TANGENT-WEYL-LABELS
+% SHARD-TITLE: The Finite-Field Circle: Tangent-Weyl Labels
 % SHARD-SUMMARY: Computes the affine circle \(x^2+y^2=1\) over \(\mathbb F_q\), separating odd and even characteristic.
 % SHARD-SUMMARY: Derives rational point counts, cotangent fibres, and the nonreduced characteristic-two pathology.
-% SHARD-SUMMARY: Describes the complete closed-point Weyl quantum space and its finite rational-point truncations.
-% SHARD-KEYWORDS: finite field, circle, conic, cotangent, closed points, Weyl net, rational truncation, characteristic two
-\section{The Finite-Field Circle and Its Complete Quantum Space}
+% SHARD-SUMMARY: Describes the complete closed-point tangent-Weyl representation data and compares the older residue-Weyl truncation.
+% SHARD-KEYWORDS: finite field, circle, conic, cotangent, closed points, Weyl representation, rational truncation, characteristic two
+\section{The Finite-Field Circle: Tangent-Weyl Labels}
 \label{sec:finite-field-circle-quantum-space}
 \subsection{Status and Source Anchors}
 Let \(k=\mathbb F_q\) and
@@ -140,33 +140,27 @@ the cotangent fibre remains
 of dimension \(2\).  The reduced line would have the relation \(dx+dy=0\) and
 one-dimensional cotangent fibre.  The unreduced circle therefore has the same
 closed-point Weyl sites as a line but a thicker cotangent geometry.
-\subsection{Closed Points and the Complete Quantum Space}
-The complete finite-residue quantum space is not only the rational-point set.
-Let \(|C_q|_{\rm cl}\) be the closed points of \(C_q\).  For each closed point
-\(P\), convention (y) assigns
+\subsection{Closed Points and Tangent-Weyl Representation Data}
+The complete finite-residue tangent-Weyl data are not only the rational-point
+set.  Let \(|C_q|_{\rm cl}\) be the closed points of \(C_q\).  For each closed
+point \(P\), put
 \[
-  E_P=\kappa(P)^2,\qquad
-  \mathcal H_P=\ell^2(\kappa(P)),\qquad
-  \mathcal A_P=\operatorname{End}_{\mathbb C}\mathcal H_P.
+  K_P=\kappa(P),\qquad V_P=T_PC_q,\qquad V_P^*=T_P^*C_q,\qquad
+  E_P=V_P\oplus V_P^* .
 \]
-The global algebraic quasi-local observable algebra is
+The Weyl-Heisenberg step assigns projective representations
 \[
-  \mathcal A(C_q)=
-  \varinjlim_{S\Subset |C_q|_{\rm cl}}
-  \bigotimes_{P\in S}\operatorname{End}_{\mathbb C}\ell^2(\kappa(P)).
+  \rho_P:E_P\to PU(\mathcal H_{\rho_P}),
 \]
-Equivalently, the Weyl label group is
-\[
-  E(C_q)=\bigoplus_{P\in |C_q|_{\rm cl}}\kappa(P)^2.
-\]
-After choosing the zero reference vector at every closed point, the
-incomplete tensor Hilbert representation is
-\[
-  \mathcal H^0(C_q)=
-  \ell^2\!\left(\bigoplus_{P\in |C_q|_{\rm cl}}\kappa(P)\right).
-\]
-This is the complete closed-point quantum space in the current report
-convention.
+so elements of \(E_P\) label Weyl operators on the carrier
+\(\mathcal H_{\rho_P}\).  If \(m_P=\dim_{K_P}V_P\), then the finite carrier
+dimension is \(|K_P|^{m_P}\).
+
+For odd \(q\), every closed point is smooth on the conic, so \(m_P=1\).  A
+degree-\(d\) point has \(|K_P|=q^d\), label space \(K_P\oplus K_P^*\), and Weyl
+carrier dimension \(q^d\).  In characteristic two for the unreduced double
+line, the calculation above gives \(m_P=2\), hence a degree-\(d\) point has
+carrier dimension \(q^{2d}\).  The reduced line would instead have \(m_P=1\).
 
 Let \(N_d(q)\) be the number of degree-\(d\) closed points.  If
 \[
@@ -179,35 +173,37 @@ then every degree-\(d\) closed point contributes \(d\) points over
   \qquad
   N_d(q)=\frac1d\sum_{r\mid d}\mu(r)\,a_{d/r}(q).
 \]
-Thus the complete quantum space contains \(N_d(q)\) sites of local Hilbert
-dimension \(q^d\) for each \(d\ge1\).
+Thus the complete tangent-Weyl data contain \(N_d(q)\) degree-\(d\) sites.  The
+local Hilbert carrier dimension is \(q^d\) in odd characteristic and \(q^{2d}\)
+for the unreduced characteristic-two circle.
 
-The rational truncation keeps only \(N_1(q)=|C_q(k)|\) sites:
+The rational tangent-Weyl truncation keeps only \(N_1(q)=|C_q(k)|\) sites:
 \[
-  \mathcal H_{\rm rat}(C_q)=
-  \bigotimes_{P\in C_q(k)}\ell^2(k),
-  \qquad
-  \dim\mathcal H_{\rm rat}(C_q)=q^{|C_q(k)|}.
+  \dim\mathcal H_{\rm rat}^{\rm geom}(C_q)
+  =
+  \prod_{P\in C_q(k)}q^{m_P}.
 \]
-For odd \(q\), this is \(q^{q-\chi_q(-1)}\).  For even \(q\), it is \(q^q\).
+For odd \(q\), this is \(q^{q-\chi_q(-1)}\).  For the unreduced even circle, it
+is \(q^{2q}\).  The older residue-Weyl truncation would give \(q^q\) in even
+characteristic; that is a comparison layer, not the tangent-Weyl reading.
 \subsection{Increasing \texorpdfstring{\(q\)}{q}: First Values}
 \[
 \begin{array}{c|c|c|c}
-q & \operatorname{char} k & |C_q(k)| & \dim \mathcal H_{\rm rat}\\ \hline
-2 & 2 & 2 & 2^2\\
+q & \operatorname{char} k & |C_q(k)| & \dim \mathcal H_{\rm rat}^{\rm geom}\\ \hline
+2 & 2 & 2 & 2^4\\
 3 & \text{odd},\ -1\text{ nonsquare} & 4 & 3^4\\
-4 & 2 & 4 & 4^4\\
+4 & 2 & 4 & 4^8\\
 5 & \text{odd},\ -1\text{ square} & 4 & 5^4\\
 7 & \text{odd},\ -1\text{ nonsquare} & 8 & 7^8\\
-8 & 2 & 8 & 8^8\\
+8 & 2 & 8 & 8^{16}\\
 9 & \text{odd},\ -1\text{ square} & 8 & 9^8\\
 11 & \text{odd},\ -1\text{ nonsquare} & 12 & 11^{12}\\
 13 & \text{odd},\ -1\text{ square} & 12 & 13^{12}
 \end{array}
 \]
-This table is only the rational finite truncation.  The complete quantum space
-also has degree-\(d\) closed-point sites for every \(d\ge2\), counted by the
-M\"obius formula above.
+This table is only the rational finite tangent-Weyl truncation.  The complete
+closed-point data also have degree-\(d\) sites for every \(d\ge2\), counted by
+the M\"obius formula above.
 \subsection{Derivative Dynamics Versus Rational Truncation}
 There is a subtle but important distinction.  If one replaces the rational
 point set \(C_q(k)\) by its coordinate algebra of functions
@@ -218,12 +214,13 @@ then AQM-58 applies: this product ring has
 \[
   \Omega^1_{k^{C_q(k)}/k}=0.
 \]
-So the rational finite set has trivial de Rham CSS dynamics.
+So the rational finite set has trivial de Rham CSS prototype data.
 
 The scheme \(C_q=\Spec A_q\) is different.  For odd \(q\), it is a smooth
 affine curve with one-dimensional cotangent fibre at every closed point.  For
 even \(q\), it is a nonreduced double line with two-dimensional cotangent
-fibres before reduction.  Thus the complete closed-point Weyl quantum space
-is built from residue fields at closed points, while the derivative geometry
-is carried by \(\Omega^1_{A_q/k}\).  The former supplies the quantum sites;
-the latter is the candidate source of dynamics.
+fibres before reduction.  Thus the corrected closed-point Weyl data are built
+from the residue fields together with the fibre dimensions of
+\(T_PC_q\oplus T_P^*C_q\).  The differential geometry supplies operator labels;
+a stabilizer-selection principle is still required before any dynamics or code
+subspace is selected.

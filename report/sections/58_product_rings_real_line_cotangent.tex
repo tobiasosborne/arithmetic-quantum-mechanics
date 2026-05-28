@@ -1,9 +1,9 @@
 % SHARD-ID: AQM-58-PRODUCT-RINGS-REAL-LINE-COTANGENT
 % SHARD-TITLE: Product Rings and the Formal Real Affine Line
-% SHARD-SUMMARY: Proves that \(k^n\) has trivial K\"ahler differentials and hence no de Rham CSS dynamics.
+% SHARD-SUMMARY: Proves that \(k^n\) has trivial K\"ahler differentials and hence zero tangent-cotangent Weyl label space.
 % SHARD-SUMMARY: Computes \(\Omega^1_{\mathbb R[x]/\mathbb R}\), cotangent fibres, and tangent vectors for the real affine line.
-% SHARD-SUMMARY: Separates the algebraic cotangent phase space from the analytic Schr\"odinger quantisation choices.
-% SHARD-KEYWORDS: product ring, real line, cotangent, tangent, Kahler differentials, de Rham CSS, Schrodinger
+% SHARD-SUMMARY: Separates algebraic tangent-cotangent Weyl labels from optional analytic CCR representations and later stabilizer choices.
+% SHARD-KEYWORDS: product ring, real line, cotangent, tangent, Kahler differentials, de Rham CSS, Weyl representation
 \section{Product Rings and the Formal Real Affine Line}
 \label{sec:product-rings-real-line-cotangent}
 \subsection{Status and Source Anchors}
@@ -15,9 +15,9 @@ differentials, and the de Rham complex use the Stacks algebra snapshot
 and cotangent-tangent duality use
 \path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
 2915--3019.  The product-ring Weyl layer is AQM-40 and convention (ad).  The
-real Weyl/Schr\"odinger representation statement is the finite-dimensional
-CCR layer of AQM-19, sourced there from Derezinski and Bekka.
-\subsection{Part I: Product Rings Have Trivial Derivative Dynamics}
+real CCR representation comparison is the finite-dimensional CCR layer of
+AQM-19, sourced there from Derezinski and Bekka.
+\subsection{Part I: Product Rings Have Trivial Tangent-Weyl Labels}
 Let \(k\) be a field and
 \[
   A=k^n=k e_1\oplus\cdots\oplus k e_n,
@@ -58,19 +58,22 @@ is the de Rham complex, and the de Rham CSS test has
 \[
   C^1=0,\qquad R_X=0,\qquad R_Z=0.
 \]
-So \(k^n\) has trivial derivative dynamics in exactly the same sense as the
-single field \(k\).  This does not erase the kinematics.  By AQM-40,
+So \(k^n\) has zero tangent-cotangent Weyl label space in exactly the same
+sense as the single field \(k\).  This does not erase the older residue-Weyl
+comparison layer.  By AQM-40,
 \[
   \Spec(k^n)=\{x_1,\ldots,x_n\},\qquad \kappa(x_i)=k,
 \]
-and the residue-Weyl layer is the ambient \(n\)-qudit system
+and the residue-Weyl prototype is the ambient \(n\)-qudit system
 \[
   \mathcal H=\ell^2(k)^{\otimes n},\qquad
   \mathcal A=\bigotimes_{i=1}^n\operatorname{End}_{\mathbb C}\ell^2(k).
 \]
-The conclusion is therefore sharp: the product ring supplies positions and
-the ambient Weyl/Pauli kinematics, but the K\"ahler derivative proposal
-selects no stabilizer and no Hamiltonian.
+The conclusion is therefore sharp: the corrected tangent-cotangent recipe sees
+points and residue fields, then finds \(T_{x_i}X=T^*_{x_i}X=0\) and hence no
+nontrivial geometric Weyl operators.  The displayed residue-Weyl qudits are a
+separate comparison layer, and the de Rham CSS prototype selects no stabilizer
+and no Hamiltonian.
 \subsection{Part II: Cotangent Data on \texorpdfstring{\(\operatorname{Spec}\mathbb R[x]\)}{Spec R[x]}}
 Let
 \[
@@ -145,7 +148,7 @@ The generic point has residue field \(\mathbb R(x)\), so its cotangent fibre is
 \[
   T^*_{X/\mathbb R,\eta}\cong\mathbb R(x)\,dx.
 \]
-\subsection{Predicted Quantisation}
+\subsection{Operator-Label Reading}
 The cotangent construction says that the algebraic phase space of the real
 affine line is the total cotangent bundle
 \[
@@ -157,25 +160,32 @@ coordinate dual to \(dx\).  Its canonical algebraic symplectic form is
 \[
   dp\wedge dx.
 \]
-Thus the cotangent-Weyl prediction is the usual one-dimensional CCR phase
+At a real point, the corrected pointwise Weyl label space is therefore
+\[
+  E_a=T_aX\oplus T_a^*X\cong\mathbb R\,\partial_x|_a\oplus\mathbb R\,dx_a.
+\]
+In the usual global affine coordinate this is the one-dimensional CCR label
 space with labels \((q,p)\in\mathbb R^2\), symplectic form
 \[
   \Omega((q,p),(q',p'))=p q'-p'q.
 \]
-By the AQM-19 finite-mode CCR convention, the irreducible regular
-representation is the Schr\"odinger representation on \(L^2(\mathbb R)\):
-position is multiplication by \(x\), and momentum is represented formally by
+By the AQM-19 finite-mode CCR convention, the irreducible regular projective
+representation has a Hilbert carrier.  In the standard analytic realization on
+\(L^2(\mathbb R)\), position is multiplication by \(x\) and momentum is
+represented formally by
 \[
   -i\,\frac{d}{dx}.
 \]
 The word ``formally'' is essential here.  The cotangent calculation supplies
-the phase-space geometry and the CCR labels.  It does not by itself choose
-self-adjoint domains, a Hamiltonian such as \(-d^2/dx^2+V(x)\), boundary
-conditions, or a measure beyond the standard analytic Schr\"odinger choice.
+the label space for Weyl operators; the representation theorem supplies Hilbert
+carriers.  It does not by itself choose a stabilizer family, self-adjoint
+domains, a Hamiltonian such as \(-d^2/dx^2+V(x)\), boundary conditions, or an
+equation of motion.
 
 The de Rham CSS proposal is different.  Applied literally to
 \(\mathbb R[x]\), it is infinite-dimensional and outside the finite-qudit
 scope.  Moreover \(d_0\) is surjective, so a naive finite-dimensional
 truncation would tend to impose all \(C^1\) directions as \(X\)-checks.  The
 physical particle-on-a-line quantisation therefore belongs to the
-cotangent-Weyl branch, not to the finite de Rham CSS stabilizer test.
+tangent-cotangent Weyl representation layer plus further analytic dynamics,
+not to the finite de Rham CSS stabilizer prototype.

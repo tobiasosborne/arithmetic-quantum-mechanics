@@ -1,9 +1,9 @@
 % SHARD-ID: AQM-61-TANGENT-COTANGENT-WEYL-KINEMATICS-EXAMPLES
 % SHARD-TITLE: Tangent-Cotangent Weyl Kinematics: Recipe and First Examples
-% SHARD-SUMMARY: Defines the tangent-cotangent Weyl kinematical recipe with Hilbert space \(\ell^2(T_PX)\).
-% SHARD-SUMMARY: Computes the first five finite \(\mathbb F_3\) examples with explicit tangent, cotangent, phase, and Hilbert spaces.
+% SHARD-SUMMARY: Defines the tangent-cotangent Weyl kinematical recipe as a full symplectic label space with projective representation.
+% SHARD-SUMMARY: Computes the first five finite \(\mathbb F_3\) examples with explicit tangent, cotangent, label spaces, and Weyl carrier dimensions.
 % SHARD-SUMMARY: Separates this kinematics from any de Rham CSS or Hamiltonian dynamics.
-% SHARD-KEYWORDS: tangent, cotangent, Weyl, Hilbert space, F3, circle, singularity, nilpotent, kinematics
+% SHARD-KEYWORDS: tangent, cotangent, Weyl, projective representation, F3, circle, singularity, nilpotent, kinematics
 
 \section{Tangent-Cotangent Weyl Kinematics: Recipe and First Examples}
 \label{sec:tangent-cotangent-weyl-kinematics-examples}
@@ -43,34 +43,33 @@ with the canonical symplectic form
 \[
   \omega((v,\alpha),(w,\beta))=\beta(v)-\alpha(w).
 \]
-The Hilbert space is the configuration Hilbert space
-\[
-  \mathcal H_P^{\rm geom}=\ell^2(T_PX).
-\]
 For finite \(K\), use
 \[
   \psi_K(a)=\exp\!\left(\frac{2\pi i}{p}
     \operatorname{Tr}_{K/\mathbb F_p}(a)\right).
 \]
-The Weyl generators act on the basis \(|v\rangle\), \(v\in T_PX\), by
+Quantisation means choosing the Weyl-Heisenberg projective representation
+\[
+  \rho_P:E_P^{\rm geom}\to PU(\mathcal H_{\rho_P})
+\]
+with central character \(\psi_K\).  Elements \((w,\alpha)\in E_P^{\rm geom}\)
+label Weyl operators \(W_P(w,\alpha)\) on the carrier \(\mathcal H_{\rho_P}\).
+The standard coordinate display of this representation is
 \[
   T(w)|v\rangle=|v+w\rangle,\qquad
   R(\alpha)|v\rangle=\psi_K(\alpha(v))|v\rangle .
 \]
-Thus \(W(w,\alpha)=T(w)R(\alpha)\) is the finite Weyl-Heisenberg
-prequantisation of the tangent-cotangent phase space.  If
-\(\dim_KT_PX=m\), then
+If \(\dim_KT_PX=m\), then representation theory gives
 \[
-  \mathcal H_P^{\rm geom}\cong \ell^2(K^m),\qquad
-  \dim_{\mathbb C}\mathcal H_P^{\rm geom}=|K|^m.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=|K|^m.
 \]
-After choosing a \(K\)-basis of \(T_PX\), this is \(m\) qudits of local
-dimension \(|K|\).
+After choosing a \(K\)-basis of \(T_PX\), the carrier has the size of \(m\)
+qudits of local dimension \(|K|\).
 
 For a finite set \(S\) of finite-residue points, define
 \[
   E_S^{\rm geom}=\bigoplus_{P\in S}E_P^{\rm geom},\qquad
-  \mathcal H_S^{\rm geom}=\bigotimes_{P\in S}\mathcal H_P^{\rm geom}.
+  \rho_S^{\rm geom}=\bigotimes_{P\in S}\rho_P^{\rm geom}.
 \]
 This is kinematics only.  No stabilizer, Hamiltonian, or dynamics is selected
 in this shard.
@@ -107,11 +106,11 @@ Hence
 \[
   T_P^*X=0,\qquad T_PX=0,\qquad E_P^{\rm geom}=0.
 \]
-The Hilbert space is
+The Weyl-Heisenberg representation carrier is one-dimensional:
 \[
-  \mathcal H_P^{\rm geom}=\ell^2(0)\cong\mathbb C,
+  \mathcal H_{\rho_P}\cong\mathbb C,
 \]
-with the single basis vector \(|0\rangle\).  There is no local qutrit in this
+because \(E_P^{\rm geom}=0\).  There is no nontrivial local Weyl label in this
 geometric kinematics.
 
 \paragraph{2. The product \(k^2\).}
@@ -126,8 +125,7 @@ point
 \]
 Thus
 \[
-  \mathcal H_{P_i}^{\rm geom}\cong\mathbb C,\qquad
-  \mathcal H_{\{P_1,P_2\}}^{\rm geom}\cong\mathbb C.
+  E_{P_i}^{\rm geom}=0,\qquad \mathcal H_{\rho_{P_i}}\cong\mathbb C.
 \]
 This differs from residue-Weyl kinematics, which would attach one
 three-level residue qudit to each point.
@@ -150,14 +148,12 @@ Therefore
   E_P^{\rm geom}=k\,\partial_\epsilon\oplus k\,d\epsilon,
   \qquad \omega((r,s),(r',s'))=s'r-sr'.
 \]
-The Hilbert space is
+The Weyl-Heisenberg carrier has dimension \(3\):
 \[
-  \mathcal H_P^{\rm geom}=\ell^2(k)
-  =\operatorname{span}_{\mathbb C}\{|0\rangle,|1\rangle,|2\rangle\}
-  \cong\mathbb C^3.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3.
 \]
-The operators are \(T(a)|r\rangle=|r+a\rangle\) and
-\(R(b)|r\rangle=\exp(2\pi i br/3)|r\rangle\).
+The labels \(a\partial_\epsilon+b\,d\epsilon\) become Weyl operators
+\(W_P(a,b)\) on this carrier.
 
 \paragraph{4. The cubic fat point in characteristic three.}
 Let
@@ -174,10 +170,10 @@ so the relation contributes no first-differential relation.  Thus
 \]
 Again
 \[
-  \mathcal H_P^{\rm geom}=\ell^2(k)\cong\mathbb C^3.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3.
 \]
 The length-three nilpotent thickening is invisible to the first tangent
-dimension beyond saying that one tangent qutrit exists.
+dimension beyond saying that the Weyl carrier has one qutrit's dimension.
 
 \paragraph{5. Two independent dual directions.}
 Let
@@ -189,12 +185,13 @@ The relations give \(2u\,du=0\) and \(2v\,dv=0\).  At \(P\), both \(u\) and
 \[
   T_P^*X=k\,du\oplus k\,dv,\qquad T_PX=k\,\partial_u\oplus k\,\partial_v.
 \]
-The phase space is \(k^2\oplus(k^2)^*\), and
+The label space is \(k^2\oplus(k^2)^*\), and the Weyl-Heisenberg carrier has
+dimension
 \[
-  \mathcal H_P^{\rm geom}=\ell^2(k^2)\cong\mathbb C^9
-  \cong\mathbb C^3\otimes\mathbb C^3.
+  \dim_{\mathbb C}\mathcal H_{\rho_P}=3^2=9.
 \]
-A basis vector is \(|r,s\rangle\) with \((r,s)\in\mathbb F_3^2\).
+The four coordinates in \(E_P^{\rm geom}\) label Weyl operators; no commuting
+subset has yet been selected.
 
 Examples 6--10 continue in AQM-62, including affine-line, affine-plane,
 crossing, and finite-field circle supports.
