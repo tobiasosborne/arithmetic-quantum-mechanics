@@ -1,0 +1,177 @@
+% SHARD-ID: AQM-69-QSA-FINITE-SET-DIRECT-SUM-PARTICLE
+% SHARD-TITLE: Structureless Finite-Set Direct-Sum Particle Association
+% SHARD-SUMMARY: Defines the finite-set direct-sum workflow after adding one internal finite-dimensional complex carrier or Hilbert space per site.
+% SHARD-SUMMARY: Forms the one-particle-at-one-of-many-sites carrier as a finite direct sum and works the empty and one-point cases.
+% SHARD-SUMMARY: Distinguishes this workflow from tensor-site coexistence and compares the one-dimensional internal-space case with AQM-67 only under stated choices.
+% SHARD-KEYWORDS: quantum-system association, finite set, direct sum, one particle, internal carrier, Hilbert caveat
+
+\section{Structureless Finite-Set Direct-Sum Particle Association}
+\label{sec:qsa-finite-set-direct-sum-particle}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 05 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a local
+finite-dimensional construction using \texttt{CONVENTIONS.md} conventions
+\texttt{(ap)}, \texttt{(aq)}, \texttt{(ar)}, and \texttt{(as)}, with
+AQM-64--AQM-66 as the planning and catalogue anchors.  AQM-67 is the formal
+finite-set carrier comparison point, and AQM-68 is the tensor-site comparison
+point.
+
+The input is not a bare finite set alone.  A bare finite set \(X\) supplies
+only labels for alternatives.  The direct-sum particle workflow starts after
+one adds an internal finite-dimensional complex carrier, or a finite-dimensional
+complex Hilbert space, at each site.  This shard uses no canonical boson or
+fermion field claim from AQM-19.  AQM-23 is used only as a cautionary local
+anchor: direct sums in label bookkeeping and Hilbert-space direct sums must
+not be interchanged with tensor-product residue-qudit systems without an
+explicit workflow.
+
+\subsection{Input Data}
+
+There are two finite-dimensional input versions.
+
+\begin{description}
+\item[Carrier-site input.]
+For every \(x\in X\), choose a finite-dimensional complex vector space
+\(K_x\).  The data are the labelled family \(\{K_x\}_{x\in X}\), not merely
+the set \(X\).
+
+\item[Hilbert-site input.]
+For every \(x\in X\), choose a finite-dimensional complex Hilbert space
+\(\mathcal H_x\).  This includes the inner product on each internal carrier.
+\end{description}
+
+The word ``internal'' only records what is carried while the alternative site
+label is \(x\).  It does not add dynamics, hopping amplitudes, a Hamiltonian,
+a preferred observable algebra, or a tensor-factor interpretation.
+
+\subsection{Direct-Sum Carrier}
+
+Under convention \texttt{(as)}, the carrier-site version is
+\[
+  K_{\oplus}(X)=\bigoplus_{x\in X}K_x .
+\]
+An element is a tuple \(\psi=(\psi_x)_{x\in X}\) with
+\(\psi_x\in K_x\).  Since \(X\) is finite, no support or completion issue is
+present.  The canonical injections and projections are denoted
+\[
+  j_x:K_x\longrightarrow K_{\oplus}(X),
+  \qquad
+  p_x:K_{\oplus}(X)\longrightarrow K_x,
+\]
+with \(p_xj_y=0\) for \(x\neq y\) and \(p_xj_x=\operatorname{id}_{K_x}\).
+If a displayed listing \(X=\{x_1,\ldots,x_n\}\) is chosen and
+\(\dim_{\mathbb C}K_{x_i}=d_i\), then
+\[
+  \dim_{\mathbb C}K_{\oplus}(X)=\sum_{i=1}^n d_i .
+\]
+This dimension count is finite direct-sum bookkeeping for the chosen carriers,
+not a number determined by the bare set.
+
+In the Hilbert-site version,
+\[
+  \mathcal H_{\oplus}(X)=\bigoplus_{x\in X}\mathcal H_x
+\]
+with inner product
+\[
+  \langle \psi,\phi\rangle_{\oplus}
+  =
+  \sum_{x\in X}\langle \psi_x,\phi_x\rangle_{\mathcal H_x}.
+\]
+The orthogonality of distinct summands belongs to this chosen Hilbert direct
+sum.  It is not inherited from the bare finite set and was not supplied by
+AQM-67.
+
+\subsection{Edge Cases}
+
+\paragraph{Empty set.}
+For \(X=\emptyset\),
+\[
+  K_{\oplus}(\emptyset)=0,
+  \qquad
+  \mathcal H_{\oplus}(\emptyset)=0
+\]
+in the corresponding versions.  There are no site labels and no internal
+carriers to add.  This differs from the empty tensor-site convention in
+AQM-68, where the empty tensor product is \(\mathbb C\).
+
+\paragraph{One-point set.}
+For \(X=\{\ast\}\),
+\[
+  K_{\oplus}(X)=K_\ast,
+  \qquad
+  \mathcal H_{\oplus}(X)=\mathcal H_\ast .
+\]
+Thus the one-point direct-sum workflow returns exactly the chosen internal
+carrier at the single site.  A one-dimensional result appears only if that
+internal carrier was chosen to be one-dimensional.
+
+\subsection{Boundary With Tensor-Site Coexistence}
+
+AQM-68 records the tensor-site workflow
+\[
+  (X,\{\mathcal H_x\}_{x\in X})
+  \longmapsto
+  \bigotimes_{x\in X}\mathcal H_x .
+\]
+That construction represents independent coexisting site factors.  The present
+workflow represents alternatives by
+\[
+  (X,\{\mathcal H_x\}_{x\in X})
+  \longmapsto
+  \bigoplus_{x\in X}\mathcal H_x .
+\]
+For displayed finite dimensions \(d_i=\dim\mathcal H_{x_i}\), the tensor-site
+carrier has dimension \(\prod_i d_i\), while the direct-sum carrier has
+dimension \(\sum_i d_i\).  The empty cases also differ:
+\[
+  \bigotimes_{x\in\emptyset}\mathcal H_x=\mathbb C,
+  \qquad
+  \bigoplus_{x\in\emptyset}\mathcal H_x=0.
+\]
+These are different workflows even when the same labelled family of site
+Hilbert spaces is available.
+
+This shard also does not select an observable algebra.  If a later step needs
+one, the full algebra
+\(\operatorname{End}_{\mathbb C}(\bigoplus_x\mathcal H_x)\) and the
+block-preserving algebra \(\bigoplus_x\operatorname{End}_{\mathbb C}(\mathcal
+H_x)\) are different choices and must be named.  The tensor-site algebra from
+AQM-68 is instead \(\bigotimes_x\operatorname{End}_{\mathbb C}(\mathcal H_x)\).
+
+\subsection{One-Dimensional Internal Spaces and AQM-67}
+
+The comparison with AQM-67 is available only after extra choices are stated.
+Assume that every carrier \(K_x\) is a one-dimensional complex vector space
+and choose a nonzero vector \(u_x\in K_x\) for each \(x\in X\).  Then
+\[
+  \Phi:\mathbb C\langle X\rangle
+  \longrightarrow
+  \bigoplus_{x\in X}K_x,
+  \qquad
+  \Phi(e_x)=j_x(u_x),
+\]
+is a vector-space isomorphism.  In the empty case this is the unique map
+\(0\to0\).  In the one-point case it is the chosen identification
+\(\mathbb C e_\ast\cong K_\ast\).
+
+Without the chosen vectors \(u_x\), the bare set does not identify the formal
+generator \(e_x\) with a vector in \(K_x\).  If the \(K_x\) are Hilbert lines,
+then chosen unit vectors \(u_x\) make \(\Phi\) compatible with the identity
+Gram convention on \(\mathbb C\langle X\rangle\).  That Hilbert comparison is
+still a comparison of enhanced data: AQM-67 did not supply inner products,
+unit vectors, or orthonormality from the set alone.
+
+\subsection{Conclusion}
+
+The QSA Step 05 output is the alternatives carrier
+\[
+  \bigoplus_{x\in X}K_x
+  \quad\text{or}\quad
+  \bigoplus_{x\in X}\mathcal H_x
+\]
+after the internal carriers or Hilbert spaces have been supplied.  It is not
+the formal bare-set carrier of AQM-67 unless one-dimensional internal carriers
+and basis vectors are chosen, and it is not the tensor-site coexistence system
+of AQM-68.

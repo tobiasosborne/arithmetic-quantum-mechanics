@@ -573,3 +573,219 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Proves the compatibility statement and separates it from a full CSS rule requiring extra tangent labels.
 - Summary: Works through finite examples showing that unrestricted exact forms often select a one-dimensional stabilizer subspace.
 - Keywords: de Rham, tangent Weyl, cotangent constraints, stabilizer, F3, circle, affine line, crossing
+
+## `AQM-64-QUANTUM-SYSTEM-ASSOCIATION-META-PLAN`
+
+- Source: `report/sections/64_quantum_system_association_meta_plan.tex`
+- Title: Quantum-System Association Meta-Plan
+- Summary: Records a user-directed programme for cataloguing ways to associate quantum kinematical systems to objects.
+- Summary: Reserves a sequence of review and new shards for finite sets, geometric objects, finite rings, agreement tests, and degeneracies.
+- Summary: Points to the detailed plan and Beads chain without asserting new mathematical comparison results.
+- Keywords: meta-plan, association, finite sets, finite rings, Weyl-Heisenberg, cotangent, review shards
+
+## `AQM-65-QSA-VOCABULARY`
+
+- Source: `report/sections/65_quantum_system_association_vocabulary.tex`
+- Title: Quantum-System Association Vocabulary
+- Summary: Fixes the programme-local vocabulary for quantum-system associations before comparison shards begin.
+- Summary: Separates association workflows from any canonical functorial quantisation claim.
+- Summary: Records the evidence rule for later agreement, equivalence, inequivalence, and degeneracy claims.
+- Keywords: quantum-system association, vocabulary, Quant1, Quant2, equivalence, degeneracy, kinematics
+
+## `AQM-66-QSA-TEST-OBJECT-CATALOGUE`
+
+- Source: `report/sections/66_quantum_system_association_test_object_catalogue.tex`
+- Title: Quantum-System Association Test Object Catalogue
+- Summary: Freezes the first test-object list for the quantum-system association programme.
+- Summary: Records available, question, and blocked status rows for finite sets, finite rings, quotient examples, and infinite boundaries.
+- Summary: Points every row to local evidence or an explicit planned derivation instead of asserting comparison results.
+- Keywords: quantum-system association, catalogue, finite sets, finite rings, nilpotents, quotient rings, infinite boundaries
+
+## `AQM-67-QSA-FINITE-SET-FIRST-ASSOCIATION`
+
+- Source: `report/sections/67_quantum_system_association_finite_set_first.tex`
+- Title: Structureless Finite-Set First Association
+- Summary: Defines the first structureless finite-set association as a formal complex carrier with basis labels indexed by the set.
+- Summary: Works the empty, one-point, and n-point cases by local derivation from the recorded convention.
+- Summary: Records that any inner product or Gram matrix is extra data, not determined by the bare finite set.
+- Keywords: quantum-system association, finite set, formal carrier, C^X, Gram matrix, Hilbert caveat
+
+## `AQM-68-QSA-FINITE-SET-TENSOR-SITES`
+
+- Source: `report/sections/68_quantum_system_association_finite_set_tensor_sites.tex`
+- Title: Structureless Finite-Set Tensor-Site Association
+- Summary: Defines the finite-set tensor-site workflow after adding one finite-dimensional Hilbert carrier or observable algebra per site.
+- Summary: Forms finite tensor products and tensor-by-identity local observable inclusions by local finite-dimensional derivation.
+- Summary: Separates this workflow from the formal carrier of AQM-67 and reviews only the anchored uniform-qudit cases.
+- Keywords: quantum-system association, finite set, tensor product, local observables, qudit anchors, extra data
+
+## `AQM-69-QSA-FINITE-SET-DIRECT-SUM-PARTICLE`
+
+- Source: `report/sections/69_quantum_system_association_finite_set_direct_sum_particle.tex`
+- Title: Structureless Finite-Set Direct-Sum Particle Association
+- Summary: Defines the finite-set direct-sum workflow after adding one internal finite-dimensional complex carrier or Hilbert space per site.
+- Summary: Forms the one-particle-at-one-of-many-sites carrier as a finite direct sum and works the empty and one-point cases.
+- Summary: Distinguishes this workflow from tensor-site coexistence and compares the one-dimensional internal-space case with AQM-67 only under stated choices.
+- Keywords: quantum-system association, finite set, direct sum, one particle, internal carrier, Hilbert caveat
+
+## `AQM-70-QSA-AND-OR-MANY-PARTICLE-GRAMMAR`
+
+- Source: `report/sections/70_quantum_system_association_and_or_many_particle_grammar.tex`
+- Title: AND/OR Many-Particle Grammar
+- Summary: Defines a finite carrier grammar whose AND operation is tensor/coexistence and whose OR operation is direct-sum/alternative.
+- Summary: Identifies finite particle-count sectors by a recursive grading on finite tensor/direct-sum expressions.
+- Summary: Separates this elementary grammar from symmetric, antisymmetric, para, Fock, and fusion-category enhancements.
+- Keywords: quantum-system association, finite grammar, tensor product, direct sum, particle sectors, Fock caveat
+
+## `AQM-71-QSA-SYMPLECTIC-FIELD-LABELS-SET`
+
+- Source: `report/sections/71_quantum_system_association_symplectic_field_labels_set.tex`
+- Title: Finite Symplectic Field Labels on a Set
+- Summary: Reviews the finite symplectic field-label association from AQM-14 in QSA Step 07 language.
+- Summary: Records the Map(X,V), finite-support, pointwise-pairing, radical-quotient, and Weyl-carrier ingredients with local anchors.
+- Summary: Lists only checked \(\mathbb F_3\) CSV examples and states that new examples require new run or source rows.
+- Keywords: quantum-system association, finite set, symplectic labels, Map(X,V), radical quotient, Weyl-Heisenberg, qudits
+
+## `AQM-72-QSA-BOSON-FERMION-LAYER`
+
+- Source: `report/sections/72_quantum_system_association_boson_fermion_layer.tex`
+- Title: Bosonic and Fermionic Association Layer
+- Summary: Reviews the finite bosonic association via real symplectic map spaces and CCR/Weyl representations.
+- Summary: Reviews the finite fermionic CAR layer and the Grassmann-Weyl displacement calculus with active local source locators.
+- Summary: Records parafermion, fusion-category, and finite AND/OR comparison variants as gaps rather than results.
+- Keywords: quantum-system association, bosons, fermions, CCR, CAR, Grassmann-Weyl, parafermion gap, fusion-category gap
+
+## `AQM-73-QSA-FUSION-CATEGORY-ENDPOINT`
+
+- Source: `report/sections/73_quantum_system_association_fusion_category_endpoint.tex`
+- Title: Fusion-Category Endpoint
+- Summary: Records fusion categories as a future quantum-system association family without developing the technical construction.
+- Summary: Lists the source and convention decisions needed before using hom spaces, simple objects, tensor products, F/R data, and lattice-model input.
+- Summary: Explicitly defers Levin-Wen/string-net claims, fusion-rule computations, Hamiltonians, projectors, and quantum-double or Drinfeld-center statements.
+- Keywords: quantum-system association, fusion category, gap shard, Levin-Wen, string-net, F-symbol, R-symbol, Drinfeld center
+
+## `AQM-74-QSA-SINGLE-PARTICLE-REDUCTION`
+
+- Source: `report/sections/74_quantum_system_association_single_particle_reduction.tex`
+- Title: Single-Particle Reduction
+- Summary: Defines single-particle sectors for the finite direct-sum and AND/OR grammar constructions already used in the QSA sequence.
+- Summary: Gives explicit carrier maps from direct sums and site-option degree-one sectors to the one-particle alternatives carrier.
+- Summary: Records tensor, field, Fock, statistics, phase, and Gram-choice obstructions as boundaries rather than general reductions.
+- Keywords: quantum-system association, single-particle sector, reduction, direct sum, tensor site, Fock boundary, Gram choice
+
+## `AQM-75-QSA-WHAT-COUNTS-AS-A-POINT`
+
+- Source: `report/sections/75_quantum_system_association_what_counts_as_point.tex`
+- Title: What Counts As A Point
+- Summary: Compares underlying-set, rational-point, closed-point, generic-point, and all-scheme-point indexing choices in the QSA catalogue.
+- Summary: Reviews the existing closed-point finite Weyl-site conventions for finite spectra, finite-type affine schemes over finite fields, and \(\Spec\mathbb Z\).
+- Summary: Identifies which point choices give finite kinematical systems and records generic-point and analytic-completion gaps.
+- Keywords: quantum-system association, points, underlying set, rational points, closed points, generic point, finite Weyl sites
+
+## `AQM-76-QSA-COTANGENT-FIRST-ASSOCIATION`
+
+- Source: `report/sections/76_quantum_system_association_cotangent_first.tex`
+- Title: Cotangent-Based First Association
+- Summary: Places the tangent-cotangent Weyl workflow into the QSA catalogue as a geometric first-association workflow.
+- Summary: Derives the finite phase-label space from a point convention, cotangent fibre, tangent dual, and canonical symplectic pairing.
+- Summary: Records the existing AQM-58--AQM-63 examples and leaves intrinsic-versus-relative and finite-ring database rows as gaps.
+- Keywords: quantum-system association, cotangent, tangent, Weyl, first association, finite-residue points, kinematics
+
+## `AQM-77-QSA-INTRINSIC-RELATIVE-COTANGENT`
+
+- Source: `report/sections/77_quantum_system_association_intrinsic_relative_cotangent.tex`
+- Title: Intrinsic Versus Relative Cotangent Data
+- Summary: Compares local cotangent data \(\mathfrak m_x/\mathfrak m_x^2\) with relative K\"ahler cotangent fibres over a named base.
+- Summary: Gives exact finite examples where the two agree, differ, or where the relative cotangent vanishes.
+- Summary: Records how the cotangent choice changes tangent spaces, phase-label dimensions, and finite Weyl carrier sizes.
+- Keywords: quantum-system association, cotangent, intrinsic cotangent, relative differentials, finite rings, Weyl labels
+
+## `AQM-78-QSA-FINITE-PHASE-WEYL-KINEMATICS`
+
+- Source: `report/sections/78_quantum_system_association_finite_phase_weyl_kinematics.tex`
+- Title: Weyl-Heisenberg Kinematics From Finite Phase Spaces
+- Summary: Consolidates the common Weyl-Heisenberg representation step used after a finite symplectic label space has been fixed.
+- Summary: Separates finite-field, finite Frobenius-ring, sourced generalized-Heisenberg, and unresolved finite-ring cases.
+- Summary: Records where uniqueness or projective-representation classification is locally sourced and where only Pauli/error-basis support is available.
+- Keywords: quantum-system association, Weyl-Heisenberg, finite phase space, finite field, Frobenius ring, Stone-von Neumann, Clifford gap
+
+## `AQM-79-QSA-GEOMETRIC-FIELD-HOM-X-V`
+
+- Source: `report/sections/79_quantum_system_association_geometric_field_hom_x_v.tex`
+- Title: Geometric Field Association Hom(X,V)
+- Summary: Reviews the geometric field-space branch of the QSA catalogue without asserting a general Hom(X,V) quantisation.
+- Summary: Separates all-map, finite-support, sheaf-section, regular-function, and rational-truncation choices using only local anchors.
+- Summary: Records how the structure of X constrains field spaces before the finite Weyl-Heisenberg boundary of AQM-78.
+- Keywords: quantum-system association, Hom(X,V), Map(X,V), sheaf sections, regular functions, finite support, observable nets
+
+## `AQM-80-QSA-FINITE-RING-EXAMPLE-MATRIX`
+
+- Source: `report/sections/80_quantum_system_association_finite_ring_example_matrix.tex`
+- Title: Finite Ring Example Matrix
+- Summary: Builds a gap-aware finite-ring matrix for QSA Step 16 without claiming a populated finite-ring database.
+- Summary: Separates point/residue, cotangent-first, field-label, and nilpotent-sensitive workflows row by row.
+- Summary: Carries explicit available, blocked, unknown, not_applicable, and degenerate markers to later QSA steps.
+- Keywords: quantum-system association, finite rings, example matrix, residue fields, cotangent, nilpotents, database gaps
+
+## `AQM-81-QSA-RESIDUE-FIELD-SITE-ASSOCIATION`
+
+- Source: `report/sections/81_quantum_system_association_residue_field_site_association.tex`
+- Title: Residue-Field Site Association for Spec R
+- Summary: Defines the sourced finite residue-site workflow for selected prime or maximal points of \(\Spec R\).
+- Summary: Allows local finite symplectic targets and Weyl carriers to vary over the residue field at each site.
+- Summary: Records mixed-residue direct sums, tensor carriers, and blockers separating this reduced layer from nilpotent thickenings.
+- Keywords: quantum-system association, residue field, finite rings, Spec R, mixed residues, tensor carriers
+
+## `AQM-82-QSA-NILPOTENT-SENSITIVE-ASSOCIATION`
+
+- Source: `report/sections/82_quantum_system_association_nilpotent_sensitive_association.tex`
+- Title: Nilpotent-Sensitive Association
+- Summary: Compares the reduced residue-site workflow with the locally developed Artin/Frobenius-ring thickened Weyl layer.
+- Summary: Records the extra generating-character data needed before nilpotent ring structure can be quantized.
+- Summary: Keeps nilpotents as local jet or internal degrees at existing points, not as extra residue sites.
+- Keywords: quantum-system association, nilpotents, Artin ring, Frobenius ring, residue sites, jet degrees, generating character
+
+## `AQM-83-QSA-PRODUCT-RINGS-TENSOR-FACTORS`
+
+- Source: `report/sections/83_quantum_system_association_product_rings_tensor_factors.tex`
+- Title: Product Rings and Tensor Factors
+- Summary: Reviews product-field spectra and mixed-residue product warnings for the QSA catalogue.
+- Summary: Compares product-ring residue-site tensor factors with the structureless finite-set tensor-site workflow.
+- Summary: Records cotangent-first edge cases and database/helper gaps without claiming a universal product-ring equivalence.
+- Keywords: quantum-system association, product ring, tensor factors, residue fields, cotangent, finite-ring database
+
+## `AQM-84-QSA-INFINITE-RING-BOUNDARIES`
+
+- Source: `report/sections/84_quantum_system_association_infinite_ring_boundaries.tex`
+- Title: Infinite Ring Boundary Cases
+- Summary: Reviews \(\Spec\mathbb F_q[t]\), \(\Spec\mathbb F_q[x,y]\), and \(\Spec\mathbb Z\) as infinite QSA boundary examples.
+- Summary: Separates finite supports, algebraic quasi-local algebras, reference-vector tensor representations, and formal infinite-volume profiles.
+- Summary: Records missing representation and completion conventions before the Step 21 agreement and inequivalence synthesis.
+- Keywords: quantum-system association, infinite rings, quasi-local algebra, incomplete tensor product, generic point, completion gap
+
+## `AQM-85-QSA-AGREEMENT-INEQUIVALENCE-TABLE`
+
+- Source: `report/sections/85_quantum_system_association_agreement_inequivalence_table.tex`
+- Title: Agreement and Inequivalence Table
+- Summary: Synthesizes QSA Steps 03--20 as a gap-first comparison ledger using the local status-token convention.
+- Summary: Records only locally witnessed agreements and inequivalences, with unsupported comparisons left blocked, unknown, or at AQM-84 proposal boundaries.
+- Summary: Carries the finite-ring, source, quotient-collapse, Artin, and infinite-completion blockers into the Step 22 handoff.
+- Keywords: quantum-system association, agreement, inequivalence, gap table, blockers, finite rings, infinite boundaries
+
+## `AQM-86-QSA-DEGENERATE-OVERRESTRICTIVE-CASES`
+
+- Source: `report/sections/86_quantum_system_association_degenerate_overrestrictive_cases.tex`
+- Title: Degenerate and Over-Restrictive Cases
+- Summary: Catalogues concrete QSA failure modes without promoting them to general theorems.
+- Summary: Separates collapsed quotients, radical quotients, missing choices, zero outputs, empty inputs, blocked rows, and not-applicable workflows.
+- Summary: Carries the Step 21 blockers forward and keeps degenerate cases visible in the catalogue.
+- Keywords: quantum-system association, degeneracy, over-restrictive, radical, quotient collapse, zero, empty, blocked
+
+## `AQM-87-QSA-OPEN-PROBLEMS-NEXT-TARGETS`
+
+- Source: `report/sections/87_quantum_system_association_open_problems_next_targets.tex`
+- Title: Open Problems and Next Catalogue Targets
+- Summary: Closes the QSA meta-plan with a prioritized gap ledger rather than new derivations.
+- Summary: Turns the preserved Step 21--22 blockers into explicit source, convention, computation, and run targets.
+- Summary: Records parafermion, fusion-category, finite-ring, completion, dynamics, and noncommutative/nonunital boundaries as questions or proposals.
+- Keywords: quantum-system association, open problems, next targets, blockers, finite rings, fusion category, completions, dynamics

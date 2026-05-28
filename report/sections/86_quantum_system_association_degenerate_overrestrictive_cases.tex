@@ -1,0 +1,258 @@
+% SHARD-ID: AQM-86-QSA-DEGENERATE-OVERRESTRICTIVE-CASES
+% SHARD-TITLE: Degenerate and Over-Restrictive Cases
+% SHARD-SUMMARY: Catalogues concrete QSA failure modes without promoting them to general theorems.
+% SHARD-SUMMARY: Separates collapsed quotients, radical quotients, missing choices, zero outputs, empty inputs, blocked rows, and not-applicable workflows.
+% SHARD-SUMMARY: Carries the Step 21 blockers forward and keeps degenerate cases visible in the catalogue.
+% SHARD-KEYWORDS: quantum-system association, degeneracy, over-restrictive, radical, quotient collapse, zero, empty, blocked
+
+\section{Degenerate and Over-Restrictive Cases}
+\label{sec:qsa-degenerate-overrestrictive-cases}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: New failure-mode catalogue.}  This is QSA Step 22 from
+\path{docs/quantum_system_associations/PLAN.md}.  It adds no source,
+convention entry, script, run bundle, generated data, populated database row,
+Beads update, or report-level classification theorem.  It records concrete
+failure modes already visible in AQM-65--AQM-85.
+
+The vocabulary and evidence rule are AQM-65 and \texttt{CONVENTIONS.md}
+convention \texttt{(ap)}.  The status tokens are exactly those of convention
+\texttt{(au)}.  The main anchors are AQM-67--AQM-71 for finite-set and
+radical examples, AQM-74 for single-particle comparison boundaries, AQM-77
+for cotangent zero and cotangent-choice examples, AQM-80--AQM-83 for
+finite-ring, quotient, nilpotent, and product-ring rows, AQM-84 for infinite
+boundary statuses, and AQM-85 for the gap-first agreement ledger.
+
+\subsection{Reading Rule}
+
+The word \texttt{degenerate} is not a dismissal.  It marks a concrete row in
+which a workflow collapses, forgets structure, becomes too small for an
+intended comparison, or reduces to an earlier row.  Such rows stay in the
+catalogue because they are useful negative controls.
+
+The token \texttt{blocked} is different.  It means that required evidence,
+conventions, or tooling are missing.  A blocked row is not a mathematical
+obstruction and is not evidence that the workflow fails.  Likewise,
+\texttt{unknown} means not locally determined, and \texttt{not\_applicable}
+means that the workflow is outside the row's stated semantics.
+
+\subsection{Too Little Structure}
+
+\paragraph{Bare finite set without a Gram choice.}
+For a two-point set \(X=\{a,b\}\), AQM-67 and convention \texttt{(aq)}
+produce only
+\[
+  \mathbb C\langle X\rangle=\mathbb C e_a\oplus\mathbb C e_b
+\]
+with formal basis labels.  No inner product, adjoint, observable algebra,
+Hamiltonian, tensor factorization, or Weyl label space is returned.  The
+identity Gram matrix would be extra data.  Therefore any Hilbert-space or
+unitary comparison from the bare set alone is \texttt{blocked} by missing
+Gram data, not proved false.
+
+\paragraph{Empty input versus zero output.}
+AQM-67 gives
+\[
+  \mathbb C\langle\emptyset\rangle=0 .
+\]
+Here \(\emptyset\) is the \texttt{empty} input and \(0\) is the \texttt{zero}
+carrier output.  AQM-69 gives the same zero carrier for the empty direct sum,
+whereas AQM-68 gives the empty tensor product \(\mathbb C\).  AQM-74 uses
+this as a concrete obstruction to silently identifying tensor-site
+coexistence with direct-sum alternatives.
+
+\subsection{Radicals and Quotient Label Spaces}
+
+\paragraph{Affine maps on \(\mathbb F_3\).}
+AQM-71 reviews the checked row displayed below.
+\[
+  \texttt{vector\_space\_F3\_affine}
+\]
+The row is in the arithmetic-quantum-fields run, file
+\path{data/arithmetic_quantum_field_examples.csv}.  The scalar space has
+basis \(1,t\), the field phase dimension is \(4\), the symplectic radical has
+dimension \(2\), and the reduced phase dimension is \(2\).  The honest Weyl
+label space is therefore the quotient \(E/\operatorname{rad}(E)\), not the
+unreduced affine-function label space.  Forgetting this quotient would
+overcount labels.
+
+\paragraph{Linear coordinate functions on \(\mathbb F_3^2\).}
+The same AQM-71 review lists the checked row displayed below.
+\[
+  \texttt{affine\_plane\_F3\_linear}
+\]
+It has field phase dimension \(4\),
+symplectic rank \(0\), radical dimension \(4\), and reduced phase dimension
+\(0\).  This is a concrete \texttt{degenerate} radical case: the selected
+linear coordinate-function space is totally radical for the all-weights-one
+pairing, so the reduced Weyl label group is trivial and the Hilbert carrier
+is one-dimensional.  The row is not removed from the catalogue; it records
+that the chosen field space and pairing were too restrictive for nontrivial
+Weyl labels.
+
+\paragraph{Projective-line sheaf sections.}
+AQM-16 gives a second checked radical warning.  For
+\(\mathbb P^1_{\mathbb F_3}\) with \(\mathcal O(1)\), the rational-point
+evaluation row has scalar pairing rank \(0\), symplectic rank \(0\), radical
+dimension \(4\), and reduced phase dimension \(0\) in
+\path{runs/2026-05-24-projective-line-sheaf-fields/data/projective_line_sheaf_field_summary.csv}.
+For \(\mathcal O(4)\), the evaluation kernel and radical are nonzero but the
+reduced phase dimension is still \(8\).  These examples show why the radical
+quotient is part of the workflow, not cleanup after the fact.
+
+\subsection{Zero Cotangent Labels}
+
+\paragraph{The field \(\mathbb F_3\).}
+AQM-77 records that for \(X=\Spec\mathbb F_3\) over
+\(\mathbb F_3\), both the intrinsic cotangent and the relative cotangent are
+zero:
+\[
+  C_x^{\rm loc}=C_x^{\rm rel}=0 .
+\]
+The cotangent-first phase label is therefore zero and the Weyl carrier is
+one-dimensional.  This is a \texttt{zero} output for that workflow.  It is
+not the residue-site workflow, where AQM-81 has one qutrit site.
+
+\paragraph{Product fields.}
+For \(R=k^n\) with \(k=\mathbb F_3\), AQM-83 cites AQM-58 and AQM-77:
+\[
+  \Omega^1_{k^n/k}=0
+\]
+and the local cotangent labels vanish at every product point.  The same ring
+has \(n\) residue-field Weyl factors in AQM-40 and AQM-83.  Thus the
+cotangent-first row is \texttt{degenerate}/\texttt{zero} for the selected
+cotangent labels, while the residue-site row remains nontrivial.  The
+catalogue must keep both rows.
+
+\subsection{Quotients and Collapsed Presentations}
+
+\paragraph{\(\mathbb Z/6\mathbb Z\) versus the product presentation.}
+AQM-23 computes the two residue fields \(\mathbb F_2\) and
+\(\mathbb F_3\) for \(\Spec(\mathbb Z/6\mathbb Z)\), and AQM-81/AQM-83 use
+the mixed-residue carrier
+\[
+  \ell^2(\mathbb F_2)\otimes\ell^2(\mathbb F_3).
+\]
+AQM-80 records that the finite-ring review export treats the
+\(\mathbb F_2\times\mathbb F_3\) presentation as merged to the
+\(\mathbb Z/6\mathbb Z\) representative.  This is a concrete
+\texttt{degenerate} catalogue warning: the two presentations should not be
+counted as independent examples in this local evidence layer.  It is not a
+general quotient-collapse theorem.
+
+\paragraph{The \(\mathbb F_2[x]/(x^2+x)\) candidate.}
+AQM-80 lists \(\mathbb F_2[x]/(x^2+x)\) only as a possible
+quotient-collapse row.  It remains \texttt{blocked} by
+\texttt{aqm-qsa-collapse01}; the current report has no local derivation or
+certificate that may be promoted to a checked collapse row.  This is a
+concrete unsupported finite-ring example, and its blocked status is part of
+the catalogue.
+
+\subsection{Nilpotents Forgotten by Reduced Layers}
+
+\paragraph{Dual numbers.}
+For
+\[
+  A=\mathbb F_3[\epsilon]/(\epsilon^2),
+\]
+AQM-82 records one reduced residue site with carrier \(\ell^2(\mathbb F_3)\).
+The nilpotent class \(\epsilon\) reduces to zero at that site.  AQM-36 and
+AQM-82 also record the thickened Artin carrier
+\[
+  \ell^2(\mathbb F_3[\epsilon]/(\epsilon^2)),
+  \qquad \dim_{\mathbb C}=9,
+\]
+after the top-coefficient generating character is fixed.  The reduced row is
+\texttt{degenerate} if the intended question is nilpotent-sensitive; the
+thickened row is a separate available local Artin workflow.
+
+\paragraph{The \(t^n=1\) family.}
+AQM-82 reviews AQM-35/AQM-37 for
+\[
+  R_n=\mathbb F_3[t]/(t^n-1),\qquad n=3^s m,\quad 3\nmid m .
+\]
+The reduced residue layer has Hilbert dimension \(3^m\), while the locally
+proved thickened layer has dimension \(3^n\).  The repeated factors are not
+extra closed points; they are thickened degrees at the existing reduced
+points.  Removing this row would hide exactly the nilpotent-sensitive
+failure mode Step 22 is meant to catalogue.
+
+\subsection{Mixed Residues and Not-Applicable Readings}
+
+The \(\mathbb Z/6\mathbb Z\) row is also a concrete
+\texttt{not\_applicable} warning.  AQM-23, AQM-80, AQM-81, and AQM-83 use
+the mixed label group
+\[
+  \mathbb F_2^2\oplus\mathbb F_3^2 .
+\]
+A single \(\mathbb F_3\)-linear field-label reading is outside the row's
+semantics.  This is not a blocked theorem about impossibility; it is the
+wrong workflow specification for the selected mixed-residue object.
+
+Similarly, AQM-82 marks the nilpotent-sensitive workflow as
+\texttt{not\_applicable} for the field row \(\mathbb F_3\): there is no
+nilpotent thickening in that object.  The status is different from the
+blocked thickened rows for unsupported finite rings.
+
+\subsection{Unsupported Infinite-Representation Cases}
+
+AQM-84 gives the concrete infinite boundary rows
+\(\Spec\mathbb F_q[t]\), \(\Spec\mathbb F_q[x,y]\), and \(\Spec\mathbb Z\).
+Finite closed supports and algebraic quasi-local closed-point algebras are
+available there.  The following are not available finite-site conclusions:
+
+\begin{itemize}
+\item generic and curve-generic residue fields as finite Weyl sites;
+\item local-field, adelic, profinite, analytic, or \(C^*\)-completed
+  representations without the missing topology, character, norm, and
+  representation conventions;
+\item formal infinite-volume regular-function profiles as actual
+  quasi-local Weyl operators.
+\end{itemize}
+
+These are \texttt{blocked}, generic-sector proposal, formal infinite-volume,
+or completion-proposal statuses in the AQM-84 vocabulary.  They are not
+mathematical no-go results.
+
+\subsection{Status-Token Checklist}
+
+The concrete distinctions to preserve in later shards are:
+
+\begin{description}
+\item[\texttt{empty}.] The indexing input or support is empty, as in
+  \(X=\emptyset\) for AQM-67 or the empty finite support in a local net.
+\item[\texttt{zero}.] The mathematical output is the zero carrier or zero
+  label object, as in \(\mathbb C\langle\emptyset\rangle=0\) or the zero
+  cotangent labels of \(\Spec\mathbb F_3\).
+\item[\texttt{degenerate}.] A concrete row collapses or forgets structure:
+  total radical reduction, product-field zero cotangent labels, reduced
+  residue layers forgetting nilpotents, or merged \(\mathbb Z/6\mathbb Z\)
+  product presentations.
+\item[\texttt{blocked}.] Evidence, conventions, or tooling are missing, as
+  for \(\mathbb F_2[x]/(x^2+x)\) quotient collapse, arbitrary finite-ring
+  residue decomposition, database-backed cotangent rows, and infinite
+  completions.
+\item[\texttt{unknown}.] No local determination has been recorded, as in
+  AQM-80's missing cotangent comparison row for \(\mathbb Z/6\mathbb Z\).
+\item[\texttt{not\_applicable}.] The workflow is outside the row semantics,
+  as for a common \(\mathbb F_3\)-linear reading of the mixed-residue
+  \(\mathbb Z/6\mathbb Z\) row or a nilpotent-sensitive thickening of the
+  field \(\mathbb F_3\).
+\end{description}
+
+\subsection{Blockers Carried Forward}
+
+The open blockers from AQM-85 remain unchanged:
+\[
+  \begin{gathered}
+  \texttt{aqm-qsa-src02},\quad
+  \texttt{aqm-qsa-frres01},\quad
+  \texttt{aqm-qsa-frcot01},\\
+  \texttt{aqm-qsa-collapse01},\quad
+  \texttt{aqm-qsa-artin01}.
+  \end{gathered}
+\]
+This shard does not close or reinterpret any of them.  Step 23 should turn
+these preserved failure modes into explicit open problems and next catalogue
+targets, not into unsupported equivalence or no-go theorems.

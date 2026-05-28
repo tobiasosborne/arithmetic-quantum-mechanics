@@ -1953,3 +1953,221 @@ above, reports Sage/OSCAR/Nemo availability or `tool_not_available` skips, and
 certifies no backend completeness; this helper is not a general quotient-ring
 engine and performs no SQLite writes, quotient-basis extraction, Groebner-basis
 extraction, generated certificate creation, or run-artifact creation.
+
+## (ap) Quantum-System Association Vocabulary
+
+For the meta-plan in `docs/quantum_system_associations/PLAN.md` and report
+shard `AQM-64-QUANTUM-SYSTEM-ASSOCIATION-META-PLAN`, the preferred general
+term is `quantum-system association`, not a canonical functorial
+`quantisation`. A quantum-system association is a recorded workflow that starts
+from specified structure on an object `X`, adds explicitly named choices, and
+returns kinematical quantum data such as a Hilbert carrier, observable algebra,
+Weyl-Heisenberg projective representation, Fock sector, or stabilizer subspace.
+
+The local shorthand names `Quant1`, `Quant2`, `field association`,
+`single-particle sector`, `review shard`, `gap shard`, `association
+equivalence`, `agreement`, `inequivalence`, and `degenerate case` are
+programme labels, not established mathematical classifications. A report shard
+may use them only after stating the specific local workflow and the evidence
+status of any comparison.
+
+Dynamics is not part of a quantum-system association unless a later convention
+records a separate dynamics-selection principle. Therefore Hamiltonians,
+actions, time evolutions, and Witten-index-style statements remain out of scope
+for this meta-plan except as explicitly labelled future questions.
+
+## (aq) Structureless Finite-Set First Carrier
+
+For QSA Step 03 and report shard
+`AQM-67-QSA-FINITE-SET-FIRST-ASSOCIATION`, a bare finite set `X` supplies only
+labels. The first structureless finite-set association writes
+
+```text
+C<X> = direct_sum_{x in X} C e_x,
+```
+
+also denoted `C^X` in the Step 03 shorthand because `X` is finite. The
+workflow output is the complex vector-space carrier together with its
+`X`-indexed formal basis labels `e_x`. It does not include an inner product,
+norm, adjoint, observable algebra, Hamiltonian, tensor-factor interpretation,
+direct-sum particle interpretation, or Weyl-Heisenberg data.
+
+Any inner product or Gram matrix on this carrier is extra data. In the formal
+basis, a Gram array `G = (G_xy)_{x,y in X}` is a separately supplied choice;
+neither the identity Gram matrix nor any other array is determined by the bare
+set in this workflow.
+
+The empty set gives the zero formal carrier with no basis labels. A one-point
+set gives one formal generator. An `n`-point set gives `n` formal generators
+after choosing labels for display. Comparisons with tensor-site workflows,
+direct-sum particle workflows, or special one-dimensional internal-space
+choices are planned for later QSA shards and are not proved by this convention.
+
+## (ar) Structureless Finite-Set Tensor-Site Data
+
+For QSA Step 04 and report shard
+`AQM-68-QSA-FINITE-SET-TENSOR-SITES`, a bare finite set `X` still supplies
+only labels. A tensor-site association starts only after adding one
+finite-dimensional complex Hilbert space `H_x` for each `x in X`, or directly
+adding one finite-dimensional unital `*`-algebra `A_x` for each site.
+
+In the Hilbert-space version, set
+
+```text
+A_x = End_C(H_x),
+H(S) = tensor_product_{x in S} H_x,
+A(S) = tensor_product_{x in S} A_x
+```
+
+for each finite subset `S <= X`, with empty tensor product `C`. An ordering of
+`S` may be chosen only to write the finite tensor product; it is display data,
+not structure supplied by the bare set. If `S <= T`, the local observable
+inclusion is
+
+```text
+A(S) -> A(T),        a |-> a tensor 1_(T \ S).
+```
+
+This convention supplies independent coexisting site factors. It is not the
+formal carrier `C<X>` of convention `(aq)`: the latter is a direct sum of
+formal labels with no inner product or observable algebra, while the
+tensor-site workflow has explicitly chosen Hilbert or algebra factors and uses
+tensor products.
+
+## (as) Structureless Finite-Set Direct-Sum Particle Data
+
+For QSA Step 05 and report shard
+`AQM-69-QSA-FINITE-SET-DIRECT-SUM-PARTICLE`, a bare finite set `X` supplies
+only labels for alternatives. A direct-sum particle association starts only
+after adding one finite-dimensional complex carrier `K_x` for each `x in X`;
+in the Hilbert version each `K_x` is a finite-dimensional complex Hilbert
+space `H_x`.
+
+The carrier is
+
+```text
+K_oplus(X) = direct_sum_{x in X} K_x,
+H_oplus(X) = direct_sum_{x in X} H_x
+```
+
+with empty direct sum `0`. In the Hilbert version the inner product is the
+finite direct-sum inner product
+
+```text
+<psi,phi> = sum_{x in X} <psi_x,phi_x>_{H_x}.
+```
+
+This is an alternatives/one-particle-at-one-of-many-sites carrier. It is not
+the tensor-site coexistence carrier of convention `(ar)`, whose Hilbert space
+is a tensor product and whose empty tensor product is `C`.
+
+If every internal carrier is one-dimensional, then a chosen nonzero vector
+`u_x in K_x` for each site gives a vector-space identification
+`C<X> -> direct_sum_x K_x` by `e_x |-> u_x` in the `x` summand. Without those
+chosen vectors, the bare finite set does not supply the identification. If the
+`K_x` are Hilbert lines, unit choices `u_x` make this identification compatible
+with the identity Gram convention, but the Hilbert inner products and the unit
+or orthonormal choices are still extra data and are not inherited from the
+bare set or from convention `(aq)`.
+
+## (at) Finite AND/OR Carrier Grammar
+
+For QSA Step 06 and report shard
+`AQM-70-QSA-AND-OR-MANY-PARTICLE-GRAMMAR`, a finite grammar expression is
+built from finite-dimensional complex carriers already supplied by conventions
+`(ar)` and `(as)`, the tensor unit `C`, the zero carrier `0`, and the two
+operations:
+
+```text
+AND(E,F)  = E tensor_C F       independent coexistence,
+OR(E,F)   = E direct_sum F     alternatives.
+```
+
+Only finite parse trees are in scope. The grammar therefore produces a
+finite-dimensional complex carrier by ordinary finite tensor products and
+ordinary finite direct sums. No Hilbert-space completion, C*-completion,
+infinite direct sum over particle number, or infinite tensor product is part
+of this convention.
+
+When the atoms are declared to be one-particle carriers and `C` is declared to
+be the zero-particle vacuum carrier, the same finite expression carries a
+particle-count grading. For an atom `K`, put `K` in degree `1`; for `C`, put
+`C` in degree `0`; for `0`, put no sectors. The operations are:
+
+```text
+OR:   (E OR F)_n  = E_n direct_sum F_n,
+AND:  (E AND F)_n = direct_sum_{i+j=n} E_i tensor_C F_j.
+```
+
+This grading is grammar bookkeeping. It is not a bosonic, fermionic, para,
+Fock, or fusion-category construction. Symmetric or antisymmetric quotients,
+permutation-sector rules, CAR/CCR fields, para-statistics data, Fock
+completions, fusion rules, associators, braidings, and pivotal or spherical
+data are separate enhancements and must be introduced by later conventions
+before being used.
+
+## (au) QSA Table Status Tokens
+
+For QSA Steps 21--22 and later report comparison tables, status tokens are
+lowercase report-planning labels, not generated CSV sentinel values. They do
+not change `data/SCHEMA.md`, `#`-prefixed CSV sentinel comment rows, or any
+schema-local finite-ring status vocabulary.
+
+Use `available` when the row has a named local workflow/output anchor;
+`agreement` when two workflows are locally compared by a recorded map or
+invariant; `inequivalence` when a local obstruction records that the selected
+workflows do not agree; `degenerate` when a concrete row collapses, forgets
+structure, or reduces to an earlier case; `zero` when the mathematical output
+is the zero carrier/object; `empty` when the input set, support, or indexing
+family is empty; `blocked` when required evidence, conventions, or tooling are
+missing; `unknown` when the row has not yet been determined; and
+`not_applicable` when the workflow is outside the row's stated semantics.
+
+The tokens `agreement` and `inequivalence` require the evidence contract of
+convention `(ap)`: a specific object, specified workflows and choices, and a
+local source, derivation, test, run artifact, map, invariant, or obstruction.
+The token `blocked` is an evidence-state label, not a mathematical result.
+
+## (av) Intrinsic Versus Relative Cotangent Data
+
+For QSA Step 13 and report shard
+`AQM-77-QSA-INTRINSIC-RELATIVE-COTANGENT`, cotangent comparisons for
+`X=Spec(A)` must keep two objects separate.
+
+At a selected point `x`, with local ring `A_x`, maximal ideal `m_x`, and
+residue field `K=kappa(x)`, the intrinsic/local cotangent object is
+
+```text
+C_x^loc = m_x / m_x^2.
+```
+
+It records the first local neighbourhood of the point in the local ring. It is
+not relative to a base ring.
+
+For a named base ring map `B -> A`, the relative Kahler cotangent object is
+
+```text
+C_x^rel(B) = Omega^1_(A/B) tensor_A K.
+```
+
+It records first-order directions of the morphism `Spec(A) -> Spec(B)`.
+Changing `B` can change this object. When the usual local comparison applies,
+base directions from the maximal ideal of the image point are quotiented out,
+so relative cotangent data can be smaller than `m_x/m_x^2`.
+
+The associated tangent-cotangent phase-label spaces are formed separately:
+
+```text
+V_x^loc = Hom_K(C_x^loc, K),
+E_x^loc = V_x^loc direct_sum C_x^loc,
+
+V_x^rel(B) = Hom_K(C_x^rel(B), K),
+E_x^rel(B) = V_x^rel(B) direct_sum C_x^rel(B).
+```
+
+If `K` is finite and the chosen cotangent dimension is `m`, the finite
+Weyl-Heisenberg carrier dimension is `|K|^m`, as in convention `(ao)`. A shard
+must state which cotangent object it uses before quoting a phase-label
+dimension, Weyl carrier size, or agreement/inequivalence comparison. No
+finite-ring-wide cotangent table, database-backed cotangent row, or helper
+coverage claim follows from this convention.

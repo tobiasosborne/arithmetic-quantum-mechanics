@@ -1,0 +1,121 @@
+% SHARD-ID: AQM-67-QSA-FINITE-SET-FIRST-ASSOCIATION
+% SHARD-TITLE: Structureless Finite-Set First Association
+% SHARD-SUMMARY: Defines the first structureless finite-set association as a formal complex carrier with basis labels indexed by the set.
+% SHARD-SUMMARY: Works the empty, one-point, and n-point cases by local derivation from the recorded convention.
+% SHARD-SUMMARY: Records that any inner product or Gram matrix is extra data, not determined by the bare finite set.
+% SHARD-KEYWORDS: quantum-system association, finite set, formal carrier, C^X, Gram matrix, Hilbert caveat
+
+\section{Structureless Finite-Set First Association}
+\label{sec:qsa-finite-set-first-association}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 03 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a local derivation
+from \texttt{CONVENTIONS.md} conventions \texttt{(ap)} and \texttt{(aq)},
+together with the planning contract in AQM-64, the vocabulary rule in AQM-65,
+and the finite-set rows in AQM-66.  It uses no external source and introduces
+no theorem about canonical Hilbert-space inner products.
+
+The result is deliberately narrow.  The input is a bare finite set \(X\), with
+no order, topology, measure, field-valued function space, site Hilbert spaces,
+symplectic label space, or dynamics.  The output is only a formal complex
+carrier with basis labels indexed by \(X\).
+
+\subsection{First Carrier}
+
+Under convention \texttt{(aq)}, the first structureless finite-set association
+is
+\[
+  X \longmapsto \mathbb C\langle X\rangle
+  :=
+  \bigoplus_{x\in X} \mathbb C e_x .
+\]
+The Step 03 shorthand \(\mathbb C^X\) means this same formal carrier in this
+finite-set context.  The symbols \(e_x\) are basis labels, not vectors with a
+preassigned length, norm, phase convention, or orthogonality relation.
+
+An element is displayed as
+\[
+  v=\sum_{x\in X} a_x e_x,\qquad a_x\in\mathbb C.
+\]
+This is the whole association at this stage:
+\[
+  \mathsf{FSet}_1(X)
+  =
+  \bigl(\mathbb C\langle X\rangle,\{e_x\}_{x\in X}\bigr).
+\]
+It does not return an adjoint, a \(*\)-observable algebra, a Hamiltonian, a
+tensor-product site system, a direct-sum particle interpretation, or
+Weyl--Heisenberg data.
+
+\subsection{Checked Edge Cases}
+
+The checks in this subsection are just the finite bookkeeping consequences of
+the displayed definition and convention \texttt{(aq)}.
+
+\paragraph{Empty set.}
+For \(X=\emptyset\),
+\[
+  \mathbb C\langle\emptyset\rangle
+  =
+  \bigoplus_{x\in\emptyset}\mathbb C e_x
+  =
+  0.
+\]
+There are no basis labels and no Gram entries.  Treating this zero carrier as
+a Hilbert-space edge case, or comparing it with an empty tensor product, is not
+part of this shard.
+
+\paragraph{One-point set.}
+For \(X=\{\ast\}\),
+\[
+  \mathbb C\langle\{\ast\}\rangle=\mathbb C e_\ast,
+  \qquad
+  v=a e_\ast .
+\]
+The association records one formal basis label.  A one-by-one Gram entry such
+as \(G_{\ast\ast}\) would be an added choice; it is not supplied by the bare
+point.
+
+\paragraph{\(n\)-point set.}
+For a displayed finite set \(X=\{x_1,\ldots,x_n\}\),
+\[
+  \mathbb C\langle X\rangle
+  =
+  \mathbb C e_{x_1}\oplus\cdots\oplus \mathbb C e_{x_n}.
+\]
+The listing \(x_1,\ldots,x_n\) is only a display choice.  It lets us write
+coordinates \((a_1,\ldots,a_n)\) for
+\(\sum_{i=1}^n a_i e_{x_i}\), but the ordered coordinate display is not extra
+structure returned by the bare-set association.
+
+\subsection{Gram-Matrix Caveat}
+
+An inner product is not determined in this workflow.  If a later construction
+supplies a Gram array \(G=(G_{xy})_{x,y\in X}\), then one may write
+\[
+  \langle e_x,e_y\rangle_G=G_{xy}
+\]
+as notation for that added data.  This shard does not derive \(G\) from \(X\),
+does not select the identity matrix, and does not classify which arrays are
+acceptable inner products.  The data for a metric version would be
+\((X,G)\), not the bare set \(X\).
+
+Consequently, this is a structureless finite-set workflow, not a canonical
+Hilbert-space inner-product theorem.  Words such as orthonormal, unitary,
+adjoint, and Hilbert completion remain unavailable here unless a later shard
+records the missing Gram or Hilbert convention.
+
+\subsection{Comparison Boundary}
+
+AQM-66 lists the finite-set carrier, tensor-site, direct-sum, and all-map
+field-label workflows as separate comparison targets.  This shard makes only
+the first carrier workflow available.  It proves no agreement, reduction, or
+equivalence with the tensor-site systems planned for AQM-68, the direct-sum
+particle systems planned for AQM-69, or the finite symplectic field-label
+review planned for AQM-71.
+
+In particular, special comparisons using one-dimensional internal spaces in a
+future tensor or direct-sum workflow remain planned checks.  They are not
+proved here, even in the one-point or \(n\)-point cases.

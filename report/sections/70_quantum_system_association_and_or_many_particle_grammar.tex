@@ -1,0 +1,200 @@
+% SHARD-ID: AQM-70-QSA-AND-OR-MANY-PARTICLE-GRAMMAR
+% SHARD-TITLE: AND/OR Many-Particle Grammar
+% SHARD-SUMMARY: Defines a finite carrier grammar whose AND operation is tensor/coexistence and whose OR operation is direct-sum/alternative.
+% SHARD-SUMMARY: Identifies finite particle-count sectors by a recursive grading on finite tensor/direct-sum expressions.
+% SHARD-SUMMARY: Separates this elementary grammar from symmetric, antisymmetric, para, Fock, and fusion-category enhancements.
+% SHARD-KEYWORDS: quantum-system association, finite grammar, tensor product, direct sum, particle sectors, Fock caveat
+
+\section{AND/OR Many-Particle Grammar}
+\label{sec:qsa-and-or-many-particle-grammar}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 06 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a local
+finite-dimensional construction using \texttt{CONVENTIONS.md} conventions
+\texttt{(ap)}, \texttt{(ar)}, \texttt{(as)}, and \texttt{(at)}, with
+AQM-64--AQM-66 as the planning and catalogue anchors.  AQM-68 supplies the
+finite tensor/coexistence operation, and AQM-69 supplies the finite
+direct-sum/alternative operation.
+
+The shard uses no external source and proves no canonical bosonic, fermionic,
+para, Fock, or fusion-category theorem.  AQM-23 is used only as the local
+caution that direct sums and tensor products live in different layers unless a
+workflow explicitly relates them.  AQM-19 is used only as a boundary marker
+for later symmetric and antisymmetric field enhancements; no canonical-field
+equivalence from that shard is imported here.
+
+\subsection{Finite Grammar}
+
+The input is a finite list of already chosen finite-dimensional complex
+carriers.  These may be the site Hilbert spaces \(\mathcal H_x\) from AQM-68
+or the internal carriers \(K_x\) from AQM-69.  The bare finite set still
+supplies only labels; the carriers are extra data.
+
+A grammar expression is built by the rules
+\[
+  E ::= 0 \mid \mathbf 1 \mid K \mid
+        \operatorname{AND}(E,F) \mid \operatorname{OR}(E,F),
+\]
+where \(K\) ranges over the chosen carrier atoms, \(0\) is the zero carrier,
+and \(\mathbf 1\) is the tensor unit \(\mathbb C\).  Its carrier
+\(\mathcal V(E)\) is defined recursively by
+\[
+\begin{aligned}
+  \mathcal V(0)&=0,\\
+  \mathcal V(\mathbf 1)&=\mathbb C,\\
+  \mathcal V(K)&=K,\\
+  \mathcal V(\operatorname{AND}(E,F))
+    &=\mathcal V(E)\otimes_{\mathbb C}\mathcal V(F),\\
+  \mathcal V(\operatorname{OR}(E,F))
+    &=\mathcal V(E)\oplus\mathcal V(F).
+\end{aligned}
+\]
+
+Thus \(\operatorname{AND}\) means independent coexistence in the finite tensor
+product sense of AQM-68, while \(\operatorname{OR}\) means alternatives in the
+finite direct-sum sense of AQM-69.  Parentheses are part of the written
+grammar.  Associativity and distributivity may be used as finite vector-space
+isomorphisms after the expression is fixed, but they are not new structure
+coming from the bare set.
+
+If the atoms are Hilbert spaces, the same recursion uses the finite Hilbert
+tensor product and finite Hilbert direct sum.  If the atoms are only complex
+carriers, the output is only a complex vector space.  No observable algebra is
+selected by this grammar alone; \(\operatorname{End}(\mathcal V(E))\), a
+block-preserving direct-sum algebra, and a tensor-site local algebra would be
+different later choices.
+
+\subsection{Particle-Count Sectors}
+
+When every carrier atom is declared to be one particle and \(\mathbf 1\) is
+declared to be the zero-particle carrier, the finite grammar has a recursive
+particle-count grading.  Write \(\mathcal V_n(E)\) for the degree-\(n\)
+sector.  The definitions are
+\[
+\begin{array}{rclcrcl}
+  \mathcal V_0(\mathbf 1)&=&\mathbb C, &&
+  \mathcal V_n(\mathbf 1)&=&0 \quad(n\neq0),\\
+  \mathcal V_1(K)&=&K, &&
+  \mathcal V_n(K)&=&0 \quad(n\neq1),\\
+  \mathcal V_n(0)&=&0 &&
+  \text{for all }n.
+\end{array}
+\]
+The operations are
+\[
+  \mathcal V_n(\operatorname{OR}(E,F))
+  =
+  \mathcal V_n(E)\oplus\mathcal V_n(F)
+\]
+and
+\[
+  \mathcal V_n(\operatorname{AND}(E,F))
+  =
+  \bigoplus_{i+j=n}\mathcal V_i(E)\otimes_{\mathbb C}\mathcal V_j(F).
+\]
+Because the parse tree is finite, only finitely many sectors are nonzero, and
+\[
+  \mathcal V(E)=\bigoplus_{n\geq0}\mathcal V_n(E)
+\]
+is a finite direct sum.  The integer \(n\) is a grammar count of declared
+one-particle atoms.  It is not a Hamiltonian, a dynamics, a statistics rule,
+or an infinite-particle completion.
+
+\subsection{Basic Finite Sectors}
+
+The AQM-69 one-particle alternatives carrier is recovered by the expression
+\[
+  P_X=\operatorname{OR}_{x\in X} K_x,
+  \qquad
+  \mathcal V(P_X)=\bigoplus_{x\in X}K_x .
+\]
+If all \(K_x\) are declared one-particle atoms, then
+\(\mathcal V_1(P_X)=\mathcal V(P_X)\) and all other sectors vanish.
+
+A finite site-option expression is
+\[
+  G_X=\operatorname{AND}_{x\in X}(\mathbf 1\operatorname{OR}K_x).
+\]
+After choosing a display order for the finite tensor product, finite
+distributivity gives
+\[
+  \mathcal V_n(G_X)
+  \cong
+  \bigoplus_{\substack{S\subset X\\ |S|=n}}
+  \bigotimes_{x\in S}K_x .
+\]
+This expression allows each displayed site factor to choose either the
+zero-particle alternative \(\mathbf 1\) or the one-particle alternative
+\(K_x\).  That site-option rule is part of the expression, not a consequence
+of the bare finite set.
+
+By contrast, if
+\[
+  P_X^{\operatorname{AND} m}
+  =
+  \underbrace{P_X\operatorname{AND}\cdots\operatorname{AND}P_X}_{m
+  \text{ factors}},
+\]
+then
+\[
+  \mathcal V(P_X^{\operatorname{AND} m})
+  \cong
+  \bigoplus_{(x_1,\ldots,x_m)\in X^m}
+  K_{x_1}\otimes\cdots\otimes K_{x_m},
+\]
+and the whole carrier lies in degree \(m\).  The \(m\) tensor factors are
+grammar slots.  They are not symmetrized, antisymmetrized, or quotiented, and
+the expression does not forbid two slots from choosing the same site.
+
+A finite truncated many-sector expression can be written as
+\[
+  T_{\leq M}(X)=
+  \mathbf 1
+  \operatorname{OR} P_X
+  \operatorname{OR} P_X^{\operatorname{AND}2}
+  \operatorname{OR}\cdots
+  \operatorname{OR} P_X^{\operatorname{AND}M}.
+\]
+It has sectors \(0,\ldots,M\) by construction.  This is still a finite
+direct-sum/tensor expression, not an infinite Fock completion.
+
+\subsection{Boundary With Enhancements}
+
+The grammar above is elementary vector-space bookkeeping.  It does not choose
+statistics.
+
+For symmetric or antisymmetric sectors, one would need extra data and a new
+rule: an action of the permutation group on tensor slots, plus a choice of
+invariants, coinvariants, projectors, or quotients and compatible Hilbert
+structure.  None of that is supplied by \(\operatorname{AND}\) and
+\(\operatorname{OR}\) alone.  AQM-19 belongs to that later canonical-field
+boundary; this shard does not claim that \(T_{\leq M}(X)\) is a bosonic or
+fermionic Fock construction.
+
+Para-statistics would likewise require a separately recorded permutation-sector
+or algebraic selection rule.  Fusion-category and Levin-Wen/string-net
+variants require their own objects, tensor product, direct-sum or fusion
+rules, associativity data, and any pivotal, spherical, or braiding conventions
+needed by the model.  Those choices are not hidden in this finite carrier
+grammar and are deferred to later QSA shards.
+
+Infinite-particle constructions are also out of scope.  The expression
+\(\bigoplus_{m\geq0}P_X^{\operatorname{AND}m}\), any Hilbert direct-sum
+completion of it, and any infinite tensor product require a separate
+completion convention.  Step 06 only records finite expressions and their
+finite particle-count sectors.
+
+\subsection{Conclusion}
+
+QSA Step 06 adds a syntax for combining the AQM-68 tensor-site operation and
+the AQM-69 direct-sum particle operation:
+\[
+  \operatorname{AND}=\otimes_{\mathbb C},
+  \qquad
+  \operatorname{OR}=\oplus.
+\]
+With one-particle atoms and the vacuum unit \(\mathbf 1=\mathbb C\), this
+syntax identifies finite particle-count sectors by recursion.  It remains
+separate from statistics, Fock completions, and fusion-category enhancements.

@@ -1,0 +1,172 @@
+% SHARD-ID: AQM-75-QSA-WHAT-COUNTS-AS-A-POINT
+% SHARD-TITLE: What Counts As A Point
+% SHARD-SUMMARY: Compares underlying-set, rational-point, closed-point, generic-point, and all-scheme-point indexing choices in the QSA catalogue.
+% SHARD-SUMMARY: Reviews the existing closed-point finite Weyl-site conventions for finite spectra, finite-type affine schemes over finite fields, and \(\Spec\mathbb Z\).
+% SHARD-SUMMARY: Identifies which point choices give finite kinematical systems and records generic-point and analytic-completion gaps.
+% SHARD-KEYWORDS: quantum-system association, points, underlying set, rational points, closed points, generic point, finite Weyl sites
+
+\section{What Counts As A Point}
+\label{sec:qsa-what-counts-as-a-point}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 11 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a review/new
+synthesis shard: it adds no source, no run artifact, and no new
+representation convention.  Its role is to make the point-selection choice
+explicit before later geometric association shards use points as quantum
+sites.
+
+The governing comparison language is \texttt{CONVENTIONS.md} convention
+\texttt{(ap)} and AQM-65.  The point conventions reviewed here are
+\texttt{CONVENTIONS.md} \texttt{(t)} for the prime-field underlying-set versus
+\(\Spec\mathbb F_p\) distinction, \texttt{(u)} for finite affine spectra with
+residue qudits, \texttt{(y)} for closed points of affine finite-type
+\(\mathbb F_q\)-schemes, and \texttt{(ai)} for \(\Spec\mathbb Z\).  The local
+report anchors are AQM-22, AQM-23, AQM-28, AQM-29, AQM-30, and AQM-45, with
+AQM-66 and AQM-71 used only for QSA catalogue language.
+
+\subsection{Point-Selection Choices}
+
+The table records choices already visible in the report.  A row is a point
+convention only for the object class named in that row; it is not a universal
+rule for every object called \(X\).
+
+\begin{center}
+\small
+\begin{tabular}{p{0.17\linewidth}p{0.23\linewidth}p{0.24\linewidth}p{0.24\linewidth}}
+\toprule
+Choice & Object class where used & Local quantum role & Finite-system status \\
+\midrule
+Underlying set of elements &
+Bare finite sets and selected finite algebraic sets; in AQM-22, the field
+\(\mathbb F_p\) viewed as a \(p\)-element set. &
+Indexes all-map field labels such as
+\(\operatorname{Map}(\mathbb F_p,\mathbb F_p^2)\), or the structureless
+finite-set carriers of AQM-67--AQM-71 after extra data are supplied. &
+Finite when the underlying set and target/carrier choices are finite.  In
+AQM-22 this gives \(p\) qudits for the \(p\)-element set, not the one-point
+spectrum. \\
+\addlinespace
+Rational points \(X(k)\) &
+Schemes or varieties over a fixed field \(k\), especially finite-field
+examples when a finite rational support is intentionally selected. &
+Gives finite truncations such as the \(q^2\)-site rational-support subtheory
+inside AQM-30.  It can also feed the finite-set field-label workflow after a
+target \(V\), subspace \(E\), and pairing are chosen. &
+Finite for the finite rational supports used in the report.  For an affine
+finite-type presentation \(R=k[x_1,\ldots,x_n]/I\) with
+\(k=\mathbb F_q\), the local finite-tuple derivation places \(X(k)\) inside
+the finite set \(k^n\).  It is still only a truncation when non-rational
+closed points also exist, as in AQM-30. \\
+\addlinespace
+Closed points &
+Finite spectra with finite residue fields in AQM-23 and convention
+\texttt{(u)}; affine finite-type \(\mathbb F_q\)-schemes in AQM-28--AQM-30
+and convention \texttt{(y)}; closed prime points of \(\Spec\mathbb Z\) in
+AQM-45 and convention \texttt{(ai)}. &
+Each selected closed point \(x\) contributes the finite residue field
+\(\kappa(x)\), the label space \(\kappa(x)^2\), and the finite local carrier
+\(\ell^2(\kappa(x))\).  Finite closed supports quantize by tensor products of
+the local matrix algebras. &
+Finite for a finite closed support, and finite globally when the selected
+closed-point set is finite, as in \(\Spec(\mathbb Z/6\mathbb Z)\).  Infinite
+closed-point sets give algebraic quasi-local filtered colimits, not one
+finite Hilbert space. \\
+\addlinespace
+Generic points &
+Generic points in the infinite boundary examples: \((0)\in\Spec\mathbb
+F_q[t]\), \((0)\in\Spec\mathbb F_q[x,y]\), and
+\(\eta=(0)\in\Spec\mathbb Z\).  AQM-30 also records curve-generic points. &
+They control topology, closures, divisor geometry, and open-set behaviour.
+AQM-45 records an optional separate \(\mathbb Q\)-Weyl sector for
+\(\Spec\mathbb Z\), but not as a finite qudit site. &
+Not finite Weyl sites under the current closed-point conventions.  Generic
+and curve-generic residue fields in AQM-29, AQM-30, and AQM-45 are infinite
+or rational-function fields; analytic completions and adelic replacements are
+gaps. \\
+\addlinespace
+All scheme points &
+The full topological space \(|X|\) of an affine scheme, used for Zariski
+opens and for stating the geometry in AQM-28--AQM-30 and AQM-45. &
+Provides the ambient topology and inclusion order.  It is not automatically
+the quantum-site set unless every selected point also has a recorded finite
+or otherwise represented residue-sector convention. &
+Finite only in special finite-spectrum cases already covered by the closed
+point row.  For \(\Spec\mathbb F_q[t]\), \(\Spec\mathbb F_q[x,y]\), and
+\(\Spec\mathbb Z\), all scheme points include non-closed generic-type points,
+so this row is not a finite kinematical system by default. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Closed-Point Finite Weyl Review}
+
+The finite Weyl-site convention already has three local forms.
+
+First, AQM-23 and convention \texttt{(u)} treat a finite affine spectrum with
+finite residue fields by assigning one local finite-field phase space to each
+prime point.  For \(\Spec(\mathbb Z/6\mathbb Z)\), the two points have
+residue fields \(\mathbb F_2\) and \(\mathbb F_3\).  The label group is the
+orthogonal direct sum \(\mathbb F_2^2\oplus\mathbb F_3^2\), while the Hilbert
+carrier is the tensor product \(\ell^2(\mathbb F_2)\otimes
+\ell^2(\mathbb F_3)\).  AQM-23 proves that the observable algebra is the full
+matrix algebra \(M_6(\mathbb C)\), not a Hilbert direct-sum algebra.
+
+Second, AQM-28 and convention \texttt{(y)} extend this to affine schemes
+\(X=\Spec R\) of finite type over \(\mathbb F_q\).  The finite Weyl sites are
+the closed points \(x\in |X|_{\rm cl}\).  The local residue field
+\(\kappa(x)\) is finite by the Nullstellensatz locator cited in AQM-28, so
+\[
+  E_x=\kappa(x)^2,\qquad
+  H_x=\ell^2(\kappa(x)),\qquad
+  A_x=\operatorname{End}_{\mathbb C}(H_x)
+\]
+are finite.  For an open \(U\), the label group is the finite-support direct
+sum over \(U\cap |X|_{\rm cl}\), and the observable algebra is the filtered
+colimit over finite closed supports.
+
+Third, AQM-45 and convention \texttt{(ai)} use the same finite-residue rule
+for the closed prime points \(x_\ell=(\ell)\) of \(\Spec\mathbb Z\), with
+\(\kappa(x_\ell)=\mathbb F_\ell\).  The global closed-prime algebra is the
+algebraic infinite tensor product over finite prime supports.  A Hilbert-space
+realization needs an added representation choice, such as the
+reference-vector incomplete tensor representation recorded in AQM-45.
+
+\subsection{Finite Kinematical Boundary}
+
+The point-selection rule gives a finite kinematical system only after both
+the indexing family and the per-point quantum data are finite.
+
+\begin{itemize}
+\item A finite underlying set with finite carriers or finite symplectic target
+data gives finite carriers after the extra data are named.  AQM-22 is the
+prime-field example where \(\mathbb F_p\) as a set gives \(p\) qudit sites.
+\item A finite rational-point support gives a finite truncation.  AQM-30 uses
+the \(k\)-rational points of the affine plane as a finite \(q^2\)-site
+subtheory, not as the full closed-point theory.
+\item A finite closed support gives a finite tensor product of residue-field
+qudits.  If the whole selected closed-point set is finite, as in AQM-23, the
+global system is finite.
+\item Infinite closed-point sets, as in AQM-29, AQM-30, and AQM-45, give
+algebraic quasi-local systems through filtered finite supports.  They are
+not single finite Hilbert spaces.
+\item Generic points, curve-generic points, and other infinite-residue
+points do not become finite Weyl sites without a separate representation
+convention.
+\end{itemize}
+
+\subsection{Gaps Carried Forward}
+
+This shard does not choose a generic-point representation convention.  The
+generic residue fields \(k(t)\), \(k(x,y)\), curve-function fields, and
+\(\mathbb Q\) are outside the finite closed-point Weyl rule.  AQM-45 records
+one optional algebraic \(\mathbb Q\)-sector for \(\Spec\mathbb Z\), but that
+does not settle local-field, adelic, \(C^*\)-completion, or analytic
+Stone--von Neumann hypotheses for the other infinite-residue cases.
+
+All later QSA shards that say "point" must therefore name the row above:
+underlying element, rational point, closed point, generic point, or all scheme
+point.  If the row is not the closed finite-residue row, the shard must also
+state the extra carrier, residue, completion, support, or truncation choice
+before making any finite Weyl or Hilbert-space claim.

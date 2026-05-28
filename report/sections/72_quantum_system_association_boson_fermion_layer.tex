@@ -1,0 +1,236 @@
+% SHARD-ID: AQM-72-QSA-BOSON-FERMION-LAYER
+% SHARD-TITLE: Bosonic and Fermionic Association Layer
+% SHARD-SUMMARY: Reviews the finite bosonic association via real symplectic map spaces and CCR/Weyl representations.
+% SHARD-SUMMARY: Reviews the finite fermionic CAR layer and the Grassmann-Weyl displacement calculus with active local source locators.
+% SHARD-SUMMARY: Records parafermion, fusion-category, and finite AND/OR comparison variants as gaps rather than results.
+% SHARD-KEYWORDS: quantum-system association, bosons, fermions, CCR, CAR, Grassmann-Weyl, parafermion gap, fusion-category gap
+
+\section{Bosonic and Fermionic Association Layer}
+\label{sec:qsa-boson-fermion-layer}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 08 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a review shard.  It
+adds no new examples, no new source claims, no new run artifacts, and no
+comparison theorem with the finite AND/OR grammar of AQM-70.
+
+The vocabulary and evidence discipline are those of
+\texttt{CONVENTIONS.md} convention \texttt{(ap)} and AQM-65.  The canonical
+boson/fermion comparison convention is \texttt{CONVENTIONS.md} convention
+\texttt{(s)}.  The main report anchors are
+AQM-19 for finite CCR/CAR field-label tests, AQM-20 for the abstract
+Grassmann displacement ray algebra and Cahill--Glauber representation, and
+AQM-21 for the unitarity, displacement, ray-product, and ordinary
+Hilbert-space boundary derivations.
+
+The active source manifest is
+\path{references/canonical_fields/SOURCES.md}.  For the bosonic CCR layer it
+registers Derezinski's
+\path{references/canonical_fields/derezinski_math_ph_0511030_source/derezinski.tex}
+at lines 1078--1135 for Weyl-form CCR, 1197--1284 for the Schrodinger
+representation and finite-dimensional Stone--von Neumann statement, and
+2251--2301 for bosonic Fock CCR fields; it also registers Bekka's
+\path{references/canonical_fields/bekka_2502_00387_source/CCR-GeneralRings-v5.tex}
+at lines 220--231, 253--273, 287--350, and 603--633 for the finite real or
+local-field CCR uniqueness layer.  For the fermionic CAR layer it registers
+Derezinski's
+\path{references/canonical_fields/derezinski_math_ph_0511030_source/derezinski.tex}
+at lines 1437--1524 for CAR definitions,
+1612--1696 for finite-dimensional CAR uniqueness, 1803--1964 and
+2098--2131 for Fock and creation/annihilation operators, and 2629--2662 for
+fermionic Fock CAR fields.
+
+For the Grassmann displacement layer, the active Cahill--Glauber source is the
+official arXiv e-print extraction
+\path{references/canonical_fields/cahill_glauber_physics_9808029v1_source/fxxx.tex}.
+The active locators are lines 323--335 for CAR and vacuum, 337--365 for
+Grassmann variables and adjunction, 603--643 for nilpotency and parity of
+Grassmann functions, 367--390 for \(D(\gamma)\), 391--414 for displacement
+identities, 416--464 for the ray-product formula, 815--833 for completeness,
+and 835--854 for the caveat that physical quantum operators do not themselves
+involve Grassmann variables.  The historical APS/marker chain recorded in the
+manifest is source-integrity provenance only and is not used as active
+evidence here.
+
+The same canonical-field manifest registers Keyl--Schlingemann's
+\path{references/canonical_fields/keyl_schlingemann_0906_2929_source/fidelity_arXiv.tex}
+at lines 253--260, 270--355, 441--492, and 496--531 for GAR as a twisted
+Grassmann/CAR framework and for the caveat that the Grassmann phase-space
+right hand side is not an ordinary complex scalar.  The supergeometry manifest
+\path{references/supergeometry/SOURCES.md} registers Witten's
+\path{references/supergeometry/witten_1209_2199_source/supernotes.tex} at
+lines 652--660 for odd variables quantized by Clifford anticommutation
+relations and lines 671--704 for the \(\Pi TM\) parity-reversal and
+Clifford-action dictionary.  This shard uses those supergeometry locators only
+as background anchors for the parity/Clifford boundary; it does not import a
+new finite-field supergeometry example.
+
+\subsection{Catalogue Slots}
+
+In QSA language, the locally available boson/fermion layers are the following
+review entries.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.22\linewidth}p{0.31\linewidth}p{0.28\linewidth}p{0.13\linewidth}}
+\toprule
+Layer & Added input data & Kinematical output & Status \\
+\midrule
+Finite bosonic CCR field &
+Finite site set \(X\), real symplectic target
+\(V_B=\mathbb R_q\oplus\mathbb R_p\), and
+\(E_B=\operatorname{Map}(X,V_B)\) with the summed pointwise form. &
+Regular irreducible Weyl/CCR representation, Schrodinger model
+\(L^2(\mathbb R^{|X|})\), and equivalent finite-mode bosonic Fock model. &
+reviewed from AQM-19 T1 \\
+\addlinespace
+Finite fermionic CAR field &
+Finite site set \(X\), finite-dimensional complex internal Hilbert space
+\(K\), \(Z=\operatorname{Map}(X,K)\), and
+\(Y_F=\operatorname{Re}(Z\oplus\overline Z)\) with positive scalar product. &
+CAR/Clifford field operators on the antisymmetric Fock space
+\(\Gamma_{\mathrm a}(Z)\). &
+reviewed from AQM-19 T2 \\
+\addlinespace
+Grassmann-Weyl displacement calculus &
+Finite CAR mode set \(I\), Grassmann coefficient algebra, and the graded
+Grassmann-extended CAR algebra. &
+Unitary elements \(D(\gamma)\) in the extended algebra with
+Grassmann-valued ray product and CAR displacement identities. &
+reviewed from AQM-20/21 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The entries are not bare finite-set associations.  Each begins only after the
+displayed extra data have been supplied.
+
+\subsection{Finite Bosonic Association}
+
+AQM-19 D1--D4 and convention \texttt{(s)} place a finite bosonic field in the
+same broad field-label slot as AQM-14, but with real symplectic labels rather
+than finite-field labels.  The label space is
+\[
+  E_B=\operatorname{Map}(X,\mathbb R_q\oplus\mathbb R_p),
+\]
+and the form is the finite sum
+\[
+  \Omega_B((q,p),(q',p'))
+  =
+  \sum_{x\in X}(p_x q'_x-p'_x q_x).
+\]
+AQM-19 L1 checks that this is a finite-dimensional real symplectic space.
+AQM-19 L2 then invokes the locally registered Stone--von Neumann sources to
+identify an irreducible regular Weyl-form representation with the Schrodinger
+representation on \(L^2(\mathbb R^{|X|})\), and AQM-19 T1 records the finite
+bosonic field comparison.  This is a sourced finite kinematical CCR
+association, not a dynamics statement.
+
+\subsection{Finite Fermionic CAR Association}
+
+AQM-19 D5--D7 use different input data for standard finite fermions.  After
+choosing a finite-dimensional complex internal one-particle Hilbert space
+\(K\), set
+\[
+  Z=\operatorname{Map}(X,K),
+  \qquad
+  Y_F=\operatorname{Re}(Z\oplus\overline Z).
+\]
+The scalar product is
+\[
+  \alpha((z,\bar z),(w,\bar w))=\operatorname{Re}\langle z,w\rangle_Z.
+\]
+On the antisymmetric Fock space
+\[
+  \Gamma_{\mathrm a}(Z)=\bigoplus_k \wedge^k Z,
+\]
+AQM-19 defines \(\phi(z,\bar z)=a^*(z)+a(z)\), proves the exterior-algebra
+CAR in L3, and proves
+\[
+  \{\phi(y),\phi(y')\}=2\alpha(y,y')I
+\]
+in L4.  AQM-19 T2 therefore records the finite standard fermionic canonical
+field as a CAR/Clifford association.  It is not obtained by taking the
+bosonic real symplectic map-space recipe and replacing the target by
+Grassmann variables.
+
+\subsection{Grassmann-Weyl Displacement Review}
+
+The Grassmann layer is available only inside a Grassmann-extended CAR algebra.
+AQM-20 defines a finite CAR algebra generated by \(a_i,a_i^\dagger\), a
+Grassmann coefficient algebra generated by \(\gamma_i,\gamma_i^*\), and the
+graded product algebra in which the Grassmann generators anticommute with the
+odd CAR generators.  It then defines
+\[
+  K(\gamma)=\sum_i(a_i^\dagger\gamma_i-\gamma_i^*a_i),
+  \qquad
+  D(\gamma)=e^{K(\gamma)}.
+\]
+AQM-21 proves \(K(\gamma)^\dagger=-K(\gamma)\), so \(D(\gamma)\) is unitary
+in the extended algebra; proves that conjugation displaces the CAR generators
+by \(a_i\mapsto a_i+\gamma_i\) and
+\(a_i^\dagger\mapsto a_i^\dagger+\gamma_i^*\); and proves the ray product
+\[
+  D(\alpha)D(\beta)
+  =
+  D(\alpha+\beta)
+  \exp\!\left(
+    \frac12\sum_i(\beta_i^*\alpha_i-\alpha_i^*\beta_i)
+  \right).
+\]
+AQM-21 T2 is the boundary: the multiplier is an even Grassmann unit, not a
+complex \(U(1)\) phase, so this is not an ordinary scalar-projective unitary
+representation on a complex Hilbert space unless the Grassmann coefficient
+algebra has first been included and tracked.
+
+\subsection{Boundary With QSA Grammar}
+
+AQM-70 supplies a finite AND/OR carrier grammar:
+\(\operatorname{AND}=\otimes_{\mathbb C}\) and
+\(\operatorname{OR}=\oplus\).  That grammar records finite vector-space
+bookkeeping and explicitly defers symmetric, antisymmetric, para, Fock, and
+fusion-category enhancements.  This shard does not identify the bosonic CCR
+or fermionic CAR layers with that grammar.
+
+The finite bosonic entry requires a real symplectic map space plus a regular
+CCR/Weyl representation.  The finite fermionic entry requires a positive
+CAR/Clifford label space and antisymmetric Fock representation.  The
+Grassmann displacement entry requires the extended CAR coefficient algebra and
+has a Grassmann-valued multiplier.  No map, quotient, invariant, or local
+derivation currently compares these outputs with AQM-70 as an agreement or
+equivalence result.
+
+\subsection{Gaps}
+
+The following variants are not results in the current catalogue.
+
+\begin{itemize}
+\item \textbf{Parafermions and para-statistics.}
+No parafermion source locator, convention, mode algebra, permutation-sector
+rule, or checked example is registered for this QSA step.  Convention
+\texttt{(at)} already marks para-statistics as a separate enhancement, so any
+parafermion association is a gap.
+\item \textbf{Fusion-category and Levin-Wen/string-net variants.}
+Convention \texttt{(h)} leaves the Levin-Wen fusion-category gauge,
+pivotal/spherical structure, and \(F/R\)-data unfixed, and the QSA plan
+assigns this to Step 09.  No fusion-category endpoint is asserted here.
+\item \textbf{Finite AND/OR equivalence.}
+AQM-70 and this shard have no recorded comparison map or invariant.  Any
+claim that CCR/CAR/Fock layers agree with, reduce to, or are generated by the
+finite AND/OR grammar remains unsupported.
+\item \textbf{Arithmetic Grassmann target replacement.}
+AQM-19 L5 rejects only the strict scalar-projective target-replacement
+proposal: Grassmann variables do support fermionic phase-space calculus, but
+inside GAR or Grassmann-extended CAR algebra rather than as an ordinary
+finite-field or real symplectic Weyl target.  No new arithmetic Grassmann
+association is introduced here.
+\end{itemize}
+
+\subsection{Conclusion}
+
+QSA Step 08 places the existing canonical-field work into the association
+catalogue as three reviewed layers: real symplectic CCR fields, CAR/Clifford
+fermion fields, and Grassmann-Weyl displacement calculus in the extended CAR
+algebra.  The unsupported variants remain explicit gaps, and no equivalence
+with the elementary finite AND/OR grammar is claimed.

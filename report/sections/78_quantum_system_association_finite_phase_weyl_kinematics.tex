@@ -1,0 +1,229 @@
+% SHARD-ID: AQM-78-QSA-FINITE-PHASE-WEYL-KINEMATICS
+% SHARD-TITLE: Weyl-Heisenberg Kinematics From Finite Phase Spaces
+% SHARD-SUMMARY: Consolidates the common Weyl-Heisenberg representation step used after a finite symplectic label space has been fixed.
+% SHARD-SUMMARY: Separates finite-field, finite Frobenius-ring, sourced generalized-Heisenberg, and unresolved finite-ring cases.
+% SHARD-SUMMARY: Records where uniqueness or projective-representation classification is locally sourced and where only Pauli/error-basis support is available.
+% SHARD-KEYWORDS: quantum-system association, Weyl-Heisenberg, finite phase space, finite field, Frobenius ring, Stone-von Neumann, Clifford gap
+
+\section{Weyl-Heisenberg Kinematics From Finite Phase Spaces}
+\label{sec:qsa-finite-phase-weyl-kinematics}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 14 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a review/new
+synthesis shard: it adds no source manifest, no convention entry, no run
+artifact, and no new all-finite-ring theorem.  Its purpose is to isolate the
+common representation-theoretic step used after earlier association workflows
+have already produced a finite phase-label space.
+
+The governing vocabulary is AQM-65 and \texttt{CONVENTIONS.md} convention
+\texttt{(ap)}.  The finite-field arithmetic anchors are AQM-22, AQM-28,
+AQM-60, AQM-76, and the finite symplectic field-label review AQM-71.  The
+ring-status anchor is AQM-31.  The source manifests are
+\path{references/symplectic_qecc/SOURCES.md} and
+\path{references/heisenberg_weil/SOURCES.md}.  In particular, AQM-31 cites
+Prasad, Beny--Crann--Lee--Park--Youn, Bekka, Lysenko,
+Sidana--Kashyap, Gluesing-Luerssen--Pllaha, Solomon, and the finite
+Clifford/Weil splitting sources at the line locators recorded there.
+
+\subsection{The Project's Local Weyl Step}
+
+The Weyl-Heisenberg step begins only after a finite label object and its
+commutator pairing have already been fixed.  In the finite-field vector-space
+case, the local display form is
+\[
+  E=Q\oplus P,\qquad \omega((q,p),(q',p'))=p(q')-p'(q),
+\]
+where \(Q\) is a finite-dimensional vector space over a finite field \(K\),
+and \(P=Q^*\) or a chosen identified dual.  With
+\[
+  \psi_K(a)=
+  \exp\!\left(\frac{2\pi i}{p}
+    \operatorname{Tr}_{K/\mathbb F_p}(a)\right),
+\]
+the carrier is
+\[
+  \mathcal H=\ell^2(Q).
+\]
+For \(a\in Q\), define translations and phases by
+\[
+  T(q)|a\rangle=|a+q\rangle,\qquad
+  R(p)|a\rangle=\psi_K(p(a))|a\rangle,
+\]
+and set
+\[
+  W(q,p)=T(q)R(p).
+\]
+Then
+\[
+  W(q,p)W(q',p')=\psi_K(p(q'))W(q+q',p+p')
+\]
+and
+\[
+  W(e)W(f)=\psi_K(\omega(e,f))W(f)W(e).
+\]
+This is the local finite-field construction used in AQM-22 for prime-field
+qudit Paulis, AQM-28 for closed finite-residue sites, AQM-60 for
+tangent-cotangent labels, and AQM-76 for the cotangent-first QSA workflow.
+If an earlier workflow produces an abstract finite symplectic vector space
+rather than an already polarized \(Q\oplus Q^*\), a choice of symplectic basis
+or polarization is presentation data for writing this Schrodinger model.
+
+This step is kinematical.  It supplies a projective representation, Weyl
+operators, and the full finite matrix observable algebra on the carrier.
+It does not choose a Hamiltonian, time evolution, de Rham CSS stabilizer,
+state, Lagrangian, or code subspace.  AQM-22 T2, AQM-60, AQM-63, and AQM-76
+all keep stabilizer or de Rham selections as later choices.
+
+\subsection{Case 1: Prime-Field and Finite-Field Vector Spaces}
+
+The prime-field case is fully local in the report.  AQM-22 uses
+\[
+  E_{\rm el}=\operatorname{Map}(\mathbb F_p,\mathbb F_p^2)
+\]
+and proves that the operators \(T_\xi R_\zeta\) generate the ambient
+odd-\(p\) \(p\)-qudit Pauli group on the carrier
+\(\ell^2(\mathbb F_p^{\mathbb F_p})\).  It also records the \(p=2\) phase
+edge: the projective label space and commutator criterion remain the same,
+but the conventional Hermitian Pauli group uses fourth roots of unity.
+
+AQM-28 extends the same finite-field Weyl step to closed points of affine
+finite-type \(\mathbb F_q\)-schemes.  A closed point \(x\) contributes
+\[
+  E_x=\kappa(x)^2,\qquad
+  \mathcal H_x=\ell^2(\kappa(x)),
+\]
+and finite supports use direct sums of labels and tensor products of
+carriers.  AQM-60 and AQM-76 use the same construction after replacing the
+residue label \(K^2\) by the geometric tangent-cotangent label
+\[
+  T_{X/k,x}\oplus T^*_{X/k,x}.
+\]
+For \(m=\dim_{\kappa(x)}T_{X/k,x}\), the finite carrier dimension is
+\(|\kappa(x)|^m\), as recorded in convention \texttt{(ao)} and reviewed in
+AQM-76.
+
+The sourced classification status is narrower than the construction.  The
+finite-field Pauli/error-basis laws are anchored in
+\path{references/symplectic_qecc/SOURCES.md}: Ashikhmin--Knill
+\texttt{n9.tex:249-313}, Gottesman \texttt{Thesis.tex:1627-1681}, and
+Bombin--Martin--Delgado \texttt{HomologicalErrorCorrection6.tex:1206-1259}.
+For odd finite-dimensional Weyl systems, Gross is registered at
+\texttt{poswig.tex:340-453} for Weyl operators and at
+\texttt{poswig.tex:1966-2042} for a discrete Stone-von Neumann/Clifford proof.
+Thus odd finite-field Clifford/Gaussian statements may be used only in that
+sourced range.  The even case keeps the phase caveats already recorded in
+AQM-22, AQM-31, and convention \texttt{(af)}.
+
+\subsection{Case 2: Finite Frobenius-Ring Pauli and Stabilizer Cases}
+
+AQM-31 records the finite Frobenius-ring status from
+Gluesing-Luerssen--Pllaha and Sidana--Kashyap.  For a finite commutative
+Frobenius ring \(R\) with generating character \(\chi\), the sourced Pauli
+operators on \(\ell^2(R^n)\) are
+\[
+  X(a)v_x=v_{x+a},\qquad Z(b)v_x=\chi(b\cdot x)v_x,
+\]
+with
+\[
+  X(a)Z(b)X(a')Z(b')
+  =
+  \chi(b\cdot a')X(a+a')Z(b+b')
+\]
+and commutator controlled by
+\[
+  b\cdot a'-b'\cdot a.
+\]
+The local locators are
+\path{references/heisenberg_weil/gluesing_luerssen_pllaha_1710_09884_source/StabCodesFrob5.tex},
+lines 224--249, 286--323, 353--355, 412--423, and 469--504, and
+\path{references/heisenberg_weil/sidana_kashyap_2202_00248_source/EAQECCs_over_rings_v15.tex},
+lines 103--145 and 180--197.
+
+The project already has one explicit Artin/Frobenius local proof in AQM-36.
+For \(A=\mathbb F_3[t]/(\pi^e)\), it defines the top-coefficient character,
+proves it is generating, constructs \(W_A(q,p)\) on \(\ell^2(A)\), proves the
+projective product and commutator laws, and proves that the Weyl operators
+form an operator basis of \(\operatorname{End}_{\mathbb C}(\ell^2(A))\).
+This supports the nilpotent-sensitive thickened layer in conventions
+\texttt{(ab)} and \texttt{(an)}.
+
+The boundary is important.  These sources support Pauli/error bases,
+character-symplectic commutation, and stabilizer self-orthogonality over the
+stated finite Frobenius-ring scope.  They do not, in the current project,
+provide a complete Clifford/Weil representation classification for every
+finite commutative Frobenius ring, and they do not classify projective
+representations over all finite rings.
+
+\subsection{Case 3: Sourced Finite Generalized Heisenberg Cases}
+
+AQM-31 also records Solomon's generalized finite Heisenberg source.  The
+local support is
+\path{references/heisenberg_weil/solomon_2501_00650_source/TotslipVersion5_Aug_25.tex},
+lines 315--318, 904--981, 1127--1136, 1637--1649, and 1677--1718.  In that
+setting, finite abelian groups \(A,B,C\) and a bilinear pairing
+\[
+  \lambda:A\times B\to C
+\]
+define a Heisenberg group with product
+\[
+  h(a,b,c)h(a',b',c')
+  =
+  h(a+a',b+b',c+c'+\lambda(a,b')).
+\]
+A character \(p:C\to\mathbb C^\times\) gives the Schrodinger representation
+on functions on \(A\):
+\[
+  (h(a,b,c)\cdot f)(x)=p(\lambda(x,b)+c)f(x+a).
+\]
+
+This is a legitimate sourced finite Heisenberg kinematics whenever the
+chosen finite groups, pairing, and character are exactly in that sourced
+scope or are checked locally against it.  It is broader than finite fields in
+shape, but it is not a license to treat every finite ring label module as
+classified.  The QSA catalogue may use it as a finite generalized
+Heisenberg slot only after recording the concrete \(A,B,C,\lambda,p\) data.
+
+\subsection{Case 4: General Finite-Ring Questions and Gaps}
+
+For a general finite commutative ring \(R\), the project does not currently
+claim a complete Weyl-Heisenberg, Stone-von Neumann, Clifford, or Weil
+classification.  The following remain gaps unless a later shard adds local
+sources, conventions, or checked derivations.
+
+\begin{itemize}
+\item If \(R\) is not equipped with a certified generating character, the
+translation/phase recipe \(R^n\oplus R^n\) does not yet have the
+Frobenius-ring self-duality input used in AQM-31 and AQM-36.
+\item If \(R\) is Frobenius, the Pauli/error-basis and stabilizer layer is
+sourced as above, but full Clifford/Weil splitting or classification is
+additional structure.  AQM-31 records finite Clifford splitting subtleties
+from Hashimoto--Horibe--Hayashi, Korbelar--Tolar, and Galindo; it does not
+turn them into a universal finite-ring classification.
+\item Even-order and \(4\)-divisibility phenomena are genuine source-backed
+warnings, not cosmetic phase choices.  AQM-31 records Lysenko's odd-exponent
+scope and Galindo's finite-abelian splitting criterion from
+\path{references/heisenberg_weil/SOURCES.md}.
+\item Finite-ring database rows in convention \texttt{(an)} are
+layer-labelled.  A residue row, a thickened-Frobenius row, and a blocked
+quantisation row are different evidence states; none is a hidden
+all-finite-ring theorem.
+\end{itemize}
+
+\subsection{Conclusion for the QSA Catalogue}
+
+QSA Step 14 supplies a common final kinematical move:
+\[
+  \text{finite phase labels with commutator data}
+  \quad\leadsto\quad
+  \text{Weyl-Heisenberg projective representation and observable algebra}.
+\]
+For finite fields and the prime-field qudit cases, this move is already used
+through AQM-22, AQM-28, AQM-60, AQM-71, and AQM-76.  For finite Frobenius
+rings, it is available at the Pauli/stabilizer and checked Artin-Weyl level
+described by AQM-31 and AQM-36.  For Solomon-style finite generalized
+Heisenberg groups, it is available when the finite groups, pairing, and
+central character are explicitly supplied.  General finite-ring
+classification, full Clifford/Weil classification, and dynamics remain
+questions, not conclusions.

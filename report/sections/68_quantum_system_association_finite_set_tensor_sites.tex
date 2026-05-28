@@ -1,0 +1,158 @@
+% SHARD-ID: AQM-68-QSA-FINITE-SET-TENSOR-SITES
+% SHARD-TITLE: Structureless Finite-Set Tensor-Site Association
+% SHARD-SUMMARY: Defines the finite-set tensor-site workflow after adding one finite-dimensional Hilbert carrier or observable algebra per site.
+% SHARD-SUMMARY: Forms finite tensor products and tensor-by-identity local observable inclusions by local finite-dimensional derivation.
+% SHARD-SUMMARY: Separates this workflow from the formal carrier of AQM-67 and reviews only the anchored uniform-qudit cases.
+% SHARD-KEYWORDS: quantum-system association, finite set, tensor product, local observables, qudit anchors, extra data
+
+\section{Structureless Finite-Set Tensor-Site Association}
+\label{sec:qsa-finite-set-tensor-sites}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 04 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a local
+finite-dimensional construction using \texttt{CONVENTIONS.md} conventions
+\texttt{(ap)} and \texttt{(ar)}, with AQM-64--AQM-66 as the planning and
+catalogue anchors.
+
+The input is not a bare finite set alone.  A bare finite set \(X\) supplies
+site labels only.  The tensor-site workflow starts after one adds per-site
+quantum data.  The earlier AQM-67 workflow instead returned only the formal
+carrier \(\mathbb C\langle X\rangle\) from convention \texttt{(aq)}; it did
+not include inner products, adjoints, observable algebras, or tensor factors.
+
+\subsection{Tensor-Site Input Data}
+
+There are two finite-dimensional input versions.
+
+\begin{description}
+\item[Hilbert-site input.]
+For every \(x\in X\), choose a finite-dimensional complex Hilbert space
+\(\mathcal H_x\).  Then set
+\[
+  \mathcal A_x=\operatorname{End}_{\mathbb C}(\mathcal H_x).
+\]
+
+\item[Algebra-site input.]
+Alternatively, choose directly a finite-dimensional unital \(*\)-algebra
+\(\mathcal A_x\) for every \(x\in X\).  This gives an observable-algebra
+workflow, but it does not choose a Hilbert carrier unless a representation is
+added separately.
+\end{description}
+
+These choices are part of the data.  They are not recovered from the
+structureless set \(X\).  An ordering of a finite subset may be used only to
+write tensor products; the set itself does not supply a preferred order.
+
+\subsection{Finite Tensor Products}
+
+For \(S\subset X\), define in the Hilbert-site version
+\[
+  \mathcal H(S)=\bigotimes_{x\in S}\mathcal H_x,\qquad
+  \mathcal A(S)=\bigotimes_{x\in S}\mathcal A_x
+  \subseteq \operatorname{End}_{\mathbb C}(\mathcal H(S)).
+\]
+The empty tensor products are
+\[
+  \mathcal H(\emptyset)=\mathbb C,\qquad
+  \mathcal A(\emptyset)=\mathbb C.
+\]
+In the algebra-site version, keep the same formula for \(\mathcal A(S)\) as
+the finite algebraic tensor product over \(\mathbb C\).
+
+If \(X=\{x_1,\ldots,x_n\}\) is listed for display and
+\(\dim\mathcal H_{x_i}=d_i\), then
+\[
+  \dim \mathcal H(X)=\prod_{i=1}^n d_i,
+  \qquad
+  \dim \mathcal A(X)=\prod_{i=1}^n d_i^2
+\]
+in the full-matrix Hilbert-site version.  This is the elementary finite tensor
+bookkeeping for the chosen factors, not a claim that \(X\) determines the
+numbers \(d_i\).
+
+\subsection{Local Observable Inclusions}
+
+If \(S\subset T\subset X\), the tensor-site inclusion is
+\[
+  \iota_{S,T}:\mathcal A(S)\longrightarrow \mathcal A(T),\qquad
+  a\longmapsto a\otimes \mathbf 1_{T\setminus S}.
+\]
+It preserves multiplication, the unit, and adjoints because each operation is
+computed factorwise.  For \(S\subset T\subset U\),
+\[
+  \iota_{T,U}\circ\iota_{S,T}=\iota_{S,U}
+\]
+by the associativity of the finite tensor product and by tensoring identities
+on exactly the missing factors.  Thus subsets of \(X\), ordered by inclusion,
+carry a covariant finite local-observable system after the site algebras have
+been chosen.
+
+\subsection{Boundary With AQM-67}
+
+The Step 03 carrier and the Step 04 tensor-site system answer different
+questions.  AQM-67 gives
+\[
+  \mathbb C\langle X\rangle=\bigoplus_{x\in X}\mathbb C e_x
+\]
+with basis labels but no Hilbert or observable structure.  This shard gives
+\[
+  (X,\{\mathcal H_x\}_{x\in X})
+  \longmapsto
+  \bigotimes_{x\in X}\mathcal H_x
+\]
+or its observable-algebra variant.  The first construction has additive
+bookkeeping in the labels; the second has tensor-product bookkeeping for
+independent coexisting sites.
+
+Even the one-dimensional-site edge case is not an identification of
+workflows.  If all \(\mathcal H_x=\mathbb C\), then
+\(\bigotimes_x\mathcal H_x\cong\mathbb C\), while AQM-67 has one formal
+generator per element of \(X\).  Any later comparison with
+\(\mathbb C\langle X\rangle\) must name the extra choices and the comparison
+map.
+
+\subsection{Review Anchors and Caution}
+
+The existing arithmetic shards already contain important tensor-site examples,
+but each has extra structure beyond a bare finite set.
+
+AQM-14 starts from a finite point set together with a chosen finite symplectic
+target \(V\), a chosen field-label subspace
+\(E\leq\operatorname{Map}(X,V)\), and the radical quotient before forming its
+Weyl observable algebra.  This is a field-label workflow, not a theorem that
+every bare finite set has canonical qudit factors.
+
+AQM-22 proves the uniform prime-field case with \(X=\mathbb F_p\) as a
+finite set only after choosing all maps \(E=\operatorname{Map}(X,\mathbb
+F_p^2)\) and the Weyl operators on \(\ell^2(\mathbb F_p^X)\).  The same shard
+separates this from \(X=\Spec\mathbb F_p\), which is the one-site spectrum.
+
+AQM-24 and AQM-25 use finite-spectrum or quasi-compact-open Zariski locality
+after residue fields have supplied local factors
+\(\ell^2(\kappa(x))\) and algebras
+\(\operatorname{End}(\ell^2(\kappa(x)))\).  Their tensor-by-identity
+inclusions are anchors for the local-net formula above, but their sites are
+residue-field sites, not arbitrary sites canonically attached to a bare set.
+
+AQM-40 proves the product-field spectrum case
+\(\Spec(k^n)\): the spectrum has \(n\) discrete residue-field points and the
+resulting residue-qudit arithmetic field is the ambient \(n\)-qudit Weyl
+net.  That is a uniform finite-qudit anchor for the particular arithmetic
+object \(k^n\), not a universal equivalence between structureless finite sets
+and all tensor-site systems.
+
+\subsection{Conclusion}
+
+The QSA Step 04 output is available only for the enhanced input
+\[
+  (X,\{\mathcal H_x\}_{x\in X})
+  \quad\text{or}\quad
+  (X,\{\mathcal A_x\}_{x\in X}).
+\]
+After this data is supplied, finite tensor products and tensor-by-identity
+local observable inclusions are formal finite-dimensional bookkeeping.  The
+bare set alone still supplies only labels; it does not select the site
+Hilbert spaces, observable algebras, Weyl labels, stabilizer data, or
+dynamics.

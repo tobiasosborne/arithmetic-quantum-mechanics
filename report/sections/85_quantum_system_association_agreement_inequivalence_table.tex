@@ -1,0 +1,266 @@
+% SHARD-ID: AQM-85-QSA-AGREEMENT-INEQUIVALENCE-TABLE
+% SHARD-TITLE: Agreement and Inequivalence Table
+% SHARD-SUMMARY: Synthesizes QSA Steps 03--20 as a gap-first comparison ledger using the local status-token convention.
+% SHARD-SUMMARY: Records only locally witnessed agreements and inequivalences, with unsupported comparisons left blocked, unknown, or at AQM-84 proposal boundaries.
+% SHARD-SUMMARY: Carries the finite-ring, source, quotient-collapse, Artin, and infinite-completion blockers into the Step 22 handoff.
+% SHARD-KEYWORDS: quantum-system association, agreement, inequivalence, gap table, blockers, finite rings, infinite boundaries
+
+\section{Agreement and Inequivalence Table}
+\label{sec:qsa-agreement-inequivalence-table}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: New gap-first synthesis shard.}  This is QSA Step 21 from
+\path{docs/quantum_system_associations/PLAN.md}.  It adds no source,
+convention entry, script, run bundle, generated data, populated database row,
+or report-level classification theorem.  Its role is to aggregate the local
+comparison evidence already recorded in AQM-65--AQM-84.
+
+The comparison vocabulary is AQM-65 and \texttt{CONVENTIONS.md} conventions
+\texttt{(ap)} and \texttt{(au)}.  The finite-set workflow anchors are
+AQM-67--AQM-74.  Point, cotangent, finite phase, field-space, finite-ring,
+residue-site, nilpotent-sensitive, product-ring, and infinite-boundary
+anchors are AQM-75--AQM-84.  Earlier arithmetic-field and Weyl anchors are
+cited only through those review shards unless named below.
+
+\subsection{Reading Rule}
+
+The entries below are not a final equivalence table.  The token
+\texttt{agreement} is used only when a prior shard gives a named comparison
+map, identity of assembled data after choices, or checked invariant for the
+selected workflows.  The token \texttt{inequivalence} is used only when a
+prior shard records a local obstruction for the selected workflows.  Dimension
+equality is never used as evidence of agreement.  A dimension mismatch may be
+listed only as one obstruction among the locally recorded differences.
+
+\texttt{available} means that a workflow has a local anchor but has not been
+compared as an agreement or inequivalence result in this shard.
+\texttt{degenerate} marks locally recorded collapse or forgotten-structure
+cases.  \texttt{blocked}, \texttt{unknown}, and \texttt{not\_applicable} keep
+their meanings from convention \texttt{(au)}.  The labels
+\emph{generic-sector proposal} and \emph{completion proposal} are inherited
+from the AQM-84 boundary vocabulary and are not finite Weyl-site claims.
+
+\subsection{Core Comparison Ledger}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.18\linewidth}p{0.26\linewidth}p{0.25\linewidth}p{0.23\linewidth}}
+\toprule
+Comparison row & Local status & Witness or obstruction & Anchor \\
+\midrule
+Bare finite-set carrier versus one-dimensional direct-sum particle carrier &
+\texttt{agreement}, after choices only. &
+Choose one-dimensional \(K_x\) and nonzero vectors \(u_x\); the map
+\(e_x\mapsto j_x(u_x)\) is the recorded vector-space isomorphism.  Hilbert
+agreement also needs unit vectors and a Gram convention. &
+AQM-69, AQM-74 \\
+\addlinespace
+Full tensor-site carrier versus direct-sum particle carrier &
+\texttt{inequivalence} for the named full carriers. &
+The workflows represent coexistence and alternatives.  The empty cases are
+\(\mathbb C\) and \(0\), and the full carrier counts are tensor-product
+versus direct-sum counts for the same chosen local factors. &
+AQM-68, AQM-69, AQM-74 \\
+\addlinespace
+AND/OR alternatives and site-option degree-one sector versus direct-sum
+particle carrier &
+\texttt{agreement}, for the named degree-one sector. &
+AQM-74 gives \(R_P\) as the identity on the direct-sum expression and \(R_G\)
+as the explicit map into the one-excitation sector of the site-option
+expression.  No full Fock or statistics comparison follows. &
+AQM-70, AQM-74 \\
+\addlinespace
+Formal finite-set carrier versus finite symplectic field labels &
+\texttt{available}/\texttt{unknown}. &
+AQM-71 has checked finite field-label rows after choosing \(V\), \(E\), a
+pairing, radical quotient, and Weyl step.  AQM-67 has only formal basis
+labels.  No map compares those full outputs. &
+AQM-67, AQM-71 \\
+\addlinespace
+Fermionic one-particle carrier versus uniform direct-sum particle carrier &
+\texttt{agreement}, for that carrier only. &
+AQM-74 records \(E_Z:Z=\operatorname{Map}(X,K)\to\bigoplus_xK\) and its
+inverse.  The CAR algebra, exterior higher sectors, and Grassmann-Weyl
+multiplier do not reduce by this map. &
+AQM-72, AQM-74 \\
+\addlinespace
+CCR/CAR/Fock layers versus finite AND/OR grammar &
+\texttt{blocked}/\texttt{unknown}. &
+AQM-72 states that no local map, quotient, invariant, or derivation compares
+the full CCR/CAR or Grassmann-Weyl outputs with the finite grammar. &
+AQM-70, AQM-72 \\
+\addlinespace
+Finite phase labels to Weyl-Heisenberg kinematics &
+\texttt{available}. &
+AQM-78 supplies the common kinematical step after a finite commutator label
+object is fixed.  This is not an agreement between earlier workflows; it is a
+shared downstream representation step. &
+AQM-78 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.18\linewidth}p{0.26\linewidth}p{0.25\linewidth}p{0.23\linewidth}}
+\toprule
+Comparison row & Local status & Witness or obstruction & Anchor \\
+\midrule
+Product-field residue sites versus structureless tensor-site assembly &
+\texttt{agreement}, at the assembly layer only. &
+For \(R=k^n\), AQM-83 records that the residue workflow supplies the sites,
+fields, carriers \(\ell^2(k)\), and local algebras; after those choices the
+finite tensor products and tensor-by-identity inclusions match AQM-68's
+tensor-site bookkeeping. &
+AQM-68, AQM-83 \\
+\addlinespace
+Product-field residue sites versus product-field cotangent-first labels &
+\texttt{inequivalence}/\texttt{degenerate}. &
+For \(k^n\), AQM-83 cites AQM-58 and AQM-77: residue sites give \(n\)
+finite Weyl factors, while the relative cotangent labels over \(k\) vanish
+at every product point. &
+AQM-58, AQM-77, AQM-83 \\
+\addlinespace
+Intrinsic versus relative cotangent choices &
+\texttt{agreement} in named rows and \texttt{inequivalence} in named rows. &
+They agree for \(\mathbb F_3\), \(k^n\), dual numbers over \(k\), and the
+listed \(k\)-Artin examples.  They differ for the two-direction ring relative
+to \(k[u]/(u^2)\), and for \(\mathbb Z/4\mathbb Z\) over \(\mathbb Z\). &
+AQM-77 \\
+\addlinespace
+Reduced residue-site layer versus nilpotent-sensitive Artin layer &
+\texttt{inequivalence}, for the local thickened examples. &
+AQM-82 records one reduced residue site for dual numbers but the thickened
+carrier \(\ell^2(\mathbb F_3[\epsilon]/(\epsilon^2))\) after a
+top-coefficient generating character.  For \(n=3^s m\) with \(3\nmid m\),
+the \(t^n=1\) family has reduced dimension \(3^m\) and thickened dimension
+\(3^n\). &
+AQM-36, AQM-37, AQM-81, AQM-82 \\
+\addlinespace
+Infinite closed-point finite supports versus quasi-local, incomplete tensor,
+formal infinite-volume, generic, or completion layers &
+\texttt{available}/\texttt{blocked}, with AQM-84 proposal labels. &
+AQM-84 classifies the statuses but does not compare them as equivalent.
+Finite supports, algebraic quasi-local colimits, reference-vector Hilbert
+representations, formal infinite-volume profiles, generic sectors, and
+analytic completions remain separate rows. &
+AQM-84 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Finite-Ring Status Snapshot}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.19\linewidth}p{0.26\linewidth}p{0.25\linewidth}p{0.22\linewidth}}
+\toprule
+Object row & Established comparison status & Blocked or unknown comparison & Anchor \\
+\midrule
+\(\mathbb F_3\) &
+\texttt{available}: one residue qutrit site; cotangent-first labels over
+\(\mathbb F_3\) are \texttt{degenerate}/zero. &
+Underlying three-point all-map system is a separate finite-set object, not an
+agreement with \(\Spec\mathbb F_3\). &
+AQM-22, AQM-77, AQM-80, AQM-81 \\
+\addlinespace
+\(\mathbb F_3^n\) &
+\texttt{agreement} with tensor-site assembly after residue data are supplied;
+\texttt{inequivalence} with cotangent-first residue over \(\mathbb F_3\). &
+No stabilizer, dynamics, or universal product-ring equivalence is asserted. &
+AQM-40, AQM-58, AQM-83 \\
+\addlinespace
+\(\mathbb Z/6\mathbb Z\) &
+\texttt{available}: mixed residue carrier
+\(\ell^2(\mathbb F_2)\otimes\ell^2(\mathbb F_3)\). &
+Common-field vector-space readings are \texttt{not\_applicable};
+cotangent and thickened comparisons remain \texttt{unknown}/\texttt{blocked}.
+Further quotient-collapse rows are blocked. &
+AQM-23, AQM-80, AQM-81, AQM-83 \\
+\addlinespace
+\(\mathbb F_3[\epsilon]/(\epsilon^2)\) and
+\(\mathbb F_3[t]/(t^3)\) &
+\texttt{inequivalence}: reduced residue site versus thickened Artin carrier;
+\texttt{available}: first-order cotangent rows. &
+Database-backed residue and general Artin policies remain blocked outside the
+locally proved examples. &
+AQM-77, AQM-80, AQM-81, AQM-82 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.19\linewidth}p{0.26\linewidth}p{0.25\linewidth}p{0.22\linewidth}}
+\toprule
+Object row & Established comparison status & Blocked or unknown comparison & Anchor \\
+\midrule
+\(\mathbb F_3[t]/(t^n-1)\) &
+\texttt{inequivalence}: AQM-82 records reduced dimension \(3^m\) and
+thickened dimension \(3^n\) for \(n=3^s m\), \(3\nmid m\), in the locally
+derived family. &
+No populated finite-ring database or arbitrary quotient comparison is
+imported. &
+AQM-35, AQM-37, AQM-82 \\
+\addlinespace
+\(\mathbb F_3[u,v]/(u^2,v^2)\) &
+\texttt{available}: cotangent comparison from AQM-77. &
+\texttt{blocked}: standard two-direction Artin thickened Weyl row and
+database row. &
+AQM-77, AQM-80, AQM-82 \\
+\addlinespace
+\(\mathbb Z/4\mathbb Z\), \(\mathbb Z/8\mathbb Z\),
+\(\mathbb Z/9\mathbb Z\), and even dual-number MVP rows &
+\texttt{available} only for the local AQM-77 \(\mathbb Z/4\mathbb Z\)
+cotangent contrast where stated. &
+\texttt{blocked}: certified residue decomposition, deterministic site
+ordering, and generating-character/thickened rows are missing in the current
+MVP scope. &
+AQM-66, AQM-77, AQM-80, AQM-81, AQM-82 \\
+\addlinespace
+\(\Spec\mathbb F_q[t]\), \(\Spec\mathbb F_q[x,y]\), and \(\Spec\mathbb Z\) &
+\texttt{available}: finite closed supports and algebraic quasi-local
+closed-point nets; selected incomplete tensor representations where recorded. &
+\texttt{blocked} or AQM-84 proposal labels: generic sectors, analytic/local,
+adelic, profinite, \(C^*\), and infinite-volume operator completions. &
+AQM-29, AQM-30, AQM-45, AQM-48, AQM-84 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Open Blockers Carried Forward}
+
+\begin{description}
+\item[\texttt{aqm-qsa-src02}.]
+Source-acquisition or source-registration blocker carried by the QSA tracker:
+no comparison in this shard relies on a new unregistered source.
+\item[\texttt{aqm-qsa-frres01}.]
+General finite-ring maximal/residue decomposition and deterministic site
+ordering remain blocked.  AQM-81 covers only sourced finite cases.
+\item[\texttt{aqm-qsa-frcot01}.]
+Database-backed intrinsic or relative cotangent rows remain blocked.  AQM-77
+is a local derivation shard, not a populated finite-ring cotangent table.
+\item[\texttt{aqm-qsa-collapse01}.]
+Quotient-collapse examples beyond the \(\mathbb Z/6\mathbb Z\) anchor remain
+blocked until a local derivation or certificate is recorded.
+\item[\texttt{aqm-qsa-artin01}.]
+Two-direction and arbitrary Artin/Frobenius thickened Weyl layers remain
+blocked outside the AQM-36/AQM-37 polynomial chain-ring examples and the
+AQM-77 cotangent-only derivations.
+\end{description}
+
+\subsection{Step 22 Handoff}
+
+Step 22 should catalogue failure modes rather than promote the table above to
+a theorem list.  The immediate degenerate or over-restrictive cases are:
+zero cotangent labels for fields and product fields despite nontrivial
+residue-site carriers; reduced residue layers forgetting nilpotents; rational
+point truncations omitting higher-degree closed points; regular-function
+profiles becoming formal infinite-volume labels; and common-field readings
+failing for mixed residues such as \(\mathbb Z/6\mathbb Z\).
+
+Any new row must still satisfy the AQM-65 evidence rule: name the object, the
+workflows, the choices, the outputs compared, and the local map, invariant,
+or obstruction.  Otherwise its status remains \texttt{blocked} or
+\texttt{unknown}.

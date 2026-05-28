@@ -1,0 +1,197 @@
+% SHARD-ID: AQM-83-QSA-PRODUCT-RINGS-TENSOR-FACTORS
+% SHARD-TITLE: Product Rings and Tensor Factors
+% SHARD-SUMMARY: Reviews product-field spectra and mixed-residue product warnings for the QSA catalogue.
+% SHARD-SUMMARY: Compares product-ring residue-site tensor factors with the structureless finite-set tensor-site workflow.
+% SHARD-SUMMARY: Records cotangent-first edge cases and database/helper gaps without claiming a universal product-ring equivalence.
+% SHARD-KEYWORDS: quantum-system association, product ring, tensor factors, residue fields, cotangent, finite-ring database
+
+\section{Product Rings and Tensor Factors}
+\label{sec:qsa-product-rings-tensor-factors}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: Review shard.}  This is QSA Step 19 from
+\path{docs/quantum_system_associations/PLAN.md}.  It adds no source,
+convention entry, script, run bundle, generated data, populated database row,
+or finite-ring decomposition theorem.  It reviews exactly the product-ring
+evidence already in AQM-40, AQM-58, AQM-68, AQM-80, AQM-81, and AQM-82.
+
+The governing conventions are \texttt{(ad)} for product-field spectra,
+\texttt{(an)} for finite-ring database and helper scope, \texttt{(ar)} for
+structureless finite-set tensor sites, and \texttt{(au)} for QSA table status
+tokens.  The product-field anchor is
+\[
+  R=k^n,\qquad k=\mathbb F_q,
+\]
+where AQM-40 proves that \(\Spec(k^n)\) is the finite discrete \(n\)-point
+spectrum with residue field \(k\) at every point.  The main comparison anchor
+is AQM-58: the same product ring has
+\[
+  \Omega^1_{k^n/k}=0,
+\]
+so the cotangent-first tangent-Weyl layer can vanish even when the residue
+workflow has \(n\) qudit tensor factors.
+
+\subsection{Selected Workflow: Product-Field Residue Sites}
+
+In the selected product-field residue-site workflow, the ring supplies more
+than a bare set but less than a universal quantum model.  For
+\[
+  R=k^n
+\]
+the idempotents and projections select the points
+\[
+  x_i=\ker(\operatorname{pr}_i),\qquad i=1,\ldots,n,
+\]
+with \(\kappa(x_i)=k\).  Convention \texttt{(ad)} and AQM-40 then give
+\[
+  E(X)=\bigoplus_{i=1}^n k^2,\qquad
+  \mathcal H(X)=\bigotimes_{i=1}^n\ell^2(k),\qquad
+  \mathcal A(X)=\bigotimes_{i=1}^n
+    \operatorname{End}_{\mathbb C}\ell^2(k).
+\]
+Thus \(\mathbb F_3^n\) gives \(n\) qutrit residue factors, not
+\(3^n\) spectrum points.  Open subsets are just subsets of the \(n\)
+points, and the local observable inclusions are tensoring by identities on
+the missing residue factors.
+
+This is a tensor factorization statement for this residue-site association
+only.  It does not identify product rings with all first-association,
+cotangent-first, field-label, nilpotent-sensitive, stabilizer, Clifford, or
+dynamics workflows.  AQM-40 already separates the ambient \(n\)-qudit Weyl
+net from the later choice of an isotropic stabilizer subgroup and phases.
+
+\subsection{Comparison With Structureless Tensor Sites}
+
+AQM-68 starts with a bare finite set \(X\) and only then adds site data
+\[
+  \{\mathcal H_x\}_{x\in X}
+  \quad\text{or}\quad
+  \{\mathcal A_x\}_{x\in X}.
+\]
+After those choices, it forms
+\[
+  \mathcal H(S)=\bigotimes_{x\in S}\mathcal H_x,\qquad
+  \mathcal A(S)=\bigotimes_{x\in S}\mathcal A_x.
+\]
+
+The product-field workflow supplies the following extra data that the bare
+finite set did not supply.
+
+\begin{itemize}
+\item The site set is not arbitrary: it is the spectrum
+  \(\{x_i=\ker(\operatorname{pr}_i)\}\) of the displayed product ring.
+\item The topology is discrete for \(k^n\), with singleton opens \(D(e_i)\).
+\item Each site has a residue field \(\kappa(x_i)=k\), hence a local
+  finite-field phase space \(k^2\).
+\item The local carrier is the particular Weyl carrier
+  \(\ell^2(\kappa(x_i))\), and the local algebra is its full endomorphism
+  algebra.
+\end{itemize}
+
+The analogy with AQM-68 is therefore precise but limited: both workflows use
+finite tensor products and tensor-by-identity inclusions once the local
+factors are known.  They do not have the same input.  The structureless
+finite set allows arbitrary chosen Hilbert spaces; the product-field
+residue-site workflow fixes the local Weyl factors from the residue fields.
+
+\subsection{Mixed Residue Warning}
+
+AQM-23 and AQM-81 supply the warning example
+\[
+  R=\mathbb Z/6\mathbb Z.
+\]
+The residue-site workflow has two points, with residues
+\[
+  \mathbb F_2,\qquad \mathbb F_3,
+\]
+and hence
+\[
+  E=\mathbb F_2^2\oplus\mathbb F_3^2,\qquad
+  \mathcal H=\ell^2(\mathbb F_2)\otimes\ell^2(\mathbb F_3).
+\]
+This is still an independent tensor-factor residue workflow, but it is not
+one common \(\mathbb F_3\)-linear or \(\mathbb F_2\)-linear phase space.  Any
+common-prime-field reduction, stabilizer comparison, or Clifford comparison
+would require its own pairing and phase convention.
+
+This shard does not promote \(\mathbb Z/6\mathbb Z\) to a general
+quotient-collapse theorem.  AQM-80 keeps quotient-collapse examples beyond
+the existing \(\mathbb Z/6\mathbb Z\) anchor blocked by
+\texttt{aqm-qsa-collapse01}.
+
+\subsection{Cotangent Edge Cases}
+
+Product-ring tensor factors are highly workflow-dependent.  The clearest
+edge case is AQM-58.  For \(k^n\), every \(k\)-derivation out of \(k^n\)
+vanishes, so
+\[
+  \Omega^1_{k^n/k}=0.
+\]
+In the tangent-cotangent Weyl workflow of conventions \texttt{(ao)} and
+\texttt{(av)}, the local tangent and cotangent labels at each product point
+therefore vanish.  The cotangent-first geometric Weyl carrier for those
+directions is the zero-label, one-dimensional case; it is not the
+\(n\)-qudit residue carrier of AQM-40.
+
+The single field row already shows the same distinction in smaller form.
+\(\Spec(\mathbb F_3)\) has one residue-site qutrit in AQM-81, while its
+relative cotangent over \(\mathbb F_3\) is zero in AQM-77 and AQM-80.  The
+product field repeats this zero-cotangent phenomenon \(n\) times while the
+residue-site layer still has \(n\) local Weyl factors.
+
+For mixed or nonreduced finite rings, the table in AQM-80 is the current
+boundary.  \(\mathbb Z/6\mathbb Z\) has the mixed-residue tensor carrier
+above, but no database-backed cotangent comparison row is imported here.
+\(\mathbb Z/4\mathbb Z\) and dual-number examples have local cotangent or
+nilpotent-sensitive anchors in AQM-77 and AQM-82, but they are not product
+field tensor-factor examples in this Step 19 review.
+
+\subsection{Database and Helper Boundary}
+
+Convention \texttt{(an)} records a manual
+\texttt{finite\_ring\_product} constructor for the finite-ring database
+implementation: it preserves argument order, concatenates factor coordinate
+blocks and identity vectors, copies factor multiplication into each block,
+and sets cross-factor products to zero.  This is a data-layout convention for
+MVP constructors, not a classification theorem for arbitrary finite rings.
+
+The same convention limits the in-memory residue-quantisation helper to
+source-backed cases already fixed in the lab book: prime fields, the
+\(\mathbb Z/6\mathbb Z\) row from AQM-23, and explicit finite product fields
+from AQM-40.  The SQLite smoke build remains schema-only, and the review CSVs
+are in-memory MVP exports.  No populated or audited finite-ring database is
+claimed.
+
+The active gaps therefore remain:
+
+\begin{description}
+\item[\texttt{aqm-qsa-frres01}.]
+Arbitrary finite-ring residue decomposition and site ordering.
+\item[\texttt{aqm-qsa-frcot01}.]
+Database-backed cotangent rows.
+\item[\texttt{aqm-qsa-collapse01}.]
+Quotient-collapse examples beyond the \(\mathbb Z/6\mathbb Z\) anchor.
+\item[\texttt{aqm-qsa-artin01}.]
+Unsupported thickened or multi-direction Artin layers.
+\end{description}
+
+In particular, a product of thickened local rings may have a displayed tensor
+product after each local Artin/Frobenius layer has its own certified
+generating character, but Step 19 does not assert such a general policy.
+
+\subsection{Conclusion}
+
+Product rings give independent tensor factors only in a selected and
+well-anchored sense.  For \(k^n\), the product-field residue-site association
+supplies \(n\) finite Weyl sites, \(n\) local matrix algebras, and the usual
+tensor-by-identity local net.  This matches the form of the structureless
+finite-set tensor-site construction only after the product ring has supplied
+the sites and residue-field Weyl factors.
+
+The same ring may look degenerate in a different association workflow:
+cotangent-first labels vanish for \(k^n\), stabilizers and dynamics remain
+extra choices, mixed residues are not a single common-field phase space, and
+nilpotent-sensitive product layers require separate Artin/Frobenius evidence.
+Those boundaries are part of the QSA catalogue rather than exceptions to a
+universal product-ring tensor-factor rule.

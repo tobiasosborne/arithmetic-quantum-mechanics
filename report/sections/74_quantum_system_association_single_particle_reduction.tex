@@ -1,0 +1,233 @@
+% SHARD-ID: AQM-74-QSA-SINGLE-PARTICLE-REDUCTION
+% SHARD-TITLE: Single-Particle Reduction
+% SHARD-SUMMARY: Defines single-particle sectors for the finite direct-sum and AND/OR grammar constructions already used in the QSA sequence.
+% SHARD-SUMMARY: Gives explicit carrier maps from direct sums and site-option degree-one sectors to the one-particle alternatives carrier.
+% SHARD-SUMMARY: Records tensor, field, Fock, statistics, phase, and Gram-choice obstructions as boundaries rather than general reductions.
+% SHARD-KEYWORDS: quantum-system association, single-particle sector, reduction, direct sum, tensor site, Fock boundary, Gram choice
+
+\section{Single-Particle Reduction}
+\label{sec:qsa-single-particle-reduction}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 10 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a local
+finite-dimensional comparison shard.  It adds no external source, no new run
+artifact, and no general theorem that field, tensor, CCR, CAR, or Fock
+workflows reduce to one bare finite-set carrier.
+
+The conventions are \texttt{CONVENTIONS.md} \texttt{(ap)} for comparison
+language, \texttt{(aq)} for the formal carrier \(\mathbb C\langle X\rangle\),
+\texttt{(ar)} for tensor-site data, \texttt{(as)} for direct-sum particle
+data, and \texttt{(at)} for the finite AND/OR carrier grammar.  The local
+report anchors are AQM-67 through AQM-73.  AQM-23 and AQM-40 are used only as
+cautions that direct sums in label bookkeeping and Hilbert-space tensor
+products are different layers.  AQM-19 and AQM-72 are used only for the
+recorded finite CAR/Fock boundary language.
+
+\subsection{Meaning of Single-Particle Sector Here}
+
+In this shard, a \emph{single-particle sector} is not a universal operation.
+It means one of the following named finite carriers.
+
+\begin{description}
+\item[Direct-sum particle.]
+For the AQM-69 carrier
+\[
+  K_{\oplus}(X)=\bigoplus_{x\in X}K_x ,
+\]
+the single-particle sector is the whole alternatives carrier.  It represents
+one alternative site label together with its internal carrier.
+
+\item[AND/OR grammar degree one.]
+For an AQM-70 grammar expression \(E\) whose atoms are declared
+one-particle and whose tensor unit \(\mathbf 1=\mathbb C\) is declared
+zero-particle, the single-particle sector is
+\[
+  \mathcal V_1(E).
+\]
+This is the degree-one summand from the recursive grading in AQM-70.
+
+\item[Site-option expression.]
+If one uses the AQM-70 site-option expression
+\[
+  G_X=\operatorname{AND}_{x\in X}(\mathbf 1\operatorname{OR}K_x),
+\]
+then its single-particle sector is the degree-one summand
+\[
+  \mathcal V_1(G_X)
+  \cong
+  \bigoplus_{\substack{S\subset X\\ |S|=1}}
+  \bigotimes_{x\in S}K_x .
+\]
+The isomorphism is the finite distributivity bookkeeping already recorded in
+AQM-70.
+\end{description}
+
+An arbitrary AQM-68 tensor-site carrier
+\[
+  \mathcal H(X)=\bigotimes_{x\in X}\mathcal H_x
+\]
+has no single-particle sector unless extra data choose a vacuum line and an
+excitation carrier at each site.  The tensor product by itself is
+coexistence, not one alternative among sites.
+
+\subsection{Direct-Sum and Grammar Maps}
+
+Let \(P_X=\operatorname{OR}_{x\in X}K_x\) be the AQM-70 expression whose
+carrier is the AQM-69 direct sum.  With the same displayed finite parse order,
+\[
+  \mathcal V(P_X)=\bigoplus_{x\in X}K_x,\qquad
+  \mathcal V_1(P_X)=\mathcal V(P_X).
+\]
+Thus the reduction map
+\[
+  R_P:K_{\oplus}(X)\longrightarrow \mathcal V_1(P_X)
+\]
+is the identity after both sides are read as the same finite direct sum.  In
+the empty case this is the unique map \(0\to0\).
+
+For the site-option expression \(G_X\), choose a display order only to write
+the finite tensor product.  Define
+\[
+  R_G:K_{\oplus}(X)\longrightarrow \mathcal V_1(G_X)
+\]
+on the \(x\)-summand by
+\[
+  R_G(j_x v)
+  =
+  1\otimes\cdots\otimes 1\otimes v\otimes 1\otimes\cdots\otimes 1,
+  \qquad v\in K_x,
+\]
+where \(v\) occupies the \(K_x\) alternative inside
+\((\mathbf 1\operatorname{OR}K_x)\), and every other site occupies the
+\(\mathbf 1=\mathbb C\) alternative with scalar \(1\).
+
+The inverse is the projection from the degree-one distributive expansion onto
+the singleton summands, followed by the identification of the singleton
+tensor \(\bigotimes_{y\in\{x\}}K_y\) with \(K_x\).  Therefore \(R_G\) is a
+finite vector-space isomorphism between the named carriers.  If the \(K_x\)
+are Hilbert spaces and the AQM-70 Hilbert recursion is used, this is also the
+corresponding Hilbert direct-sum identification of the degree-one sector; it
+does not identify the full site-option carrier with its degree-one sector.
+
+\subsection{When a Tensor-Site Carrier Has Such a Sector}
+
+The AQM-68 tensor-site carrier can be compared with the site-option expression
+only after extra choices are made.  Suppose each site Hilbert space is given
+as
+\[
+  \mathcal H_x\cong \mathbb C\Omega_x\oplus K_x
+\]
+with a chosen unit vector \(\Omega_x\) and a chosen inclusion of \(K_x\).
+Then the map
+\[
+  \Theta:\bigoplus_{x\in X}K_x
+  \longrightarrow
+  \bigotimes_{x\in X}\mathcal H_x
+\]
+is
+\[
+  \Theta(j_x v)=
+  \Omega_{x_1}\otimes\cdots\otimes
+  \Omega_{x_{i-1}}\otimes v\otimes
+  \Omega_{x_{i+1}}\otimes\cdots\otimes\Omega_{x_n}
+\]
+for a displayed order \(X=\{x_1,\ldots,x_n\}\) and \(x=x_i\).
+Its image is the chosen one-excitation subspace.  This is a map for the
+enhanced tensor-site data
+\((\mathcal H_x,\Omega_x,K_x)_{x\in X}\), not for the bare AQM-68 tensor-site
+carrier.
+
+Without the decomposition \(\mathcal H_x\cong\mathbb C\Omega_x\oplus K_x\),
+there is no named degree-one subspace.  The dimension obstruction is already
+visible for displayed dimensions \(d_x=\dim\mathcal H_x\):
+\[
+  \dim\bigotimes_x\mathcal H_x=\prod_x d_x,
+  \qquad
+  \dim\bigoplus_x\mathcal H_x=\sum_x d_x.
+\]
+The empty cases also differ: the empty tensor product is \(\mathbb C\), while
+the empty direct sum is \(0\).
+
+\subsection{Comparison With the AQM-67 Formal Carrier}
+
+The AQM-67 carrier is
+\[
+  \mathbb C\langle X\rangle=\bigoplus_{x\in X}\mathbb C e_x
+\]
+with no inner product or Gram matrix.  A comparison with the direct-sum
+particle carrier is available only in the one-dimensional internal case.
+
+Assume every \(K_x\) is one-dimensional and choose a nonzero vector
+\(u_x\in K_x\).  Then
+\[
+  \Phi:\mathbb C\langle X\rangle
+  \longrightarrow
+  K_{\oplus}(X),
+  \qquad
+  \Phi(e_x)=j_x(u_x),
+\]
+is a vector-space isomorphism.  Composing with \(R_G\) gives the corresponding
+map into the degree-one sector of the site-option expression:
+\[
+  R_G\circ\Phi:\mathbb C\langle X\rangle\longrightarrow \mathcal V_1(G_X).
+\]
+
+If the \(K_x\) are Hilbert lines, chosen unit vectors \(u_x\) and an added
+identity Gram convention on \(\mathbb C\langle X\rangle\) make \(\Phi\)
+isometric.  The Hilbert statement uses enhanced data.  AQM-67 alone supplies
+neither the inner product nor the unit vectors, so it does not canonically
+reduce to the direct-sum particle carrier.
+
+\subsection{Field and Fock Boundaries}
+
+AQM-71 finite symplectic field labels and the residue-qudit examples in
+AQM-23 and AQM-40 do not automatically reduce to the carriers above.  In
+those shards, orthogonal direct sums of phase labels quantize to tensor
+products of Hilbert carriers and full matrix algebras.  AQM-23 explicitly
+rules out replacing the qubit-tensor-qutrit Hilbert space by
+\(\mathbb C^2\oplus\mathbb C^3\), and AQM-40 separates the ambient
+\(n\)-qudit tensor system from extra stabilizer labels and phases.  A
+single-excitation subspace in such a tensor system would require a chosen
+vacuum/reference vector, chosen one-site excitation carriers, and a checked
+comparison map.
+
+The finite fermionic CAR layer in AQM-19 has one local carrier map at the
+one-particle level.  There \(Z=\operatorname{Map}(X,K)\) and
+\(\Gamma_{\mathrm a}(Z)=\bigoplus_k\wedge^k Z\).  The degree-one Fock summand
+is \(\wedge^1 Z=Z\), and the explicit finite map
+\[
+  E_Z:Z\longrightarrow \bigoplus_{x\in X}K,\qquad
+  z\longmapsto (z_x)_{x\in X}
+\]
+has inverse \((v_x)_x\mapsto (x\mapsto v_x)\).  This identifies only the
+one-particle carrier with the AQM-69 direct-sum carrier for the uniform choice
+\(K_x=K\).  It does not reduce the CAR algebra, creation and annihilation
+operators, antisymmetric higher sectors, Grassmann-Weyl displacement calculus,
+or Grassmann-valued multipliers to AQM-67 or AQM-69.
+
+No comparable general reduction is claimed for the AQM-72 CCR/Fock review
+layer.  The bosonic CCR review uses a real symplectic label space and a
+regular Weyl representation, while the Grassmann-Weyl review works inside a
+Grassmann-extended CAR algebra with non-ordinary scalar multipliers.  This
+shard records no local map or invariant identifying those full structures
+with the finite AND/OR grammar or the bare finite-set carrier.
+
+\subsection{Obstruction Summary}
+
+The successful reductions above are only maps between named carriers under
+stated choices.  The main obstructions are:
+\[
+\begin{array}{ll}
+\text{internal carriers} & \dim K_x>1 \text{ prevents comparison with AQM-67 without forgetting data},\\
+\text{tensor coexistence} & \prod_x d_x \text{ and }\sum_x d_x \text{ are different carrier counts},\\
+\text{statistics} & symmetric, antisymmetric, para, and fusion rules are not in AQM-70,\\
+\text{phases} & Weyl, stabilizer, CAR, and Grassmann multipliers are extra algebraic data,\\
+\text{Gram choices} & Hilbert or isometric comparisons need inner products and unit choices.
+\end{array}
+\]
+Thus QSA Step 10 closes only as a finite carrier-map inventory.  It does not
+collapse the tensor-site, field-label, CCR/CAR, Fock, or future
+fusion-category association families to one universal single-particle
+workflow.

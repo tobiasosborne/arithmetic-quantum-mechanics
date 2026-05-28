@@ -1,0 +1,87 @@
+% SHARD-ID: AQM-65-QSA-VOCABULARY
+% SHARD-TITLE: Quantum-System Association Vocabulary
+% SHARD-SUMMARY: Fixes the programme-local vocabulary for quantum-system associations before comparison shards begin.
+% SHARD-SUMMARY: Separates association workflows from any canonical functorial quantisation claim.
+% SHARD-SUMMARY: Records the evidence rule for later agreement, equivalence, inequivalence, and degeneracy claims.
+% SHARD-KEYWORDS: quantum-system association, vocabulary, Quant1, Quant2, equivalence, degeneracy, kinematics
+
+\section{Quantum-System Association Vocabulary}
+\label{sec:quantum-system-association-vocabulary}
+
+\subsection{Status and Local Anchors}
+
+This is a planning and convention shard only.  It introduces no substantive
+equivalence theorem, no sourced mathematical classification, and no new
+representation-theoretic assertion.  Its local anchors are
+\texttt{CONVENTIONS.md} convention \texttt{(ap)}, the meta-plan shard
+\texttt{AQM-64-QUANTUM-SYSTEM-ASSOCIATION-META-PLAN}
+(\S\ref{sec:quantum-system-association-meta-plan}), and Step 01 of
+\texttt{docs/quantum\_system\_associations/PLAN.md}.
+
+\subsection{Association, Not Canonical Quantisation}
+
+In this programme, a \emph{quantum-system association} is a recorded workflow
+which starts from specified structure on an object \(X\), adds explicitly
+named choices, and returns kinematical quantum data.  Possible output slots
+include a Hilbert carrier, observable algebra, Weyl--Heisenberg projective
+representation, Fock sector, or stabilizer subspace, but the chosen slot must
+be named in the relevant shard.
+
+This language deliberately does not assert a canonical functorial
+quantisation.  A later shard may study functorial behaviour for a specified
+workflow only after recording the objects, morphisms, choices, and evidence.
+Until then, the word ``association'' means a reproducible construction
+proposal with an evidence status, not a theorem that one universal
+quantisation functor exists.
+
+\subsection{Local Shorthand}
+
+The following terms are local programme labels.
+
+\begin{description}
+\item[\texttt{Quant1}, \texttt{Quant2}.]
+Placeholders for the first and second association workflows in a comparison.
+They carry no fixed mathematical content until a shard expands them into
+explicit inputs, choices, and outputs.
+
+\item[field association.]
+An association whose planned kinematical output is organized as field-like
+data over points, opens, supports, sections, or labels.  The term is an
+umbrella for comparison planning, not a claim that all such workflows are
+instances of one established construction.
+
+\item[single-particle sector.]
+A comparison label for the part of a workflow in which the carrier represents
+one alternative among sites or modes rather than independent coexistence of
+all sites.  A later shard must say whether this means a direct sum, a selected
+Fock sector, or another explicitly recorded operation.
+
+\item[association equivalence.]
+An evidence status for two association workflows after a concrete object
+\(X\), all needed choices, and a checkable comparison map or invariant have
+been recorded.  Without that data, ``equivalence'' remains a question or
+proposal.
+
+\item[degenerate case.]
+A case in which a workflow collapses, forgets the intended structure, becomes
+too small or too large for the intended comparison, or reduces to an earlier
+case.  Calling a case degenerate requires the same local evidence discipline
+as any other comparison status.
+\end{description}
+
+\subsection{Dynamics Deferred}
+
+The kinematical output of a quantum-system association does not include
+dynamics by default.  Hamiltonians, actions, time evolutions, Witten-index
+statements, and dynamical selection principles are later choices unless a
+future convention and shard explicitly add them.
+
+\subsection{Evidence Rule for Later Comparisons}
+
+Every future comparison word such as ``agrees'', ``reduces to'', ``is
+equivalent to'', ``is inequivalent to'', or ``degenerates'' must cite a local
+source, local derivation, test, run artifact, or explicit gap label.  The
+comparison must name the object \(X\), the structure placed on \(X\), the
+choices made by each workflow, the kinematical outputs being compared, and the
+map or invariant used for the comparison.  Otherwise the statement must remain
+an open question in the report.

@@ -1,0 +1,236 @@
+% SHARD-ID: AQM-80-QSA-FINITE-RING-EXAMPLE-MATRIX
+% SHARD-TITLE: Finite Ring Example Matrix
+% SHARD-SUMMARY: Builds a gap-aware finite-ring matrix for QSA Step 16 without claiming a populated finite-ring database.
+% SHARD-SUMMARY: Separates point/residue, cotangent-first, field-label, and nilpotent-sensitive workflows row by row.
+% SHARD-SUMMARY: Carries explicit available, blocked, unknown, not_applicable, and degenerate markers to later QSA steps.
+% SHARD-KEYWORDS: quantum-system association, finite rings, example matrix, residue fields, cotangent, nilpotents, database gaps
+
+\section{Finite Ring Example Matrix}
+\label{sec:qsa-finite-ring-example-matrix}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: Synthesis matrix.}  This is QSA Step 16 from
+\path{docs/quantum_system_associations/PLAN.md}.  It adds no source,
+convention entry, script, run bundle, generated data, populated database row,
+or finite-ring classification claim.  Its purpose is to put the standard
+finite-ring examples into one gap-aware comparison table before the dedicated
+residue-site and nilpotent-sensitive shards.
+
+The local anchors are AQM-23, AQM-34--AQM-37, AQM-40, AQM-58, and
+AQM-76--AQM-79.  The finite-ring database boundary is the PRD
+\path{docs/finite_commutative_ring_database_prd.md}, the implementation and
+population plans, convention \texttt{(an)}, the schema
+\path{data/SCHEMA.md}, and
+\path{runs/2026-05-26-finite-ring-database/README.md}.  That run bundle
+records a schema-only SQLite smoke build with one \texttt{build\_run} row and
+zero \texttt{ring} or \texttt{presentation} rows.  Its CSV files are
+in-memory MVP review exports; they do not populate or audit
+\path{finite_rings.sqlite}.
+
+The open blockers are part of the table.  General finite-ring residue
+decomposition and deterministic site ordering remain blocked by
+\texttt{aqm-qsa-frres01}.  Database-backed intrinsic or relative cotangent
+columns remain blocked by \texttt{aqm-qsa-frcot01}.  Two-direction local Artin
+standardization remains blocked by \texttt{aqm-qsa-artin01} except for the
+local cotangent derivation in AQM-77.  Quotient-collapse examples beyond the
+existing \(\mathbb Z/6\mathbb Z\cong\mathbb F_2\times\mathbb F_3\) anchor
+remain blocked by \texttt{aqm-qsa-collapse01}.
+
+\subsection{Status Tokens}
+
+The table uses the report-planning labels of convention \texttt{(au)}.  They
+are not CSV sentinel rows, do not change \path{data/SCHEMA.md}, and do not
+alter the \texttt{\#}-prefixed sentinel comments in the finite-ring review
+exports.  Here \texttt{available} means that a named local shard or review
+export supplies the row; \texttt{blocked} means that a named source,
+convention, derivation, helper, or bead is missing; \texttt{unknown} means the
+matrix has no local determination yet; \texttt{not\_applicable} means the
+workflow is outside the row's stated semantics; and \texttt{degenerate} marks
+a locally recorded collapse or forgotten-structure case.
+
+\subsection{Points, Residues, and Cotangent Data}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.20\linewidth}p{0.20\linewidth}p{0.22\linewidth}p{0.30\linewidth}}
+\toprule
+Ring row & Points & Residue data & Cotangent-first data \\
+\midrule
+\(\mathbb F_3\) &
+\texttt{available}: one \(\Spec\)-point by AQM-22 and convention
+\texttt{(u)}. &
+\texttt{available}: residue field \(\mathbb F_3\), one qutrit site. &
+\texttt{available}: AQM-77 gives
+\(C_x^{\rm loc}=C_x^{\rm rel}=0\); the cotangent-first carrier is
+one-dimensional. \\
+\addlinespace
+\(\mathbb F_3\times\mathbb F_3\) &
+\texttt{available}: two discrete product-spectrum points by AQM-40 and
+convention \texttt{(ad)}. &
+\texttt{available}: two \(\mathbb F_3\) residue sites, hence two qutrit
+factors in the residue workflow. &
+\texttt{degenerate}: AQM-58 and AQM-77 give
+\(\Omega^1_{\mathbb F_3^2/\mathbb F_3}=0\); the cotangent-first labels vanish
+at both points. \\
+\addlinespace
+\(\mathbb Z/6\mathbb Z\) &
+\texttt{available}: AQM-23 derives the two points \((2)\) and \((3)\). &
+\texttt{available}: residues \(\mathbb F_2\) and \(\mathbb F_3\), with label
+group \(\mathbb F_2^2\oplus\mathbb F_3^2\). &
+\texttt{unknown}: no local cotangent comparison row is recorded here;
+database-backed cotangent data are blocked by \texttt{aqm-qsa-frcot01}. \\
+\addlinespace
+\(\mathbb F_3[\epsilon]/(\epsilon^2)\) &
+\texttt{available}: the polynomial-quotient/local-Artin point is the unique
+closed point in AQM-34 and AQM-77. &
+\texttt{available} locally as one \(\mathbb F_3\) residue site; the database
+residue helper row is still \texttt{blocked} by \texttt{aqm-qsa-frres01}. &
+\texttt{available}: AQM-77 gives one intrinsic and relative
+\(\mathbb F_3\)-cotangent direction over \(\mathbb F_3\), carrier dimension
+\(3\). \\
+\addlinespace
+\(\mathbb F_3[t]/(t^3)\) &
+\texttt{available}: one closed point, a triple thickening of \(t=0\), by
+AQM-34 and AQM-77. &
+\texttt{available}: one \(\mathbb F_3\) residue site; the reduced residue
+layer is one qutrit. &
+\texttt{available}: AQM-77 gives one first-order cotangent direction in
+characteristic \(3\); this does not record the full length-three thickening. \\
+\addlinespace
+\(\mathbb F_3[t]/(t^n-1)\) &
+\texttt{available}: AQM-35 uses the irreducible factors of the squarefree
+part \(t^m-1\), \(m=n/3^{v_3(n)}\). &
+\texttt{available}: each factor \(\pi\) contributes
+\(\mathbb F_3[t]/(\pi)\); repeated factors do not add residue sites. &
+\texttt{unknown}: no uniform cotangent table is claimed for the family in
+this matrix. \\
+\addlinespace
+\(\mathbb F_3[u,v]/(u^2,v^2)\) &
+\texttt{available} only as the local AQM-77 cotangent example at
+\((u,v)\); standard Artin-row status is \texttt{blocked}. &
+\texttt{available} locally as residue \(\mathbb F_3\) in AQM-77; no
+database residue row or standardized finite-ring catalogue row is claimed. &
+\texttt{available}: over \(\mathbb F_3\), AQM-77 gives two cotangent
+directions and carrier dimension \(9\); relative to
+\(\mathbb F_3[u]/(u^2)\), it gives one direction. \\
+\addlinespace
+\(\mathbb Z/4\mathbb Z\) &
+\texttt{available} only for the AQM-77 local cotangent comparison at
+\((2)\). &
+\texttt{available} locally as residue \(\mathbb F_2\) in AQM-77; the database
+residue helper row is \texttt{blocked}. &
+\texttt{available}: AQM-77 gives
+\(C_x^{\rm loc}\cong\mathbb F_2\) but
+\(C_x^{\rm rel}(\mathbb Z)=0\). \\
+\addlinespace
+\(\mathbb F_2[x]/(x^2+x)\) candidate &
+\texttt{blocked}: possible quotient-collapse row only. &
+\texttt{blocked}: do not import product points before
+\texttt{aqm-qsa-collapse01} supplies a local derivation or certificate. &
+\texttt{not\_applicable}: no cotangent comparison is made before the row is
+accepted as checked. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Field Labels, Nilpotents, and Run Artifacts}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.20\linewidth}p{0.25\linewidth}p{0.25\linewidth}p{0.22\linewidth}}
+\toprule
+Ring row & Field-label data & Nilpotent-sensitive data & Run artifact or gap marker \\
+\midrule
+\(\mathbb F_3\) &
+\texttt{available}: one-site finite phase labels; the underlying-set
+\(\mathbb F_3\) all-map system is a separate AQM-22/AQM-71 object. &
+\texttt{not\_applicable} as a nilpotent-thickening example; the database
+thickened helper still records a blocked policy row. &
+Finite-ring review CSV: residue row \texttt{available}; SQLite is
+schema-only, not populated. \\
+\addlinespace
+\(\mathbb F_3\times\mathbb F_3\) &
+\texttt{available}: AQM-40 gives the product-field residue label net; bare
+two-point all-map rows are separate finite-set examples. &
+\texttt{not\_applicable} as a nilpotent-thickening example; no thickened
+product policy is imported. &
+Finite-ring review CSV: residue row \texttt{available}; thickened row
+\texttt{blocked}; no database audit claim. \\
+\addlinespace
+\(\mathbb Z/6\mathbb Z\) &
+\texttt{available}: mixed-residue label direct sum in AQM-23; a single
+\(\mathbb F_3\)-linear field-label reading is \texttt{not\_applicable}. &
+\texttt{blocked}: no certified generating character or thickened policy is
+recorded for this row. &
+\texttt{degenerate}: the review export records the
+\(\mathbb F_2\times\mathbb F_3\) presentation merged to the
+\(\mathbb Z/6\mathbb Z\) representative; no extra collapse example is used. \\
+\addlinespace
+\(\mathbb F_3[\epsilon]/(\epsilon^2)\) &
+\texttt{available}: reduced coordinate-ring field profiles forget
+\(\epsilon\), as in AQM-34. &
+\texttt{available}: AQM-36 gives the top-coefficient Artin-Weyl layer on
+\(\ell^2(R)\), dimension \(9\). &
+Finite-ring review CSV: residue row \texttt{blocked}, thickened row
+\texttt{available}; SQLite has no ring rows. \\
+\addlinespace
+\(\mathbb F_3[t]/(t^3)\) &
+\texttt{available}: reduced field profiles factor through
+\(\mathbb F_3\); nilpotent \(t\)-classes vanish at the residue site. &
+\texttt{available}: AQM-36/AQM-37 give \(\ell^2(\mathbb F_3[t]/(t^3))\) of
+dimension \(27\). &
+Local report derivation only; no MVP database presentation or populated
+SQLite row is claimed. \\
+\addlinespace
+\(\mathbb F_3[t]/(t^n-1)\) &
+\texttt{available}: AQM-35 field labels depend on the squarefree residue
+part in the reduced layer. &
+\texttt{available}: AQM-37 gives thickened dimension \(3^n\) and reduced
+dimension \(3^m\). &
+Local report family only; database population and audit remain pending. \\
+\addlinespace
+\(\mathbb F_3[u,v]/(u^2,v^2)\) &
+\texttt{unknown}: no field-label or residue-site matrix row beyond the
+AQM-77 cotangent derivation is standardized. &
+\texttt{blocked}: two-direction Artin standardization and any thickened
+Weyl row remain under \texttt{aqm-qsa-artin01}. &
+No run artifact; use AQM-77 only for cotangent data. \\
+\addlinespace
+\(\mathbb Z/4\mathbb Z\) &
+\texttt{unknown}: no field-label row is standardized in this matrix. &
+\texttt{blocked}: finite-ring review CSV records missing certified
+generating character; no thickened claim is imported. &
+Finite-ring review CSV: residue and thickened rows \texttt{blocked}; AQM-77
+only supports the cotangent comparison. \\
+\addlinespace
+\(\mathbb F_2[x]/(x^2+x)\) candidate &
+\texttt{blocked}: possible \texttt{degenerate} quotient-collapse case is not
+asserted as checked. &
+\texttt{unknown}: no nilpotent-sensitive or reduced-row conclusion is used. &
+Blocked by \texttt{aqm-qsa-collapse01}; quotient-helper local-core status is
+not a report-level collapse proof. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Interpretation}
+
+The matrix separates four workflows that are easy to conflate.  The
+residue-site workflow uses closed or maximal points and residue fields, as in
+AQM-23, AQM-34, AQM-35, and AQM-40.  The cotangent-first workflow uses
+intrinsic or relative first-order cotangent data, as in AQM-76 and AQM-77.
+The field-label workflow uses finite maps, finite closed supports, or
+coordinate-ring profiles, as reviewed in AQM-79.  The nilpotent-sensitive
+workflow uses local Artin or Frobenius-ring data, as in AQM-36 and AQM-37.
+
+The table also records the current database boundary.  The 2026-05-26
+finite-ring run is useful evidence about the schema-only smoke build and the
+in-memory MVP review-export status of selected rows.  It is not a populated
+or audited finite-ring database, and no row above treats it as one.
+
+Step 17 must therefore supply certified residue decompositions and site
+orderings before extending the residue workflow across finite rings.  Step 18
+must keep reduced residue sites separate from nilpotent-sensitive Artin or
+Frobenius data, and it must not use the two-direction or quotient-collapse
+candidate rows until their blocker beads have local evidence.

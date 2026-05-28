@@ -1,0 +1,234 @@
+% SHARD-ID: AQM-76-QSA-COTANGENT-FIRST-ASSOCIATION
+% SHARD-TITLE: Cotangent-Based First Association
+% SHARD-SUMMARY: Places the tangent-cotangent Weyl workflow into the QSA catalogue as a geometric first-association workflow.
+% SHARD-SUMMARY: Derives the finite phase-label space from a point convention, cotangent fibre, tangent dual, and canonical symplectic pairing.
+% SHARD-SUMMARY: Records the existing AQM-58--AQM-63 examples and leaves intrinsic-versus-relative and finite-ring database rows as gaps.
+% SHARD-KEYWORDS: quantum-system association, cotangent, tangent, Weyl, first association, finite-residue points, kinematics
+
+\section{Cotangent-Based First Association}
+\label{sec:qsa-cotangent-first-association}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 12 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a new
+synthesis/derivation shard: it adds no external source, no run artifact, and
+no finite-ring database claim.  Its role is to place the already developed
+tangent-cotangent Weyl workflow into the QSA catalogue as a geometric
+first-association workflow.
+
+The governing comparison language is AQM-65 and \texttt{CONVENTIONS.md}
+convention \texttt{(ap)}.  The point-selection discipline is AQM-75.  The
+technical convention is \texttt{CONVENTIONS.md} \texttt{(ao)}, and the local
+technical anchors are AQM-58 through AQM-63.  The K\"ahler differential and
+tangent-space source locators are inherited from AQM-58--AQM-61; this shard
+does not introduce a new literature layer.
+
+\subsection{Workflow Slot in the QSA Catalogue}
+
+The cotangent-based first association is the following geometric workflow.
+It starts from a geometric presentation, not from a bare finite set:
+\[
+  X=\Spec A
+\]
+over a named base field or base ring already fixed for the differential
+calculation.  It then chooses a point convention in the sense of AQM-75.  For
+the finite Weyl part of this shard, the selected points must be
+finite-residue points; rational supports are allowed only when they are
+explicitly named finite truncations, and closed finite-residue supports are
+the current full finite-site convention for affine finite-type
+\(\mathbb F_q\)-schemes.
+
+For each selected finite-residue point \(x\), put
+\[
+  K_x=\kappa(x).
+\]
+Convention \texttt{(ao)} attaches the cotangent fibre
+\[
+  V_x^*=T^*_{X/k,x}=\Omega^1_{A/k}\otimes_A K_x
+\]
+and the tangent space
+\[
+  V_x=T_{X/k,x}=\operatorname{Hom}_{K_x}(V_x^*,K_x).
+\]
+The geometric phase-label space is
+\[
+  E_x^{\rm geom}=V_x\oplus V_x^*.
+\]
+The symplectic form is the canonical tangent-cotangent pairing
+\[
+  \omega_x((v,\alpha),(w,\beta))=\beta(v)-\alpha(w).
+\]
+This is the required symplectic datum before any Weyl representation is used.
+It is bilinear and alternating by direct cancellation.  It is nondegenerate
+when \(V_x\) is finite-dimensional over \(K_x\): a nonzero tangent vector is
+detected by some cotangent vector, and a nonzero cotangent vector is detected
+by some tangent vector.  This is the local derivation already recorded in
+AQM-60.
+
+If \(K_x\) is finite and \(m_x=\dim_{K_x}V_x<\infty\), convention
+\texttt{(ao)} applies the finite Weyl-Heisenberg step to
+\[
+  E_x^{\rm geom}
+\]
+using the additive character
+\[
+  \psi_{K_x}(a)=
+  \exp\!\left(\frac{2\pi i}{p}\operatorname{Tr}_{K_x/\mathbb F_p}(a)\right).
+\]
+The resulting kinematical output is a projective representation
+\[
+  \rho_x^{\rm geom}:E_x^{\rm geom}\to PU(\mathcal H_x^{\rm geom})
+\]
+with carrier dimension
+\[
+  \dim_{\mathbb C}\mathcal H_x^{\rm geom}=|K_x|^{m_x}.
+\]
+For a finite support \(S\), the phase labels and representations combine as
+\[
+  E_S^{\rm geom}=\bigoplus_{x\in S}E_x^{\rm geom},\qquad
+  \rho_S^{\rm geom}=\bigotimes_{x\in S}\rho_x^{\rm geom}.
+\]
+
+Thus the first association output is not a direct assignment of a Hilbert
+space to the set of points.  It is the sequence
+\[
+  \begin{gathered}
+  \text{chosen points}\quad\leadsto\quad
+  \text{cotangent/tangent fibres}\quad\leadsto\quad
+  \text{symplectic phase labels}\\
+  \leadsto\quad
+  \text{Weyl-Heisenberg carriers when finite}.
+  \end{gathered}
+\]
+
+\subsection{Relation to Earlier Association Families}
+
+This workflow is different from the structureless finite-set first
+association of AQM-67.  AQM-67 starts with a bare finite set and produces the
+formal carrier \(\mathbb C\langle X\rangle\), with any Gram matrix marked as
+extra data.  Here the input includes a scheme presentation, a base for
+differentials, and a point convention.  The output is controlled by
+\(\Omega^1_{A/k}\), not by cardinality alone.
+
+It is also different from the residue-Weyl field-label workflow reviewed in
+AQM-71.  The residue-Weyl layer uses the residue field shape
+\[
+  K_x^{(q)}\oplus K_x^{(p)}
+\]
+at a site.  The cotangent-first layer uses
+\[
+  T_{X/k,x}\oplus T^*_{X/k,x}.
+\]
+Convention \texttt{(ao)} records that these agree only after extra choices in
+special cases, for example at a smooth curve point where
+\(\dim_{K_x}T_{X/k,x}=1\) and a tangent basis identifies the geometric label
+space with \(K_x^2\).  Product rings, higher-dimensional smooth points,
+singular points, and nonreduced points show that the two workflows are not
+the same catalogue entry.
+
+\subsection{Anchored Example Inventory}
+
+The existing shards supply the following checked or locally derived examples.
+This table is an inventory of local anchors, not a finite-ring-wide cotangent
+database.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.23\linewidth}p{0.27\linewidth}p{0.36\linewidth}}
+\toprule
+Object and point choice & Local cotangent-first output & Anchor and status \\
+\midrule
+\(k^n\) with its \(n\) spectrum points &
+\(\Omega^1_{k^n/k}=0\), so every
+\(E_x^{\rm geom}=0\) and every geometric carrier is one-dimensional. &
+AQM-58 proves the vanishing by derivations; AQM-60 and AQM-61 record the
+trivial tangent-Weyl reading.  This is a geometric zero case, not the
+residue-qudit system of AQM-40. \\
+\addlinespace
+\(\Spec\mathbb F_3\) &
+One point, zero cotangent and tangent spaces, and no nontrivial geometric
+Weyl label. &
+AQM-61 Example 1. \\
+\addlinespace
+\(\Spec\mathbb F_3[\epsilon]/(\epsilon^2)\) at its closed point &
+One tangent direction and one cotangent direction; the finite carrier has
+dimension \(3\). &
+AQM-61 Example 3.  This is first-derivative geometry, not the Artin-ring
+thickened Weyl layer. \\
+\addlinespace
+\(\Spec\mathbb F_3[t]/(t^3)\) at its closed point &
+One tangent direction in characteristic \(3\); the carrier has dimension
+\(3\). &
+AQM-61 Example 4.  The first tangent dimension does not record the whole
+length-three thickening. \\
+\addlinespace
+\(\Spec\mathbb F_3[u,v]/(u^2,v^2)\) at its closed point &
+Two tangent directions; the carrier has dimension \(3^2=9\). &
+AQM-61 Example 5. \\
+\addlinespace
+\(\mathbb A^1_{\mathbb F_3}\), rational support &
+Each rational point has one tangent direction; the support carrier has
+dimension \(3^3\). &
+AQM-62 Example 6.  Closed degree-\(d\) points have residue field
+\(\mathbb F_{3^d}\) and carrier dimension \(3^d\). \\
+\addlinespace
+\(\mathbb A^2_{\mathbb F_3}\), rational support &
+Each rational point has two tangent directions; the support carrier has
+dimension \(3^{18}\). &
+AQM-62 Example 7. \\
+\addlinespace
+The crossing \(xy=0\) over \(\mathbb F_3\), rational support &
+The origin has two tangent directions and the four other rational points have
+one; the support carrier has dimension \(3^6\). &
+AQM-62 Example 8. \\
+\addlinespace
+Finite-field circle \(x^2+y^2=1\) &
+Odd-characteristic smooth points have one tangent direction; the
+\(\mathbb F_3\) rational support carrier has dimension \(3^4\), and the
+\(\mathbb F_5\) rational support carrier has dimension \(5^4\). &
+AQM-59 computes the cotangent fibres and point counts; AQM-62 Examples 9--10
+record the Weyl carrier dimensions.  AQM-59 also records the
+characteristic-two nonreduced tangent thickening. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{What AQM-63 Adds and What It Does Not Add}
+
+AQM-63 records a compatible cotangent-label selection test:
+\[
+  L_{\rm dR}(S)=\operatorname{ev}^1_S(dA)
+  \subset 0\oplus\bigoplus_{x\in S}T^*_{X/k,x}.
+\]
+Because the cotangent summand is isotropic, these labels define commuting
+Weyl operators after phases are fixed.  This is a local compatibility result
+inside the cotangent-first kinematics.
+
+For QSA Step 12, this does not turn the workflow into dynamics.  AQM-63 also
+records that tangent-type labels, Hamiltonians, action functionals, metrics,
+Hodge identifications, and other dynamical or CSS-completion choices remain
+extra data.  Therefore the present shard uses AQM-63 only to say that exact
+one-forms can be read as optional cotangent/momentum constraints inside the
+already built phase-label space.
+
+\subsection{Gaps Carried to Later Steps}
+
+The intrinsic-versus-relative cotangent problem is deliberately not settled
+here.  Every displayed \(T^*_{X/k,x}\) uses the base appearing in convention
+\texttt{(ao)} and in the anchor shard.  Step 13 must compare local/intrinsic
+and relative cotangent choices for \(\Spec R\) with the base ring named in
+each example.
+
+No finite-ring-wide cotangent table is asserted.  In particular, this shard
+does not claim populated database-backed cotangent rows, helper coverage, or
+finite-ring example-matrix completeness.  Those rows remain gaps pending the
+separate finite-ring cotangent work item \texttt{aqm-qsa-frcot01} and the
+later QSA finite-ring matrix steps.
+
+Finally, AQM-75 still controls point selection.  Generic points, infinite
+residue fields, analytic completions, and all-scheme-point indexing do not
+become finite Weyl systems by this shard.  If \(K_x\) is not finite, or if
+the representation category is not fixed, the output stops at the geometric
+phase-label space and the missing representation choice must be labelled as a
+gap.

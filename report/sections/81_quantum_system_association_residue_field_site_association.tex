@@ -1,0 +1,189 @@
+% SHARD-ID: AQM-81-QSA-RESIDUE-FIELD-SITE-ASSOCIATION
+% SHARD-TITLE: Residue-Field Site Association for Spec R
+% SHARD-SUMMARY: Defines the sourced finite residue-site workflow for selected prime or maximal points of \(\Spec R\).
+% SHARD-SUMMARY: Allows local finite symplectic targets and Weyl carriers to vary over the residue field at each site.
+% SHARD-SUMMARY: Records mixed-residue direct sums, tensor carriers, and blockers separating this reduced layer from nilpotent thickenings.
+% SHARD-KEYWORDS: quantum-system association, residue field, finite rings, Spec R, mixed residues, tensor carriers
+
+\section{Residue-Field Site Association for \texorpdfstring{\(\Spec R\)}{Spec R}}
+\label{sec:qsa-residue-field-site-association}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: Review/New for sourced finite cases only.}  This is QSA
+Step 17 from \path{docs/quantum_system_associations/PLAN.md}.  It adds no
+source, convention entry, script, run bundle, generated data, populated
+database row, or general finite-ring algorithm.  It packages the residue-site
+workflow already present in conventions \texttt{(u)}, \texttt{(y)},
+\texttt{(aa)}, \texttt{(ad)}, and \texttt{(an)} and in AQM-23, AQM-34,
+AQM-35, AQM-40, AQM-75, AQM-78, and AQM-80.
+
+The finite-ring database boundary is unchanged.  The local anchors are
+convention \texttt{(an)} and the run-bundle README
+\begin{center}
+  \path{runs/2026-05-26-finite-ring-database/README.md}.
+\end{center}
+They record a schema-only SQLite smoke build plus in-memory MVP review exports.
+The SQLite artifact is not a populated or audited finite-ring database.  The
+in-memory residue helper is deliberately limited to source-backed cases and
+does not certify a general maximal-ideal or residue-field decomposition.
+General finite-ring maximal/residue decomposition and deterministic site
+ordering remain blocked by \texttt{aqm-qsa-frres01}.
+
+\subsection{Workflow for Selected Finite Residue Sites}
+
+The input is not an arbitrary ring with an implicit site algorithm.  The input
+is a finite displayed site set
+\[
+  S=\{x_1,\ldots,x_r\}
+\]
+of prime or maximal points of \(\Spec R\), together with the locally anchored
+residue field
+\[
+  K_x=\kappa(x)
+\]
+for each \(x\in S\).  The site set may be all of \(\Spec R\) in a finite
+sourced spectrum such as AQM-23, AQM-34, AQM-35, or AQM-40; otherwise it is a
+selected finite support under the point-choice discipline of AQM-75.
+
+The default residue-site target is the one-degree finite-field phase space
+\[
+  E_x=K_x^2=K_{x,X}\oplus K_{x,Z},
+  \qquad
+  \omega_x((q,p),(q',p'))=pq'-p'q .
+\]
+The local Weyl carrier and observable algebra are
+\[
+  \mathcal H_x=\ell^2(K_x),
+  \qquad
+  \mathcal A_x=\operatorname{End}_{\mathbb C}(\mathcal H_x).
+\]
+This is the one-site finite-field Weyl step reviewed in AQM-78.  If a later
+row supplies a different finite-dimensional \(K_x\)-vector space \(Q_x\), the
+same sourced finite-field Weyl step may use \(E_x=Q_x\oplus Q_x^\vee\) and
+\(\ell^2(Q_x)\).  The point of Step 17 is that this target is allowed to vary
+with the residue field \(K_x\); it is not required to be a vector space over a
+single common residue field.
+
+For the finite support \(S\), form the phase-label group and carrier
+\[
+  E(S)=\bigoplus_{x\in S}E_x,
+  \qquad
+  \mathcal H(S)=\bigotimes_{x\in S}\mathcal H_x,
+  \qquad
+  \mathcal A(S)=\bigotimes_{x\in S}\mathcal A_x .
+\]
+The direct sum is a direct sum of finite abelian phase groups with its
+orthogonal local commutator pairings.  A chosen ordering of \(S\) may be used
+to display the finite tensor product; by convention \texttt{(ar)} it is
+display data unless a separate convention fixes an order.  Empty support gives
+the zero label group and the empty tensor product \(\mathbb C\).
+
+\subsection{Mixed Residues Are Not One Common-Field Space}
+
+AQM-23 is the warning example.  For
+\[
+  R=\mathbb Z/6\mathbb Z
+\]
+the two points are \((2)\) and \((3)\), with residues \(\mathbb F_2\) and
+\(\mathbb F_3\).  Step 17 therefore gives
+\[
+  E(S)=\mathbb F_2^2\oplus\mathbb F_3^2,
+  \qquad
+  \mathcal H(S)=\ell^2(\mathbb F_2)\otimes\ell^2(\mathbb F_3).
+\]
+This is a direct sum of finite abelian phase groups and a tensor product of
+local carriers.  It is not an \(\mathbb F_3\)-vector space, not an
+\(\mathbb F_2\)-vector space, and not a Hilbert direct sum
+\(\mathbb C^2\oplus\mathbb C^3\).  A reduction to a common prime-field
+abelian group may be introduced only after recording the prime-field pairing
+and character used for that reduction.
+
+\subsection{Sourced Example Table}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.17\linewidth}p{0.25\linewidth}p{0.28\linewidth}p{0.22\linewidth}}
+\toprule
+Object & Residue sites & Step 17 carrier & Boundary marker \\
+\midrule
+\(\mathbb F_3\) &
+\texttt{available}: one \(\Spec\)-point with residue \(\mathbb F_3\), by
+AQM-22 and convention \texttt{(u)}. &
+\(E=\mathbb F_3^2\),
+\(\mathcal H=\ell^2(\mathbb F_3)\), one qutrit residue site. &
+This is the residue-spectrum point, not the three-point underlying-set model
+of AQM-22/AQM-71. \\
+\addlinespace
+\(\mathbb F_3\times\mathbb F_3\) &
+\texttt{available}: AQM-40 and convention \texttt{(ad)} give two discrete
+points, both with residue \(\mathbb F_3\). &
+\(E=\mathbb F_3^2\oplus\mathbb F_3^2\),
+\(\mathcal H=\ell^2(\mathbb F_3)^{\otimes2}\). &
+Stabilizer codes are later choices of isotropic labels and phases, not forced
+by the product ring. \\
+\addlinespace
+\(\mathbb Z/6\mathbb Z\) &
+\texttt{available}: AQM-23 gives \((2)\) and \((3)\) with residues
+\(\mathbb F_2\) and \(\mathbb F_3\). &
+\(E=\mathbb F_2^2\oplus\mathbb F_3^2\),
+\(\mathcal H=\ell^2(\mathbb F_2)\otimes\ell^2(\mathbb F_3)\). &
+Mixed residues are not one common-field vector space.  The observable algebra
+is \(M_2(\mathbb C)\otimes M_3(\mathbb C)\). \\
+\addlinespace
+\(\mathbb F_3[t]/(p)\) &
+\texttt{available} for monic nonzero \(p=\prod_i\pi_i^{e_i}\) in AQM-34:
+one site \(x_i=(\pi_i)/(p)\) per distinct irreducible factor, with
+\(K_i=\mathbb F_3[t]/(\pi_i)\). &
+\(E=\bigoplus_iK_i^2\),
+\(\mathcal H=\bigotimes_i\ell^2(K_i)\); if \(p=1\), this is the empty support
+case. &
+Repeated exponents \(e_i\) are nilpotent thickening data and do not add
+residue sites. \\
+\addlinespace
+\(\mathbb F_3[t]/(t^n-1)\) reduced layer &
+\texttt{available}: AQM-35 writes \(n=3^s m\), \(3\nmid m\), and uses the
+irreducible factors of the squarefree part \(t^m-1\). &
+\(E=\bigoplus_{\pi\mid t^m-1}K_\pi^2\),
+\(\mathcal H=\bigotimes_{\pi\mid t^m-1}\ell^2(K_\pi)\), dimension \(3^m\). &
+AQM-37 gives the separate thickened dimension \(3^n\); Step 17 uses only the
+reduced residue layer. \\
+\addlinespace
+\(\mathbb Z/4\mathbb Z\) &
+\texttt{blocked/database}: AQM-77 locally uses the point \((2)\) and residue
+\(\mathbb F_2\) for cotangent comparison, but the finite-ring residue helper
+does not certify the row. &
+\texttt{not\_claimed}: no general Step 17 database-backed residue-site row is
+imported here. &
+Keep as a local cotangent anchor only until \texttt{aqm-qsa-frres01} supplies
+certified decomposition/site ordering. \\
+\addlinespace
+\(\mathbb F_3[\epsilon]/(\epsilon^2)\) &
+\texttt{available locally}: AQM-34/AQM-80 record one reduced residue site
+with residue \(\mathbb F_3\); the database residue helper row remains
+\texttt{blocked}. &
+Reduced Step 17 carrier is the one qutrit \(\ell^2(\mathbb F_3)\) when that
+local point is selected. &
+The \(\ell^2(\mathbb F_3[\epsilon]/(\epsilon^2))\) Artin-Weyl layer is
+nilpotent-sensitive AQM-36/Step 18, not an extra residue point. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{What This Supplies to Later Steps}
+
+Step 17 supplies a precise reduced residue-site input to later QSA shards:
+a selected finite set of prime or maximal points, the residue field at each
+site, the local finite-field phase data over that residue field, and the
+direct-sum/tensor-product assembly over finite supports.  It also supplies
+the mixed-residue warning needed before any stabilizer, dynamics, Clifford,
+or common-prime-field comparison: those are later choices and require their
+own pairings, phases, and sources.
+
+The blocked items are unchanged.  There is no general algorithm here for all
+finite commutative rings, no populated/audited finite-ring database evidence,
+and no deterministic site ordering beyond the sourced displays.  Reduced
+residue sites remain separate from nilpotent-sensitive thickened layers:
+AQM-36 and AQM-37 quantize local Artin rings as jet degrees of freedom at the
+same closed points, and QSA Step 18 will compare that layer without
+collapsing nilpotents into extra residue sites.

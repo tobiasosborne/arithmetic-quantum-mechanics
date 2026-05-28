@@ -1,0 +1,171 @@
+% SHARD-ID: AQM-71-QSA-SYMPLECTIC-FIELD-LABELS-SET
+% SHARD-TITLE: Finite Symplectic Field Labels on a Set
+% SHARD-SUMMARY: Reviews the finite symplectic field-label association from AQM-14 in QSA Step 07 language.
+% SHARD-SUMMARY: Records the Map(X,V), finite-support, pointwise-pairing, radical-quotient, and Weyl-carrier ingredients with local anchors.
+% SHARD-SUMMARY: Lists only checked \(\mathbb F_3\) CSV examples and states that new examples require new run or source rows.
+% SHARD-KEYWORDS: quantum-system association, finite set, symplectic labels, Map(X,V), radical quotient, Weyl-Heisenberg, qudits
+
+\section{Finite Symplectic Field Labels on a Set}
+\label{sec:qsa-symplectic-field-labels-set}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 07 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a review shard, not a
+new construction shard.  It adds no new examples, no new source claims, and no
+new run artifacts.
+
+The vocabulary and evidence discipline are those of
+\texttt{CONVENTIONS.md} convention \texttt{(ap)} and AQM-65.  The finite
+field-label convention is \texttt{CONVENTIONS.md} convention \texttt{(q)}.
+The main report anchors are AQM-14, especially its dependencies D1--D4,
+lemmas L1--L5, and Weyl step L6; the exact
+\(\mathbb F_3\) run bundle
+\path{runs/2026-05-24-arithmetic-quantum-fields/}; and AQM-22, especially
+its all-map prime-field construction D3--D6 and theorems T1--T2.  The
+finite-support variant is the closed-point finite-residue version recorded in
+AQM-28 D5--T1 and \texttt{CONVENTIONS.md} convention \texttt{(y)}.
+
+\subsection{Association Data}
+
+The finite-set version starts with a finite point set \(X\), a finite
+symplectic vector space \((V,\omega_V)\) over \(\mathbb F_q\), and a chosen
+\(\mathbb F_q\)-linear subspace
+\[
+  E\leq \operatorname{Map}(X,V).
+\]
+As recorded in convention \texttt{(q)} and AQM-14 D1--D4, the neutral
+function-space notation for a set is \(\operatorname{Map}(X,V)\).  The word
+\(\operatorname{Hom}\) is reserved for a separately specified
+structure-preserving class of maps.
+
+Thus this association is not attached to a bare set alone.  The set supplies
+labels for points; the workflow also needs the target \(V\), the subspace
+\(E\), and the pointwise pairing weights.  In the existing checked run all
+weights are \(1\).
+
+For infinite closed-point layers over affine schemes, the finite-qudit variant
+uses finite support rather than all maps.  AQM-28 defines, for an open
+\(U\subset X\),
+\[
+  E(U)=\bigoplus_{x\in U\cap |X|_{\rm cl}}\kappa(x)^2
+\]
+as a finite-support direct sum over closed points.  Regular-function profiles
+may have infinite support there, so AQM-28 keeps them separate from
+quasi-local Weyl operators.
+
+\subsection{Pointwise Pairing and Radical}
+
+For \(E\leq\operatorname{Map}(X,V)\), AQM-14 and convention \texttt{(q)} use
+the pointwise alternating form
+\[
+  \Omega_E(\phi,\psi)
+  =
+  \sum_{x\in X} w_x\,\omega_V(\phi(x),\psi(x)).
+\]
+AQM-14 L1--L2 check the pointwise vector-space and bilinear alternating-form
+properties.  AQM-14 L3 records nondegeneracy for the all-map case when
+\(\omega_V\) is nondegenerate and all weights are nonzero.
+
+For a chosen subspace \(E\), the radical must still be checked:
+\[
+  \operatorname{rad}(E)
+  =
+  \{\phi\in E:\Omega_E(\phi,\psi)=0\text{ for all }\psi\in E\}.
+\]
+AQM-14 L4--L5 and convention \texttt{(q)} fix the rule:
+\[
+  E_{\rm red}=E/\operatorname{rad}(E).
+\]
+If the radical is zero, \(E\) itself is the Weyl label space.  If the radical
+is nonzero, the honest finite symplectic Weyl label space is the quotient
+\(E_{\rm red}\), not the unreduced \(E\).
+
+In the checked \(\mathbb F_3\) scalar-function examples, AQM-14 uses
+\(V=\mathbb F_3^2\) with
+\[
+  \omega((q,p),(q',p'))=p q'-q p',
+\]
+and a scalar subspace \(U\leq\operatorname{Map}(X,\mathbb F_3)\) gives
+\[
+  E=Uq\oplus Up,\qquad
+  \Omega((q,p),(q',p'))=B(p,q')-B(q,p'),
+\]
+where \(B(f,g)=\sum_x f(x)g(x)\).
+
+\subsection{Weyl Labels and Qudit Carriers}
+
+After reduction, AQM-14 L6 chooses a symplectic basis
+\[
+  E_{\rm red}\cong \mathbb F_q^n\oplus\mathbb F_q^n
+\]
+and represents the labels on
+\[
+  \mathcal H=\mathbb C^{\mathbb F_q^n}\cong \ell^2(\mathbb F_q^n)
+\]
+by shifts, phases, and Weyl operators
+\[
+  T_q|a\rangle=|a+q\rangle,\qquad
+  R_p|a\rangle=\chi(p\cdot a)|a\rangle,\qquad
+  W(q,p)=T_qR_p.
+\]
+The resulting observable algebra is the complex span of these Weyl operators,
+as stated in AQM-14 after L6.
+
+AQM-22 is the prime-field qudit comparison.  It separates the one-point
+spectrum \(X_{\rm sp}=\Spec\mathbb F_p\) from the \(p\)-element set
+\(X_{\rm el}=\mathbb F_p\).  For \(X_{\rm el}\) and
+\[
+  E_{\rm el}=\operatorname{Map}(X_{\rm el},\mathbb F_p^2),
+\]
+AQM-22 T1 identifies the generated Weyl operators with the ambient
+odd-\(p\) \(p\)-qudit Pauli group, one qudit for each element of
+\(\mathbb F_p\).  AQM-22 T2 records that stabilizer codes are extra data:
+one must choose an isotropic label subspace and compatible phases.
+
+\subsection{Checked \texorpdfstring{\(\mathbb F_3\)}{F3} Rows}
+
+The exact run
+\path{runs/2026-05-24-arithmetic-quantum-fields/} was produced by
+\path{scripts/bridges/arithmetic_quantum_fields.jl}.  Its README states that
+the run checks pointwise symplectic function spaces, radicals, reduced Weyl
+labels, Hilbert dimensions, and observable-algebra dimensions.  Its schema is
+the \texttt{arithmetic\_quantum\_field\_examples.csv} entry in
+\path{data/SCHEMA.md}.
+
+The table below is only a review of existing CSV rows in
+\path{runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv}.
+It is not a new computation.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+CSV row & \(|X|\) & \(\dim U\) & \(\dim\operatorname{rad}\) & \(|E_{\rm red}|\) & \(\dim\mathcal H\)\\
+\midrule
+\texttt{finite\_two\_points\_all\_maps} & 2 & 2 & 0 & 81 & 9\\
+\texttt{finite\_set\_3\_full} & 3 & 3 & 0 & 729 & 27\\
+\texttt{vector\_space\_F3\_affine} & 3 & 2 & 2 & 9 & 3\\
+\texttt{affine\_plane\_F3\_linear} & 9 & 2 & 4 & 1 & 1\\
+\texttt{parabola\_F3\_degree\_le\_1} & 3 & 3 & 0 & 729 & 27\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The companion basis file
+\path{runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_bases.csv}
+records the scalar basis values and scalar Gram rows behind those summary
+rows.  For example, the row group
+\texttt{vector\_space\_F3\_affine} records basis labels \(1,t\) and Gram rows
+\texttt{0 0} and \texttt{0 2}; the row group
+\texttt{parabola\_F3\_degree\_le\_1} records basis labels \(1,x,y\) and Gram
+rows \texttt{0 0 2}, \texttt{0 2 0}, and \texttt{2 0 2}.
+
+\subsection{Boundary}
+
+This shard closes only the review requested by QSA Step 07.  It does not
+extend the example list beyond the existing AQM-14/AQM-22 material and the
+2026-05-24 CSV rows.  Any new finite set, field space, weighting, radical
+calculation, qudit carrier count, or comparison with another association
+workflow would require a new local source, derivation, or run row before it
+can be stated as report evidence.

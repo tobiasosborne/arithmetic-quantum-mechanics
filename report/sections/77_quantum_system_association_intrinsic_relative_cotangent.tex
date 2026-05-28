@@ -1,0 +1,253 @@
+% SHARD-ID: AQM-77-QSA-INTRINSIC-RELATIVE-COTANGENT
+% SHARD-TITLE: Intrinsic Versus Relative Cotangent Data
+% SHARD-SUMMARY: Compares local cotangent data \(\mathfrak m_x/\mathfrak m_x^2\) with relative K\"ahler cotangent fibres over a named base.
+% SHARD-SUMMARY: Gives exact finite examples where the two agree, differ, or where the relative cotangent vanishes.
+% SHARD-SUMMARY: Records how the cotangent choice changes tangent spaces, phase-label dimensions, and finite Weyl carrier sizes.
+% SHARD-KEYWORDS: quantum-system association, cotangent, intrinsic cotangent, relative differentials, finite rings, Weyl labels
+
+\section{Intrinsic Versus Relative Cotangent Data}
+\label{sec:qsa-intrinsic-relative-cotangent}
+
+\subsection{Status and Local Anchors}
+
+This is QSA Step 13 from
+\path{docs/quantum_system_associations/PLAN.md}.  It is a new
+derivation/comparison shard: it adds no external source, no run artifact, and
+no populated finite-ring cotangent table.  Its purpose is to compare two
+legitimate first-order inputs for a cotangent-first quantum-system
+association.
+
+The governing vocabulary is AQM-65 and \texttt{CONVENTIONS.md} conventions
+\texttt{(ap)} and \texttt{(av)}.  Point-selection discipline is AQM-75, and
+the tangent-cotangent Weyl workflow is AQM-76 and convention
+\texttt{(ao)}.  K\"ahler differentials and their universal property use
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+33793--33872.  Surjective base maps give zero relative differentials by the
+same source, lines 33883--33893.  Quotient and polynomial differential
+calculations use lines 34103--34120 and 34310--34340.  Cotangent fibres and
+tangent duality use
+\path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
+2987--3019.  The comparison with
+\(\mathfrak m_x/(\mathfrak m_x^2+\mathfrak m_s\mathcal O_{X,x})\)
+uses the same file, lines 3058--3094, and the warning that
+\(\mathfrak m/\mathfrak m^2\) and relative embedding dimension can differ
+uses lines 10758--10797.
+
+\subsection{Two Cotangent Choices}
+
+Let \(X=\Spec A\), choose a point \(x\), and write
+\[
+  A_x \text{ for the local ring},\qquad
+  \mathfrak m_x\subset A_x,\qquad
+  K=\kappa(x)=A_x/\mathfrak m_x .
+\]
+The intrinsic local cotangent object is
+\[
+  C_x^{\rm loc}=\mathfrak m_x/\mathfrak m_x^2 .
+\]
+It depends on the local ring at \(x\), not on a chosen base.
+
+For a named base ring map \(B\to A\), the relative K\"ahler cotangent object is
+\[
+  C_x^{\rm rel}(B)=\Omega^1_{A/B}\otimes_AK .
+\]
+It depends on the morphism \(X\to\Spec B\).  In the residue-field-equal or
+separable algebraic situation covered by the Stacks tangent-space locator,
+this relative fibre is the local quotient
+\[
+  \mathfrak m_x/
+  \bigl(\mathfrak m_x^2+\mathfrak m_s\mathcal O_{X,x}\bigr),
+\]
+where \(s\) is the image of \(x\) in \(\Spec B\).  Thus base directions may be
+removed by the relative construction.
+
+Each choice feeds AQM-76 separately.  Put
+\[
+  V_x^{\rm loc}=\operatorname{Hom}_K(C_x^{\rm loc},K),\qquad
+  E_x^{\rm loc}=V_x^{\rm loc}\oplus C_x^{\rm loc},
+\]
+and
+\[
+  V_x^{\rm rel}(B)=\operatorname{Hom}_K(C_x^{\rm rel}(B),K),\qquad
+  E_x^{\rm rel}(B)=V_x^{\rm rel}(B)\oplus C_x^{\rm rel}(B).
+\]
+Both use the canonical tangent-cotangent symplectic form
+\[
+  \omega((v,\alpha),(w,\beta))=\beta(v)-\alpha(w).
+\]
+If \(K\) is finite and \(m=\dim_K C\) for the chosen cotangent object \(C\),
+then the finite Weyl carrier dimension is \(|K|^m\).  Therefore changing the
+cotangent object can change \(V_x\), \(V_x^*\), the symplectic label dimension
+\(2m\), and the finite carrier size.
+
+\subsection{Agreement Examples over \texorpdfstring{\(\mathbb F_3\)}{F3}}
+
+\paragraph{1. The field \(\mathbb F_3\).}
+Base ring: \(B=k=\mathbb F_3\).  Point convention: the unique closed point of
+\(X=\Spec k\).  The local ring is \(k\), so
+\[
+  \mathfrak m_x=0,\qquad C_x^{\rm loc}=0.
+\]
+The relative differential module is \(\Omega^1_{k/k}=0\), as in AQM-61
+Example 1, so
+\[
+  C_x^{\rm rel}(k)=0.
+\]
+Both choices give \(E_x=0\) and a one-dimensional Weyl carrier.
+
+\paragraph{2. Product fields \(k^n\).}
+Base ring: \(B=k=\mathbb F_3\).  Point convention: all spectrum points
+\(x_i\) of \(X=\Spec(k^n)\), equivalently the idempotent factors.  At each
+point, the local ring is \(k\), so \(C_{x_i}^{\rm loc}=0\).  AQM-58 proves by
+derivations that
+\[
+  \Omega^1_{k^n/k}=0,
+\]
+hence
+\[
+  C_{x_i}^{\rm rel}(k)=0.
+\]
+The intrinsic and relative cotangent-first readings agree and vanish at every
+point.  This is still not the residue-qudit workflow of AQM-40.
+
+\paragraph{3. Dual numbers.}
+Base ring: \(B=k=\mathbb F_3\).  Point convention: the unique closed point
+\(x=(\epsilon)\) of
+\[
+  A=k[\epsilon]/(\epsilon^2).
+\]
+The local maximal ideal is \(\mathfrak m=(\epsilon)\), and
+\(\mathfrak m^2=0\), so
+\[
+  C_x^{\rm loc}=k\,\bar\epsilon .
+\]
+For the relative calculation, the quotient differential sequence gives
+\[
+  \Omega^1_{A/k}=A\,d\epsilon/(2\epsilon\,d\epsilon).
+\]
+Tensoring with \(K=k\) kills \(\epsilon\), so
+\[
+  C_x^{\rm rel}(k)=k\,d\epsilon .
+\]
+The two cotangent objects agree in dimension and under the first-order
+identification \(\bar\epsilon\leftrightarrow d\epsilon\).  Thus \(m=1\),
+\(E_x\) has \(K\)-dimension \(2\), and the carrier dimension is \(3\), as in
+AQM-61 Example 3.
+
+\paragraph{4. The cubic fat point in characteristic three.}
+Base ring: \(B=k=\mathbb F_3\).  Point convention: the unique closed point
+\(x=(t)\) of
+\[
+  A=k[t]/(t^3).
+\]
+Here \(\mathfrak m=(t)\) and \(\mathfrak m^2=(t^2)\), hence
+\[
+  C_x^{\rm loc}=k\,\bar t .
+\]
+Since \(d(t^3)=3t^2dt=0\) in characteristic \(3\), AQM-61 computes
+\[
+  C_x^{\rm rel}(k)=k\,dt .
+\]
+Again \(m=1\), so the intrinsic and relative phase-label spaces have
+dimension \(2\) over \(k\) and finite carrier dimension \(3\).  Neither
+first-order cotangent choice records the full length-three thickening.
+
+\paragraph{5. Two independent dual directions over \(k\).}
+Base ring: \(B=k=\mathbb F_3\).  Point convention: the unique closed point
+\(x=(u,v)\) of
+\[
+  A=k[u,v]/(u^2,v^2).
+\]
+The maximal ideal is \(\mathfrak m=(u,v)\), and
+\(\mathfrak m^2=(uv)\), because \(u^2=v^2=0\).  Therefore
+\[
+  C_x^{\rm loc}=k\,\bar u\oplus k\,\bar v .
+\]
+The quotient differential calculation gives
+\[
+  \Omega^1_{A/k}=
+  (A\,du\oplus A\,dv)/(2u\,du,\ 2v\,dv).
+\]
+After tensoring with \(K=k\), both \(u\) and \(v\) vanish, so
+\[
+  C_x^{\rm rel}(k)=k\,du\oplus k\,dv .
+\]
+The choices agree with \(m=2\).  Hence \(E_x\) has dimension \(4\) over \(k\),
+and the finite Weyl carrier dimension is \(3^2=9\), as in AQM-61 Example 5.
+
+\subsection{Difference Examples}
+
+\paragraph{6. The same two-direction ring relative to one base direction.}
+Base ring:
+\[
+  B=k[u]/(u^2),\qquad k=\mathbb F_3,
+\]
+with \(B\to A=k[u,v]/(u^2,v^2)\) sending \(u\) to \(u\).  Point convention:
+the unique closed point \(x=(u,v)\) of \(A\), mapping to \(s=(u)\) of \(B\).
+The intrinsic cotangent is still
+\[
+  C_x^{\rm loc}=k\,\bar u\oplus k\,\bar v .
+\]
+Relatively, \(A=B[v]/(v^2)\).  Thus
+\[
+  \Omega^1_{A/B}=A\,dv/(2v\,dv),
+\]
+and at \(x\)
+\[
+  C_x^{\rm rel}(B)=k\,dv .
+\]
+Equivalently, the local quotient formula removes the base direction:
+\[
+  \mathfrak m_x/
+  \bigl(\mathfrak m_x^2+(u)\mathcal O_{X,x}\bigr)
+  \cong k\,\bar v .
+\]
+So the intrinsic phase-label space has dimension \(4\) over \(k\) and carrier
+dimension \(9\), while the relative phase-label space over \(B\) has dimension
+\(2\) over \(k\) and carrier dimension \(3\).  This is an inequivalence of
+cotangent choices, not a contradiction.
+
+\paragraph{7. A mixed-characteristic quotient.}
+Base ring: \(B=\mathbb Z\).  Point convention: the unique closed point
+\(x=(2)\) of
+\[
+  A=\mathbb Z/4\mathbb Z.
+\]
+The local ring is \(A\), the maximal ideal is \(\mathfrak m=(2)\), and
+\(\mathfrak m^2=(4)=0\).  Therefore
+\[
+  C_x^{\rm loc}=\mathfrak m/\mathfrak m^2\cong\mathbb F_2 .
+\]
+But the base map \(\mathbb Z\to\mathbb Z/4\mathbb Z\) is surjective, so the
+Stacks surjective-map lemma gives
+\[
+  \Omega^1_{A/\mathbb Z}=0,\qquad C_x^{\rm rel}(\mathbb Z)=0.
+\]
+The intrinsic choice gives \(m=1\), local symplectic label dimension \(2\)
+over \(\mathbb F_2\), and a carrier of dimension \(2\) under the finite Weyl
+step.  The relative-over-\(\mathbb Z\) choice gives \(m=0\), \(E_x=0\), and a
+one-dimensional carrier.  The same calculation works for
+\(\mathbb Z/9\mathbb Z\) with \(x=(3)\), replacing \(\mathbb F_2\) by
+\(\mathbb F_3\).
+
+\subsection{Implication for Cotangent-First QSA}
+
+AQM-76 remains correct only after the cotangent object is named.  The local
+phase-label row is not simply "the cotangent of \(\Spec A\)"; it is either
+\[
+  E_x^{\rm loc}=V_x^{\rm loc}\oplus C_x^{\rm loc}
+\]
+or
+\[
+  E_x^{\rm rel}(B)=V_x^{\rm rel}(B)\oplus C_x^{\rm rel}(B)
+\]
+for a specific base \(B\).  Agreement examples allow the shorthand used in
+AQM-61, because both choices give the same finite dimensions there.  The
+relative \(B=k[u]/(u^2)\) and \(B=\mathbb Z\) examples show why later shards
+must not infer Weyl carrier sizes from the local ring alone or from
+\(\Omega^1\) without recording the base.
+
+This shard does not assert populated database-backed cotangent rows, helper
+coverage, finite-ring-wide tables, de Rham CSS completions, Hamiltonians, or
+generic/infinite-residue representation choices.  Those remain separate gaps,
+including the finite-ring cotangent work item \texttt{aqm-qsa-frcot01}.

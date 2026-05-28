@@ -6,13 +6,24 @@ rings for Weil representations.
 
 Retrieval date for this manifest: 2026-05-25.
 
+Source-integrity restoration audit for `aqm-qsa-src03`: on 2026-05-28, the
+local archives, extracted TeX files, and author PDFs named below were absent
+from `references/heisenberg_weil/`.  They were restored from the official
+arXiv e-print endpoints and author PDF URLs recorded in the individual access
+routes below.  The restored archive/PDF SHA256 values matched the hashes
+recorded in this manifest, and the extracted TeX paths were regenerated from
+those restored archives.  Some arXiv source endpoints return a single gzipped
+TeX payload rather than a tar member list; the local `.tar` filenames below
+are preserved because they match the recorded SHA256 values.
+
 ## Local Sources
 
 ### Amritanshu Prasad, Stone-von Neumann-Mackey
 
 - Bibliographic key: Prasad 2009/2011, "An easy proof of the
   Stone-von Neumann-Mackey theorem", arXiv:0912.0574.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/0912.0574`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/prasad_0912_0574_source.tar`
 - Extracted TeX:
@@ -29,7 +40,8 @@ Retrieval date for this manifest: 2026-05-25.
 
 - Bibliographic key: Solomon 2025, "Towards a Theory of SIC-like Phenomena:
   Regular Bouquets and Generalised Heisenberg Groups", arXiv:2501.00650.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2501.00650`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/solomon_2501_00650_source.tar`
 - Extracted TeX:
@@ -54,7 +66,8 @@ Retrieval date for this manifest: 2026-05-25.
 - Bibliographic key: Beny--Crann--Lee--Park--Youn 2022,
   "Gaussian Quantum Information over General Quantum Kinematical Systems I",
   arXiv:2204.08162.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2204.08162`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/beny_crann_lee_park_youn_2204_08162_source.tar`
 - Extracted TeX:
@@ -75,7 +88,8 @@ Retrieval date for this manifest: 2026-05-25.
 - Bibliographic key: Bekka 2025, "Canonical Commutation Relations: A quick
   proof of the Stone-von Neumann theorem and an extension to general rings",
   arXiv:2502.00387.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2502.00387`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/bekka_2502_00387_source.tar`
 - Extracted TeX:
@@ -97,7 +111,8 @@ Retrieval date for this manifest: 2026-05-25.
 
 - Bibliographic key: Lysenko 2021, "Towards canonical representations of
   finite Heisenberg groups", arXiv:2104.14890.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2104.14890`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/lysenko_2104_14890_source.tar`
 - Extracted TeX:
@@ -117,7 +132,8 @@ Retrieval date for this manifest: 2026-05-25.
 
 - Bibliographic key: Sidana--Kashyap 2022, "Entanglement-Assisted Quantum
   Error-Correcting Codes over Local Frobenius Rings", arXiv:2202.00248.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2202.00248`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/sidana_kashyap_2202_00248_source.tar`
 - Extracted TeX:
@@ -137,7 +153,8 @@ Retrieval date for this manifest: 2026-05-25.
 
 - Bibliographic key: Gluesing-Luerssen--Pllaha 2017/2019, "On Quantum
   Stabilizer Codes derived from Local Frobenius Rings", arXiv:1710.09884.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/1710.09884`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/gluesing_luerssen_pllaha_1710_09884_source.tar`
 - Extracted TeX:
@@ -158,7 +175,8 @@ Retrieval date for this manifest: 2026-05-25.
 
 - Bibliographic key: Hashimoto--Horibe--Hayashi 2023, "Center-Preserving
   Automorphisms of Finite Heisenberg Group over `Z_N`", arXiv:2307.00874.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2307.00874`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/hashimoto_horibe_hayashi_2307_00874_source.tar`
 - Extracted TeX:
@@ -179,7 +197,8 @@ Retrieval date for this manifest: 2026-05-25.
 
 - Bibliographic key: Korbelar--Tolar 2023, "Clifford group is not a
   semidirect product in dimensions `N` divisible by four", arXiv:2305.13178.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2305.13178`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/korbelar_tolar_2305_13178_source.tar`
 - Extracted TeX:
@@ -201,7 +220,8 @@ Retrieval date for this manifest: 2026-05-25.
 
 - Bibliographic key: Galindo 2026, "Splitting of Clifford groups associated
   to finite abelian groups", arXiv:2603.24743.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2603.24743`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/galindo_2603_24743_source.tar`
 - Extracted TeX:
@@ -220,7 +240,8 @@ Retrieval date for this manifest: 2026-05-25.
 ### Justin Trias, Universal Weil Module
 
 - Bibliographic key: Trias 2021, "Universal Weil module", arXiv:2103.04840.
-- Access route: arXiv e-print source.
+- Access route: arXiv e-print source at
+  `https://arxiv.org/e-print/2103.04840`; restored 2026-05-28.
 - Local archive:
   `references/heisenberg_weil/trias_2103_04840_source.tar`
 - Extracted TeX:
@@ -237,7 +258,8 @@ Retrieval date for this manifest: 2026-05-25.
 ### Bjorn Poonen, Tate's Thesis Notes
 
 - Bibliographic key: Poonen, "Tate's thesis" lecture notes.
-- Access route: author PDF at `https://math.mit.edu/~poonen/786/notes.pdf`.
+- Access route: author PDF at `https://math.mit.edu/~poonen/786/notes.pdf`;
+  restored 2026-05-28.
 - Local PDF:
   `references/heisenberg_weil/poonen_tates_thesis_notes.pdf`
 - SHA256:
@@ -252,7 +274,8 @@ Retrieval date for this manifest: 2026-05-25.
 ### Stephen Kudla, Local Theta Correspondence Notes
 
 - Bibliographic key: Kudla, "Notes on the Local Theta Correspondence".
-- Access route: author PDF at `https://www.math.toronto.edu/skudla/castle.pdf`.
+- Access route: author PDF at
+  `https://www.math.toronto.edu/skudla/castle.pdf`; restored 2026-05-28.
 - Local PDF:
   `references/heisenberg_weil/kudla_local_theta_correspondence.pdf`
 - SHA256:

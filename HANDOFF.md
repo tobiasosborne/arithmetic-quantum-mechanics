@@ -6,6 +6,162 @@ source manifests for that.
 
 ## Current Frontier
 
+**New user-directed meta-plan frontier:** the quantum-system association
+programme is scaffolded in
+`docs/quantum_system_associations/PLAN.md` and
+`AQM-64-QUANTUM-SYSTEM-ASSOCIATION-META-PLAN`. The planned shard chain is
+tracked by Beads `aqm-qsa01` through `aqm-qsa23`. These beads are planning and
+review/new-shard tasks; they should not assert new mathematics without local
+sources, conventions, checked derivations, tests, or run artifacts.
+`AQM-65-QSA-VOCABULARY` records the Step 01 vocabulary contract, and
+`AQM-66-QSA-TEST-OBJECT-CATALOGUE` records the Step 02 object catalogue/status
+matrix.  `AQM-67-QSA-FINITE-SET-FIRST-ASSOCIATION` records the Step 03
+structureless finite-set carrier convention and checked empty, one-point, and
+`n`-point derivation, with the Gram matrix explicitly marked as extra data.
+`AQM-68-QSA-FINITE-SET-TENSOR-SITES` records the Step 04 tensor-site workflow:
+one finite-dimensional Hilbert carrier or observable algebra per finite-set
+site is explicit extra data; tensor products and tensor-by-identity inclusions
+are formal finite-dimensional bookkeeping; AQM-14, AQM-22, AQM-24, AQM-25,
+and AQM-40 are used only as anchored uniform-qudit/review cases, not as a
+general bare-set theorem.  `AQM-69-QSA-FINITE-SET-DIRECT-SUM-PARTICLE`
+records the Step 05 direct-sum particle workflow: after adding one internal
+finite-dimensional complex carrier or Hilbert space per site, the carrier is
+the finite direct sum over sites; empty and one-point cases are explicit; the
+workflow is kept separate from AQM-68 tensor-site coexistence; and comparison
+with AQM-67's formal carrier is only a vector-space identification after
+choosing one-dimensional internal carriers and per-site basis vectors, with
+Hilbert inner products still extra data.  `AQM-70-QSA-AND-OR-MANY-PARTICLE-GRAMMAR`
+records the Step 06 finite AND/OR grammar: atoms are finite-dimensional
+carriers already supplied by AQM-68/AQM-69, AND is finite tensor/coexistence,
+OR is finite direct-sum/alternative, and particle-count sectors are identified
+by a recursive finite grading.  The shard explicitly defers infinite-particle
+completions and separates this elementary grammar from symmetric,
+antisymmetric, para, Fock, and fusion-category enhancements.
+`AQM-71-QSA-SYMPLECTIC-FIELD-LABELS-SET` records the Step 07 review of
+`Map(X,V)`, finite-support variants, pointwise pairings, radical quotients,
+Weyl labels, and checked `F_3` CSV rows.  `AQM-72-QSA-BOSON-FERMION-LAYER`
+records the Step 08 review of finite bosonic real symplectic CCR fields,
+finite fermionic CAR/Clifford fields, and Grassmann-Weyl displacement calculus
+inside the Grassmann-extended CAR algebra; parafermion, fusion-category, and
+finite AND/OR equivalence variants remain explicit gaps.
+`AQM-73-QSA-FUSION-CATEGORY-ENDPOINT` records Step 09 as a gap shard only:
+fusion categories are kept as a future association family, while hom spaces,
+simple objects, tensor/fusion rules, associator/F-symbol data, pivotal or
+spherical structure, optional braiding and R-symbol data, lattice/string-net
+input, Hilbert carrier choices, local constraints, Hamiltonians/projectors,
+and quantum-double/Drinfeld-center claims all remain deferred until sources
+and conventions are registered.  `AQM-74-QSA-SINGLE-PARTICLE-REDUCTION`
+records Step 10 as a finite carrier-map inventory: the direct-sum particle
+carrier is its own single-particle sector, AQM-70 degree-one sectors and the
+site-option expression compare to it by explicit maps, the one-dimensional
+internal-space case compares with AQM-67 only after basis/unit and Gram
+choices, and tensor, field-label, CCR/CAR/Fock, statistics, phase, and
+missing-Gram obstructions remain boundaries rather than general reductions.
+`AQM-75-QSA-WHAT-COUNTS-AS-A-POINT` records Step 11 as a point-selection
+synthesis: underlying sets, rational points, closed points, generic points,
+and all scheme points are separate indexing choices with named object classes.
+Closed finite-residue points remain the finite Weyl-site convention for the
+current arithmetic shards; rational points are finite truncations when
+selected; generic and infinite-residue sectors remain gaps unless an explicit
+separate representation or completion convention is fixed.
+`AQM-76-QSA-COTANGENT-FIRST-ASSOCIATION` records Step 12 as the geometric
+first-association workflow: after AQM-75 point selection, convention `(ao)`
+attaches \(T^*_{X/k,x}\), \(T_{X/k,x}\), the phase label
+\(T_{X/k,x}\oplus T^*_{X/k,x}\), and the canonical symplectic pairing before
+using finite Weyl-Heisenberg carriers.  It inventories only the local
+AQM-58--AQM-63 examples; intrinsic-versus-relative cotangent choices remain
+for Step 13, and finite-ring database-backed cotangent rows remain pending
+`aqm-qsa-frcot01`.  `AQM-77-QSA-INTRINSIC-RELATIVE-COTANGENT` records Step 13:
+convention `(av)` separates intrinsic/local cotangent
+\(\mathfrak m_x/\mathfrak m_x^2\) from relative Kahler cotangent
+\(\Omega^1_{A/B}\otimes_A\kappa(x)\) over a named base \(B\).  It gives exact
+local examples where they agree, where changing the base removes one tangent
+direction, and where the relative cotangent over \(\mathbb Z\) vanishes while
+the intrinsic local cotangent is nonzero.  Finite-ring database-backed
+cotangent rows remain pending `aqm-qsa-frcot01`.  `AQM-78-QSA-FINITE-PHASE-WEYL-KINEMATICS`
+records Step 14 as the common Weyl-Heisenberg representation step after finite
+phase labels are fixed.  It separates finite-field vector-space carriers,
+finite Frobenius-ring Pauli/stabilizer support, Solomon-style generalized
+finite Heisenberg cases, and unresolved all-finite-ring classification gaps;
+it also keeps Clifford/Weil classification and dynamics separate from the
+Pauli/error-basis layer.  `AQM-79-QSA-GEOMETRIC-FIELD-HOM-X-V` records Step
+15 as a review of the geometric field-space branch: finite all-map and
+structured subspace choices, closed-point finite-support residue fields,
+projective sheaf-section replacements, regular-function profiles versus
+finite smearings, rational truncations, radicals, and observable nets.  It
+keeps `Hom(X,V)` as a prompt label only, with the actual field-space
+restrictions tied to conventions `(q)`, `(r)`, `(v)`, `(w)`, `(y)`, `(ak)`,
+and `(al)` plus AQM-14--AQM-18, AQM-24--AQM-30, AQM-49--AQM-52, AQM-75, and
+AQM-78.  `AQM-80-QSA-FINITE-RING-EXAMPLE-MATRIX` records Step 16 as a
+gap-aware finite-ring synthesis matrix.  It separates point/residue,
+cotangent-first, field-label, and nilpotent-sensitive rows for
+`\mathbb F_3`, `\mathbb F_3^2`, `\mathbb Z/6\mathbb Z`,
+`\mathbb F_3[e]/(e^2)`, `\mathbb F_3[t]/(t^3)`, `t^n=1` examples,
+`\mathbb F_3[u,v]/(u^2,v^2)`, `\mathbb Z/4\mathbb Z`, and the blocked
+`\mathbb F_2[x]/(x^2+x)` quotient-collapse candidate.  It keeps the
+2026-05-26 finite-ring database run at schema-only SQLite plus in-memory MVP
+review-export status, and carries blockers `aqm-qsa-frres01`,
+`aqm-qsa-frcot01`, `aqm-qsa-artin01`, and `aqm-qsa-collapse01`.
+`AQM-81-QSA-RESIDUE-FIELD-SITE-ASSOCIATION` records Step 17 as a Review/New
+residue-site workflow for sourced finite cases only: choose the finite
+prime/maximal points being used, attach each residue field `\kappa(x)`, form
+local labels `\kappa(x)^2`, carriers `\ell^2(\kappa(x))`, and local algebras
+`End(\ell^2(\kappa(x)))`, then assemble finite supports by direct sums of
+local phase groups and tensor products of local carriers.  It highlights
+`\mathbb Z/6\mathbb Z` as a mixed-residue warning
+`\mathbb F_2^2 \oplus \mathbb F_3^2` with
+`\ell^2(\mathbb F_2) \otimes \ell^2(\mathbb F_3)`, not one common-field
+vector space.  It keeps `\mathbb Z/4\mathbb Z` and
+`\mathbb F_3[\epsilon]/(\epsilon^2)` database rows blocked by
+`aqm-qsa-frres01` except for explicitly local anchors, and leaves nilpotent
+Artin-Weyl carriers to Step 18.  `AQM-82-QSA-NILPOTENT-SENSITIVE-ASSOCIATION`
+records Step 18 as a Review/New comparison between reduced residue-site
+models and the locally developed thickened Artin/Frobenius-ring Weyl layer.
+It uses AQM-31, AQM-36, AQM-37, AQM-80, and AQM-81 only: dual numbers and the
+`t^n=1` family are available because AQM-36 supplies the top-coefficient
+generating-character proof, while arbitrary finite rings, two-direction Artin
+examples, and certified generating characters beyond those local examples
+remain blocked.  Nilpotents are not extra points in this convention; they are
+local jet/internal degrees at existing reduced points, or they remain a gap.
+`AQM-83-QSA-PRODUCT-RINGS-TENSOR-FACTORS` records Step 19 as a Review shard
+for the product-field residue-site workflow.  It uses AQM-40 to keep
+`\Spec(k^n)` as `n` residue-field Weyl tensor factors, uses AQM-68 to compare
+that selected workflow with structureless finite-set tensor sites, and uses
+AQM-58/AQM-80 to keep zero cotangent labels and database/helper gaps visible.
+It treats `\mathbb Z/6\mathbb Z` only as the existing mixed-residue warning
+and carries quotient-collapse, arbitrary residue decomposition/order,
+database cotangent rows, and unsupported thickened product layers as gaps.
+`AQM-84-QSA-INFINITE-RING-BOUNDARIES` records Step 20 as a Review/New boundary
+shard.  It classifies `\Spec\mathbb F_q[t]`, `\Spec\mathbb F_q[x,y]`, and
+`\Spec\mathbb Z` constructions as finite-support, algebraic quasi-local,
+reference-vector incomplete tensor, formal infinite-volume,
+generic-sector proposal, or completion proposal.  It keeps generic points out
+of the finite Weyl-site layer by default and records missing conventions for
+infinite residue fields, analytic/local completions, `C^*`-completions,
+adeles/profinite sectors, and generic-point Hilbert spaces.
+`AQM-85-QSA-AGREEMENT-INEQUIVALENCE-TABLE` records Step 21 as a New
+gap-first synthesis shard.  It uses convention `(au)` status
+tokens, aggregates only locally witnessed agreements/inequivalences from
+AQM-65--AQM-84, rejects dimension equality as agreement evidence, and carries
+blockers `aqm-qsa-src02`, `aqm-qsa-frres01`, `aqm-qsa-frcot01`,
+`aqm-qsa-collapse01`, and `aqm-qsa-artin01`.
+`AQM-86-QSA-DEGENERATE-OVERRESTRICTIVE-CASES` records Step 22 as a New
+failure-mode catalogue.  It keeps collapsed presentations, radical quotients,
+too-little-structure cases, zero cotangent labels, nilpotent-forgetting
+reduced rows, mixed-residue not-applicable readings, unsupported quotient
+collapse candidates, and infinite-representation boundaries visible as
+separate status rows.  `AQM-87-QSA-OPEN-PROBLEMS-NEXT-TARGETS` records Step
+23 as the first-pass closing gap ledger.  It prioritizes source/convention
+acquisition, finite-ring database/residue/cotangent audits, quotient collapse
+and two-direction Artin examples, finite Weyl representation-classification
+boundaries, single-particle/Fock/statistics comparisons, infinite/generic and
+analytic completions, dynamics selection, and noncommutative/nonunital
+extension questions.  It carries `aqm-qsa-src02`, `aqm-qsa-frres01`,
+`aqm-qsa-frcot01`, `aqm-qsa-collapse01`, and `aqm-qsa-artin01` without
+reinterpretation.  Do not promote the AQM-85 ledger, AQM-86 failure-mode
+catalogue, or AQM-87 gap ledger to final equivalence or no-go theorems
+without new local maps, invariants, obstructions, sources, or runs.
+
 **Next-agent default task:** continue the finite commutative ring database
 implementation chain, not older report-frontier material, unless the user
 redirects. Start from `docs/finite_commutative_ring_database_prd.md`,
@@ -184,6 +340,247 @@ and `presentation` rows; no populated/audited ring database or completeness
 claim exists yet, and report integration is deferred.
 
 ## Most Recent Session
+
+**2026-05-28 - QSA Step 23 open problems and next targets.**
+
+- Implemented `AQM-87-QSA-OPEN-PROBLEMS-NEXT-TARGETS`.
+- The shard closes the first QSA pass as a gap/synthesis ledger, not a
+  derivation or theorem shard.  It prioritizes missing source/convention
+  acquisition, finite-ring database and audit dependencies, quotient collapse
+  and two-direction Artin examples, finite Weyl/projective representation
+  boundaries, single-particle/Fock/statistics comparison boundaries,
+  infinite/generic/analytic completions, dynamics-selection principles, and
+  noncommutative/nonunital extension questions.
+- It carries blockers `aqm-qsa-src02`, `aqm-qsa-frres01`,
+  `aqm-qsa-frcot01`, `aqm-qsa-collapse01`, and `aqm-qsa-artin01` without
+  reinterpretation.  It adds no source, convention, script, generated data,
+  Beads update, or `report.pdf` rebuild.
+
+**2026-05-28 - QSA Step 22 degenerate and over-restrictive cases.**
+
+- Implemented `AQM-86-QSA-DEGENERATE-OVERRESTRICTIVE-CASES`.
+- The shard catalogues concrete failure modes from existing QSA anchors:
+  missing Gram choices for bare finite sets, empty-versus-zero edge cases,
+  radical quotient label spaces, zero cotangent labels for fields and product
+  fields, `\mathbb Z/6\mathbb Z` presentation collapse warnings, blocked
+  quotient-collapse candidates, reduced layers forgetting nilpotents, mixed
+  residue `not_applicable` readings, and infinite-representation boundaries.
+- It preserves blockers `aqm-qsa-src02`, `aqm-qsa-frres01`,
+  `aqm-qsa-frcot01`, `aqm-qsa-collapse01`, and `aqm-qsa-artin01`.  It adds
+  no source, convention, script, generated data, Beads update, or
+  `report.pdf` rebuild.
+
+**2026-05-28 - QSA Step 20 infinite ring boundaries.**
+
+- Implemented `AQM-84-QSA-INFINITE-RING-BOUNDARIES`.
+- The shard reviews `\Spec\mathbb F_q[t]`, `\Spec\mathbb F_q[x,y]`, and
+  `\Spec\mathbb Z` using existing AQM-25, AQM-29, AQM-30, AQM-45, AQM-48,
+  AQM-75, and AQM-79 anchors.
+- It separates finite-support truncations, algebraic quasi-local
+  closed-point algebras, reference-vector incomplete tensor representations,
+  formal infinite-volume regular-function profiles, generic-sector proposals,
+  and completion proposals.  It adds no new source, convention, run, data, or
+  `report.pdf` rebuild in this delegated shard.
+
+**2026-05-28 - QSA Step 19 product rings and tensor factors.**
+
+- Implemented `AQM-83-QSA-PRODUCT-RINGS-TENSOR-FACTORS`.
+- The shard is a Review shard for selected product-field/residue-site tensor
+  factors only.  It records that `\mathbb F_3^n` gives `n` qutrit residue
+  factors in the AQM-40 workflow, while AQM-58 gives zero cotangent-first
+  labels for `k^n`.
+- It compares this with AQM-68 by naming the extra product-ring data: spectrum
+  points, discrete topology, residue fields, Weyl carriers, and local
+  endomorphism algebras.  It keeps `\mathbb Z/6\mathbb Z` as a mixed-residue
+  warning, not a general quotient-collapse theorem, and carries database,
+  cotangent, and thickened-product gaps forward.  `report.pdf` was not rebuilt
+  in this delegated shard.
+
+**2026-05-28 - QSA Step 18 nilpotent-sensitive association.**
+
+- Implemented `AQM-82-QSA-NILPOTENT-SENSITIVE-ASSOCIATION`.
+- The shard is Review/New for locally established thickened examples only.
+  It compares AQM-81's reduced residue-site carriers with AQM-36/AQM-37
+  thickened Artin carriers, especially
+  `\mathbb F_3[\epsilon]/(\epsilon^2)` and the `t^n=1` family.
+- It records that thickened Weyl systems require generating-character or
+  finite Frobenius-ring data beyond the residue fields.  It explicitly keeps
+  nilpotents as local jet/internal degrees at existing points, not as extra
+  points.  Arbitrary finite rings, two-direction Artin rows, and generating
+  characters beyond the local AQM-36 examples remain blocked.  `report.pdf`
+  was not rebuilt in this delegated shard.
+
+**2026-05-28 - QSA Step 17 residue-field site association.**
+
+- Implemented `AQM-81-QSA-RESIDUE-FIELD-SITE-ASSOCIATION`.
+- The shard is Review/New for sourced finite cases only.  It defines the
+  selected-site workflow: finite displayed prime/maximal points, residue
+  field at each point, local `K_x^2` finite-field phase labels,
+  `\ell^2(K_x)` carriers, local matrix algebras, and finite-support assembly
+  by direct sums of local phase groups plus tensor products of carriers.
+- It records mixed residue fields as finite abelian direct sums and tensor
+  factors over their own residue fields, using `Z/6Z` as the warning example.
+  It does not claim a general finite-ring decomposition algorithm, populated
+  database evidence, deterministic site ordering, dynamics, stabilizers, or
+  Clifford data.  Reduced residue sites remain separate from the nilpotent
+  Artin-Weyl layer planned for Step 18.  `report.pdf` was not rebuilt.
+
+**2026-05-28 - QSA Step 16 finite ring example matrix.**
+
+- Implemented `AQM-80-QSA-FINITE-RING-EXAMPLE-MATRIX`.
+- The shard is a synthesis matrix only: it adds no source, convention, script,
+  run bundle, generated data, or populated database claim.  It uses explicit
+  `available`, `blocked`, `unknown`, `not_applicable`, and `degenerate`
+  report-planning tokens, and says these are not CSV sentinels.
+- The tables keep reduced residue-site, cotangent-first, field-label, and
+  nilpotent-sensitive workflows separate.  They use local anchors AQM-23,
+  AQM-34--AQM-37, AQM-40, AQM-58, and AQM-76--AQM-79, plus the schema-only
+  finite-ring run README and in-memory review CSVs.  General finite-ring
+  residue decomposition, database cotangent columns, two-direction Artin
+  standardization, and quotient-collapse examples beyond `Z/6Z` remain
+  blocked by their QSA beads.  `report.pdf` was not rebuilt.
+
+**2026-05-28 - QSA Step 15 geometric field association Hom(X,V).**
+
+- Implemented `AQM-79-QSA-GEOMETRIC-FIELD-HOM-X-V`.
+- The shard is review-only: it adds no source, no convention, no run
+  artifact, and no general `Hom(X,V)` quantisation claim.  It treats
+  `Hom(X,V)` as the Step 15 prompt label and separates the local replacements:
+  `Map(X,V)` and chosen finite subspaces from AQM-14/AQM-71, closed-point
+  finite-support residue labels from AQM-28--AQM-30, rational truncations from
+  AQM-16/AQM-30/AQM-75, projective sheaf-section fields from AQM-15--AQM-18,
+  and regular-function profiles/reduced smearings from AQM-49--AQM-52.
+- It records that finite Weyl kinematics begins only after the relevant
+  radical, support, or finite phase-label condition is resolved, with AQM-78
+  as the common Weyl-Heisenberg boundary.  Gaps are carried to QSA Steps 16,
+  17, and 20.  `report.pdf` was not rebuilt.
+
+**2026-05-28 - QSA Step 13 intrinsic versus relative cotangent.**
+
+- Implemented `AQM-77-QSA-INTRINSIC-RELATIVE-COTANGENT`.
+- Added convention `(av)` distinguishing intrinsic/local cotangent
+  `m_x/m_x^2` from relative Kahler cotangent
+  `Omega^1_(A/B) tensor_A kappa(x)` over an explicit base `B`.
+- The shard compares `F_3`, `F_3^n`, `F_3[e]/(e^2)`, `F_3[t]/(t^3)`,
+  `F_3[u,v]/(u^2,v^2)`, the same two-direction ring relative to
+  `F_3[u]/(u^2)`, and `Z/4Z` over `Z`.  It records the resulting changes to
+  `V_x`, `V_x^*`, symplectic label dimensions, and finite Weyl carrier sizes,
+  while leaving database-backed cotangent rows, dynamics, Hamiltonians, de
+  Rham CSS completions, and generic/infinite-residue representations as gaps.
+  No Beads commands were run; the orchestrator owns Beads for this thread.
+  `report.pdf` was not rebuilt.
+
+**2026-05-28 - QSA Step 12 cotangent-first association.**
+
+- Implemented `AQM-76-QSA-COTANGENT-FIRST-ASSOCIATION`.
+- The shard places convention `(ao)`'s tangent-cotangent Weyl workflow into
+  the QSA catalogue as a geometric first-association workflow: select
+  finite-residue points under AQM-75 discipline, attach
+  `T^*_(X/k,x)` and `T_(X/k,x)`, form
+  `T_(X/k,x) direct_sum T^*_(X/k,x)`, record the canonical symplectic
+  pairing, and only then use finite Weyl-Heisenberg carriers when the
+  residue field is finite.
+- It inventories only local AQM-58--AQM-63 examples, uses AQM-63 only for the
+  optional exact-one-form cotangent constraint compatibility statement, and
+  leaves intrinsic-versus-relative cotangent choices and finite-ring
+  database-backed cotangent rows as gaps.  No Beads commands were run; the
+  orchestrator owns Beads for this thread.  `report.pdf` was not rebuilt.
+
+**2026-05-28 - QSA Step 11 what counts as a point.**
+
+- Implemented `AQM-75-QSA-WHAT-COUNTS-AS-A-POINT`.
+- The shard compares underlying element sets, rational points, closed points,
+  generic points, and all scheme points as distinct indexing choices.  It
+  reviews AQM-22, AQM-23, AQM-28, AQM-29, AQM-30, AQM-45 and conventions
+  `(t)`, `(u)`, `(y)`, and `(ai)`.
+- It records that finite kinematical systems arise from finite underlying
+  sets with finite added data, finite rational supports, finite closed
+  supports, or finite closed spectra.  Infinite closed-point sets are
+  quasi-local filtered systems; generic/infinite-residue points and analytic
+  completions remain explicit gaps.  No Beads commands were run; the
+  orchestrator owns Beads for this thread.
+
+**2026-05-28 - QSA Step 10 single-particle reduction.**
+
+- Implemented `AQM-74-QSA-SINGLE-PARTICLE-REDUCTION`.
+- The shard defines the single-particle sector for AQM-69 direct-sum
+  particles, AQM-70 degree-one grammar sectors, and the AQM-70 site-option
+  expression.  It gives explicit maps from the direct-sum alternatives
+  carrier to those named degree-one carriers, and compares with AQM-67 only in
+  the one-dimensional internal-space case after basis/unit and Gram choices.
+- It records tensor coexistence, finite field-label/Weyl tensor products,
+  stabilizer phases, CAR/Fock statistics, Grassmann multipliers, and missing
+  Gram choices as boundaries.  The only AQM-19/AQM-72 Fock comparison made is
+  the explicit one-particle carrier map `Map(X,K) -> direct_sum_x K`; no
+  reduction of the full CCR/CAR/Fock layers is claimed.  No Beads commands
+  were run; the orchestrator owns Beads for this thread.
+
+**2026-05-28 - QSA Step 09 fusion-category endpoint.**
+
+- Implemented `AQM-73-QSA-FUSION-CATEGORY-ENDPOINT`.
+- The shard is intentionally a gap shard, not a technical fusion-category
+  shard.  It explains the intended role of fusion categories as a future QSA
+  association family and lists required source/convention decisions for hom
+  spaces, simple objects, tensor products/fusion rules, associator/F-symbol
+  data, pivotal/spherical structure, optional braiding/R-symbol data,
+  lattice/Levin-Wen/string-net data, Hilbert carriers, and local constraints.
+- It explicitly defers Levin-Wen/string-net technical claims, fusion-rule
+  computations, F-symbol equations, Hamiltonians/projectors, and
+  quantum-double/Drinfeld-center claims.  No Beads commands were run; the
+  orchestrator owns Beads for this thread.
+
+**2026-05-28 - QSA Step 08 boson/fermion association layer.**
+
+- Implemented `AQM-72-QSA-BOSON-FERMION-LAYER`.
+- The shard is a review shard only: it places the AQM-19 finite bosonic real
+  symplectic CCR layer, AQM-19 finite fermionic CAR/Clifford layer, and
+  AQM-20/AQM-21 Grassmann-Weyl displacement calculus into the QSA catalogue
+  with active local source locators.
+- The Cahill-Glauber anchors use the official arXiv
+  `physics/9808029v1` source extraction
+  `references/canonical_fields/cahill_glauber_physics_9808029v1_source/fxxx.tex`;
+  the historical APS/marker chain remains source-integrity provenance only.
+- Parafermion, fusion-category, and finite AND/OR equivalence variants are
+  recorded as gaps, not results.  No Beads commands were run; the
+  orchestrator owns Beads for this thread.
+
+**2026-05-28 - QSA Step 06 finite AND/OR many-particle grammar.**
+
+- Implemented `AQM-70-QSA-AND-OR-MANY-PARTICLE-GRAMMAR` and convention
+  `(at)`.
+- The shard defines a finite carrier grammar with `AND = tensor` for
+  coexistence and `OR = direct_sum` for alternatives, built only from
+  finite-dimensional carriers already introduced in AQM-68/AQM-69.  It
+  identifies finite particle-count sectors by recursive grading, records
+  one-particle alternatives, site-option expressions, labelled-slot tensor
+  sectors, and finite truncated many-sector expressions, and explicitly
+  defers infinite-particle completions.
+- The shard keeps this elementary grammar separate from symmetric,
+  antisymmetric, para, Fock, and fusion-category enhancements, and does not
+  import canonical-field equivalence claims from AQM-19.
+- No Beads commands were run; the orchestrator owns Beads for this thread.
+
+**2026-05-28 - QSA Step 05 finite-set direct-sum particle.**
+
+- Implemented `AQM-69-QSA-FINITE-SET-DIRECT-SUM-PARTICLE` and convention
+  `(as)`.
+- The shard defines the one-particle-at-one-of-many-sites carrier as
+  `direct_sum_x K_x` or `direct_sum_x H_x` only after adding internal carriers
+  or Hilbert spaces per site, distinguishes it from the AQM-68 tensor-site
+  carrier, handles empty and one-point edge cases, and compares the
+  one-dimensional internal-space case with AQM-67 only after explicit basis
+  or unit-vector choices.
+- No Beads commands were run; the orchestrator owns Beads for this thread.
+
+**2026-05-28 - QSA Step 04 finite-set tensor sites.**
+
+- Implemented `AQM-68-QSA-FINITE-SET-TENSOR-SITES` and convention `(ar)`.
+- The shard keeps arbitrary site Hilbert spaces or observable algebras as
+  explicit extra data for a finite set, forms only finite tensor products and
+  tensor-by-identity inclusions, distinguishes the construction from AQM-67's
+  formal carrier, and cites AQM-14/AQM-22/AQM-24/AQM-25/AQM-40 only as local
+  anchors for structured qudit cases.
+- No Beads commands were run; the orchestrator owns Beads for this thread.
 
 **2026-05-26 - Exact GAP small-ring identity status counts.**
 

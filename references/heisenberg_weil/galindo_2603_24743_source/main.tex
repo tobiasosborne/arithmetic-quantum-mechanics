@@ -1,0 +1,1056 @@
+\documentclass[11pt, reqno]{amsart}
+
+%=============================================================================
+% FONTS & ENCODING
+%=============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+
+%=============================================================================
+% MATH PACKAGES
+%=============================================================================
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\mathtoolsset{showonlyrefs}
+
+\usepackage{braket}
+
+\usepackage{tikz-cd}
+
+%=============================================================================
+% ADDITIONAL FORMATTING
+%=============================================================================
+\usepackage{xcolor}
+
+%=============================================================================
+% HYPERREF
+%=============================================================================
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            citecolor=red,
+            urlcolor=blue,
+            pdfborder={0 0 0}]{hyperref}
+
+%=============================================================================
+% THEOREM ENVIRONMENTS (AMS STYLE)
+%=============================================================================
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%=============================================================================
+% CUSTOM MACROS & NOTATION
+%=============================================================================
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Ps}{Ps}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Bil}{Bil}
+
+%=============================================================================
+% FRONTMATTER DATA
+%=============================================================================
+\title{Splitting of Clifford groups associated to finite abelian groups}
+
+
+\author{C\'esar Galindo}
+\address{Departamento de Matem\'aticas, Universidad de los Andes, Bogot\'a, Colombia}
+\email{cn.galindo1116@uniandes.edu.co}
+
+\subjclass[2020]{Primary 20J06, 20C25; Secondary 81P68}
+\keywords{Clifford group, finite Heisenberg group, group extension, group cohomology, Weil representation}
+
+\date{}
+
+
+\begin{document}
+
+
+
+\begin{abstract}
+The Clifford group associated with a finite abelian group gives rise to a natural extension by the corresponding symplectic group. We prove that this extension splits as a semidirect product if and only if the group order is not divisible by four. This confirms a conjecture of Korbe\-l\'a\v{r} and Tolar and extends their cyclic result to arbitrary finite abelian groups.
+\end{abstract}
+
+
+\maketitle
+
+%=============================================================================
+%=========================================================================
+
+%=========================================================================
+\section{Introduction}\label{sec:Intro}
+%=========================================================================
+
+The Clifford group associated with a finite abelian group arises naturally in quantum information theory and in the study of finite Heisenberg groups. In this paper, $C(A)$ denotes the \emph{projective} Clifford group, namely the normalizer of the Pauli (or Heisenberg) group modulo global phases. In the qubit case, Clifford operators are closely related to the Gottesman--Knill theorem~\cite{Gottesman1997,Gottesman1998,AaronsonGottesman2004}. Our concern here is the extension-theoretic structure of $C(A)$ for general finite abelian groups.
+
+While the literature often focuses on systems of $n$ qubits, corresponding to the abelian group $\Z_2^n$, or on a single qudit of dimension $N$, corresponding to $\Z_N$, the construction extends naturally to any finite abelian group $A$. For the qudit setting in arbitrary dimension and the corresponding Clifford action, see also~\cite{Hostens2005}. In that setting one sets
+\[
+V_A = A \oplus \widehat{A},
+\]
+where $\widehat{A}$ is the Pontryagin dual of $A$, and one forms the Heisenberg group $H(A)$ as a central extension of $V_A$ by the circle group. The Clifford group $C(A)$ is then the normalizer of $H(A)$ modulo global phases. This includes the qubit and qudit cases as special instances and places the problem in a uniform group-theoretic setting.
+
+The Clifford group fits into a natural exact sequence
+\begin{equation}\label{eq:extension}
+1 \longrightarrow V_A \longrightarrow C(A) \longrightarrow \Sp(V_A) \longrightarrow 1,
+\end{equation}
+where $\Sp(V_A)$ is the symplectic group of $V_A$. This extension records the action of Clifford operators on $V_A$ together with the accompanying phase data. The question is whether this extension splits as a semidirect product.
+Equivalently, one asks when the associated cohomology class in $H^2(\Sp(V_A),V_A)$ vanishes.
+
+In the cyclic case $A = \Z_N$, the odd and even cases are markedly different. For odd $N$, the projective Clifford group is known to admit a semidirect-product description over the corresponding symplectic group~\cite{Appleby2005,Gross2006}. For even $N$, Korbe\-l\'a\v{r} and Tolar~\cite{KT23} proved that the extension fails to split if and only if $4 \mid N$, using a presentation of $\SL(2,\Z_N)$ by generators and relations to derive incompatible constraints on any hypothetical splitting homomorphism. Motivated by that result, and by its relation to the classical work of Bolt, Room, and Wall~\cite{BoltRoomWall1961a,BoltRoomWall1961b} on the structure of Clifford collineation groups, they conjectured that for arbitrary finite abelian groups the same divisibility condition should govern splitting, namely that the Clifford extension splits if and only if $4 \nmid |A|$.
+
+The purpose of this paper is to confirm this conjecture and to determine exactly when the extension \eqref{eq:extension} splits. Our main result is the following.
+
+\begin{theorem}\label{thm:main}
+Let $A$ be a finite abelian group. The Clifford extension~\eqref{eq:extension} splits as a semidirect product if and only if $4 \nmid |A|$.
+\end{theorem}
+
+The condition $4 \nmid |A|$ is equivalent to requiring that the $2$-primary component $A_2$ be either trivial or isomorphic to $\Z_2$. In particular, Theorem~\ref{thm:main} recovers the known odd-dimensional cyclic splitting and extends it from cyclic groups to arbitrary finite abelian groups of odd order. More generally, it shows that the obstruction to splitting is controlled entirely by the $2$-primary part of $A$, with divisibility by four as the threshold.
+
+Our proof differs from that of Korbe\-l\'a\v{r} and Tolar and accommodates arbitrary finite abelian groups. We first show that the splitting problem respects primary decomposition: if $A = A_1 \oplus A_2$ with coprime orders, then the extension for $A$ splits if and only if the extensions for $A_1$ and $A_2$ split. This reduces the problem to $p$-primary groups. For odd primes, we construct explicit splitting sections using square roots. The remaining case is the prime $2$, where two base cases account for all nonsplitting phenomena. For the cyclic group $A = \Z_{2^k}$ with $k \geq 2$, we use the pseudo-symplectic model to derive incompatible lifting constraints. For the elementary abelian group $A = \Z_2^n$ with $n \geq 2$, the Clifford group is identified with an automorphism group of an extraspecial $2$-group, and a classical result of Griess~\cite{Griess1973} yields nonsplitting. An embedding theorem then extends nonsplitting from direct summands to the ambient group. The exceptional case is $A = \Z_2$, for which $\Sp(V_A) \cong \mathbb{S}_3$ and the extension splits.
+
+The paper is organized as follows. Section~\ref{sec:prelim} develops the Heisenberg and Clifford groups for finite abelian groups and introduces the pseudo-symplectic model and the obstruction cocycle. Section~\ref{sec:decomposition_reduction} proves coprime functoriality, constructs an explicit splitting when $|A|$ is odd, and establishes the reduction to direct summands. Section~\ref{sec:nonsplit-cyclic} proves nonsplitting for $A=\Z_{2^k}$. Section~\ref{sec:symplectic-obstruction} treats $A=(\Z_2)^n$ via extraspecial $2$-groups and results of Griess. Section~\ref{sec:splitting-criterion} completes the proof of the splitting criterion.
+
+
+%=========================================================================
+% Preliminaries
+%=========================================================================
+\section{Preliminaries: cohomology and the Clifford extension}\label{sec:prelim}
+
+
+In this section, we recall the standard theory of group extensions and cohomology, following the classical treatment by Brown~\cite{Brown1982}. We then realize the Heisenberg group as a specific central extension associated with $V_A$, and classify such extensions using the theory of bicharacters.
+\subsection{Group extensions and factor sets}
+
+Let $G$ and $M$ be groups, with $M$ abelian. An \emph{extension} of $G$ by $M$ (with $M$ the normal subgroup) is a short exact sequence
+\begin{equation}\label{eq:general-extension}
+1 \longrightarrow M \xrightarrow{\; i \;} E \xrightarrow{\; \pi \;} G \longrightarrow 1.
+\end{equation}
+To describe the group law of $E$ in terms of $G$ and $M$, we choose a set-theoretic \emph{section} $s: G \to E$ such that $\pi(s(g)) = g$ for all $g \in G$, with normalization $s(1_G) = 1_E$.
+This section induces an action of $G$ on $M$ via conjugation:
+\begin{equation}
+g \cdot m \coloneqq s(g) i(m) s(g)^{-1}.
+\end{equation}
+As $M$ is abelian, this action is independent of the choice of section $s$, establishing $M$ as a well-defined $G$-module.
+
+In general, the section $s$ is not a homomorphism; consequently, the product of sections differs from the section of the product by a term in $M$. We define the \emph{factor set} or \emph{2-cocycle} $\beta: G \times G \to M$ by the relation:
+\begin{equation}
+s(g)s(h) = i(\beta(g, h)) s(gh).
+\end{equation}
+Associativity in $E$ implies the \emph{2-cocycle identity}:
+\begin{equation}\label{eq:cocycle-identity}
+(g \cdot \beta(h, k)) \beta(g, hk) = \beta(g, h) \beta(gh, k).
+\end{equation} 
+Since the section is normalized, the cocycle is normalized as well: $\beta(1_G,g)=\beta(g,1_G)=1$ for all $g\in G$.
+The set of such functions forms an abelian group under pointwise multiplication, denoted by $Z^2(G, M)$.
+
+Conversely, the extension $E$ can be fully reconstructed from the data $(G, M, \cdot, \beta)$. The set $M \times G$ forms a group under the twisted multiplication rule:
+\begin{equation}
+(m, g) \cdot (n, h) \coloneqq (m \, (g \cdot n) \, \beta(g, h), \, gh).
+\end{equation}
+Here we implicitly identify $M$ with its image $i(M) \subseteq E$, and the inclusion map no longer appears in the crossed-product notation.
+We denote this crossed product structure by $M \rtimes_\beta G$.
+
+The choice of section $s$ is not unique. If $s': G \to E$ is another normalized section, it relates to $s$ via a function $\lambda: G \to M$ (a 1-cochain) such that $s'(g) = i(\lambda(g)) s(g)$. The corresponding cocycle $\beta'$ satisfies:
+\begin{equation}
+\beta'(g, h) = \beta(g, h) \frac{\lambda(g) (g \cdot \lambda(h))}{\lambda(gh)}.
+\end{equation}
+The term $\delta(\lambda)(g,h):=\frac{\lambda(g) (g \cdot \lambda(h))}{\lambda(gh)}$ is a \emph{2-coboundary}. The set of all such coboundaries forms a subgroup $B^2(G, M) \subset Z^2(G, M)$. The quotient group is the second cohomology group of $G$ with coefficients in the $G$-module $M$:
+\begin{equation}
+H^2(G, M) \coloneqq Z^2(G, M) / B^2(G, M).
+\end{equation}
+
+The extension $E$ splits (i.e., is isomorphic to the semidirect product $M \rtimes G$) if and only if there exists a section $s$ that is a group homomorphism. This occurs precisely when the associated cocycle $\beta$ is a coboundary, or equivalently, when the cohomology class $[\beta]$ vanishes in $H^2(G, M)$.
+
+
+%=============
+
+\subsection{Schur Multiplier of finite abelian groups}
+
+We specialize the general theory to central extensions of a finite abelian group $V$ by the circle group $U(1)$. For a finite group $V$ with trivial action on coefficients, the group $H^2(V, U(1)) \cong H^2(V, \C^\times)$ is the usual Schur multiplier of $V$ (equivalently, the Pontryagin dual of $H_2(V,\Z)$). In this abelian setting, these cohomology classes can be concretely represented by bilinear forms.
+
+Let $\Bil(V)$ denote the group of \emph{bicharacters}, defined as functions $B: V \times V \to U(1)$ that are homomorphisms in each argument. Every bicharacter satisfies the 2-cocycle identity, yielding a natural inclusion $\Bil(V) \subset Z^2(V, U(1))$.
+
+We distinguish two subgroups within $\Bil(V)$:
+\begin{align}
+\Sym(V) &\coloneqq \{ B \in \Bil(V) \mid B(u, v) = B(v, u) \}, \\
+\Alt(V) &\coloneqq \{ B \in \Bil(V) \mid B(u, u) = 1 \}.
+\end{align}
+Note that the alternating condition $B(u, u) = 1$ implies skew-symmetry, $B(u, v) = B(v, u)^{-1}$.
+
+The link between cocycles and alternating forms is provided by the commutator. We define the \emph{antisymmetrization map} $\mathcal{A}: Z^2(V, U(1)) \to \Alt(V)$ by:
+\begin{equation}
+\mathcal{A}(\beta)(u, v) \coloneqq \beta(u, v)\beta(v, u)^{-1}.
+\end{equation}
+This map measures the non-commutativity of the extension defined by $\beta$.
+
+Restricting $\mathcal{A}$ to bicharacters yields a sequence
+\begin{equation}\label{eq:bil-sym-alt}
+1 \longrightarrow \Sym(V) \longrightarrow \Bil(V) \xrightarrow{\;\mathcal{A}\;} \Alt(V) \longrightarrow 1,
+\end{equation}
+whose kernel is precisely the subgroup of symmetric bicharacters. 
+
+A well-known result (see \cite[Proposition 2.1]{Tambara2000}) establishes that sequence \eqref{eq:bil-sym-alt} is exact and we obtain the group isomorphisms
+\begin{equation}\label{eq:tambara-iso}
+\frac{\Bil(V)}{\Sym(V)} \cong H^2(V, U(1)) \xrightarrow{\sim} \Alt(V).
+\end{equation}
+These isomorphisms imply a one-to-one correspondence between a cohomology class $[\beta]$ in the Schur multiplier and the alternating bicharacter $\omega = \mathcal{A}(\beta)$. Moreover, every $2$-cocycle is cohomologous to a bicharacter.
+%=============================================================================
+
+
+\subsection{The Heisenberg extension}
+
+Let $A$ be a finite abelian group, and let $\widehat{A} = \Hom(A, U(1))$ denote its Pontryagin dual. The \emph{double of $A$} is the direct sum
+\[
+V_A \coloneqq A \oplus \widehat{A}.
+\]
+
+We consider the Hilbert space $\HH = \C[A]$ with orthonormal basis $\{\ket{a} : a \in A\}$. The fundamental operators acting on this space are the \emph{shift operators} $X_a$ and \emph{phase operators} $Z_\chi$, defined for $a \in A$ and $\chi \in \widehat{A}$ by:
+\begin{equation}
+X_a \ket{b} \coloneqq \ket{a+b}, \qquad Z_\chi \ket{b} \coloneqq \chi(b)\ket{b}.
+\end{equation}
+These operators satisfy the commutation relation $Z_\chi X_a = \chi(a) X_a Z_\chi$.
+For elements $u = (a_u, \chi_u)$ and $v = (a_v, \chi_v)$ in $V_A$, we define the \emph{Weyl operator} $W_u \coloneqq X_{a_u} Z_{\chi_u}$.
+
+The \emph{Heisenberg group} $H(A)$ is the subgroup of unitary operators generated by these Weyl operators together with the scalar subgroup $U(1)\cdot I$:
+\begin{equation}
+H(A) \coloneqq \{ z W_u \mid z \in U(1), u \in V_A \}.
+\end{equation}
+
+A direct computation gives
+\begin{equation}
+W_u W_v = \chi_u(a_v) W_{u+v} = \beta_A(u,v) W_{u+v},
+\end{equation}
+where the $2$-cocycle $\beta_A \in \Bil(V_A)$ is given by
+\begin{equation}
+\beta_A((a, \chi), (b, \psi)) \coloneqq \chi(b).
+\end{equation}
+Thus $H(A)$ is a central extension of $V_A$ by $U(1)$. By Eq.~\eqref{eq:tambara-iso}, the class $[\beta_A]$ is determined by its antisymmetrization, namely the canonical \emph{symplectic form}
+\begin{equation}
+\omega_A(u, v) \coloneqq \mathcal{A}(\beta_A)(u, v) = \chi_u(a_v)\chi_v(a_u)^{-1}.
+\end{equation}
+Consequently,
+\[
+W_uW_v=\omega_A(u,v)\,W_vW_u.
+\]
+Since $\omega_A$ is non-degenerate, the center of $H(A)$ is exactly the scalar subgroup $U(1)\cdot I$, and $V_A$ becomes a symplectic abelian group.
+
+%=============================================================================
+
+
+\subsection{The pseudo-symplectic group \texorpdfstring{$\Ps(A)$}{Ps(A)} and the Clifford group}
+
+The \emph{Clifford group} $C(A)$ is the projective normalizer of the Heisenberg group, obtained by quotienting the usual normalizer in $U(\HH)$ by global phases. Identifying $U(1)$ with the scalar subgroup $U(1)\cdot I$, we set
+\begin{equation}
+C(A) \coloneqq \frac{N_{U(\HH)}(H(A))}{U(1) \cdot I} = \left\{ [U] \in \frac{U(\HH)}{U(1)} \;\middle|\; U H(A) U^\dagger = H(A) \right\}.
+\end{equation}
+
+Let $[U] \in C(A)$. Since conjugation by $U$ preserves $H(A)$ and fixes the center $U(1)\cdot I$ pointwise, it induces an automorphism of the quotient
+\[
+H(A)/(U(1)\cdot I) \cong V_A.
+\]
+Hence there exists a group automorphism $T: V_A \to V_A$ such that the Weyl operators transform as
+\begin{equation}\label{eq:conjugation-action}
+    U W_u U^\dagger = \lambda(u) W_{Tu}, \quad \forall u \in V_A,
+\end{equation}
+for some function $\lambda: V_A \to U(1)$.
+
+Because conjugation preserves the multiplication law in $H(A)$, it also preserves the Weyl commutation relation
+\[
+W_uW_v=\omega_A(u,v)\,W_vW_u.
+\]
+Applying conjugation by $U$ to this identity gives
+\[
+U W_u W_v U^\dagger = \omega_A(u,v)\,U W_v W_u U^\dagger.
+\]
+Using \eqref{eq:conjugation-action}, we obtain
+\[
+\lambda(u)\lambda(v)\,W_{Tu}W_{Tv}
+=
+\omega_A(u,v)\,\lambda(v)\lambda(u)\,W_{Tv}W_{Tu},
+\]
+and therefore
+\[
+W_{Tu}W_{Tv}=\omega_A(u,v)\,W_{Tv}W_{Tu}.
+\]
+Since also $W_{Tu}W_{Tv}=\omega_A(Tu,Tv)\,W_{Tv}W_{Tu}$, we conclude that $T$ must preserve the symplectic form:
+\begin{equation}
+    \omega_A(Tu, Tv) = \omega_A(u, v).
+\end{equation}
+Thus $T \in \Sp(V_A)$. Moreover, comparing the coefficients of $W_{T(u+v)}$ in
+\[
+U(W_uW_v)U^\dagger = (UW_uU^\dagger)(UW_vU^\dagger),
+\]
+and using $W_{Tu}W_{Tv} = \beta_A(Tu, Tv) W_{T(u+v)}$, we obtain
+\begin{equation}\label{eq:coboundary-condition}
+    \frac{\lambda(u+v)}{\lambda(u)\lambda(v)} = \frac{\beta_A(Tu, Tv)}{\beta_A(u, v)}.
+\end{equation}
+
+Following Weil~\cite{Weil1964}, we encode this data in the \emph{pseudo-symplectic group} $\Ps(A)$.
+
+\begin{definition}
+The group $\Ps(A)$ is defined as the set of pairs:
+\begin{equation}
+\Ps(A) \coloneqq \left\{ (T, \lambda) \in \Sp(V_A) \times \Map(V_A,U(1)) \;\middle|\; \frac{\lambda(u+v)}{\lambda(u)\lambda(v)} = \frac{\beta_A(Tu, Tv)}{\beta_A(u, v)} \right\}.
+\end{equation}
+The group operation is the twisted product (cf. \cite[Eq.~7]{Weil1964}):
+\begin{equation}\label{eq:twisted-product}
+    (T, \lambda) \cdot (S, \mu) = (TS, \lambda^S \cdot \mu),
+\end{equation}
+where $(\lambda^S \cdot \mu)(u) \coloneqq \lambda(Su)\mu(u)$, and the identity element is $(\id,\mathbf{1})$, with $\mathbf{1}$ the constant function $1$.
+\end{definition}
+
+\begin{theorem}\label{thm:clifford-structure}
+The map $\Phi: \Ps(A) \to C(A)$, assigning to $(T, \lambda)$ the unique projective class of unitary operators implementing the action $U W_u U^\dagger = \lambda(u) W_{Tu}$, is a group isomorphism.
+\end{theorem}
+
+\begin{proof}
+\emph{Well-definedness:} Let $(T, \lambda) \in \Ps(A)$. We will construct a representation of $H(A)$ with the same central character as the standard one and then apply the Stone-von Neumann-Mackey theorem.
+
+Define $\rho': H(A) \to U(\HH)$ by
+\[
+    \rho'(z W_u) \coloneqq z \lambda(u) W_{Tu}.
+\]
+We verify that $\rho'$ is a representation. Using the Weyl multiplication law, we compute
+\begin{align*}
+    \rho'(W_u)\rho'(W_v) &= \lambda(u)\lambda(v) W_{Tu} W_{Tv} \\
+    &= \lambda(u)\lambda(v) \beta_A(Tu, Tv) W_{T(u+v)}.
+\end{align*}
+Using \eqref{eq:coboundary-condition}, this becomes
+\[
+    \rho'(W_u)\rho'(W_v) = \beta_A(u, v) \rho'(W_{u+v}) = \rho'(\beta_A(u, v) W_{u+v}) = \rho'(W_u W_v).
+\]
+Hence $\rho'$ is a unitary representation of $H(A)$ on $\HH$. Evaluating \eqref{eq:coboundary-condition} at $u=v=0$ gives $\lambda(0)=1$, and therefore
+\[
+\rho'(zI) = z \lambda(0) W_{T0} = zI.
+\]
+Thus $\rho'$ has the same central character as the standard representation.
+
+By the Stone-von Neumann-Mackey theorem~\cite{Mackey1958}, the irreducible unitary representation of $H(A)$ with a fixed central character is unique up to unitary equivalence. Therefore, there exists an intertwiner $U$, unique up to a scalar, such that
+\[
+U \rho(h) U^\dagger = \rho'(h), \qquad h \in H(A),
+\]
+where $\rho$ is the standard representation of $H(A)$ on $\HH$. Restricting to Weyl operators yields
+\[
+U W_u U^\dagger = \lambda(u) W_{Tu}.
+\]
+
+\emph{Homomorphism property:} Let $U = \Phi(T, \lambda)$ and $V = \Phi(S, \mu)$. The conjugation by the product $UV$ is:
+\begin{align}
+(UV) W_u (UV)^\dagger &= U (V W_u V^\dagger) U^\dagger \nonumber \\
+&= U (\mu(u) W_{Su}) U^\dagger \nonumber \\
+&= \mu(u) \lambda(Su) W_{T(Su)}.
+\end{align}
+The resulting phase is $\mu(u)\lambda(Su) = (\lambda^S \cdot \mu)(u)$. The operator $UV$ thus induces the symplectic map $TS$ and the phase $\lambda^S \cdot \mu$. This matches precisely the pair product defined in Eq.~\eqref{eq:twisted-product}.
+Surjectivity follows from the discussion preceding the theorem, and injectivity is immediate from the fact that the pair $(T,\lambda)$ is determined by the conjugation action $U W_u U^\dagger=\lambda(u)W_{Tu}$.
+\end{proof}
+\subsection{The exact sequence and the obstruction cocycle}
+
+Via Theorem~\ref{thm:clifford-structure}, we identify $C(A)$ with $\Ps(A)$ and write its elements as pairs $(T,\lambda)$. Theorem~\ref{thm:clifford-structure} realizes the Clifford group as an extension of $\Sp(V_A)$ by $V_A$. The projection onto the symplectic component,
+\[
+\pi: C(A) \to \Sp(V_A), \qquad \pi(T,\lambda)=T,
+\]
+is therefore the starting point for the extension-theoretic description.
+
+The kernel $K=\ker(\pi)$ consists of pairs $(\id,\mu)$ with trivial symplectic part. Substituting $T=\id$ into Eq.~\eqref{eq:coboundary-condition}, we obtain
+\[
+\mu(u+v)=\mu(u)\mu(v),
+\]
+hence $K$ identifies naturally with the Pontryagin dual $\widehat{V_A}$. Since $\omega_A$ is non-degenerate, it induces an isomorphism
+\[
+\kappa_A: V_A \xrightarrow{\sim} \widehat{V_A},
+\]
+defined by
+\begin{equation}
+\kappa_A(v)(u) \coloneqq \omega_A(v, u).
+\end{equation}
+Using $\kappa_A$, we identify $K$ with $V_A$. The inclusion of the kernel is then
+\[
+\nu: V_A \to C(A), \qquad \nu(v)=(\id,\kappa_A(v)).
+\]
+This gives the short exact sequence
+\begin{equation}\label{eq:clifford-ses-final}
+1 \longrightarrow V_A \xrightarrow{\;\nu\;} C(A) \xrightarrow{\;\pi\;} \Sp(V_A) \longrightarrow 1.
+\end{equation}
+
+This extension induces an action of $\Sp(V_A)$ on $V_A$ by conjugation. If $v \in V_A$ and $g=(T,\lambda)\in C(A)$ is any lift of $T$, then
+\begin{equation}
+(T,\lambda)\,\nu(v)\,(T,\lambda)^{-1}=\nu(Tv).
+\end{equation}
+Hence the induced $\Sp(V_A)$-module structure on $V_A$ is the natural one.
+
+We now construct the $2$-cocycle that represents this extension. Choose a set-theoretic section
+\[
+s:\Sp(V_A)\to C(A), \qquad s(T)=(T,\lambda_T),
+\]
+where each $\lambda_T:V_A\to U(1)$ satisfies Eq.~\eqref{eq:coboundary-condition}. For $T,S\in\Sp(V_A)$, the element
+\[
+s(T)s(S)s(TS)^{-1}
+\]
+lies in $\ker(\pi)=\nu(V_A)$, and there is a unique element $\cO_s(T,S)\in V_A$ such that
+\[
+s(T)s(S)s(TS)^{-1}=\nu(\cO_s(T,S)).
+\]
+Writing this kernel element as a character, we obtain
+\begin{equation*}
+\nu(\cO_s(T,S))=(\id,\Gamma_{T,S}), \qquad \Gamma_{T,S}=\frac{\lambda_T^S\cdot\lambda_S}{\lambda_{TS}}.
+\end{equation*}
+Since $\Gamma_{T,S}$ is a linear character of $V_A$, the defining relation for $\cO_s(T,S)$ is
+\begin{equation}\label{eq:obstruction-def}
+\omega_A(\cO_s(T,S),u)=\frac{\lambda_T(Su)\lambda_S(u)}{\lambda_{TS}(u)}.
+\end{equation}
+The map
+\[
+\cO_s:\Sp(V_A)\times\Sp(V_A)\to V_A
+\]
+is the \emph{obstruction $2$-cocycle} associated with the section $s$. Its cohomology class
+\[
+[\cO_s]\in H^2(\Sp(V_A),V_A)
+\]
+is independent of the choice of section. We denote this intrinsic extension class by
+\[
+[\cO_A]\coloneqq [\cO_s]\in H^2(\Sp(V_A),V_A).
+\]
+It is the obstruction to splitting the exact sequence \eqref{eq:clifford-ses-final}.
+
+\section{Decomposition and splitting reductions}\label{sec:decomposition_reduction}
+
+In this section, we reduce the splitting problem to the $2$-primary case. We first show that the obstruction class decomposes along coprime factors, then prove that it vanishes for groups of odd order, and finally show that splitting descends to direct summands. Together, these results reduce the proof of the splitting criterion to explicit $2$-primary base cases.
+
+\subsection{Coprime decomposition}
+
+We first address the general case of a decomposition into coprime factors. Let
+\[
+A = A_1 \oplus A_2,
+\qquad \gcd(|A_1|,|A_2|)=1,
+\]
+where $A_1$ and $A_2$ are finite abelian groups. This decomposition extends naturally to the double,
+\[
+V_A = V_{A_1} \oplus V_{A_2},
+\]
+and the symplectic form splits as the orthogonal sum
+\[
+\omega_A=\omega_{A_1}\oplus\omega_{A_2}.
+\]
+
+The symplectic group respects this splitting. Let $T \in \Sp(V_A)$. Because automorphisms preserve element orders, the subsets of elements whose orders divide $|V_{A_1}|$ and $|V_{A_2}|$ are characteristic in $V_A$. Since $|V_{A_1}|$ and $|V_{A_2}|$ are coprime, these subsets are precisely the direct summands $V_{A_1}$ and $V_{A_2}$. Hence both summands are $T$-invariant, and every symplectic automorphism decomposes uniquely. We obtain the isomorphism
+\begin{equation}
+\Sp(V_A) \cong \Sp(V_{A_1}) \times \Sp(V_{A_2}), \quad (T_1, T_2) \mapsto T_1 \oplus T_2.
+\end{equation}
+
+Via Theorem~\ref{thm:clifford-structure}, we may describe elements of each Clifford group as pairs $(T_i,\lambda_i)$ satisfying the coboundary condition. We define
+\begin{align}
+\Psi: C(A_1) \times C(A_2) &\to C(A_1 \oplus A_2) \nonumber \\
+((T_1, \lambda_1), (T_2, \lambda_2)) &\mapsto (T_1 \oplus T_2, \lambda_1 \oplus \lambda_2),
+\end{align}
+where
+\[
+(\lambda_1 \oplus \lambda_2)(u_1 + u_2) \coloneqq \lambda_1(u_1)\lambda_2(u_2),
+\qquad u_i\in V_{A_i}.
+\]
+Likewise, the bicharacter on $V_A=V_{A_1}\oplus V_{A_2}$ is given by
+\[
+\beta_A(u_1+u_2,v_1+v_2)=\beta_{A_1}(u_1,v_1)\beta_{A_2}(u_2,v_2).
+\]
+A direct verification shows that $\lambda_1 \oplus \lambda_2$ satisfies the coboundary condition for $\beta_A$.
+
+\begin{proposition}\label{prop:coprime-decomp}
+Let $A = A_1 \oplus A_2$ with $\gcd(|A_1|, |A_2|) = 1$. The map $\Psi$ induces an isomorphism of short exact sequences:
+\begin{equation}
+\begin{tikzcd}[column sep=small]
+1 \arrow[r] & V_{A_1} \oplus V_{A_2} \arrow[r] \arrow[d, "\cong"] & C(A_1) \times C(A_2) \arrow[r] \arrow[d, "\Psi", "\cong"'] & \Sp(V_{A_1}) \times \Sp(V_{A_2}) \arrow[r] \arrow[d, "\cong"] & 1 \\
+1 \arrow[r] & V_A \arrow[r] & C(A) \arrow[r] & \Sp(V_A) \arrow[r] & 1
+\end{tikzcd}
+\end{equation}
+Consequently, the obstruction class decomposes:
+\begin{equation}
+[\cO_A] = [\cO_{A_1}] \oplus [\cO_{A_2}] \in H^2(\Sp(V_A), V_A).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The commutativity of the diagram follows from the definition of $\Psi$. On the kernel, $\Psi$ maps the pair of phases $(\kappa_{A_1}(v_1),\kappa_{A_2}(v_2))$ to the product character
+\[
+\kappa_{A_1}(v_1)\kappa_{A_2}(v_2)=\kappa_A(v_1+v_2),
+\]
+which is exactly the canonical identification $V_{A_1}\oplus V_{A_2}\cong V_A$. On the quotient, $\Psi$ induces the isomorphism
+\[
+\Sp(V_{A_1})\times \Sp(V_{A_2}) \cong \Sp(V_A)
+\]
+described above. The Five Lemma therefore implies that $\Psi$ is an isomorphism. It follows that the extension class for $C(A)$ is the image of the product extension class, which corresponds to the sum of the two obstruction classes.
+\end{proof}
+
+We apply this result to the primary decomposition of $A$. We can uniquely decompose the group as:
+\begin{equation}
+A = A_{\mathrm{odd}} \oplus A_2,
+\end{equation}
+where $A_{\mathrm{odd}}$ contains all elements of odd order and $A_2$ is the $2$-primary component of $A$. Since $|A_2|$ and $|A_{\mathrm{odd}}|$ are coprime, Proposition~\ref{prop:coprime-decomp} implies that the splitting problem for $C(A)$ reduces to the independent analysis of $C(A_{\mathrm{odd}})$ and $C(A_2)$.
+
+\subsection{Splitting at odd primes}\label{subsec:odd_case}
+
+We now prove that the obstruction vanishes whenever $|A|$ is odd by constructing an explicit splitting of the Clifford extension. In this setting, the values of any bicharacter lie in the subgroup of roots of unity of odd order. The squaring map $z \mapsto z^2$ is therefore an automorphism of this subgroup, and square roots are well defined and unique. We denote the unique square root of an element $z$ by $z^{1/2}$.
+
+Recall from \eqref{eq:bil-sym-alt} that the antisymmetrization map
+\[
+\mathcal{A}: \Bil(V_A) \to \Alt(V_A)
+\]
+is surjective. If we restrict this map to the subgroup of alternating bicharacters $\Alt(V_A)\subset \Bil(V_A)$, then
+\begin{equation}
+\mathcal{A}(B)(u, v) = B(u, v) \cdot B(u, v) = B(u, v)^2.
+\end{equation}
+Since squaring is an automorphism on roots of unity of odd order, the restriction $\mathcal{A}|_{\Alt(V_A)}$ is an isomorphism. Thus every alternating form $\omega \in \Alt(V_A)$ admits a unique alternating square root $\omega^{1/2} \in \Alt(V_A)$ such that $\mathcal{A}(\omega^{1/2}) = \omega$. This allows us to define a candidate for a splitting.
+
+We now construct the function $\lambda_T: V_A \to U(1)$ needed for the Clifford action as
+\begin{equation}\label{eq:odd-section}
+\lambda_T(u) \coloneqq \left( \frac{\beta_A(Tu, Tu)}{\beta_A(u, u)} \right)^{1/2}.
+\end{equation}
+To show that this defines a section, we first verify the coboundary condition \eqref{eq:coboundary-condition}. Using the expansion $\beta_A(u+v, u+v) = \beta_A(u, u)\beta_A(v, v)\beta_A(u, v)\beta_A(v, u)$ and the fact that $T$ preserves $\omega_A=\mathcal A(\beta_A)$, we compute the square of the ratio:
+\begin{align}
+\left( \frac{\lambda_T(u+v)}{\lambda_T(u)\lambda_T(v)} \right)^2 &= \frac{\beta_A(T(u+v), T(u+v))}{\beta_A(u+v, u+v)} \frac{\beta_A(u, u)}{\beta_A(Tu, Tu)} \frac{\beta_A(v, v)}{\beta_A(Tv, Tv)} \nonumber \\
+&= \frac{\beta_A(Tu, Tv)\beta_A(Tv, Tu)}{\beta_A(u, v)\beta_A(v, u)} \nonumber \\
+&= \left( \frac{\beta_A(Tu, Tv)}{\beta_A(u, v)} \right)^2.
+\end{align}
+Since the squaring map is injective on roots of unity of odd order, the desired equality follows. Hence $s:T\mapsto (T,\lambda_T)$ defines a section $\Sp(V_A)\to \Ps(A)$, and therefore, via Theorem~\ref{thm:clifford-structure}, a section into $C(A)$.
+
+It remains to prove that this section is a homomorphism. Equivalently, we must show that the associated obstruction cocycle vanishes. The cocycle $\cO_s(T, S)$ measures the failure of the section $s$ to be a homomorphism; see \eqref{eq:obstruction-def}. Squaring that identity and substituting $\lambda_T(u)^2 = \beta_A(Tu, Tu)\beta_A(u, u)^{-1}$, we obtain
+\begin{equation}
+\omega_A(\cO_s(T, S), u)^2 = \frac{\lambda_T(Su)^2 \lambda_S(u)^2}{\lambda_{TS}(u)^2}
+= \frac{\left(\frac{\beta_A(TSu, TSu)}{\beta_A(Su, Su)}\right) \left(\frac{\beta_A(Su, Su)}{\beta_A(u, u)}\right)}{\left(\frac{\beta_A(TSu, TSu)}{\beta_A(u, u)}\right)} = 1.
+\end{equation}
+Since elements of $V_A$ have odd order, every value of $\omega_A$ also has odd order, and the equation $x^2 = 1$ therefore implies $x = 1$. Hence $\omega_A(\cO_s(T, S), u) = 1$ for all $u$. By the non-degeneracy of $\omega_A$, this forces $\cO_s(T, S) = 0$.
+
+\begin{proposition}\label{prop:odd_case_vanish}
+If $|A|$ is odd, the obstruction class $[\cO_A]$ vanishes. The Clifford group splits as a semidirect product $C(A) \cong V_A \rtimes \Sp(V_A)$, with the splitting given explicitly by the section $\lambda_T$ in Eq.~\eqref{eq:odd-section}.
+\end{proposition}
+
+Combining this result with Proposition~\ref{prop:coprime-decomp}, we conclude that for any finite abelian group, the non-trivial cohomological structure resides entirely in the 2-primary component.
+\subsection{Reduction to direct summands}\label{sec:embedding}
+
+We now show that splitting descends to direct summands. Let
+\[
+A = B \oplus C
+\]
+be an arbitrary decomposition of finite abelian groups; no coprimality assumption is imposed. Then $V_A$ decomposes orthogonally as
+\[
+V_A = V_B \oplus V_C.
+\]
+There are natural embeddings
+\[
+i:V_B\hookrightarrow V_A,\qquad i(v_B)=(v_B,0),
+\]
+and
+\[
+j:\Sp(V_B)\hookrightarrow \Sp(V_A),\qquad j(S)=S\oplus \id_{V_C}.
+\]
+
+Using the pseudo-symplectic description from Theorem~\ref{thm:clifford-structure}, we can lift $j$ to the Clifford level. For $(S,\mu)\in \Ps(B)$, define
+\begin{equation}
+\iota(S, \mu) \coloneqq (S \oplus \id_{V_C}, \mu \cdot \mathbf{1}),
+\end{equation}
+where $(\mu \cdot \mathbf{1})(v_B, v_C) \coloneqq \mu(v_B)$.
+Since $\beta_A = \beta_B \cdot \beta_C$, the function $\mu \cdot \mathbf{1}$ satisfies the coboundary condition for $\beta_A$; the $C$-component is trivial because the symplectic map acts as the identity on $V_C$. Moreover, the twisted product is preserved, and therefore $\iota$ is a group homomorphism.
+
+This construction yields a commutative diagram of exact sequences (identifying $C(A) \cong \Ps(A)$):
+\begin{equation}
+\begin{tikzcd}
+1 \arrow[r] & V_B \arrow[r] \arrow[d, "i"] & C(B) \arrow[r] \arrow[d, "\iota"] & \Sp(V_B) \arrow[r] \arrow[d, "j"] & 1 \\
+1 \arrow[r] & V_A \arrow[r] & C(A) \arrow[r] & \Sp(V_A) \arrow[r] & 1
+\end{tikzcd}
+\end{equation}
+
+\begin{theorem}\label{thm:embedding}
+Let $A = B \oplus C$ be a decomposition of finite abelian groups. If the Clifford extension for $A$ splits, then the Clifford extension for $B$ splits.
+\end{theorem}
+
+\begin{proof}
+Assume that the extension for $A$ splits. Then there exists a normalized group homomorphism
+\[
+\sigma_A: \Sp(V_A) \to C(A)
+\]
+satisfying $\pi_A \circ \sigma_A = \id_{\Sp(V_A)}$. We construct from it a splitting section for the Clifford extension for $B$.
+
+For $S \in \Sp(V_B)$, set
+\[
+\Sigma_S = \sigma_A(j(S)) \in C(A).
+\]
+Via the identification $C(A)\cong \Ps(A)$ from Theorem~\ref{thm:clifford-structure}, we may write
+\begin{equation}
+\Sigma_S \cong (S \oplus \id_{V_C}, \Lambda_S),
+\end{equation}
+where $\Lambda_S: V_A \to U(1)$ satisfies the coboundary condition
+\begin{equation}
+\frac{\Lambda_S(u+v)}{\Lambda_S(u)\Lambda_S(v)} = \frac{\beta_A((S\oplus \id)u, (S\oplus \id)v)}{\beta_A(u, v)}.
+\end{equation}
+
+We now restrict $\Lambda_S$ to the copy of $V_B$ inside $V_A$. Define
+\begin{equation}
+\lambda_S(u_B) \coloneqq \Lambda_S(u_B, 0_C).
+\end{equation}
+We verify that $\lambda_S$ satisfies the coboundary condition for $\beta_B$. For $u=(u_B,0)$ and $v=(v_B,0)$ in $V_B\oplus \{0\}$, the factorization $\beta_A=\beta_B\cdot \beta_C$ gives
+\begin{equation}
+\beta_A(u, v) = \beta_B(u_B, v_B) \cdot \beta_C(0, 0) = \beta_B(u_B, v_B),
+\end{equation}
+since $\beta_C(0,0)=1$. Similarly, $(S \oplus \id)(u_B, 0) = (Su_B, 0)$, and therefore
+\begin{equation}
+\frac{\lambda_S(u_B + v_B)}{\lambda_S(u_B)\lambda_S(v_B)} = \frac{\beta_B(Su_B, Sv_B)}{\beta_B(u_B, v_B)}.
+\end{equation}
+This confirms that $(S, \lambda_S)$ is a valid element of $\Ps(B)$.
+
+Define
+\[
+\sigma_B:\Sp(V_B)\to \Ps(B),\qquad \sigma_B(S)\coloneqq (S,\lambda_S).
+\]
+It remains to prove that $\sigma_B$ is a group homomorphism.
+
+Let $S_1, S_2 \in \Sp(V_B)$. Since $\sigma_A$ is a homomorphism,
+\begin{equation}
+\Sigma_{S_1 S_2} = \Sigma_{S_1} \cdot \Sigma_{S_2}.
+\end{equation}
+Using the twisted product in $\Ps(A)$, we obtain
+\begin{equation}
+\Sigma_{S_1} \cdot \Sigma_{S_2} = (S_1 S_2 \oplus \id_{V_C}, \, \Lambda_{S_1}^{S_2 \oplus \id} \cdot \Lambda_{S_2}),
+\end{equation}
+where $(\Lambda_{S_1}^{S_2 \oplus \id} \cdot \Lambda_{S_2})(u) = \Lambda_{S_1}((S_2 \oplus \id)u) \cdot \Lambda_{S_2}(u)$.
+
+Comparing with $\Sigma_{S_1 S_2} = (S_1 S_2 \oplus \id_{V_C}, \Lambda_{S_1 S_2})$, we obtain
+\begin{equation}
+\Lambda_{S_1 S_2}(u) = \Lambda_{S_1}((S_2 \oplus \id)u) \cdot \Lambda_{S_2}(u).
+\end{equation}
+
+Restricting to $u = (u_B, 0) \in V_B \oplus \{0\}$ gives
+\begin{align}
+\lambda_{S_1 S_2}(u_B) &= \Lambda_{S_1 S_2}(u_B, 0) \nonumber \\
+&= \Lambda_{S_1}((S_2 \oplus \id)(u_B, 0)) \cdot \Lambda_{S_2}(u_B, 0) \nonumber \\
+&= \Lambda_{S_1}(S_2 u_B, 0) \cdot \Lambda_{S_2}(u_B, 0) \nonumber \\
+&= \lambda_{S_1}(S_2 u_B) \cdot \lambda_{S_2}(u_B).
+\end{align}
+This is precisely the twisted product rule for the phases in $\Ps(B)$:
+\begin{equation}
+(S_1, \lambda_{S_1}) \cdot (S_2, \lambda_{S_2}) = (S_1 S_2, \lambda_{S_1}^{S_2} \cdot \lambda_{S_2}) = (S_1 S_2, \lambda_{S_1 S_2}).
+\end{equation}
+Hence $\sigma_B(S_1 S_2) = \sigma_B(S_1) \cdot \sigma_B(S_2)$, and therefore $\sigma_B$ is a group homomorphism.
+
+Finally, $\sigma_B$ is normalized because $\sigma_B(\id) = (\id, \lambda_{\id})$ and $\lambda_{\id}(u_B) = \Lambda_{\id}(u_B, 0) = 1$, using that $\sigma_A$ is normalized. Since $\pi_B(\sigma_B(S)) = S$ by construction, $\sigma_B$ is a splitting section for the Clifford extension for $B$.
+\end{proof}
+
+\section{Non-splitting for \texorpdfstring{$\Z_{2^k}$}{Z\_2\^k}}\label{sec:nonsplit-cyclic}
+
+In this section, we establish that the Clifford extension does not split when $A = \Z_N$ with $N = 2^k$ and $k \geq 2$. This non-splitting result was first established by Korbel\'a\v{r} and Tolar~\cite{KT23}, who proved that for even $N$, the Clifford group splits if and only if $N$ is not divisible by $4$. Their proof builds on the standard description of the cyclic Clifford group and its symplectic action~\cite{Appleby2005}. Here, we provide an alternative derivation utilizing the pseudo-symplectic description developed in Theorem~\ref{thm:clifford-structure}. We keep the discussion entirely in the standard modular presentation generated by the matrices in \eqref{eq:cyclic-generators}, which allows us to reframe the obstruction explicitly in terms of cohomological phase data. This gives an alternative derivation of their result from the modular relations, independent of the specific matrix representations used in \cite{KT23}.
+
+For $A=\Z_N$, we identify $\widehat{\Z_N}\cong \Z_N$ via the standard character pairing and write
+\[
+V_{\Z_N} \coloneqq \Z_N \oplus \Z_N,
+\]
+with elements $u = (a, p)$ and $v = (b, q)$. In the computations below, whenever such coordinates occur inside exponentials or parity expressions, we take their standard representatives in $\{0,\dots,N-1\}\subset \Z$. The Heisenberg 2-cocycle is
+\begin{equation}
+\beta_{\Z_N}(u, v) = \exp\!\left(\frac{2\pi i}{N}\, pb\right),
+\end{equation}
+and we use Theorem~\ref{thm:clifford-structure} to identify $C(\Z_N)$ with pairs $(T, \lambda)$ satisfying the coboundary condition
+\begin{equation}\label{eq:cob-N}
+\frac{\lambda(u + v)}{\lambda(u)\lambda(v)} = \frac{\beta_{\Z_N}(Tu, Tv)}{\beta_{\Z_N}(u, v)}.
+\end{equation}
+Since $V_{\Z_N}$ is free of rank $2$ over $\Z_N$ with its standard alternating form, we identify $\Sp(V_{\Z_N})$ with $\Sp(2,\Z_N)=\SL(2,\Z_N)$.
+
+The group $\SL(2, \Z_N)$ is generated by:
+\begin{equation}\label{eq:cyclic-generators}
+t = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}, \qquad
+s = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.
+\end{equation}
+Their action on $V_{\Z_N}$ is given by $t(a, p) = (a + p, p)$ and $s(a, p) = (-p, a)$. A splitting homomorphism $\sigma: \SL(2, \Z_N) \to C(\Z_N)$ is determined by its values $\tilde{t} = \sigma(t)$ and $\tilde{s} = \sigma(s)$.
+The argument proceeds in two steps. We first classify all lifts of the generators $s$ and $t$ to $C(\Z_N)$. We then show that the relations $t^N=I$ and $(st)^3=s^2$, which any homomorphism must preserve, impose incompatible conditions on the parameter $x$ appearing in the lift of $t$, which rules out the existence of a splitting.
+
+\subsection{Explicit lifts of the generators}
+
+To analyze a potential splitting, we determine the admissible lifts of the generators to the Clifford group. These formulas reduce the problem to the parameters appearing in the phase functions, and the contradiction in the next subsection will ultimately depend only on the parameter $x$ in the lift of $t$.
+
+For the generator $t$, we compute the ratio of cocycles directly using the action $t(a, p) = (a+p, p)$. For any $u=(a,p)$ and $v=(b,q)$:
+\begin{equation}
+\frac{\beta_{\Z_N}(tu, tv)}{\beta_{\Z_N}(u, v)} = \frac{\exp(\frac{2\pi i}{N} p(b+q))}{\exp(\frac{2\pi i}{N} pb)} = \exp\!\left(\frac{2\pi i}{N}\, pq\right).
+\end{equation}
+A particular solution is $\lambda_t^{(0)}(a, p) = \exp(\pi i p^2/N)$, since
+\begin{equation}
+\frac{\lambda_t^{(0)}(u + v)}{\lambda_t^{(0)}(u)\lambda_t^{(0)}(v)} = \exp\!\left(\frac{\pi i}{N}\bigl((p + q)^2 - p^2 - q^2\bigr)\right) = \exp\!\left(\frac{2\pi i}{N}\, pq\right).
+\end{equation}
+Any other solution differs from $\lambda_t^{(0)}$ by a linear character of $V_{\Z_N}$. Parametrizing characters as $\chi_{(x,y)}(a, p) = \exp(2\pi i(xa + yp)/N)$, the general lift of $t$ takes the form:
+\begin{equation}\label{eq:lift-t}
+\tilde{t} = (t, \lambda_t), \qquad \lambda_t(a, p) = \exp\!\left(\frac{\pi i}{N} p^2 + \frac{2\pi i}{N}(xa + yp)\right),
+\end{equation}
+determined by a unique pair $(x, y) \in \Z_N^2$.
+
+For the generator $s$, the coboundary ratio is:
+\begin{equation}
+\frac{\beta_{\Z_N}(su, sv)}{\beta_{\Z_N}(u, v)} = \frac{\exp(\frac{2\pi i}{N} a(-q))}{\exp(\frac{2\pi i}{N} pb)} = \exp\!\left(-\frac{2\pi i}{N} (aq + pb)\right).
+\end{equation}
+A particular solution is $\lambda_s^{(0)}(a, p) = \exp(-2\pi i\, ap/N)$, since
+\[
+\frac{\lambda_s^{(0)}(u+v)}{\lambda_s^{(0)}(u)\lambda_s^{(0)}(v)} = \exp\!\left(-\frac{2\pi i}{N}\bigl((a+b)(p+q) - ap - bq\bigr)\right) = \exp\!\left(-\frac{2\pi i}{N}(aq+bp)\right).
+\]
+Hence every lift of $s$ is of the form
+\begin{equation}\label{eq:lift-s}
+\tilde{s} = (s, \lambda_s), \qquad \lambda_s(a, p) = \exp\!\left(-\frac{2\pi i}{N} ap + \frac{2\pi i}{N}(za + wp)\right),
+\end{equation}
+for a pair $(z, w) \in \Z_N^2$.
+
+\subsection{Incompatible lifting constraints}
+
+We now derive the contradiction. Assuming that a splitting exists, the lifted generators must satisfy, in particular, the relations $t^N=I$ and $(st)^3=s^2$. The relation $t^N=I$ forces the parameter $x$ in the lift of $t$ to be odd, whereas the relation $(st)^3=s^2$ forces $2x\equiv 0\pmod N$. For $N=2^k$ with $k\geq 2$, these conditions are incompatible. Note that no additional order condition on the lift of $s$ will be needed.
+
+\begin{lemma}\label{lem:parity-constraint}
+Let $N=2^k$ with $k \geq 1$. If $\tilde{t}^N = (I, 1)$, then the parameter $x$ in \eqref{eq:lift-t} must be odd.
+\end{lemma}
+
+\begin{proof}
+Using the product law $(T, \lambda) \cdot (S, \mu) = (TS, \lambda^S \mu)$ iteratively, the phase of $\tilde{t}^N$ is given by:
+\begin{equation}
+\Lambda_N(u) = \prod_{j=0}^{N-1} \lambda_t(t^j u).
+\end{equation}
+Since $t^j(a, p) = (a + jp, p)$, the second component $p$ remains constant. Substituting $\lambda_t$ from \eqref{eq:lift-t}:
+\begin{equation}
+\Lambda_N(a, p) = \prod_{j=0}^{N-1} \exp\!\left(\frac{\pi i}{N} p^2 + \frac{2\pi i}{N}(x(a+jp) + yp)\right).
+\end{equation}
+We separate the product into quadratic and linear parts. The quadratic term is constant in $j$:
+\[
+\prod_{j=0}^{N-1} \exp\!\left(\frac{\pi i}{N} p^2\right) = \exp(\pi i p^2) = (-1)^{p^2} = (-1)^p,
+\]
+where we used that $p^2 \equiv p \pmod 2$ for integers. The linear term involves a sum over $j$:
+\[
+\sum_{j=0}^{N-1} \frac{2\pi i}{N}(xa + xjp + yp) = 2\pi i (xa + yp) + \frac{2\pi i}{N} xp \sum_{j=0}^{N-1} j.
+\]
+Using $\sum_{j=0}^{N-1} j = \frac{N(N-1)}{2}$, the second term becomes $\pi i xp (N-1)$. Since $N$ is even, $N-1$ is odd; therefore $\exp(\pi i xp(N-1)) = (-1)^{xp}$. The term $\exp(2\pi i (xa+yp)) = 1$.
+Thus, the total phase is:
+\begin{equation}
+\Lambda_N(a, p) = (-1)^p (-1)^{xp} = (-1)^{p(1+x)}.
+\end{equation}
+For $\tilde{t}^N = (I, 1)$, we require $\Lambda_N(a, p) = 1$ for all $p$. This holds if and only if $1+x$ is even, i.e., $x \equiv 1 \pmod 2$.
+\end{proof}
+
+
+\begin{lemma}\label{lem:modular-constraint}
+Let $N=2^k$ with $k \geq 1$. Choose lifts $\tilde t=(t,\lambda_t)$ and $\tilde s=(s,\lambda_s)$ as in \eqref{eq:lift-t}--\eqref{eq:lift-s} with parameters $(x,y)$ and $(z,w)$ respectively.
+If the modular relation $(\tilde s\tilde t)^3=\tilde s^{\,2}$ holds in the Clifford group, then
+\[
+2x\equiv 0\pmod N.
+\]
+\end{lemma}
+
+\begin{proof}
+We organize the computation in two steps: first we verify the relation for a convenient pair of reference lifts, and then we determine how the relation changes after twisting by arbitrary linear characters.
+
+\smallskip
+\noindent\textbf{Step 1: The reference lifts satisfy $(\tilde s_0\tilde t_0)^3=\tilde s_0^{\,2}$.}
+Fix the particular solutions
+\[
+\lambda_t^{(0)}(a,p):=\exp\!\Big(\frac{\pi i}{N}p^2\Big),\qquad
+\lambda_s^{(0)}(a,p):=\exp\!\Big(-\frac{2\pi i}{N}ap\Big),
+\]
+and set $\tilde t_0:=(t,\lambda_t^{(0)})$, $\tilde s_0:=(s,\lambda_s^{(0)})$.
+
+First,
+\[
+\tilde s_0^{\,2}=(s^2,(\lambda_s^{(0)})^{s}\lambda_s^{(0)})=(-I,1),
+\]
+because $(\lambda_s^{(0)})^{s}\lambda_s^{(0)}\equiv 1$. Next let $\tilde g_0:=\tilde s_0\tilde t_0=(st,\lambda_{g_0})$, where
+\[
+\lambda_{g_0}(a,p)=(\lambda_s^{(0)})^{t}(a,p)\lambda_t^{(0)}(a,p)
+=\exp\!\Big(-\frac{2\pi i}{N}(a+p)p\Big)\exp\!\Big(\frac{\pi i}{N}p^2\Big)
+=\exp\!\Big(-\frac{2\pi i}{N}ap\Big)\exp\!\Big(-\frac{\pi i}{N}p^2\Big).
+\]
+Since $g:=st$ satisfies $g^3=-I=s^2$ in $\SL(2,\Z_N)$, it remains to compare the phase part. Using
+\[
+(\tilde s_0\tilde t_0)^3=\tilde g_0^{\,3}=(g^3,\Lambda_0),\qquad
+\Lambda_0(u)=\lambda_{g_0}(g^2u)\lambda_{g_0}(gu)\lambda_{g_0}(u),
+\]
+a direct substitution with $g(a,p)=(-p,a+p)$ shows that $\Lambda_0(u)=1$ for all $u$. Therefore
+\[
+(\tilde s_0\tilde t_0)^3=(-I,1)=\tilde s_0^{\,2}.
+\]
+
+\smallskip
+\noindent\textbf{Step 2: Reduction to a linear-character computation.}
+We now compare arbitrary lifts with the reference lifts from Step~1. The modular relation will be tested by isolating the residual character in the word
+\[
+W:=(\tilde s\tilde t)^3\,\tilde s^{-2}.
+\]
+If this residual character is trivial, then the modular relation holds; otherwise it fails.
+
+Let $\Xi:=\{(I,\chi_v):v\in\Z_N^2\}\le C(\Z_N)$, where
+\[
+\chi_v(u):=\exp\!\left(\frac{2\pi i}{N}\langle v,u\rangle\right),
+\qquad
+\langle v,u\rangle := v_1u_1+v_2u_2 \pmod N
+\]
+for $v=(v_1,v_2)$ and $u=(u_1,u_2)$ in $\Z_N^2$.
+For any $S\in \SL(2,\Z_N)$ we have $\chi_v^{\,S}(u):=\chi_v(Su)=\chi_{S^Tv}(u)$,
+hence
+\begin{equation}\label{eq:char-mult}
+(H,\chi_{v_1})(K,\chi_{v_2})=(HK,\chi_{K^Tv_1+v_2}),
+\qquad
+(H,\chi_v)^{-1}=(H^{-1},\chi_{-H^{-T}v}).
+\end{equation}
+In particular, $\Xi$ is normal in $C(\Z_N)$ and conjugation acts by $v\mapsto H^Tv$:
+\begin{equation}\label{eq:char-conj}
+(H,\lambda)\,(I,\chi_v)=(I,\chi_{H^Tv})\,(H,\lambda)\qquad\bigl((H,\lambda)\in C(\Z_N)\bigr).
+\end{equation}
+
+Write the general lifts as
+\[
+\tilde t=(t,\lambda_t^{(0)}\chi_{v_t})=\tilde t_0\,(I,\chi_{v_t}),\qquad
+\tilde s=(s,\lambda_s^{(0)}\chi_{v_s})=\tilde s_0\,(I,\chi_{v_s}),
+\]
+where $v_t=\binom{x}{y}$ and $v_s=\binom{z}{w}$.
+By Step~1, $W_0:=(\tilde s_0\tilde t_0)^3\,\tilde s_0^{-2}=(I,1)$.
+Writing $\xi_s:=(I,\chi_{v_s})$ and $\xi_t:=(I,\chi_{v_t})$, we have $\tilde s=\tilde s_0\xi_s$ and $\tilde t=\tilde t_0\xi_t$. Using the relation
+\[
+(H,\lambda)(I,\chi_v)=(I,\chi_{H^Tv})(H,\lambda),
+\]
+we commute all character factors to the right. The non-character part then collapses to $W_0=(I,1)$, and therefore
+\[
+W=(I,\chi_{v_W})
+\]
+for a uniquely determined $v_W\in\Z_N^2$.
+
+We compute $v_W$ explicitly. From \eqref{eq:char-mult}, the character parameter of $\tilde s\tilde t$ is
+\[
+v_{st}=t^Tv_s+v_t
+=\begin{pmatrix}1&0\\1&1\end{pmatrix}\binom{z}{w}+\binom{x}{y}
+=\binom{x+z}{z+w+y}.
+\]
+Let $g:=st$, hence $g^T=\begin{pmatrix}0&1\\-1&1\end{pmatrix}$. Then
+\[
+(g,\chi_{v_{st}})^3=(g^3,\chi_{((g^T)^2+g^T+I)v_{st}}),
+\qquad
+(g^T)^2+g^T+I=\begin{pmatrix}0&2\\-2&2\end{pmatrix},
+\]
+and therefore
+\[
+v_{(st)^3}
+=\begin{pmatrix}0&2\\-2&2\end{pmatrix}\binom{x+z}{z+w+y}
+=\binom{2(z+w+y)}{2(w+y-x)}.
+\]
+Next,
+\[
+v_{s^2}=(s^T+I)v_s
+=\begin{pmatrix}1&1\\-1&1\end{pmatrix}\binom{z}{w}
+=\binom{z+w}{w-z}.
+\]
+Since $(st)^3=s^2=-I$, the final multiplication gives
+\[
+v_W=-\,v_{(st)^3}+v_{s^2}
+=\binom{-z-w-2y}{-z-w-2y+2x}.
+\]
+
+If the modular relation $(\tilde s\tilde t)^3=\tilde s^{\,2}$ holds, then $W=(I,1)$, implying that $\chi_{v_W}$ is trivial and $v_W\equiv 0\pmod N$. Subtracting the two components yields $2x\equiv 0\pmod N$.
+\end{proof}
+
+\begin{theorem}\label{thm:nonsplit-cyclic}
+Let $N=2^k$ with $k\ge 2$. The Clifford extension
+\[
+1\longrightarrow V_{\Z_N}\longrightarrow C(\Z_N)\longrightarrow \SL(2,\Z_N)\longrightarrow 1
+\]
+does not split.
+\end{theorem}
+
+\begin{proof}
+Suppose the extension splits via a homomorphism $\sigma: \SL(2,\Z_N) \to C(\Z_N)$. Let $\tilde{t} = \sigma(t)$ and $\tilde{s} = \sigma(s)$ be the images of the generators, with $\tilde{t} = (t, \lambda_t)$ parametrized by $(x,y) \in \Z_N^2$ as in \eqref{eq:lift-t}.
+
+Since $\sigma$ is a homomorphism, the lifts must satisfy the defining relations of $\SL(2, \Z_N)$. Lemmas~\ref{lem:parity-constraint} and~\ref{lem:modular-constraint} show that these relations impose incompatible conditions on the same parameter $x$. More precisely:
+\begin{itemize}
+\item The relation $t^N = I$ implies $\tilde{t}^N = (I, 1)$, hence by Lemma~\ref{lem:parity-constraint}, $x$ must be odd.
+\item The relation $(st)^3 = s^2$ implies $(\tilde{s}\tilde{t})^3 = \tilde{s}^2$, thus by Lemma~\ref{lem:modular-constraint}, $2x \equiv 0 \pmod{N}$.
+\end{itemize}
+
+For $N = 2^k$ with $k \geq 2$, the condition $2x \equiv 0 \pmod{N}$ implies $x \in \{0, N/2\}$. Since $N/2 = 2^{k-1}$ is even for $k \geq 2$, both possible values of $x$ are even. This contradicts the requirement that $x$ be odd.
+
+Therefore, no splitting homomorphism exists.
+\end{proof}
+
+\begin{remark}
+The argument does not require imposing any order constraints on the lift $\tilde{s}$. The contradiction arises solely from the incompatibility between the relations $t^N = I$ and $(st)^3 = s^2$.
+\end{remark}
+\section{Symplectic obstruction in the elementary abelian case}\label{sec:symplectic-obstruction}
+
+In this section we establish nonsplitting of the Clifford extension for $A = (\Z_2)^n$ with $n \geq 2$ by relating it to the automorphism extension of an extraspecial $2$-group studied by Griess~\cite{Griess1973}. We first describe the relevant extension attached to the $n$-qubit Pauli group and its extraspecial model. We then identify it with the Clifford extension. The desired nonsplitting statement then follows from Griess' results.
+
+\subsection{The Pauli group and its automorphisms}
+
+Fix $A = (\Z_2)^n$ with $V_A = A \oplus \widehat{A} \cong (\F_2)^{2n}$. The $n$-qubit \emph{Pauli group} $P_n$ is the finite subgroup of $U(\HH)$ generated by the Weyl operators and the scalar $i$:
+\begin{equation}\label{eq:pauli-def}
+P_n := \langle\, W_u,\, iI \mid u \in V_A \,\rangle.
+\end{equation}
+Explicitly, $P_n = \{ z W_u \mid z \in \langle i \rangle,\, u \in V_A \}$ has order $2^{2n+2}$. Its center is $Z(P_n) = \langle iI \rangle \cong \Z_4$, and the quotient $P_n/Z(P_n)$ is canonically isomorphic to $V_A$.
+
+To connect this with the classical theory of extraspecial $2$-groups, we view $P_n$ as a central product. Let $Y := \langle iI \rangle \cong \Z_4$, and let $E_n$ be the extraspecial $2$-group of order $2^{2n+1}$ generated by the Weyl operators modulo the central involution $\langle -I \rangle \cong \Z_2$. Then
+\[
+P_n \cong E_n \circ Y,
+\]
+where the central product is formed by amalgamating the common subgroup $\langle -I \rangle$. Here $E_n$ is the extraspecial $2$-group of plus type, equivalently a central product of $n$ copies of $D_8$. This is the form in which Griess' results apply.
+
+Following Griess~\cite{Griess1973}, we consider the subgroup
+\[
+\Aut_Y(E_n \circ Y) := \{ \varphi \in \Aut(E_n \circ Y) \mid \varphi|_Y = \id_Y \},
+\]
+of automorphisms that fix $Y$ pointwise. In Griess' notation, this group is denoted by $A(E_n \circ Y)$. Every such automorphism induces a well-defined automorphism of the quotient
+\[
+(E_n \circ Y)/Y \cong V_A.
+\]
+Because $\varphi$ fixes the center, it preserves the commutator form and hence the induced map on $V_A$ lies in $\Sp(V_A)$. The kernel consists of inner automorphisms, which identify with $V_A$ through the symplectic form. Therefore we obtain a short exact sequence
+\begin{equation}\label{eq:autZ-ses}
+1 \longrightarrow V_A \longrightarrow \Aut_Y(E_n \circ Y) \xrightarrow{\;\rho\;} \Sp(V_A) \longrightarrow 1,
+\end{equation}
+which is the automorphism extension to be compared with the Clifford extension.
+
+\subsection{Identification with the Clifford extension}
+
+We now show that the automorphism extension~\eqref{eq:autZ-ses} coincides with the Clifford extension. The key point is that both middle terms are described by the same pairs $(T,\lambda)$ satisfying the same compatibility condition.
+
+Let $T \in \Sp(V_A)$. An automorphism $\varphi \in \Aut_Y(E_n \circ Y)$ lifting $T$ must satisfy $\varphi(W_u) = \lambda(u) W_{Tu}$ for some function $\lambda: V_A \to \langle i \rangle$. Imposing that $\varphi$ preserves multiplication yields the coboundary condition
+\begin{equation}\label{eq:aut-cob}
+\frac{\lambda(u+v)}{\lambda(u)\lambda(v)} = \frac{\beta_A(Tu, Tv)}{\beta_A(u, v)}.
+\end{equation}
+This is precisely condition~\eqref{eq:coboundary-condition} from Theorem~\ref{thm:clifford-structure}, with the phase function $\lambda$ taking values in $\langle i \rangle$ rather than $U(1)$. Since the right-hand side of~\eqref{eq:aut-cob} lies in $\langle i \rangle$ for elementary abelian $2$-groups, the two conditions coincide.
+
+\begin{proposition}\label{prop:ses-ident}
+There is a canonical isomorphism of short exact sequences
+\[
+\begin{tikzcd}[column sep=large]
+1 \arrow[r] & V_A \arrow[r] \arrow[d, equals] & C(A) \arrow[r, "\pi"] & \Sp(V_A) \arrow[r] \arrow[d, equals] & 1 \\
+1 \arrow[r] & V_A \arrow[r] & \Aut_Y(E_n \circ Y) \arrow[u, "\cong"'] \arrow[r, "\rho"] & \Sp(V_A) \arrow[r] & 1
+\end{tikzcd}
+\]
+identifying both middle terms with pairs $(T, \lambda)$ satisfying~\eqref{eq:aut-cob}.
+\end{proposition}
+
+\begin{proof}
+The discussion above defines a map
+\[
+\Phi: \Aut_Y(E_n \circ Y) \longrightarrow C(A),
+\]
+sending an automorphism $\varphi$ with $\varphi(W_u) = \lambda(u) W_{Tu}$ to the pair $(T, \lambda) \in \Ps(A) \cong C(A)$. Since both groups use the same multiplication rule
+\[
+(T, \lambda) \cdot (S, \mu) = (TS, \lambda^S \mu),
+\]
+the map $\Phi$ is a group homomorphism.
+
+The diagram commutes by construction. On the quotient, $\Phi$ preserves the symplectic component, hence the right square commutes. On the kernel, both extensions identify the kernel with $V_A$: on the Clifford side through the character description determined by $\omega_A$, and on the automorphism side through inner automorphisms. Under these identifications, $\Phi$ acts as the identity on $V_A$, and the left square commutes as well.
+
+Since the left and right vertical maps are isomorphisms, the Five Lemma implies that the middle vertical map is an isomorphism as well.
+\end{proof}
+\subsection{Nonsplitting for \texorpdfstring{$n \geq 2$}{n >= 2}}
+
+By Proposition~\ref{prop:ses-ident}, the splitting problem for the Clifford extension is equivalent to the corresponding splitting problem for the automorphism extension~\eqref{eq:autZ-ses}. We can therefore apply Griess' nonsplitting results directly.
+
+\begin{theorem}\label{thm:elem-abelian-nonsplit}
+Let $A = (\Z_2)^n$. The Clifford extension
+\[
+1 \longrightarrow V_A \longrightarrow C(A) \longrightarrow \Sp(V_A) \longrightarrow 1
+\]
+splits if and only if $n = 1$.
+\end{theorem}
+
+\begin{proof}
+For $n = 1$, we have $\Sp(V_A) = \Sp((\F_2)^2) \cong \mathbb{S}_3$ and $P_1 \cong D_8$. In this case the automorphism extension splits: explicitly, $\Aut_Y(D_8 \circ Y) \cong \mathbb{S}_4$, and the subgroup $\mathbb{S}_3 \leq \mathbb{S}_4$ fixing one point is a complement to $V_A \cong \Z_2^2$.
+
+For $n \geq 2$, Griess' results show that the automorphism extension is nonsplit. By~\cite[Corollary~2]{Griess1973}, the extension
+\[
+1 \longrightarrow \Inn(E_n \circ Y) \longrightarrow \Aut_Y(E_n \circ Y) \longrightarrow \Sp(2n,\F_2) \longrightarrow 1
+\]
+is nonsplit for $n \geq 3$, and by~\cite[Corollary~3]{Griess1973} the same holds for $n = 2$. Proposition~\ref{prop:ses-ident} transports this conclusion to the Clifford extension.
+\end{proof}
+
+
+\section{Proof of the Splitting Criterion}\label{sec:splitting-criterion}
+
+We now combine the reduction to the $2$-primary part with the two base nonsplitting results,
+namely the cyclic $2$-power case and the elementary abelian case, to complete the proof of the splitting criterion.
+
+\begin{theorem}\label{thm:splitting-criterion}
+Let $A$ be a finite abelian group and let $V_A=A\oplus \widehat A$.
+The Clifford extension
+\begin{equation}\label{eq:main-ext}
+1 \longrightarrow V_A \longrightarrow C(A) \longrightarrow \Sp(V_A) \longrightarrow 1
+\end{equation}
+splits if and only if $4 \nmid |A|$.
+Equivalently, the obstruction class $\cO_A\in H^2(\Sp(V_A),V_A)$ vanishes if and only if $4 \nmid |A|$.
+\end{theorem}
+
+\begin{proof}
+This is the statement announced in Theorem~\ref{thm:main}.
+
+Write the primary decomposition
+\[
+A \;\cong\; A_{\mathrm{odd}}\oplus A_2,
+\]
+where $|A_{\mathrm{odd}}|$ is odd and $|A_2|$ is a power of $2$.
+By Proposition~\ref{prop:coprime-decomp}, the Clifford extension class decomposes as
+\[
+[\cO_A] \;=\; [\cO_{A_{\mathrm{odd}}}] \oplus [\cO_{A_2}],
+\]
+and hence \eqref{eq:main-ext} splits if and only if the $2$-primary extension for $A_2$ splits.
+Moreover, by Proposition~\ref{prop:odd_case_vanish}, we have $[\cO_{A_{\mathrm{odd}}}]=0$.
+Thus it suffices to determine when the extension splits for $A_2$.
+
+\medskip
+\noindent\textit{Step 1: the splitting cases.}
+If $A_2=1$, then $A$ has odd order and the extension splits by Proposition~\ref{prop:odd_case_vanish}.
+If $A_2\cong \Z_2$, then the extension splits by Theorem~\ref{thm:elem-abelian-nonsplit}, which treats the exceptional rank-one elementary abelian case.
+
+\medskip
+\noindent\textit{Step 2: the nonsplitting cases.}
+Assume $|A_2| \geq 4$.
+Write
+\[
+A_2 \;\cong\; \Z_{2^{k_1}}\oplus \cdots \oplus \Z_{2^{k_m}},
+\qquad k_1\ge \cdots \ge k_m \ge 1.
+\]
+There are then exactly two possibilities:
+
+\smallskip
+\noindent\emph{(A) $A_2$ has an element of order $\ge4$.}
+Equivalently, $k_1\ge 2$, hence $\Z_{2^{k_1}}$ is a direct summand of $A_2$.
+By Theorem~\ref{thm:nonsplit-cyclic}, the extension for $\Z_{2^{k_1}}$ does not split.
+By Theorem~\ref{thm:embedding}, nonsplitting extends to any group containing
+$\Z_{2^{k_1}}$ as a direct summand; therefore $[\cO_{A_2}]\neq 0$.
+
+\smallskip
+\noindent\emph{(B) $A_2$ is elementary abelian of rank $\ge2$.}
+Equivalently, $k_i=1$ for all $i$ and $m\ge2$, and therefore $A_2\cong (\Z_2)^m$ with $m\ge2$.
+Then $(\Z_2)^2$ is a direct summand of $A_2$.
+By Theorem~\ref{thm:elem-abelian-nonsplit}, the extension for $(\Z_2)^2$ does not split,
+hence $[\cO_{(\Z_2)^2}]\neq 0$.
+Applying Theorem~\ref{thm:embedding} yields $[\cO_{A_2}]\neq 0$ for all $m\ge2$.
+
+\medskip
+The two splitting cases are therefore $A_2=1$ and $A_2\cong \Z_2$, while cases (A) and (B) cover all groups with $|A_2|\ge 4$ and give nonsplitting. This proves the splitting criterion.
+\end{proof}
+
+\section*{Acknowledgments}
+The author was partially supported by Grant INV-2025-213-3452 from the School of Science of Universidad de los Andes.
+
+
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+\end{document}

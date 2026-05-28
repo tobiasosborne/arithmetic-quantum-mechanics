@@ -81,6 +81,30 @@ before treating report edits as complete.
 | 61 | `AQM-61-TANGENT-COTANGENT-WEYL-KINEMATICS-EXAMPLES` | `report/sections/61_tangent_cotangent_weyl_kinematics_examples.tex` | Tangent-Cotangent Weyl Kinematics: Recipe and First Examples |
 | 62 | `AQM-62-TANGENT-COTANGENT-WEYL-KINEMATICS-MORE-EXAMPLES` | `report/sections/62_tangent_cotangent_weyl_kinematics_more_examples.tex` | More Tangent-Cotangent Weyl Kinematical Examples |
 | 63 | `AQM-63-EVALUATED-DERHAM-CONSTRAINTS-TANGENT-WEYL` | `report/sections/63_evaluated_derham_constraints_tangent_weyl.tex` | Evaluated de Rham Constraints on Tangent-Weyl Kinematics |
+| 64 | `AQM-64-QUANTUM-SYSTEM-ASSOCIATION-META-PLAN` | `report/sections/64_quantum_system_association_meta_plan.tex` | Quantum-System Association Meta-Plan |
+| 65 | `AQM-65-QSA-VOCABULARY` | `report/sections/65_quantum_system_association_vocabulary.tex` | Quantum-System Association Vocabulary |
+| 66 | `AQM-66-QSA-TEST-OBJECT-CATALOGUE` | `report/sections/66_quantum_system_association_test_object_catalogue.tex` | Quantum-System Association Test Object Catalogue |
+| 67 | `AQM-67-QSA-FINITE-SET-FIRST-ASSOCIATION` | `report/sections/67_quantum_system_association_finite_set_first.tex` | Structureless Finite-Set First Association |
+| 68 | `AQM-68-QSA-FINITE-SET-TENSOR-SITES` | `report/sections/68_quantum_system_association_finite_set_tensor_sites.tex` | Structureless Finite-Set Tensor-Site Association |
+| 69 | `AQM-69-QSA-FINITE-SET-DIRECT-SUM-PARTICLE` | `report/sections/69_quantum_system_association_finite_set_direct_sum_particle.tex` | Structureless Finite-Set Direct-Sum Particle Association |
+| 70 | `AQM-70-QSA-AND-OR-MANY-PARTICLE-GRAMMAR` | `report/sections/70_quantum_system_association_and_or_many_particle_grammar.tex` | AND/OR Many-Particle Grammar |
+| 71 | `AQM-71-QSA-SYMPLECTIC-FIELD-LABELS-SET` | `report/sections/71_quantum_system_association_symplectic_field_labels_set.tex` | Finite Symplectic Field Labels on a Set |
+| 72 | `AQM-72-QSA-BOSON-FERMION-LAYER` | `report/sections/72_quantum_system_association_boson_fermion_layer.tex` | Bosonic and Fermionic Association Layer |
+| 73 | `AQM-73-QSA-FUSION-CATEGORY-ENDPOINT` | `report/sections/73_quantum_system_association_fusion_category_endpoint.tex` | Fusion-Category Endpoint |
+| 74 | `AQM-74-QSA-SINGLE-PARTICLE-REDUCTION` | `report/sections/74_quantum_system_association_single_particle_reduction.tex` | Single-Particle Reduction |
+| 75 | `AQM-75-QSA-WHAT-COUNTS-AS-A-POINT` | `report/sections/75_quantum_system_association_what_counts_as_point.tex` | What Counts As A Point |
+| 76 | `AQM-76-QSA-COTANGENT-FIRST-ASSOCIATION` | `report/sections/76_quantum_system_association_cotangent_first.tex` | Cotangent-Based First Association |
+| 77 | `AQM-77-QSA-INTRINSIC-RELATIVE-COTANGENT` | `report/sections/77_quantum_system_association_intrinsic_relative_cotangent.tex` | Intrinsic Versus Relative Cotangent Data |
+| 78 | `AQM-78-QSA-FINITE-PHASE-WEYL-KINEMATICS` | `report/sections/78_quantum_system_association_finite_phase_weyl_kinematics.tex` | Weyl-Heisenberg Kinematics From Finite Phase Spaces |
+| 79 | `AQM-79-QSA-GEOMETRIC-FIELD-HOM-X-V` | `report/sections/79_quantum_system_association_geometric_field_hom_x_v.tex` | Geometric Field Association Hom(X,V) |
+| 80 | `AQM-80-QSA-FINITE-RING-EXAMPLE-MATRIX` | `report/sections/80_quantum_system_association_finite_ring_example_matrix.tex` | Finite Ring Example Matrix |
+| 81 | `AQM-81-QSA-RESIDUE-FIELD-SITE-ASSOCIATION` | `report/sections/81_quantum_system_association_residue_field_site_association.tex` | Residue-Field Site Association for \(\Spec R\) |
+| 82 | `AQM-82-QSA-NILPOTENT-SENSITIVE-ASSOCIATION` | `report/sections/82_quantum_system_association_nilpotent_sensitive_association.tex` | Nilpotent-Sensitive Association |
+| 83 | `AQM-83-QSA-PRODUCT-RINGS-TENSOR-FACTORS` | `report/sections/83_quantum_system_association_product_rings_tensor_factors.tex` | Product Rings and Tensor Factors |
+| 84 | `AQM-84-QSA-INFINITE-RING-BOUNDARIES` | `report/sections/84_quantum_system_association_infinite_ring_boundaries.tex` | Infinite Ring Boundary Cases |
+| 85 | `AQM-85-QSA-AGREEMENT-INEQUIVALENCE-TABLE` | `report/sections/85_quantum_system_association_agreement_inequivalence_table.tex` | Agreement and Inequivalence Table |
+| 86 | `AQM-86-QSA-DEGENERATE-OVERRESTRICTIVE-CASES` | `report/sections/86_quantum_system_association_degenerate_overrestrictive_cases.tex` | Degenerate and Over-Restrictive Cases |
+| 87 | `AQM-87-QSA-OPEN-PROBLEMS-NEXT-TARGETS` | `report/sections/87_quantum_system_association_open_problems_next_targets.tex` | Open Problems and Next Catalogue Targets |
 
 ## Maintenance Rules
 

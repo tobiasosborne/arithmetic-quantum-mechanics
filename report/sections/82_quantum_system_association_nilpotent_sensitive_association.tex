@@ -1,0 +1,260 @@
+% SHARD-ID: AQM-82-QSA-NILPOTENT-SENSITIVE-ASSOCIATION
+% SHARD-TITLE: Nilpotent-Sensitive Association
+% SHARD-SUMMARY: Compares the reduced residue-site workflow with the locally developed Artin/Frobenius-ring thickened Weyl layer.
+% SHARD-SUMMARY: Records the extra generating-character data needed before nilpotent ring structure can be quantized.
+% SHARD-SUMMARY: Keeps nilpotents as local jet or internal degrees at existing points, not as extra residue sites.
+% SHARD-KEYWORDS: quantum-system association, nilpotents, Artin ring, Frobenius ring, residue sites, jet degrees, generating character
+
+\section{Nilpotent-Sensitive Association}
+\label{sec:qsa-nilpotent-sensitive-association}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: Review/New for local thickened examples only.}  This is QSA
+Step 18 from \path{docs/quantum_system_associations/PLAN.md}.  It adds no
+source, convention entry, script, run bundle, generated data, populated
+database row, or general finite-ring representation theorem.  Its job is to
+compare the reduced residue-site association of AQM-81 with the
+nilpotent-sensitive Artin/Frobenius-ring Weyl layer already established in
+AQM-31, AQM-36, and AQM-37.
+
+The governing conventions are \texttt{(u)}, \texttt{(y)}, \texttt{(aa)}, and
+\texttt{(ab)} for residue and polynomial-quotient Weyl layers, convention
+\texttt{(an)} for the finite-ring database boundary, and convention
+\texttt{(au)} for report-planning status tokens.  AQM-31 records the sourced
+finite Frobenius-ring Pauli/stabilizer status and the need for a generating
+character.  AQM-36 proves the top-coefficient character construction for
+\(\mathbb F_3[t]/(\pi^e)\), proves the corresponding Weyl product and
+operator-basis statements, and interprets the nilpotent filtration as jet
+data.  AQM-37 applies that result to the \(t^n=1\) family.  AQM-80 and
+AQM-81 record the finite-ring matrix and reduced residue-site workflows that
+this shard compares against.
+
+The blockers are part of the conclusion.  Arbitrary finite-ring
+maximal/residue decomposition and deterministic site ordering remain blocked
+by \texttt{aqm-qsa-frres01}.  Two-direction local Artin examples remain
+blocked by \texttt{aqm-qsa-artin01}, except for the cotangent comparison in
+AQM-77.  Certified generating characters beyond the local AQM-36 polynomial
+chain-ring examples remain blocked; the finite-ring database helper scope in
+convention \texttt{(an)} is MVP source-backed only and is not a general
+Frobenius-ring recognizer.
+
+\subsection{Reduced Sites Versus Thickened Carriers}
+
+For a monic nonzero polynomial
+\[
+  p=\prod_i\pi_i^{e_i}\in\mathbb F_3[t],
+\]
+AQM-34 and convention \texttt{(aa)} give one reduced residue site
+\[
+  x_i=(\pi_i)/(p)
+\]
+for each distinct irreducible factor \(\pi_i\).  The reduced residue carrier
+at that site is
+\[
+  \mathcal H_i^{\rm red}=\ell^2(K_i),
+  \qquad K_i=\mathbb F_3[t]/(\pi_i),
+\]
+with phase labels \(K_i^2\).  The exponent \(e_i\) does not create \(e_i\)
+residue sites.  It is scheme-theoretic thickening data that is invisible to
+the reduced closed-point Weyl labels because coordinate-ring field profiles
+factor through the reduced quotient, as recorded in AQM-34 and AQM-35.
+
+The nilpotent-sensitive carrier keeps the local Artin factor
+\[
+  A_i=\mathbb F_3[t]/(\pi_i^{e_i})
+\]
+at the same closed point \(x_i\).  AQM-36 and convention \texttt{(ab)}
+therefore use
+\[
+  \mathcal H_i^{\rm thick}=\ell^2(A_i),
+  \qquad E_i^{\rm thick}=A_i\times A_i.
+\]
+Globally this gives
+\[
+  \mathcal H_p^{\rm thick}=\bigotimes_i\ell^2(A_i),
+  \qquad E_p^{\rm thick}=\bigoplus_i A_i^2,
+\]
+equivalently the Weyl system on \(\ell^2(\mathbb F_3[t]/(p))\) through the
+Chinese-remainder display used in AQM-36.  This is not a replacement for the
+reduced layer.  The reduced layer is the zeroth-order residue-site
+association of AQM-81; the thickened layer adds local jet/internal degrees at
+the same selected points.
+
+\subsection{Extra Data Beyond Residue Fields}
+
+The extra datum is not merely the list of residue fields.  For the AQM-36
+local ring
+\[
+  A=\mathbb F_3[t]/(\pi^e),\qquad K=A/(\pi),
+\]
+one first expands
+\[
+  a=a_0+a_1\pi+\cdots+a_{e-1}\pi^{e-1}
+\]
+with coefficients represented in \(K\).  The thickened Weyl layer then uses
+the top-coefficient functional
+\[
+  \lambda(a)=\operatorname{Tr}_{K/\mathbb F_3}(a_{e-1}),
+  \qquad
+  \chi(a)=\exp(2\pi i\lambda(a)/3).
+\]
+AQM-36 proves locally that this \(\chi\) is generating: for \(b\ne0\), the
+character \(a\mapsto\chi(ba)\) is nontrivial.  That proof is the step that
+turns the additive group of \(A\) into its character group for the Weyl
+construction.  Without such a certified generating character, the
+translation/phase recipe over \(A\times A\) has not met the finite
+Frobenius-ring self-duality input reviewed in AQM-31.
+
+Once the character is fixed, AQM-36 defines
+\[
+  T(q)|s\rangle=|s+q\rangle,\qquad
+  R(p)|s\rangle=\chi(ps)|s\rangle,\qquad
+  W_A(q,p)=T(q)R(p)
+\]
+on \(\ell^2(A)\), and proves
+\[
+  W_A(q,p)W_A(q',p')=\chi(pq')W_A(q+q',p+p')
+\]
+with commutator phase \(\chi(pq'-p'q)\).  AQM-36 also proves that these Weyl
+operators span
+\[
+  \operatorname{End}_{\mathbb C}(\ell^2(A)).
+\]
+Step 18 may therefore treat this local chain-ring layer as available, but it
+may not import a complete Weyl, Clifford, or projective-representation
+classification for arbitrary finite commutative rings.
+
+\subsection{Dual Numbers as the Minimal Test}
+
+For
+\[
+  A=\mathbb F_3[\epsilon]/(\epsilon^2)
+\]
+there is one closed point with residue field \(\mathbb F_3\).  The reduced
+residue-site workflow of AQM-81 gives
+\[
+  \mathcal H^{\rm red}=\ell^2(\mathbb F_3),
+\]
+one qutrit.  The nilpotent class \(\epsilon\) reduces to zero at that site;
+it is not an additional point.
+
+The AQM-36 thickened workflow writes \(a=a_0+a_1\epsilon\) and uses
+\[
+  \lambda(a)=a_1,\qquad
+  \chi(a)=\exp(2\pi i a_1/3).
+\]
+Its carrier is
+\[
+  \mathcal H^{\rm thick}
+    =\ell^2(\mathbb F_3[\epsilon]/(\epsilon^2)),
+  \qquad \dim_{\mathbb C}\mathcal H^{\rm thick}=9.
+\]
+Thus the comparison is not ``one qutrit plus a second point''.  It is one
+reduced qutrit versus a single thickened Artin site with an additional
+first-order internal coordinate, certified by the top-coefficient generating
+character proof of AQM-36.
+
+\subsection{The \texorpdfstring{\(t^n=1\)}{t to the n equals 1} Review}
+
+AQM-35 and AQM-37 use
+\[
+  R_n=\mathbb F_3[t]/(t^n-1),\qquad n=3^s m,\quad 3\nmid m.
+\]
+AQM-35 proves
+\[
+  t^n-1=(t^m-1)^{3^s}
+\]
+and uses the irreducible factors of the squarefree part \(t^m-1\) as reduced
+residue Weyl sites.  The reduced Hilbert dimension is
+\[
+  \dim\mathcal H_n^{\rm red}=3^m.
+\]
+AQM-37 applies AQM-36 to the thickened factors
+\[
+  A_\pi=\mathbb F_3[t]/(\pi^{3^s}),\qquad \pi\mid t^m-1,
+\]
+and proves
+\[
+  \mathcal H_n^{\rm thick}
+    =\bigotimes_{\pi\mid t^m-1}\ell^2(A_\pi),
+  \qquad
+  \dim\mathcal H_n^{\rm thick}=3^n.
+\]
+
+The concrete examples in AQM-37 make the distinction visible.  For \(n=3\),
+\[
+  \mathbb F_3[t]/(t^3-1)\cong\mathbb F_3[u]/(u^3)
+\]
+has one reduced qutrit site but a \(27\)-dimensional third-order thickened
+carrier.  For \(n=6\), the reduced layer has two qutrit sites, while the
+thickened layer uses two third-order Artin carriers and has dimension \(3^6\).
+In both cases the nilpotent variables are jet degrees at the already listed
+closed points, not new points.
+
+\subsection{Boundary Table}
+
+\begin{center}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.20\linewidth}p{0.24\linewidth}p{0.26\linewidth}p{0.22\linewidth}}
+\toprule
+Object & Reduced residue-site layer & Thickened layer & Status boundary \\
+\midrule
+\(\mathbb F_3\) &
+\texttt{available}: one residue \(\mathbb F_3\) site by AQM-22 and
+AQM-81. &
+\texttt{not\_applicable}: no nilpotent thickening in this row. &
+No Artin data beyond the field. \\
+\addlinespace
+\(\mathbb F_3[\epsilon]/(\epsilon^2)\) &
+\texttt{available locally}: one \(\mathbb F_3\) residue site; database helper
+coverage remains blocked as in AQM-80/AQM-81. &
+\texttt{available}: AQM-36 top-coefficient character; carrier
+\(\ell^2(A)\), dimension \(9\). &
+Nilpotent \(\epsilon\) is a jet/internal degree at the unique point. \\
+\addlinespace
+\(\mathbb F_3[t]/(t^3)\) or
+\(\mathbb F_3[t]/((t-1)^3)\) &
+\texttt{available locally}: one \(\mathbb F_3\) residue site by AQM-34,
+AQM-35, and AQM-81. &
+\texttt{available}: AQM-36/AQM-37 chain-ring carrier of dimension \(27\). &
+Third-order thickening, not three closed points. \\
+\addlinespace
+\(\mathbb F_3[t]/(t^n-1)\) &
+\texttt{available}: AQM-35 reduced dimension \(3^m\), with
+\(n=3^s m\), \(3\nmid m\). &
+\texttt{available}: AQM-37 thickened dimension \(3^n\). &
+Only this locally derived family is covered. \\
+\addlinespace
+\(\mathbb F_3[u,v]/(u^2,v^2)\) &
+\texttt{available only} for the AQM-77 cotangent comparison; no standardized
+residue matrix row is claimed. &
+\texttt{blocked}: no two-direction Artin-Weyl generating-character policy is
+registered. &
+Blocked by \texttt{aqm-qsa-artin01}. \\
+\addlinespace
+\(\mathbb Z/4\mathbb Z\) and other MVP rings &
+\texttt{blocked/database} except for local AQM-77 cotangent anchors. &
+\texttt{blocked}: no certified generating character or thickened policy is
+imported. &
+Convention \texttt{(an)} keeps helper scope MVP source-backed only. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Conclusion for the QSA Catalogue}
+
+The nilpotent-sensitive association is a separate finite Frobenius/Artin-ring
+workflow, not a correction to the reduced residue-site workflow.  Its local
+input is a thickened ring such as \(\mathbb F_3[t]/(\pi^e)\), a certified
+generating character, and the resulting translation/phase Weyl representation
+on \(\ell^2(A)\).  The reduced workflow uses residue fields and finite closed
+points; nilpotents add local jet or internal degrees at those same points or
+remain \texttt{blocked}.
+
+Therefore Step 18 supplies only the locally established comparison:
+dual-number and \(t^n=1\) thickenings differ from their reduced residue-site
+models by certified Artin-Weyl jet data.  It does not settle arbitrary finite
+rings, two-direction Artin examples, certified generating characters beyond
+the AQM-36 family, Clifford/Weil classification, dynamics, or database-backed
+finite-ring coverage.

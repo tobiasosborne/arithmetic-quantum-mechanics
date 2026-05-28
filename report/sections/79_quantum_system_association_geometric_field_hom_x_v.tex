@@ -1,0 +1,280 @@
+% SHARD-ID: AQM-79-QSA-GEOMETRIC-FIELD-HOM-X-V
+% SHARD-TITLE: Geometric Field Association Hom(X,V)
+% SHARD-SUMMARY: Reviews the geometric field-space branch of the QSA catalogue without asserting a general Hom(X,V) quantisation.
+% SHARD-SUMMARY: Separates all-map, finite-support, sheaf-section, regular-function, and rational-truncation choices using only local anchors.
+% SHARD-SUMMARY: Records how the structure of X constrains field spaces before the finite Weyl-Heisenberg boundary of AQM-78.
+% SHARD-KEYWORDS: quantum-system association, Hom(X,V), Map(X,V), sheaf sections, regular functions, finite support, observable nets
+
+\section{Geometric Field Association \texorpdfstring{\(\operatorname{Hom}(X,V)\)}{Hom(X,V)}}
+\label{sec:qsa-geometric-field-hom-x-v}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: Review.}  This is QSA Step 15 from
+\path{docs/quantum_system_associations/PLAN.md}.  It adds no source,
+convention entry, run artifact, or general functorial quantisation theorem.
+Its purpose is to place the existing geometric field-space shards into the
+QSA catalogue.
+
+The title uses \(\operatorname{Hom}(X,V)\) as the prompt label for this
+branch.  In the local conventions, this is deliberately not the default
+object.  By \texttt{CONVENTIONS.md} convention \texttt{(q)}, a finite set
+uses \(\operatorname{Map}(X,V)\); the word \(\operatorname{Hom}\) is reserved
+for a specified structure-preserving class of maps.  The QSA vocabulary and
+non-functoriality rule are AQM-65 and convention \texttt{(ap)}.  The
+point-choice boundary is AQM-75, and the finite phase-space representation
+boundary is AQM-78.
+
+The field-space anchors reviewed here are AQM-14--AQM-18, AQM-24--AQM-30,
+and AQM-49--AQM-52.  The relevant conventions are \texttt{(q)} for finite
+map spaces and radicals, \texttt{(r)} for projective sheaf fields,
+\texttt{(v)}--\texttt{(w)} for open-local observable nets and their
+presheaf/cosheaf distinction, \texttt{(y)} for closed-point finite-residue
+supports, and \texttt{(ak)}--\texttt{(al)} for regular-function profiles,
+reduced smearings, and affine action.
+
+\subsection{Choice Table}
+
+Every row below is constrained by a convention or prior shard; no row is a universal \(\operatorname{Hom}(X,V)\) rule.
+\begin{center}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.18\linewidth}p{0.22\linewidth}p{0.19\linewidth}p{0.19\linewidth}p{0.12\linewidth}}
+\toprule
+Field-space choice & How \(X\) constrains it & Operator/Weyl status &
+Radical or support condition & Anchor \\
+\midrule
+\texttt{Review:} all maps on a finite set &
+Only the finite point labels of \(X\) are used; extra structure is ignored
+unless a subspace is chosen. &
+\texttt{Checked} finite Weyl labels after the pointwise form is reduced. &
+Use \(E\leq\operatorname{Map}(X,V)\) and quotient by
+\(\operatorname{rad}(E)\). &
+AQM-14, AQM-71, \texttt{(q)} \\
+\addlinespace
+\texttt{Review:} structured finite subspaces &
+Linear, affine, or polynomial structure on \(X\) may choose a smaller
+evaluated subspace \(E\leq\operatorname{Map}(X,V)\). &
+\texttt{Checked} only for the local \(\mathbb F_3\) rows already run. &
+The same radical test applies; evaluation rank is not the same as symplectic
+rank. &
+AQM-14, arithmetic-field run bundle \\
+\addlinespace
+\texttt{Review:} finite closed supports &
+For affine finite-type \(\mathbb F_q\)-schemes, only closed points are finite
+residue sites; non-closed points still control topology. &
+\texttt{Checked/Review} quasi-local Weyl net over finite supports. &
+Labels have finite closed support:
+\(\bigoplus_{x\in U\cap |X|_{\rm cl}}\kappa(x)^2\). &
+AQM-28--AQM-30, \texttt{(y)} \\
+\addlinespace
+\texttt{Review:} rational truncations &
+A selected finite set \(X(k)\) or finite rational support is used instead of
+all closed points. &
+\texttt{Checked/Review} finite subtheory, not the full scheme theory. &
+Finite by choice of support; non-rational closed points are omitted. &
+AQM-16, AQM-30, AQM-75 \\
+\addlinespace
+\texttt{Review:} projective sheaf sections &
+Projective geometry makes regular maps to affine targets too small, so a
+sheaf \(\mathcal L\) is chosen. &
+\texttt{Checked} for \(\mathbf P^1_{\mathbb F_3}\) and
+\(\mathcal O(d)\), \(0\leq d\leq4\). &
+\(E=H^0(X,\mathcal L)\otimes V\), evaluated on chosen finite points, then
+quotiented by the radical. &
+AQM-15--AQM-18, \texttt{(r)} \\
+\addlinespace
+\texttt{Review:} regular-function profiles &
+For \(X=\Spec\mathbb F_q[x]\), geometry constrains functions to
+\(\Gamma(D(h),\mathcal O_X)=\mathbb F_q[x]_h\). &
+\texttt{Gap} as a full quasi-local operator except for zero profile;
+\texttt{Checked} for finite reduced smearings. &
+Nonzero profiles have cofinite support; a polynomial \(h\) gives a finite
+support \(Z_{\rm cl}(h)\) for \(W_h^{\rm red}\). &
+AQM-49--AQM-52, \texttt{(ak)}--\texttt{(al)} \\
+\addlinespace
+\texttt{Review:} observable nets &
+Zariski opens and closed supports control which finite labels are allowed in
+each local algebra. &
+\texttt{Checked/Review} open-local isotone net; not an ordinary cosheaf of
+unital \(*\)-algebras. &
+Finite-support labels glue additively; observable algebras glue by generated
+commuting tensor-local subalgebras. &
+AQM-24--AQM-27, \texttt{(v)}--\texttt{(w)} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Finite Maps and Closed-Point Fields}
+
+\textbf{Review.}  The finite-set model of AQM-14 starts with a finite point set
+\(X\), a finite symplectic target \((V,\omega_V)\), and a chosen
+\(\mathbb F_q\)-linear subspace
+\[
+  E\leq \operatorname{Map}(X,V).
+\]
+This is not an unsourced \(\operatorname{Hom}(X,V)\).  AQM-14 D1--D4 and
+convention \texttt{(q)} fix the pointwise form
+\[
+  \Omega_E(\phi,\psi)=
+  \sum_{x\in X}w_x\,\omega_V(\phi(x),\psi(x)),
+\]
+with all weights equal to \(1\) in the checked runs.  AQM-14 L4--L5 and
+AQM-71 record the required reduction
+\[
+  E_{\rm red}=E/\operatorname{rad}(E).
+\]
+Thus the structure of \(X\) constrains the field space only when the shard
+has already named a structure-sensitive subspace, such as the linear, affine,
+or bounded-degree polynomial examples evaluated in AQM-14.  The finite Weyl
+step applies to \(E_{\rm red}\), not to an arbitrary unreduced display space.
+
+\textbf{Review.}  The closed-point affine branch changes the point choice.
+By AQM-28 and convention \texttt{(y)}, if
+\[
+  X=\Spec R
+\]
+is affine of finite type over \(\mathbb F_q\), the finite Weyl sites are the
+closed points \(x\in |X|_{\rm cl}\).  Each such point has finite residue field
+\(\kappa(x)\), local label space \(\kappa(x)^2\), carrier
+\(\ell^2(\kappa(x))\), and local matrix algebra.  On an open \(U\),
+\[
+  E(U)=\bigoplus_{x\in U\cap |X|_{\rm cl}}\kappa(x)^2
+\]
+means finite closed support.  AQM-29 applies this to \(\Spec\mathbb F_q[t]\),
+where each monic irreducible of degree \(d\) gives one \(q^d\)-level qudit.
+AQM-30 applies it to \(\Spec\mathbb F_q[x,y]\), where rational points give
+only a finite \(q^2\)-site truncation of the full closed-point theory.
+
+\textbf{Gap.}  Generic and curve-generic points are not finite Weyl sites in
+this branch.  AQM-29 and AQM-30 keep them as topological and geometric points,
+but no finite-residue field operator is attached to them.  AQM-75 records
+this as a point-selection boundary, and AQM-78 does not remove it: AQM-78
+starts only after a finite phase-label object has already been fixed.
+
+\subsection{Sheaf Sections and Regular Functions}
+
+\textbf{Review.}  AQM-15 and convention \texttt{(r)} record why a projective
+geometric field space is not obtained by silently reading
+\(\operatorname{Hom}(X,V)\) as regular maps to an affine vector space.  For a
+proper geometrically integral projective variety, the local Stacks locator in
+AQM-15 gives only constant global regular functions.  The projective
+replacement used in the report is instead
+\[
+  E(X,\mathcal L,V)=H^0(X,\mathcal L)\otimes_{\mathbb F_q}V,
+\]
+with the sheaf \(\mathcal L\) chosen as part of the datum.
+
+AQM-16 checks this for
+\[
+  X=\mathbf P^1_{\mathbb F_3},\qquad
+  \mathcal L=\mathcal O(d),\qquad V=\mathbb F_3^2,
+\]
+using the rational-point order and evaluation convention in
+\texttt{(r)}.  The \(d=1\) row has independent evaluation rows but total
+radical for the all-weights-one scalar pairing, while \(d=4\) has a
+one-dimensional scalar evaluation kernel and a two-dimensional field radical.
+These are checked examples of the same rule: sections first, chosen
+evaluations second, radical quotient third, Weyl labels fourth.
+
+\textbf{Review.}  AQM-17 and AQM-18 refine the finite point value: the stalk
+is the local field germ, while the fiber or residue value is what the finite
+Weyl pairing samples.  For \(\mathcal O(d)\otimes\mathbb F_3^2\), the stalk
+reduces to \(V=\mathbb F_3^2\) only after a chosen local frame is reduced
+modulo the maximal ideal.
+
+\textbf{Review.}  The affine-line regular-function branch in AQM-49--AQM-52
+is another structure-sensitive replacement for a vague Hom-space.  On
+\(U=D(h)\subset\Spec\mathbb F_q[x]\), a pair
+\((F,G)\in\mathbb F_q[x]_h^2\) gives a residue profile
+\[
+  \operatorname{ev}_U(F,G)_\pi=(F\bmod\pi,\ G\bmod\pi)\in\kappa(x_\pi)^2.
+\]
+By AQM-49 and convention \texttt{(ak)}, a nonzero profile on a nonempty
+standard open has cofinite closed support, so it is generally a formal
+infinite-volume profile rather than a quasi-local Weyl operator.
+
+\textbf{Checked.}  A nonzero polynomial \(h\) has a different role: it
+selects the finite closed support
+\[
+  Z_{\rm cl}(h)=\{x_\pi:\pi\mid h\}.
+\]
+Then AQM-49 defines the reduced smeared label and operator
+\[
+  W_h^{\rm red}(F,G)
+  =
+  W_{Z_{\rm cl}(h)}
+  \bigl((F\bmod\pi,\ G\bmod\pi)_{\pi\mid h}\bigr).
+\]
+AQM-50 checks this line by line over \(\mathbb F_3\), including rational
+two-qutrit supports, a quadratic \(9\)-level site, and the repeated-factor
+case where multiplicities are invisible to the reduced support net.
+AQM-51--AQM-52 and convention \texttt{(al)} check that affine symmetries move
+regular functions, finite supports, and reduced smearings compatibly, while
+preserving the profile/operator distinction.
+
+\subsection{Observable Nets and the AQM-78 Boundary}
+
+\textbf{Review.}  The observable-net layer is not a new restriction of
+\(\operatorname{Hom}(X,V)\); it records where finite labels are supported.
+AQM-24 and convention \texttt{(v)} use the open-local assignment
+\[
+  U\longmapsto\mathcal A(U),
+\]
+with \(U\subset V\) giving tensor-by-identity inclusions.  The
+closed-complement assignment is valid only as a named closed-support layer,
+because its arrows are contravariant in opens.
+
+AQM-25 builds the algebraic quasi-local algebra as the filtered colimit over
+quasi-compact opens.  AQM-26 and convention \texttt{(w)} separate the
+cosheaf-like label layer
+\[
+  E(U)=\bigoplus_{x\in U}E_x
+\]
+from the observable layer, an isotone local net of unital \(*\)-algebras.
+AQM-27 records the state-side reversal as a presheaf of states.  These net
+statements support finite-support observables; they do not create
+infinite-volume Weyl operators for regular-function profiles.
+
+\textbf{Review.}  AQM-78 begins after one of the rows above has produced a
+finite phase label with commutator data.  It supplies the Weyl-Heisenberg
+projective representation and observable algebra for finite phase spaces.
+Thus Step 15 does not claim that every geometric
+\(\operatorname{Hom}(X,V)\) has been quantized.  It says only that the report
+already contains several locally constrained field-space choices, and that
+AQM-78 is the common finite Weyl boundary once the label object is finite and
+the radical/support issues have been resolved.
+
+\subsection{Next-Step Gaps}
+
+\begin{center}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.16\linewidth}p{0.25\linewidth}p{0.37\linewidth}p{0.12\linewidth}}
+\toprule
+Next step & What this shard supplies & Remaining condition & Status \\
+\midrule
+QSA Step 16: finite-ring example matrix &
+Rows can cite whether a field-space entry is all-map, finite-support
+closed-point, regular-function profile, rational truncation, or sheaf-section
+style. &
+Each finite-ring row still needs its own point choice, residue/cotangent or
+function-space convention, and local evidence; no populated finite-ring
+database claim is imported here. &
+\texttt{Gap} \\
+\addlinespace
+QSA Step 17: residue-field site association &
+AQM-23 and AQM-28--AQM-30 already show variable finite residue fields and
+finite-support direct sums. &
+A finite-ring-wide residue-site table must not infer maximal ideals, residue
+fields, or tensor factors without certified local decomposition evidence. &
+\texttt{Question} \\
+\addlinespace
+QSA Step 20: infinite boundary cases &
+AQM-29, AQM-30, AQM-45, and AQM-49 separate finite supports, quasi-local
+algebras, regular-function profiles, and generic-point caveats. &
+Infinite-volume field operators, generic-point sectors, local-field or
+adelic completions, and \(C^*\)- or Hilbert-space completions still require
+separate conventions and sources. &
+\texttt{Gap} \\
+\bottomrule
+\end{tabular}
+\end{center}

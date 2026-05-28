@@ -1,0 +1,207 @@
+% SHARD-ID: AQM-84-QSA-INFINITE-RING-BOUNDARIES
+% SHARD-TITLE: Infinite Ring Boundary Cases
+% SHARD-SUMMARY: Reviews \(\Spec\mathbb F_q[t]\), \(\Spec\mathbb F_q[x,y]\), and \(\Spec\mathbb Z\) as infinite QSA boundary examples.
+% SHARD-SUMMARY: Separates finite supports, algebraic quasi-local algebras, reference-vector tensor representations, and formal infinite-volume profiles.
+% SHARD-SUMMARY: Records missing representation and completion conventions before the Step 21 agreement and inequivalence synthesis.
+% SHARD-KEYWORDS: quantum-system association, infinite rings, quasi-local algebra, incomplete tensor product, generic point, completion gap
+
+\section{Infinite Ring Boundary Cases}
+\label{sec:qsa-infinite-ring-boundaries}
+
+\subsection{Status and Local Anchors}
+
+\textbf{Status: Review/New boundary shard.}  This is QSA Step 20 from
+\path{docs/quantum_system_associations/PLAN.md}.  It adds no source,
+convention entry, script, run bundle, generated data, or analytic
+completion.  Its purpose is to mark where the finite association catalogue
+touches infinite spectra.
+
+The controlling conventions are \texttt{(v)}--\texttt{(w)} for open-local
+observable nets, \texttt{(y)} for closed-point finite-residue sites on
+finite-type affine \(\mathbb F_q\)-schemes, \texttt{(z)} for rational-function
+Weyl sectors over \(K=\mathbb F_q(t)\), \texttt{(ai)} for the
+\(\Spec\mathbb Z\) closed-prime layer, and \texttt{(ak)}--\texttt{(al)} for
+regular-function profiles and finite smearings.  The report anchors are
+AQM-25, AQM-29, AQM-30, AQM-45, AQM-48, AQM-75, and AQM-79.
+
+\subsection{Boundary Vocabulary}
+
+Every infinite construction below is assigned one of the following statuses.
+
+\begin{description}
+\item[Finite-support.] A finite subset \(S\) of the selected closed points is
+  quantized by an ordinary finite tensor product of local matrix algebras.
+\item[Algebraic quasi-local.] The local algebra is the filtered colimit over
+  finite closed supports inside an open set.  No Hilbert-space completion or
+  \(C^*\)-completion is part of this status.
+\item[Incomplete tensor representation.] A Hilbert representation is chosen by
+  fixing a reference vector at every closed point, so basis vectors have
+  finite excitation support relative to that reference.
+\item[Formal infinite-volume.] A regular-function profile or similar global
+  label has infinite closed support.  Its finite restrictions exist, but the
+  full profile is not an element of the algebraic quasi-local Weyl algebra.
+\item[Generic-sector proposal.] A generic or curve-generic residue field is
+  given a separate algebraic Weyl sector only after a character and
+  representation convention are stated.  It is not a finite closed-point site.
+\item[Completion proposal.] A local-field, adelic, profinite, analytic, or
+  \(C^*\)-completed object is named as a possible later layer, not as a
+  present report construction.
+\end{description}
+
+This vocabulary is only a status partition for Step 21.  It does not assert
+agreement or inequivalence between workflows.
+
+\subsection{\texorpdfstring{\(\Spec\mathbb F_q[t]\)}{Spec Fq[t]}}
+
+AQM-29 is the affine-line boundary example.  The scheme has the generic point
+\(\eta=(0)\), with residue field \(\mathbb F_q(t)\), and closed points
+\[
+  x_\pi=(\pi)
+\]
+indexed by monic irreducible polynomials.  A closed point of degree \(d\)
+has residue field \(\mathbb F_q[t]/(\pi)\) and contributes one
+\(q^d\)-level finite-field Weyl site.
+
+The finite-support construction is the finite tensor product over a selected
+finite set \(S\) of closed points:
+\[
+  \mathcal A(S)=
+  \bigotimes_{x_\pi\in S}
+  \operatorname{End}_{\mathbb C}\ell^2(\mathbb F_q[t]/(\pi)).
+\]
+For an open \(U\), the algebraic quasi-local construction is
+\[
+  \mathcal A(U)=
+  \varinjlim_{S\Subset U\cap |X|_{\rm cl}}\mathcal A(S).
+\]
+This is the status of the closed-point field net.  It is not a single finite
+Hilbert space.
+
+AQM-48 records an incomplete tensor representation in the case
+\(q=3\): after choosing \(|0\rangle_\pi\) at every closed point, the
+configuration basis is indexed by
+\[
+  \Gamma_{\rm fin}=\bigoplus_\pi \mathbb F_3[x]/(\pi).
+\]
+This Hilbert-space representation is extra data.  It is not forced by
+\(\Spec\mathbb F_3[x]\) alone.
+
+AQM-29 and convention \texttt{(ak)} also record the formal infinite-volume
+boundary.  A nonzero polynomial pair gives a closed-point residue profile
+with infinite support.  Its finite restrictions define finite-volume Weyl
+operators, but the full regular-function profile is not in the algebraic
+quasi-local algebra until a separate infinite-product or completion convention
+is fixed.
+
+The generic point is not a finite Weyl site.  Convention \texttt{(z)} gives a
+separate rational-function Weyl layer for \(K=\mathbb F_q(t)\) only after an
+additive character and representation convention are chosen.  The LCA/local
+completion alternatives in \texttt{(z)} remain completion proposals here.
+
+\subsection{\texorpdfstring{\(\Spec\mathbb F_q[x,y]\)}{Spec Fq[x,y]}}
+
+AQM-30 is the affine-plane boundary example.  Its point types are the generic
+point, curve-generic points \((f)\), and closed maximal ideals.  Only the
+closed maximal ideals are finite-residue Weyl sites under convention
+\texttt{(y)}.  If a closed point \(\mathfrak m\) has residue degree
+\(d(\mathfrak m)\), then the local carrier is
+\[
+  \ell^2(\kappa(\mathfrak m)),
+  \qquad |\kappa(\mathfrak m)|=q^{d(\mathfrak m)}.
+\]
+
+Finite-support and algebraic quasi-local statuses are exactly as in the
+affine-line case, with finite subsets of
+\[
+  U\cap\operatorname{Max}\mathbb F_q[x,y].
+\]
+The rational-point support
+\[
+  \{(x-a,y-b):a,b\in\mathbb F_q\}
+\]
+is a finite-support truncation with \(q^2\) \(q\)-level sites.  It is not the
+full \(\Spec\mathbb F_q[x,y]\) theory, because higher-degree closed points are
+omitted.
+
+Coordinate profiles such as \((x,0)\) and \((0,y)\) have formal
+infinite-volume status in AQM-30.  Their finite restrictions are legitimate
+finite-support labels, but the full profiles are not quasi-local Weyl
+operators.
+
+The generic point and curve-generic points are generic-sector or completion
+questions, not finite Weyl sites.  Their residue fields are rational-function
+fields or function fields of curves.  No local-field completion,
+Pontryagin-dual phase space, adelic replacement, \(C^*\)-completion, or
+generic-point Hilbert-space convention is fixed for them in this shard.
+
+\subsection{\texorpdfstring{\(\Spec\mathbb Z\)}{Spec Z}}
+
+AQM-45 and convention \texttt{(ai)} give the integer boundary example:
+\[
+  X=\Spec\mathbb Z,\qquad \eta=(0),\qquad x_\ell=(\ell).
+\]
+The closed prime \(x_\ell\) has residue field \(\mathbb F_\ell\), so the
+finite-support closed-prime layer uses
+\[
+  \mathcal A(S)=
+  \bigotimes_{\ell\in S}M_\ell(\mathbb C)
+\]
+for a finite set \(S\) of rational primes.
+
+For an open \(U\), the algebraic quasi-local closed-prime algebra is
+\[
+  \mathcal A_{\rm cl}(U)=
+  \varinjlim_{S\Subset U\cap\{x_\ell\}}\mathcal A(S).
+\]
+This is the algebraic infinite tensor product over finite prime supports when
+\(U=X\).  It is not a canonical Hilbert-space representation.
+
+AQM-45 also records an incomplete tensor representation after choosing
+\(|0\rangle_\ell\in\ell^2(\mathbb F_\ell)\) at every prime.  The basis is
+indexed by finite-support residue configurations
+\[
+  \bigoplus_\ell \mathbb F_\ell.
+\]
+This representation is useful for local finite-excitation calculations, but
+it is not a \(C^*\)-completion and it does not implement every profinite-type
+automorphism by a unitary in that sector.
+
+The generic point has residue field \(\mathbb Q\).  AQM-45 records an optional
+algebraic \(\mathbb Q\)-Weyl sector with carrier \(\ell^2(\mathbb Q)\), but it
+is present in every nonempty open and is a global generic-fibre layer, not a
+prime-local qudit.  Adelic, local-completion, and analytic Stone--von Neumann
+versions remain completion proposals until separate conventions and sources
+are added.
+
+\subsection{Representation and Completion Gaps}
+
+The missing choices for infinite boundary cases are now explicit.
+
+\begin{itemize}
+\item Infinite residue fields do not inherit the finite closed-point
+  \(\ell^2(\kappa(x))\) qudit convention.  They need a character, dual-label
+  space, and representation convention.
+\item Generic points and curve-generic points do not become finite Weyl sites
+  by default.  If included, they are generic-sector proposals.
+\item Analytic or local completions require locally compact groups,
+  Pontryagin duals, continuity hypotheses, and a sourced Stone--von
+  Neumann--Mackey statement before uniqueness language is allowed.
+\item \(C^*\)-completions of the algebraic quasi-local algebras require a
+  norm, completion, and state-continuity convention.
+\item Adelic and profinite sectors require their own topology, restricted
+  product, measure, and representation conventions.  The profinite residue
+  action in AQM-45 is not the same as an adelic Hilbert-space model.
+\item Formal infinite-volume regular-function profiles require a completion
+  or infinite-product field-operator convention before they become operators.
+\end{itemize}
+
+\subsection{Step 21 Handoff}
+
+Step 21 may use this shard as a status classifier.  Rows for
+\(\Spec\mathbb F_q[t]\), \(\Spec\mathbb F_q[x,y]\), and \(\Spec\mathbb Z\)
+should distinguish finite-support truncations, algebraic quasi-local
+closed-point algebras, incomplete tensor representations, formal
+infinite-volume profiles, generic-sector proposals, and completion proposals.
+This shard deliberately does not decide final agreement, inequivalence, or
+degeneracy claims.  Those require the explicit maps, invariants, or
+obstructions demanded by the Step 21 synthesis.
