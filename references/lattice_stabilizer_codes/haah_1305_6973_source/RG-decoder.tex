@@ -1,0 +1,782 @@
+%%%%%%%%%%%%%%%%%
+%% RG-decoder.tex
+%%%%%%%%%%%%%%%%%
+
+Any error correcting scheme would be comprised of a chosen code space,
+an encoding procedure, and a decoding procedure.
+We have studied a way to choose a code space via additive/stabilizer code formalism.
+Our focus has been the situation where the code space is realized as a ground space of a local Hamiltonian.
+The encoding is a process in which one prepares a state
+that is to be transferred or stored,
+and then one embeds the state into the designed code space.
+For a concatenated code the encoding would be hierarchical
+resembling the very way the code is constructed.
+Interestingly, a ground state of toric code model
+can also be prepared in a similarly hierarchical way~\cite{AguadoVidal2007Entanglement}.
+In case of the cubic code, for example, the encoding can be done
+by inverting the real-space renormalization group procedure
+presented in Section~\ref{sec:real-space-RG-CubicCode}.
+
+The decoder of a quantum code
+restores a damaged state into the code space.
+In contrast to its name, the decoder
+should not reveal any information that is encoded.
+Rather, it prepares the state appropriate for next information processing step
+which assumes that the state is in the code space;
+it detects errors and suggests an operator that would undo the errors.
+The performance of the decoder is measured
+by how closely the damaged state is restored to the original encoded state.
+In this chapter, we explain a decoding algorithm,
+called \emph{renormalization group decoder},
+that is applicable for a family of topological codes
+including the cubic code.
+A very similar idea appears in Harrington's thesis~\cite{Harrington2004thesis}.
+A decoder for 2D toric code with a similar name was proposed by 
+Duclos-Cianci and Poulin~\cite{Duclos-CianciPoulin2009Fast}.
+The two decoders are conceptually similar, and the running times are the same up to a multiplicative constant.
+Our decoder is however advantageous 
+for its simplicity and applicability.
+In particular, our decoder is the only decoder so far
+that has a positive error threshold under stochastic error
+when used with the cubic code.
+In fact, our decoder provides a universal positive error threshold 
+for all topological codes in a given number of spatial dimensions,
+as we prove in Section~\ref{sec:threshold}.
+
+
+Formally, if we restrict ourselves to local additive codes,
+the decoder is an association of a Pauli operator $P$ to any possible syndrome $S$
+such that the Pauli operator $P$ transforms $S$ to the empty syndrome.
+Recall that the syndrome measurement reveals locations of defects (flipped stabilizer generators)
+created by an unknown error. The renormalization group (RG) decoder attempts to annihilate the defects comprising
+the syndrome $S$ by dividing them into disjoint connected clusters $S=C_1\cup \ldots \cup C_m$ 
+and then trying to annihilate each cluster $C_a$  individually.
+More specifically, the decoder checks whether $C_a$ can be annihilated by a Pauli operator  $P_a$
+supported  on a sufficiently small spatial region  $b(C_a)$ enclosing $C_a$.
+If such a local annihilation operator $P_a$ exists, the decoder  updates the syndrome by erasing
+all the defects comprising $C_a$, records the operator $P_a$, and moves on to the next cluster.
+If $C_a$ cannot be annihilated, the decoder skips it.
+The annihilation operator $P_a$ is not unique.
+However, if the enclosing region $b(C_a)$ is small enough to ensure that no logical operator
+can be supported on $b(C_a)$, all annihilation operators $P_a$ must be equivalent modulo stabilizers
+and the choice of $P_a$ does not matter.
+
+After all clusters $C_a$ have been examined, the decoder is left with a new configuration of defects
+$S'$, which is typically smaller than the original one.
+If no defects are left, i.e., $S'=\emptyset$, the decoder stops and returns the product of all recorded Pauli operators $P_a$.
+If $S'\ne \emptyset$,  the decoder applies a scale transformation
+increasing the unit of length by some constant factor and repeats all the above steps starting from the syndrome $S'$.
+The scale transformation potentially merges several unerased clusters $C_a$ into a single connected cluster
+whereby giving the decoder one more attempt to annihilate them.
+
+The full decoding algorithm is the iteration of partitioning the defects into the connected clusters and calculating the annihilation operators. It declares failure and aborts if the recorded operator cannot annihilate all the defects before the rescaled unit length is comparable to the lattice size.
+
+A detailed  implementation of the RG decoder must  be tailored to a specific lattice geometry
+and  a stabilizer code under consideration.
+It must include a precise definition of  the connected clusters of defects $C_a$
+and the enclosing regions $b(C_a)$. It must also include an algorithm for choosing the annihilation
+operators $P_a$, a schedule for increasing the unit of length,
+and clearly stated conditions under which the decoder aborts.
+In the rest of this chapter we describe an efficient implementation of the RG decoder
+for arbitrary stabilizer codes satisfying topological order conditions defined in the previous chapter.
+The only part of this implementation specialized for the 3D cubic code 
+is the ``broom algorithm'' of Section~\ref{subs:broom}.
+As we have noted in Remark~\ref{rem:TransInv-strongTQO},
+the our topological order conditions are satisfied by every translationally invariant exact code.
+It turns out that the broom algorithm is also applicable for every translationally invariant code.
+
+
+\section{Assumptions and conventions}
+\label{sec:rg-decoder-assumptions}
+
+Let $\Lambda$ be the regular 3D cubic lattice of linear size $L$ with periodic boundary conditions
+along all coordinates $x,y,z$.
+We shall label sites of $\Lambda$ by triples of integers $(i,j,k)$ defined modulo $L$
+and measure the distance between sites using the $\ell_\infty$-metric. In other words,
+the distance $d(u,v)$ between a pair of sites $u$ and $v$ is the smallest
+integer $r$ such that $u$ and $v$ can be enclosed by a cubic box with dimensions
+$r\times r\times r$. For example, $d(u,v)=1$ whenever $u$ and $v$ belong to the same
+edge, plaquette, or elementary cube of the lattice.
+Each site of $\Lambda$ represents one or several physical qubits (two qubits for the 3D Cubic Code).
+Each elementary cube $c$ represents a spatial location of one or several  stabilizer generators
+For example, there are two generators for the 3D Cubic Code.
+A generator located at cube $c$ may act only on
+qubits located at vertices of $c$. We shall label each elementary cube by
+coordinates of its center, the triple of half-integers $(i,j,k)$ defined modulo $L$.
+The distance $d(c,c')$ between a pair of cubes $c$ and $c'$ is the
+distance between their centers.
+For example, $d(c,c')=1$ whenever $c$ and $c'$ share a vertex, an edge, or a plaquette.
+
+A {\bf defect} is a stabilizer generator whose eigenvalue has been flipped as a result of the error.
+We shall use a term {\bf cluster of defects}, or simply {\bf cluster}
+for any set of defects.  Define the {\em diameter} of a cluster $d(C)$ as
+the maximum distance $d(c,c')$ where $c,c'\in C$.
+Here and below  the distance between defects is defined as the distance between the cubes
+occupied by these defects.
+Given two non-empty clusters $C$ and $C'$,
+define a distance $d(C,C')$ as the minimum distance $d(c,c')$ where $c\in C$ and $c'\in C'$.
+Given an integer $r$, we shall say that a cluster $C$ is {\bf connected at scale $r$},
+or simply {\bf $r$-connected}, if $C$
+cannot be partitioned into two proper subsets $C=C'\cup C''$ such that $d(C',C'')>r$.
+A maximal $r$-connected subset of a cluster $C$  is called a {\bf $r$-connected component} of $C$.
+The {\bf minimal enclosing box} $b(C)$ of a cluster $C$ is the smallest
+rectangular box $B$ enclosing all defects of $C$ 
+such that all vertices of $B$ are dual sites of $\Lambda$.  
+Note that the minimal enclosing box $b(C)$ is unique as long as $d(C)<L/2$;
+if a cluster $C$ has diameter $L/2$, 
+one may have two boxes with the same dimensions
+enclosing $C$ that `wrap' around the lattice in two different ways.
+
+
+% The RG decoder can be applied to any stabilizer code satisfying topological order
+% conditions defined in~\cite{BravyiHaah2011Energy}. For the sake
+% of completeness, we state these conditions below.
+Let $\cal G$ be the abelian group
+generated by the stabilizer generators. Elements of $\cal G$ are called stabilizers.
+Let $S(P)$ be the {\bf syndrome} of a Pauli operator $P$, that is,
+the set of all stabilizer generators anticommuting with $P$.
+The syndrome can be viewed as a cluster of defects.
+\vspace{3mm}
+\begin{center}
+\parbox{.8\textwidth}{\em
+We assume that our topological code obeys TQO1 and TQO2 of 
+Definitions~\ref{defn:TQO1},\ref{defn:TQO2} throughout the chapter,
+but not the no-strings rule of Definition~\ref{defn:no-strings}.
+}
+\end{center}
+\vspace{3mm}
+The 3D cubic code satisfies both of TQO1 and TQO2 with
+$\ltqo = \half L$, since it is exact.
+In order to avoid unnecessary complications due to boundaries,
+we always assume that $\ltqo \le \half L$.
+Below we consider only topological stabilizer codes.
+Continued from the previous chapter,
+a cluster of defects $C$ is called {\bf neutral} 
+if it can be created from the vacuum by a Pauli operator $P$ 
+supported on a cube of linear size $\ltqo$. 
+Otherwise, the cluster is said to be {\bf charged}.
+For example, the 2D toric code~\cite{Kitaev2003Fault-tolerant} has two types of defects:
+magnetic charges (flipped plaquette operators) and electric charges (flipped star operators).
+In this case,
+a cluster of defects $C$ is neutral if and only if
+$C$ contains even number of magnetic charges and even number of electric charges.
+It follows from TQO2
+that any neutral cluster of defects $C$ can be annihilated 
+by a Pauli operator supported on the $1$-neighborhood
+of the minimum enclosing box $b(C)$.
+
+
+
+\section{Renormalization group decoder}
+\label{subs:rgdecoder}
+
+We are now ready to define our RG decoder precisely.
+Recall that $d(C)$ is the diameter of a cluster $C$, and $\ltqo \le \half L$ by convention.
+\begin{center}
+\fbox{
+\parbox{0.95\textwidth}{{\bf TestNeutral} \\
+{\bf Input} $S$ : a set of defects, {\bf Output} $P$ : a Pauli operator.\\
+1. Compute the minimal enclosing box $B$ of $S$.\\
+2. {\bf if} $d(B) > \ltqo$, {\bf then} {\bf return} $I$.\\
+3. Try to compute a Pauli $P$ supported on the 1-neighborhood of $B$ such that $S(P) = S$.\\
+4. {\bf if} a consistent $P$ is found {\bf then} {\bf return} $P$ {\bf else} {\bf return} $I$.
+}}
+\end{center}
+TQO2 implies that
+TestNeutral successfully computes the correcting Pauli operator for any neutral cluster.
+Step~1 is easy as we discuss in the end of Section~\ref{subs:clusters}.
+The specification of Step~3 depends on the code,
+but it always has an efficient implementation
+using the standard stabilizer formalism~\cite{Gottesman1998Theory}.
+In general, the condition $S(P)=S$ can be described by
+a system of $O(V)$ linear equations over $O(V)$ binary variables parameterizing $P$,
+where $V$ is the volume of $B$.
+The running time is then $O(V^3)$ by the Gauss elimination.
+In the special case of the 3D cubic code or more generally all translationally invariant codes,
+there is a much more efficient algorithm running in time $O(V)$
+which we describe in Section~\ref{subs:broom}.
+
+\begin{figure*}[p]
+\begin{minipage}{.48\textwidth}
+\centering
+\includegraphics[width=\textwidth,height=\textwidth]{2DT-snap-0}
+Level 0: Unit length 1
+\includegraphics[width=\textwidth,height=\textwidth]{2DT-snap-2}
+Level 2: Unit length 4
+\end{minipage}
+\begin{minipage}{.48\textwidth}
+\centering
+\includegraphics[width=\textwidth,height=\textwidth]{2DT-snap-1}
+Level 1: Unit length 2
+\includegraphics[width=\textwidth,height=\textwidth]{2DT-snap-3}
+Level 3: Unit length 8
+\end{minipage}
+\caption{%
+Configuration of defects at consecutive levels of renormalization group decoder.
+Bit-flip errors are generated stochastically for an illustrative purpose,
+over $64 \times 64$ lattice with a uniform error rate $8\%$ per qubit.
+The dots are flipped stabilizer generators (defects) of the 2D toric code.
+At each level $p$, RG decoder decomposes the set of defects into connected clusters ---
+connected components in a graph with vertices representing defects and edges connecting
+pairs of defects separated by distance $2^p$ or less (not shown). 
+Each neutral cluster containing even number of defects (blue)
+is annihilated by applying a local Pauli operator supported 
+in the smallest rectangular box enclosing the cluster.
+Charged clusters containing odd number of defects (red) cannot be annihilated locally. 
+All defects in the red clusters are  passed to the next RG level $p+1$.
+In this example the red clusters from level 3 are annihilated at level 4 (not shown)
+and RG decoder successfully annihilated all defects returning the
+corrupted state to the originally encoded state. 
+}
+\label{fig:snapshot-RGdecoder}
+\end{figure*}
+
+Let $p_{M}$ be the largest integer such that $2^{p_M} < \ltqo$.
+For any integer $0\le p\le p_M$, we define
+the {\bf level-$p$ error correction}:
+\begin{center}
+\fbox{
+\parbox{0.95\textwidth}{{\bf EC($p$)} \\
+{\bf Input} $S$ : a syndrome, {\bf Output} $P$ : a Pauli operator.\\
+1. Partition $S$ into $2^p$-connected components: $S=C_1\cup \ldots \cup C_m$.\\
+2. For each component, compute $P_a = $ TestNeutral$(C_a)$.\\
+3. {\bf return} the product $P_1 P_2 \cdots P_m$.
+}}
+\end{center}
+The overall running time of EC($p$)  is polynomial in the number of qubits $N$.
+Step~1 can be done, for example, by examining the distance between all pairs of defects,
+forming a graph whose edges connect pairs of defects separated by distance $\le 2^p$, and finding
+connected components of this graph.
+A more efficient algorithm with the running time $O(N)$
+is described in Section~\ref{subs:clusters}.
+Since $V=O(N)$ and $m=O(N)$,
+we see that the worst-case running time of EC($p$) is $O(N^2)$.
+For instance, one can consider nested boxes,
+near the faces of which many defects lie.
+However, clusters are created from the vacuum
+with some probability which we expect to be smaller than, say, $\half$.
+So the number of clusters that have overlapping minimal enclosing box
+appears with exponentially small probability.
+On average, the running time of EC($p$) will be $O(N)$.
+%
+The full RG decoding algorithm is as follows.
+\begin{center}
+\fbox{
+\parbox{0.95\textwidth}{{\bf RG Decoder} \\
+{\bf Input} $S$ : the syndrome, {\bf Output} $P_{ec}$ : a Pauli operator.\\
+1. Set $P_{ec}=I$.\\
+2. {\bf for} $p=0$ {\bf to}  $p_M$ {\bf do}\\
+\makebox[2em]{}  Let $Q=$EC($p$)($S$).\\
+\makebox[2em]{}  Update $P_{ec} \leftarrow P_{ec} \cdot Q$ and $S\leftarrow S\oplus S(Q)$.\\
+\makebox[1em]{} {\bf end for} \\
+3. {\bf if} $S=0$ {\bf then} return $P_{ec}$ {\bf else} declare failure.
+}}
+\end{center}
+Here the notation $S\oplus S(Q)$ stands for the symmetric difference of the sets
+$S$ and $S(Q)$ or addition modulo two, if the syndromes are represented by binary strings.
+The discussion above implies that the RG decoder has running time $O(N^2\log{N})$ in the worst case,
+and $O(N\log{N})$ in the case of sparse syndromes.
+An example of RG decoder in action is illustrated in Figure~\ref{fig:snapshot-RGdecoder}.
+
+Being a physically realizable operation, 
+any decoder should be written as a trace preserving completely positive map on the set of density matrices.
+By measuring a syndrome $S$, the decoder projects the state onto a subspace $\Pi_S$ of the syndrome $S$,
+and then applies a correcting operator $P_{ec}(S)$:
+\[
+\Phi_{ec}(\rho)=\sum_S P_{ec}(S)\Pi_S \, \rho \Pi_S P_{ec}(S)^\dag
+\]
+where the sum is over all possible syndromes.
+Thus, to conform with this equation 
+our decoder should return some operator that is consistent with the measured syndrome,
+rather than declaring a ``failure.'' 
+It is however no better than initializing the memory with an arbitrary state.
+
+\section{Cluster decomposition}
+\label{subs:clusters}
+\newcommand{\ls}{r} % length scale
+
+Given a length scale $\ls$, the cluster decomposition of defects
+is to partition the defects into maximally connected subsets
+(connected components) of the syndrome at scale $\ls$.
+Naively, the task to compute the decomposition of all the defects into clusters
+will take time $O(m^2)$ where $m$ is the total number of defects.
+The density of defects will typically be constant irrespective of the system size,
+and the computation time for decomposition will be $O(N^2)$,
+where $N$ is the volume of the system.
+However, by exploiting the geometry of simple cubic lattice,
+we can do it in time $O(N)$.
+This is the optimal scaling
+since we have to sweep through the whole system anyway
+to identify the position of defects.
+
+If $\ls = 1$, the problem is to label the connected components of binary array \cite{AsanoTanaka2010,KiranEtAl2011Labeling}.
+Given a defect $u_0$, we can compute the connected component
+containing $u_0$ in time $O(m)$ where $m$ is the number of defects in the component.
+One prepares an empty queue (first-in-first-out data structure),
+and puts $u_0$ into it.
+The subsequent computing is as follows:
+(i) Pop out the first element $u$ from the queue,
+and of the neighborhood put the \emph{unlabeled} defects into the queue and label them.
+(ii) Repeat until the queue becomes empty.
+Every defect in a connected component $j$ is stored in the queue only once.
+Hence, this process computes the component $j$ of a given defect
+in time proportional to the number $m_j$ of defects in $j$.
+One examines the whole system in some order
+and finds the connected component whenever there is an unlabeled defect.
+The total computation time is proportional to $N + O(1)\sum_j m_j = O(N)$,
+since the connected components are disjoint.
+
+For $\ls > 1$, the algorithm begins by dividing the whole lattice
+into boxes of linear size $\ls$ or smaller.
+The defects in a box certainly belong to a single connected component
+(recall that we use the $\ell_\infty$ metric).
+The defects in the boxes $B, B'$ belong to the same component
+if and only if there is a pair $u \in B$, $v \in B'$ of defects
+such that $d(u,v) \le \ls$.
+In other words, we evaluate the binary function
+\[
+ \delta(B, B') =
+\begin{cases}
+1 & \text{if there are $u \in B, v \in B'$ such that } d(u,v) \le \ls ,\\
+0 & \text{otherwise}
+\end{cases}
+\]
+for each neighbor $B'$ of $B$;
+if $B$ does not meet $B'$,
+we know that $\delta(B,B') = 0$.
+
+Given the table of $\delta$,
+we can finish computing the decomposition
+in time $O((L/r)^D)$ as in the $\ls = 1$ case.
+We show that the computation of $\delta(B,B')$ can be done
+in time $O(r^D)$ where $D$ is the dimension of the lattice.
+Then, the total time to compute the table of $\delta$ for all adjacent boxes
+will be $O(r^D (L/r)^D )=O(N)$.
+Let $B$ and $B'$ be adjacent.
+For clarity of presentation, we restrict to $D=2$.
+Suppose $B$ and $B'$ meet along an edge parallel to $x$-axis.
+Since any difference $|x-x'|$ of $x$-coordinates
+of the defects in $B\cup B'$ is at most $\ls$,
+we only need to compare $y$-coordinates.
+That is, the problem is reduced to one dimension.
+It suffices to pick two defects from $B$ and $B'$, respectively,
+that are the closest to the $x$-axis.
+If the $y$-coordinates differ at most by $\ls$,
+then $\delta(B,B') = 1$;
+otherwise, $\delta(B,B')=0$.
+
+Suppose $B$ and $B'$ meet at a vertex.
+Without loss of generality, we assume $B$ is in the third quadrant,
+and $B'$ is in the first quadrant.
+Define a binary function $\delta'$ on $B'$ as
+\[
+ \delta'(i,j)=
+\begin{cases}
+ 1 & \text{if there is a defect $(x,y) \in B'$ where $ x \le i$ and $ y \le j$}, \\
+ 0 & \text{otherwise}.
+\end{cases}
+\]
+The function table of $\delta'$ is computed in time $O(\ls^2)$.
+It is important to note that $\delta'(i,j) = 1$ implies $\delta'(i+1,j) = \delta'(i,j+1)=1$.
+One starts from the origin and sets $\delta'(\half,\half)=1$
+if there is a defect at $(\half,\half)$; otherwise $\delta'(\half,\half)=0$.
+Here, $(\half,\half)$ means the elementary square in the first quadrant
+that is the closest to the origin.
+Proceeding by a lexicographic order of the coordinates,
+one sets $\delta'(i,j) = 1$
+if $\delta'(i-1,j)=1$, or $\delta'(i,j-1)=1$, or there is a defect at $(i,j)$;
+otherwise $\delta'(i,j)=0$.
+It is readily checked that this procedure correctly computes $\delta'$.
+Equipped with this $\delta'$ table,
+we can immediately test for each defect in $B$
+whether there is a defect in $B'$ within distance $\ls$.
+Thus, we have computed $\delta(B,B')$ in time $O(r^2)+O(m)$
+where $m$ is the number of defects in $B$,
+which is at most $O(r^2)$.
+The computation of $\delta$ in higher dimensions is similar.
+
+The computation of the minimal enclosing box for each cluster is also efficient.
+Given the coordinates of the $m$ points in the cluster,
+we read out, say, $x$-coordinates $x_1,\ldots,x_m$.
+The minimal enclosing interval $B_x$ of $x_1,\ldots,x_m$ under periodic boundary conditions,
+is the complement of the longest interval between consecutive points $x_i$ and $x_{i+1}$
+which can be computed in time $O(m)$.
+$B_x$ is unambiguous if the diameter of the cluster is smaller than $L/2$.
+The minimal enclosing box is the product set $B_x \times B_y \times B_z$,
+whose vertices are computed in time $O(m)$.
+
+\section{Gr\"obner basis and broom algorithm}
+\label{subs:broom}
+
+Now we describe an efficient algorithm for the 3D cubic code
+that tests whether a cluster is neutral. If the test is positive,
+the algorithm also returns a
+Pauli operator $E$ that annihilates the cluster.
+
+A crucial property of the 3D cubic code is
+that it is translationally invariant;
+it is described by a few Laurent polynomials 
+over the variables that represent translations.
+See Chapter~\ref{chap:alg-theory}.
+The polynomials form a matrix $\sigma$ satisfying $\sigma^\dagger \lambda \sigma = 0$,
+where $\dagger$ is transposition followed by entry-wise antipode map,
+$x \mapsto x^{-1}$, etc., and $\lambda$ is an alternating full rank matrix.
+Since we are working with qubits, the alternating matrix is actually symmetric.
+More important than $\sigma$ is the excitation map $\epsilon = \sigma^\dagger \lambda$.
+A Pauli operator described by a column matrix $p$ produces a syndrome described by $\epsilon p$.
+Thus, the neutrality of a cluster $c$ is equivalent to the existence of $p$ of finitely many terms
+such that $c = \epsilon p$.
+That is, $c$ is neutral if and only if $c \in \im \epsilon$;
+the neutrality test is really a submodule membership problem.
+Gr\"obner basis provides an efficient algorithmic answer to the membership problem:
+Compute a Gr\"obner basis $B$ for the module $\im \epsilon$.
+It can be done by, for example, Buchberger algorithm applied to columns of $\epsilon$~\cite{PauerUnterkircher1999}.
+The Gr\"obner basis is computed only once for a given code.
+Then, the neutrality test is straightforward:
+\begin{itemize}
+\item[(1)] Express a cluster as a column matrix $e$ of Laurent polynomials.
+This step takes running time $O(V)$ where $V$ is the volume of the cluster.
+\item[(2)] Run a standard division algorithm with respect to $B$.
+It generates an explicit expression
+\[
+ e = \sum_i c_i b_i + r
+\]
+where $b_i \in B$, and $r$ is a unique remainder that cannot be further reduced by $B$.
+During the division the degree does not increase.
+Therefore, the running time of the division is $O(V)$.
+\item[(3)] If $r = 0$, then the cluster is neutral, and $c_i$ give the annihilating operator for the cluster.
+If $r \neq 0$, then the cluster is charged.
+\end{itemize}
+
+\begin{figure}
+\centering
+\begin{minipage}{.4\textwidth}
+\includegraphics[width=\textwidth]{elementary-syndromes}
+\end{minipage}
+\begin{minipage}{.2\textwidth}
+{\drawgenerator{xz}{xyz}{x}{xy}{y}{1}{yz}{z}}
+\end{minipage}
+\caption{Elementary syndromes created by $Z$ errors. The vertices which are on the dual lattice, represent the defects created by the error at the center. The elementary syndrome by $ZI$ is used to push the defects to the bottom and to the left. The syndromes by errors of weight three is used to push the defects to the bottom-left corner.
+The cube on the right specifies the coordinate system.
+}
+\label{fig:elementary-syndrome}
+\end{figure}
+
+The 3D cubic code is simple because it is Calderbank-Shor-Steane type code;
+$X$- and $Z$-type errors can be treated separately.
+Since there is one $X$-type stabilizer generator,
+the syndrome caused by $Z$ errors is expressed by one Laurent polynomial,
+which we call a \emph{syndrome polynomial}.
+And neutral syndromes are described by an ideal (submodule) $I=(xyz+xy+yz+zx,~  xyz+x+y+z)$.%
+\footnote{
+The generators of $I$ are different from those presented in Chapter~\ref{chap:cubic-code},
+but they are related by redefinition of lattice coordinate system.
+The antipode map applied to $I$ yields $(1+x+y+z,~1+xy+yz+zx)$.}
+For simplicity, suppose that the syndrome polynomial is of nonnegative exponents.
+A Gr\"obner basis%
+\footnote{%
+The basis presented here is not the \emph{reduced} Gr\"obner basis,
+by which we mean a basis where no term is divisible by a leading term of other elements in the basis.
+The presented basis is actually what is used in the numerical simulation of the cubic code
+in Chapter~\ref{chap:q-mem}.
+It also matches with Figure~\ref{fig:elementary-syndrome}.
+}
+of $I$ is
+\begin{align}
+x+y+z+\mathbf{xyz}, \nonumber \\
+x + y + \mathbf{x y} + z + x z + y z, \nonumber \\
+x + y + z + x z + y z + z^2 + \mathbf{x z^2} + y z^2, \label{eq:gb-cubic-code} \\
+x + y + x y + y^2 + \mathbf{x y^2} + z + y z + y^2 z,\nonumber \\
+y^2 + y z + y^2 z + z^2 + y z^2 + \mathbf{y^2 z^2} \nonumber
+\end{align}
+where leading terms are marked as bold.
+The following is an graphical explanation for the division algorithm.
+Figure~\ref{fig:elementary-syndrome} shows a subset of a Gr\"obner basis for the cubic code.
+One can directly see that the first four polynomials in Eq.~\eqref{eq:gb-cubic-code}
+matches the diagrams.
+A step-by-step explanation is as follows.
+We fix a box $B$ that encloses all the defects in the neutral cluster.
+We will sweep the defects to bottom-left-back corner.
+Since each defect is a $Z_2$ charge, they will disappear in the end.
+The algorithm begins with the top-right foremost vertex of $B$ on the dual lattice.
+If there is a defect at $(x+\half,y+\half,z+\half)$,
+we apply $ZI$ at $(x,y,z)$ to eliminate it.
+This might create another defects as there are four defects in the elementary syndrome.
+Important is that the potentially new defects
+are all contained in the box $B$ we started with.
+Continuing with $ZI$ we push all the defects in the foremost plane of $B$
+to the left vertical line and the bottom horizontal line.
+During this process, we record where $ZI$ has been applied.
+
+For the defects on the vertical line at the left or on the horizontal line at the bottom,
+we use the operator of weight 3 to further move the defects to the bottom-left corner.
+See Fig.~\ref{fig:elementary-syndrome}.
+This will in general create more defects behind, all of which are still contained in $B$.
+Thus, we have moved all the defects on the foremost plane to the bottom-left corner
+except for the three sites $t,u,v$:
+\begin{equation}
+\xymatrix@!0{ t \ar@{-}[d] & o \\ u \ar@{-}[r] & v }
+\label{eq-diagram:last-three-defects}
+\end{equation}
+That is, if $E'$ is the recorded operator during the sweeping process,
+the syndrome $S(EE') \subseteq B$ has potential defects only at $t,u,v$ on the foremost plane.
+
+Let $o$ be at $(x_o+\half,y_o+\half,z_o+\half)$.
+By considering the multiplication by suitable stabilizer generators $Q^Z$,
+we can assume that $EE'$ is the identity on the plane $x=x_o$, except $(x_o,y_o,z_o)$.
+Since there is no defect at $o$,
+the operator at $(x_o,y_o,z_o)$ has to commute with $XX$;
+it is either $II$ or $ZZ$.
+Applying $ZZ$ if necessary, the operator at $(x_o,y_o,z_o)$ will become $II$,
+and the defects at $t,u,v$ will disappear.
+In this way, we have successfully pushed all the defects to the next-to-foremost plane.
+We emphasize that the box $B$ still envelops all the defects,
+and further $B$ can be shrunk in one direction.
+
+Due to the threefold symmetry of the cubic code,
+one can carry out this broom algorithm along any of three directions.
+We will have, at last, a box $B$ of volume 1 that encloses all defects.
+The defects in the cluster must be from one of the three elementary syndrome cubes
+created either by $ZI$, $IZ$, or $ZZ$, which are easily eliminated.
+It is clear that in time $O(V)$ the error operator has been computed up to stabilizer,
+where $V$ is the initial volume of the minimal enclosing box of the cluster.
+
+ 
+
+\section{Threshold theorem for topological stabilizer codes}
+\label{sec:threshold}
+
+In this section we prove that any topological stabilizer code can tolerate stochastic local errors with
+a small constant rate assuming that the error correction is performed using the RG decoder.
+We assume without loss of generality that each stabilizer generator is supported on a unit cube.
+Each site of the lattice may contain finitely many qubits. A generator at a cube $c$ may act only on qubits of $c$.
+We shall assume that errors at different sites are independent and identically distributed.
+More precisely, let $E(P)$ be the set of sites at which a Pauli error $P$ acts nontrivially. We shall assume that
+\begin{equation}
+\mathrm{Pr}[E(P)=E] = (1- \epsilon)^{V-|E|} \epsilon^{|E|}
+\label{eq:random-error-distribution}
+\end{equation}
+where $0 \le \epsilon \le 1$ is the error rate and $V=L^D$ is the total number of sites (the volume of the lattice).
+For example, the depolarizing noise in which every qubit experiences $X,Y,Z$ errors
+with the probability $p/3$ each, satisfies
+Eq.~(\ref{eq:random-error-distribution}) with the error rate $\epsilon=1-(1-p)^q$, where $q$ is the number of qubits per site.
+\begin{theorem}
+Suppose a family of stabilizer codes has topological order satisfying TQO1,2.
+(In particular, every translationally invariant exact codes do.)
+Then, there exists a constant threshold $\epsilon_0>0$
+such that for any $\epsilon<\epsilon_0$ the RG decoder corrects random independent errors with rate $\epsilon$
+with the failure probability at most $e^{-\Omega(L^\eta)}$ for some constant $\eta>0$.
+\label{thm:universal-threshold}
+\end{theorem}
+\noindent
+In the rest of this section we prove the theorem.
+Our proof borrows some techniques from \cite{Gray2001Guide,Gacs1986Reliable,Harrington2004thesis},
+specifically Section~5.1 of Gray's review~\cite{Gray2001Guide} on G\'acs' 1D cellular automata~\cite{Gacs1986Reliable}.
+%For reader's convenience, we briefly  summarize the RG decoding algorithm below.
+
+Recall that we use $\ell_\infty$-metric, so a cube of linear size $r$ thus has diameter $r$.
+We keep the terminologies and conventions from Section~\ref{sec:rg-decoder-assumptions},
+and our decoder is what we have explained in the previous sections:
+% Let $S=S(P)$ be the syndrome of a Pauli error $P$ considered as a set of defects (violated stabilizers).
+% A subset $M\subseteq S$ is called $r$-connected iff $M$ cannot be partitioned
+% into a pair of disjoint proper subsets separated by distance more than $r$. A maximum $r$-connected
+% subset of $S$ is called an $r$-connected component of $S$. A cluster of defects $M\subseteq S$
+% is called  \emph{neutral} if it can be created from the vacuum by a Pauli operator $P$ supported in a cube of linear size $\ltqo$.
+% The smallest rectangular box enclosing a cluster $M$ will be denoted $b(M)$.
+% Any neutral cluster $M$ can be created by a Pauli operator supported on the $1$-neighborhood of $b(M)$,
+% see Definition~\ref{dfn:TQO}.
+%
+The \emph{level-$p$ error correction} {\em EC($p$)} on a syndrome $S$ is the following subroutine.
+(i) find all neutral $2^p$-connected components $M$ of $S$,
+(ii) for each $M$ found at step 1, calculate and apply a Pauli operator $P$ supported on the 1-neighborhood of $b(M)$ that annihilates $M$, and update the syndrome accordingly.
+Calling the full RG decoder on a syndrome $S$ involves the following steps:
+(i) run EC(0), EC(1), ..., EC($\lfloor \log_2 \ltqo \rfloor$),
+(ii) if the resulting syndrome $S$ is empty, return the accumulated Pauli operator applied by the subroutines EC($p$). Otherwise, declare a failure.
+
+Below we shall use the term `error' 
+both for the error operator $P$ and for the subset of sites $E$ acted on by $P$, 
+whenever the meaning is clear from the context.
+Let us choose an integer $Q \gg 1$ and find a class of errors which are properly corrected by the RG decoder,
+see Lemma~\ref{lem:correctability-criterion} below.
+We will see later that this class of errors actually includes all errors which are likely to appear for small enough error rate.
+\begin{defn}
+Let $E$ be a fixed error.
+A site $u\in E$ is called a {\bf level-$0$ chunk}.
+A non-empty subset of $E$ is called a {\bf level-$n$ chunk} ($n\ge 1$) 
+if it is a disjoint union of two level-$(n-1)$ chunks and its diameter is at most $Q^n /2$.
+\end{defn}
+The term `chunk,' not to be confused with the usage in Section~\ref{sec:superlinear-distance},
+is chosen in order to avoid confusion with `cluster', which is used for a set of defects.
+Note that a level-$n$ chunk contains exactly  $2^n$ sites.
+Given an error $E$, let $E_n$ be the union of all level-$n$ chunks of $E$.
+If $u \in E_{n+1}$, then by definition $u$ is an element of a level-$(n+1)$ chunk.
+Since a level-$(n+1)$ chunk is a union of two level-$n$ chunks, $u$ is contained in a level-$n$ chunk. Hence, $u \in E_n$, and the sequence $E_n$ form a descending chain
+\[
+ E = E_0 \supseteq E_1 \supseteq \cdots \supseteq E_m ,
+\]
+where $m$ is the smallest integer such that $E_{m+1}=\emptyset$.
+Let $F_i = E_i \setminus E_{i+1}$, so $E = F_0 \cup F_1 \cup \cdots \cup F_m$ is expressed as a disjoint union, which we call the \emph{chunk decomposition} of $E$.
+\begin{prop}
+Let $Q \ge 6$ and $M$ be any $Q^n$-connected component of $F_n$. Then
+$M$ has diameter $\le Q^n$ and is separated from $E_n \setminus M$ by distance $> \frac{1}{3}Q^{n+1}$.
+\label{prop:structure-Fn}
+\end{prop}
+\begin{proof}
+We claim that for any pair of sites $u \in F_n = E_n \setminus E_{n+1}$ and $v \in E_n$ we have $ d( u,v) \le Q^n$ or $d( u,v ) > \frac{1}{3} Q^{n+1}$.
+Suppose on the contrary to the claim, that there is a pair $u \in F_n$ and $v \in E_n$ such that $ Q^n < d(u,v) \le Q^{n+1} /3$. Let $C_u \ni u$ and $C_v \ni v$ be level-$n$ chunks that contains $u$ and $v$, respectively. Since the diameters of $C_{u,v}$ are $\le Q^n /2$ and $d(u,v) > Q^n$, we deduce that $C_u$ and $C_v$ are disjoint. On the other hand,
+\[
+ d( C_u \cup C_v ) \le d( u,v ) + d(C_u) + d(C_v)  \le Q^{n+1}/2
+\]
+since $Q \ge 6$. Thus, $C_u \cup C_v$ is a level-$(n+1)$ chunk that contains $u$
+which shows that $u \in E_{n+1}$. It contradicts to our assumption that $u\in F_n=E_n \setminus E_{n+1}$.
+\end{proof}
+Note that in the chunk decomposition a $Q^n$-connected component $P$ of $E_n$ may not be separated from the rest $E \setminus P$ by distance $> Q^n$.
+\begin{lem}
+Let $Q \ge 10$. If the length $m$ of the chunk decomposition of an error $E$ satisfies $Q^{m+1} < \ltqo$, then $E$ is corrected by the RG decoder.
+\label{lem:correctability-criterion}
+\end{lem}
+\begin{proof}
+Consider any fixed error $P$ supported on a set of sites $E$.
+Let $E=F_0 \cup F_1 \cup \cdots \cup F_m$ be the chunk decomposition of $E$, and
+let $F_{j,\alpha}$ be the $Q^j$-connected components of $F_j$.
+Also, let $B_{j,\alpha}$ be the $1$-neighborhood of the smallest box enclosing the syndrome
+created by the restriction of $P$ onto $F_{j,\alpha}$.
+Proposition~\ref{prop:structure-Fn} implies that
+\begin{equation}
+\label{subchunks2}
+d(B_{j,\alpha})\le Q^j+2 \quad \mbox{and} \quad d(B_{j,\alpha}, B_{k,\beta})>\frac13 Q^{1+\min{(j,k)}}-2.
+\end{equation}
+Let $P_{ec}^{(p)}$ be the accumulated correcting operator returned by the levels $0,\ldots,p$  of the RG decoder.
+Let us use induction in $p$ to prove the following statement.
+\begin{enumerate}
+\item The operator $P_{ec}^{(p)}$ has support on the union of the boxes $B_{j,\alpha}$.
+\item  The operators $P_{ec}^{(p)}$ and $P$ have the same restriction on $B_{j,\alpha}$ modulo stabilizers
+for any $j$ such that $2^p\ge Q^j+2$.
+\end{enumerate}
+The base of induction is $p=0$.  Using Eq.~(\ref{subchunks2}) we conclude that any
+$1$-connected component of the syndrome $S(P)$ is fully contained
+inside some box $B_{j,\alpha}$. It proves that $P_{ec}^{(0)}$ has support on the union of the boxes $B_{j,\alpha}$.
+The second statement is trivial for $p=0$.
+
+Suppose we have proved the above statement for some $p$.
+Then the operator $P\cdot P_{ec}^{(p)}$ has support only inside
+boxes $B_{j,\alpha}$ such that $2^p<Q^j+1$ (modulo stabilizers). It follows that any
+$2^{p+1}$-connected component of the syndrome caused by $P\cdot P_{ec}^{(p)}$ is contained in some box
+$B_{j,\alpha}$ with $2^p<Q^j+1$. Note that the RG decoder never adds new defects;
+we just need to check that $2^{p+1}$-connected components do not cross the boundaries
+between the boxes $B_{j,\alpha}$ with $2^p<Q^j+1$. This follows from Eq.~(\ref{subchunks2}).
+Hence $P_{ec}^{(p+1)}$
+has support in the union of $B_{j,\alpha}$. Furthermore, if
+$2^p<Q^j+1\le 2^{p+1}$, the cluster of defects created by $P\cdot P_{ec}^{(p)}$
+inside $B_{j,\alpha}$ forms a single  $2^{p+1}$-connected component
+of the syndrome examined by  EC$(p+1)$.
+This cluster is neutral since we assumed $Q^{m+1}<L_{tqo}$.
+Hence $P_{ec}^{(p+1)}$ will annihilate this cluster.
+The annihilation operator is equivalent to the restriction of $P\cdot P_{ec}^{(p)}$
+onto $B_{j,\alpha}$ modulo stabilizers, since the linear size
+of $B_{j,\alpha}$ is smaller than $\ltqo$. It proves the induction hypothesis
+for the level $p+1$. 
+\end{proof}
+\noindent
+The preceding lemma says that errors by which the RG decoder could be confused are those from very high level chunks. What is the probability of the occurrence of such a high level chunk if the error is random according to Eq.\eqref{eq:random-error-distribution}? Since our probability distribution of errors depend only on the number of sites in $E$, this question is completely percolation-theoretic.
+
+Let us review some terminology from the percolation theory\cite{Grimmett1999Percolation}. An event is a collection of configurations. In our setting, a configuration is a subset of the lattice. Hence, we have a partial order in the configuration space by the set-theoretic inclusion. An event $\mathcal E$ is said to be \emph{increasing} if $E \in \mathcal{E}, E \subseteq E'$ implies $E' \in \mathcal{E}$. For example, the event defined by the criterion that there exists an error at $(0,0)$, is increasing.
+The \emph{disjoint occurrence} $\mathcal A \circ \mathcal B$ of the events $\mathcal A$ and $\mathcal B$ is defined as the collection of configurations $E$ such that $E = E_a \cup E_b$ is a disjoint union of $E_a \in \mathcal A$ and $E_b \in \mathcal B$. To illustrate the distinction between $\mathcal A \circ \mathcal B$ and $\mathcal A \cap \mathcal B$, consider two events defined as $\mathcal A = $ ``there are errors at $(0,0)$ and at $(1,0)$'', and $\mathcal B = $ ``there are errors at $(0,0)$ and at $(0,1)$''. The intersection $\mathcal A \cap \mathcal B$ contains a configuration $\{ (0,0),(1,0),(0,1) \}$, but the disjoint occurrence $\mathcal A \circ \mathcal B$ does not. A useful inequality by van den Berg and Kesten (BK) reads \cite{BergKesten1985, Grimmett1999Percolation}
+\begin{equation}
+ \mathrm{Pr}[ \mathcal A \circ \mathcal B ] \le \mathrm{Pr}[ \mathcal A ] \cdot \mathrm{Pr}[ \mathcal B]
+\label{eq:BK-inequality}
+\end{equation}
+provided the events $\mathcal A$ and $\mathcal B$ are increasing.
+
+\begin{proof}[Proof of Theorem~\ref{thm:universal-threshold}]
+Consider a $D$-dimensional lattice
+and a random error $E$ defined by Eq.~(\ref{eq:random-error-distribution}).
+Let $B_n$ be a fixed cubic box of linear size $Q^n$ and
+$B_n^+$ be the  box of linear
+size $3Q^n$ centered at $B_n$.
+Define the following probabilities:
+\begin{align*}
+p_n &= \mathrm{Pr}\left[ \mbox{$B_n$ has a nonzero overlap with a level-$n$ chunk of $E$}\right] \\
+\tilde{p}_n &= \mathrm{Pr}\left[\mbox{$B_n^+$ contains a level-$n$ chunk of $E$}\right] \\
+q_n &= \mathrm{Pr}\left[\mbox{$B_n^+$ contains $2$ disjoint  level-$(n-1)$ chunks of $E$}\right] \\
+r_n &= \mathrm{Pr}\left[\mbox{$B_n^+$  contains a level-$(n-1)$ chunk of $E$}\right]
+\end{align*}
+Note that all these probabilities do not depend on the choice of the box $B_n$
+due to translation invariance. Since a level-$0$ chunk is just a single site
+of $E$, we have $p_0=\epsilon$.
+We begin by noting that
+\[
+p_n\le \tilde{p}_n\le q_n.
+\]
+Here we used  the fact that
+any level-$n$ chunk has diameter at most $Q^n/2$ and that any level-$n$ chunk
+consists of a disjoint pair of level-$(n-1)$ chunks.
+Let us fix the box $B_n^+$ and let ${\cal Q}_n$ be the event that
+$B_n^+$ contains a disjoint pair of  level-$(n-1)$ chunks of $E$.
+Let ${\cal R}_n$ be the event that $B_n^+$ contains a level-$(n-1)$ chunk of $E$.
+Then ${\cal Q}_n={\cal R}_n\circ {\cal R}_n$.
+It is clear that  ${\cal Q}_n$ and ${\cal R}_n$  are increasing events.
+Applying the van den Berg and Kesten inequality we arrive at
+\[
+q_n\le r_n^2.
+\]
+Finally, since $B_n^+$ is a disjoint union of $(3Q)^D$ boxes of linear size $Q^{n-1}$,
+the union bound yields
+\[
+r_n\le (3Q)^D p_{n-1}.
+\]
+Combining the above inequalities we get
+$p_n \le (3Q)^{2D} p_{n-1}^2$, and hence
+\[
+p_n \le (3Q)^{-2D}((3Q)^{2D} \epsilon)^{2^n}.
+\]
+The probability $p_n$ is  doubly exponentially small in $n$
+whenever $\epsilon < (3Q)^{-2D}$.
+ If there exists at least one level-$n$ chunk, there is always a box of linear size $Q^n$ that overlaps with it. Hence, on the finite system of linear size $L$, the probability of the occurrence of a level-$m$ chunk is bounded above by $L^D p_m$.
+ Employing
+ Lemma~\ref{lem:correctability-criterion}, we conclude that the RG decoder fails with probability at most $p_{fail}=L^D p_m$
+  for any $m$ such that $Q^{m+1} < \ltqo$. Since we assumed that $\ltqo\ge L^\delta$,
+ one can choose $m\approx \delta \log{L}/\log{Q}$.
+ In this case $p_{fail}=\exp{(-\Omega(L^\eta))}$ for $\eta \approx \delta / \log{Q}$.
+ We have proved our theorem with $\epsilon_0 = (3Q)^{-2D}$ where $Q = 10$.
+\end{proof} 
+
+
+\section{Benchmark of the decoder}
+\label{sec:benchmark}
+
+
+Given a decoder, a family of quantum codes indexed by code length (system size)
+is said to have an \emph{error threshold} $p_c$
+if the probability for decoder to fail approaches zero in the limit of large code length
+provided the random error rate $p$ is less than $p_c$.
+We tested our decoder with respect to random uncorrelated bit-flip errors on the well-studied 2D toric code.
+The error threshold is measured to be $8.4(1)\%$ using $\ell_1$-metric.
+See Fig.~\ref{fig:threshold}.
+It is reasonably close to the best known value $10.3\%$
+based on the perfect matching algorithm~\cite{DennisKitaevLandahlEtAl2002Topological, Harrington2004thesis},
+or $9\%$ based on a renormalization group decoder of similar nature to ours~\cite{Duclos-CianciPoulin2009Fast}.
+This is remarkable for our decoder's simplicity and applicability.
+The 3D cubic code has threshold $\gtrsim 1.1\%$ under independent bit-flip errors 
+using $\ell_\infty$-metric.
+Note that in these simulations we do not use TestNeutral$'$ of Remark~\ref{rem:TestNeutralprime}.
+
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{.48\textwidth}
+\includegraphics[width=\textwidth]{toric2D-rand-l1-nton}
+\end{minipage}
+\begin{minipage}{.48\textwidth}
+\includegraphics[width=\textwidth]{cubic-rand-l8-nton}
+  \end{minipage}
+\caption{
+The thresholds of 2D toric code (left) and 3D cubic code (right)
+under independent random bit-flip errors using our RG decoder.
+The left shows simulation data for 2D toric code under $\ell_1$-metric,
+The right shows the data for 3D cubic code under $\ell_\infty$-metric.
+The thresholds are measured to be $p_c(\text{2D toric})=8.4(1)\%$
+and $p_c(\text{3D cubic}) \gtrsim 1.1 \%$.
+}
+\label{fig:threshold}
+\end{figure}

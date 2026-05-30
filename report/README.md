@@ -105,6 +105,10 @@ before treating report edits as complete.
 | 85 | `AQM-85-QSA-AGREEMENT-INEQUIVALENCE-TABLE` | `report/sections/85_quantum_system_association_agreement_inequivalence_table.tex` | Agreement and Inequivalence Table |
 | 86 | `AQM-86-QSA-DEGENERATE-OVERRESTRICTIVE-CASES` | `report/sections/86_quantum_system_association_degenerate_overrestrictive_cases.tex` | Degenerate and Over-Restrictive Cases |
 | 87 | `AQM-87-QSA-OPEN-PROBLEMS-NEXT-TARGETS` | `report/sections/87_quantum_system_association_open_problems_next_targets.tex` | Open Problems and Next Catalogue Targets |
+| 88 | `AQM-88-DERIVATIVE-CONSTRAINTS-RESIDUE-WEYL` | `report/sections/88_derivative_constraints_residue_weyl.tex` | Derivative Constraints on Residue Weyl-Heisenberg Fields |
+| 89 | `AQM-89-SCHEME-INCIDENCE-CODE-SOURCES` | `report/sections/89_scheme_incidence_code_sources.tex` | Scheme-Incidence Sources for Code Complexes |
+| 90 | `AQM-90-ALGEBRAIC-TORUS-QUANT2` | `report/sections/90_algebraic_torus_quant2.tex` | Algebraic Torus Quant2 Test Case |
+| 91 | `AQM-91-HAAH-LAURENT-TORUS-QUANT2` | `report/sections/91_haah_laurent_torus_quant2.tex` | Haah Laurent Modules and Torus Quant2 |
 
 ## Maintenance Rules
 

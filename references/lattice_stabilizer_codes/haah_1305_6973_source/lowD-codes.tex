@@ -1,0 +1,1347 @@
+%%%%%%%%%%%%%%%%%%
+%% lowD-codes.tex
+%%%%%%%%%%%%%%%%%%
+
+One of the goals of the formalism in the previous chapter
+is to classify all code Hamiltonians that are translationally invariant.
+A satisfactory classification should be 
+comprised of a complete set of invariants,
+and a table of inequivalent code Hamiltonians or a machinery to obtain them.
+In this chapter we present preliminary results towards this goal.
+
+In one dimension, the classification problem is completely solved.
+A particularly nice property of one dimension is
+that its translation group algebra $\FF_2[x,x^{-1}]$ is a Euclidean domain,
+over which any matrix is diagonal 
+up to multiplications on the left and right by invertible matrices.
+We show that this diagonalization is possible
+even if the left multiplications are restricted to symplectic transformations.
+Exploiting the finiteness of the ground field $\FF_2$,
+we conclude that there are only Ising models~\cite{Yoshida2011Classification}.
+An almost identical treatment appears in quantum convolutional
+codes~\cite{OllivierTillich2004Convolutional,GrasslRotteler2006Convolutional}.
+(A more general statement is proved by Beigi~\cite{Beigi2012OneDimension}.)
+
+In two dimensions, we find that 
+any excitation of an exact code Hamiltonian 
+is described by a collection of point-like ones,
+each of which is attached to a string operator.
+Furthermore, it seems that one can prove a stronger statement that there are only toric codes%
+~\cite{Yoshida2011Classification,BombinDuclosCianciPoulin2012}, 
+although we do not complete the proof.
+In three dimensions, we show that there must be point-like excitations for exact code Hamiltonians.
+This implies that it is unavoidable in the translation-invariant case
+to have a topological charge penetrating through the system,
+for which the energy penalty is only logarithmic in the displacement.
+If we assume that the degeneracy under periodic boundary conditions should be constant independent of system size,
+then the energy penalty is upper bounded by a constant,
+reproducing the result of Yoshida~\cite{Yoshida2011feasibility}.
+
+% A theme underlying the proofs in this chapter is
+% a geometric interpretation of coarse-graining,
+% by which one changes the base ring, the translation group algebra $R$, with its subring $R'$.
+% Since the coarse-grained translation group is a subgroup of the original translation group of finite index,
+% $R$ is a free $R'$-module.
+% Thus, the coarse-graining is an exact functor.
+% Then, the algebraic set defined by the annihilator of a module 
+
+
+Note that all the lemmas and theorems in this chapter are valid over qudits with prime dimensions.
+We conclude this chapter with several examples.
+
+\section{One dimension}
+
+The group algebra $R = \FF_2[x,\bar x]$ for the one-dimensional lattice $\mathbb{Z}$
+is a Euclidean domain
+where the degree of a polynomial is defined to be the maximum exponent minus the minimum exponent.
+(In particular, any monomial has degree $0$.)
+Given two polynomials $f,g$ in $R$, one can find their $\gcd$ by the Euclid's algorithm.
+It can be viewed as a column operation on the $1 \times 2$ matrix $\begin{pmatrix} f & g \end{pmatrix}$.
+Similarly, one can find $\gcd$ of $n$ polynomials by column operations on $1 \times n$ matrix
+\[
+ \begin{pmatrix}
+  f_1 & f_2 & \cdots & f_n
+ \end{pmatrix} .
+\]
+The resulting matrix after the Euclid's algorithm will be
+\[
+\begin{pmatrix}
+\gcd(f_1,\ldots,f_n) & 0 & \cdots & 0
+\end{pmatrix} .
+\]
+
+Given a matrix $\mathbf M$ of univariate polynomials, we can apply Euclid's algorithm
+to the first row and first column by elementary row and column operations
+in such a way that the degree of $(1,1)$-entry $\mathbf M_{11}$ decreases unless all other
+entries in the first row and column are divisible by $\mathbf M_{11}$.
+Since the degree cannot decrease forever, this process must end
+with all entries in the first row and column being zero except $\mathbf M_{11}$.
+By induction on the number of rows or columns,
+we conclude that $\mathbf M$ can be transformed to a diagonal matrix
+by the elementary row and column operations.
+This is known as the Smith's algorithm.
+
+The following is a consequence of the finiteness of the ground field.
+\begin{lem}
+Let $\FF$ be a finite field and $S = \FF[x]$ be a polynomial ring.
+Let $\phi : S \xrightarrow{f(x) \times} S$ be a $1 \times 1$ matrix such that $f(0) \ne 0$.
+$\phi$ can be viewed as an $n \times n$ matrix acting on the free $S'$-module $S$
+where $S' = \FF[x']$ and $x' =x^n$.
+Then, for some $n \ge 1$, the matrix $\phi$ is transformed by elementary row and column operations
+into a diagonal matrix with entries $1$ or $x'-1$.
+The number of $x'-1$ entries in the transformed $\phi$ is equal to the degree of $f$.
+\label{lem:coarse-graining-single-polynomial-in-1D}
+\end{lem}
+\begin{proof}
+The splitting field $\tilde \FF$ of $f(x)$ is a finite extension of $\FF$.
+Since $\tilde \FF$ is finite, every root of $f(x)$ is a root of $x^{n'} -1$ for some $n' \ge 1$.
+Choose an integer $p \ge 1$ such that $2^p$ is greater than any multiplicity of the roots of $f(x)$.
+Then, clearly $f(x)$ divides $(x^{n'}-1)^{2^p} = x^{2^p n'} - 1$.
+Let $n$ be the smallest positive integer such that $f(x)$ divides $x^n-1$.%
+\footnote{This part is well known, at least in the linear cyclic coding theory~\cite{MacWilliamsSloane1977}.}
+
+Consider the coarse-graining by $S' = \FF[x']$ where $x'=x^n$.
+$S$ is a free $S'$-module of rank $n$, and $(f)$ is now an endomorphism of the module $S$
+represented as an $n \times n$ matrix.
+Since $f(x)g(x) = x^n -1$ for some $g(x) \in \FF[x]$,
+we have
+\[
+ A B = (x'-1) \id_n
+\]
+where $x' = x^n$, and $A, B$ are the matrix representation of $f(x)$ and $g(x)$, respectively, as endomorphisms.
+$A$ and $B$ have polynomial entries in variable $x'$.
+The determinants of $A,B$ are nonzero for their product is $(x'-1)^n \ne 0$.
+Let $E_1$ and $E_2$ be the products of elementary matrices such that $A' = E_1 A E_2$ is diagonal.
+Such matrices exist by the Smith's algorithm.
+Put $B' = E_2^{-1} B E_1^{-1}$.
+Then,
+\[
+ A' B' = E_1 A E_2 E_2^{-1} B E_1^{-1} = E_1 A B E_1^{-1} = (x'-1)\id_n .
+\]
+Since $A'$ and $I_n$ are diagonal of non-vanishing entries, $B'$ must be diagonal, too.
+It follows that the diagonal entries of $A'$ divides $(x'-1)$; that is, they are $1$ or $x'-1$.
+
+The number of entries $x'-1$ can be counted by considering $S/(f(x))$ as an $\FF$-vector space.
+It is clear that $\dim_{\FF} S/(f(x)) = \deg f(x)$.
+$S/(f(x)) = \coker \phi$ viewed as a $S'$-module is isomorphic to $S'^n / \im A'$,
+the vector space dimension of which is precisely the number of $x'-1$ entries in $A'$.
+\end{proof}
+
+For example, consider $f(x) = x^2 + x + 1 \in S = \FF_2[x]$.
+It is the primitive polynomial of the field $\FF_4$ of four elements over $\FF_2$.
+Any element in $\FF_4$ is a solution of $x^4-x=0$.
+Since $f(0) = 1$, we see that $n=3$ is the smallest integer such that $f(x)$ divides $x^n-1$.
+As a module over $S' = \FF_2[x^3]$, the original ring $S$ is free with (ordered) basis $\{1, x, x^2\}$.
+The multiplication by $x$ on $S$ viewed as an endomorphism has a matrix representation
+\[
+x = 
+ \begin{pmatrix}
+  0 & 0 & x^3 \\
+  1 & 0 & 0   \\
+  0 & 1 & 0   
+ \end{pmatrix} .
+\]
+Thus, $f(x)$ as an endomorphism of $S'$-module $S$ has a matrix representation as follows.
+\[
+ f(x) =
+ \begin{pmatrix}
+  1 & x^3 & x^3 \\
+  1 & 1   & x^3 \\
+  1 & 1   & 1  
+ \end{pmatrix} 
+\cong
+ \begin{pmatrix}
+  1 & 0      & 0 \\
+  0 & x^3 +1 & 0 \\
+  0 & 0      & x^3 +1
+ \end{pmatrix}
+\]
+Here, the second matrix is obtained by row and column operations.
+There are 2 diagonal entries $x^3+1$ as $f(x)$ is of degree 2.
+
+\begin{theorem}
+If $\Lambda = \mathbb{Z}$,
+any system governed by a code Hamiltonian
+is equivalent to finitely many copies of Ising models,
+plus some non-interacting qubits.
+In particular, the topological order condition is never satisfied.
+\label{thm:1D-classification}
+\end{theorem}
+\noindent
+Yoshida~\cite{Yoshida2011Classification} arrived at a similar conclusion
+assuming that the ground space degeneracy when the Hamiltonian is defined on a ring 
+should be independent of the length of the ring.
+If translation group is trivial,
+the proof below reduces to a well-known fact that 
+the Clifford group is generated by controlled-NOT, Hadamard, and Phase
+gates~\cite[Proposition~15.7]{KitaevShenVyalyi2002CQC}.
+The proof in fact implies that the group of all symplectic transformations
+in one dimension is generated by elementary symplectic transformations
+of Section~\ref{sec:symplectic-transformations}.
+
+We will make use of the elementary symplectic transformations
+and coarse-graining to deform $\sigma$ to a familiar form.
+Recall that for any elementary row-addition $E$ on the upper block of $\sigma$
+there is a unique symplectic transformation that restricts to $E$.
+
+\begin{proof}
+Applying Smith's algorithm to the first row and the first column of $2q \times t$ matrix $\sigma$,
+one gets
+\[
+\begin{pmatrix}
+  f_1 & 0 \\
+  0   & A \\
+  \hline
+  g_1 & g_2 \\
+  \vdots   & B  
+\end{pmatrix}
+\]
+by elementary symplectic transformations.
+Let $1 \le i < j \le q$ be integers.
+If some $(1,q+j)$-entry is not divisible by $f_1$,
+apply Hadamard on $j^\text{th}$ qubit to bring $(q+j)^\text{th}$ row to the upper block,
+and then run Euclid's algorithm again to reduce the degree of $(1,1)$-entry.
+The degree is a positive integer, so this process must end after a finite number of iteration.
+Now every $(q+j,1)$-entry is divisible by $f_1$ and hence can be made to be $0$
+by the controlled-NOT-Hadamard:
+\[
+\begin{pmatrix}
+  f_1 & 0 \\
+  0   & A \\
+  \hline
+  g_1 & g_2 \\
+  0   & B  
+\end{pmatrix} .
+\]
+Further we may assume $\deg f_1 \le \deg g_1$.
+Since $\sigma^\dagger \lambda_q \sigma = 0$,
+we have a commutativity condition
+\[
+ \bar f_1 g_1 - \bar g_1 f_1 = 0 .
+\]
+Write $f_1 = \alpha x^a + \cdots + \beta x^b $
+and $ g_1 = \gamma x^c + \cdots + \delta x^d $
+where $ a \le b$ and $c \le d$ and $\alpha,\beta,\gamma,\delta \neq 0$.
+Then, $\bar f_1 g_1 = \beta \gamma x^{c-b} + \cdots + \alpha \delta x^{d-a}$.
+Since $f_1 \bar g_1 = \bar f_1 g_1$, it must hold that $-(c-b)=d-a$
+and $\alpha \delta = \beta \gamma$.
+Since $\deg f_1 \le \deg g_1$, we have $d-b = -(c-a) \ge 0$.
+The controlled-Phase $E_{1+q,1}( -(x^{d-b} + x^{c-a})\delta / \beta )$
+will decrease the degree of $g_1$ by two,
+which eventually becomes smaller than $\deg f_1$.
+One may then apply Hadamard to swap $f_1$ and $g_1$.
+Since the degree of $(1,1)$-entry cannot decrease forever,
+the process must end with $g_1 = 0$.
+
+The commutativity condition between $i^\text{th}$ ($i>1$) column and the first
+is $ f_1 \bar g_i = 0 $. Since $f_1 \ne 0$, we get $g_i = 0$:
+\[
+\begin{pmatrix}
+  f_1 & 0 \\
+  0   & A \\
+  \hline
+  0 & 0 \\
+  0 & B  
+\end{pmatrix} .
+\]
+Continuing, we transform $\sigma$ into a diagonal matrix.
+(We have shown that $\sigma$ can be transformed 
+via elementary symplectic transformations to the Smith normal form.)
+
+Now the Hamiltonian is a sum of non-interacting purely classical spin chains
+plus some non-interacting qubits ($f_i = 0$).
+It remains to classify classical spin chains
+whose stabilizer module is generated by
+\[
+\begin{pmatrix}
+f
+\end{pmatrix}
+\]
+where we omitted the lower half block.
+We can always choose $f=f(x)$ such that $f(x)$ has only nonnegative exponents and
+$f(0)\ne 0$ since $x$ is a unit in $R$.
+Lemma~\ref{lem:coarse-graining-single-polynomial-in-1D} says that
+$(f)$ becomes a diagonal matrix of entries $1$ or $x'-1$
+after a suitable coarse-graining followed by a symplectic transformation
+and column operations.
+$1$ describes the ancilla qubits,
+and $x'-1 = x'+1$ does the Ising model.
+\end{proof}
+Note that an almost identical treatment appears in \cite{GrasslRotteler2006Convolutional}.
+
+\section{Two dimensions}
+If $D=2$, the lattice is $\Lambda = \mathbb{Z}^2$, and our base ring is $R = \FF_2 [x,\bar x, y, \bar y]$.
+%%%%%%%%%%%%%%%%%%%%%
+
+The following asserts that the local relations --- 
+a few terms in the Hamiltonian that multiply to identity in a nontrivial way
+as in 2D Ising model, or the kernel of $\sigma$ ---
+among the terms in a code Hamiltonian,
+can be completely removed for exact Hamiltonians in two dimensions~\cite{Bombin2011Structure}.
+We prove a more general version.
+\begin{lem}
+If $G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E$ is exact
+over $R = F_2[ x_1, \bar x_1, \ldots, x_D, \bar x_D ]$,
+There exists $\sigma' : G' \to P$ such that $\im \sigma' = \im \sigma$ and
+\[
+ 0 \to G_{D-2} \to \cdots \to G_1 \to G' \xrightarrow{\sigma'} P \xrightarrow{\epsilon} E
+\]
+is an exact sequence of free $R$-modules. If $D=2$, one can choose $\sigma'$ to be injective.
+\label{lem:coker-epsilon-resolution-length-D}
+\end{lem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent
+The lemma is almost the same as the Hilbert syzygy theorem~\cite[Corollary~15.11]{Eisenbud}
+applied to $\coker \epsilon$,
+which states that any finitely generated module over a polynomial ring with $n$ variables
+has a finite free resolution of length $\le n$, by finitely generated free modules.
+A difference is that our two maps on the far right in the resolution 
+has to be related as $\epsilon = \sigma^\dagger \lambda$.
+To this end, we make use of a constructive version of Hilbert syzygy theorem via Gr\"obner basis.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\cite[Theorem~15.10, Corollary~15.11]{Eisenbud}
+Let $\{ g_1, \ldots, g_n \}$ be a Gr\"obner basis of a submodule of
+a free module $M_0$ over a polynomial ring.
+Then, the S-polynomials $\tau_{ij}$ of $\{ g_i \}$
+in the free module $M_1 = \bigoplus_{i=1}^n S e_i$
+generate the syzygies for $\{g_i\}$.
+If the variable $x_1,\ldots, x_s$ are absent from the initial terms of $g_i$,
+one can define a monomial order on $M_1$
+such that $x_1,\ldots,x_{s+1}$ is absent from
+the initial terms of $\tau_{ij}$.
+If all variables are absent from the initial terms of $g_i$,
+then $M_0/(g_1,\ldots,g_n)$ is free.
+\label{prop:constructive-syzygy}
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}[Proof of \ref{lem:coker-epsilon-resolution-length-D}]
+Without loss of generality
+assume that the $t \times 2q$ matrix $\epsilon$ have entries with nonnegative exponents,
+so $\epsilon$ has entries in $S=\FF_2[x_1,\ldots,x_D]$.
+Below, every module is over the polynomial ring $S$ unless otherwise noted.
+Let $E_+$ be the free $S$-module of rank equal to $\mathrm{rank}_R~ E$.
+
+If $g_1,\cdots, g_{2q}$ are the columns of $\epsilon$,
+apply Buchberger's algorithm to obtain a Gr\"obner basis
+$g_1,\cdots, g_{2q}, \ldots, g_n$ of $\im \epsilon$.
+Let $\epsilon'$ be the matrix whose columns are $g_1,\ldots, g_n$.
+We regard $\epsilon'$ as a map $M_0 \to E_+$.
+By Proposition~\ref{prop:constructive-syzygy},
+the initial terms of the syzygy generators (S-polynomials) 
+$\tau_{ij}$ for $\{ g_i \}$ lacks the variable $x_1$.
+Writing each $\tau_{ij}$ in a column of a matrix $\tau_1$, we have a map $\tau_1 : M_1 \to M_0$.
+
+By induction on $D$, we have an exact sequence
+\[
+ M_{D} \xrightarrow{\tau_D} M_{D-1} \xrightarrow{\tau_{D-1}}
+ \cdots \xrightarrow{\tau_1} M_0 \xrightarrow{\epsilon'} E_+ 
+\]
+of free $S$-modules, where the initial terms of columns of $\tau_D$ lack all the variables.
+By Proposition~\ref{prop:constructive-syzygy} again, $M'_{D-1} = M_{D-1} / \im \tau_{\tau_D}$ is free.
+Since $\ker \tau_{D-1} = \im \tau_D$, we have
+\[
+ 0 \to M'_{D-1} \xrightarrow{\tilde \tau_{D-1}}
+ \cdots \xrightarrow{\tau_1} M_0 \xrightarrow{\epsilon'} E_+ 
+\]
+Since $g_{2q+1},\ldots,g_n$ are $S$-linear combinations of $g_1,\ldots, g_{2q}$,
+there is a basis change of $M_0$ so that the matrix representation of $\epsilon'$ becomes
+\[
+ \epsilon' \cong
+\begin{pmatrix}
+ \epsilon & 0
+\end{pmatrix} .
+\]
+With respect to this basis of $M_0$,
+the matrix of $\tau_1$ is
+\[
+ \tau_1 \cong
+\begin{pmatrix}
+ \tau_{1u} \\
+ \tau_{1d}
+\end{pmatrix}
+\]
+where $\tau_{1u}$ is the upper $2q \times t'$ submatrix.
+Since $\ker \epsilon' = \im \tau_1$, 
+The first row $r$ of $\tau_{1d}$ should generate $1 \in S$.
+(This property is called unimodularity.)
+Quillen-Suslin theorem~\cite[Chapter~XXI Theorem~3.5]{Lang}
+states that there exists a basis change of $M_1$
+such that $r$ becomes $\begin{pmatrix}1 & 0 & \cdots & 0 \end{pmatrix}$.
+Then, by some basis change of $M_0$, one can make 
+\[
+\epsilon' \cong
+\begin{pmatrix}
+ \epsilon & 0
+\end{pmatrix} ,
+\quad
+ \tau_{1d} \cong
+\begin{pmatrix}
+ 1 & 0 \\
+ 0 & \tau'_{1d}
+\end{pmatrix} .
+\]
+where $\tau'_{1d}$ is a submatrix.
+By induction on the number of rows in $\tau_{1d}$,
+we deduce that the matrix of $\tau_1$ can be brought to
+\[
+\epsilon' \cong
+\begin{pmatrix}
+ \epsilon & 0
+\end{pmatrix} ,
+\quad
+ \tau_1 \cong
+\begin{pmatrix}
+ \sigma'' & \sigma' \\
+ I & 0
+\end{pmatrix}
+\]
+Note that $\epsilon \sigma'' = 0$ and $\epsilon \sigma' = 0$.
+The basis change of $M_0$ by $\begin{pmatrix} I & -\sigma'' \\ 0 & I \end{pmatrix}$ gives
+\[
+\epsilon' \cong
+\begin{pmatrix}
+ \epsilon & 0
+\end{pmatrix} ,
+\quad
+ \tau_1 \cong
+\begin{pmatrix}
+ 0 & \sigma' \\
+ I & 0
+\end{pmatrix} .
+\]
+The kernel of $\begin{pmatrix} \sigma' \\ 0 \end{pmatrix}$ determines $\ker \tau_1 = \im \tau_2$.
+Let $M'_1$ denote the projection of $M_1$ such that the sequence
+\[
+ 0 \to M'_{D-1} \xrightarrow{\tilde \tau_{D-1}}
+ \cdots \to M_2 \to M'_1 \xrightarrow{\sigma'} M'_0 \xrightarrow{\epsilon} E_+ 
+\]
+of free $S$-modules is exact.
+
+Taking the ring of fractions with respect to the multiplicatively closed set 
+\[
+U = \{x_1^{i_1} \cdots x_D^{i_D} | i_1,\ldots,i_D \ge 0\},
+\]
+we finally obtain the desired exact sequence over $U^{-1}S = R$ 
+with $P = U^{-1}M'_0$ and $E = U^{-1}E_+$.
+Since $\im \sigma = \ker \epsilon$, we have $\im \sigma' = \im \sigma$.
+\end{proof}
+
+
+\begin{lem}
+Let $R$ be a Laurent polynomial ring in $D$ variables over a finite field $\FF$,
+and $N$ be a module over $R$.
+Suppose $J = \ann_R N$ is a proper ideal such that $\dim R/J = 0$.
+Then, there exists an integer $L \ge 1$ such that
+\[
+ \ann_{R'} N = (x_1^L -1, \ldots, x_D^L -1) \subseteq R'
+\]
+where $R' = \FF[x_1^{\pm L},\ldots,x_D^{\pm L}]$ is a subring of $R$.
+\label{lem:zero-dim-ideal-over-finite-field}
+\end{lem}
+
+This is a variant of Lemma~\ref{lem:coarse-graining-single-polynomial-in-1D}.
+The annihilator $J = \ann_R N$ is the set of all elements $r \in R$ such that
+$r n = 0$ for any $n \in N$.
+It is an ideal;
+if $r_1, r_2 \in \ann_R N$, then
+$r_1+r_2$ is an annihilator since $(r_1 + r_2)n = r_1 n + r_2 n = 0$,
+and $a r_1 \in \ann_R N$ for any $a \in R$ since $(a r_1) n = a(r_1 n)=0$.
+If $R' \subseteq R$ is a subring and $N$ is an $R$-module,
+$N$ is an $R'$-module naturally.
+Clearly, $J' = \ann_{R'} N$ is by definition equal to $(\ann_{R} N) \cap R'$.
+Note that $J'$ is the kernel of the composite map $R' \hookrightarrow R \to R/J$.
+Hence, we have an algebra homomorphism $\varphi' : R'/J' \to R/J$.
+Although $R'$ is a subring, it is isomorphic to $R$ via the correspondence $x_i^L \leftrightarrow x_i$.
+Therefore, we may view $\varphi'$ as a map $\varphi: R/I \to R/J$ for some ideal $I \subseteq R$.
+It is a homomorphism such that $\varphi(x_i) = x_i^L$.
+Considering the algebras as the set of all functions on the algebraic sets $V(I)$ and $V(J)$ defined by $I$ and $J$, respectively,
+we obtain a map $\hat \varphi : V(J) \to V(I)$.
+Intuitively, $\hat \varphi$ maps each point $(a_1,\ldots,a_D) \in \FF^D$ to $(a_1^L,\ldots,a_D^L) \in \FF^D$.
+In a finite field, any nonzero element is a root of unity.
+Since $\dim R/J = 0$, which means that $V(J)$ is a finite set, we can find a certain $L$
+so $V(I)$ would consist of a single point. A formal proof is as follows.
+
+\begin{proof}
+Since $R$ is a finitely generated algebra over a field,
+for any maximal ideal $\mm$ of $R$, the field $R/\mm$ is a finite extension of $\FF$
+(Nullstellensatz~\cite[Theorem~4.19]{Eisenbud}).
+Hence, $R/\mm$ is a finite field.
+Since $x_i$ is a unit in $R$, the image $a_i \in R/\mm$ of $x_i$ is nonzero.
+$a_i$ being an element of finite field, a power of $a_i$ is $1$.
+Therefore, there is a positive integer $n$ such that
+$\bb_n = (x_1^n-1,\ldots,x_D^n-1) \subseteq \mm$.
+Since $x^n-1$ divides $x^{nn'}-1$,
+we see that there exists $n \ge 1$ such that $\bb_n \subseteq \mm_1 \cap \mm_2$
+for any two maximal ideals $\mm_1, \mm_2$.
+One extends this by induction to any finite number of maximal ideals.
+
+Since $\dim R/J = 0$, any prime ideal of $R/J$ is maximal and 
+the Artinian ring $R/J$ has only finitely many maximal ideals.
+$\mathrm{rad}~ J$ is then the intersection of the contractions (pull-backs)
+of these finitely many maximal ideals.
+Therefore, there is $n \ge 1$ such that
+\[
+ \bb_n \subseteq \mathrm{rad}~ J .
+\]
+Since $R$ is Noetherian, $(\mathrm{rad}~J)^{p^r} \subseteq J$ for some $r \ge 0$
+where $p$ is the characteristic of $\FF$. Hence, we have 
+\[
+\bb_{np^r} \subseteq \bb_n^{p^r} \subseteq (\mathrm{rad}~J)^{p^r} \subseteq J.
+\]
+
+Let $L = np^r$.
+If $R' = \FF[x_1^L,\bar x_1^L,\ldots,x_D^L,\bar x_D^L]$,
+$\ann_{R'} N$ is nothing but $J \cap R'$.
+We have just shown $\bb_L \cap R' \subseteq J \cap R'$.
+Since $J$ is a proper ideal, we have $1 \notin J \cap R'$.
+Thus, $\bb_L \cap R'= J \cap R'$ since $\bb_L \cap R'$ is maximal in $R'$.
+\end{proof}
+
+
+\begin{theorem}
+For any two-dimensional degenerate exact code Hamiltonian,
+there exists an equivalent Hamiltonian such that
+\[
+\ann \coker \epsilon = (x-1,y-1).
+\]
+Thus, $\coker \epsilon$ is a torsion module.
+\label{thm:structure-2d-ann-coker-epsilon}
+\end{theorem}
+The content of Theorem~\ref{thm:structure-2d-ann-coker-epsilon}
+is presented in \cite{Bombin2011Structure}.
+We will comment on it after the proof.
+\begin{proof}
+By Lemma~\ref{lem:coker-epsilon-resolution-length-D},
+we can find an equivalent Hamiltonian such that the generating map $\sigma$ for its stabilizer module
+is injective:
+\[
+ 0 \to G \xrightarrow{\sigma} P .
+\]
+Let $t$ be the rank of $G$.
+The exactness condition says
+\[
+ 0 \to G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E
+\]
+is exact where $\epsilon = \sigma^\dagger \lambda_q$ and $E$ has rank $t$.
+Applying Proposition~\ref{prop:exact-sequence},
+since $\overline{ I(\sigma) } = I(\epsilon)$ 
+and hence in particular $\codim I(\sigma) = \codim I(\epsilon)$,
+we have that $q=t$ and $\codim I(\epsilon) \ge 2$ if $I(\epsilon) \ne R$.
+But, $I(\epsilon) \ne R$ by Corollary~\ref{cor:unit-characteristic-ideal-means-nondegeneracy}.
+
+Since $q=t$, $I(\epsilon)$ is equal to the initial Fitting ideal,
+and therefore has the same radical as the annihilator of $\coker \epsilon = E/ \im \epsilon$.
+(See \cite[Proposition~20.7]{Eisenbud} or \cite[Chapter~XIX Proposition~2.5]{Lang}.)
+In particular, $\dim R / (\ann \coker \epsilon) = 0$.
+Apply Lemma~\ref{lem:zero-dim-ideal-over-finite-field} to conclude the proof.
+\end{proof}
+
+An interpretation of the theorem is the following.
+For systems of qubits, Theorem~\ref{thm:structure-2d-ann-coker-epsilon} says that
+$x+1$ and $y+1$ are in $\ann \coker \epsilon$.
+In other words, any element $v$ of $E$ is a charge,
+and a pair of $v$'s of distance 1 apart
+can be created by a local operator.
+Equivalently, $v$ can be translated by distance 1 by the local operator.
+Since translation by distance 1 generates all translations of the lattice,
+we see that any excitation can be moved through the system by some sequence of local operators.
+This is exactly what happens in the 2D toric code:
+Any excited state is described by a configuration of magnetic and electric charge,
+which can be moved to a different position by a string operator.
+
+Moreover, since $(x-1,y-1) = \ann \coker \epsilon$,
+the action of $x,y \in R$ on $\coker \epsilon$ is the same as the identity action.
+Therefore, the $R$-module $\coker \epsilon$ is completely determined
+up to isomorphism by its dimension $k$ as an $\FF_2$-vector space.
+In particular, $\coker \epsilon$ is a finite set,
+which means there are finitely many charges.
+The module $K(L)$ of Pauli operators acting on the ground space (logical operators),
+can be viewed as $K(L) = \Tor_1(\coker \epsilon, R/\bb_L)$.
+Thus, $K(L)$ is determined by $k$ up to $R$-module isomorphisms.
+This implies that the translations of a logical operator are all equivalent.
+It is not too obvious at this moment whether the symplectic structure,
+or the commutation relations among the logical operators,
+of $K(L)$ is also completely determined.
+
+Yoshida~\cite{Yoshida2011Classification} argued a similar result assuming
+that the ground-state degeneracy should be independent of system size.
+Bombin~\cite{Bombin2011Structure} later claimed without the constant degeneracy assumption
+that one can choose locally independent stabilizer generators in a `translationally invariant way'
+in two dimensions, for which Lemma~\ref{lem:coker-epsilon-resolution-length-D} is a generalization,
+and that there are finitely many topological charges,
+which is immediate from Theorem~\ref{thm:structure-2d-ann-coker-epsilon} since $\coker \epsilon$ is a finite set.
+The claim is further strengthened assuming extra conditions by Bombin~\emph{et al.}~\cite{BombinDuclosCianciPoulin2012},
+which can be summarized by saying
+that $\sigma$ is a finite direct sum of $\sigma_\text{2D-toric}$ in Example~\ref{eg:2d-toric}.
+
+\begin{rem}
+\label{rem:long-string}
+Although the strings are capable of moving charges on the lattice,
+it could be very long compared to the interaction range.
+Consider
+\[
+ \epsilon_p = 
+\begin{pmatrix}
+ p(x) & p(y) & 0         & 0          \\
+ 0    & 0    & p(\bar y) & -p(\bar x)
+\end{pmatrix}
+\]
+where $p$ is any polynomial. It defines an exact code Hamiltonian.
+For instance, the choice $p(t) = t-1$ reproduces the 2D toric code of Example~\ref{eg:2d-toric}.
+Now let $p(t)$ be a primitive polynomial of the extension field $\FF_{2^w}$ over $\FF_2$.
+$p(t)$ has coefficients in the base field $\FF_2$ and factorizes in $\FF_{2^w}$
+as $p(t) = (t-\theta)(t-\theta^2)(t-\theta^{2^2})\cdots(t-\theta^{2^{w-1}})$.
+(See \cite[Chapter~V Section~5]{Lang}.)
+The multiplicative order of $\theta$ is $N = 2^w -1$.
+The degree $w$ of $p(t)$ may be called the interaction range.
+If the charge $e = \begin{pmatrix}1 & 0 \end{pmatrix}^T$ at $(0,0)\in \ZZ^2$
+is transported to $(a,b) \in \ZZ^2 \setminus \{ (0,0) \}$ by some finitely supported operator,
+we have $(x^a y^b -1)e \in \im \epsilon$.
+That is, $x^a y^b -1 \in (p(x),p(y))$.
+Substituting $x \mapsto \theta$ and $y \mapsto \theta^{2^m}$,
+we see that $\theta^{a+2^m b} = 1$ or $a+2^m b \equiv 0 \pmod N$ for any $m \in \ZZ$.
+In other words, $a \equiv -b \equiv -2b \pmod N$. It follows that $|a| + |b| \ge N$.%
+\footnote{In case of qudits with prime dimensions $p$,
+the lower bound will be $N/(p-1)$.}
+Therefore, the length of the string segment transporting a charge is exponential in the interaction range $w$.
+\end{rem}
+
+\begin{example}[Wen plaquette~\cite{Wen2003Plaquette}]
+\label{eg:wen-plaquette}
+This model consists of a single type of interaction ($t=q=1$)
+\[
+\xymatrix@!0{
+X \ar@{-}[r] & Y \ar@{-}[d] \\
+Y \ar@{-}[u] & X \ar@{-}[l]
+} \quad \quad
+\sigma_\text{Wen} = 
+\begin{pmatrix}
+ 1 + x + y + xy \\
+\hline
+ 1 + xy
+\end{pmatrix}
+\]
+where $X,Y$ are abbreviations of $\sigma_x,\sigma_y$.
+It is known to be equivalent to the 2D toric code.
+Take the coarse-graining given by $R' = \FF_2[x',y',\bar x', \bar y']$ where
+\[
+ x' = x \bar y, \quad \quad y' = y^2 .
+\]
+(The coarse-graining considered in this example
+is intended to demonstrate a non-square blocking of the old lattice
+to obtain a `tilted' new lattice, and is by no means special.)
+As an $R'$-module, $R$ is free with basis $\{ 1, y \}$.
+With the identification $R = (R' \cdot 1) \oplus (R' \cdot y)$,
+we have $x \cdot 1 = x' \cdot y$, $x \cdot y = x'y' \cdot 1$,
+and $y \cdot 1 = 1 \cdot y$, $y \cdot y = y' \cdot 1$.
+Hence, $x$ and $y$ act on $R'$-modules
+as the matrix-multiplications on the left:
+\[
+x \mapsto 
+\begin{pmatrix}
+0  & x'y'\\
+x' &   0
+\end{pmatrix},
+\quad
+y \mapsto
+\begin{pmatrix}
+0 & y'\\
+1 & 0
+\end{pmatrix}.
+\]
+Identifying
+\[
+ R^n = [ (R' \cdot 1) \oplus (R' \cdot y) ] \oplus \cdots \oplus [(R' \cdot 1) \oplus (R' \cdot y)] ,
+\]
+our new $\sigma$ on the coarse-grained lattice becomes
+\[
+ \sigma' =
+\begin{pmatrix}
+1+x'y' & y'+x'y'\\
+1+x'   & 1+x'y'\\
+\hline
+1+x'y' & 0 \\
+0      & 1+x'y'
+\end{pmatrix}.
+\]
+By a sequence of elementary symplectic transformations, we have
+\begin{align*}
+\sigma'
+&
+\xrightarrow[E_{1,3}(1)]{E_{2,4}(1)}
+%
+\begin{pmatrix}
+0      & y'+x'y' \\
+1+x'   & 0       \\
+1+x'y' & 0       \\
+0      & 1+x'y'
+\end{pmatrix} 
+%
+\xrightarrow[E_{3,2}(y')]{E_{4,1}(\bar y')}
+%
+\begin{pmatrix}
+0      & y'+x'y' \\
+1+x'   & 0       \\
+1+y' & 0       \\:
+0      & x'y'+x'
+\end{pmatrix}
+%
+\\
+& \xrightarrow[\times \bar x' \bar y']{\text{col.2}}
+%
+\begin{pmatrix}
+0      & 1 + \bar x' \\
+1+x'   & 0       \\
+1+y' & 0       \\
+0      & 1+\bar y'
+\end{pmatrix}
+%
+\xrightarrow{1 \leftrightarrow 3}
+%
+\begin{pmatrix}
+1+y' & 0     \\
+1+x'   & 0   \\
+0      & 1+ \bar x'\\
+0      & 1 + \bar y'\\
+\end{pmatrix},
+\end{align*}
+which is exactly the 2D toric code.
+\hfill $\Diamond$
+\end{example} % Wen Plaquette
+
+
+
+%(include?) \input{extracting-toric-codes}
+
+
+\section{Three dimensions}
+\label{sec:3d}
+
+In the previous section, we derived a consequence of the exactness of code Hamiltonians.
+The two-dimensional Hamiltonian was special 
+so we were able to characterize the behavior of the charges more or less completely.
+Here, we prove a weaker property of three dimensions that there must exist a nontrivial charge
+for any exact code Hamiltonian.
+It follows from Theorems~\ref{thm:charge-equals-torsion},%
+\ref{thm:logarithmic-energy-barrier-for-fractal-operator}
+that such a charge can spread through the system
+by surmounting the logarithmic energy barrier.
+\begin{lem}
+Suppose $D=3$,
+\[
+  0 \to G_1 \xrightarrow{\sigma_1} G \xrightarrow{\sigma} P \xrightarrow{\epsilon=\sigma^\dagger \lambda_q} E
+\]
+is exact, and $I(\sigma) \subseteq \mm = (x-1,y-1,z-1)$.
+Then, $\coker \epsilon$ is not torsion-free.
+\label{lem:char-ideal-with-support-on-origin-implies-fractal}
+\end{lem}
+\begin{proof}
+Suppose on the contrary $\coker \epsilon$ is torsion-free.
+We have an exact sequence
+\[
+ 0 \to G_1 \xrightarrow{\sigma_1} G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E \to E'.
+\]
+If $G_1 = 0$, Proposition~\ref{prop:injective-sigma-implies-fractal} implies the conclusion.
+So we assume $G_1 \ne 0$, and therefore we have $I(\sigma_1) = R$ by Proposition~\ref{prop:exact-sequence}.
+
+Let us localize the sequence at $\mm$, so $I(\sigma_1)_\mm = R_\mm$.
+Since $\rank (G_1)_\mm = \rank (\sigma_1)_\mm$, the matrix of $(\sigma_1)_\mm$ becomes
+\[
+ (\sigma_1)_\mm =
+\begin{pmatrix}
+ 0 \\
+ I
+\end{pmatrix}
+\]
+for some basis of $(G_1)_\mm$ and $G_\mm$. See the proof of 
+Lemma~\ref{lem:associated-maximal-localized-homology}.
+In other words, there is an invertible matrix $B \in \mathrm{GL}_{ t \times t}( R_\mm )$ such that
+\[
+ \sigma_\mm B = 
+\begin{pmatrix}
+ \tilde \sigma & 0
+\end{pmatrix}
+\]
+where $\tilde \sigma$ is the $2q \times t'$ submatrix.
+Note that the antipode map is a well-defined automorphism of $R_\mm$
+since $\overline \mm = \mm$.
+
+Since $\epsilon = \sigma^\dagger \lambda_q$, we have
+\begin{equation}
+ B^\dagger \epsilon_\mm = 
+\begin{pmatrix}
+ \tilde \sigma^\dagger \\
+ 0
+\end{pmatrix} \lambda_q
+=
+\begin{pmatrix}
+ \tilde \sigma^\dagger \lambda_q \\
+ 0
+\end{pmatrix} .
+\label{eq:tilde-epsilon-sigma-dagger}
+\end{equation}
+Therefore, we get a new exact sequence
+\[
+   0 \to G' \xrightarrow{\tilde \sigma} P_\mm \xrightarrow{\tilde \epsilon = \tilde \sigma^\dagger \lambda_q} R_\mm^{t'}
+\]
+where $G' = G_\mm / \im (\sigma_1)_\mm$ is a free $R_\mm$-module and $t' = \rank G'$.
+It is clear that 
+$\rank \tilde \epsilon = \rank \tilde \sigma$.
+Setting $S = R_\mm$ in Proposition~\ref{prop:injective-sigma-implies-fractal} implies that
+$\coker \tilde \epsilon$ is not torsion-free.
+But, since we are assuming $\coker \epsilon_m$ is torsion-free,
+$\coker \tilde \sigma^\dagger$ is also torsion-free by Eq.~\eqref{eq:tilde-epsilon-sigma-dagger}.
+This is a contradiction.
+\end{proof}
+
+
+
+\begin{theorem}
+For any three-dimensional, degenerate and exact code Hamiltonian,
+there exists a fractal generator.
+\label{thm:fractal-exists-in-3D}
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:coker-epsilon-resolution-length-D}, there exists an equivalent Hamiltonian
+such that
+\[
+  0 \to G_1 \xrightarrow{\sigma_1} G \xrightarrow{\sigma} P \xrightarrow{\epsilon=\sigma^\dagger \lambda_q} E
+\]
+is exact. The existence of a fractal generator is a property of the equivalence class
+by Proposition~\ref{prop:fractal-property-of-eq-class}.
+If we can find a coarse-graining such that $I(\sigma') \subseteq (x'-1,y'-1,z'-1)$,
+then Lemma~\ref{lem:char-ideal-with-support-on-origin-implies-fractal} shall imply the conclusion.
+
+
+Recall that $\epsilon_L$ and $\sigma_L$ denote the induced maps
+by factoring out $\bb_L = (x^L-1,y^L-1,z^L-1)$. See Sec.~\ref{sec:degeneracy}.
+There exists $L$ such that $K(L) = \ker \epsilon_L / \im \sigma_L \ne 0$ by 
+Corollary~\ref{cor:unit-characteristic-ideal-means-nondegeneracy}.
+Consider the coarse-grain by $x'=x^L,~ y'=y^L,~ z'=z^L$.
+Let $R' = F_2[x'^{\pm 1}, y'^{\pm 1}, z'^{\pm 1}]$ denote the coarse-grained base ring.
+If $K'(L')$ denotes $\ker \epsilon'_{L'} / \im \sigma'_{L'}$ as $R'$-module,
+we see that $K'(1) = K(L)$ as $\FF_2$-vector space.
+In particular, $K'(1) \ne 0$.
+Put $\mm = (x'-1,y'-1,z'-1) = \bb'_1 \subseteq R'$.
+Then, $K'(1)_{\mm} = K'(1) \ne 0$.
+By Lemma~\ref{lem:associated-maximal-localized-homology},
+we have $I(\sigma') \subseteq \mm$.
+\end{proof}
+
+Yoshida argued that when the ground-state degeneracy is constant independent of system size
+there exists a string operator~\cite{Yoshida2011feasibility}.
+To prove it, we need an algebraic fact.
+\begin{prop}
+Let $M$ be a finitely presented $R$-module, and $T$ be its torsion submodule.
+Let $I$ be the first non-vanishing Fitting ideal of $M$.
+Then,
+\[
+ \rad I \subseteq \rad \ann T .
+\]
+\label{prop:support-torsion-fitting-ideal}
+\end{prop}
+\begin{proof}
+Let $\pp$ be any prime ideal of $R$ such that $I \not\subseteq \pp$.
+By the calculation of the proof of Lemma~\ref{lem:associated-maximal-localized-homology},
+$M_\pp$ is a free $R_\pp$-module, and hence is torsion-free.
+Since $T$ is embedded in $M$, it follows that $T_\pp = 0$, or equivalently, $\ann T \not\subseteq \pp$.
+Since the radical of an ideal is the intersection of all primes containing it~\cite[Proposition 1.8]{AtiyahMacDonald},
+the claim is proved.
+\end{proof}
+
+\begin{cor}
+Let $T$ be the set of all point-like charges modulo locally created ones
+of a degenerate and exact code Hamiltonian in three dimensions
+of characteristic dimension zero.
+Then, one can coarse-grain the lattice such that
+\[
+ \ann T = (x-1,y-1,z-1) .
+\]
+\label{cor:annT-3d-characteristic-dimension-0}
+\end{cor}
+\noindent
+The corollary says that any point-like charge is attached to strings and is able to move freely through the lattice.
+The condition is implied by Lemma~\ref{lem:k-growing-sequence-L} 
+if the ground-state degeneracy is constant independent of the system size
+when defined on a periodic lattice.
+%%%%%%
+\begin{proof}
+By Theorem~\ref{thm:charge-equals-torsion}, $T$ is the torsion submodule of $\coker \epsilon$.
+By Theorem~\ref{thm:fractal-exists-in-3D}, $T$ is nonzero.
+Setting $M = \coker \epsilon$ in Proposition~\ref{prop:support-torsion-fitting-ideal},
+the associated ideal $I_q(\epsilon)$ is the first non-vanishing Fitting ideal of $M$.
+Since $\dim R / I_q(\epsilon) = 0$ by assumption, we have $\dim R / \ann T = 0$.
+Lemma~\ref{lem:zero-dim-ideal-over-finite-field} implies the claim.
+\end{proof}
+
+\begin{example}[Toric codes in higher dimensions]
+\label{eg:highD-toric-codes}
+Any higher-dimensional toric code can be treated similarly as for the two-dimensional case.
+In three dimensions one associates each site with $q=3$ qubits.
+It is easily checked that
+\[
+ \sigma_\text{3D-toric} = 
+\begin{pmatrix}
+1 + \bar x & 0   & 0      & 0    \\
+1 + \bar y & 0   & 0      & 0    \\
+1 + \bar z & 0   & 0      & 0    \\
+\hline
+0          & 0   & 1+z    & 1+y  \\
+0          & 1+z & 0      & 1+x  \\
+0          & 1+y & 1+x    & 0    \\
+\end{pmatrix} .
+\]
+
+Both two- and three-dimensional toric codes have the property 
+that $\coker \epsilon$ is not torsion-free.
+However, in two dimensions any element of $E$ is a physical charge,
+whereas in three dimensions $E$ contains physically irrelevant elements.
+Note that in both cases, $1+x$ and $1+y$ are fractal generators.
+Being consisted of two terms, they generate the `string operators.'
+
+
+The 4D toric code~\cite{DennisKitaevLandahlEtAl2002Topological}
+has $\sigma_x$-type interaction and $\sigma_z$-type interaction.
+Originally the qubits are placed on every plaquette of 4D hypercubic lattice;
+instead we place $q=6$ qubits on each site.
+The generating map $\sigma$ for the stabilizer module is written as
+a $12 \times 8$-matrix ($t=8$)
+\[
+\sigma_\text{4D-toric} =
+\begin{pmatrix}
+ \sigma_X & 0 \\
+ 0        & \sigma_Z
+\end{pmatrix}
+\]
+where
+\begin{align*}
+ \sigma_X &= 
+\begin{pmatrix}
+1+y & 1+x & 0   & 0   \\
+1+w & 0   & 0   & 1+x \\
+1+z & 0   & 1+x & 0   \\
+0   & 1+z & 1+y & 0   \\
+0   & 1+w & 0   & 1+y \\
+0   & 0   & 1+w & 1+z
+\end{pmatrix}, \\
+\bar \sigma_Z &=
+\begin{pmatrix}
+0   & 0   & 1+w & 1+z \\
+0   & 1+z & 1+y & 0   \\
+0   & 1+w & 0   & 1+y \\
+1+w & 0   & 0   & 1+x \\
+1+z & 0   & 1+x & 0   \\
+1+y & 1+x & 0   & 0
+\end{pmatrix}.
+\end{align*}
+Note the bar on $\sigma_Z$.
+
+Theorem~\ref{thm:fractal-exists-in-3D} does not prevent
+the absence of a fractal generator in four or higher dimensions.
+Indeed, this 4D toric code lacks any fractal generator.
+To see this, it is enough to consider $\sigma_Z$
+since $\overline{\coker \sigma_X^\dagger} \cong \coker \sigma_Z^\dagger$ as $R_4$-modules,
+where $R_4 = \FF_2[x^{\pm 1},y^{\pm 1},z^{\pm 1},w^{\pm 1}]$.
+If
+\[
+\epsilon_1 =
+ \begin{pmatrix}
+1+x & 1+y & 1+z & 1+w
+ \end{pmatrix} : R_4^4 \to R_4,
+\]
+then
+\[
+ R_4^6 \xrightarrow{\sigma_Z^\dagger} R_4^4 \xrightarrow{\epsilon_1} R_4
+\]
+is exact.
+(A direct way to check it is to compute S-polynomials~\cite[Chapter~15]{Eisenbud}
+of the entries of $\epsilon_1$,
+and to verify that they all are in the rows of $\sigma_Z$.)
+Hence, $\coker \sigma_Z^\dagger$ is torsion-free by Proposition~\ref{prop:nofractal-torsionless}.
+
+
+For the toric codes in any dimensions, $\sigma$ has nonzero entries of form $x_i-1$.
+The radical of the associated ideal $I(\sigma)$ is equal to $\mm = (x_1-1,\ldots, x_D-1)$.
+So $\mm$ is the only maximal ideal of $R$ that contains $I(\sigma)$.
+The characteristic dimension is zero.
+If $2 \nmid L$, since $(\bb_L)_{\mm} = \mm_{\mm}$,
+$(\sigma_L)_\mm$ is a zero matrix.
+Any other localization of $\sigma_L$ does not contribute to $\dim_{\FF_2} K(L)$
+by Lemma~\ref{lem:associated-maximal-localized-homology}.
+Therefore, if $2 \nmid L$, $K(L)$ has constant vector space dimension independent of $L$.
+
+There is a more direct way to compute the $R$-module $K(L)$.
+For the three-dimensional case, consider a free resolution of $R_3/\mm$,
+where $R_3 = \FF_2[x^{\pm 1},y^{\pm 1},z^{\pm 1}]$,
+as
+\[
+ 0 \to 
+R_3^1 
+\xrightarrow{
+\partial_3 = 
+\begin{pmatrix} a \\ b \\ c \end{pmatrix}
+}
+R_3^3
+\xrightarrow{  
+\partial_2 =
+\begin{pmatrix}
+ 0 & -c & b  \\
+ c & 0 & -a  \\
+ -b & a & 0   
+\end{pmatrix}
+}
+R_3^3
+\xrightarrow{
+\partial_1 =
+\begin{pmatrix}
+a & b  & c
+\end{pmatrix}
+}
+R_3^1
+\to
+R_3/\mm
+\to 0
+\]
+where $a=x-1$, $b=y-1$, and $c=z-1$.
+We see that
+\begin{equation}
+ \sigma_\text{3D-toric} = \bar \partial_3 \oplus \partial_2 ,
+ \quad \text{and} \quad
+ \epsilon_\text{3D-toric} = \bar \partial_2 \oplus \partial_1  .
+\label{eq:resolution-F}
+\end{equation}
+Therefore,
+\begin{align*}
+ K(L)_\text{3D-toric} \cong \Tor_1(\coker \epsilon_\text{3D-toric},R_3/\bb_L) 
+&\cong \Tor_2( \overline{ R_3/\mm}, R_3/\bb_L ) \oplus \Tor_1( R_3/\mm, R_3/\bb_L ).
+\end{align*}
+Using $\Tor(M,N) \cong \Tor(N,M)$ and the fact that a resolution of $R_3/\bb_L$ is Eq.~\eqref{eq:resolution-F}
+with $a,b,c$ replaced by $x^L-1,y^L-1,z^L-1$, respectively,
+we have 
+\[
+ \Tor_i(R_3/\mm,R_3/\bb_L) \cong \Tor_i(R_3/\mm,R_3/\mm) \cong (\FF_2)^{_3 C _i}
+\]
+for each $0 \le i \le 3$.
+Therefore, $K(L)_\text{3D-toric} \cong (\FF_2)^{_3 C _2} \oplus (\FF_2)^{_3 C _1} \cong (\FF_2)^6$.
+The four-dimensional case is similar:
+\[
+ K(L)_\text{4D-toric} \cong \Tor_2 (R_4/\mm, R_4/\bb_L) \oplus \Tor_2 (\overline{R_4/\mm}, R_4/\bb_L) \cong \left( (\FF_2)^{_4 C _2} \right)^2 .
+\]
+The calculation here is closely related
+to the cellular homology interpretation of toric codes.
+\hfill $\Diamond$
+\end{example} % n dimensional toric codes
+
+\begin{example}[Chamon model~\cite{Chamon2005Quantum,BravyiLeemhuisTerhal2011Topological}]
+This three-dimensional model consists of single type of term in the Hamiltonian.
+The generating map is
+\[
+\sigma_\text{Chamon} =
+\begin{pmatrix}
+ x+\bar x + y + \bar y \\
+\hline
+ z+\bar z + y + \bar y
+\end{pmatrix}.
+\]
+Since
+\[
+ \sigma^\dagger \lambda_1
+\begin{pmatrix}
+0 \\ 
+1
+\end{pmatrix}
+=
+(1+ x \bar y)
+\begin{pmatrix}
+ 0 \\
+\bar x + y
+\end{pmatrix},
+\]
+$1+x \bar y$ is a fractal generator.
+Consisted of two terms, it generates a string operator.
+The degeneracy can be calculated using Corollary~\ref{cor:k-formulas}.
+Assume all the three linear dimensions of the system are even.
+Put
+\[
+ S = R / (x + \bar x + y + \bar y, z + \bar z + y + \bar y, x^{2l} -1, y^{2m}-1, z^{2n} -1 ).
+\]
+Then, the $\log_2$ of the degeneracy is $k = \dim_{\FF_2} S$.
+In $S$, we have $x + \bar x = y + \bar y = z + \bar z$.
+Since $S$ has characteristic 2, it holds that
+\[
+ w^{p+1} + w^{-p-1} = (w + w^{-1})(w^p + w^{p-2} + \cdots + w^{-p})
+\]
+for $p \ge 1$ and $w = x,y,z$. By induction on $p$, we see that $w^{p} + w^{-p}$
+is a polynomial in $w + w^{-1}$. Therefore,
+\[
+ x^p + \bar x ^p = y^p + \bar y^p = z^p + \bar z^p
+\]
+for all $p \ge 1$ in $S$.
+Put $g = \gcd(l,m,n)$.
+Since $x^l + x^{-l} = y^m + y^{-m} = z^n + z^{-n} = 0$ in $S$,
+we have $x^g + x^{-g} = y^g + y^{-g} = z^g + z^{-g} = 0$.
+
+Applying Buchberger's criterion with respect to the lexicographic order in which $x \prec y \prec z$,
+we see that
+\[
+ S = \FF_2[x,y,z] / (z^2 + zx^{2l-1}+ zx+1, y^2 + yx^{2l-1}+yx+1, x^{2g}+1)
+\]
+is expressed with a Gr\"obner basis. Therefore,
+\[
+ k = \dim_{\FF_2} S = 8 \gcd(l,m,n).
+\]
+\hfill $\Diamond$
+\label{eg:ChamonModel}
+\end{example}
+
+\begin{example}[Levin-Wen fermion model~\cite{LevinWen2003Fermions}]
+\label{eg:Levin-Wen-fermion-model}
+The 3-dimensional model is originally defined 
+in terms of Hermitian bosonic operators $\{ \gamma^{ab} \}_{a,b=1,\ldots,6}$,
+squaring to identity if nonzero,
+such that $\gamma^{ab}=-\gamma^{ba}$,
+$[\gamma^{ab},\gamma^{cd}]=0$ if $a,b,c,d$ are distinct,
+and
+$\gamma^{ab}\gamma^{bc}=i\gamma^{ac}$ if $a \neq c$.
+An irreducible representation is given by Pauli matrices acting on $\mathbb{C}^2 \otimes \mathbb{C}^2$,
+and their commuting Hamiltonian fits nicely into our formalism.
+The model was proposed to demonstrate that the point-like excitations may actually be fermions.
+\begin{align*}
+ \sigma_\text{Levin-Wen} &=
+\begin{pmatrix}
+ 1+z & 1+z & x+y \\
+ y+y z & x+x z & x+y \\
+ y+z & 1+x & 1+x \\
+ y+z & z+x z & y+x y
+\end{pmatrix} \\
+ \epsilon_\text{Levin-Wen} &=
+\begin{pmatrix}
+ y+z & y+z & y+y z & 1+z \\
+ z+x z & 1+x & x+x z & 1+z \\
+ y+x y & 1+x & x+y & x+y
+\end{pmatrix}
+\end{align*}
+Here we multiplied the rows of $\epsilon_\text{Levin-Wen}$ by suitable monomials to avoid negative exponents.
+One readily verifies that $\ker \epsilon_\text{Levin-Wen} = \im \sigma_\text{Levin-Wen}$.
+The model is symmetric under the spatial rotation by $\pi/3$ about $(1,1,1)$ axis.
+Indeed, if one changes the variables as $x \mapsto y \mapsto z \mapsto x$ and apply a symplectic transformation
+\begin{equation}
+ \omega = 
+ \begin{pmatrix}
+ 1 & 0 & 1 & 0 \\
+ 0 & 1 & 0 & 1 \\
+ 1 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 0
+ \end{pmatrix} :
+ \begin{cases}
+   XI \mapsto YI \\
+   IX \mapsto IY \\
+   ZI \mapsto XI \\
+   IZ \mapsto IX
+\end{cases} ,
+\label{eq:symplectic-Levin-Wen}
+\end{equation}
+then $\sigma_\text{Levin-Wen}$ remains the same up to permutations of columns.
+
+
+The torsion submodule $T$ of $C = \coker \epsilon_\text{Levin-Wen}$,
+which describes the point-like charges according to Theorem~\ref{thm:charge-equals-torsion},
+is
+\begin{equation}
+ T = R \cdot \begin{pmatrix} 1+y \\ 1+x \\ 0 \end{pmatrix} .
+\label{eq:Levin-Wen-torsion}
+\end{equation}
+In order to see this, first shift the variables $a = x+1, b=y+1, c=z+1$.
+Then, $\epsilon_\text{Levin-Wen}$ becomes
+\[
+\epsilon_\text{Levin-Wen} =
+\begin{pmatrix}
+ b+c & b+c & c+b c & c \\
+ a+a c & a & c+a c & c \\
+ a+a b & a & a+b & a+b
+\end{pmatrix}
+ =: \phi
+\]
+We will verify that $N = C / T$ is torsion-free.
+A presentation of $N = \coker \phi'$ is obtained by joining the generator of $T$ to the matrix $\phi$.
+\[
+ \phi' = 
+\begin{pmatrix}
+ b+c & b+c & c+b c & c & b \\
+ a+a c & a & c+a c & c & a \\
+ a+a b & a & a+b & a+b & 0
+\end{pmatrix}
+\]
+Column operations of $\phi'$ give
+\[
+ \phi' \cong
+\begin{pmatrix}
+ 0 & c & b & 0 & 0 \\
+ c & 0 & a & 0 & 0 \\
+ b & a & 0 & 0 & 0
+\end{pmatrix} = 
+\begin{pmatrix}
+ \partial_2 & 0 & 0
+\end{pmatrix}
+\]
+where $\partial_2$ is from Eq.~\eqref{eq:resolution-F}.
+Therefore, $\phi'$ generates the kernel of $\partial_1$,
+and by Proposition~\ref{prop:nofractal-torsionless}, $N = \coker \phi'= \coker \partial_2$ is torsion-free.
+
+The torsion submodule $T$ of $C = \coker \phi$ is annihilated by $a$, $b$, or $c$
+(See Corollary~\ref{cor:annT-3d-characteristic-dimension-0}):
+\[
+ a \begin{pmatrix} b \\ a \\ 0 \end{pmatrix} =\phi \begin{pmatrix} 1 \\ 1+a \\ 0 \\ a \end{pmatrix}, \quad
+ b \begin{pmatrix} b \\ a \\ 0 \end{pmatrix} =\phi \begin{pmatrix} 1 \\ 1+b \\ 1 \\ 1 \end{pmatrix}, \quad
+ c \begin{pmatrix} b \\ a \\ 0 \end{pmatrix} =\phi \begin{pmatrix} 0 \\ 0 \\ 1 \\ 1 \end{pmatrix}.
+\]
+Therefore, $T$ is isomorphic to $\coker \partial_1 \cong \FF_2$ of Eq.~\eqref{eq:resolution-F}.
+The arguments $h_x,h_y,h_z$ of $\phi$ can be thought of as \emph{hopping} operators for the charge.
+According to \cite{LevinWen2003Fermions}, one can check that the charge is actually a fermion
+from the commutation values among, for example, $h_x,h_y,\bar y h_y$.
+
+
+Consider a short exact sequence
+\[
+ 0 \to T \to C \to N \to 0 .
+\]
+The corresponding sequence for 3D toric code splits,
+i.e., $C \cong T \oplus N$, while this does not.
+It implies that this model is not the same as the 3D toric code.
+
+Now we can compute the ground-state degeneracy, or $\dim_{\FF_2} K(L)$.
+Tensoring the boundary condition
+\[
+B = R/\bb_L = R/(x^L-1,y^L-1,z^L-1)
+\]
+to the short exact sequence,
+we have a long exact sequence
+\[
+ \cdots \to
+\Tor_1(T,B) \xrightarrow{\delta'} \Tor_1( C, B) \xrightarrow{\delta} \Tor_1(N,B) 
+\to T \otimes B \to C \otimes B \to N \otimes B \to 0 .
+\]
+Hence, $K(L) \cong \Tor_1( C,B)$ has vector space dimension $\dim_{\FF_2} \im \delta + \dim_{\FF_2} \ker \delta$.
+Since the sequence is exact, $\dim_{\FF_2} \ker \delta = \dim_{\FF_2} \im \delta'$.
+As we have seen in Example~\ref{eg:highD-toric-codes},
+\begin{align*}
+ \Tor_1(T,B) & \cong \Tor_1(R/\mm,B) \cong (\FF_2)^3 , \quad \text{and} \\
+ \Tor_1(N,B) & \cong \Tor_2(R/\mm,B) \cong (\FF_2)^3 .
+\end{align*}
+It follows that $\dim_{\FF_2} K(L) \le \dim_{\FF_2} \Tor_1(N,B) + \dim_{\FF_2} \Tor_1(T,B) = 6$.
+
+It is routine to verify that $\bb_4 \subseteq I_2(\phi) \subseteq \mm := (x+1,y+1,z+1)$.
+Recall the decomposition $K(L) = \bigoplus_\pp K(L)_\pp$ where $\pp$ runs over all maximal ideals of $R/\bb_L$.
+Due to Lemma~\ref{lem:associated-maximal-localized-homology}, this decomposition consists of only one summand $K(L)_\mm$.
+When $L$ is odd, since $(\bb_L)_\mm = \mm_\mm$, we know $K(L)_\mm = K(1)_\mm$.
+Since $\phi \mapsto 0$ under $a=b=c=0$, we see $\dim_{\FF_2} K(1) = 4$.
+The logical operators in this case are
+\[
+ \begin{pmatrix}  0 \\ 0 \\ \widehat z  \\ \widehat z  \end{pmatrix}
+\smile
+ \widehat x \cdot \widehat{y \bar z}
+ \begin{pmatrix}  0 \\ 1 \\ 0 \\ 0 \end{pmatrix}
+%
+ \quad ; \quad
+%
+ \begin{pmatrix}  \widehat x \\ \widehat x \\ 0 \\ 0 \end{pmatrix}
+\smile
+ \widehat z \cdot \widehat{x y} 
+ \begin{pmatrix}  1 \\ 1 \\ 1 \\ 0 \end{pmatrix}
+\]
+where $\widehat \mu = \sum_{n=0}^{L-1} \mu^n$ so $\mu \cdot \widehat \mu = \widehat \mu$,
+and symplectic pairs are tied.
+The left elements are string-like, and the right surface-like.
+% Note that the string and surface are not orthogonal.
+
+When $L$ is even, the following are $\FF_2$-independent elements of $K(L)$.
+As there are 6 in total, the largest possible number, we conclude that $K(L)$ is 6-dimensional,
+i.e., the number of encoded qubits is 3 when linear dimensions are even.
+\[
+ \begin{pmatrix}  0 \\ 0 \\ \widehat z \\ \widehat z \end{pmatrix}
+\smile
+ \widehat x ' \widehat y '
+ \begin{pmatrix}  1+y \\ x+xy \\ 0 \\ 1+x+y+xy \end{pmatrix}
+%
+ ;
+%
+ \begin{pmatrix}  \widehat x \\ \widehat x \\ 0 \\ 0 \end{pmatrix}
+\smile
+ \widehat y ' \widehat z '
+ \begin{pmatrix}  1+z \\ 1+z \\ 1+z \\ y+yz \end{pmatrix}
+%
+  ;
+%
+ \begin{pmatrix}  \widehat y \\ \widehat y \\ \widehat y \\ \widehat y \end{pmatrix}
+\smile 
+ \widehat z ' \widehat x '
+ \begin{pmatrix}  0 \\ 1+x+z+xz \\ 1+x \\ 1+x \end{pmatrix}
+\]
+where $\widehat \mu ' = \sum_{i=0}^{L/2-1} \mu^{2i}$ so $(1+\mu)\widehat \mu ' = \widehat \mu$.
+The pairs are transformed cyclically by $x \mapsto y \mapsto z \mapsto x$
+together with the symplectic transformation $\omega$ of Eq.~\eqref{eq:symplectic-Levin-Wen}.
+%
+\hfill $\Diamond$
+\end{example}
+
+
+\section{Discussion}
+\label{sec:lowD-discussion}
+
+There are many natural questions left unanswered.
+Perhaps, it would be the most interesting to answer how much 
+the associated ideal $I(\sigma)$
+determines about the Hamiltonian.
+Note that the very algebraic set defined by the associated ideal
+is not invariant under coarse-graining.
+For instance, in the characteristic dimension zero case,
+the algebraic set can be a several points in the affine space,
+but becomes a single point under a suitable coarse-graining.
+However, the geometry of the algebraic set seems to be crucial
+to prove, for example, ``no-strings rule.''
+See Chapter~\ref{chap:cubic-code}.
+
+
+It is interesting on its own to prove or disprove
+that the elementary symplectic transformations 
+generate the whole symplectic transformation group.
+In the zero-dimensional case where $\Lambda$ is the trivial group,
+it is true as we have already seen in 
+Proposition~\ref{prop:elem-sym-transformation-generates-whole-BlockCodeCase}.
+The one-dimensional case is also true 
+because it is implied by the computation in the proof of Theorem~\ref{thm:1D-classification}.
+A classical problem answered affirmatively by Suslin~\cite{Suslin1977Stability}
+is that any sufficiently large invertible matrix over a polynomial ring
+is a finite product of elementary matrices such as row operations and scalar multiplications.
+Later, an algorithmic proof is given by Park and Woodburn~\cite{ParkWoodburn1995Algorithmic}.
+A similar problem under a confusingly similar name `symplectic group' over polynomial rings
+is solved by Grunewald~{\em et al.}~\cite{GrunewaldMennickeVaserstein1991SymplecticGroup},
+who defined the `symplectic group' as
+$ \left\{ S \in \mathrm{Mat}\left(n, \FF[x_1,\ldots,x_n]\right) ~\middle| ~ S^T \lambda S = \lambda \right\}$
+where $T$ is the transpose.
+Kopeyko~\cite{Kopeyko1999Symplectic} generalized it to include Laurent polynomials,
+but still the `symplectic group' is different from ours
+since the antipode map is absent from the definition
+\[
+ \left\{ S \in \mathrm{Mat}\left(n, \FF[x_1^{\pm 1},\ldots,x_n^{\pm 1}]\right) ~\middle| ~ S^T \lambda S = \lambda \right\} .
+\]
+
+The characteristic dimension is not proven to be invariant under coarse-graining.
+It suffices to have an upper bound on $\dim_{\FF_2} K(L)$ in Corollary~\ref{cor:upper-bound-k}.
+without the condition that $2 \nmid L$.
+A closely related object is the Hilbert function.
+Given a graded module $M = \bigoplus_{s=0}^{\infty} M_s$ 
+over a polynomial ring with coefficients in a field $\FF$,
+the Hilbert function $f_M$ is a numerical function defined by $f_M(s) = \dim_\FF M_s$.
+Since $K(L) = \dim_{\FF_2} \Tor_1(\coker \epsilon, R / \bb_L)$,
+the Hilbert function might be useful if we could make $\coker \epsilon$ graded.
+A technical difficulty would be that the ideal $\bb_L=(x_1^L-1,\ldots,x_D^L-1)$ 
+is not a power of $\mm=(x_1 - 1,\ldots,x_D-1)$.
+See \cite[Chapter~12]{Eisenbud} and \cite{IyengarPuthenpurakal2007HilbertSamuelFunctions}.
+
+Lastly, an important problem is to give a criterion to a module $M$
+that can be realized as $\coker \sigma^\dagger$
+for an exact code Hamiltonian described by $\sigma$.
+In the two-dimensional case, we know the answer ---
+$\ann M = (x-1,y-1)$ by Theorem~\ref{thm:structure-2d-ann-coker-epsilon}.
+%(include?) The conjecture in Section~\ref{sec:extracting-toric-codes} speculates the uniqueness of resolutions of $M$.

@@ -6,6 +6,17 @@ source manifests for that.
 
 ## Current Frontier
 
+**Derivative constraints on residue Weyl elements:** `AQM-88-DERIVATIVE-CONSTRAINTS-RESIDUE-WEYL`
+is the active corrected shard for the user's coarse dynamics direction.  The
+new convention is `CONVENTIONS.md` `(aw)`: a named regular coordinate family
+`F <= A` and derivative predicate `P` produce a selected label subset
+`C_P(S,F) <= E_S`, hence selected elements `pi^{-1}(C_P(S,F))` in the
+residue Weyl-Heisenberg group.  The shard's examples show that
+`Z/6Z` gives qubit-factor tensor qutrit-factor Weyl kinematics with no
+derivative rejection, dual numbers have derivative data but no reduced
+residue rejection, and `F_3[t]/(t^2(t-1))` has genuine shallow-depth
+selection/rejection that disappears after enlarging the map family.
+
 **New user-directed meta-plan frontier:** the quantum-system association
 programme is scaffolded in
 `docs/quantum_system_associations/PLAN.md` and

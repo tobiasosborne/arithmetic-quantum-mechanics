@@ -1,0 +1,2103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% alg-theory.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If an additive code is defined on a lattice with periodic boundary conditions
+by a translationally invariant set $\{g_i\}$ of local generators,
+then we can define a \emph{code Hamiltonian}
+\[
+ H = - \sum_i g_i
+\]
+whose ground space is identified with the code space.
+Prototypical is the toric code model~\cite{Kitaev2003Fault-tolerant}.
+If the stabilizer generators are given as translations of a finite collection of Pauli operators,
+we have a family of code Hamiltonians parameterized by the system size or boundary conditions.
+In this chapter we present a framework to study such translationally invariant code Hamiltonians.
+We will be particularly interested in the \emph{phases of matter} represented by the code Hamiltonians.
+Hence, we should allow local unitary transformations and deformation of Hamiltonians 
+as long as the deformation does not close the energy gap between the ground and first excited state,
+and we study properties of Hamiltonians that are invariant under these transformations.
+
+If one does not make use of the translation structure, 
+but insists on the use of usual symplectic vector space description,
+then one should deal with infinitely many qubits and the generating matrix of infinite size.
+However, the translation symmetry tells us 
+that there is only a finite amount of data describing the family of code Hamiltonians.
+It is certainly uneconomical to study a general infinite matrix.
+We must look for a succinct description.
+The starting observation is that translation symmetry is mostly well expressed
+with the group algebra of the underlying translation group.
+Fortunately, the lattice is an abelian group isomorphic to $\ZZ^D$ for some $D \ge 1$;
+the group algebra is a commutative ring, or actually, a Laurent polynomial ring.
+We will see that, inasmuch as the additive codes are described by null spaces in symplectic vector spaces,
+the translation-invariant code Hamiltonians have corresponding algebraic descriptions
+by certain submodules of finitely generated free modules.
+
+
+
+We build an effective dictionary between lattice codes and commutative algebra in Section~\ref{sec:Pauli-space-on-group}.
+The equivalence of phases of matter is re-expressed in an algebraic form in Section~\ref{sec:equivalent-hamiltonians}.
+Perhaps the most important entry in this dictionary is that
+the topological order condition can be expressed by 
+the vanishing homology of a certain chain complex, presented in Section~\ref{sec:topological-order}.
+As we will see in the next chapter,
+the physical dimension is essentially the length of the chain complex,
+which is a reminiscence of Hilbert syzygy theorem.
+The ground-state subspace can be analyzed by studying an algebraic set defined by the chain complex.
+In particular, the degeneracy, or the number of encoded qubits, can be approximated by counting points in the algebraic set,
+for which some bounds are given in Section~\ref{sec:degeneracy}.
+The last section~\ref{sec:fractal-operators} introduces fractal operators and 
+establishes a precise algebraic description of topological charges in connection to the fractal operators.
+Our discussion assumes some familiarity with commutative algebra.
+In Appendix~\ref{app:algebra}, we include basic materials relevant to analysis of codes.
+
+Note that in the classical coding theory the use of multivariate polynomial 
+in multidimensional cyclic codes at least dates back to Imai~\cite{Imai1977TDC}.
+Imai realized the importance of zero-locus of defining polynomials of the code,
+which had been emphasized in the one-dimensional cyclic code~\cite{MacWilliamsSloane1977}.
+See also \cite{SaintsHeegard1995MultidimensionalCyclicCodes,GueneriOezbudak2008} and references therein.
+In the classical coding theory,
+each lattice sites carries one bit $\{0,1\}$,
+whereas in our quantum codes each lattice sites may have several qubits.
+For this generalization	 we use modules instead of ideals.
+Moreover, quantum additive codes require the nullity equation
+$ \sigma^T \lambda \sigma = 0$.
+(See Section~\ref{sec:additive-stabilizer-codes}.)
+We decompose this equation into two parts $\epsilon = \sigma^T\lambda$ and $\sigma$,
+and view them as connecting maps of a chain complex
+$ G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E $.
+The chain complex is relevant only to quantum codes.
+
+We will treat code Hamiltonians on sets of qubits, two-dimensional (two-level) local Hilbert spaces.
+However, our language naturally allows an extension to prime-dimensional \emph{qudits}.
+This is because we only use the fact that the set of coefficients $\FF_2$ is a field.
+The generalization is achieved simply by replacing the ground field $\FF_2$ 
+with $\FF_p$ for any prime number $p$.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{c|l}
+\hline
+$\FF_2$ & binary field $\{0,1\}$\\
+$D$ & spatial dimension \\
+$R$ & $\FF_2[x_1, x_1^{-1}, \ldots, x_D, x_D^{-1}]$ \\
+$\bb_L$ & ideal $(x_1^L-1,\ldots,x_D^L -1)$\\
+$q$ & number of qubits per site \\
+$t$ & number of interaction types \\
+$G$ & free $R$-module of the interaction labels (rank $t$) \\
+$P$ & free $R$-module of Pauli operators (rank $2q$)\\
+$E$ & free $R$-module of excitations (rank $t$)\\
+$\sigma$ & $G \to P$, generating matrix or map for the stabilizer module \\
+$\epsilon$ & $P \to E$, generating matrix or map for excitations \\
+$r \mapsto \bar r$ & antipode map of the group algebra $R$.\\
+$\dagger$ & transpose followed by antipode map \\
+$\lambda_q$ & anti-symmetric $2q \times 2q$ matrix $\begin{pmatrix} 0 & \id \\ -\id & 0 \end{pmatrix}$ \\
+\hline
+\end{tabular}
+\caption{Reserved symbols in Chapter~\ref{chap:alg-theory}. Any ring in this thesis is commutative with 1.}
+\end{table}
+
+\section{Algebraic structure of code Hamiltonians}
+
+\subsection{Pauli space on a group}
+\label{sec:Pauli-space-on-group}
+
+Let $\Lambda$ be the index set of all qubits,
+and suppose now that $\Lambda$ itself is an abelian group.
+There is a natural action of $\Lambda$ on the Pauli group modulo phase factors
+induced from the group action of $\Lambda$ on itself by multiplication.
+For example, if $\Lambda = \mathbb{Z}$,
+the action of $\Lambda$ is the translation on the one-dimensional chain of qubits.
+If $R=\FF_2[\Lambda]$ is the group algebra with the multiplicative identity denoted by $1$,
+the Pauli group modulo phase factors acquires a structure of an $R$-module.
+We shall call it the {\em Pauli module}.
+The Pauli module is free and has rank 2.
+
+Let $r \mapsto \bar r$ be the antipode map of $R$, 
+i.e., the $\FF_2$-linear map into itself 
+such that each group element is mapped to its inverse.
+Since $\Lambda$ is abelian, the antipode map is an algebra-automorphism.
+Let the coefficient of $a \in R$ at $g \in \Lambda$ be denoted by $a_g$.
+Hence, $a = \sum_{g \in \Lambda} a_g g$ for any $a \in R$.
+One may write $a_g = (a \bar g)_1$.
+
+Define
+\[
+ \tr(a) = a_1
+\]
+for any $a \in R$.
+\begin{prop}
+[\cite{CalderbankRainsShorEtAl1997Quantum}]
+Let $(a,b), (c,d) \in R^2$ be two vectors representing Pauli operators $O_1, O_2$ up to phase factors:
+\begin{align*}
+ O_1 &= \left( \bigotimes_{g \in \Lambda} (\sigma_x^{(g)})^{a_g} \right) 
+       \left( \bigotimes_{g \in \Lambda} (\sigma_z^{(g)})^{b_g} \right) ,
+\\
+ O_2 &= \left( \bigotimes_{g \in \Lambda} (\sigma_x^{(g)})^{c_g} \right) 
+       \left( \bigotimes_{g \in \Lambda} (\sigma_z^{(g)})^{d_g} \right) 
+\end{align*}
+where $\sigma^{(g)}$ denotes the single-qubit Pauli operator at $g \in \Lambda$.
+Then, $O_1$ and $O_2$ commute if and only if  
+\[
+ \tr \left(
+\begin{pmatrix} \bar a & \bar b \end{pmatrix}
+\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+\begin{pmatrix} c \\ d \end{pmatrix}
+\right) = 0 .
+\]
+\label{prop:trace-formula-commutation-value}
+\end{prop}
+\begin{proof}
+The commutation value of $(\sigma_x^{(g)})^{n} (\sigma_z^{(g)})^{m}$
+and $(\sigma_x^{(g)})^{n'} (\sigma_z^{(g)})^{m'}$
+is $nm' - mn' \in \FF_2$.
+Viewed as pairs of group algebra elements,
+$(\sigma_x^{(g)})^{n} (\sigma_z^{(g)})^{m}$
+and $(\sigma_x^{(g)})^{n'} (\sigma_z^{(g)})^{m'}$
+are $(n g, m g)$ and $(n' g, m' g)$, respectively.
+We see that
+\[
+ nm' - mn' =  \tr \left(
+\begin{pmatrix} n g^{-1} &  m g^{-1} \end{pmatrix}
+\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+\begin{pmatrix} n' g \\ m' g \end{pmatrix}
+\right) .
+\]
+Since any Pauli operator is a finite product of these,
+the result follows by linearity.
+\end{proof}
+
+We wish to characterize a $\FF_2$-subspace $S$ of the Pauli module
+invariant under the action of $\Lambda$, i.e., a submodule,
+on which the commutation value is always zero.
+As we will see in the next subsection,
+this particular subspace yields a local Hamiltonian whose energy spectrum is exactly solvable,
+which is the main object of this thesis.
+%
+Let $(a,b)$ be an element of $S \subseteq R^2 = (\FF_2[\Lambda])^2$.
+For any $r \in R$, $(ra, rb)$ must be a member of $S$.
+Demanding that the symplectic form on $S$ vanish,
+by Proposition~\ref{prop:trace-formula-commutation-value} we have
+\[
+ \tr (ra \bar b - rb \bar a) = 0 .
+\]
+Since $r$ was arbitrary, we must have $a \bar b - b \bar a = 0$.%
+%
+\footnote{{A symmetric bilinear form $ \langle r, s \rangle = \tr(r \bar{s}) $ on $R$ is nondegenerate.}}
+%
+Let us denote $\begin{pmatrix}\bar a & \bar b \end{pmatrix}$ 
+as $\begin{pmatrix} a \\ b \end{pmatrix}^\dagger$,
+and write any element of $R^2$ as a $2 \times 1$ matrix.
+We conclude that $S$ is a submodule of $R^2$ over $R$ generated by $s_1, \ldots, s_t$
+such that any commutation value always vanishes, if and only if
+\[
+ s_i^\dagger \lambda_1 s_j = 0
+\]
+for all $i,j = 1,\ldots,t$.
+
+The requirement that $\Lambda$ be a group might be too restrictive.
+One may have a coarse group structure on $\Lambda$, the index set of all qubits.
+We consider the case that the index set is a product of a finite set and a group.
+By abuse of notation, we still write $\Lambda$ to denote the group part,
+and insist that to each group element are associated $q$ qubits ($q \ge 1$).
+%%%%%%
+Thus obtained Pauli module should now be identified with $R^{2q}$,
+where $R = \FF_2[\Lambda]$ is the group algebra
+that encodes the notion of translation.
+We write an element $v$ of $R^{2q}$ by a $2q \times 1$ matrix,
+and denote by $v^\dagger$ the transpose matrix of $v$ whose each entry is applied by the antipode map.
+We always order the entries of $v$ such that the upper $q$ entries
+describes the $\sigma_x$-part and the lower the $\sigma_z$-part.
+%%%%%%%
+Since the commutation value on $R^{2q}$ is the sum of commutation values on $R^2$,
+we have the following:
+If $S$ is a submodule of $R^{2q}$ over $R$ generated by $s_1, \ldots, s_t$,
+the commutation value always vanishes on $S$, if and only if for all $i,j = 1, \ldots, t$
+\[
+ s_i^\dagger \lambda_q s_j = 0
+\]
+where $\lambda_q = \begin{pmatrix} 0 & \id_q \\ -\id_q & 0 \end{pmatrix}$ is a $2q \times 2q$ matrix.
+
+
+Let us summarize our discussion so far.
+\begin{prop}
+On a set of qubits $\Lambda \times \{1,\ldots,q\}$ where $\Lambda$ is an abelian group,
+the group of all Pauli operators of finite support up to phase factors,
+form a free module $P=R^{2q}$ over the group algebra $R = \FF_2[\Lambda]$.
+The commutation value
+\[ 
+ \langle a, b \rangle = \tr( a^\dagger \lambda_q b )
+\]
+for $a,b \in P$ is zero
+if and only if the Pauli operators corresponding to $a$ and $b$ commute.
+If $\sigma$ is a $2q \times t$ matrix whose columns generate a submodule $S \subseteq P$,
+then the commutation value on $S$ always vanishes if and only if
+\[
+ \sigma^\dagger \lambda_q \sigma = 0 .
+\]
+\label{prop:pauli-module}
+\end{prop}
+Proposition~\ref{prop:trace-formula-commutation-value}~\cite{CalderbankRainsShorEtAl1997Quantum}
+is a special case of Proposition~\ref{prop:pauli-module} when $\Lambda$ is a trivial group.
+When $\Lambda \cong \ZZ$, a similar equation appears in quantum convolutional 
+codes~\cite{OllivierTillich2004Convolutional}.
+
+
+\subsection{Local Hamiltonians on groups}
+
+Recall that we place $q$ qubits on each {\em site} of $\Lambda$.
+The total system of the qubits is $\Lambda \times \{1,\ldots,q\}$.
+\begin{defn}
+Let
+\[
+ H = -\sum_{g \in \Lambda} h_{1,g} + \cdots + h_{t,g}
+\]
+be a local Hamiltonian consisted of Pauli operators that is (i)commuting, (ii) translation-invariant up to signs, and (iii) frustration-free.
+We call $H$ a {\bf code Hamiltonian} (also known as {\bf stabilizer Hamiltonian}).
+The {\bf stabilizer module} of $H$ is the submodule of the Pauli module $P$
+generated by the images of $h_1,\ldots,h_t$ in $P$.
+The number of {\bf interaction types} is $t$.
+\end{defn}
+The energy spectrum of the code Hamiltonian is trivial;
+it is discrete and equally spaced.
+
+\begin{example}
+One-dimensional Ising model is the Hamiltonian
+\[
+ H = - \sum_{i \in \mathbb{Z}} \sigma_z^{(i)} \otimes \sigma_z^{(i+1)} .
+\]
+The lattice is the additive group $\mathbb{Z}$,
+and the group algebra is $R=\FF_2[x,\bar x]$.
+The Pauli module is $R^2$ and the stabilizer module $S$ is generated by
+\[
+\begin{pmatrix}
+ 0 \\
+ 1+x
+\end{pmatrix} .
+\]
+One can view this as the matrix $\sigma$ of Proposition~\ref{prop:pauli-module}.
+$H$ is commuting; $\sigma^\dagger \lambda_1 \sigma = 0$.
+\hfill $\Diamond$
+\label{eg:1d-ising}
+\end{example}
+
+\subsection{Excitations}
+
+For a code Hamiltonian $H$,
+an excited state is described by the terms in the Hamiltonian that have eigenvalues $-1$.
+Each of the flipped terms is interpreted as an {\bf excitation}.
+Although the actual set of all possible configurations of excitations
+that are obtained by applying some operator to a ground state, may be quite restricted,
+it shall be convenient to think of a larger set.
+Let $E$ be the set of all configurations of finite number of excitations without asking physical relevance.
+Since an excitation is by definition a flipped term in $H$,
+the set $E$ is equal to the collection of all finite sets consisted of the terms in $H$.
+
+If Pauli operators $U_1, U_2$ acting on a ground state creates excitations $e_1, e_2 \in E$,
+their product $U_1 U_2$ creates excitations $(e_1 \cup e_2) \setminus (e_1 \cap e_2)$.
+Here, we had to remove the intersection because each excitation is its own annihilator;
+any term in the $H$ squares to the identity.
+Exploiting this fact, we make $E$ into a vector space over $\FF_2$.
+Namely, we take formal linear combinations of terms in $H$
+with the coefficient $1 \in \FF_2$ when the terms has $-1$ eigenvalue,
+and the coefficient $0 \in \FF_2$ when the term has $+1$ eigenvalue.
+The symmetric difference is now expressed as the sum of two vectors $e_1 + e_2$ over $\FF_2$.
+In view of Pauli group as a vector space,
+$U_1 U_2$ is the sum of the two vectors $v_1 + v_2$ that, respectively, represent $U_1$ and $U_2$.
+Therefore, the association $U_i \mapsto e_i$ induces 
+a linear map from the Pauli space to the space of virtual excitations $E$.
+
+The set of all excited states obeys the translation invariance as the code Hamiltonian $H$ does.
+So, $E$ is a module over the group algebra $R=\FF_2[\Lambda]$.
+The association $U_i \mapsto e_i$ clearly respects this translation structure.
+Our discussion is summarized by saying that the excitations are described by an $R$-linear map
+\[
+ \epsilon : P \to E
+\]
+from the Pauli module $P$ to the {\bf module of virtual excitations $E$}.
+
+As the excitation module is the collection of all finite sets of the terms in $H$,
+we can speak of the {\bf module of generator labels} $G$,
+which is equal to $E$ as an $R$-module.
+$G$ is a free module of rank $t$ if there are $t$ types of interaction.
+The matrix $\sigma$ introduced in Section~\ref{sec:Pauli-space-on-group} can be viewed as
+\[
+ \sigma : G \to P
+\]
+from the module of generator labels to the Pauli module.
+\begin{prop}
+If $\sigma$ is the generating map for the stabilizer module of a code Hamiltonian,
+then 
+\[
+ \epsilon = \sigma^\dagger \lambda_q .
+\]
+\end{prop}
+The matrix $\epsilon$ can be viewed as a generalization of
+the parity check matrix of the standard theory of classical or quantum error correcting codes%
+~\cite{MacWilliamsSloane1977,CalderbankShor1996Good,Steane1996Multiple,Gottesman1996Saturating},
+when a translation structure is given.
+
+\begin{proof}
+This is a simple corollary of Proposition~\ref{prop:pauli-module}.
+Let $h_{i,g}$ be the terms in the Hamiltonian where $i = 1,\ldots, t$, and $ g \in \Lambda $.
+In the Pauli module, they are expressed as $g h_i$ where $h_i$ is the $i$-th column of $\sigma$.
+For any $u \in P$, let $\epsilon(u)_i$ be the $i$-th component of $\epsilon(u)$. By definition,
+\[
+ \epsilon( u )_i 
+= \sum_{g \in \Lambda} g~ \tr \left( (g h_i)^\dagger \lambda_q u \right)
+= \sum_{g \in \Lambda} g~ \tr \left( \bar g h_i^\dagger \lambda_q u  \right)
+= h_i^\dagger \lambda_q u
+\]
+Thus, $h_i^\dagger \lambda_q$ is the $i$-th row of $\epsilon$.
+\end{proof}
+
+\begin{rem}
+The commutativity condition in Proposition~\ref{prop:pauli-module} of the code Hamiltonian
+is recast into the condition that
+\[
+ G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E
+\]
+be a complex, i.e., $\epsilon \circ \sigma = 0$.
+Equivalently,
+\[
+ \im \sigma \subseteq (\im \sigma)^\perp = \ker \epsilon
+\]
+where $\perp$ is with respect to the symplectic form.
+\end{rem}
+
+
+
+
+
+\section{Equivalent Hamiltonians}
+\label{sec:equivalent-hamiltonians}
+
+The stabilizer module entirely determines
+the physical phase of the code Hamiltonian
+in the following sense.
+\begin{prop}
+Let $H$ and $H'$ be code Hamiltonians on a system of qubits,
+and suppose their stabilizer modules are the same.
+Then, there exists a unitary
+\[
+ U = \bigotimes_{g \in \Lambda} U_{g}
+\]
+mapping the ground space of $H$ onto that of $H'$.
+Moreover, there exist a continuous one-parameter family of gapped Hamiltonians
+connecting $U H U^\dagger$ and $H'$.
+\label{prop:associated-module-invariance}
+\end{prop}
+\begin{proof}
+Let $\{ p_\alpha \}$ be a maximal set of $\FF_2$-linearly independent Pauli operators of finite support
+that generates the common stabilizer module $S$.
+$\{p_\alpha\}$ is not necessarily translation-invariant.
+Any ground state $\ket \psi$ of $H$ is a common eigenspace of $\{p_\alpha\}$
+with eigenvalues $p_\alpha \ket \psi = e_\alpha \ket \psi$, $e_\alpha = \pm 1$.
+Similarly, the ground space of $H'$ gives the eigenvalues $e'_\alpha = \pm 1$ for each $p_\alpha$.
+
+The abelian group generated by $\{ p_\alpha \}$ is precisely the vector space $S$,
+and the assignment $p_\alpha \mapsto e_\alpha$ defines a dual vector on $S$.
+If $U$ is a Pauli operator of possibly infinite support,
+then $ p_\alpha U \ket \psi = e''_\alpha e_\alpha U \ket \psi$ for some $e''_\alpha = \pm 1$,
+where $e''_\alpha$ is determined by the commutation relation between $U$ and $p_\alpha$.
+Thus, the first statement follows if we can find $U$
+such that the commutation value between $U$ and $p_\alpha$ is precisely $e''_\alpha$.
+This is always possible since the dual space of the vector space $P$
+is isomorphic to the direct product $\prod _{\Lambda \times \{1,\ldots, q\}} \FF_2^2$,
+which is vector space isomorphic to the Pauli group of arbitrary support up to phase factors.%
+\footnote{{If $V$ is a finite dimensional vector space over some field,
+the dual vector space of $\bigoplus_I V$ 
+is isomorphic to $\prod_{I} V$ where $I$ is an arbitrary index set.}}
+
+Now, $U H U^\dagger$ and $H'$ have the same eigenspaces, and in particular, the same ground space.
+Consider a continuous family of Hamiltonians
+\[
+H(u,u') = u U H U^\dagger + u' H'
+\]
+where $u,u' \in \mathbb{R}$.
+It is clear that
+\[
+ H = H(1,0) \to H(1,1) \to H(0,1) = H'
+\]
+is a desired path.
+\end{proof}
+
+The criterion of Proposition~\ref{prop:associated-module-invariance}
+to classify the physical phases is too narrow.
+Physically meaningful universal properties should be invariant
+under simple and local changes of the system. More concretely,
+\begin{defn}
+Two code Hamiltonians $H$ and $H'$ are {\bf equivalent} if
+their stabilizer modules become the same under a finite composition
+of symplectic transformations, coarse-graining, and tensoring ancillas.
+\label{defn:equiv-H}
+\end{defn}
+We shall define the symplectic transformations,
+the coarse-graining, and the tensoring ancillas shortly.
+
+
+\subsection{Symplectic transformations}
+\label{sec:symplectic-transformations}
+
+\begin{defn}
+A {\bf symplectic transformation} $T$ is an automorphism of the Pauli module
+induced by a unitary operator on the system of qubits
+such that 
+\[
+  T^\dagger \lambda_q T = \lambda_q
+\]
+where $\dagger$ is the transposition followed by the entry-wise antipode map.
+\label{defn:symplectic-transformation}
+\end{defn}
+When the translation group is trivial these transformations are given by so-called {\bf Clifford operators}.
+Compare Section~\ref{sec:additive-stabilizer-codes} and
+see \cite[Chapter 15]{KitaevShenVyalyi2002CQC}.
+
+Only the unitary operator on the physical Hilbert space 
+that respects the translation can induce a symplectic transformation.
+By definition, a symplectic transformation maps each local Pauli operator to a local Pauli operator, and 
+preserves the commutation value for any pair of Pauli operators.
+\begin{prop}
+Any two unitary operators $U_1, U_2$ that induce the same symplectic transformation
+differ by a Pauli operator (of possibly infinite support).
+\end{prop}
+If the translation group is trivial,
+the proposition reduces to Theorem~15.6 of \cite{KitaevShenVyalyi2002CQC}
+\begin{proof}
+The symplectic transformation induced by $U = U_1^\dagger U_2$ is the identity.
+Hence, $U$ maps each single-qubit Pauli operator $\sigma_{x,z}^{(g,i)}$ to $\pm \sigma_{x,z}^{(g,i)}$.
+By the argument as in the proof of Proposition~\ref{prop:associated-module-invariance},
+there exists a Pauli operator $O$ of possibly infinite support
+that acts the same as $U$ on the system of qubits.
+Since Pauli operators form a basis of the operator algebra of qubits,
+we have $O=U$.
+\end{proof}
+
+
+
+The effect of a symplectic transformation on the generating map $\sigma$
+ is a matrix multiplication on the left.
+\[
+ \sigma \to U \sigma
+\]
+For example, the following is induced
+by uniform Hadamard, controlled-Phase, and controlled-NOT gates.
+For notational clarity,
+define $E_{i,j}(a)\ (i \neq j)$ as the row-addition elementary $2q \times 2q$ matrix
+\[
+ \left[ E_{i,j}(a) \right]_{\mu \nu} = \delta_{\mu \nu} + \delta_{\mu i} \delta_{\nu j} a
+\]
+where $\delta_{\mu \nu}$ is the Kronecker delta and $a \in R = \FF_2[\Lambda]$.
+Recall that we order the components of $P$ such that the first half components are for $\sigma_x$-part, 
+and the second half components are for $\sigma_z$-part.
+\begin{defn}
+The following are {\bf elementary symplectic transformations}:
+\begin{itemize}
+ \item (Hadamard) $E_{i,i+q}(-1) E_{i+q,i}(1) E_{i,i+q}(-1)$ where $1 \le i \le q$,
+ \item (controlled-Phase) $E_{i+q,i}(f)$ where $f = \bar f$ and $1 \le i \le q$,
+ \item (controlled-NOT) $E_{i,j}(a) E_{j+q,i+q}(-\bar a)$ where $1 \le i \ne j \le q$.
+\end{itemize}
+\end{defn}
+For the case of a trivial translation group,
+these transformations explicitly appear in \cite{CalderbankRainsShorEtAl1997Quantum}
+and \cite[Chapter~15]{KitaevShenVyalyi2002CQC}.
+The one-dimensional case appears in the context of
+quantum convolutional codes~\cite{GrasslRotteler2006Convolutional}.
+
+Recall that the Hadamard gate is a unitary transformation on a qubit given by
+\[
+U_H = \frac{1}{\sqrt 2}
+ \begin{pmatrix}
+  1 & 1 \\
+  1 & -1
+ \end{pmatrix}
+\]
+with respect to basis $\{ \ket 0 , \ket 1 \}$.
+At operator level,
+\[
+ U_H X U_H^\dagger = Z, \quad U_H Z U_H^\dagger = X 
+\]
+where $X$ and $Z$ are the Pauli matrices $\sigma_x$ and $\sigma_z$, respectively.
+Thus, the application of Hadamard gate on every $i$-th qubit of each site of $\Lambda$
+swaps the corresponding $X$ and $Z$ components of $P$.
+
+
+
+The controlled phase gate is a two-qubit unitary operator whose matrix is
+\[
+U_P =
+ \begin{pmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & -1
+ \end{pmatrix}
+\]
+with respect to basis $\{ \ket{00}, \ket{01}, \ket{10}, \ket{11} \}$.
+At operator level,
+\begin{align*}
+U_P (X \otimes I ) U_P^\dagger = X \otimes Z, & &
+U_P (Z \otimes I ) U_P^\dagger = Z \otimes I, \\
+U_P (I \otimes X ) U_P^\dagger = Z \otimes X, & &
+U_P (I \otimes Z ) U_P^\dagger = I \otimes Z.
+\end{align*}
+Note that since $U_P$ is diagonal, any two $U_P$ on different pairs of qubits commute.
+Let $(g,i)$ denote the $i$-th qubit at $g \in \Lambda$.
+The uniform application
+\[
+U^{(i)}_g = \prod_{h \in \Lambda} U_P( (h,i), (h+g,i) )
+\]
+of $U_P$ throughout the lattice $\Lambda$
+such that each $U_P( (h,i), (h+g,i) )$ acts on the pair of qubits $(h,i)$ and $(h+g,i)$
+is well-defined. From the operator level calculation of $U_P$, we see that $U^{(i)}_g$
+induces
+\[
+P \ni (\ldots,x_i,\ldots, z_i, \ldots) \mapsto ( \ldots, x_i,\ldots, z_i + (g+ \bar g)x_i, \ldots ) \in P
+\]
+on the Pauli module,
+which is represented as $E_{i+q,i}(g+\bar g)$. 
+The composition
+\[
+ U^{(i)}_{g_1} U^{(i)}_{g_2} \cdots U^{(i)}_{g_n}
+\]
+of finitely many controlled-Phase gates $U^{(i)}_g$ with different $g$
+is represented as $E_{i+q,i}(f)$ where $f = \bar f = \sum_{k=1}^{n} g_k + \bar g_k$.
+The single-qubit phase gate
+\[
+ \begin{pmatrix}
+  1 & 0 \\
+  0 & i
+ \end{pmatrix}
+\]
+maps $X \leftrightarrow Y$ and $Z \mapsto Z$. On the Pauli module $P$, it is
+\[
+P \ni (\ldots,x_i,\ldots, z_i, \ldots)^T \mapsto ( \ldots, x_i,\ldots, z_i + x_i, \ldots )^T \in P .
+\]
+which is $E_{i+q,i}(1)$.
+Note that any $f \in R$ such that $f = \bar f$ is always of form
+$f = \sum g_k + \bar g_k$ or $f = 1 + \sum g_k + \bar g_k$
+where $g_k$ are monomials.
+Thus, the Phase gate and the controlled-Phase gate induce
+transformations $E_{i+q,i}(f)$ where $f = \bar f$. 
+
+The controlled-NOT gate is a two-qubit unitary operator whose matrix is
+\[
+U_N =
+ \begin{pmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 0 & 1 \\
+  0 & 0 & 1 & 0
+ \end{pmatrix}
+\]
+with respect to basis $\{ \ket{00}, \ket{01}, \ket{10}, \ket{11} \}$.
+That is, it flips the {\em target} qubit conditioned on the {\em control} qubit.
+At operator level,
+\begin{align*}
+U_N (X \otimes I ) U_N^\dagger = X \otimes X, & &
+U_N (Z \otimes I ) U_N^\dagger = Z \otimes I, \\
+U_N (I \otimes X ) U_N^\dagger = I \otimes X, & &
+U_N (I \otimes Z ) U_N^\dagger = Z \otimes Z.
+\end{align*}
+If $i < j$, the uniform application
+\[
+U^{(i,j)}_g = \bigotimes_{h \in \Lambda} U_P( (h,i), (h+g,j) )
+\]
+such that each $U_N( (h,i), (h+g,j) )$ acts on the pair of qubits $(h,i)$ and $(h+g,j)$
+with one at $(h,i)$ being the control
+induces
+\begin{align*}
+P \ni & (\ldots,x_i,\ldots,x_j,\ldots, z_i, \ldots, z_j, \ldots)^T \\
+& \mapsto ( \ldots, x_i, \ldots, x_j + g x_i, \ldots, z_i + \bar g z_j, \ldots, z_j, \ldots )^T \in P .
+\end{align*}
+Thus, any finite composition of controlled-NOT gates with various $g$ is of form $E_{i,j}(a) E_{j+q,i+q}(\bar a)$.
+It might be useful to note that the controlled-NOT and the Hadamard combined,
+induces a symplectic transformation
+\begin{itemize}
+\item (controlled-NOT-Hadamard) $E_{i+q,j}(a) E_{j+q,i}(\bar a)$ where $a \in R$ and $ 1 \le i \ne j \le q$.
+\end{itemize}
+
+Remark that an arbitrary row operation on the upper $q$ components
+can be compensated by a suitable row operation on the lower $q$ components
+so as to be a symplectic transformation.
+
+
+\subsection{Coarse-graining}
+
+Not all unitary operators conform with the lattice translation.
+In Example~\ref{eg:1d-ising} the lattice translation has period 1.
+Then, for example, the Hadamard gate on every second qubit 
+does not respect this translation structure;
+it only respects a coarse version of the original translation.
+We need to shrink the translation group to treat such unitary operators.
+
+Let $\Lambda$ be the original translation group of the lattice with $q$ qubits per site,
+and $\Lambda'$ be its subgroup of finite index: $|\Lambda/\Lambda'| = c < \infty$.
+The total set of qubits $\Lambda \times \{1,\ldots,q\}$ is set-theoretically the same as
+$\Lambda' \times \{ 1, \ldots, c \} \times \{1,\ldots,q\} = \Lambda' \times \{ 1, \ldots, cq\}$.
+We take $\Lambda'$ as our new translation group under coarse-graining.
+The Pauli group modulo phase factors remains the same as a $\FF_2$-vector space
+for it depends only on the total index set of qubits.
+We shall say that the system is {\bf coarse-grained by $R'=\FF_2[\Lambda']$}
+if we restrict the scalar ring $R$ to $R'$ for all modules pertaining to the system.
+
+For example, suppose $\Lambda = \mathbb{Z}^2$,
+so the original base ring is $R = \FF_2[x,y,\bar x,\bar y]$.
+If we coarse-grain by $R' = \FF_2[x',y', \bar x', \bar y']$ where $x' = x^2, y' = y^2$,
+we are taking the sites $1,x,y,xy$ of the original lattice as a single new site.
+
+Abstractly, the original translation group algebra $R$ is a finitely generated free module
+over the coarse translation group algebra $R'$.
+Thus, the coarse-graining can be regarded as an exact functor from the category of $R$-modules
+to the category of $R'$-modules.
+
+The one-dimensional case appears in the context of 
+quantum convolutional codes~\cite{WildeBrun2010Convolutional}.
+
+\subsection{Tensoring ancillas}
+
+We have considered possible transformations
+on the stabilizer modules of code Hamiltonians,
+and kept the underlying index set of qubits invariant.
+It is quite natural to allow tensoring ancilla qubits in trivial states.
+In terms of the stabilizer module $S \subseteq P=R^{2q}$,
+it amounts to embed $S$ into the larger module $R^{2q'}$ where $q' > q$.
+Concretely,
+let $\sigma = \begin{pmatrix} \sigma_X \\ \sigma_Z \end{pmatrix}$
+be the generating matrix of $S$ as in Proposition~\ref{prop:pauli-module}.
+By {\bf tensoring ancilla}, we embed $S$ as
+\[
+\begin{pmatrix} \sigma_X \\ \sigma_Z \end{pmatrix}
+ \to 
+\begin{pmatrix}
+ \sigma_X & 0 \\
+ 0        & 0 \\
+ \sigma_Z & 0 \\
+ 0        & 1
+\end{pmatrix} .
+\]
+This amounts to taking the direct sum of the original complex
+\[
+ G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E
+\]
+and the trivial complex
+\[
+0
+\to
+ R
+ \xrightarrow{ \begin{pmatrix} 0 \\ 1 \end{pmatrix} }
+ R^2
+ \xrightarrow{ \begin{pmatrix} 1 & 0 \end{pmatrix} }
+ R
+\to 0
+\]
+to form
+\[
+  G \oplus R \xrightarrow{} P \oplus R^2 \xrightarrow{} E \oplus R .
+\]
+
+
+\section{Topological order}
+\label{sec:topological-order}
+From now on we assume that $\Lambda$ is isomorphic to $\mathbb{Z}^D$ as an additive group.
+$D$ shall be called the {\bf spatial dimension} of $\Lambda$.
+
+\begin{defn}
+Let $\sigma: G \to P$ be the generating map for the stabilizer module of
+a code Hamiltonian $H$. We say $H$ is {\bf exact}
+if $(\im \sigma )^\perp = \im \sigma$, or equivalently
+\[
+ G \xrightarrow{\sigma} P \xrightarrow{\epsilon=\sigma^\dagger \lambda_q} E
+\]
+is exact, i.e., $\ker \epsilon = \im \sigma$.
+\end{defn}
+\noindent It follows that the exactness condition is
+a property of the equivalence class of code Hamiltonians in the sense of Definition~\ref{defn:equiv-H}.
+
+By imposing periodic boundary conditions,
+a translation-invariant Hamiltonian yields
+a family of Hamiltonians $\{ H(L) \}$ defined on a finite system consisted of $L^D$ sites.
+One might be concerned that some $H(L)$ would be frustrated.
+We intentionally exclude such a situation.
+The frustration might indeed occur, but it can easily be resolved
+by choosing the signs of terms in the Hamiltonian.
+In this way, one might lose the translation invariance in a strict sense.
+However, we retain the physical phase regardless of the sign choice
+because different sign choices are related by a Pauli operator acting on
+the whole system which is a product unitary operator.
+Hence, the entanglement property of the ground state 
+and the all properties of excitations do not change.
+
+\begin{defn}
+Let $H(L)$ be Hamiltonians on a finite system of linear size $L$
+in $D$-dimensional physical space,
+and $\Pi_L$ be the corresponding ground space projector.
+$H(L)$ is called {\bf topologically ordered} if
+for any $O$ supported inside a hypercube of size $(L/2)^D$
+one has
+\begin{equation}
+ \Pi_L O \Pi_L \propto \Pi_L .
+\label{eq:tqo}
+\end{equation}
+\label{defn:tqo}
+\end{defn}
+This means that no local operator is capable of distinguishing different ground states.
+This condition is trivially satisfied if $H(L)$ has a unique ground state.
+A technical condition that is used in the proof of the stability of topological order
+against small perturbations is the following `local topological order'
+condition~\cite{MichalakisPytel2011stability,
+BravyiHastingsMichalakis2010stability,
+BravyiHastings2011short}.
+%%%%
+We say a {\bf diamond region $A(r)$ of radius $r$ at $o \in \ZZ^D$} for the set
+\[
+ A(r)_o = \left\{ (i_1,\ldots,i_D) + o \in \ZZ^D ~\middle| \sum_\mu |i_\mu| \le r \right\} .
+\]
+\begin{defn}
+Let $H(L)$ be code Hamiltonians on a finite system of linear size $L$
+in $D$-dimensional physical space.
+For any diamond region $A=A(r)$ of radius $r$,
+let $\Pi_A$ be the projector onto the common eigenspace of the most negative eigenvalues of terms
+in the Hamiltonian $H(L)$ that are supported in $A$.
+For $b > 0$, denote by $A^b$ the distance $b$ neighborhood of $A$.
+$H(L)$ is called {\bf locally topologically ordered} if
+there exists a constant $b > 0$ such that
+for any operator $O$ supported on a diamond region $A$ of radius $r < L/2$
+one has
+\begin{equation}
+ \Pi_{A^b} O \Pi_{A^b} \propto \Pi_{A^b} .
+\label{eq:local-tqo}
+\end{equation}
+\label{defn:local-tqo}
+\end{defn}
+Since any operator is a $\mathbb{C}$-linear combination of Pauli operators,
+if Eq.~\eqref{eq:tqo},\eqref{eq:local-tqo} are satisfied for Pauli operators,
+then the (local) topological order condition follows.
+If a Pauli operator $O$ is anticommuting with a term in a code Hamiltonian $H(L)$,
+The left-hand side of Eq.~\eqref{eq:tqo},\eqref{eq:local-tqo} are identically zero.
+In this case, there is nothing to be checked.
+If $O$ acting on $A$ is commuting with every term in $H(L)$ supported inside $A^b$,
+Eq.~\eqref{eq:tqo} demands that it act as identity on the ground space,
+i.e., $O$ must be a product of terms in $H(L)$ up to $\pm i,\pm 1$.
+Eq.~\eqref{eq:local-tqo} further demands that
+$O$ must be a product of terms in $H(L)$ supported inside $A^b$ up to $\pm i,\pm 1$.
+
+\begin{lem}
+A code Hamiltonian $H$ is exact
+if and only if $H(L)$ is locally topologically ordered for
+all sufficiently large $L$.
+\label{lem:local-tqo=exact}
+\end{lem}
+In order to see this, it will be important to use {\em Laurent polynomials}
+to express elements of the group algebra 
+$R = \FF_2[\mathbb{Z}^D] \cong \FF_2[x_1,x_1^{-1},\ldots,x_D,x_D^{-1}]$.
+The reader might want to see \cite{Imai1977TDC,GueneriOezbudak2008} for classical multidimensional cyclic codes.
+For example, 
+\[
+ x y^2 z^2 + x y^{-1} \quad \Longleftrightarrow \quad 1(1,2,2)+1(1,-1,0) .
+\]
+The sum of the absolute values of exponents of a monomial will be referred to as {\bf absolute degree}.
+The absolute degree of a Laurent polynomial is defined to be the maximum absolute degree of its terms.
+The degree measures the distance or size in the lattice.
+
+
+The Laurent polynomial viewpoint enables us to apply Gr\"obner basis techniques.
+The long division algorithm for polynomials in one variable yields an effective and efficient
+test whether a given polynomial is divisible by another.
+When two or more but finitely many variables are involved,
+a more general question is how to test
+whether a given polynomial is a member of an ideal.
+For instance, $f=xy-1$ is a member of an ideal $J = (x-1,y-1)$
+because $xy -1 = y(x-1) + (y-1)$.
+But, $g=xy$ is not a member of $J$ because $g = y(x-1) + (y-1) + 1$ and the `remainder' 1 cannot be removed.
+Here, the first term is obtained by looking at the initial term $xy$ of $f$
+and comparing with the initial terms $x$ and $y$ of the generators of $J$.
+While one tries to eliminate the initial term of $f$ and to eventually reach zero,
+if one cannot reach zero as for $g$, then the membership question is answered negatively.
+
+Systematically, an well-ordering on the monomials, i.e., a \emph{term order}, is defined
+such that the order is preserved by multiplications.
+And a set of generators $\{ g_i \}$ for the ideal is given with a special property 
+that any element in the ideal has an initial term (leading term)
+divisible by an initial term of some $g_i$.
+A Gr\"obner basis is precisely such a generating set.
+This notion generalizes to free modules over polynomial ring by refining the term order with the basis of the modules.
+An example is as follows. Let
+\[
+ \sigma_1 = 
+ \begin{pmatrix}
+  \mathbf{x^2} - y \\
+  x^2 + 1
+ \end{pmatrix} \quad
+ \sigma_2 = 
+ \begin{pmatrix}
+  1 \\
+  \mathbf{y}
+ \end{pmatrix}
+\]
+generate a submodule $M$ of $S^2$ where $S = \FF[x,y]$ is a polynomial ring.
+They form a Gr\"obner basis, and the initial terms are marked as bold.
+A member of $S^2$
+\[
+ \begin{pmatrix}
+ x^2 + x^2 y - y^2 \\
+ y+2 x^2 y
+ \end{pmatrix}
+\]
+is in $M$ because the following ``division'' results in zero.
+\[
+  \begin{pmatrix}
+ x^2+\mathbf{x^2 y}-y^2 \\
+ y+2 x^2 y
+ \end{pmatrix}
+ \xrightarrow{-y \sigma_1}
+ \begin{pmatrix}
+ x^2 \\
+ \mathbf{x^2 y}
+ \end{pmatrix}
+ \xrightarrow{-x^2 \sigma_2} 0
+\]
+A comprehensive material can be found in \cite[Chapter~15]{Eisenbud}.
+%See also Appendix~\ref{app:algebra}.
+
+The situation for Laurent polynomial ring is less discussed,
+but is not too different.
+A direct treatment is due to Pauer and Unterkircher~\cite{PauerUnterkircher1999}.
+One introduces a well-order on monomials,
+that is preserved by multiplications with respect to a so-called \emph{cone decomposition}.
+An ideal $J$ over a Laurent polynomial ring can be thought of
+as a collection of configurations of coefficient scalars written on the sites of the integral lattice $\ZZ^D$.
+If we take a cone, say,
+\[
+ C = \{ (i_1,i_2,i_3) \in \ZZ^3 | i_1 \le 0, i_2 \ge 0, i_3 \ge 0 \} ,
+\]
+then $J_C = J \cap \FF[C]$ looks very similar to an ideal $I$ over a polynomial ring $\FF[x,y,z]$.
+Concretely, $I$ can be obtained by applying $x^{-1} \mapsto x, y \mapsto y, z \mapsto z$ to $J_C$.
+The initial terms of $J_C$ should be treated similarly as those in $I$.
+This is where the cone decomposition plays a role.
+The lattice $\ZZ^D$ decomposes into $2^D$ cones,
+and the initial terms of $J$ is considered in each of the cones.
+Correspondingly, a Gr\"obner basis is defined 
+to generate the initial terms of a given module in each of the cones.
+An intuitive picture for the division algorithm is 
+to consider the support of a Laurent polynomial as a finite subset of $\ZZ^D$ around the origin (the least element of $\ZZ^D$),
+and to eliminate outmost points so as to finally reach the origin.
+If $m$ is a column matrix of Laurent polynomials,
+each step in the division algorithm by a Gr\"obener basis $\{g\}$
+replaces $m$ with $m' = m - c g$, where $c$ is a monomial,
+such that the initial term of $m'$ is strictly smaller than that of $m$.
+Note that the absolute degree of $c$ does not exceed that of $m$.%
+\footnote{Strictly speaking, one can introduce a term order such that this is true.}
+
+
+\begin{proof}[Proof of \ref{lem:local-tqo=exact}]
+We have to show that 
+if $v \in \ker \epsilon = \im \sigma$ is supported in the diamond of radius $r$ centered at the origin,
+then $v$ can be expressed as a linear combination
+\[
+ v = \sum_i c_i \sigma_i
+\]
+of the columns $\sigma_i$ of $\sigma$ 
+such that the coefficients $c_i \in R$ have absolute degree not exceeding $w+r$.
+for some fixed $w$.
+A Gr\"obner basis~\cite{PauerUnterkircher1999} is computed solely from the matrix $\sigma$,
+and the division algorithm yields desired $c_i$.
+
+Conversely,
+suppose $v \in \ker \epsilon$. We have to show $v \in \im \sigma$.
+Choose so large $L$ that the Pauli operator $O$ representing $v$ is contained
+in a pyramid region far from the boundary.
+The local topological order condition implies
+that $O$ is a product of terms near the pyramid region.
+Since this product expression is independent of the boundary,
+we see $v \in \im \sigma$.
+\end{proof}
+
+
+The Buchsbaum-Eisenbud theorem~\cite{BuchsbaumEisenbud1973Exact}
+below characterizes an exact sequence
+from the properties of connecting maps.
+(See also \cite[Theorem~20.9, Proposition~18.2]{Eisenbud},\cite[Chapter~6 Theorem~15]{Northcott}.)
+A few notions should be recalled.
+Let $\mathbf M$ be a matrix, not necessarily square, over a ring.
+A minor is the determinant of a square submatrix of $\mathbf M$.
+{\bf $k$-th determinantal ideal} $I_k(\mathbf M)$ is the ideal generated by all $k \times k$ minors of $\mathbf M$.
+It is not hard to see that the determinantal ideal is invariant under any invertible
+matrix multiplication on either side. 
+The {\bf rank} of $\mathbf M$ is the largest $k$ such that $k$-th determinantal ideal is nonzero.
+Thus, the rank of a matrix over an arbitrary ring is defined,
+although the dimension of the image in general is not defined or is infinite.
+The $0$-th determinantal ideal is taken to be the unit ideal by convention.
+For a map $\phi$ between free modules,
+we write $I(\phi)$ to denote the $k$-th determinantal
+ideal of the matrix of $\phi$ where $k$ is the rank of that matrix.
+Fitting Lemma~\cite[Corollary-Definition~20.4]{Eisenbud}
+states that determinantal ideals only depend on $\coker \phi$.
+
+
+
+The {\bf (Krull) dimension} of a ring is the supremum of lengths of chains of prime ideals.
+Here, the length of a chain of prime ideals
+\[
+ \pp_0 \subsetneq \pp_1 \subsetneq \cdots \subsetneq \pp_n
+\]
+is defined to be $n$.
+Most importantly, the dimension of $\FF[x_1,\ldots,x_n]$ is $n$ where $\FF$ is a field, as
+\[
+ (0) \subset (x_1) \subset (x_1,x_2) \subset \cdots \subset (x_1,\ldots,x_n) .
+\]
+Dimensions are in general very subtle,
+but intuitively, it counts the number of independent `variables.'
+Geometrically, a ring is a function space of a geometric space,
+and the independent variables define a coordinate system on it.
+So the Krull dimension correctly captures the intuitive dimension.
+For instance, $y-x^2=0$ defines a parabola in a plane,
+and the functions that vanish on the parabola form an ideal $(y-x^2) \subset \FF[x,y]$.
+Thus, the function space is identified with $\FF[x,y]/(y-x^2) \cong \FF[x]$,
+whose Krull dimension is, as expected, 1.
+
+Facts we need are quite simple:
+\begin{itemize}
+ \item In a zero-dimensional ring, every prime ideal is maximal.
+ \item $\dim R = \dim \FF_2[x_1^{\pm 1},\ldots,x_D^{\pm 1}] = D$
+ \item When $I$ is an ideal of $R$, $\dim R/I + \codim I = D$.%
+\footnote{
+The {\bf codimension} or {\bf height} of a prime ideal $\pp$ is 
+the supremum of the lengths of chains of prime ideals contained in $\pp$.
+That is, the codimension of $\pp$ is the Krull dimension of the local ring $R_\pp$.
+The codimension of an arbitrary ideal $I$ is the minimum of codimensions of primes that contain $I$.
+If $S$ is an affine domain, i.e., 
+a homomorphic image of a polynomial ring over a field with finitely many variables
+such that $S$ has no zero-divisors,
+it holds that $\codim I + \dim R/I = \dim S$~\cite[Chapter~13]{Eisenbud}.
+}
+\end{itemize}
+
+
+
+We shall be dealing with three different kinds of `dimensions':
+The first one is the spatial dimension $D$,
+which has an obvious physical meaning.
+The second one is the Krull dimension of a ring, just introduced.
+The Krull dimension is upper bounded by the spatial dimension in any case.
+The last one is the dimension of some module as a vector space.
+Recall that all of our base ring contains a field --- $\FF_2$ for qubits.
+The vector space dimension arises naturally
+when we actually count the number of orthogonal ground states.
+The dimension as a vector space will always be denoted with a subscript like $\dim_{\FF_2}$.
+
+
+\begin{prop}
+[\cite{BuchsbaumEisenbud1973Exact}%
+\footnote{The original result is stronger than what is presented here.
+It is stated with the \emph{depth}s of the determinantal ideals.}]
+If a complex of free modules over a ring
+\[
+ 0 \to F_n \xrightarrow{\phi_n} F_{n-1} \to \cdots \to F_1 \xrightarrow{\phi_1} F_0
+\]
+is exact, then
+\begin{itemize}
+\item $\rank F_k = \rank \phi_k + \rank \phi_{k+1}$ for $k=1,\ldots,n-1$
+\item $\rank F_n = \rank \phi_n$.
+\item $I(\phi_k)=(1)$ or else $\codim I(\phi_{k}) \ge k$ for $k=1,\ldots,n$.
+\end{itemize}
+\label{prop:exact-sequence}
+\end{prop}
+
+\begin{rem}
+For an exact code Hamiltonian,
+we have an exact sequence $G \xrightarrow{\sigma} P \xrightarrow{\epsilon=\sigma^\dagger \lambda} E$.
+As we will see in Lemma~\ref{lem:coker-epsilon-resolution-length-D},
+$\coker \sigma$ has a finite free resolution,
+and we may apply the Proposition~\ref{prop:exact-sequence}.
+Since $\overline{ I_k(\sigma) } = I_k(\epsilon)$ for any $k \ge 0$, we have
+\[
+ 2q = \rank P = \rank \sigma + \rank \epsilon = 2~ \rank \sigma.
+\]
+The size $2q \times t$ of the matrix $\sigma$ satisfies $t \ge q$.
+If $I_q(\sigma) \ne R$, then $\codim I_q(\sigma) \ge 2$.
+\label{rem:rank-sigma-m}
+\end{rem}
+
+\section{Ground-state degeneracy}
+\label{sec:degeneracy}
+
+Let $H(L)$ be the Hamiltonians on finite systems
+obtained by imposing periodic boundary conditions 
+as in Section~\ref{sec:topological-order}.
+A symmetry operator of $H(L)$ is 
+a $\mathbb{C}$-linear combination of Pauli operator that commutes with $H(L)$.
+In order for a Pauli symmetry operator
+to have a nontrivial action on the ground space,
+it must not be a product of terms in $H(L)$.
+In addition, since $H(L)$ is a sum of Pauli operators,
+a symmetry Pauli operator must commute with each term in $H(L)$.
+Hence, a symmetry Pauli operator $O$ with nontrivial action on the ground space
+must have image $v$ in the Pauli module such that
+\[
+ v(O) \in \ker \epsilon_L \setminus \im \sigma_L
+\]
+where
+\[
+ G / \bb_L G \xrightarrow{ \sigma_L } P / \bb_L P \xrightarrow{ \epsilon_L } E / \bb_L E 
+\]
+and
+\[
+ \bb_L = (x^L_1 -1,\ldots, x^L_D -1) \subseteq R, 
+\]
+which effectively imposes the periodic boundary conditions.
+Since each term in $H(L)$ acts as an identity on the ground space,
+if $O'$ is a term in $H(L)$, the symmetry operator $O$ and the product $OO'$
+has the same action on the ground space. 
+$OO'$ is expressed in the Pauli module as $v(O) + v'(O')$ for some $v' \in \im \sigma_L$.
+Therefore, the set of Pauli operators of distinct actions on the ground space is
+in one-to-one correspondence with the factor module
+\[
+ K(L) = \ker \epsilon_L ~/~ \im \sigma_L .
+\] %K is from the small k.
+The vector space dimension $\dim_{\FF_2} K(L)$ is precisely
+the number of independent Pauli operators that have nontrivial action on the ground space.
+%
+Since $\ker \epsilon_L = (\im \sigma_L)^\perp$ by definition of $\epsilon$,
+and $\im \sigma_L$ as an $\FF_2$-vector space is a null space of the symplectic vector space $P/\bb_L P$,
+it follows that $\ker \epsilon_L = \im \sigma_L \oplus W$ for some hyperbolic subspace $W$.
+The quotient space $K(L) \cong W$ is thus hyperbolic and has even vector space dimension $2k$.
+Choosing a symplectic basis for $K(L)$, 
+it is clear that $K(L)$ represents the tensor product of $k$ qubit-algebras.
+Therefore, the ground space degeneracy is exactly $2^k$~\cite{Gottesman1996Saturating,CalderbankRainsShorEtAl1997Quantum}.
+In the theory of quantum error correcting codes,
+$k$ is called the number of logical qubits,
+and the elements of $K(L)$ are called the logical operators.
+In this section, $k$ will always denote $\frac{1}{2} \dim_{\FF_2} K$.
+
+\begin{defn}
+The {\bf associated ideal} for a code Hamiltonian
+is the $q$-th determinantal ideal $I_q(\sigma) \subseteq R$
+of the generating map $\sigma$.
+Here, $q$ is the number of qubits per site.
+The {\bf characteristic dimension} is the Krull dimension $\dim R / I_q(\sigma)$.
+\end{defn}
+
+The associated ideals appears in Buchsbaum-Eisenbud theorem~(Proposition~\ref{prop:exact-sequence}),
+which says that the homology $K(L)$ is intimately related to the associated ideal.
+Imposing boundary conditions such as $x^L=1$
+amounts to treating $x$ not as variables any more,
+but as a `solution' of the equation $x^L-1=0$.
+In order for $K(L)$ to be nonzero,
+the `solution' $x$ should make the associated ideal to vanish.
+Hence, by investigating the solutions of $I_q(\sigma)$
+one can learn about the relation between the degeneracy and the boundary conditions.
+Roughly, a large number of solutions of $I_q(\sigma)$ 
+compatible with the boundary conditions
+means a large degeneracy.
+As $d = \dim R/I_q(\sigma)$ is the geometric dimension of the algebraic set defined by $I_q(\sigma)$,
+a larger $d$ means a larger number of solutions.
+Hence, the characteristic dimension $d$
+controls the growth of the degeneracy as a function of the system size.
+
+For example, consider a chain complex over $R = \FF[x^{\pm 1},y^{\pm 1}]$.
+\[
+0 \to
+ R^1 
+\xrightarrow{ \partial_2 = \begin{pmatrix} x-1 \\ y-1 \end{pmatrix} } 
+ R^2
+\xrightarrow{ \partial_1 = \begin{pmatrix} y-1 & -x +1 \end{pmatrix} }
+ R^1
+\]
+It is exact at $R^2$.
+The smallest nonzero determinantal ideal $I$ for either $\partial_1$ or $\partial_2$ is $I=(x-1,y-1)$.
+If we impose `boundary conditions' such that $x=1$ and $y=1$,
+then $I$ becomes zero, and according to Buchsbaum-Eisenbud theorem,
+the homology $K$ at $R^2$ should be nontrivial.
+Since the solution of $I$ consists of a single point $(1,1)$ on a 2-plane,
+it is conceivable that `boundary conditions' of form $\bb_L$
+would always give $K(L)$ of a constant $\FF$-dimension,
+which is true in this case.
+%
+If we insist that the complex is over $R' = \FF[x^{\pm 1},y^{\pm 1},z^{\pm 1}]$,
+then the zero set of $I$ is a line $(1,1,z)$ in 3-space;
+there are many `solutions.'
+In this case, $K^{R'}(L)$ has $\FF$-dimension $2L$.
+
+An obvious example where the homology $K$ is always zero regardless of the boundary conditions
+is this:
+\[
+0 \to
+ R^1 
+\xrightarrow{ \begin{pmatrix} 1 \\ 0 \end{pmatrix} } 
+ R^2
+\xrightarrow{ \begin{pmatrix} 0 & 1 \end{pmatrix} }
+ R^1
+\]
+Here, the determinantal ideal is $(1)=R$, and thus has no solution.
+
+The intuition from these examples are made rigorous below.
+
+\subsection{Condition for degenerate Hamiltonians}
+
+A routine yet very important tool is \emph{localization}.
+The origin of all difficulties in dealing with general rings
+is that nonzero elements do not always have multiplicative inverse;
+one cannot easily solve linear equations.
+The localization is a powerful technique to get around this problem.
+As we build rational numbers from integers by \emph{declaring} that
+nonzero numbers have multiplicative inverse,
+the localization enlarges a given ring
+and \emph{formally allows} certain elements to be invertible.
+It is necessary and sometimes desirable not to invert all nonzero elements,
+in order for the localization to be useful.
+For a consistent definition, we need a multiplicatively closed subset $S$
+containing 1, but not containing 0,
+of a ring $R$ and declare that the elements of $S$ is invertible.
+The new ring is written as $S^{-1}R$,
+in which a usual formula $\frac{r_1}{s_1} + \frac{r_2}{s_2} = \frac{r_1 s_2 + r_2 s_1}{s_1 s_2}$ holds.
+The original ring naturally maps into $S^{-1}R$ as $\phi : r \mapsto \frac{r}{1}$.
+The localization means that one views all data as defined over $S^{-1}R$ via the natural map $\phi$.%
+\footnote{It is a functor from the category of $R$-modules to that of $S^{-1}R$-modules.}
+
+A localized ring, by definition, has more invertible elements, and hence has less nontrivial ideals.
+In fact, our Laurent polynomial ring is a localized ring of the polynomial ring by inverting monomials,
+e.g., $\{ x^i y^j | i,j \ge 0 \}$.
+Nontrivial ideals such as $(x)$ or $(x,y)$ in the polynomial ring
+become the unit ideal $(1)$ in the Laurent polynomial ring.
+Further localizations in this thesis are with respect to prime ideals.
+In this case, we say the ring is {\bf localized at a prime ideal $\pp$}.
+A prime ideal $\pp$ has a defining property that
+$a b \notin \pp$ whenever $a \notin \pp$ and $b \notin \pp$.
+Thus, the set-theoretic complement of $\pp$ is a multiplicatively closed set containing 1.
+In $(R\setminus \pp)^{-1}R$, denoted by $R_\pp$, any element outside $\pp$ is invertible,
+and therefore $\pp$ becomes a unique maximal ideal of $R_\pp$.
+Moreover, the localization sometimes simplifies the generators of an ideal.
+For instance, if $R=\FF[x,x^{-1}]$ and $\pp = (x-1)$,
+the ideal $((x -1)(x^5-x+1)) \subseteq R$ localizes to $(x-1)_\pp \subseteq R_\pp$
+since $x^5-x+1$ is an invertible element of $R_\pp$.
+
+An important fact about the localization is that a module is zero
+if and only if its localization at every prime ideal is zero.
+Further, the localization preserves exact sequences.
+So we can analyze a complex by localizing at various prime ideals.
+For a thorough treatment about localizations,
+see Chapter 3 of \cite{AtiyahMacDonald}.
+% and also Appendix~\ref{app:algebra}.
+The term `localization' is from geometric considerations
+where a ring is viewed as a function space on a geometric space.
+
+
+\begin{lem}
+Let $I$ be the associated ideal of an exact code Hamiltonian,
+and $\mm$ be a prime ideal of $R$.
+Then, $I \not\subseteq \mm$ implies that the localized homology
+\[
+K(L)_\mm = \ker (\epsilon_L)_\mm ~/~ \im (\sigma_L)_\mm
+\]
+is zero for all $L \ge 1$.
+\label{lem:associated-maximal-localized-homology}
+\end{lem}
+It is a simple variant of a well-known fact that
+a module over a local ring is free if its first non-vanishing Fitting ideal is the unit ideal~\cite[Chapter~1 Theorem~12]{Northcott}.
+\begin{proof}
+Recall that the localization and the factoring commute.
+By assumption, 
+\[
+(I_q(\epsilon))_\mm = \overline{ (I_q(\sigma))_\mm } = (1) = R_\mm =: S.
+\]6
+Recall that the local ring $S$ has the unique maximal ideal $\mm$,
+and any element outside the maximal ideal is a unit.
+If every entry of $\epsilon$ is in $\mm$, then $I_q(\epsilon) \subseteq \mm \ne S$.
+Therefore, there is a unit entry, and by column and row operations,
+$\epsilon$ is brought to
+\[
+ \epsilon \cong 
+\begin{pmatrix}
+ 1 & 0 \\
+ 0 & \epsilon'
+\end{pmatrix}
+\]
+where $\epsilon'$ is a submatrix.
+It is clear that $I_{q-1}(\epsilon') \subseteq I_q(\epsilon)$
+since any $q-1 \times q-1$ submatrix of $\epsilon'$ can be thought of
+as a $q \times q$ submatrix of $\epsilon$ where the first column and first row
+have the unique nonzero entry 1 at $(1,1)$.
+It is also clear that $I_{q-1}(\epsilon') \supseteq I_q(\epsilon)$
+since any $q \times q$ submatrix of $\epsilon$ contains
+either zero row or column, or the $(1,1)$ entry $1$ of $\epsilon$.
+Hence, $I_{q-1}(\epsilon') = (1)$, and
+we can keep extracting unit elements
+into the diagonal by row and column operations~\cite[Chapter~1 Theorem~12]{Northcott}.
+After $q$ steps,
+$t \times 2q$ matrix $\epsilon$ becomes precisely
+\[
+\epsilon \cong 
+\begin{pmatrix}
+ \id_q & 0 \\
+ 0 & 0
+\end{pmatrix}
+\]
+where $\id_q$ is the $q \times q$ identity matrix.
+Since localization preserves the exact sequence $G \to P \to E$,
+$\sigma$ maps to the lower $q$ components of $P$ with respect to the basis
+where $\epsilon$ is in the above form.
+Since $I_q(\sigma) = (1)$, we must have (after basis change)
+\[
+\sigma \cong 
+\begin{pmatrix}
+ 0 & 0 \\
+ \id_q & 0
+\end{pmatrix}.
+\]
+Therefore, even after factoring by the proper ideal $\bb_L$, 
+the homology $K(L) = \ker \epsilon_L ~/~ \im \sigma_L$ is still zero.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{cor}
+The associated ideal of an exact code Hamiltonian
+is the unit ideal, i.e., $I_q(\sigma) = R$,
+if and only if
+\[
+K(L) = \ker \epsilon_L ~/~ \im \sigma_L = 0
+\]
+for all $L \ge 1$.
+\label{cor:unit-characteristic-ideal-means-nondegeneracy}
+\end{cor}
+\begin{proof}
+If $I(\sigma) = R$,
+$I(\sigma)$ is not contained in any prime ideal $\mm$.
+The above lemma says $K(L)_\mm = 0$.
+Since a module is zero 
+if and only if its localization at every prime ideal is zero,
+$K(L) = 0$ for all $L \ge 1$.
+
+For the converse, observe that
+if $\FF$ is any extension field of $\FF_2$,
+for any $\FF_2$-vector space $W$,
+we have $\dim_\FF \FF \otimes_{\FF_2} W = \dim_{\FF_2} W$.
+We replace the ground field $\FF_2$ with its algebraic closure $\FF^a$ to test whether $K(L) \ne 0$.
+If $I_q(\sigma)$ is not the unit ideal, then it is contained in a maximal ideal $\mm \subsetneq R$.
+By Nullstellensatz, $\mm = (x_1 - a_1,\ldots,x_D - a_D)$ for some $a_i \in \FF^a$.
+Since in $R$ any monomial is a unit, we have $a_i \ne 0$.
+Therefore, there exists $L \ge 1$ such that $a_i^L = 1$ and $2 \nmid L$.
+The equation $x^L-1=0$ has no multiple root.
+
+We claim that $K(L) \ne 0$. It is enough to verify this for the localization at $\mm$.
+Since anything outside $\mm$ is a unit in $R_\mm$
+and each $x_i^L-1$ contains exactly one $x_i - a_i$ factor,
+we see $(\bb_L)_\mm = \mm_\mm$.
+Therefore, $(\epsilon_L)_\mm = \epsilon_\mm / (\bb_L)_\mm$ and
+$(\sigma_L)_\mm = \sigma_\mm / (\bb_L)_\mm$ is a matrix over the field $R/\mm = \FF^a$.
+Since $I_q(\sigma) \subseteq \mm$, we have $I_q(\sigma_L)_\mm = 0$.
+That is, $\rank_{\FF^a} (\sigma_L)_\mm < q$.
+It is clear that $\dim_{\FF^a} K(L)_\mm = \dim_{\FF^a} \ker (\epsilon_L)_\mm / \im (\sigma_L)_\mm \ge 1$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This corollary says that in order to have a {\em degenerate} Hamiltonian $H(L)$,
+one must have a proper associated ideal.
+We shall simply speak of a {\bf degenerate} code Hamiltonian
+if its associated ideal is proper.
+
+\subsection{Counting points in algebraic varieties}
+It is important that the factor ring
+\[
+ R/\bb_L = \FF_2 [x_1, \ldots, x_D]~/~(x^L_1 -1,\ldots,x^L_D -1)
+\]
+is finite dimensional as a vector space over $\FF_2$,
+and hence is Artinian. In fact, $\dim_{\FF_2} R/\bb_L = L^D$.
+This ring appears also in \cite{GueneriOezbudak2008}.
+Due to the following structure theorem of Artinian rings,
+$K(L)$ can be explicitly analyzed by the localizations.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}
+[Chapter~8 of \cite{AtiyahMacDonald}, Section~2.4 of \cite{Eisenbud}]
+Let $S$ be an Artinian ring.
+(For example, $S$ is a homomorphic image of a polynomial ring 
+over finitely many variables with coefficients in a field $\FF$,
+and is finite dimensional as a vector space over $\FF$.)
+Then, there are only finitely many maximal ideals of $S$, and
+\[
+ S \cong \bigoplus_\mm S_\mm
+\]
+where the sum is over all maximal ideals $\mm$ of $S$ and $S_\mm$ is the localization of $S$ at $\mm$. 
+%Each $S_\mm$ is ring-isomorphic to $S/\mm^n$ where $n$ is such that $\mm^n = \mm^{n+1}$.
+\label{prop:Artin-ring}
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%
+The following calculation tool is sometimes useful.
+Recall that a group algebra is equipped with a non-degenerate 
+scalar product $\langle v,w \rangle = \tr (v \bar w)$.
+This scalar product naturally extends to a direct sum of group algebras.
+\begin{lem}
+Let $\FF$ be a field,
+and $S = \FF[\Lambda]$ be the group algebra of a finite abelian group $\Lambda$.
+If $N$ is a submodule of $S^n$, then the dual vector space $N^*$
+is vector-space isomorphic to $S^n / N^\perp$,
+where $\perp$ is with respect to the scalar product $\langle \cdot , \cdot \rangle$.
+\end{lem}
+\begin{proof}
+Consider $\phi : S^n \ni x \mapsto \langle \cdot, x \rangle \in N^*$.
+The map $\phi$ is surjective since the scalar product is non-degenerate
+and $S^n$ is a finite dimensional vector space.
+The kernel of $\phi$ is precisely $N^\perp$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{cor}
+Put $2k = \dim_{\FF_2} K(L)$. Then,
+\[
+ k = qL^D - \dim_{\FF_2} \im \sigma_L = \dim_{\FF_2} \ker \epsilon_L - qL^D.
+\]
+Further, if $q=t$, then
+\[
+ k = \dim_{\FF_2} \ker \sigma_L = \dim_{\FF_2} \coker \epsilon_L .
+\]
+\label{cor:k-formulas}
+\end{cor}
+\noindent
+The first formula is a rephrasing of the fact that the number of encoded qubits
+is the total number of qubits minus the number of independent stabilizer 
+generators~\cite{Gottesman1996Saturating,CalderbankRainsShorEtAl1997Quantum}.
+\begin{proof}
+Put $S = R/\bb_L$. 
+If $v_1,\ldots, v_t$ denote the columns of $\sigma_L$, we have
+\begin{equation}
+\ker \sigma_L^\dagger = \lambda_q \ker \epsilon_L 
+= \bigcap_i v_i^\perp = \left( \sum_i S v_i \right)^\perp = \left( \im \sigma_L \right)^\perp.
+\label{eq:orthogonal-to-dual}
+\end{equation}
+Hence, $\dim_{\FF_2} \ker \epsilon_L = \dim_{\FF_2} S^{2q} - \dim_{\FF_2} \im \sigma_L.$
+Since $\dim_{\FF_2} S = L^D$ and $K(L) = \ker \epsilon_L / \im \sigma_L$,
+the first claim follows.
+
+Since $\im \sigma_L \cong S^t / \ker \sigma_L$, if $t=q$,
+we have $k = \dim_{\FF_2} \ker \sigma_L$ by the first claim.
+From Eq.~\eqref{eq:orthogonal-to-dual}, we conclude that 
+$k = \dim_{\FF_2} S^t / \im \sigma_L^\dagger = \dim_{\FF_2} \coker \epsilon_L$.
+\end{proof}
+\noindent We will apply these formulas in Section~\ref{sec:cubic-code} and Example~\ref{eg:ChamonModel}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The characteristic dimension is related to the rate at which
+the degeneracy increases as the system size increases
+in the following sense.
+Recall that $2k = \dim_{\FF_2} K(L)$ and the ground-state degeneracy is $2^k$.
+\begin{lem}
+Suppose $2 \nmid L$. Let $\FF^a$ be the algebraic closure of $\FF_2$.
+If $N$ is the number of maximal ideals in $\FF^a \otimes_{\FF_2} R$ 
+that contain $\bb_L + I_q(\sigma)$, 
+then
+\[
+N \le \dim_{\FF_2} K(L) \le 2q N.
+\]
+\label{lem:K-L-number-points}
+\end{lem}
+\begin{proof}
+We replace the ground field $\FF_2$ with $\FF^a$.
+Any maximal ideal of an Artinian ring $\FF^a[x_i^{\pm 1}]/\bb_L$ is of form
+$\mm = (x_1 - a_1, \ldots, x_D - a_D)$ where $a_i^L = 1$ by Nullstellensatz.
+Since $2 \nmid L$, we see that $(\bb_L)_\mm = \mm_\mm$ 
+and that $(R/\bb_L)_\mm \cong \FF^a$ is the ground field.
+(See the proof of Corollary~\ref{cor:unit-characteristic-ideal-means-nondegeneracy}.)
+
+Now, $I_q(\sigma) + \bb_L \subseteq \mm$
+iff $I_q(\sigma)_\mm + (\bb_L)_\mm \subseteq \mm_\mm = (\bb_L)_\mm$
+iff $I_q(\sigma)$ becomes zero over $R_\mm / (\bb_L)_\mm \cong \FF^a$
+iff $1 \le \dim_{\FF^a} K(L)_\mm \le 2q$.
+Since by Proposition~\ref{prop:Artin-ring},
+$K(L)$ is a finite direct sum of localized ones,
+we are done.
+\end{proof}
+
+\begin{lem}
+Let $I$ be an ideal such that $\dim R/I = d$. We have
+\[
+\dim_{\FF_2} R / (I+\bb_L) \le cL^d
+\]
+for all $L \ge 1$ and some constant $c$ independent of $L$.
+\end{lem}
+\begin{proof}
+We replace the ground field with its algebraic closure $\FF^a$.
+Write $\tilde x_i$ for the image of $x_i$ in $R/I$.
+By Noether normalization theorem~\cite[Theorem~13.3]{Eisenbud},
+there exist $y_1,\ldots, y_d \in R/I$ such that
+$R/I$ is a finitely generated module over $\FF^a[y_1,\ldots,y_d]$.
+Moreover, one can choose $y_i = \sum_{j=1}^D M_{ij} \tilde x_j$
+for some rank $d$ matrix $M$ whose entries are in $\FF^a$.
+Making $M$ into the reduced row echelon form,
+we may assume $y_i = \tilde x_i + \sum_{j>d} a_{ij} \tilde x_j$
+for each $1 \le i \le d$.
+
+Let $S=\FF^a[z_1,\ldots,z_D]$ be a polynomial ring in $D$ variables.
+Let $\phi : S \to R/( I + \bb_L )$ be the ring homomorphism
+such that $z_i \mapsto y_i$ for $1 \le i \le d$
+and $z_j \mapsto \tilde x_j$ for $ d < j \le D$.
+By the choice of $y_i$, $\phi$ is clearly surjective.
+Consider the ideal $J$ of $S$ generated by the initial terms of $\ker \phi$ 
+with respect to the lexicographical monomial order in which $z_1 \prec \cdots \prec z_D$.
+Since $\tilde x_j$ is integral over $\FF[y_1,\ldots,y_d]$,
+the monomial ideal $J$ contains $z_j^{n_j}$ for some positive $n_j$ for $d < j \le D$.
+Here, $n_j$ is independent of $L$.
+Since $z_i^L \in J$ for $1 \le i \le d$, we conclude that
+\[
+ \dim_{\FF^a} R/(I+\bb_L) = \dim_{\FF^a} S/J \le L^d \cdot n_{d+1} n_{d+2} \cdots n_{D}
+\]
+by Macaulay theorem \cite[Theorem~15.3]{Eisenbud}.
+\end{proof}
+
+\begin{cor}
+If $2 \nmid L$, and $d = \dim R/I_q(\sigma)$ is the characteristic dimension of a code Hamiltonian,
+then 
+\[
+ \dim_{\FF_2} K(L) \le c L^d
+\]
+for some constant $c$ independent of $L$.
+\label{cor:upper-bound-k}
+\end{cor}
+\begin{proof}
+If $J  = \bb_L + I(\sigma)$,
+$N$ in Lemma~\ref{lem:K-L-number-points} is equal to $\dim_{\FF^a} \FF^a \otimes R /\mathop{\mathrm{rad}} J$.
+This is at most $\dim_{\FF^a} \FF^a \otimes R / J = \dim_{\FF_2} R/J$.
+\end{proof}
+
+\begin{lem}
+Let $d$ be the characteristic dimension.
+There exists an infinite set of integers $\{ L_i \}$ such that
+\[
+ \dim_{\FF_2} K(L_i) \ge {L_i}^d /2
+\]
+\label{lem:k-growing-sequence-L}
+\end{lem}
+\begin{proof}
+We replace the ground field with its algebraic closure $\FF^a$.
+Let $\pp' \supseteq I(\sigma)$ be a prime of $R$ of codimension $D-d$.
+Let $\pp$ be the contraction (pull-back) of $\pp'$ in the polynomial ring
+$S = \FF^a[x_1,\ldots,x_D]$. Since the set of all primes of $R$ is in one-to-one
+correspondence with the set of primes in $S$ that does not include monomials,
+it follows that $\pp$ has codimension $D-d$ and does not contain any monomials.
+Let $V$ denote the affine variety defined by $\pp=(g_1,\ldots,g_n)$.
+Since $\pp$ contains no monomials, $V$ is not contained in any hyperplanes $x_i = 0$
+($i = 1,\ldots, D$).
+
+Let $A_1$ be a finite subfield of $\FF^a$ that contains all the coefficients of $g_i$,
+so $V$ can be defined over $A_1$.
+Let $A_n \subseteq \FF^a$ be the finite extension fields of $A_1$ of extension degree $n$.
+Put $L_n = |A_n|-1$.
+For any subfield $A$ of $\FF^a$, let us say a point of $V$ is \emph{rational} over $A$
+if its coordinates are in $A$.
+The number $N'(L_n)$ of points $(a_i) \in V$ satisfying $a_i^{L_n} = 1$
+is precisely the number of the rational points of $V$ over $A_n$
+that are not contained in the hyperplanes $x_i=0$.
+Since $I(\sigma) \subseteq \pp'$,
+the number $N$ in Lemma~\ref{lem:K-L-number-points} is at least $N'(L_n)$.
+It remains to show $N'(L_n) \ge L_n^d /2$ for all sufficiently large $n$.
+
+This follows from the result by Lang and Weil~\cite{LangWeil1954},
+which states that the number of points of a projective variety
+of dimension $d$ that are rational over a finite field of $m$ elements
+is $m^d + O\left(m^{d-\frac{1}{2}} \right)$ asymptotically in $m$.
+Since Lang-Weil theorem is for projective variety
+and we are with an affine variety $V$,
+we need to subtract the number of points in the hyperplanes $x_i = 0$
+($i = 0,1,\ldots,D$)
+from the Zariski closure of $V$.
+The subvarieties in the hyperplanes, being closed,
+have strictly smaller dimensions, and we are done.
+\end{proof}
+
+
+\section{Fractal operators and topological charges}
+\label{sec:fractal-operators}
+
+This section is to provide a characterization of topological charges,
+and their dynamical properties.
+Before we turn to a general characterization and define fractal operators,
+let us review familiar examples.
+Note that for two dimensions the base ring is $R = \FF_2[x,\bar x, y, \bar y]$.
+
+\begin{example}[Toric Code]
+\label{eg:2d-toric}
+Although the original two-dimensional toric code~\cite{Kitaev2003Fault-tolerant}
+has qubits on edges,
+we put two qubits per site of the square lattice to fit it into our setting.
+Concretely, the first qubit to each site represents the one on its east edge,
+and the second qubit the one on its north edge. With this convention,
+the Hamiltonian is the negative sum of the following two types of interactions:
+\[
+\xymatrix@!0{
+XI \ar@{-}[r] & XX \ar@{-}[d] \\
+II \ar@{-}[u] & IX \ar@{-}[l]
+} \quad
+\xymatrix@!0{
+ZI \ar@{-}[r] & II \ar@{-}[d] \\
+ZZ \ar@{-}[u] & IZ \ar@{-}[l]
+} \quad \quad
+\xymatrix@!0{
+y \ar@{-}[r] & xy \ar@{-}[d] \\
+1 \ar@{-}[u] & x \ar@{-}[l]
+}
+\]
+where we used $X,Z$ to abbreviate $\sigma_x,\sigma_z$, and omitted the tensor product symbol.
+Here, the third square specifies the coordinate system of the square lattice.
+Since there are $q=2$ qubits per site, the Pauli module is of rank 4.
+The corresponding generating map $\sigma : R^2 \to R^4$ is given by the matrix
+\[
+ \sigma_{\text{2D-toric}} = 
+\begin{pmatrix}
+ y+xy & 0 \\
+ x+xy & 0 \\
+\hline
+ 0    & 1 + y \\
+ 0    & 1 + x
+\end{pmatrix}
+\cong
+\begin{pmatrix}
+ 1 + \bar x & 0 \\
+ 1 + \bar y & 0 \\
+\hline
+ 0          & 1 + y \\
+ 0          & 1 + x
+\end{pmatrix} .
+\]
+Here, the each column expresses each type of interaction.
+It is clear that
+\[
+\epsilon_{\text{2D-toric}} = \sigma^\dagger \lambda_2 =
+\begin{pmatrix}
+ 0         & 0         & 1 + x & 1 + y \\
+ 1+ \bar y & 1+ \bar x & 0     & 0
+\end{pmatrix}
+\]
+and $\ker \epsilon = \im \sigma$;
+the two-dimensional toric code satisfies our exactness condition.
+The associated ideal is $I(\sigma) = ( (1+x)^2, (1+x)(1+y), (1+y)^2 )$.
+The characteristic dimension is $\dim R / I(\sigma) = 0$.
+Note also that $\ann \coker \epsilon = (x-1,y-1)$.
+The electric and magnetic charge are represented by
+$\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \in E \setminus \im \epsilon$,
+respectively.
+
+
+The connection with cellular homology should be mentioned.
+$\sigma$ can be viewed as the boundary map
+from the free module of all 2-cells with $\mathbb{Z}_2$ coefficients
+of the cell structure of 2-torus
+induced from the tessellation by the square lattice.
+Then, $\epsilon$ is interpreted as the boundary map from the free module of all 1-cells
+to that of all 0-cells.
+$\sigma$ or $\epsilon$ is actually the direct sum of two boundary maps.
+Indeed, the space 
+$K(L) = \ker \epsilon_L / \im \sigma_L$
+of operators acting on the ground space (logical operators)
+has four generators
+\begin{align*}
+ l_y(X) = \begin{pmatrix} 1+y+\cdots+y^{L-1} \\ 0 \\ 0 \\ 0 \end{pmatrix}, & & 
+ l_x(X) = \begin{pmatrix} 0 \\ 1+ x+ \cdots + x^{L-1} \\ 0 \\ 0 \end{pmatrix}, \\
+ l_x(Z) = \begin{pmatrix} 0 \\ 0 \\ 1+x+\cdots+x^{L-1} \\ 0 \end{pmatrix}, & &
+ l_y(Z) = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1+y+\cdots+y^{L-1} \end{pmatrix},
+\end{align*}
+which correspond to the usual nontrivial first homology classes of 2-torus.
+
+The description by the cellular homology might be advantageous for the toric code
+over our description with pure Laurent polynomials;
+in this way, it is clear that the toric code can be defined on
+an arbitrary tessellation of compact orientable surfaces.
+However, it is unclear whether this cellular homology description
+is possible after all for other topologically ordered code Hamiltonians.
+\hfill $\Diamond$
+\end{example}
+
+\begin{example}[2D Ising model on square lattice]
+The Ising model has nearest neighbor interactions that are horizontal and vertical.
+In our formalism, they are represented as $1+x$ and $1+y$. Thus,
+\[
+ \sigma_\text{2D Ising} =
+\begin{pmatrix}
+ 0   & 0 \\
+ 1+x & 1+y
+\end{pmatrix} .
+\]
+As it is not topologically ordered, the complex $G \to P \to E$ is not exact.
+Moreover, $\sigma$ is not injective.
+\[
+ \sigma_\text{2D Ising;1} =
+\begin{pmatrix}
+ 1+y \\
+ 1+x
+\end{pmatrix}
+\]
+generates the kernel of $\sigma$. That is, the complex 
+$0 \to G_1 \xrightarrow{ \sigma_\text{2D Ising;1}} G \xrightarrow{ \sigma_\text{2D Ising} } P$ is exact.
+\hfill $\Diamond$
+\end{example}
+
+In both examples, there exist isolated excitations.
+In the toric code, the isolated excitation can be
+(topologically) nontrivial since the electric charge is not in $\im \epsilon$.
+On the contrary, in 2D Ising model, any isolated excitation is 
+actually created by an operator of finite support
+because any excitation created by some Pauli operator appears as several connected loops.
+This difference motivates the following definition for charges.
+
+Let $\tilde R$ be the set of all $\FF_2$-valued functions on the translation group $\Lambda$,
+not necessarily finitely supported. For instance, if $\Lambda = \ZZ$,
+\[
+\tilde f = \cdots + x^{-4} + x^{-2} + 1 + x^2 + x^4 + \cdots \in \tilde R
+\]
+represents a function whose value is 1 at even lattice points, and 0 at odd points.
+Note that $\tilde R$ is a $R$-module,
+since the multiplication is a convolution between an arbitrary function and a finitely supported function.
+For example,
+\begin{align*}
+ (1+x) \cdot \tilde f &= \cdots + x^{-2} + x^{-1} + 1 + x + x^2 + \cdots , \\
+ (1+x)^2 \cdot \tilde f &= 0 .
+\end{align*}
+Let $\tilde P = \tilde R^{2q}$ be the module of Pauli operators of possibly infinite support.
+Similarly, let $\tilde E$ be the module of virtual excitations of possibly infinitely many terms.
+Formally, $\tilde P$ is the module of all $2q$-tuples of functions on the translation group,
+and $\tilde E$ is that of all $t$-tuples.
+Clearly, $P \subseteq \tilde P$ and $E \subseteq \tilde E$.
+The containment is strict if and only if the translation group is infinite.
+Since the matrix $\epsilon$ consists of Laurent polynomials with finitely many terms,
+$\epsilon:P \to E$ extends to a map from $\tilde P$ to $\tilde E$.
+%%%%%%%
+\begin{defn}
+A {\bf topological charge}, or {\bf charge} for short, $e = \epsilon( \tilde p ) \in E$ 
+is an excitation of finite energy (an element of the virtual excitation module)
+created by a Pauli operator $\tilde p \in \tilde P$ of possibly infinite support.
+A charge $e$ is called {\bf trivial} if $e \in \epsilon(P)$.
+\end{defn}
+%%%%%%%%
+\noindent By definition, the set of all charges modulo trivial ones is
+in one-to-one correspondence with the superselection sectors.
+According to the definition, any charge of 2D Ising model is trivial.
+A nontrivial charge may appear due to the following fractal generators.
+%%%%%%%%
+\begin{defn}
+We call zero-divisors on $\coker \epsilon$ as {\bf fractal generators}.
+In other words, 
+an element $f \in R \setminus \{0\}$ is a {\em fractal generator} if
+there exists $v \in E \setminus \im \epsilon$ 
+such that $f v \in \im \epsilon$.
+\end{defn}
+
+There is a natural reason the fractal generator deserves its name.
+Consider a code Hamiltonian with a single type of interaction: $t=1$.
+So each configuration of excitations is described by one Laurent polynomial.
+For example, in two dimensions, $f = 1 + x + y = \epsilon (p)$ represents
+three excitations, one at the origin of the lattice and the others at $(1,0)$ and $(0,1)$
+created by a Pauli operator represented by $p$.
+(This example is adopted from \cite{NewmanMoore1999Glassy}.)
+In order to avoid repeating phrase,
+let us call each element of the Pauli module a Pauli operator,
+and instead of using multiplicative notation
+we use module operation $+$ to mean the product of the corresponding Pauli operators.
+
+
+Consider the Pauli operator $fp = p + x p + y p \in P$. 
+It describes the Pauli operator $p$ at the origin 
+multiplied by the translations of $p$ at $(1,0)$ and at $(0,1)$.
+So $fp$ consists of three copies of $p$.
+This Pauli operator maps the ground state to the excited state $f^2 = 1 + x^2 + y^2$.
+The number of excitations is still three, but the excitations at $(1,0), (0,1)$ 
+have been replaced by those at $(2,0),(0,2)$.
+Similarly, the Pauli operator $f^{2+1} p = f^2 (fp)$ 
+consists of three copies of $fp$, or $3^2$ copies of $p$.
+The excited state created by $f^3 p$ is $f^4 = (f^2)^2 = 1 + x^{2^2} + y^{2^2}$.
+Still it has three excitations, but they are further apart.
+The Pauli operator $f^{2^n -1} p$ consists of $3^n$ copies of $p$ in a self-similar way,
+and the excited state caused by $f^{2^n -1} p$ consists of a constant number of excitations.
+%
+More generally, if there are $t > 1$ types of terms in the Hamiltonian,
+the excitations are described by a $t \times 1$ matrix.
+If it happens to be of form $f v$ for some $f \in R$ consisted of two or more terms,
+there is a family of Pauli operators $f^{2^n -1} p$ with self-similar support
+such that it only creates a bounded number of excitations.
+An obvious but uninteresting way to have such a situation is to put
+$f v = \epsilon (f p')$ for a Pauli operator $p'$ where $v = \epsilon( p' )$.
+Our definition avoids this triviality by requiring $v \notin \im \epsilon$.
+The reader may wish to compare the fractals with finite cellular automata~\cite{MartinOdlyzkoAndrewWolfram1984}.
+
+\begin{prop}
+\cite[16.33]{BrunsVetter}
+Suppose $\coker \epsilon \ne 0$.
+Then, the following are equivalent:
+\begin{itemize}
+ \item There does not exist a fractal generator.
+ \item $\coker \epsilon$ is torsion-free.
+ \item There exists a free $R$-module $E'$ of finite rank such that
+\[
+ P \xrightarrow{\epsilon} E \to E'
+\]
+is exact.
+\label{prop:nofractal-torsionless}
+\end{itemize}
+\end{prop}
+\begin{proof}
+The first two are equivalent by definition.
+The sequence above is exact if and only if
+$ 0 \to \coker{\epsilon} \to E' $
+is exact.
+Since $\coker \epsilon$ has a finite free resolution,
+the second is equivalent to the third.
+\end{proof}
+The following theorem states that the fractal operators produces all nontrivial charges.
+\begin{theorem}
+Suppose $\Lambda = \mathbb{Z}^D$ is the translation group of the underlying lattice.
+The set of all charges modulo trivial ones is in one-to-one correspondence
+with the torsion submodule of $\coker \epsilon$.
+\label{thm:charge-equals-torsion}
+\end{theorem}
+
+To illustrate the idea of the proof,
+consider a (classical) excitation map%
+%%%%%%%%%%%%%%
+\footnote{
+It is classical because it is not derived from an interesting quantum commuting Pauli Hamiltonian.
+For a classical Hamiltonian where all terms are tensor products of $\sigma_z$,
+there is no need to keep a $t \times 2q$ matrix $\epsilon$
+since the right half $\epsilon$ is zero.
+Just the left half suffices, which can be arbitrary
+since the commutativity equation $\epsilon \lambda \epsilon^\dagger =0$ is automatic.
+Nevertheless, the excitations and fractal operators are relevant.
+Our proof of the theorem is not contingent on the commutativity equation.
+}
+%%%%%%%%%%%%%%
+\[
+ \phi =
+ \begin{pmatrix}
+  1+x+y & 0   \\
+     0  & 1+x \\
+     0  & 1+y \\
+ \end{pmatrix}
+ : R^2 \to R^3 .
+\]
+A nonzero element $f=1+x+y \in R$ is a fractal generator
+since $\begin{pmatrix} 1 & 0 & 0 \end{pmatrix}^T \notin \im \phi$ 
+and $(1+x+y)\begin{pmatrix} 1 & 0 & 0 \end{pmatrix}^T \in \im \phi$;
+$f$ is a zero-divisor on a torsion element $\begin{pmatrix} 1 & 0 & 0 \end{pmatrix}^T \in \coker \epsilon$.
+It is indeed a charge since 
+$\phi(\tilde f \begin{pmatrix} 1 & 0 \end{pmatrix}^T) = \begin{pmatrix} 1 & 0 & 0 \end{pmatrix}^T$ where
+\[
+ \tilde f = \lim_{n \to \infty} f^{2^n-1} \in \FF[[x,y]]
+\]
+is a formal power series, which can be viewed as an element of $\tilde R$.
+The limit is well-defined since $f^{2^{n+1}-1} - f^{2^n -1}$ only contains terms of degree $2^n$ or higher.
+That is to say, only higher order `corrections' are added and lower order terms are not affected.
+Of course, there is no natural notion of smallness in the ring $\FF[x,y]$.
+But one can formally call the members of the ideal power $(x,y)^n \subseteq \FF[x,y]$ \emph{small}.
+It is legitimate to introduce a topology in $R$ defined by the \emph{ever shrinking} ideal powers $(x,y)^n$.
+They play a role analogous to the ball of radius $1/n$ in a metric topological space.
+The \emph{completion} of $\FF[x,y]$
+where every Cauchy sequence with respect to this topology is promoted to a convergent sequence,
+is nothing but the formal power series ring $\FF[[x,y]]$.
+For a detailed treatment, see Chapter 10 of \cite{AtiyahMacDonald}.
+
+The completion and the limit only make sense in the polynomial ring $\FF[x,y]$.
+The reason $\tilde f$ is well-defined is that $f \in \FF[x^{\pm 1},y^{\pm 1}]$ is accidentally expressed
+as a usual polynomial with lowest order term $1$.
+In the proof below we show that every fractal generator can be expressed in this way.
+Hence, a torsion element of $\coker \epsilon$ is really a charge.
+
+\begin{proof}
+For a module $M$, let $T(M)$ denote the torsion submodule of $M$:
+\[
+ T(M) = \{ m \in M \ |\  \exists \, r \in R \setminus \{0\} \text{ such that } rm = 0 \}
+\]
+
+Suppose first that $T(\coker \epsilon) = 0$.
+We claim that in this case there is no nontrivial charge.
+Let $e = \epsilon( \tilde p ) \in E$ be a charge, where $\tilde p \in \tilde P$.
+By Proposition~\ref{prop:nofractal-torsionless}
+we have an exact sequence of finitely generated free modules
+$ P \xrightarrow{\epsilon} E \xrightarrow{\epsilon_1} E_1$.
+Since the matrix $\epsilon_1$ is over $R$,
+the complex extends to a complex of modules of tuples of functions on the translation group.
+\[
+ \tilde P \xrightarrow{\epsilon} \tilde E \xrightarrow{\epsilon_1} \tilde E_1
+\]
+(This extended sequence may not be exact.)
+Then, $\epsilon_1(e) = \epsilon_1( \epsilon( \tilde p ) ) = 0$
+since $\epsilon_1 \circ \epsilon = 0$ identically.
+But, $e \in E$, and therefore, $e \in \ker \epsilon_1 \cap E = \epsilon(P)$.
+It means that $e$ is a trivial charge, i.e., $e$ maps to zero in $\coker \epsilon$,
+and proves the claim.%
+\footnote{
+One may wish to consider $\epsilon$ to consist of the second column of $\phi$ above.
+Then $\epsilon_1 = \begin{pmatrix} 1+y & -1-x \end{pmatrix}$.
+}
+
+Now, allow $\coker (P \xrightarrow{\epsilon} E)$ to contain torsion elements.
+$Q = (\coker \epsilon) / T(\coker \epsilon)$ is torsion-free,
+and is finitely presented as $Q = \coker( \epsilon' : P' \to E )$
+where $P'$ is a finitely generated free module.
+In fact, we may choose $\epsilon'$ by adding more columns representing the generators of
+the torsion submodule of $\coker \epsilon$ to the matrix $\epsilon$.
+\[
+ \epsilon = \begin{pmatrix} \# & \# \\ \# & \# \end{pmatrix} \quad \quad
+ \epsilon'= \begin{pmatrix} \# & \# & * & * \\ \# & \# & * & * \end{pmatrix}
+\]
+Then, $P$ can be regarded as a direct summand of $P'$.%
+\footnote{
+If we take $\epsilon = \phi$ above,
+then
+\[
+ \epsilon' =  \begin{pmatrix}
+  1+x+y & 0   & 1 \\
+     0  & 1+x & 0 \\
+     0  & 1+y & 0 \\
+ \end{pmatrix}.
+\]
+Note that $P' = P \oplus R$.
+}
+
+Let $e = \epsilon( \tilde p ) \in E$ be any charge.
+Since the matrix $\epsilon'$ contains $\epsilon$ as submatrix,
+we may write $e = \epsilon'(\tilde p) \in E$.
+Since $T(\coker \epsilon')=0$,
+we see by the first part of the proof that $e = \epsilon'( p' )$ for some $p' \in P'$.
+Then, $e$ maps to zero in $Q$, and it follows that $e$ maps into $T(\coker \epsilon)$
+in $\coker \epsilon$. 
+In other words, the equivalence class of $e$ modulo trivial charges 
+is a torsion element of $\coker \epsilon$.
+
+Conversely,
+we have to prove that for every element $e \in E$ 
+such that $fe = \epsilon(p)$ for some $f \in R \setminus \{0\}$ and $p \in P$,
+there exists $\tilde p \in \tilde P$ such that $ e = \epsilon( \tilde p )$.
+Here, $\tilde P$ is the module of all $2q$-tuples of 
+$\FF_2$-valued functions on the translation group.
+Consider the lexicographic total order on $\mathbb{Z}^D$ in which $x_1 \succ x_2 \succ \cdots \succ x_D$.
+It induces a total order on the monomials of $R$.
+Choose the least term $f_0$ of $f$.
+By multiplying $f_0^{-1}$, we may assume $f_0 = 1$.%
+\footnote{
+If $D=1$, $f$ would be a polynomial of nonnegative exponents with the lowest order term being 1.
+If $D=2$ and $f = y + y^2 + x$, then the least term is $y$.
+After multiplying $f_0^{-1}$, it becomes $1+y+xy^{-1}$.
+}
+
+We claim that the sequence
+\begin{equation}
+ f,\ \  f^2 f,\ \  f^4 f^2 f,\ \  \ldots,\ \  f^{2^n}f^{2^{n-1}} \cdots f^2 f,\ \  \ldots
+\label{eq:ftn-series}
+\end{equation}
+converges to $\tilde f \in \tilde R$,
+where $\tilde R$ is the set of all $\FF_2$-valued functions on $\Lambda$.
+Given the claim,
+since $f^{2^n} e = e + (f-1)^{2^n}e = \epsilon(f^{2^{n-1}} \cdots f^2 f p)$ where $p \in P$,
+we conclude that $e = \epsilon( \tilde f p )$ is a charge.
+
+If $f$ is of nonnegative exponents, and hence $f \in S=\FF_2[x_1,\ldots,x_D]$,
+then the claim is clearly true.
+Indeed, the positive degree terms of $f^{2^n} = 1 + (f-1)^{2^n}$ 
+are in the ideal power $(x_1,\ldots,x_D)^{2^p} \subset S$.
+Therefore, the sequence Eq.~\eqref{eq:ftn-series} converges
+in the formal power series ring $\FF_2[[x_1,\ldots,x_D]]$,
+which can be regarded as a subset of $\tilde R$.
+If $f$ is not of nonnegative exponents, one can introduce the following change of basis
+of the lattice $\mathbb{Z}^D$ such that $f$ becomes of nonnegative exponents.
+In other words, the sequence Eq.~\eqref{eq:ftn-series} is in fact contained in a ring 
+that is isomorphic to the formal power series ring, where the convergence is clear.
+
+For any nonnegative integers $m_1,\ldots,m_{D-1}$, define a linear transformation
+\[
+\zeta_m =
+\zeta_{(m_1,m_2,\ldots,m_{D-1})} :
+\begin{pmatrix}
+ a_1 \\ a_2 \\ \vdots \\ a_D
+\end{pmatrix}
+\mapsto
+ \begin{pmatrix}
+  a'_1 \\ a'_2 \\ \vdots \\ a'_D
+ \end{pmatrix}
+=
+\begin{pmatrix}
+ 1      & 0      & 0      & \cdots & 0       \\
+ m_1    & 1      &  0     &        & 0       \\
+ m_1    & m_2    &  1     &        & 0       \\
+ \vdots &        &        & \ddots & \vdots  \\
+ m_1    & m_2    & \cdots & m_{D-1}& 1       \\
+\end{pmatrix}
+\begin{pmatrix}
+ a_1 \\ a_2 \\ \vdots \\ a_D
+\end{pmatrix}
+\text{ on } \mathbb{Z}^D .
+\]
+$\zeta_m$ induces the map $x_1^{a_1} \cdots x_D^{a_D} \mapsto x_1^{a'_1} \cdots x_D^{a'_D}$ on $R$.
+Let $u=x_1^{a_1} \cdots x_D^{a_D}$ be an arbitrary term of $f$ other than $1$, so $u \succ 1$.
+For the smallest $i \in \{1,\ldots,D\}$ such that $a_i \neq 0$,
+one has $a_i > 0$ due to the lexicographic order.
+Hence, if we choose $m_i$ large enough and set $m_j=0\,(j\neq i)$,
+then $\zeta_m (u)$ has nonnegative exponents.
+Since any $\zeta_{m}$ maps a nonnegative exponent term to a nonnegative exponent term,
+and there are only finitely many terms in $f$,
+it follows that
+there is a finite composition $\zeta$ of $\zeta_m$'s 
+which maps $f$ to a polynomial of nonnegative exponents.%
+\footnote{
+For our previous example $f = 1+y+xy^{-1}$,
+one takes $\zeta : x^i y^j \mapsto x^i y^{i+j}$, so $\zeta(f) = 1 + y + x$.
+}
+\end{proof}
+
+
+Since a nontrivial charge $v$ has finite {\bf size} anyway
+(the maximum exponent minus the minimum exponent of the Laurent polynomials 
+in the $t \times 1$ matrix $v$),
+we can say that the charge $v$ is {\bf point-like}.
+Moreover, we shall have a description how the point-like charge
+can be separated from the other by a local process.
+By the {\em local process} we mean a sequence of Pauli operators $[[o_1, \ldots, o_n]]$
+such that $o_{i+1} - o_i$ is a monomial.
+The number of excitations, i.e., {\em energy}, at an instant $i$ 
+will be the number of terms in $\epsilon(o_i)$.
+
+\begin{theorem}
+\cite{NewmanMoore1999Glassy}
+If there is a fractal generator of a code Hamiltonian,
+then for all sufficiently large $r$,
+there is a local process starting from the identity
+by which a point-like charge is separated from the other excitations by distance at least $2^r$.
+One can choose the local process in such a way that at any intermediate step
+there are at most $c r$ excitations for some constant $c$ independent of $r$.
+\label{thm:logarithmic-energy-barrier-for-fractal-operator}
+\end{theorem}
+For notational simplicity, we denote the local process $[[o_1,\ldots,o_n]]$
+by
+\[
+s = [o_1,~ o_2-o_1,~ o_3 - o_2, \ldots, o_n - o_{n-1}].
+\]
+It is a {\em recipe} to construct $o_n$, consisted of single-qubit operators.
+$o_n$ can be expressed as ``$o_n = \int s$'', the sum of all elements in the recipe.
+\begin{proof}
+Let $f$ be a fractal generator, 
+and put $fv = \epsilon (p)$
+where $v \notin \im \epsilon$.
+We already know $v$ is a point-like nontrivial charge.
+Write
+\[
+ p = \sum_{i=1}^n p_i, \quad f = \sum_{i=1}^l f_i
+\]
+where each of $p_i$ and $f_i$ is a monomial.
+Let $s_0 = [ 0, p_1, p_2, \ldots, p_{n}]$ be a recipe for constructing $p$; $\int s_0 = p$.
+Given $s_i$, define inductively
+\[
+ s_{i+1} = (f_1^{2^i} \cdot s_i) \circ (f_2^{2^i} \cdot s_i) \circ \cdots \circ (f_l^{2^i} \cdot s_i) 
+\]
+where $\circ$ denotes the concatenation and $f_i \cdot [u_1,\ldots,u_{n'}] = [f_i u_1, \ldots, f_i u_{n'}]$.
+It is clear that $s_{i+1}$ constructs the Pauli operator
+\begin{align*}
+\int s_{r} 
+= f^{2^{r-1}} \int s_{r-1} = f^{2^{r-1}} f^{2^{r-2}} \int s_{r-2} 
+= f^{2^{r-1} + 2^{r-2} + \cdots + 1} \int s_0 = f^{2^r-1} p 
+\end{align*}
+whose image under $\epsilon$ is $f^{2^r}v$. 
+Thus, if $r$ is large enough so that $2^r$ is greater than the size of $v$,
+the configuration of excitations is precisely $l$ copies of $v$.
+The distance between $v$'s is at least $2^r$ minus twice the size of $v$.
+
+Therefore, there is a constant $e > 0$ such that for any $r \ge 0$
+the energy of $f^{2^r}v \in E$ is $\le e$.
+Let $\Delta(r)$ be the maximum energy during the process $s_r$.
+We prove by induction on $r$ that 
+\[
+\Delta(r) \le el (r+1).
+\]
+When $r = 0$, it is trivial.
+In $s_{r+1}$, the energy is $\le \Delta(r)$ until $f_1^{2^r} s_r$ is finished.
+At the end of $f_1^{2^r} s_r$, the energy is $\le e $.
+During the subsequent $f_2^{2^r} s_r$, the energy is $\le \Delta(r) + e$,
+and at the end of $(f_1^{2^r} s_r) \circ (f_2^{2^r} s_r)$, the energy is $\le 2 e$.
+During the subsequent $f_j^{2^r} s_r$, the energy is $\le \Delta(r) + je$.
+Therefore, 
+\[
+\Delta(r+1) \le \Delta(r) + el \le el(r+2)
+\]
+by the induction hypothesis.
+\end{proof}
+
+Fractal operators appear in Newman-Moore model~\cite{NewmanMoore1999Glassy} where classical spin glass is discussed.
+Their model has generating matrix $\sigma = \begin{pmatrix} 0 & 1+x+y \end{pmatrix}^T$.
+The theorem is a simple generalization of Newman and Moore's construction.
+Another explicit example of fractal operators 
+in a quantum model can be found in Section~\ref{sec:numerics}.
+
+Note that the notion of fractal generators includes that of ``string operators.''
+In fact, a fractal generator that contains exactly two terms
+gives a family of nontrivial {\em string segments} of unbounded length,
+as defined in Chapter~\ref{chap:cubic-code}.
+
+
+Below, we point out a couple of sufficient conditions 
+for nontrivial charges, or equivalently, fractal generators to exist.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}
+For code Hamiltonians,
+the existence of a fractal generator is a property of an equivalence class of Hamiltonians
+in the sense of Definition~\ref{defn:equiv-H}.
+\label{prop:fractal-property-of-eq-class}
+\end{prop}
+\begin{proof}
+Suppose $\im \sigma = \im \sigma'$.
+Each column of $\sigma'$ is a $R$-linear combination of those of $\sigma$, and vice versa.
+Thus, there is a matrix $B$ and $B'$ such that $\epsilon' = B\epsilon$ and $\epsilon = B' \epsilon'$.
+$BB'$ and $B'B$ are identity on $\im \epsilon'$ and $\im \epsilon$, respectively.
+In particular, $B'$ and $B$ are injective on $\im \epsilon'$ and $\im \epsilon$, respectively.
+Suppose $f$ is a fractal generator for $\epsilon$, i.e., $fv = \epsilon p \ne 0$.
+Then, $0 \ne Bfv = f B v = B\epsilon(p) = \epsilon'(p)$.
+If $Bv \in \im \epsilon'$, then $v = B'Bv \in \im \epsilon$, a contradiction.
+Therefore, $f$ is also a fractal generator for $\epsilon'$.
+By symmetry, a fractal generator for $\epsilon'$ is a fractal generator for $\epsilon$, too.
+
+Suppose $R' \subseteq R$ is a coarse-grained base ring.
+If $\coker \epsilon$ is torsion-free as an $R$-module,
+then so it is as an $R'$-module.
+If $f \in R$ is a fractal generator,
+the determinant of $f$ as a matrix over $R'$ is a fractal generator.
+
+A symplectic transformation or tensoring ancillas
+does not change $\coker \epsilon$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{prop}
+For any ring $S$ and $t \ge 1$,
+if $0 \to S^t \to S^{2t} \xrightarrow{\phi} S^t$ is exact and $I(\phi) \ne S$,
+then $\coker \phi$ is not torsion-free.
+In particular,
+for a degenerate exact code Hamiltonian,
+if $\sigma$ is injective, then there exists a fractal generator.
+\label{prop:injective-sigma-implies-fractal}
+\end{prop}
+\begin{proof}
+By Proposition~\ref{prop:exact-sequence}, $\rank \phi = t$.
+Since $0 \subsetneq I_t(\phi) \subsetneq S$ is the initial Fitting ideal,
+we have $0 \ne \ann \coker \phi \ne S$. That is, $\coker \phi$ is not torsion-free.
+
+For the second statement, set $S=R$.
+If $\sigma$ is injective, we have an exact sequence
+\[
+ 0 \to G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E .
+\]
+By Remark~\ref{rem:rank-sigma-m}, $t = \rank G = \rank \sigma = \rank \epsilon = q$.
+\end{proof}
+
+\begin{prop}
+Suppose the characteristic dimension is $D-2$
+for a degenerate exact code Hamiltonian.
+Then, there exists a fractal generator.
+\label{prop:maximal-characteristic-dimension-means-fractal}
+\end{prop}
+\begin{proof}
+Suppose on the contrary there are no fractal generators.
+Then, by Proposition~\ref{prop:nofractal-torsionless},
+\[
+ G \xrightarrow{\sigma} P \xrightarrow{\epsilon} E \to E'
+\]
+is exact for some finitely generated free module $E'$.
+Together with Hilbert syzygy theorem~\cite[Corollary~15.11]{Eisenbud},% 
+\footnote{We will prove a stronger version in Lemma~\ref{lem:coker-epsilon-resolution-length-D}.}
+Proposition~\ref{prop:exact-sequence} implies
+$\codim I(\sigma) \ge 3$ unless $I(\sigma) = R$.
+But, $\codim I(\sigma) = 2$ and $I(\sigma) \ne R$ by 
+Corollary~\ref{cor:unit-characteristic-ideal-means-nondegeneracy}.
+This is a contradiction.
+\end{proof}
+

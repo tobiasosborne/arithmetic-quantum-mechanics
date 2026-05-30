@@ -1,0 +1,280 @@
+% SHARD-ID: AQM-89-SCHEME-INCIDENCE-CODE-SOURCES
+% SHARD-TITLE: Scheme-Incidence Sources for Code Complexes
+% SHARD-SUMMARY: Separates bare finite spectra from schemes equipped with incidence or group-law data.
+% SHARD-SUMMARY: Gives checked Weyl-label targets for Steane, Reed-Muller, Shor, and toric-code source conjectures.
+% SHARD-SUMMARY: Explains why the constant finite group-scheme toric route is structured extra data, not a consequence of \(\Spec R\) alone.
+% SHARD-KEYWORDS: scheme incidence, group scheme, toric code, Steane code, Reed-Muller, Shor code, Weyl-Heisenberg constraints
+
+\section{Scheme-Incidence Sources for Code Complexes}
+\label{sec:scheme-incidence-code-sources}
+
+\subsection{Status and Source Anchors}
+This shard answers whether rings or schemes can give the complexes proposed
+after AQM-88.  The answer is conditional: a bare finite ring gives finite
+residue Weyl sites, while a code complex needs extra selected functions,
+incidence relations, or group-law data whose boundary identity selects a
+commuting Weyl-Heisenberg subgroup.  The CSS bridge is AQM-08.  It proves that
+a finite chain complex
+\[
+  C_2\xrightarrow{\partial_2}C_1\xrightarrow{\partial_1}C_0,
+  \qquad \partial_1\partial_2=0,
+\]
+selects the Weyl-label subgroup
+\[
+  L=(\operatorname{im}\delta^0\oplus0)+(0\oplus\operatorname{im}\partial_2)
+  \subset C^1\oplus C_1 .
+\]
+AQM-10 fixes the Steane binary presentation; AQM-05 and AQM-06 validate the
+periodic square toric complex for \(k=4\); AQM-40 proves
+\(\Spec(k^n)\); AQM-88 requires final selected/rejected Weyl-Heisenberg
+elements.  The convention is \texttt{CONVENTIONS.md} \texttt{(ax)}.  The only
+group-scheme material used here is the explicit constant finite case
+\(G_k=\Spec(k^G)\).  Stacks supplies affine-scheme anti-equivalence in
+\path{references/algebraic_geometry/stacks_project_schemes.tex}, lines
+841--963, and finite products/fibre products in lines 986--1004.  No general
+nonconstant group-scheme theory is imported.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&\Spec R\text{ gives residue sites, not a complex.}\\
+D2&:&X_i=\Spec(k^{S_i}),\ I_{10},I_{21}\text{ define }\partial_1,\partial_2.\\
+L1&:&\partial_1\partial_2=0\Rightarrow
+L=(\operatorname{im}\delta^0\oplus0)+(0\oplus\operatorname{im}\partial_2)
+\text{ is isotropic.}\\
+T1&:&\text{Steane, Reed-Muller, Shor, toric are tested below by their }L.
+\end{array}
+\]
+
+\subsection{Why a Bare Finite Ring Is Not Enough}
+
+Finite rings are Artinian examples.  The Stacks Artinian source records that
+an Artinian ring has finitely many maximal ideals, all primes are maximal, and
+the spectrum is finite discrete after decomposition into local factors.  AQM-40
+gives the concrete reduced case
+\[
+  \Spec(k^n)=\{\mathfrak m_1,\ldots,\mathfrak m_n\},
+  \qquad \kappa(\mathfrak m_i)=k.
+\]
+This gives \(E=\bigoplus_i k^2\), but it does not supply edges, faces, or a
+boundary map.  Stabilizer constraints are extra isotropic label choices.  Thus
+the correct outside-in target is not \(\Spec R\leadsto C_2\to C_1\to C_0\)
+without further data, but
+\[
+  \text{finite schemes plus named incidence/group structure}
+  \leadsto C_2\to C_1\to C_0
+  \leadsto \pi^{-1}(L)\subset\operatorname{WH}(E).
+\]
+
+\subsection{Steane: Punctured Boolean Three-Space}
+
+Let \(X_7=\mathbb F_2^3\setminus\{0\}\), ordered as
+\[
+  111,\ 110,\ 101,\ 100,\ 011,\ 010,\ 001 .
+\]
+The finite scheme is \(X_{\rm St}=\Spec(\mathbb F_2^{X_7})\), equivalently
+Boolean affine three-space with the origin idempotent removed:
+\[
+  \mathbb F_2[x_1,x_2,x_3]/(x_i^2+x_i,\ (1+x_1)(1+x_2)(1+x_3)).
+\]
+
+Evaluate the three coordinate functions on the displayed order.  The rows are
+\[
+\begin{aligned}
+  x_1&=1111000,\\
+  x_2&=1100110,\\
+  x_3&=1010101.
+\end{aligned}
+\]
+These are exactly the Steane rows \(g_1,g_2,g_3\) in AQM-10.  Put
+\(D=\langle x_1,x_2,x_3\rangle\subset\mathbb F_2^{X_7}\).  Each row has weight
+\(4\), and any two distinct rows overlap in \(2\) sites, so
+\[
+  D\subset D^\perp .
+\]
+Therefore the selected Weyl-label subgroup
+\[
+  L_{\rm St}=(D\oplus0)+(0\oplus D)
+\]
+is isotropic.  AQM-10 then identifies \(L_{\rm St}^\perp/L_{\rm St}\) with one
+binary symplectic logical pair.
+
+The nontrivial selection principle is the choice of homogeneous degree-one
+functions \(\langle x_1,x_2,x_3\rangle\), not all affine functions.  Including
+the constant function would change the row space.  Hence the ring/scheme
+source is promising but not yet a dynamical derivation of the selection rule.
+
+\subsection{Reed-Muller: Boolean Degree Filtration}
+
+Let
+\[
+  B_m=\mathbb F_2[x_1,\ldots,x_m]/(x_i^2+x_i),\qquad X_m=\Spec B_m .
+\]
+Then \(X_m\) is the finite Boolean \(m\)-cube and \(B_m\) is the full function
+ring on it.  For \(S\subset\{1,\ldots,m\}\), write
+\[
+  x_S=\prod_{i\in S}x_i .
+\]
+The squarefree monomials form the function basis.  Define the degree-filtered
+subspace
+\[
+  RM(r,m)=\langle x_S:\ |S|\le r\rangle\subset\mathbb F_2^{\mathbb F_2^m}.
+\]
+This shard uses this displayed definition as the local Reed-Muller convention.
+
+Use the pointwise binary pairing
+\[
+  \langle f,g\rangle=\sum_{a\in\mathbb F_2^m} f(a)g(a).
+\]
+For monomials,
+\[
+  \langle x_S,x_T\rangle
+  =
+  \sum_a x_{S\cup T}(a)
+  =
+  \begin{cases}
+  1,&S\cup T=\{1,\ldots,m\},\\
+  0,&S\cup T\ne\{1,\ldots,m\}.
+  \end{cases}
+\]
+Indeed, \(x_{S\cup T}\) is \(1\) on \(2^{m-|S\cup T|}\) points, and this number
+is odd exactly when \(|S\cup T|=m\).
+
+Hence \(RM(r,m)\) is orthogonal to \(RM(s,m)\) whenever \(r+s<m\).  For \(0\le r<m\),
+\[
+  RM(r,m)^\perp=RM(m-r-1,m),
+\]
+because the inclusion follows from the monomial calculation and the dimensions
+sum to \(2^m\).
+
+Therefore every pair \(r_X+r_Z<m\) gives a checked CSS Weyl-label selection
+\[
+  L_{r_X,r_Z}
+  =
+  (RM(r_X,m)\oplus0)+(0\oplus RM(r_Z,m)).
+\]
+The selected Weyl-Heisenberg elements are \(\pi^{-1}(L_{r_X,r_Z})\).  Any
+stronger Reed-Muller-code claim, for example a particular distance or
+transversal-gate property, still needs its own local source or run.
+
+\subsection{Shor: A Sourced Incidence Target, Not Yet a Natural Scheme}
+
+Gottesman's local source lists Shor's nine-qubit stabilizer table in
+\path{references/symplectic_qecc/gottesman_9705052_source/Thesis.tex}, lines
+920--935.  In binary CSS row notation, take \(S_1=\{1,\ldots,9\}\) and
+\[
+\begin{gathered}
+H_X=\begin{pmatrix}111111000\\111000111\end{pmatrix},\\
+H_Z=\begin{pmatrix}
+110000000\\101000000\\000110000\\000101000\\000000110\\000000101
+\end{pmatrix}.
+\end{gathered}
+\]
+Each \(Z\)-row is supported inside one block of three.  Each \(X\)-row is
+constant on any block it touches.  Thus every mixed dot product is either \(0\)
+or \(2\), hence zero in \(\mathbb F_2\):
+\[
+  H_XH_Z^T=0.
+\]
+
+This gives a finite incidence chain complex by setting
+\[
+  C_0=\mathbb F_2^2,\quad C_1=\mathbb F_2^9,\quad C_2=\mathbb F_2^6,
+  \quad \partial_1=H_X,\quad \partial_2=H_Z^T .
+\]
+The selected Weyl labels are
+\[
+  L_{\rm Shor}
+  =
+  (\operatorname{row}H_X\oplus0)+(0\oplus\operatorname{row}H_Z).
+\]
+The rows have ranks \(2\) and \(6\), so \(L_{\rm Shor}\) has rank \(8\) inside
+\(\mathbb F_2^9\oplus\mathbb F_2^9\).
+
+This is a valid scheme-incidence object in convention \texttt{(ax)}: take
+\(\Spec(\mathbb F_2^{S_i})\) for the check sets and encode the ones of
+\(H_X,H_Z\) as incidence relations.  The open question is naturality.
+Bombin--Martin--Delgado's local source says Shor's original \([[9,1,3]]\) code
+belongs to a homological family \([[d^2,1,d]]\) at \(d=3\), but this shard does
+not yet reconstruct their surface 2-complex.
+
+\subsection{Toric: Constant Group Scheme and Cayley Squares}
+
+Let \(G=C_k\times C_k\) be the finite abelian group written additively, with
+generators \(a=(1,0)\) and \(b=(0,1)\).  Over \(\mathbb F_2\), the constant
+finite group scheme used here is \(G_{\mathbb F_2}=\Spec(\mathbb F_2^G)\).  As
+a bare scheme this is only the product-field spectrum with \(k^2\) points.  The
+group structure is extra morphism data.  In coordinate functions
+\(\delta_g\in\mathbb F_2^G\), multiplication is the affine-scheme morphism with
+pullback
+\[
+  m^\#(\delta_h)=\sum_{u+v=h}\delta_u\otimes\delta_v .
+\]
+Unit and inverse are defined similarly.  Thus the constant group scheme is a
+scheme, but not merely \(\Spec(\mathbb F_2^G)\) with its extra structure
+forgotten.
+
+Build the periodic square incidence complex:
+\[
+  S_0=G,\qquad S_1=G\times\{a,b\},\qquad S_2=G .
+\]
+For \(g\in G\), use edges \((g,a):g\to g+a\) and \((g,b):g\to g+b\).  Over
+\(\mathbb F_2\) signs disappear, so set
+\[
+  \partial_1(g,a)=g+(g+a),\qquad
+  \partial_1(g,b)=g+(g+b),
+\]
+and
+\[
+  \partial_2(g)=(g,a)+(g+a,b)+(g+b,a)+(g,b).
+\]
+Then
+\[
+\begin{aligned}
+\partial_1\partial_2(g)
+&=g+(g+a)+(g+a)+(g+a+b)\\
+&\quad +(g+b)+(g+a+b)+g+(g+b)\\
+&=0 .
+\end{aligned}
+\]
+The cancellation is exactly the commuting-square identity \(g+a+b=g+b+a\).
+
+Put qubit Weyl labels on \(S_1\).  The toric selected label subgroup is
+\[
+  L_{\rm tor}(G,a,b)
+  =
+  (\operatorname{im}\delta^0\oplus0)+(0\oplus\operatorname{im}\partial_2)
+  \subset \mathbb F_2^{S_1}\oplus\mathbb F_2^{S_1}.
+\]
+The selected Weyl-Heisenberg elements are \(\pi^{-1}(L_{\rm tor})\).  For
+\(k=4\), this gives \(|S_0|=16\), \(|S_1|=32\), and \(|S_2|=16\), matching the
+AQM-05/AQM-06 validated toric instance.
+
+\paragraph{Is this cheating?}
+It is not cheating if the input is allowed to be a scheme with named group law
+and named generators.  It is cheating if one says that the bare ring
+\(\mathbb F_2^G\), or the bare scheme \(\Spec(\mathbb F_2^G)\), canonically
+produces the toric code.  The bare scheme only knows \(k^2\) points.  The toric
+complex uses three extra choices:
+\[
+  \text{group law on }G,\qquad
+  \text{commuting generators }a,b,\qquad
+  \text{Cayley-square face convention}.
+\]
+These choices are substantial, but they are structured.  They replace an
+arbitrary \(32\)-qubit CSS matrix by a translation-invariant incidence complex
+whose CSS commutation follows from \(a+b=b+a\).
+
+\subsection{Conclusion}
+
+The evidence separates the four routes.  Steane is a punctured Boolean
+three-space plus a homogeneous degree-one selection rule.  Reed-Muller is the
+Boolean cube with its degree filtration; orthogonality is checked above, while
+distance and gate claims still need sources or runs.  Shor has a sourced
+incidence-chain target but still needs the natural homological
+\([[d^2,1,d]]\) surface complex reconstructed locally.  Toric is the constant
+group scheme plus the Cayley square complex; its remaining issue is justifying
+that group/incidence input as arithmetic rather than only combinatorial.  In
+all four cases the final object is a selected Weyl-label subgroup \(L\), hence
+a selected subgroup \(\pi^{-1}(L)\) of the Weyl-Heisenberg group.

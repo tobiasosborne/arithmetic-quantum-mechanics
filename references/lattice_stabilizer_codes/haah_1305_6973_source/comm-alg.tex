@@ -1,0 +1,1472 @@
+%%%%%%%%%%%%%%%%
+% comm-alg.tex
+%%%%%%%%%%%%%%%%
+
+
+We briefly review algebraic concepts and tools used in this thesis, mainly in Chapter~\ref{chap:alg-theory}~and~\ref{chap:lowD-codes}.
+There are many nice textbooks including those by Lang~\cite{Lang}, Atiyah and MacDonald~\cite{AtiyahMacDonald}, and Eisenbud~\cite{Eisenbud}.
+The book by Lang is a comprehensive textbook covering a wide range of topics in abstract algebra.
+The book by Atiyah and MacDonald explains commutative algebra that may look too concise, but precisely for this reason it is very useful as a reference.
+Examples are rare but essential.
+The book by Eisenbud is also on commutative algebra and is extensive.
+It covers more material than Atiyah-MacDonald.
+In particular, our summary of Gr\"obner basis follows Eisenbud.
+The chapter on Gr\"obner basis appears in the middle of the book,
+but is relatively self-contained and elementary.
+Here, we will omit many proofs and not try to be fully rigorous.
+We explain theorems to the point where intuition can be developed.
+Rigorous proofs can be found in one of the three books.
+
+
+
+We start by recalling definitions for abelian groups.
+An abelian group $G$ with the identity element denoted by $0$
+is a set with an operation $+ : G \times G \to G$ such that
+$g + g' = g' + g$ and $0 + g = g$.
+It is required for $G$ to have inverses of $g$ denoted by $-g$ such that $g + (-g) = 0$.
+$n$-fold sum of $g$ is simply denoted as $ng$, where $n \in \ZZ$.
+Given two abelian groups $G$ and $H$, we can form a direct sum $G \oplus H$.
+It is the set of all tuples $(g,h)$, where $ g \in G,~ h \in H$,
+and the group operation $+$ is defined as $(g,h) + (g',h') = (g+g',h+h')$.
+We can form a {\bf direct sum} $\bigoplus_\alpha G_\alpha$ of arbitrary family $\{ G_\alpha \}$ of groups.
+It is the set of all indexed collections of group elements $(g_\alpha)$ 
+where only {\em finitely many} $g_\alpha$ are nonzero.
+The group operation is again defined component-wise.
+Thus, any element in the direct sum is a sum of finitely many $g_\alpha \in G_\alpha$.
+A sum of two abelian groups can be defined if they are subgroups of a parent group.
+If $A,B \le C$ are subgroups, the {\bf sum} $A + B$ is the group of all elements of $C$ of form $a+b$ where $a \in A$ and $b \in B$.
+Note that $A+B \cong A \oplus B$ if and only if $A \cap B = 0$.
+Given a subgroup $N \le G$, we can form a quotient group $G/N$,
+the set of all equivalent classes under the equivalence relation $[g]=[g']$ iff $g-g' \in N$.
+In commutative algebra, almost everything is an abelian group.
+On top of the abelian (additive) group structure, a new ``multiplication'' is added.
+
+
+\section{Rings and homomorphisms}
+
+The set of integers $\ldots, -2,-1,0,1,\ldots$ admits two operations, addition and multiplication.
+There is 0 that has no effect under addition, and 1 that has no effect under multiplication.
+One can always undo the addition because one can subtract a number.
+However, the multiplication is not invertible within the set of integers
+because fractions are not integers.
+One convenient thing is that the multiplication does not care about the order.
+A commutative ring is an abstraction of this structure.
+It is a set, in which one can add and subtract. A multiplication exists but is not in general invertible.
+An additive identity 0 exists, and a multiplicative identity 1 exists.
+The distribution law $a(b+c) = ab + ac$ is assumed,
+and the multiplication is commutative $ab = ba$.
+A ring $R$ can consists of a single element, in which case $R$ is called a zero ring, if and only if $0=1$.
+Indeed, if $a \in R$ and $1 = 0 \in R$, then $a = a \cdot 1 = a \cdot 0 = a \cdot ( 0 + 0 ) = a \cdot (1+1) = a + a = 0$.
+Examples of rings are abundant: The set of all integers, the set of all complex numbers, the set of all square diagonal matrices of  a fixed size,
+the set of polynomials, the set of all differentiable functions on a real line, the set of all continuous real-valued functions on a manifold, etc.
+Is the set of all even integers a ring? 
+No. Some authors define rings to include this case where the multiplicative identity $1$ is not provided,
+but we avoid this case. Any ring is with 1.
+Note that $1$ is unique; if $1'$ is also a multiplicative identity, then $1 = 1 \cdot 1' = 1'$.
+The same is true for $0$.
+
+A ring is always understood in terms of relations with other rings.
+Given two rings $A$ and $B$ we consider a restricted class of maps between them.
+That is, we require that the map obeys the ring structure of the rings.
+$f : A \to B$ is a {\bf homomorphism} if $f(a+b) = f(a) + f(b)$ and $f(ab) = f(a)f(b)$ for any $a,b \in R$.
+In addition, we assume $f(0) = 0$ and $f(1) = 1$.
+(``morph'' means ``shape.'') 
+The $+$ or the omitted $\cdot$ between $a$ and $b$ in $ab$ on the left-hand side
+are the operations defined in $A$, whereas those in the right-hand side are in $B$.
+The {\bf image} of a homomorphism $f$ is the subset of $B$ written as $f(A)$ defined by $\{ f(a) ~|~ a \in A \}$.
+Is the image of a homomorphism a ring? Yes.
+
+There is no point to speak of a map between two rings $A,B$ that is not a homomorphism.
+If we are going to ignore the ring structure, we would rather say the map between the ``sets'' $A,B$.
+We will simply say a {\bf map between rings} to mean a homomorphism.
+We note more terminologies: An {\bf endomorphism} is a map from a ring into itself.
+An {\bf isomorphism} is a map between two rings with a unique inverse.
+An {\bf automorphism} is an isomorphism that is an endomorphism.
+
+The ring of integers is so primitive in the following sense.
+Let $A$ be an arbitrary ring. Consider a map $f : \ZZ \to A$.
+$f(n) = \sum_{i=1}^{n} f(1)$ and $f(-n) = \sum_{i=1}^n (-f(1))$ where $n > 0$.
+But, $f(1)=1$ is the unique multiplicative identity.
+Therefore, $f$ is completely determined, though we just required $f$ be a homomorphism;
+there is a unique nonzero map from $\ZZ$ into any ring.
+How many endomorphisms are there for $\ZZ$?
+
+The {\bf kernel} of a map (homomorphism!) $f$ is the subset of $A$ written as $\ker f$
+defined by $\{ a \in A ~|~ f(a) = 0 \}$.
+It is easy to see that the kernel is closed under the addition and multiplication.
+Here, the closeness means that the result of the operation using two elements in a subset lies in the subset.
+(It is pointless to speak of the closedness of an operation without reference to a subset.)
+There is one more important property as we discuss below.
+
+
+\section{Ideals and modules}
+
+The kernel $I$ of a map $f$ between rings $R \to S$ has the following property:
+\begin{equation}
+ \forall r \in R,~ \forall x \in I~:~~ r x \in I
+\label{cond-ideal}
+\end{equation}
+This is easily verified since $f(r x) = f(r)f(x) = f(r) \cdot 0 = 0$.
+When a subset $I$ of a ring $R$ is closed under the multiplication and addition, and satisfies the above property,
+we call $I$ to be an {\bf ideal} of $R$.
+For example, in $\ZZ$, the set of all even numbers is an ideal denoted as $(2)$.
+The property \eqref{cond-ideal} is trivial, because it reads a multiple of an even number is even.
+This ideal is the kernel of the map $\ZZ \to \ZZ/(2)$,
+where the latter is the ring of integers modulo 2.
+Remember that there is a unique nonzero map from $\ZZ$ to any ring.
+In fact, any ideal arises in this way: An ideal is the kernel of a ring homomorphism.
+
+To understand this, we need to formalize how to construct {\bf quotient rings} or {\bf factor rings}.
+Let $R$ be a ring and $I$ be an ideal.
+They are both abelian groups; they are closed under the addition with identity $0$,
+and contains additive inverses, the minus elements.
+The quotient ring $R/I$ as a set is the same as the quotient group as an abelian group.
+$R/I$ is the family of equivalence classes under the equivalence relation that
+$[a] = [b] \in R/I$ iff $a-b \in I$.
+The multiplication in $R/I$ is as expected: $[a] \cdot [b] = [ab]$.
+Using the property $(*)$ one can verify that it is well-defined.
+Consider a map $R \to R/I$ defined by $a \mapsto [a]$.
+It should be straightforward that it is a ring homomorphism.
+What is the kernel? Precisely, $I$.
+Now it is an almost tautology that an ideal is a kernel of a ring homomorphism.
+Often, we just write $a$ in place of the equivalence class notation $[a]$.
+In this lazy notation, ``the map $R \to R/I$ is defined by $a \mapsto a$.''
+This map is so important that it has its own name: {\bf canonical map} or {\bf quotient map}.
+
+
+In leisurely words, an ideal extends what we treat as zeros;
+any element of $I$ is zero in $R/I$.
+Zero plus zero or zero times zero must be zero, so $I$ is closed under the addition and multiplication.
+Zero times any element must be zero, so the property \eqref{cond-ideal} should hold.
+How do we specify an ideal in a real calculation?
+Consider a polynomial ring $\QQ[x]$, the set of all polynomials (of finitely many terms) in $x$ with coefficients in the rational numbers.
+Suppose we decided that $x$ must be equal to $\half$.
+In other words, we decided that $x - \half$ must be ``zero'' in $\QQ[x]/I$.
+Then, as zero times anything must be zero, any element $(x-\half)\cdot f(x)$ must be zero in $\QQ[x]/I$, too;
+it must be an element of the ideal we are defining.
+We require no more elements are identified as zeros.
+That is, we define $I = \{ f(x)(x-\half) ~|~ f(x) \in \QQ[x] \}$ as our ideal,
+and carry out any computation in the quotient ring $\QQ[x]/I$.
+We write $I$ as $(x-\half)$ by putting the {\bf generator} inside the parenthesis.
+Computing in $\QQ[x]/I$ is the same as computing in $\QQ[x]$ and evaluate the polynomial at $x=\half$.
+
+
+In general, if we write and ideal $I$ of $R$ as $(a,b,c)$,
+then we mean
+\[
+ I = \{ ax + by + cz ~|~ x,y,z \in R \} .
+\]
+$I$ is said to be {\bf generated by $a,b,c$}.
+A quick exercise: What is $\QQ[x]/(x-\half, x-1)$~? It is a zero ring.
+Since $x-\half$ and $x-1$ are ``zeros,'' their difference $\half$ is zero.
+Zero times 2 is zero, so $1$ is zero. Therefore, everything is zero.
+We proved an ideal equality $(x-\half, x-1) = (1)$.
+The whole ring $R$ viewed as an ideal is called the {\bf unit ideal} denoted by $(1)$.
+In fact, when there is any invertible element in an ideal, it is the unit ideal.
+For this reason, an invertible element in a ring is called a {\bf unit}.
+Note that computing the minimal set of generators is in general a hard problem.
+For instance, I do not know any algorithmic answer to questions like ``can this ideal be generated by three elements?''
+However, the Gr\"obner basis gives a \emph{canonical} set of generators for an ideal of a polynomial ring,
+and we can algorithmically compare two ideals.
+
+\subsection*{Prime, maximal}
+
+There is a very important class of ideals that generalizes prime numbers in $\ZZ$.
+A prime number $p$ has a property that if $p$ divides a product of two integers $ab$
+then $p$ divides either $a$ or $b$. A {\bf prime}%
+\footnote{Do not use ``primary'' in place of ``prime.'' The adjective ``primary'' has a slightly different technical meaning.}
+ideal $\pp$ of $R$ is an ideal not equal to $(1)$ such that
+\begin{equation}
+ab \in \pp \text{ implies } a \in \pp \text{ or } b \in \pp \text{ for any } a,b \in R.
+\label{cond-prime}
+\end{equation}
+The condition is rephrased as $a \notin \pp$ and $b \notin \pp$ imply $ab \notin \pp$.
+Is the ideal $(0)=\{0\}$ prime? It depends. In $\ZZ$ the zero ideal is prime because the product of two nonzero integers is nonzero.
+In the polynomial ring $\QQ[x]$, $(0)$ is prime because the degree of nonzero polynomial does not decrease under any nonzero multiplication. 
+If any nonzero elements of a nonzero ring $R$ has a multiplicative inverse, in which case $R$ is called a {\bf field},
+then $(0)$ is prime because $ab = 0$ means $a = 0$ or $b = 0$.
+However, in the ring of diagonal $2 \times 2$ matrices, 
+$(0)$ is not prime because nonzero matrices $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$
+and $\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$ multiply to zero.
+The ring in which $(0)$ is prime has a special name, {\bf (integral) domain}.
+It is easy to verify that $R/\pp$ is an integral domain if and only if $\pp$ is prime,
+applying the picture that $\pp$ defines zeros in $R/\pp$.
+
+
+There is one more important property of prime ideals.
+Let $f : A \to B$ be a map between two rings.
+{\em If $\pp \subseteq B$ is a prime ideal, then $I = f^{-1}(\pp) \subseteq A$ is prime.}
+Proof: $aa' \in I \Rightarrow f(a)f(a') \in \pp \Rightarrow f(a) \in \pp \vee f(a') \in \pp \Rightarrow a \in I \vee a' \in I$.
+
+A subclass of prime ideals consists of maximal ideals.
+A {\bf maximal ideal $\mm \neq (1)$} is defined by the maximal property:
+\begin{equation}
+ \mm \subsetneq \mm' \text{ implies } \mm' = (1) \text{ for any ideal } \mm'.
+\end{equation}
+It is a priori not vivid why maximal ideals are prime.
+But it is easy to see. Consider $R/\mm$. If $a \in R/\mm$ is nonzero, that is $a \notin \mm$, then $I = (\mm, a) \supsetneq \mm$ and therefore $I = (1)$, which means there is an element $b \in R$ such that $b a + m = 1$ for some $m \in \mm$. By the canonical map, $b$ maps to a multiplicative inverse of $a$ in $R/\mm$. 
+(The converse is also true. {\em $\mm \neq (1)$ is a maximal ideal if and only if $R/\mm$ is a field}.)
+In other words, $R/\mm$ is a field, and therefore an integral domain. In particular, $\mm$ is prime.
+
+\subsection*{Modules}
+
+Ideals admit another viewpoint.
+Let us forget the multiplication within an ideal $I$,
+and treat $I$ as a separate set from the mother ring $R$.
+It is still an abelian group, and satisfies \eqref{cond-ideal}.
+The condition $(*)$ looks very similar to the scalar multiplication on vector spaces.
+Indeed, consider a direct sum $R \oplus R$ of abelian groups,
+the set of all tuples $(r,r')$ where $r,r' \in R$ are any elements.
+There is an operation on $R \oplus R$ similar to \eqref{cond-ideal};
+we can define $r \cdot (s,s')$ to be $(rs, rs')$,
+similar to the scalar multiplication for a vector space.
+Indeed, a two-dimensional vector space is precisely obtained in this way by setting $R = \mathbb{Q}, \mathbb{R}, \mathbb{C}$, etc.
+
+
+Let us define an abstract notion.
+Let $M$ be an abelian group with a {\em bilinear} operation $\cdot$ such that
+\begin{equation}
+ \forall r \in R,~ \forall m \in M~:~~ r \cdot m \in M .
+\label{cond-module}
+\end{equation}
+The ``multiplication'' $\cdot$ here is not the same thing as the multiplication within the ring.
+We assume expected formulas $(rs) \cdot m = r \cdot (s \cdot m)$, and simply write $(rs) \cdot m = rsm$ where $r,s \in R$ and $m \in M$.
+We call $M$ an {\bf $R$-module} or a {\bf module over $R$}.
+It is general than the notion of vector spaces.
+A vector space is a module over a {\bf field}, a commutative ring in which multiplication by a nonzero element has an inverse.
+An ideal is a subset of $R$ such that it is a module over $R$.%
+%%%
+\footnote{
+Although an ideal is a valid module, often it is treated differently than a module.
+One should sometimes be careful to apply things defined for modules,
+especially when one reads the dimension theory of Eisenbud~\cite{Eisenbud}.}
+%%%
+Note that $R$ itself is an $R$-module via the multiplication within $R$.
+The above example $R \oplus R$ is an $R$-module.
+
+
+For an $R$-module $M$ if there exist finitely many elements $m_1,\ldots,m_n \in M$ such that
+\begin{equation}
+ M = \{ r_1 m_1 + \cdots + r_n m_n ~|~ r_1,\ldots, r_n \in R \},
+\end{equation}
+then we say $M$ is {\bf finitely generated}.
+All of our modules in the thesis are finitely generated.
+An ideal is finitely generated if it is finitely generated as a module.
+
+There is a confusingly similar terminology that one must distinguish.
+Suppose $A$ is a subring of $B$. That is, $A$ is a ring by itself and contained in a bigger ring $B$.
+Or slightly more generally, suppose we are given a ring map $A \to B$.
+The subring case is precisely when the map is an inclusion.
+We say $B$ is a {\bf finitely generated $A$-algebra}
+if there exists finitely many elements $b_1, \ldots, b_n \in B$ such that
+any element of $b$ can be written as a polynomial in $b_1,\ldots, b_n$ with coefficients in the image of $A$.
+In this case, $B$ is sometimes written as $B = A[b_1,\ldots, b_n]$.
+A typical situation is when $A$ is a field such as $\QQ, \mathbb{C}$ and $B$ is a polynomial ring over $A$.
+For example, $B = \QQ[x,y]$.
+The reason it is a confusing terminology is because $B$ is not necessarily finitely generated $A$-module.
+$\QQ[x]$, a finitely generated $\QQ$-algebra, has infinitely many generators $\{ 1, x, x^2, \ldots \}$ as a $\QQ$-module.
+Is $\QQ$ a finitely generated $\ZZ$-algebra? 
+No, because multiplying by integers cannot produce large denominators.
+
+
+As the rings are understood in relation to others,
+the modules should be understood via maps.
+We required the ring homomorphisms to preserve the defining operations of the rings.
+The same is true for the module maps. Given two modules $M$ and $N$ over $R$,
+we define an {\bf $R$-linear map} or {\bf $R$-module homomorphism} $f : M \to N$ to satisfy
+\begin{equation}
+f(m+m') = f(m)+f(m')\quad \text{ and } \quad f(r \cdot m) = r \cdot f(m) \text{ for any } r \in R,~ m, m' \in M.
+\end{equation}
+Note that the $\cdot$ on the left-hand side is the operation \eqref{cond-module} for $M$
+whereas that on the right-hand side is the operation for $N$.%
+\footnote{
+In group representation theory,
+the $R$-linear maps are called equivariant maps,
+where $R$ is the group algebra which may not be commutative.
+The representation space is a module, 
+the subrepresentation space is a submodule, and
+the irreducible representation space is a simple submodule.}
+The notions of kernel, image, endomorphism, automorphism, and isomorphism apply to module maps, too.
+A simple exercise: Let $A,B$ be two $R$-algebras; there are ring maps $R \to A$ and $R \to B$.
+The two algebras are naturally $R$-modules, when a map $A \to B$ becomes $R$-linear?
+Answer: It becomes $R$-linear when the following diagram commutes.
+\[
+ \xymatrix@!0{
+A \ar[rr]  & & B \\
+           & R\ar[ul]\ar[ur] &
+}
+\]
+
+
+\subsection*{Free}
+
+An $R$-module isomorphic to $\bigoplus_\alpha R$ is called a {\bf free module}.
+When there are finitely many summands, it is called {\bf finitely generated free module}.
+It is the most convenient type of modules.
+In particular, a module map between finitely generated free $R$-modules
+is simply given by a matrix with entries in $R$, just as linear map between finite dimensional vector space
+can be described by a matrix with entries in a field.
+Note that elements of a finitely generated free $R$-module $M = R^{\oplus n}$ can be expressed by column matrices.
+Let $e_i$ ($i=1,\ldots,n$) denote the canonical basis column matrices.
+(We could say ``column vectors'' instead of column matrices. However, an element of a module is not a vector in general.)
+A map $f$ from $M$ to any module is specified if we specify the image $f(e_i)$
+because the image of other elements $a_1 e_1 + \cdots a_n e_n$ is must be $a_1 f(e_1) + \cdots + a_n f(e_n)$
+by $R$-linearity.
+Writing $f(e_i)$ in columns, we have a matrix representation of $f$.
+An un-redundant set of generators of a free module is called a {\bf basis}.
+The cardinality of a basis is called {\bf rank}.
+(One can show that rank is independent of the choice of a basis.)
+Only for free modules can we speak of bases.
+The crucial difference between general modules and vector spaces is that
+a module is in general not free, while a vector space, a module over a field, is always free.
+That nonzero elements are invertible makes such a huge difference.
+
+
+Note that any module can be described by free modules.
+Take a {\bf generating} set $\{ m_\alpha \}$ of a module $M$; 
+any element of $M$ is a {\em finite} $R$-linear combination $\sum_i r_{\alpha_i} m_{\alpha_i}$.
+A trivial and useless choice would be to take whole $M$ as a generating set.
+Let $F$ be a free $R$-module whose rank is the same as the cardinality of the generating set,
+i.e., there is a surjective module map $F \to M$.
+The kernel $N$ is a submodule of $F$, not necessarily free, and $M \cong F / N$.
+One can carry the same process for the module $N$.
+That is, one finds a free module $F'$ such that $\phi : F' \to N$ is a surjection.
+Now $M$ is expressed as $M \cong F / \im \phi$.
+This is conceptually important observation, but not too useful
+because we do not have any control over the ranks of $F$ and $F'$.
+We need some finiteness conditions.
+An $R$-module $M$ is said to be {\bf finitely presented} 
+if there is a map $\phi : F' \to F$ between finitely generated free modules
+such that $M \cong F / \im \phi$. The latter expression $F/\im \phi$ is often abbreviated as $\coker \phi$.
+The map $\phi$ is called a {\bf finite presentation} of $M$.
+As we have seen above, $\phi$ is a matrix with entries in $R$,	
+and $M$ is expressed by a single matrix $\phi$.
+In case of a finite dimensional vector space, $\phi$ can always be brought to a diagonal matrix
+with entries of $0$ or $1$, after basis change of $F$ and $F'$.
+We will discuss more on a finite presentation in Section~\ref{sec:det-ideal}.
+
+
+\subsection*{Noetherian}
+
+A technically very important and convenient adjective is Noetherian.
+It is as important as vector spaces having finite dimensions.
+A {\bf module $M$ is Noetherian} if every increasing sequence of submodules is stationary,
+i.e., if $M_1 \le M_2 \le \cdots \le M_n \le \cdots$ is a sequence of submodules of $M$,
+then for all sufficiently large $n$ one has $M_n = M_{n+1}$.
+Often this condition is referred to as the {\bf ascending chain condition} or {\bf a.c.c.}
+{\em A module $M$ is Noetherian if and only if any submodule is finitely generated.}
+If a submodule cannot be generated by finitely many elements, 
+one can construct a strictly increasing infinite sequence of submodules
+using an infinite subset of generators.
+Conversely, if any submodule of $M$ is finitely generated,
+then the union $\cup_{i=1}^\infty M_i$ of any increasing sequence of submodules $M_i$ of $M$
+is also finitely generated, say, by $m_1,\ldots,m_r$.
+Since $m_j$ is contained in some $M_{j'}$, there must be some $k$ such that $m_1,\ldots,m_r \in M_k$.
+It follows that $M_k = M_{k'}$ for all $k' \ge k$.
+A Noetherian module over a field is just a finite dimensional vector space.
+A {\bf Noetherian ring} $R$ is a ring that is Noetherian as an $R$-module,
+i.e., the a.c.c is satisfied with respect to the ideals of $R$.
+In a Noetherian ring, any ideal is finitely generated.
+
+
+Being Noetherian is preserved in many cases.
+Loosely speaking, it says that a module carries a finite amount of data.
+A module with a finite amount data manipulated finitely many times would still have a finite amount of data.
+The following are facts:
+\begin{itemize}
+\item {\em A homomorphic image of Noetherian ring (module) is a Noetherian ring (module).}
+\item {\em A submodule of Noetherian module is Noetherian.}
+\item {\em A finitely generated algebra over a Noetherian ring is a Noetherian ring.}
+\item In particular, {\em a polynomial ring over a field with finitely many variables is a Noetherian ring.}
+\item {\em A finitely generated module over a Noetherian ring is Noetherian.}
+\end{itemize}
+There are more to mention about being Noetherian using tensor products and localization.
+See Section~\ref{sec:localization}.
+
+Remark that {\em a finitely generated module $M$ over a Noetherian ring $R$ always admits a finite presentation $\phi : F' \to F$.}
+Since $M$ is finitely generated, the module $F$ is of finite rank.
+$F$ is Noetherian, and therefore, $\im \phi$ is finitely generated, which means $F'$ can be taken to be of finite rank.
+The ``matrix'' $\phi$ is of finite size.
+
+Is the ring of all differentiable functions $\mathbb{R} \to \mathbb{R}$ Noetherian? No.
+Is the ring of all trigonometric functions $\mathbb{R} \to \mathbb{R}$ of period $1/n$, where $n$ are positive integers, Noetherian? Yes.
+
+\section{Gr\"obner basis}
+
+Gr\"obner basis is a special generating set for ideals and modules.
+It provides canonical presentations of modules and ideals, from which any concrete computational commutative algebra is built.
+In all notions in the previous section,
+I cannot imagine any systematic way to compute things concretely without Gr\"obner basis.
+It is theoretically important too because it tells what is actually constructible.
+A nice application of the Gr\"obner basis is a sharp version of Hilbert syzygy theorem~\cite[Corollary~15.11]{Eisenbud}.
+In this section we {\em assume the (base) ring is a polynomial ring over a field $\FF$ with finitely many variables};
+$R = \FF[x_1,\ldots,x_n]$.
+Since $R$ is Noetherian, for any ideal there is a finite set of generators.
+
+How do ideals look like in $\FF$? There are only $(0)$ and $(1)$ because any nonzero element is a unit.
+How about $\FF[x]$? It is only slightly more complicated.
+By the Euclidean algorithm, the $\gcd$ of two polynomials $f(x),~g(x)$ can be expressed as
+\[
+ \gcd( f(x), g(x) ) = a(x) f(x) + b(x) g(x) \in (f(x),g(x))
+\]
+An ideal generated by $f(x)$ and $g(x)$ is thus the same as an ideal generated by a single element $\gcd(f(x),g(x))$, 
+in which case the ideal is called {\bf principal}.
+By induction, one can always reduce the number of generators of an ideal in $\FF[x]$ if it is greater than $1$.
+Since $\FF[x]$ is Noetherian, this is enough to imply that {\em any ideal of $\FF[x]$ is generated by a single element,}
+i.e., {\em any ideal of $\FF[x]$ is principal}.
+The principal generator $p(x)$ is important, not only because it is simple, but also because it gives a criterion
+whether an arbitrary polynomial $h(x)$ is contained in $(p(x))$:
+Divide the $h(x)$ by $p(x)$. The remainder is zero if and only if $h(x) \in (p(x))$.
+Put differently, we can find a canonical representative in the quotient ring $\FF[x]/(p(x))$
+to be the remainder $r(x)$  where $\deg r < \deg p$.
+The $p(x)$ is the Gr\"obner basis for the ideal $(p(x))$ in $\FF[x]$.
+
+In case of two or more variables, it is no more true that any ideal is principal.
+Let us examine the {\bf division algorithm}.
+Let $f(x)$ be a dividend and $p(x)$ be a divisor.
+We first compare degrees of them.
+If $\deg f < \deg p$, then the division is completed, and $f$ is the remainder.
+Otherwise, we match the leading coefficients and then subtract a multiple $a(x)p(x)$ from $f(x)$.
+$a(x)$ is a monomial such as $3x^2$.
+The purpose is of course to have $\deg (f-ap) < \deg f$.
+And then we iterate.
+Essential is a total ordering among terms such that the ordering is preserved under multiplication by a monomial.
+Now we consider a problem of computing the remainder of $f$ modulo $G = \{ g_1, \ldots, g_k \}$.
+Equipped with the ordering, given a dividend $f$ and a set $G$ of divisors,
+(Step-1) one should be able to match the leading term and kill it,
+thereby ``reduce'' the leading term of the dividend.
+(Step-2) One stops when the reduction becomes impossible.
+A question arises.
+During Step-1, there would be many possible choices among the divisors from $G$.
+How do we guarantee that the remainder is independent of the choices?
+This is a sound question, and the answer is no in general.
+Even in the one variable case, the answer is no in general.
+Consider $f = x^2 -1,~ g = x^3 -1$ in $\QQ[x]$.
+The division by the set $\{f,g\}$ of a dividend $x^3$ gives $1$
+if we kill the leading term by $x^3-1$,
+or $x$ by $x^2-1$.
+
+We formulate the problem as finding a generating set of an ideal $I$ 
+that gives rise to a unique remainder under the division.
+A solution is that we include more and more elements of $I$ into a generating set $G$
+so that any leading term $l$ of a dividend can be removed 
+where $l$ appears as a leading term of some elements of $I$.
+In the one variable case, it is enough to include the $\gcd$ of all (finitely many) generators of $I$.
+We have given enough motivation and technical problems to smooth out.
+
+\subsection*{Definitions}
+
+A monomial is a product of variables.
+A {\bf monomial order} on the set of all monomials of $R = \FF[x_1,\ldots,x_n]$
+is a total ordering $\succ$, under which any two monomials are comparable, such that
+\begin{equation}
+ x_i m \succ x_i m' \succ m' \quad \text{whenever} \quad m \succ m'
+ \label{cond-TermOrder}
+\end{equation}
+for any monomial $m,m'$ and any variable $x_i$.
+Since a monomial $x_1^{a_1} \cdots x_n^{a_n}$ is uniquely given by a $n$-tuple of nonnegative integers $(a_i) = (a_1,\ldots,a_n)$,
+a monomial order is a total order on the hyper-octant of $\ZZ^n$ of nonnegative coordinates.
+Note that under any monomial order, $1$ is the least monomial.
+
+Two examples at least are important. The first one is the {\bf lexicographic order},
+under which $(a_i) \succ (b_i)$ if and only if $a_i > b_i$ for the least $i$ such that $a_i \neq b_i$.
+For example,
+\[
+ x_1 \succ_\text{lex} x_2^5 \succ_\text{lex} x_2 x_3^{100} .
+\]
+The second example is the {\bf degree reverse lexicographic order},
+under which $(a_i) \succ (b_i)$ if and only if `$\sum a_i > \sum b_i$' 
+or `$\sum a_i = \sum b_i$ and $a_i < b_i$ for the largest $i$ such that $a_i \neq b_i$.'
+For example,
+\begin{align*}
+ x_1 \succ_\text{revlex} x_2 \succ_\text{revlex} \cdots \succ_\text{revlex} x_n \\
+ x_3^{100} \succ_\text{revlex} x_2^{50} \succ_\text{revlex} x_1^{49} x_3 .
+\end{align*}
+The degree reverse lexicographic order is the most commonly used in computer software.
+
+
+{\em Any monomial order is a well-order, i.e., every set of monomials has a minimal element.}
+This statement is at the core of any finiteness proof regarding Gr\"obner basis.
+The proof is very simple. Let $X$ be any set of monomials of $R$.
+The submodule (ideal) generated by $X$ is finitely generated by $G$ because $R$ is Noetherian.
+It means $X$ consists of multiples of a finitely many monomials of $G$.
+Therefore, the minimal element of $G$, a finite set, is the minimal element of $X$.
+The statement can be rephrased as {\em any decreasing sequence of monomials is stationary}
+or as {\em any strictly decreasing sequence of monomials is finite.}
+
+
+With a monomial order, we can define the {\bf leading term} or {\bf initial term} of a polynomial $f$
+which is the greatest term of $f$ with respect to the monomial order.
+(We are distinguishing ``term'' and ``monomial.'' A monomial is a product of variables only, and a term is $\FF$-multiple of a monomial.)
+Let us denote the leading term of $f$ by $\lt(f)$.
+Given any set $S$ of $R$, let the ideal generated by all leading terms of element of $S$ be denoted by $\lt(S)$.
+Now, a {\bf Gr\"obner basis} $G$ of $I$ is a generating set of $I$ such that $\lt(I) = \lt(G)$.
+Since $R$ is Noetherian, $\lt(I)$ is finitely generated.
+Therefore, $G$ can be chosen to be a finite set.
+
+\subsection*{Buchberger criterion}
+
+{\em The division by a Gr\"obner basis results in a unique remainder.}
+In particular, a polynomial is in $I$ if and only if the division by a Gr\"obner basis yields the zero remainder.
+To see this, let $f$ be an arbitrary polynomial.
+Let $r$ be a remainder obtained by killing large terms of $f$ by elements of $G$.
+Let $r'$ be another remainder. We must show $r = r'$.
+It is clear that $r-r'$ belongs to $I$. If nonzero, the leading term of $r-r'$ belongs to $\lt(I) = \lt(G)$.
+However, $r$ or $r'$ has by construction no leading term that belongs to $\lt(G)$.
+Therefore, $r-r'$ must be zero.
+
+
+It is not clear yet how $G$ can be computed from given generators of $I$,
+though we know a solution in the case where the generators of $I$ are in a single variable.
+A strategy is hinted from one-variable case:
+\begin{itemize}
+\item[(1)] Start with any generating set $S$ of $I$. 
+\item[(2)] Try to produce new polynomials whose initial terms are not contained in $\lt(S)$.
+\item[(3)] Update $S$ by adjoining the new polynomials.
+\item[(4)] Iterate.
+\end{itemize}
+It will end after finitely many iterations because the new initial terms form a descending sequence of monomials.
+It remains to find an effective method to produce new initial terms.
+Let us work with an example first.
+Consider $I = (x^2,xy+y^2) \subset \QQ[x,y]$.
+We will compute Gr\"obner basis with respect to two monomial orders.
+The first one is the lexicographic order under which $x \succ y$.
+We have $\lt(x^2) = x^2$ and $\lt(xy+y^2) = xy$.
+Neither of them is a multiple of the other.
+However, $y(x^2) - x(xy+y^2) = -xy^2$ has the leading term divisible by $xy$.
+This combination is called ``S-polynomial'' of $x^2$ and $xy+y^2$.
+So, $y(x^2) - x(xy+y^2) + y(xy+y^2) = y^3$.
+We see that $y^3$ is a new initial term of $I$.
+The generating set is expanded as $G = \{ x^2, xy + y^2, y^3 \}$.
+We then again form S-polynomials using any two among $G$,
+but fail to produce any new initial term. Indeed, $G$ is a Gr\"obner basis of $I$.
+The second monomial order is the lexicographic order under which $x \prec y$.
+Then, $\lt(x^2) = x^2$ and $\lt(xy+y^2) = y^2$.
+We form an S-polynomial, $y^2(x^2)-x^2(xy+y^2) = -x^3 y$.
+It is a multiple of $x^2$, and we do not get anything new.
+Indeed, $\{x^2, xy+y^2\}$ is a Gr\"obner basis.
+
+Given two polynomials $f,g$ let us fix the leading coefficient of $\gcd$ to be $1$.
+The {\bf S-polynomial} of two polynomials $f$ and $g$ is the polynomial
+\[
+ \sigma(f,g) = \frac{\lt(g)}{\gcd(\lt(f),\lt(g))} f - \frac{\lt(f)}{\gcd(\lt(f),\lt(g))} g .
+\]
+Dividing an S-polynomial by a set of generators will give a non-unique remainder,
+but we can hope that the calculation would find a new initial term.
+Buchberger showed that {\em the process is sufficient to find all initial terms of an ideal}.
+The {\bf Buchberger algorithm} to find a Gr\"obner basis is given by the above ``algorithm,''
+where the step (2) is now well-defined by (2$'$):
+\begin{itemize}
+ \item [(2$'$)] For each pair $f,g$ of polynomials of $S$, compute $\sigma(f,g)$ and its remainder $r$ after division by $S$.
+\[
+\frac{\lt(g)}{\gcd(\lt(f),\lt(g))} f - \frac{\lt(f)}{\gcd(\lt(f),\lt(g))} g = \sum_k h_k s_k  + r
+\]
+where $s_k \in S$, $h_k \in R$, and $\lt(r) \notin \lt(S)$ or $r=0$.
+\end{itemize}
+In other words, the algorithm terminates with a correct answer, a Gr\"obner basis $G$,
+if the remainder of any S-polynomial computed from a pair of polynomials in $G$ is zero.
+This is called the {\bf Buchberger criterion}.
+It follows that if $G$ is a Gr\"obner basis for the ideal $(G)$,
+then any subset $G' \subseteq G$ is a Gr\"obner basis for the ideal $(G')$.
+
+
+
+A Gr\"obner basis $G={f_1,\ldots,f_t}$ is {\bf reduced}
+if any term of $f_i$ is not divisible by any $\lt(f_j)$ where $i \neq j$,
+and the leading coefficients of all $f_i$ are $1$.
+The reduced Gr\"obner basis can be obtained from any Gr\"obner basis.
+{\em Given a monomial order, a reduced Gr\"obner basis is unique for an ideal.}
+Therefore, {\em two ideals are the same if and only if their reduced Gr\"obner bases are the same.}
+
+
+\subsection*{Applications}
+
+An immediate application is to decide whether 
+a set of polynomial equations $\{f_i(x_1,\ldots,x_n) = 0 \}$ admits a common solution.
+If one obtains $1 = 0$ while manipulating $f_i$, then certainly there is no solution,
+and this is the only case. That is, the ideal $I$ generated by $f_i$ contains $1$,
+i.e., $I$ is the unit ideal,
+if and only if there is no common solution to $f_i = 0$.
+Since the ideal membership can be tested by the division algorithm using a Gr\"obner basis,
+we can algorithmically answer this question by computing a Gr\"obner basis
+in any monomial order and looking for $1$.
+
+Note that known algorithms for Gr\"obner basis is not efficient in a computation complexity sense.
+Any significant improvement seems impossible because if one can compute Gr\"obner basis efficiently,
+then one can also solve, for example, Boolean satisfiability problem (SAT) efficiently.
+A SAT is a decision problem that asks whether there exists an assignment to Boolean variables $x_1,\ldots,x_n$
+such that a given formula using AND, OR, and parenthesis evaluates to $1$.
+Any SAT can be formulated as a finding a solution to a system of polynomial equations.
+Being Boolean can be expressed as $x_i(x_i-1) = 0$.
+The OR of two binary variables $x,y$ can be expressed as $1-(1-x)(1-y)$.
+The AND of two binary variables $x,y$ is the product $xy$.
+In particular, the 3-SAT, the SAT where all the expressions are given by conjunctive normal form with 3 variables per clause,
+is equivalent to finding a solution to systems of polynomial equations, each of which has degree at most 3.
+The 3-SAT is known to be NP-complete.
+However, finding Gr\"obner basis for a fixed number of variables is efficient,
+i.e., {\em the number of calculation steps increases as a polynomial in the degree of the generating polynomials}.
+
+
+We can also compute the intersection of an ideal with a subring.
+The foundational case is when the subring is given by $T = \FF[x_1,\ldots,x_n]$
+contained in $R = \FF[x_1,\ldots,x_n,y_1,\ldots,y_m]$.
+If an ideal $I$ of $R$ is given, we wish to compute the intersection $T \cap I$,
+which is an ideal of $T$.
+We should use an {\bf elimination monomial order} under which $\lt(f) \in T$ implies $f \in T$.
+The lexicographic order in which $x_a \prec y_b$ is an elimination order.
+The following statement is true.
+{\em If a Gr\"obner basis $G=\{f_1,\ldots,f_u,g_1,\ldots,g_v\}$ of $I$ under elimination order
+is such that $f_i$ do not involve any variable $y_b~(b=1,\ldots,m)$ but $g_j$ do,
+then $G' = \{f_1,\ldots,f_u\}$ is a Gr\"obner basis of $I \cap T$.}
+The ideal $J$ generated by $G'$ is certainly contained in $I \cap T$.
+It is clear that $G'$ is a Gr\"obner basis for $J$ because it satisfies the Buchberger criterion.
+If $J \subsetneq I \cap T$, then there would be $f \in (I \cap T) \setminus J$ with the least leading term.
+In particular, $\lt(f) \notin \lt(J)$.
+Since $G$ is a Gr\"obner basis, $\lt(f) \in \lt(G)$.
+Since $\lt(g_j)$ involve $y_b$ due to the elimination order, but $\lt(f) \in T$,
+we must have $\lt(f) \in \lt(G') = \lt(J)$, a contradiction.
+
+
+More generally, suppose we are given with a subring $T \subseteq \FF[y_1,\ldots,y_m]$
+generated by some polynomials $h_i (y_1,\ldots,y_m)$ ($i=1,\ldots,n$) over $\FF$.
+We wish to find $T \cap I$ for an ideal $I$ of $\FF[y_1,\ldots,y_m]$.
+Introduce new variables $x_1,\ldots,x_n$, and consider 
+\[
+T' = \FF[x_1, \ldots, x_n] \xrightarrow{\phi} \FF[y_1,\ldots,y_m] \xrightarrow{\pi} \FF[y_1,\ldots,y_m] / I,
+\]
+where $\phi$ is defined by $x_i \mapsto h_i(y_1,\ldots,y_m)$ and $\pi$ is the canonical map.
+$\phi$ maps onto $T$.
+If we knew $K = \ker \pi \circ \phi$, the image $\phi(K)$ would be precisely $T \cap I$.
+Let $R = \FF[x_1,\ldots,x_n,y_1,\ldots,y_m]$.
+Note that $R$ contains $T'$ and $\FF[y_1,\ldots,y_m]$ as subrings.
+Thus $\phi$ can be extended to $\tilde \phi$ as
+\[
+ \tilde \phi: R = \FF[x_1,\ldots,x_n,y_1,\ldots,y_m] \to \FF[y_1,\ldots,y_m] \quad \text{ defined by } \quad 
+\begin{cases} x_i \mapsto h_i(y), \\ y_j \mapsto y_j . \end{cases}
+\]
+The kernel of $\pi \circ \tilde \phi$ is the ideal $J = (x_1 - h_1(y), \ldots, x_n - h_n(y) ) + I$.
+We have $K = J \cap T'$, which can be computed by the method above.
+%
+For example, let $I = (1+x+y+z,~1+xy+yz+zx) \subseteq \FF_2[x,y,z]$. 
+If a subring is $T = \FF_2[x^3,y^3,z^3]$, then an auxiliary ring is $T' = \FF_2[x',y',z']$.
+The intersection $I \cap T$ can be found by computing
+\[
+ (1+x+y+z,~1+xy+yz+zx,~x'-x^3,~y'-y^3,~z'-z^3) \cap \FF[x',y',z'].
+\]
+In the end, one has to replace $x'$ with $x^3$, $y'$ with $y^3$, and $z'$ with $z^3$.
+
+
+The Gr\"obner basis is also useful to compute the vector space dimension of $R/I$, where $R=\FF[x_1,\ldots,x_n]$.
+The remainder $r$ after division by a Gr\"obner basis of $I$ is unique
+and has a property that $\lt(r)$ is not divisible by any leading term of the Gr\"obner basis elements.
+The remainders are unique representatives for elements of $R/I$.
+It follows that there is a one-to-one correspondence as sets between $R/I$ and $R/\lt(I)$.
+In particular, they are isomorphic as vector spaces.
+The generators of $\lt(I)$ are monomials $m_1,\ldots,m_t$ computed by the Gr\"obner basis.
+Recall that monomials are in one-to-one correspondence with the hyper-octant $H$ of nonnegative coordinates of $\ZZ^n$.
+Therefore, the vector space basis of $R/\lt(I)$ is labeled by points of $H$
+that are not contained in any cone whose vertex, the least element with respect to the monomial order, is $m_i$ ($1\le i \le t$).
+For example, let $I = (x^2,xy+y^2) \subset \FF[x,y]=R$.
+The reduced Gr\"obner basis under a lexicographic order in which $x \succ y$ is $\{ y^3, xy+y^2,x^2 \}$.
+Therefore, $R/\lt(I)$ has a vector space basis $\{1,x,y,y^2\}$.
+In a different lexicographic order in which $x \prec y$, the reduced Gr\"obner basis of $I$ is
+$\{x^2,y^2+xy\}$. A vector space basis of $R/\lt(I)$ is $\{1, x, y, xy \}$.
+
+
+\subsection*{Syzygies and generalization to free modules}
+
+So far we have discussed only ideals and generators.
+It is straightforward to generalize the notions to submodules 
+of free modules over polynomial rings $R = \FF[x_1,\ldots,x_n]$.
+We first need to generalize the monomial order.
+Let $e_1,\ldots,e_r$ be a basis of free module $F = R^r$.
+A {\bf monomial} of $F$ is a product of variables times one of the basis,
+e.g., $x_1 x_2^5 e_3$ and $x_1^3 x_3 e_1$ are monomials.
+A {\bf monomial order} on $F$ is defined in the same way as \eqref{cond-TermOrder}.
+The well-ordering property holds with the same proof.
+The leading terms are defined the same way, as well as the ideal generated by leading terms.
+The division algorithm does not need to be restated.
+The Buchberger criterion and algorithm make sense with a minor change that
+{\em if two leading terms involve different basis elements, then the S-polynomial is defined to be zero.}
+The elimination order are still applicable, and the calculation techniques are valid with respect to submodules.
+
+Nontrivial relations between polynomials are called syzygies.
+(Here, polynomials include basis elements, so they are really elements of a free module.)
+More formally, if a submodule is defined by the image of a module map $\phi : F' \to F$
+between finitely generated {\em free} modules, the kernel of $\phi$ is called {\bf syzygy}. 
+For instance, the syzygies of $x$ and $y$ can be described by a submodule $M$ of $\FF[x,y]^2$ 
+generated by $\begin{pmatrix} y \\ -x \end{pmatrix}$,
+since the ideal $(x,y)$ with generators $x$ and $y$ is the image of the map
+$\phi : R^2 \xrightarrow{\begin{pmatrix} x & y \end{pmatrix}} R$ and $M = \ker \phi$.
+The relation between $x$ and $y$ is thus $y(x) -x(y) = 0$.
+We have implicitly seen how to obtain nontrivial relations from the Buchberger algorithm.
+We formed an S-polynomial of two polynomials and ran the division algorithm with respect to a set $G=\{g_i\}$ of polynomials:
+\[
+ \sigma(g_i,g_j) = \frac{\lt(g_j)}{\gcd(\lt(g_i),\lt(g_j))} g_i - \frac{\lt(g_i)}{\gcd(\lt(g_i),\lt(g_j))} g_j = \sum_k h^{ij}_k g_k + r ,
+\]
+where $h^{ij}_k \in R$.
+If $G$ were a Gr\"obner basis, then by Buchberger criterion we would have $r=0$, 
+and the expression would be a nontrivial relation among $g_i$.
+More formally, let the module be generated by a Gr\"obner basis $\{g_i\}$.
+That is, module is the image of the map $\phi : F' \to F$
+where the basis $\{\epsilon_i\}$ of $F'$ is mapped as $\epsilon_i \mapsto g_i$.
+Then,
+\[
+\tau_{ij} = \frac{\lt(g_j)}{\gcd(\lt(g_i),\lt(g_j))} \epsilon_i - \frac{\lt(g_i)}{\gcd(\lt(g_i),\lt(g_j))} \epsilon_j - \sum_k h^{ij}_k \epsilon_k 
+\]
+is mapped to zero under $\phi$.
+It is a theorem that {\em $\ker \phi$ is generated by $\tau_{ij}$.}
+$\{\tau_{ij}\}$ is often a redundant generating set for $\ker \phi$.
+Be warned that $\tau_{ij}$ is defined to be identically zero if $\lt(g_i)$ and $\lt(g_j)$ involve different basis elements of $F$.
+
+Given a finite presentation of a module $F_0/\im \phi_1$ where $\phi_1 : F_1 \to F_0$ is a module map 
+between finitely generated free modules,
+we can algorithmically find $\ker \phi_1$. This kernel is a finitely generated submodule of $F_1$, 
+so it can be identified with the image of a map $\phi_2 : F_2 \to F_1$ between finitely generated free modules.
+We can continue this as many times as we want, and obtain a sequence of maps
+\[
+\cdots \to F_n \xrightarrow{\phi_n} F_{n-1} \to \cdots \to F_2 \xrightarrow{\phi_2} F_1 \xrightarrow{\phi_1} F_0 .
+\]
+This sequence is called a {\bf free resolution} of $F_0/\im \phi_1$.
+A particularly interesting case is when the resolution is finite, i.e., $F_n =0$ for some $n$.
+
+
+
+\section{Localization}
+\label{sec:localization}
+
+\subsection*{Tensor product}
+Operations of modules include direct sum and quotient,
+both of which are automatic from the fact that modules are abelian groups.
+Here we introduce another operation on modules called tensor product.
+It is perhaps best defined by a categorical characterization,
+which is the most useful to prove things.
+Here we define it in a colloquial way.
+
+Let us first review a familiar case of vector spaces over a field $\FF$.
+The tensor product $V \otimes W$ of two vector spaces $V,W$ is
+a collection of formal finite linear combinations $\sum_{i,j} a_{ij} v_i \otimes w_j$ 
+of ``products'' $v_i \otimes w_i$ where $v_i \in V,~ w_j \in W$ and $a_{ij} \in \FF$.
+The ``product'' $\otimes$ is multilinear since
+\[
+ (v_1 + v_2) \otimes w = v_1 \otimes w + v_2 \otimes w \quad \text{and} \quad
+ v \otimes (w_1 + w_2) = v \otimes w_1 + v \otimes w_2.
+\]
+The scalar multiplication floats around $\otimes$ as
+\[
+ (a v) \otimes w = v \otimes (a w)
+\]
+for any $a \in \FF$.
+In physics literature, it is sometimes said that a tensor is a multi-indexed object
+that transforms in a certain way under transformations for ``indices.''
+This phrasing focuses on the coefficients $a_{ij}$ and captures the multilinearity, as
+\[
+ \sum_{ij} a_{ij} v_i \otimes w_j = \sum_{ij} a_{ij} \left( \sum_a A_{ia}v_a' \right) \otimes \left( \sum_b B_{jb} w_b' \right)
+ = \sum_{ab} \left(\sum_{ij}a_{ij} A_{ia}B_{jb} \right) v_a' \otimes w_b'.
+\]
+
+
+The {\bf tensor product of two modules} is defined in a similar way.
+For an $R$-module $M$ and $N$,
+we build a formal abelian group out of all possible expressions $x \otimes_R y$ for $x \in M$ and $y \in N$,
+with the following equalities {\em imposed}:
+\begin{align}
+ (x + x') \otimes_R y &= x \otimes_R y + x' \otimes_R y , \nonumber \\
+ x \otimes_R (y + y')  &= x \otimes_R y + x \otimes_R y' ,\nonumber \\
+ r x \otimes_R y &= x \otimes_R r y .\label{R-linear-tensor}
+\end{align}
+The resulting abelian group is denoted by $M \otimes_R N$.
+It is an $R$-module by defining an action $r \cdot (x \otimes_R y) = rx \otimes_R y$.
+This is the tensor product of $M$ and $N$.
+When there is no confusion about the base ring $R$, we write $\otimes$ instead of $\otimes_R$.
+
+Note that any abelian group $M$ is a module over $\ZZ$ by action $n \cdot m = \sum_{i=1}^{|n|} \mathrm{sgn}(n)m$
+for any $n \in \ZZ$ and any $m \in M$.
+Hence, we can take the tensor product of any abelian groups as $\ZZ$-modules.
+Since any $R$-module is an abelian group,
+one realizes that there are at least two ways to form tensor products of two $R$-modules $M$ and $N$;
+$M \otimes_\ZZ N$ and $M \otimes_R N$.
+All but one equations of \eqref{R-linear-tensor} remain unchanged.
+The last equation declaring $R$-linearity of $\otimes_R$ depends on $R$.
+It makes a huge difference.
+For instance, $\mathbb{C} \otimes_\mathbb{C} \mathbb{C} \cong \mathbb{C}$ is one dimensional,
+but $\mathbb{C} \otimes_\QQ \mathbb{C}$ is infinite dimensional
+since there are infinitely many irrational numbers.
+$\mathbb{C} \otimes_\ZZ \mathbb{C}$ is even larger.
+When the subscript is omitted, {\em the tensor product of two $R$-modules is taken over $R$ by convention}.
+
+Since the tensor product of two modules is a module,
+it makes sense to take the tensor product of three or more modules.
+Fortunately, the order of the tensor product does not matter.
+\[
+ (L \otimes_R M) \otimes_R N \cong L \otimes_R (M \otimes_R N) \quad  \quad \quad M \otimes_R N \cong N \otimes_R M
+\]
+
+
+There are (unwelcome) phenomena for general modules that never occur for vector spaces.
+The tensor product of two nonzero modules may be zero.
+For example, the tensor product of two $\ZZ$-modules $\ZZ/(2)$ and $\QQ$ is zero
+because $[a] \otimes b = [a] \otimes 2\frac{a}{2} = 2[a] \otimes \frac{a}{2} = 0 \otimes \frac{a}{2} = 0$.
+An expression $x \otimes y$ may be zero in $M \otimes N$ but may not be zero in $M' \otimes N'$
+where $M' \le M$ and $N' \le N$ are submodules.
+For example, let $M=\ZZ$ and $N = \ZZ/(2)$ be $\ZZ$-modules. Choose $M' = 2\ZZ$ and $N' = N$.
+Now $2 \otimes [1]$ is nonzero in $M' \otimes N'$, 
+but in $M \otimes N$, it is equal to $2 \cdot 1 \otimes [1] = 1 \otimes [2] = 0$.
+
+
+Below we explain a ``safe'' and powerful tensor product.
+
+\subsection*{Ring of fractions}
+
+The ring of rational numbers $\QQ$ is constructed from $\ZZ$ by inverting nonzero elements.
+We wish to do a similar thing for general rings.
+Let $U$ be a {\bf multiplicatively closed} subset of a ring $R$,
+i.e., $1 \in U$ and any product of two elements of $U$ lies in $U$.
+$U$ needs not be closed under addition.
+For example, the set of all nonzero numbers in $\ZZ$ is a multiplicatively closed set.
+More important is the complement of a prime ideal $\pp$.
+$1$ is included in $R \setminus \pp$ because $\pp \neq (1)$.
+If $a \notin \pp$ and $b \notin \pp$, then $ab \notin \pp$.
+This is the defining property of the prime ideal.
+
+We construct ``fractions'' by putting elements of $U \subseteq R$ in denominators
+and elements of $R$ in numerators. The set of all fractions becomes a ring with the ``usual'' additions and multiplications
+\begin{align}
+ \frac{a}{p} + \frac{b}{q}    &= \frac{aq + bp}{pq}, \label{fraction-add} \\
+\frac{a}{p} \cdot \frac{b}{q} &= \frac{ab}{pq}. \label{fraction-multiply}
+\end{align}
+Moreover, the elements of $U$ are invertible!
+\[
+ \frac{1}{p} \cdot p = \frac{p}{p} = 1, \quad \quad \frac{q a}{qp} = \frac{a}{p}.
+\]
+The new {\bf ring of fractions}%
+\footnote{
+Rigorously, the ring of fractions is a collection of equivalence classes of $R \times U$;
+$(a,p) = (b,q)$ if and only if there exists $s \in U$ such that $s(aq-bp) = 0$.
+The reason we do not define the equivalence using ``$aq=bp$'' is
+that there could be zero-divisors in $R$.
+Interested readers might want to check that 
+$U^{-1}R$ indeed becomes a ring using \eqref{fraction-add} and \eqref{fraction-multiply} as definitions.
+}
+is denoted by $U^{-1}R$ or $R[U^{-1}]$.
+Two special cases are so important that they deserve separate notations.
+\begin{itemize}
+ \item If $U = R \setminus \pp$, the ring of fractions is called the {\bf localization of $R$ at $\pp$} and denoted by $R_\pp$.
+ \item If $U = \{1, f, f^2, f^3, \ldots\}$ for some $f \in R$, the ring of fractions is denoted by $R_f$.
+\end{itemize}
+The original ring $R$ lives in $U^{-1}R$ via a canonical map $r \mapsto \frac{r}{1}$.
+With this canonical map, we omit $1$ in the denominators.
+Note that $U^{-1}R$ is an $R$-module.
+For example, $\ZZ_{2} = \ZZ[\half]$ is a ring of fractions with denominators are powers of $2$.
+(Yes, this is a confusing notation since $\ZZ_n$ is used to mean $\ZZ/(n)$.)
+$\ZZ_{(2)}$ is a ring of fractions with odd denominators.
+$\QQ[x]_{(x)}$ is a ring of fractions of polynomials where denominators does not vanish at $x=0$.
+What is $\QQ[x,y]_{xy}$? It is a ring of fractions of polynomials where denominators are powers of $xy$.
+Since $\frac{1}{x} = \frac{y}{xy}$ and $\frac{1}{y} = \frac{x}{xy}$,
+we notice that $\QQ[x,y]_{xy}$ is really the ring of Laurent polynomials.
+
+
+Modules can be fractionalized as well.
+Let $M$ be an $R$-module.
+Choose a multiplicatively closed set $U$ of the base ring $R$,
+and define $U^{-1}M$ as the set of all fractions with elements of $M$ in the numerators and elements of $U$ in the denominators.
+The addition within $U^{-1}M$ is defined by \eqref{fraction-add}.
+$U^{-1}M$ becomes an $U^{-1}R$-module using \eqref{fraction-multiply}.
+In fact, {\em $ U^{-1}M \cong (U^{-1}R) \otimes_R M $ as $U^{-1}R$-modules.} Moreover,
+\begin{itemize}
+\item {\em $U^{-1}M \otimes_{U^{-1}R} U^{-1}N = U^{-1}( M \otimes_R N)$ for any $R$-modules $M,N$.}
+\end{itemize}
+
+
+
+
+The {\bf localization}, the process passing to fractional rings and modules,
+is so well behaving under nearly all conceivable operations.
+Let $A, B \le M$ be submodules.
+\begin{itemize}
+\item {\em $U^{-1}A$ is a submodule of $U^{-1}M$}, i.e., $U^{-1}A$ injects into $U^{-1}M$.
+\item {\em $U^{-1}A \cap U^{-1}B = U^{-1}(A \cap B)$}.
+\item {\em $U^{-1}A + U^{-1}B = U^{-1}(A + B)$}.
+\item {\em $U^{-1}(M/A) = (U^{-1}M)/(U^{-1}A)$}.
+\end{itemize}
+They all originate from the following.
+A sequence of maps among modules $A,B,C$
+\[
+ 0 \to A \to B \to C \to 0
+\]
+is a {\bf short exact sequence} if
+\begin{itemize}
+ \item $\ker( A \to B ) = 0$,
+ \item $\im( A \to B ) = \ker ( B \to C)$,
+ \item $\im(B \to C ) = C$.
+\end{itemize}
+{\em The localization preserves short exact sequence}, i.e., if $0 \to A \to B \to C \to 0$ is a short exact sequence, then
+\[
+ 0 \to U^{-1}A \to U^{-1}B \to U^{-1}C \to 0
+\]
+is also a short exact sequence. For example, the first and the fourth statement above follows from localizing the short exact sequence
+\[
+ 0 \to A \to M \to M/A \to 0.
+\]
+
+
+
+
+The localizations at prime ideals are useful because {\em an $R$-module $M$ is zero if and only if
+$M_\pp = 0$ for every prime ideal $\pp$ of $R$.}
+In fact, $M = 0$ {\em if and only if $M_\mm = 0$ for every maximal ideal $\mm$ of $R$.}
+This can be understood as follows.
+The {\bf annihilator} denoted by $\ann_R M$ of an $R$-module $M$ is an ideal of $R$ defined by
+\begin{equation}
+ \ann_R M = \{ r \in R ~|~ r m = 0 \text{ for any } m \in M \}
+\end{equation}
+It is an ideal because $(a+b)m = am + bm = 0 + 0 = 0$ and $(ra)m = r(am) = 0$ if $a, b \in \ann_R M$.
+Note that {\em any $R$-module $M$ becomes a module over $R/(\ann_R M)$. }
+What is to be proved for this statement is the well-definedness of the defining operation \eqref{cond-module},
+i.e., one needs to check that $[a]\cdot m = [b]\cdot m$ if $[a]=[b] \in R/(\ann_R M)$ for any $m \in M$.
+Note that if $R$ is a polynomial ring over a field, there is an algorithm to compute $\ann_R M$
+for a finitely presented module $M$ using pull-backs and Gr\"obner basis techniques.
+Now, it is easy to see that 
+{\em a module $M_\pp$ (the localization of $M$ at a prime $\pp$)
+is zero if and only if the annihilator is not contained in $\pp$},
+since a module is zero if and only if $1$ or any unit is an annihilator,
+but the localized ring at $\pp$ anything outside $\pp$ is a unit.
+If $M$ becomes zero at the localization at any maximal ideal,
+it means that the annihilator is not contained in any maximal ideal.
+The only elements of $R$ that lie outside of any maximal ideal are units.
+Therefore, $M = 0$.
+
+
+Recall that there exists a canonical map $\phi$ from $R$ to a ring of fractions $U^{-1}R$, sending $r$ to $\frac{r}{1}$.
+The image under $\phi$ of any ideal $I$ of $R$ is not in general an ideal.
+However, we may consider the ideal of $U^{-1}R$ generated by $\phi(I)$.
+This ideal is denoted by $I^e \subseteq U^{-1}R$, called an {\bf extended ideal}.
+In fact, {\em any ideal of $U^{-1}R$ is an extended ideal.}
+To see this, consider any ideal $J$ of $U^{-1}R$, and its {\bf contraction} $\phi^{-1}(J) \subseteq R$.
+An element of $J$ is $\frac{x}{s}$. Since $J$ is an ideal, $\frac{s}{1} \frac{x}{s} = \frac{x}{1} \in J$.
+That is, $x \in \phi^{-1}(J)$. We have shown $(\phi^{-1}(J))^e = J$.
+Note that {\em every prime ideal of $U^{-1}R$ is an extended ideal of a prime ideal of $R$ 
+that do not intersect $U$.}
+We have seen that the inverse image of a prime ideal $\pp$ is prime;
+the contraction $\pp^c = \phi^{-1}(\pp)$ of a prime ideal of $U^{-1}R$ is prime.
+Since prime ideal is not $(1)$, it cannot contain any unit.
+Hence $\pp^c$ cannot meet the set of units $U$.
+Conversely, for any prime ideal $\mathfrak q$ of $R$ that do not intersect $U$,
+$\mathfrak q^e$ is a prime ideal of $U^{-1}S$,
+since $\frac{ab}{ss'} \in \mathfrak q^e \Longleftrightarrow \frac{ab}{1} \in \mathfrak q^e$.
+
+It is clear that if $\phi^{-1}(J)$ is generated by $n$ elements of $R$,
+then $J$ is generated by $n$ elements of $U^{-1}R$.
+More importantly, {\em if $R$ is a Noetherian ring, then any localization is a Noetherian ring.}
+
+
+A {\bf local ring} is a ring with a unique maximal ideal.
+Typically, maximal ideals are not unique.
+In the ring of integers, every prime number generates a distinct maximal ideal.
+Let $R_\pp$ be a localized ring at a prime ideal $\pp$ of $R$.
+By definition of $R_\pp$, the set of all denominators do not meet $\pp$.
+Hence, $\pp_\pp$ is a prime ideal of $R_\pp$.
+If $\mm$ is any ideal of $R_\pp$, we must have $\mm \subseteq \pp_\pp$.
+Otherwise, $\mm$ contains an element outside $\pp_\pp$, which is invertible,
+and hence $\mm = (1)$.
+The localized ring $R_\pp$ at a prime ideal is a local ring with a unique maximal ideal $\pp_\pp$.
+One thing to remember about a local ring is that
+{\em any element outside the unique maximal ideal is a unit, i.e., it is invertible.}
+
+
+
+\subsection*{Geometry}
+
+Why is it called ``localization?''
+Here we briefly introduce the algebro-geometric point of view on rings.
+
+The (only) algebraic structure that we should start with for a geometric object is a function space.
+By a function we mean a set-theoretical map from the geometric object to numbers.
+We can impose certain conditions such as continuity or differentiability
+on the function space to study deeper and interesting aspects of the geometric object.
+In classical algebraic geometry, the geometric object, called variety,
+is defined by one or more polynomial equations,
+and the functions are defined by polynomials.
+
+Roughly speaking, there are two interesting types of functions:
+globally defined functions and locally defined functions.
+The locally defined ones may not be well-defined for some regions far from the point of interest.
+In the algebraic setting, the global functions are given by
+polynomial expressions without denominators.
+There may be several polynomial expressions for the same function.
+This happens when two polynomials differ by the equations of the variety.
+For example, the global function space, called {\bf coordinate ring}
+of a parabola on $\RR^2$ defined by $y = x^2$ is a quotient ring $R = \RR[x,y]/(y-x^2)$.
+
+Locally defined functions at a point $p$, if they are given as a fraction of two polynomials,
+are precisely those whose the denominators are not zero at $p$.
+For example, the fraction $\frac{1}{x+1}$ is a locally defined function at a point $(0,0)$ of the parabola,
+but $\frac{x-1}{y}$ is not.
+Collecting all locally defined functions at $\mm = (0,0)$, we obtain
+a {\bf local ring} $R_\mm = (\RR[x,y]/(y-x^2))_{(x,y)}$,
+which is consisted of fractions whose denominators are not contained in the maximal ideal $(x,y)$.
+The global function ring $R$ is \emph{localized at $\mm$ to be a local ring $R_\mm$}.
+Note that we have identified a point on the parabola with a maximal ideal $\mm$.
+This makes sense because the set of all solutions 
+of the equations $f(x,y)=0$ where $f(x,y) \in \mm$ is exactly $(0,0)$.
+
+One might ask what it means geometrically to localize at a prime ideal $\pp$.
+A prime ideal defines a subvariety by equations $f = 0$ where $f \in \pp$.
+The localization reveals the set of ``functions'' that are locally defined ``around'' the subvariety.
+(The notion of neighborhood can be made rigorous by defining a topology using polynomials.)
+
+
+
+
+\section{Determinantal ideal}
+\label{sec:det-ideal}
+
+When is a square matrix with integer entries invertible?
+A naive answer is that it is when the determinant is nonzero.
+It is true when the matrix is viewed as a matrix over $\QQ$.
+If we insist that the inverse matrix must be expressed over $\ZZ$,
+then the answer is that it is when the determinant is $\pm 1$.
+That is, the determinant must be invertible within the ring.
+Put differently, it is when the ideal generated by the determinant is the unit ideal.
+The determinant has another use. The rank of a matrix is the largest $k$ such that
+there exists a $k \times k$ submatrix whose determinant is a nonzero.
+Put differently, it is when the ideal generated by determinants of all $k \times k$ submatrices
+is nonzero.
+
+These observations motivate us to define a determinantal ideal over an arbitrary commutative ring $R$.
+Consider a rectangular matrix $\mathbf M$ with entries in $R$.
+A {\bf $k^\text{th}$ minor} is the determinant of a $k \times k$ submatrix.
+(There are quite many $k^\text{th}$ minors if $k$ is about half of the matrix size.)
+Note that to define the minor we do not have to assume that the full matrix $\mathbf M$ is square.
+When $k$ is larger than the number of rows or columns, $k^\text{th}$ minor is, by definition, zero.
+{\bf $k^\text{th}$ determinantal ideal $I_k(\mathbf M)$} of $\mathbf M$ is the ideal of $R$ 
+generated by all $k^\text{th}$ minors of $\mathbf M$.
+By convention, $0^\text{th}$ determinantal ideal is taken as $I_0(\mathbf M) = (1) = R$.
+If $\mathbf M$ is $n \times n$, then $n^\text{th}$ determinantal ideal is generated by a single element,
+the determinant of $\mathbf M$.
+The first determinantal ideal is generated by all entries of $\mathbf M$.
+A $(k+1)^\text{st}$ minor is a linear combination of $k^\text{th}$ minors,
+as it has a cofactor expansion.
+Therefore, the determinantal ideals form a decreasing chain:
+\[
+ R = I_0(\mathbf M) \supseteq I_1(\mathbf M) \supseteq I_2(\mathbf M) \supseteq \cdots 
+    \supseteq I_{\min( \# row, \# col)}( \mathbf M ) \supseteq (0)
+\]
+The {\bf rank} of $\mathbf M$ is the largest $k$ such that $I_k(\mathbf M)$ is nonzero.
+
+
+The determinantal ideals are invariants of $\mathbf M$ 
+under invertible matrix multiplications on the right or on the left.
+\[
+ I_k ( \mathbf {M D} ) = I_k( \mathbf{E M} ) = I_k (\mathbf M) \quad 
+\quad \text{if $\mathbf{D,~E}$ are square and invertible.}
+\]
+To understand this, it is enough to see $I_k( \mathbf{E M} ) \subseteq I_k( \mathbf M )$ for arbitrary matrix $E$.
+Then, for invertible $\mathbf E$, we would have $I_k(\mathbf{E^{-1} E M }) \subseteq I_k(\mathbf{E M})$.
+We need to see that a $k^\text{th}$ minor of $ \mathbf{E M}$ is a linear combination of $k^\text{th}$ minors of $\mathbf M$.
+Fix a $k \times k$ submatrix $\mathbf K$ of $\mathbf{EM}$.
+\[
+ \mathbf K_{il} = \sum_{j} e _{ij} \mathbf M _{j l} 
+\]
+where $e_{ij} = \mathbf{E}_{ij}$ is written with small letter to emphasize it is merely an element of $R$.
+Now the determinant of $\mathbf K$ is vividly expressed by minors of $\mathbf M$,
+since the determinant is multilinear over $R$ in rows $K_i$ of $\mathbf K$.
+\begin{align*}
+ \det \mathbf K 
+&= \det( K_1, \ldots, K_k ) 
+= \det \left[ \sum_{j_1} e_{1 j_1} M_{j_1}, \ldots, \sum_{j_k} e_{k j_k} M_{j_k} \right]\\
+&= \sum_{j_1,\ldots,j_k} e_{1 j_1} \cdots e_{k j_k} ~\det \left[  M_{j_1},\ldots, M_{j_k} \right]
+\end{align*}
+where $M_j$ is the row $j$ of the submatrix of $\mathbf M$ that is consisted of entries contributing to $\mathbf K$.
+
+
+Suppose $R$ be a local ring with a maximal ideal $\mm$,
+and consider a matrix $\mathbf M$ over $R$ of rank $k$.
+If $I_k(\mathbf M) = (1)$, how would $\mathbf M$ look like after row and column operations?
+The operations are invertible, and therefore do not change the determinantal ideals.
+Since the determinantal ideals form a descending chain,
+it follows that $I_1(\mathbf M) = (1)$.
+It means that at least one entry must lie outside $\mm$ and is invertible.
+Bringing that entry to $(1,1)$ position by permuting rows and columns,
+we can eliminate other entries in the first row and column, by row and column additions.
+So
+\[
+ \mathbf M \cong \begin{pmatrix} 1 & 0 \\ 0 & \mathbf M' \end{pmatrix}
+\]
+where $\cong$ means the equivalence up to invertible matrix multiplication on the left or right.
+Now we use the fact that $I_2(\mathbf M) = (1) = I_1( \mathbf M' )$.
+By a similar process we can extract $1$ from $\mathbf M'$.
+After $k$ steps, we have
+\begin{equation}
+ \mathbf M \cong \begin{pmatrix} \id_k & 0 \\ 0 & 0 \end{pmatrix}.
+\label{free-module-presentation}
+\end{equation}
+Here, observe that $R$ is not necessarily a field.
+It is just a local ring where some nonzero elements may not be invertible.
+The smallest nonzero determinantal ideal being a unit ideal
+was strong enough to imply the structure of the matrix.
+
+\subsection*{Smith normal form}
+
+Beyond the ``easy'' local ring case,
+there is one more easy case of {\bf principal ideal domains},
+in which every ideal is generated by a single element.
+It is not necessarily local.
+{\em The ring of integers and the ring of polynomials in one variable over a field
+are principal ideal domains};
+given finitely many generators of an ideal,
+one can find the greatest common divisor ($\gcd$) by the Euclidean algorithm.
+
+Let $R$ be a principal ideal domain.
+We ask what normal forms of matrices we may have, after
+invertible matrix multiplication on the left or right.
+In other words, we seek for invariants of the matrices.
+Observe that the $\gcd$ of two elements%
+%%%%
+\footnote{To speak of $\gcd$, it must be first proved that in $R$ any element has a unique factorization.
+It is true that in any principal ideal domain, any element is a product of irreducible factors
+that are unique up to units. If the latter is satisfied, the ring is called a {\bf unique factorization domain}.
+Note that an arbitrary ring may not be a unique factorization domain.
+For example, in $\ZZ[\sqrt{-5}]$, we have $6 = 2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})$,
+which are two different factorizations of $6$ into irreducible factors.}
+%%%%
+$f$ and $g$ can be expressed as a linear combination of $f$ and $g$
+\[
+\gcd(f,g) = a f + b g
+\]
+for some $a,b \in R$. To see this, consider the ideal $(f,g)$.
+It must be generated by a single element, say, $d$, i.e., $(d) = (f,g)$.
+Then, $f \in (d) \Longleftrightarrow f = d f'$ and $g \in (d) \Longleftrightarrow g = d g'$.
+So $d$ is a common divisor of $f$ and $g$. In addition, $(d) = (f,g) \subseteq (\gcd(f,g))$
+implies that $\gcd(f,g)$ divides $d$. Thus, $\gcd(f,g)$ and $d$ are the same up to units,
+and $\gcd(f,g) \in (f,g)$. We thus obtain the above expression.
+Now, consider the following matrix equation
+\[
+\begin{pmatrix} \gcd(f,g) \\ 0 \end{pmatrix}
+= \begin{pmatrix} a & b \\ -g' & f' \end{pmatrix} \begin{pmatrix} f \\ g \end{pmatrix}
+\]
+The $2 \times 2$ matrix has determinant $af' + bg' = \gcd(f,g)/d$, a unit.
+We have transformed a $2 \times 1$ matrix by an invertible left multiplication
+such that there is only a single nonzero entry left. 
+A similar thing can be done for an $n \times 1$ matrix.
+\[
+\begin{pmatrix} \gcd(f_1,\ldots,f_n) & 0 & \cdots & 0 \end{pmatrix}^T
+= \mathbf E \begin{pmatrix} f_1 & \cdots & f_n \end{pmatrix}^T
+\]
+where $\mathbf E$ is invertible.
+
+If we are given with a rectangular matrix $\mathbf M$,
+we can perform this transformation by looking at the first column of $\mathbf M$.
+The transformed matrix $M'$ will have a nonzero entry on the first row in the first column.
+Perform a similar transformation by right multiplication, focusing on the first row of $\mathbf M'$.
+The new matrix $\mathbf M''$ has unique nonzero entry at $\mathbf M''_{1,1}$ in the first row,
+but the first column may be screwed up.
+We can iterate these transformations as many times as we want.
+Will this process eventually terminate? Yes.
+For example, if we are working in the ring of integers,
+the absolute value of the entry $\mathbf M''_{1,1}$ is smaller than $|\mathbf M'_{1,1}|$, which is $\le |\mathbf M_{1,1}|$.
+Positive integers cannot decrease forever, and the process must terminate.
+More generally, the ascending chain condition makes the proof smooth.
+The ideals generated by the $(1,1)$-entries will form an increasing sequence of ideals.
+Our ring $R$, being a principal ideal domain, is Noetherian.
+The sequence must become stationary after finitely many iterations.
+If one is not too familiar with Noetherian rings,
+one can rely on the fact that there are finitely many factors of a given element.
+If $(d_1) \subseteq (d_2) \subseteq \cdots$ is an increasing sequence of ideals,
+we have $d_{i+1} | d_{i}$. Since there are only finitely many factors in $d_1$,
+one cannot have an infinite and strictly increasing sequence of ideals.
+
+The matrix $\mathbf M^{(n)}$ obtained from $\mathbf M$ by iterating
+the $\gcd$-computations $n$-times, has a unique nonzero entry $d$ at $(1,1)$
+in its row and column.
+\[
+\mathbf M^{(n)} = \begin{pmatrix} d & 0 \\ 0 & M_1 \end{pmatrix}
+\]
+We can claim a bit more. If there is any entry at $(u,v)$ of $M_1$ that is not divisible by $d$,
+we can add the row $u$ to the first row and run the $\gcd$-computation again.
+The ideal generated by $(1,1)$-entry will become larger.
+Iterating, we eventually find the largest possible ideal generated by $(1,1)$-entry.
+Therefore, we can obtain $M_1$ whose entries are all divisible by $d$.
+
+The above algorithm applied to $M_1$, and to its submatrix, and so on,
+will produce a diagonal matrix. This diagonal matrix is called the {\bf Smith normal form} of $\mathbf M$.
+The nonzero diagonal entries $d_1, \ldots, d_k$ have a property that
+\[
+d_1 | d_2 | \cdots | d_k .
+\]
+Here, the number $k$ is precisely the rank of the matrix $\mathbf M$.
+Moreover, the determinantal ideals are 
+\[
+I_t ( \mathbf M ) = (d_1 \cdots d_t).
+\]
+This immediately proves that $d_i$'s are uniquely determined by $\mathbf M$.
+The invariants $d_i$'s are called {\bf elementary divisors} of $\mathbf M$.
+Since any matrix, not necessarily square, can be brought to the Smith normal form
+by invertible transformations,
+it follows that the elementary divisors are {\bf complete invariants},
+i.e., the elementary divisors are the same for two matrices if and only if two matrices are related by
+invertible matrix multiplication on the left and right.
+
+
+\subsection*{Finitely generated modules and Fitting ideals}
+
+We briefly noted about finite presentations of modules when we discussed free modules.
+We say that an $R$-module $M$ is finitely presented by a matrix $\phi : R^m \to R^n$
+if $M$ is isomorphic to $R^n / \im \phi$. This is more commonly denoted as $ M = \coker \phi$.
+
+To get some feeling, let us consider a simple case where $R = \ZZ$.
+The matrix $\phi: R^m \to R^n$ is an $n \times m$ matrix with integer entries.
+Any basis change in $R^n$ amounts to an invertible left multiplication on $\phi$.
+Any basis change in $R^m$ amounts to an invertible right multiplication on $\phi$.
+We know a very convenient canonical form of $\phi$ --- the Smith normal form.
+Let $\phi$ be in the Smith normal form with the diagonal elements $d_1, \ldots, d_k$.
+In the simplest case $k = m = n =1$, the module $M$ is $R / \im \phi = \ZZ / (d_1)$.
+If $m = n = 2$ and $d_2 = 0$, the module $M$ is $R^2 / \im \phi = \ZZ/(d_1) \oplus \ZZ$.
+
+In fact, we can prove the structure theorem for finitely generated abelian groups very easily.
+Let $M$ be a finitely generated abelian group. It can be viewed as a finitely generated
+$\ZZ$-module. Let $n$ be the number of generators. We have a module map $\tilde \phi : \ZZ^n \to M$,
+which is surjective. The kernel $K$ is also finitely generated since $\ZZ^n$ is Noetherian.
+Hence, we have another map $\phi : \ZZ^m \to K \subseteq \ZZ^n$ where $m$ is the number of
+generators of $K$. We have constructed a finite presentation of $M$ by $\phi$, i.e., $M = \ZZ^n / \im \phi$.
+Bring $\phi$ to the Smith normal form by basis changes in $\ZZ^n$ and $\ZZ^m$.
+If $d_1 | \cdots | d_k$ are elementary divisors of $\phi$,
+we define $d_{k+1} = \cdots = d_n = 0$.
+Then we have an isomorphism of $\ZZ$-modules $M \cong \ZZ/(d_1) \oplus \cdots \oplus \ZZ/(d_n)$.
+Viwed as a group, the notation will be
+\[
+ M = \ZZ/d_1 \ZZ \times \cdots \times \ZZ/d_k \ZZ \times \ZZ^{n-k} .
+\]
+This is the most general form of a finitely generated abelian group.
+Note that the rank $n-k$ and the elementary divisors 
+$d_1 | d_2 | \cdots | d_k \neq 0$ are uniquely determined by the group $M$.
+Any finite abelian group is obviously finitely generated.
+
+
+Let $R$ be an arbitrary commutative ring, and $M$ be an $R$-module 
+with a finite presentation given by a matrix $A: R^m \to R^n$, i.e., $M \cong R^n/\im A = \coker A$.
+We define {\bf Fitting ideals} $F_i(M)$ of $M$ as
+\begin{equation}
+ F_i(M) = I_{n-i}(A),
+\label{Fitting-ideal}
+\end{equation}
+so
+\[
+ F_0(M) \subseteq F_1(M) \subseteq \cdots \subseteq F_n(M) = R .
+\]
+One should ask: $A$ is one of many possible finite presentations.
+How can we be sure that $F_i(M)$ is determined by $M$ and is independent of a particular presentation $A$?
+We can be sure.
+The presentation really consists of two sets of things:
+a set of generators $x_1,\ldots,x_n \in M$ and their relations (syzygies) given by columns of $A$
+\[
+ \sum_{i} x_i A_{ij} = 0.
+\]
+Thus, we can think of $A$ as the matrix of relations.
+The isomorphism $M \cong \coker A$ ensures that any possible relations among $x_i$ is generated by columns of $A$.
+That is, for any coefficients $c_i$ such that $\sum_i x_i c_i = 0$ we can express $c_i$ as $c_i = \sum_j  A_{ij} d_j$.
+Therefore, if we write a $n \times \infty$ matrix $\tilde A$ by collecting \emph{all} relations among $x_i$,
+then the $k^\text{th}$ determinantal ideal of $\tilde A$ is exactly $I_k(A)$.
+In other words, $I_k(A)$ is determined by the chosen generators of $M$.
+Our question on the well-definedness of the Fitting ideal concerns, in fact, many possible choices of generators for $M$.
+%%%
+Now, let $y_1, \ldots, y_{n'}$ be elements of $M$.
+We have $n+n'$ generators $x_i, y_{i'}$ of $M$,
+and $M$ is presented as a quotient module of $R^{n+n'}$. 
+The relations among $x_i,y_{i'}$ constitute a matrix
+\[
+W =
+\begin{pmatrix}
+ A & A'  & \# \\
+ 0 & \id & \# \\
+\end{pmatrix} 
+\sim
+W' =
+\begin{pmatrix}
+ A & 0   & A' \\
+ 0 & \id & 0 \\
+\end{pmatrix} 
+\sim
+W'' =
+\begin{pmatrix}
+ A & 0   & 0 \\
+ 0 & \id & 0 \\
+\end{pmatrix} 
+\]
+where $\sim$ means equality up to row or column operations.
+The first matrix $W$ can be written as shown because $y_{i'}$ can be written as some combination of $x_i$.
+$W''$ is obtained from $W'$ since we know that $A$ generates all relations among $x_i$.
+Since determinantal ideals are invariant under invertible matrix multiplications,
+we see that $I_{k+n'}(W) = I_{k+n'}(W') = I_{k+n'}(W'') = I_k(A)$.
+Another finite presentation $B : R^{m'} \to R^{n'}$ of $M \cong \coker B$
+gives another set of generators.
+By the above calculation, $I_{n-k}(A) = I_{n+n'-k}(W) = I_{n'-k}(B)$.
+Therefore, {\em the Fitting ideals are well-defined.}
+We now see clearly why the numbering of the Fitting ideals are given as \eqref{Fitting-ideal}.
+(One might notice that the finite presentation is actually too much than 
+what is needed to define Fitting ideals. They can be defined for any finitely generated module.)
+
+
+The first nonvanishing Fitting ideal is important because it tells 
+when a finitely generated module becomes free after localization.
+For example, suppose an $R$-module $M$ is finitely presented by $\phi : R^m \to R^3$ and $F_1(M)$ is nonzero.
+Let $\pp$ be a prime ideal of $R$ such that $F_1(M) \not\subseteq \pp$.
+Localizing at $\pp$, we see that $F_1(M) = I_2(\phi)$ becomes the unit ideal,
+since anything outside $\pp$ is a unit in $R_\pp$.
+Then, we have seen in \eqref{free-module-presentation} that
+the matrix $\phi_\pp$ is equivalent to a diagonal matrix with entries $0$ or $1$.
+Therefore, $\coker \phi_\pp$ is obviously isomorphic to $R_\pp^3/R_\pp^2 = R_\pp^1$, a free module.
+Conversely, if $\coker \phi_\pp$ is free for some prime ideal $\pp$,
+then $I_k(\phi_\pp)$ is either $(1)$ or $(0)$.
+Therefore, every Fitting ideal of $\coker \phi_\pp$ is either $(0)$ or $(1)$.
+In conclusion, {\em the localizaed module $M_\pp$ of $M$ at a prime ideal $\pp$ is free 
+if and only if the first nonvanishing Fitting ideal of $M$ is not contained in $\pp$.}
+
+
+The initial Fitting ideal $F_0(M)$ is also interesting because it approximates the annihilator of $M$.
+Let $M$ be generated by $n$ elements. Then,
+\begin{equation}
+(\ann M)^n \subseteq F_0(M) \subseteq \ann M .
+\label{Fitting-annihilator}
+\end{equation}
+Here, the {\bf ideal power} $(\ann M)^n$ means the ideal generated by all products of $n$ elements from $\ann M$.
+By definition, $F_0(M) = I_n(A)$ where $A$ is a matrix of relations among the $n$ generators $x_i$ of $M$.
+If $Z$ is an $n \times n$ submatrix of $A$, we have $\sum_i  x_i Z_{ij} = 0$.
+Multiplying the adjugate matrix of $Z$, we see $(\det Z) x_i = 0$ for all $1 \le i \le n$.
+Hence, $\det Z \in \ann M$. Since $F_0(M)$ is generated by these $\det Z$, we have the second inclusion
+of \eqref{Fitting-annihilator}.
+If $a_1,\ldots, a_n \in \ann M$, then the diagonal matrix made of $a_i$ expresses relations among $x_i$.
+The determinant $a_1\cdots a_n$ therefore belongs to $F_0(M)$.
+This proves the first inclusion of \eqref{Fitting-annihilator}.
+
+
+
+
+\section{Finite fields}
+
+A field is a nonzero commutative ring where every nonzero elements are invertible.
+There is only one proper ideal, the zero ideal $(0)$.
+A {\bf finite field} is a field with finitely many elements.
+If there are $q$ elements in the field, we denote the field by $\FF_q$.
+The minimum possible number is of course $q=2$ because we need $0 \neq 1$.
+In this case it is called {\bf bianary field} $\FF_2$.
+It may seem quite modest to require for a field to have finitely many elements,
+but, unlike finite groups, finite fields are particularly simple ---
+{\em there is a unique field of $q$ elements up to isomorphisms.}
+Let us see why.
+
+
+Since any ring is an additive group, $\FF_q$ is a finite abelian group.
+How does it look like as an additive group?
+Applying the ``structure theorem for finitely generated abelian group,''
+we know $\FF_q \cong \bigoplus_{i=1}^k \ZZ/(d_i)$.
+where $1 < d_1 | d_2 | \cdots | d_k \neq 0$.
+It follows that for any element $x \in \FF_q$ we have $d_k x = 0$.
+Here, $d_k$ is the smallest number such that $d_k x = 0$ for any $x \in \FF_q$.
+If $d_k$ is not a prime number, say, $d_k = pp'$ with $p, p' < d_k$,
+then $p = p\cdot 1 \neq 0$ in $\FF_q$ is invertible.
+Hence, $p' = p' \cdot 1 = 0$, which is a contradiction to the minimality of $d_k$.
+Therefore, $d_k$ is prime, and $d_1 = d_2 = \cdots = d_k = p$.
+It follows that $| \FF_q | = q = d_1 d_2 \cdots d_k = p^k$.
+This conclusion is often phrased as {\em a finite field has {\bf characteristic} $p$ for some prime number $p$
+and the total number of elements is a power of $p$.}
+Note that the image of $\ZZ \to \FF_q$, as there is a unique ring homomorphism from $\ZZ$ to any ring,
+is $\FF_p$, a subfield of $\FF_q$.
+It is of great importance that {\em $\FF_q$ is a $k$-dimensional vector space over $\FF_p$.}
+
+
+Next, how does the multiplicative group of all nonzero elements of $\FF_q$ look like?
+It is again a finitely generated abelian group.
+Therefore, its group structure is uniquely determined by elementary divisors $1< e_1 | e_2 | \cdots |e_m \neq 0$.
+In a similar logic as above, we have $x^{e_m} = 1$ for any nonzero $x \in \FF_q$.
+It is an equation in the field, so it can be rewritten as $x^{e_m} -1 = 0$.
+How many solutions can an equation have? At most the degree.
+It means that $q-1 = e_1 e_2 \cdots e_m \le e_m$.
+The only possibility is that $m = 1$ and $e_1 = q-1$.
+That is, the multiplicative group $\FF_q^\times$ consisted of all nonzero elements
+is isomorphic to the additive group $\ZZ/(q-1)$, a {\bf cyclic group} generated by a single element.
+In other words, there exists an element $x$ in $\FF_q$ such that
+$\{ x^n | n \in \ZZ \}$ is equal to the set of all nonzero elements.
+Such an element $x$ is called {\bf primitive element} of $\FF_q$.
+There could be many primitive elements in $\FF_q$.
+
+
+Finally, let us mix the two operations, the addition and multiplication, and consider the ring structure of $\FF_q$.
+Before we start analyzing $\FF_q$,  remark that for
+any field $\FF$, not necessarily finite, and an irreducible polynomial $f(x)$ over $\FF$,
+we can construct a larger field $\FF[x]/(f(x))$ that contains $\FF$.
+A larger field is called an {\bf extension field} over the smaller field.
+
+
+We noted above that $\FF_q$ is a $k$-dimensional vector space over $\FF_p$.
+Fix a primitive element $\alpha$ of $\FF_q$.
+Then, the set of ``vectors''  $\{1,\alpha,\alpha^2,\ldots,\alpha^k\}$ contains $k+1$ vectors,
+so it cannot be linearly independent over $\FF_p$.
+Consider the set $I_\alpha$ of all polynomials $f(t) \in \FF_p[t] \subseteq \FF_q[t]$ such that $f(\alpha) = 0$.
+It is clearly a nonzero ideal, and therefore is generated by a single element $f_\alpha(t)$,
+which divides any element in $I_\alpha$.
+$f_\alpha(t)$ is unique if we demand the leading coefficient to be $1$.
+A polynomial with the leading coefficient $1$ is called {\bf monic}.
+The minimality of $f_\alpha(t)$ forces it to be irreducible.
+$f_\alpha(t)$ is uniquely determined by $\alpha$, 
+called the {\bf minimal polynomial} of $\alpha \in \FF_q$ over $\FF_p$.
+We have established a ring homorphism $\FF_p[t] / (f_\alpha(t)) \to \FF_q$ such that $t \mapsto \alpha$.
+Since $\alpha$ is a primitive element, this map is surjective.
+Moreover, it is injective because of the choice of $f_\alpha(t)$.
+It follows that the degree of $f(t)$ is actually equal to $k$,
+the dimension of $\FF_q$ as an $\FF_p$-vector space,
+and {\em the ring $\FF_q$ is isomorphic to a quotient ring of the polynomial ring $\FF_p[t]$}.
+
+
+Recall the polynomial $h(x) = x^q -x$ becomes zero at any element of $\FF_q$.
+It means that in the ring $\FF_q[x]$,
+the polynomial $h(x)$ factorized into linear factors as
+\begin{equation}
+h(x) = x(x-\alpha)(x-\alpha^2)(x-\alpha^3) \cdots (x- \alpha^{q-1}) .
+\label{h-factors}
+\end{equation}
+Since $x^q-x \in I_\alpha$, it follows that $f_\alpha(x) \in \FF_p[x]$ divides $x^q-x \in \FF_p[x]$.
+Therefore, $f_\alpha(x) \in \FF_q[x]$ factorizes into linear factors, too.
+That is, any root of $f_\alpha(x)$ can be found in $\FF_q$, not only $\alpha$.
+Furthermore, {\em any root of $f_\alpha(x)$ is a primitive element.}
+Let $\beta \in \FF_q$ be any root of $f_\alpha(x)$.
+The ideal $I_\beta \subseteq \FF_p[x]$ contains $f_\alpha(x)$.
+Hence, the minimal polynomial $f_1(x) \in I_\beta$ divides $f_\alpha(x)$.
+Since $f_\alpha(x)$ is irreducible in $\FF_p[x]$, we must have $f_\alpha(x) = f_\beta(x)$.
+It means that $\FF_q \ni \alpha \mapsto \beta \in \FF_q$ is an isomorphism,
+guaranteeing that $\beta$ is a primitive element.
+
+
+The quotient ring presentation of $\FF_q$ is not unique because it depends on $f_\alpha(t)$ which
+is determined by a primitive element. 
+It is thus a relevant question whether two finite fields with the same cardinality $\FF_q$ and $\FF_q'$ 
+are isomorphic as rings.
+Let $\alpha$ be a primitive element of $\FF_q$ with the minimal polynomial $f(x)$ over $\FF_p$,
+and $\beta$ be a  primitive element of $\FF_q'$ with the minimal polynomial $g(x)$ over $\FF_p$.
+We know that $f(x) | h(x)$ and $g(x) | h(x)$ where $h(x) = x^q -x$.
+It follows from \eqref{h-factors} that $f(\beta^n) = 0$ in $\FF_q'$ for some $n$.
+Given such $n$, we can define a ring homomorphism $\FF_p[x]/(f(x)) \ni x \mapsto y^n \in \FF_p[y]/(g(y))$.
+It amounts to a ring homomorphism $\FF_q \ni \alpha \mapsto \beta^n \in \FF_q'$.
+Note that {\em any nonzero ring homomorphism from a field is injective}
+simply because the kernel is a proper ideal.
+Since both the domain and the target are finite dimensional vector spaces,
+our homomorphism is bijective, and we obtain a field-isomorphism.
+In conclusion, {\em any finite field is uniquely determined up to isomorphisms by its cardinality.}
+
+
+Let $f(x) \in \FF_q[x]$ be any irreducible polynomial over $\FF_q$.
+We may consider an extension field $\mathbb E = \FF_q[x]/(f(x))$ over $\FF_q$.
+It is still a finite field for being a finite dimensional vector space over a finite field.
+In $\mathbb E$, $f(x)$ factorizes into linear factors by the same reasoning as above.
+More generally, since any polynomial $g(x)$ is a product of irreducible polynomials,
+by extending the field, one can factor further some of the irreducible factors.
+Since there are finitely many irreducible factors, one eventually reaches an extension field
+where $g(x)$ factorizes into linear factors completely, after finitely many extensions.
+If we started with a finite field, then the ultimate field will still be finite of cardinality, say, $q'$.
+It follows that $g(x)$ is a factor of $(x^{q'}-x)^n$ for some $n$,
+where $n$ is to take care of potential multiplicity in $g(x)$.
+$n$ can be chosen to be large. If one wishes, it may be of form $p^m$ 
+where $p$ is the characteristic of the field.
+Then, $(x^q -x)^{p^m} = x^{q' p^m} - x^{p^m}$.
+Summarizing, {\em any nonzero polynomial $g(x)$ over a finite field divides $x^{p^{m'}} - x^{p^m}$
+for some $m' > m$.}

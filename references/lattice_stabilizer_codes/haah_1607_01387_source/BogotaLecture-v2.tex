@@ -1,0 +1,101 @@
+\documentclass[letterpaper, 11pt,nofootinbib,aps,pra,longbibliography]{revtex4-1}
+%\documentclass[letterpaper,notitlepage,10pt,nofootinbib]{amsart}
+%\usepackage{fullpage}
+\usepackage{microtype}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0.,0.,0.4}
+\definecolor{darkred}{rgb}{0.5,0.,0.}
+\usepackage[pdftex,colorlinks=true,linkcolor=darkred,citecolor=darkblue,urlcolor=blue]{hyperref}
+
+% DeclareMathOperator* makes it like \lim.
+\DeclareMathOperator{\sgn}{\mathrm{sgn}}
+\DeclareMathOperator{\tr}{\mathrm{tr}}
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\im}{\mathrm{im}}
+\DeclareMathOperator{\ann}{\mathrm{ann}}
+
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\rd}{\mathrm{d}} % integration variable
+\newcommand{\FF}{\mathbb{F}} % finite field
+\newcommand{\mm}{\mathfrak{m}} % maximal ideal
+
+\newcommand{\ket}[1]{\left| {#1} \right\rangle}
+\newcommand{\bra}[1]{\left\langle {#1} \right|}
+\newcommand{\braket}[2]{\langle {#1} | {#2} \rangle}
+\newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\onenorm}[1]{\left\| {#1} \right\|_1}
+\newcommand{\norm}[1]{\left\| {#1} \right\|}
+
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{thm}[lem]{Theorem}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{con}[lem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{rem}[lem]{Remark}
+\newtheorem{observation}[lem]{Observation}
+\newtheorem{example}[lem]{Example}
+\newtheorem{defn}[lem]{Definition}
+\newtheorem{exc}[lem]{Excercise}
+\theoremstyle{plain}
+
+\begin{document}
+
+\title{Algebraic Methods for Quantum Codes on Lattices}
+\author{Jeongwan Haah}
+\date{17 October 2016}
+\affiliation{
+Department of Physics, Massachusetts Institute of Technology, Cambridge, Massachusetts, USA}
+\affiliation{
+Station Q Quantum Architectures and Computation Group, Microsoft Research, Redmond, Washington, USA}
+\email{jwhaah@microsoft.com}
+
+
+\begin{abstract}
+This is a note from a series of lectures
+at Encuentro Colombiano de Computaci\'on Cu\'antica, 
+Universidad de los Andes, Bogot\'a, Colombia, 2015.
+The purpose is to introduce additive quantum error correcting codes,
+with emphasis on the use of binary representation of Pauli matrices
+and modules over a translation group algebra.
+The topics include symplectic vector spaces,
+Clifford group, cleaning lemma,
+an error correcting criterion,
+entanglement spectrum,
+implications of the locality of stabilizer group generators,
+and 
+the classification of translation-invariant one-dimensional additive codes
+and two-dimensional CSS codes with large code distances.
+In particular,
+we describe an algorithm to find a Clifford quantum circuit (CNOTs)
+to transform any two-dimensional translation-invariant
+CSS code on qudits of a prime dimension with code distance being the linear system size,
+into a tensor product of finitely many copies of the qudit toric code and a product state.
+Thus, the number of embedded toric codes is the complete invariant of these CSS codes
+under local Clifford circuits.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\input{main.tex}
+
+\begin{acknowledgments}
+The author thanks 
+Cesar Galindo-Martinez and Julia Plavnik
+for their hospitality during the workshop in Bogot\'a, Colombia,
+and H\'ector Bomb\'in for guiding along his paper~\cite{Bombin2011Structure}.
+The author is supported by Pappalardo Fellowship in Physics while at MIT.
+\end{acknowledgments}
+
+\input{BogotaLecture-v2-ref.bbl}
+%\bibliography{arXiv}
+\end{document}

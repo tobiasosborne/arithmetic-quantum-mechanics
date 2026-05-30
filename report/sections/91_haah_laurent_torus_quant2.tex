@@ -1,0 +1,245 @@
+% SHARD-ID: AQM-91-HAAH-LAURENT-TORUS-QUANT2
+% SHARD-TITLE: Haah Laurent Modules and Torus Quant2
+% SHARD-SUMMARY: Compares Haah's Laurent-polynomial module formalism with the algebraic-torus Quant2 shard.
+% SHARD-SUMMARY: Identifies the finite periodic bridge where the AQM-90 Cayley square becomes Haah's toric-code matrix.
+% SHARD-SUMMARY: Records lessons for expressing arithmetic-field dynamics as Weyl-Heisenberg label constraints.
+% SHARD-KEYWORDS: Haah, Laurent polynomials, algebraic torus, Quant2, toric code, Weyl-Heisenberg, finite support
+
+\section{Haah Laurent Modules and Torus Quant2}
+\label{sec:haah-laurent-torus-quant2}
+
+\subsection{Status and Source Anchors}
+
+This shard is a comparison shard, not a new theorem about all arithmetic
+quantum fields.  The local Haah source manifest
+\path{references/lattice_stabilizer_codes/SOURCES.md}, lines 17--29, records
+the free-module source and exact TeX locators.  Lines 31--43 record the thesis
+source for the toric-code matrix, and lines 87--99 record the two-dimensional
+classification source.  The algebraic-torus side is AQM-90 and conventions
+\texttt{(ay)}--\texttt{(az)}.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&A_T=k[x^{\pm1},y^{\pm1}],\quad T=\Spec A_T.\\
+D2&:&R_{\rm tr}=\mathbb F_p[X^{\pm1},Y^{\pm1}]=\mathbb F_p[\mathbb Z^2].\\
+D3&:&x,y\text{ are torus coordinates; }X,Y\text{ are translation operators.}\\
+D4&:&G=\langle\alpha\rangle\times\langle\beta\rangle\subset T(k).\\
+D5&:&R_G=\mathbb F_p[X^{\pm1},Y^{\pm1}]/(X^{N_x}-1,Y^{N_y}-1).\\
+D6&:&P_G=R_G^4\cong
+\mathbb F_2^{G\times\{x,y\}}{}_q\oplus
+\mathbb F_2^{G\times\{x,y\}}{}_p.\\
+L1&:&\sigma_\square\text{ reproduces the AQM-90 square CSS subgroup.}\\
+L2&:&\sigma_\square^\dagger\lambda\sigma_\square=0
+\text{ is }\partial_1\partial_2=0.\\
+L3&:&d:A_T\to\Omega^1_{A_T/k}\text{ is not Haah's excitation map.}\\
+T1&:&\text{Use finite Laurent matrices as Weyl-label selection principles.}
+\end{array}
+\]
+
+\subsection{The Same Laurent Ring in Two Different Roles}
+
+Haah's starting point is translation invariance.  A lattice with translation
+group \(\mathbb Z^2\) gives the group algebra
+\[
+  R_{\rm tr}=\mathbb F_p[\mathbb Z^2]
+  =\mathbb F_p[X^{\pm1},Y^{\pm1}].
+\]
+The exponents record lattice positions.  A translation-invariant finite list
+of local Pauli or Weyl data is therefore a finite Laurent matrix.  Haah records
+this as a map between free modules over the translation group algebra; the
+Pauli module is free over that ring, and commutation is encoded by the
+Laurent symplectic form.
+
+AQM-90 starts with the split torus
+\[
+  A_T=k[x^{\pm1},y^{\pm1}],\qquad T=\Spec A_T.
+\]
+Here \(x,y\) are invertible coordinate functions, not shifts.  Raw Quant2 is a
+closed-point residue Weyl field
+\[
+  E_T(U)=\bigoplus_{z\in U\cap |T|_{\rm cl}}\kappa(z)^2
+\]
+with finite support.  Thus the formal algebras are isomorphic as rings only
+after forgetting their roles.  The comparison convention is deliberately
+notational: lower-case \(x,y\) are coordinates; upper-case \(X,Y\) are
+translation operators.
+
+\subsection{The Finite Periodic Bridge}
+
+Choose \(\alpha,\beta\in k^\times\), with orders \(N_x,N_y\), and set
+\[
+  G=\langle\alpha\rangle\times\langle\beta\rangle\subset T(k).
+\]
+AQM-90 uses this \(G\) as a finite vertex set.  Haah's periodic lattice with
+the same periods uses
+\[
+  R_G=
+  \mathbb F_p[X^{\pm1},Y^{\pm1}]/(X^{N_x}-1,Y^{N_y}-1).
+\]
+As an \(\mathbb F_p\)-vector space, \(R_G\) has the basis
+\(\{X^iY^j:0\le i<N_x,\ 0\le j<N_y\}\), hence one basis vector for each site of
+the chosen finite torus subgroup.  Multiplication by \(X\) and \(Y\) is the
+shift by \(\alpha\) and \(\beta\).
+
+This is the exact bridge.  It is not the claim that \(R_{\rm tr}\) is the
+coordinate ring of \(\Spec A_T\).  It is the finite periodic claim that the
+translation quotient \(R_G\) acts on the same site-indexed label module that
+AQM-90 built from \(G\).
+
+\subsection{Recovering Haah's Toric Matrix from AQM-90}
+
+Use qubit edge labels and order
+\[
+  P_G=R_G^4=(q_x,q_y,p_x,p_y).
+\]
+This is the same label space as
+\[
+  E_\square(G)=
+  \mathbb F_2^{G\times\{x,y\}}{}_q
+  \oplus
+  \mathbb F_2^{G\times\{x,y\}}{}_p
+\]
+from AQM-90.  With the edge \(e_x(g)\) running from \(g\) to \(Xg\), the
+vertex coboundary at \(g\) touches \(e_x(g)\) and \(e_x(X^{-1}g)\), and also
+\(e_y(g)\) and \(e_y(Y^{-1}g)\).  Therefore its Laurent column is
+\[
+  \begin{pmatrix}
+  1+\bar X\\
+  1+\bar Y\\
+  0\\
+  0
+  \end{pmatrix}.
+\]
+The face boundary at \(g\) contains
+\[
+  e_x(g)+e_y(Xg)+e_x(Yg)+e_y(g),
+\]
+so its phase-label column is
+\[
+  \begin{pmatrix}
+  0\\
+  0\\
+  1+Y\\
+  1+X
+  \end{pmatrix}.
+\]
+Thus the AQM-90 square complex gives the Haah toric matrix
+\[
+  \sigma_\square=
+  \begin{pmatrix}
+  1+\bar X & 0\\
+  1+\bar Y & 0\\
+  \hline
+  0 & 1+Y\\
+  0 & 1+X
+  \end{pmatrix}.
+\]
+This is Haah's displayed two-dimensional toric-code matrix, modulo the
+orientation and row-order convention fixed in \texttt{(az)}.
+
+\subsection{Weyl-Heisenberg Selections}
+
+Let
+\[
+  \pi:\operatorname{WH}(P_G)\to P_G
+\]
+be the label map.  Haah's generating matrix selects the subgroup
+\[
+  L_{\rm gen}(G)=\operatorname{im}\sigma_\square\subset P_G,
+\]
+so the selected generated Weyl-Heisenberg elements are
+\[
+  \operatorname{Sel}_{\rm gen}(G)=\pi^{-1}(L_{\rm gen}(G)).
+\]
+This is exactly AQM-90's CSS subgroup
+\[
+  L_\square(G)=
+  (\operatorname{im}\partial_1^T\oplus0)
+  +(0\oplus\operatorname{im}\partial_2).
+\]
+
+Haah also gives a stronger test.  Let
+\[
+  \epsilon_\square=\sigma_\square^\dagger\lambda_2:P_G\to R_G^2.
+\]
+Then the labels commuting with all selected generators are
+\[
+  C_{\rm comm}(G)=\ker\epsilon_\square,
+\]
+and the corresponding accepted and rejected Weyl-Heisenberg elements are
+\[
+  \operatorname{Sel}_{\rm comm}(G)=\pi^{-1}(C_{\rm comm}(G)),\qquad
+  \operatorname{Rej}_{\rm comm}(G)=\pi^{-1}(P_G\setminus C_{\rm comm}(G)).
+\]
+The matrix equation
+\[
+  \sigma_\square^\dagger\lambda_2\sigma_\square=0
+\]
+is the Haah form of the AQM-90 identity \(\partial_1\partial_2=0\).  The
+strong toric exactness statement is
+\[
+  \ker\epsilon_\square=\operatorname{im}\sigma_\square,
+\]
+with the usual finite-periodic caveat that finite quotients can create global
+logical labels.  For AQM purposes, this exactness equation is a sharper
+selection principle than bare isotropy.
+
+\subsection{What Is Not Shared}
+
+The Kähler derivation in AQM-90 is
+\[
+  d:A_T\to\Omega^1_{A_T/k},\qquad
+  d(x^ay^b)=x^ay^b(\bar a\,d\log x+\bar b\,d\log y).
+\]
+It is a coordinate-ring derivation.  Haah's excitation map is instead
+\[
+  \epsilon=\sigma^\dagger\lambda,
+\]
+a finite-difference symplectic map on translation labels.  The factors
+\(1+X\), \(1+Y\), \(1+\bar X\), and \(1+\bar Y\) are boundary differences, not
+Kähler differentials.  Therefore \(d\) should not be advertised as directly
+producing the toric-code boundary operator.
+
+There is still a disciplined comparison to pursue: restrict coordinate
+families from \(A_T\) to finite supports \(G\), separately build translation
+matrices over \(R_G\), and ask when derivative-defined image predicates are
+compatible with Haah-style submodules.  AQM-90 already warns that derivative
+predicates on finite residue profiles need fibre saturation.  Haah's method
+adds the stronger requirement that stable constraints should preferably be
+finitely generated \(R_G\)-submodules.
+
+\subsection{Lessons for Arithmetic Quantum Field Dynamics}
+
+The first lesson is grammatical.  A coarse dynamical principle should be a
+submodule or kernel inside a finite Weyl label module, not an informal family
+of functions.  The output must be a selected or rejected subset of
+\(\operatorname{WH}(P_G)\).
+
+The second lesson is exactness.  AQM-90 verified the square boundary identity.
+Haah teaches us to ask for the pair
+\[
+  \operatorname{im}\sigma\subseteq\ker(\sigma^\dagger\lambda)
+\]
+and then to measure the quotient
+\[
+  \ker(\sigma^\dagger\lambda)/\operatorname{im}\sigma.
+\]
+In future arithmetic-field shards this quotient is the natural place to record
+finite-periodic logical Weyl labels.
+
+The third lesson is separation of roles.  The algebraic torus supplies
+arithmetic points, residue fields, units, and logarithmic differentials.  Haah
+supplies the Laurent-module constraint grammar for translation-invariant
+topological code layers.  The productive bridge is
+\[
+  (T,\alpha,\beta)
+  \leadsto G
+  \leadsto R_G
+  \leadsto \sigma\subset P_G
+  \leadsto \pi^{-1}(\operatorname{im}\sigma)
+  \text{ and }
+  \pi^{-1}(\ker\sigma^\dagger\lambda).
+\]
+This is the precise commonality we can use without collapsing the arithmetic
+torus into a bare periodic lattice.

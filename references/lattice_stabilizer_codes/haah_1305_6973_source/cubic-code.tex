@@ -1,0 +1,1650 @@
+%%%%%%%%%%%%%%%
+%% cubic-code.tex
+%%%%%%%%%%%%%%%
+
+The toric code~\cite{Kitaev2003Fault-tolerant} 
+is usually defined on a planar graph with qubits residing on edges.
+The star operator and plaquette operators 
+are defined according to the data of the graph.
+The model is thus a priori lattice dependent.
+However, a certain set of important properties of the model
+turns out to be lattice independent.
+Particularly the ground-state subspace 
+conveys a structure that depends only on the topology of the underlying space, 
+insensitive to the microscopic detail.
+If the underlying space is a genus $g$ (oriented) surface,
+the degeneracy is $4^g$.
+Even if the Hamiltonian is perturbed,
+the energy splitting of lowest $4^g$ states
+is exponentially small in the system size
+as long as the perturbation is small enough~%
+\cite{WenNiu1990GroundState,
+Kitaev2003Fault-tolerant,
+BravyiHastingsMichalakis2010stability}.
+It is a signature of \emph{topological order}.
+
+
+Authors have used the term `topological quantum order' to mean
+all or a part of the following properties:
+Ground-state degeneracy as a function of topology,
+no spontaneous symmetry breaking,
+anyonic particle content~%
+\cite{
+WenWilczekZee1989Chiral,
+Wen1989Degeneracy,
+Einarsson1990Fractional,
+WenNiu1990GroundState,
+ReadSachdev1991LargeN,
+Wen1991SpinLiquid},
+robust edge modes against 
+perturbations~\cite{KaneMele2005,FuKaneMele2007Topological,HasanKane2010TIReview},
+locally indistinguishable ground states~\cite{
+BravyiHastingsMichalakis2010stability,
+BravyiHastings2011short,
+MichalakisPytel2011stability},
+and topological entanglement entropy~\cite{KitaevPreskill2006Topological,LevinWen2006Detecting}.
+Here, we take the local indistinguishability of ground states
+as a definition of topological quantum order.
+The local indistinguishability is precisely the one used in Chapter~\ref{chap:alg-theory},
+as well as in the proof of gap stability 
+results~\cite{BravyiHastings2011short,
+MichalakisPytel2011stability}.
+See Lemma~\ref{lem:local-tqo=exact}.
+We ask what quantum phases are possible in the class of code Hamiltonians.
+
+
+An important example of topological quantum order 
+presented in this thesis is \emph{cubic code}.
+In this chapter we explain how the model is found,
+and study its consequences.
+The cubic code is an exact local additive code with translation symmetry 
+on the simple cubic lattice, 
+where the exactness is as in Chapter~\ref{chap:alg-theory}.
+This model is a gapped unfrustrated spin Hamiltonian,
+and is topologically ordered in the very sense we just defined,
+but breaks many aspects of conventional models of topological order.
+Most prominently, the excitations or charges of the cubic code
+\emph{cannot} be interpreted as particles
+since they are immobile;
+the hopping term appears only after $L$-th
+or higher order perturbation theory, where $L$ is the linear system size.
+The immobility implies that the system spends
+quite a long time to reach its thermal equilibrium
+in response to environment's change.
+(Later, we will give quantitative statements regarding this.)
+Moreover, due to the topological quantum order,
+the phase is stable with respect to arbitrary but small perturbations;
+the immobility of excitations is also protected~\cite{BravyiHastingsMichalakis2010stability}.
+
+
+The immobility of the charges translates 
+into the theory of quantum error correcting codes
+as the absence of string logical operators.
+We call this property by \emph{no-strings rule}.
+The notion of string logical operators might be intuitive
+if one imagines the toric codes in two or three 
+dimensions~\cite{DennisKitaevLandahlEtAl2002Topological}.
+However, this intuition is too model specific;
+the strings in discrete lattices are not well-defined objects
+since a set of points in the lattice does not in general have
+a well-defined dimensionality.
+We overcome this issue by defining \emph{string segments}
+that capture characteristics that are responsible for the mobility of charges.
+
+We proceed by translating conditions for the absence of the logical string segments
+into our algebraic framework,
+in order to systematically search for codes without logical strings;
+the cubic code is not an ad hoc model.
+By Corollary~\ref{cor:annT-3d-characteristic-dimension-0}%
+~\cite{Yoshida2011feasibility},
+the characteristic dimension of the cubic code must be 1
+and the degeneracy must generally grow with the system size.
+An explicit formula for the degeneracy is given.
+Additionally, a real-space renormalization computation is presented.
+It seems that the cubic code is a fixed point of a certain unconventional kind.
+Namely, the model is a direct sum of two daughter models $A$ and $B$ at a coarse-grained lattice
+where one daughter model $A$ is the same as the original model, but the other $B$ is not.
+The model $B$ produces two copies of itself at a further coarse-grained lattice.
+The renormalization group flow continues to branch.
+Next, we compute the thermal partition function,
+and show that there is no finite temperature phase transition.
+
+\section{String segments and no-strings rule}
+
+The most important property of one-dimensional objects
+is that a finite part of it has two disjoint boundary points.
+An intuitive role of string operator 
+is to move an excitation at its one boundary point
+to another boundary point.
+Essentially, it is a concatenation or juxtaposition of hopping operators.
+%
+The hopping operator is, as a whole, a finitely supported operator.
+Therefore, if the hopping operator acts on the vacuum (ground state),
+the overall effect is to create a trivial or neutral charge,
+which consists of two spatially separated charges.
+When either of the two charges is neutral by itself,
+the hopping is meaningless 
+because trivial charges can be annihilated locally
+and created anywhere arbitrarily;
+only the hopping of nontrivial charges is important.
+Now we can define string segments and their absence.
+\begin{defn}
+\cite{Haah2011Local,BravyiHaah2011Energy}
+A {\bf string segment} is a finitely supported Pauli operator
+that creates excitations contained in the union of two finite boxes
+of {\bf width} $w$.
+The string segment is {\bf nontrivial} 
+if the charge contained in one of the boxes is nontrivial.
+The distance between the boxes is the {\bf length} of the string segment.
+We say a model obeys {\bf no-strings rule}
+if the length of any nontrivial string segment of width $w$
+is bounded by $\alpha w$ for some constant $\alpha \ge 1$.
+\label{defn:no-strings}
+\end{defn}
+\noindent
+The no-strings rule may seem too strong than necessary;
+why do we need an upper bound by a \emph{linear} function?
+It is rather a technicality 
+that is necessary to prove a logarithmic energy barrier theorem
+in Section~\ref{sec:log-barrier}.
+However, our definition seems sharp yet broad enough to derive further results.
+
+
+An immediate consequence of the no-strings rule
+in the case of a translation-invariant code Hamiltonian
+is that there are infinitely many charges.
+If there were only finitely many,
+then in the sequence of all translations of a charge $c$
+there would be an equivalent charge $c'$.
+It means $c - c'$ is neutral 
+and therefore $c-c'$ is created by a finitely supported operator,
+which is a nontrivial string segment.
+This string segment can be juxtaposed many times
+to give arbitrarily long string segments with fixed width.
+This is a contradiction to the no-strings rule.
+Also, in view of Corollary~\ref{cor:annT-3d-characteristic-dimension-0}
+and Lemma~\ref{lem:k-growing-sequence-L},
+a translationally invariant three-dimensional exact code Hamiltonian that obeys the no-strings rule,
+must have a growing ground-state degeneracy with respect to the system size
+when defined on lattices with periodic boundary conditions.
+
+
+\section{Search for models}
+
+We wish to find an interesting class of models
+that are relatively handy to deal with.
+The following lemma shows such a family.
+Recall that for an exact code Hamiltonian,
+we have $\ker \sigma^\dagger \lambda = \im \sigma$.
+\begin{lem}
+The generating matrix of a code Hamiltonian
+\[
+\sigma =
+\begin{pmatrix}
+f & 0 \\
+g & 0 \\
+0 & g' \\
+0 & f' \\
+\end{pmatrix},
+\]
+where $f,g,f',g' \in R$, elements of group algebra of $\ZZ^D$,
+is \emph{exact}
+if and only if 
+\[
+\gcd(f,g)=1,
+\quad \quad
+g' = \bar g,
+\quad
+ f' = -\bar f 
+\]
+up to units of $R$.
+\label{lem:two-terms-CSS-exactness-condition}
+\end{lem}
+\noindent
+It is a generalization of $\sigma$ in Remark~\ref{rem:long-string}.
+The 2D toric code of Example~\ref{eg:2d-toric} falls into this form.
+\begin{proof}
+Observe that there is no mixing between 
+the $\sigma^x$ part (the upper two rows of $\sigma$)
+and the $\sigma^z$ part (the lower two rows of $\sigma$).
+So $\ker \sigma^\dagger \lambda = \im \sigma$ can be checked
+separately.
+That is, we need to verify whether the kernel of
+\[
+\epsilon_z = \begin{pmatrix} \bar f & \bar g \end{pmatrix}
+\]
+is generated by $\begin{pmatrix} g' \\ f' \end{pmatrix}$,
+and whether the kernel of
+\[
+\epsilon_x = \begin{pmatrix} \bar g' & \bar f' \end{pmatrix}
+\]
+is generated by $\begin{pmatrix} f \\ g \end{pmatrix}$.
+If $f = f_1 h$ and $g = g_1 h$ where $\gcd(f,g)=h$,
+then $\begin{pmatrix} \bar g_1 \\ -\bar f_1 \end{pmatrix} \in \ker \epsilon_z$.
+We have $\begin{pmatrix} \bar g_1 & -\bar f_1 \end{pmatrix}
+ = r \begin{pmatrix} g' & f' \end{pmatrix}$ for some $r \in R$.
+Since $\gcd(g_1, f_1)=1$, $r$ must be a unit.
+Hence, we may set $g' = \bar g_1$ and $f' = -\bar f_1$.
+Then, $\begin{pmatrix} f_1 \\ g_1 \end{pmatrix} \in \ker \epsilon_x$,
+so $h$ is a unit. The converse is straightforward.
+\end{proof}
+
+We stay with the form of $\sigma$ as in
+Lemma~\ref{lem:two-terms-CSS-exactness-condition}
+for its simplicity.
+Now we consider the no-strings rule.
+The equivalence classes of topologically nontrivial charges
+is $\coker \epsilon$ by Theorem~\ref{thm:charge-equals-torsion},
+which decomposes as $\coker \epsilon_z \oplus \coker \epsilon_x$.
+Since the two summands are related by the antipode map,
+it suffices to consider $\coker \epsilon_x \cong R/(f,g)$ only.
+A necessary condition for the no-strings rule is that
+any fractal generator should \emph{not} consist of two terms.
+For Theorem~\ref{thm:structure-2d-ann-coker-epsilon},
+the minimal dimension we should be interested in is 3;
+$ R = \FF_2[x^{\pm 1},y^{\pm 1},z^{\pm 1}]$.
+Let $I = (f,g)$, the ideal of $R$ generated by $f$ and $g$.
+If, for example, $f$ factorizes as $f=(1+x)f_1$ and $f_1 \notin I$,
+then $(1+x)$ is a string generator.
+So it is necessary that the Gr\"obner basis of the ideal $(f,g)$ does not have
+any two-term factor such as $x+1$, $y+1$, or $z+1$.
+In order to have a degenerate code Hamiltonian 
+(Corollary~\ref{cor:unit-characteristic-ideal-means-nondegeneracy}),
+we have to have a non-unit associated ideal.
+For simplicity, we demand that $x=y=z=1$ is a root of $f$ and $g$
+so that the associated ideal is contained in a maximal ideal $(x+1,y+1,z+1)$.
+
+We further assume that $f$ and $g$ have exponents $0$ or $1$ in each variable.
+Thus, $f$ and $g$ are linear combinations of $1,x,y,z,xy,yz,zx,xyz$ over $\FF_2$.
+Naively there are $2^{16}$ possibilities, but they are not all different.
+For example, three choices $(f(x,y,z),g(x,y,z))$, $(x f(\frac{1}{x}),y,z), x g(\frac{1}{x},y,z))$,
+and $(f(y,z,x),g(y,z,x))$ define the same models 
+because they are related by the reflection about $yz$-plane
+or the $\pi/3$ rotation about $(1,1,1)$-axis.
+Up to these symmetries of the unit cube, there are 392 pairs of $f,g$.
+An exhaustive search gives
+10 models in Table~\ref{tb:10-models-wo-string} that satisfy all our requirements.
+The most symmetric model defined by
+\[
+f = 1+ x + y + z, \quad \quad g = 1+xy+yz+zx
+\]
+will be called {\bf cubic code}.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c|c|c}
+\hline
+   & $f$ & $g$ \\
+\hline
+1 & $1+x+y+z$ & $1+x y+x z+y z$ \\
+2 & $x+y+z+y z$ & $1+y+x y+z+x z+x y z$ \\
+3 & $1+x+y+z$ & $1+x z+y z+x y z$ \\
+4 & $1+x+z+y z$ & $1+y+x y+x z$ \\
+5 & $1+x+z+y z$ & $y+z+x z+y z$ \\
+6 & $1+x+y+z$ & $1+y+x z+y z$ \\
+7 & $1+x+y+z$ & $1+z+y z+x y z$ \\
+8 & $1+x+z+y z$ & $1+y+x y+z+x z+y z$ \\
+9 & $1+x+y+z$ & $x y+z+x z+y z$ \\
+10 & $1+x+z+y z$ & $1+y+x y+x z+y z+x y z$ \\
+\hline
+\end{tabular}
+\caption{Complete list of cubic codes. 
+Each pair of polynomials defines an exact degenerate code Hamiltonian
+according to Lemma~\ref{lem:two-terms-CSS-exactness-condition}.
+They potentially obey the no-strings rule.
+Especially, code 1 indeed obeys the no-strings rule as proven in Section~\ref{sec:cubic-code}.
+The table is exhaustive, up to symmetries of simple cubic lattice and local symplectic transformations,
+under the following criteria:
+(i) $f$ and $g$ have exponents $0$ or $1$ for each variable,
+(ii) any member of the Gr\"obner basis of the ideal $(f,g)$ is not divided by any two-term factor, and
+(iii) $f$ and $g$ become zero when $x=y=z=1$.
+In the main text, the {\em cubic code} refers specifically to the code 1 in the table.
+The numbering is consistent with a table in \cite{Haah2011Local}.}
+\label{tb:10-models-wo-string}
+\end{table}
+
+\section{Cubic code}
+\label{sec:cubic-code}
+
+
+Written out explicitly, cubic code
+is the translation-invariant negative sum of two types of interaction terms as in Figure~\ref{fig:CubicCode}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[b]
+\[
+\drawgenerator{ZI}{ZZ}{IZ}{ZI}{IZ}{II}{ZI}{IZ} 
+\quad
+\drawgenerator{XI}{II}{IX}{XI}{IX}{XX}{XI}{IX}
+\quad \quad
+\drawgenerator{xz}{xyz}{x}{xy}{y}{1}{yz}{z}
+\]
+\caption{Stabilizer generators of the 3D cubic code. Here
+$X\equiv \sigma^x$ and $Z\equiv \sigma^x$ represent single-qubit Pauli operators,
+while $I$ is the identity operator.
+Double-letter indices represent two-qubit Pauli operators,
+for example,
+$IZ\equiv I\otimes Z$, $ZZ\equiv Z\otimes Z$, $II\equiv I\otimes I$, etc.}
+\label{fig:CubicCode}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+There are two qubits per site,
+and the two-letter notation stands for tensor product of Pauli matrices.
+For example, $XI = \sigma^x \otimes I$, $ZZ = \sigma^z \otimes \sigma^z$, etc.
+The third cube specifies the coordinate system of the simple cubic lattice.
+The generating map for the stabilizer module is
+\[
+\sigma_\text{cubic-code} =
+\begin{pmatrix}
+1 + x + y + z    & 0 \\
+1 + xy + yz + zx & 0 \\
+0 & 1 + \bar x \bar y + \bar y \bar z + \bar z \bar x \\
+0 & 1 + \bar x + \bar y + \bar z \\
+\end{pmatrix}
+\]
+where one has to interchange the first and second qubit.
+The associated ideal is contained in a prime ideal of codimension 2 in $\FF_2[x^{\pm 1},y^{\pm 1},z^{\pm 1}]$:
+\[
+ I(\sigma) \subseteq ( 1+x+y+z,~ 1+xy+yz+zx ) = \pp_{xyz}.
+\]
+Since $\codim I(\sigma) \ge 2$, the characteristic dimension is 1.
+Since $\coker \epsilon_\text{cubic-code} = R / \pp_{xyz} \oplus R / \overline{ \pp_{xyz}}$,
+any nonzero element of $\pp_{xyz}$ is a fractal generator.
+Since the conditions used in the search for the model
+were only necessary conditions for the no-strings rule.
+A rigorous treatments is as follows.
+We prove a purely algebraic statement,
+of which the no-strings rule is an interpretation.
+A more elementary method can be found in \cite{Haah2011Local}.
+%%%%%%%%%%%%%%%%%5
+\begin{lem}
+Let $S = \FF_2[x,y,z]$ be a polynomial ring, and $\pp = (1+x+y+z,~1+xy+yz+zx) \subseteq S$ an ideal.
+If $m_1 e_1 + m_2 e_2 \in \pp$ for polynomials $e_1, e_2$
+and monomials $m_1, m_2$ such that $\gcd( m_1, m_2 ) = 1$,
+then only one of the following is true:
+\begin{itemize}
+\item $e_1 \in \pp$ and $e_2 \in \pp$.
+\item $\max( \deg e_1, \deg e_2 ) \ge \max( \deg m_1, \deg m_2 )$.
+\end{itemize}
+\label{lem:alg-proof-no-string-cubic}
+\end{lem}
+\begin{proof}
+Put $\FF_4 = \{ 0, 1, \omega, \omega^2 \}$,
+i.e., $\omega$ is the primitive third root of unity over the binary field.
+Consider a ring homomorphism $\phi : S \to U:=\FF_4[t]$ defined by
+\[
+\phi : x \mapsto 1+t, \quad y \mapsto 1+\omega t, \quad z \mapsto 1+\omega^2 t .
+\]
+It maps the two generators of $\pp$ to zero in $U$.
+\begin{align*}
+ \phi(1+x+y+z)    &= 4 + (1+\omega+\omega^2) t = 0 ,\\
+ \phi(1+xy+yz+zx) &= 4 + 2(1+\omega+\omega^2)t + (1+\omega+\omega^2)t^2 = 0 .
+\end{align*}
+Moreover, $\ker \phi$ is precisely $\pp$.
+(This can be verified by eliminating the variable $x$ 
+and computing the Gr\"obner basis of $((y+1)+\omega(z+1),\omega^2+\omega+1)$ in an elimination monomial order.)
+If $m_1 e_1 + m_2 e_2 \in \pp$, then $\phi(m_1)\phi(e_1) = \phi(m_2)\phi(e_2)$.
+Since $m_1$ and $m_2$ are co-prime monomials and $\phi(x),\phi(y),\phi(z)$ are pairwise co-prime,
+it follows that $\phi(m_1)$ and $\phi(m_2)$ are nonzero and co-prime.
+Therefore, $\phi(e_1) = 0$ if and only if $\phi(e_2) = 0$ if and only if $e_1, e_2 \in \pp$,
+which is the first case.
+If $\phi(e_1) \neq 0$, then $\phi(m_1)$ must divide $\phi(e_2)$ and $\phi(m_2)$ must divide $\phi(e_1)$.
+Since $\phi$ is degree-preserving, we have the second case.
+\end{proof}
+%%%%%%%%%%%%%%%%
+\begin{theorem}
+The cubic code obeys the no-strings rule with the constant $\alpha = 1$ under $\ell_\infty$-metric.
+\label{thm:CubicCode-no-strings}
+\end{theorem}
+\begin{proof}
+Since the cubic code is translationally invariant,
+we may use the formalism of Chapter~\ref{chap:alg-theory}.
+Since the cubic code is of CSS type, where $\coker \epsilon$ is a direct sum of isomorphic summands,
+we only have to consider $\sigma^x$-type charges.
+The set of all virtual charges is $R^1 = R = \FF_2[x^{\pm 1},y^{\pm 1},z^{\pm 1}]$
+and the set of all trivial charges are given by a submodule (ideal) $\pp_{xyz} = (1+x+y+z,1+xy+yz+zx) \subseteq R$.
+Note that $R$ is the localization of $S = \FF_2[x,y,z]$ by a single element $xyz$,
+and $\pp_{xyz}$ is the localization of $\pp = (1+x+y+z,~1+xy+yz+zx)$ by the same single element $xyz$.
+
+Let $e_1$ and $e_2$ be the charges contained in two boxes of a string segment.
+Since they are overall trivial, we have $e_1 + x^i y^j z^k e_2 \in \pp$ where $i,j,k \in \ZZ$.
+Equivalently, we may write $m_1 e_1 + m_2 e_2 \in \pp$ where $e_1$ and $e_2$ have nonnegative exponents,
+and $m_1, m_2$ are monomials such that each variable ($x$, $y$, or $z$) appears
+only in one of $m_1$ or $m_2$.
+Since $\pp_{xyz} \cap S = \pp$, which can be verified using Gr\"obner basis techniques,
+we are in the situation of Lemma~\ref{lem:alg-proof-no-string-cubic}.
+The width of the string segment is the maximum of the degrees of $e_1$ and $e_2$,
+and the $\ell_1$-distance between the boxes enclosing $e_1$ and $e_2$ is $\le \max( \deg m_1, \deg m_2 )$.
+If we use $\ell_\infty$-distance, the constant $\alpha$ in the no-strings rule is $1$.
+\end{proof}
+
+
+Let us explicitly calculate the ground-state degeneracy
+when the Hamiltonian is defined on $L \times L \times L$ 
+cubic lattice with periodic boundary conditions.
+By Corollary~\ref{cor:k-formulas},
+\[
+ k = \dim_{\FF_2} R / (\pp_{xyz} + \bb_L) \oplus R / (\overline{\pp_{xyz}} + \bb_L) = 2 \dim_{\FF_2} R / (\pp_{xyz} + \bb_L),
+\]
+where $\bb_L = ( x^L -1,~ y^L -1,~ z^L -1 )$.
+So the calculation of ground-state degeneracy comes down to the calculation of
+\[
+ d = \dim_{\FF_2} T' / \pp
+\]
+where $T' = \FF_2[x,y,z]/(x^{n_1}-1, y^{n_2}-1, z^{n_3}-1 )$.
+
+We may extend the scalar field to any extension field
+without changing $d$.
+Let $\FF$ be the algebraic closure of $\FF_2$ and let
+\[
+ T=\FF[x,y,z]/(x^{n_1}-1, y^{n_2}-1, z^{n_3}-1 )
+\]
+be an Artinian ring.
+By Proposition~\ref{prop:Artin-ring},
+it suffices to calculate for each maximal ideal $\mm$ of $T$
+the vector space dimension 
+\[
+d_\mm = \dim_{\FF} (T / \pp)_\mm
+\]
+of the localized rings, and sum them up.
+
+Suppose $n_1,n_2,n_3 > 1$.
+By Nullstellensatz, any maximal ideal of $T$ is of form
+$\mm=(x-x_0,y-y_0,z-z_0)$ where $x_0^{n_1}=y_0^{n_2}=z_0^{n_3}=1$.
+(If $n_1 = n_2 = n_3 = 1$, then $T$ becomes a field, and there is no maximal ideal other than zero.)
+Put $n_i = 2^{l_i}n_i'$ where $n_i'$ is not divisible by $2$.
+Since the polynomial $x^{n_1} -1$ contains the factor $x-x_0$ with multiplicity $2^{l_1}$,
+it follows that
+\[
+ T_\mm = \FF [x,y,z]_\mm / ( x^{2^{l_1}}+a',~ y^{2^{l_2}}+b',~ z^{2^{l_3}}+c')
+\]
+where $a' = x_0^{2^{l_1}}, b' = y_0^{2^{l_2}}, c' = z_0^{2^{l_3}}$.
+Hence, $(T/\pp)_\mm \cong \FF[x,y,z] / I'$ where
+\[
+ I' = (x+y+z+1, xy+xz+yz+1 ,~ x^{2^{l_1}}+a',~ y^{2^{l_2}}+b',~ z^{2^{l_3}}+c').
+\]
+If $I' = \FF[x,y,z]$, then $d_\mm = 0$.
+
+
+Without loss of generality, we assume that $l_1 \le l_2 \le l_3$.
+By powering the first two generators of $I'$,
+we see that $(x_0,y_0,z_0)$ must be a solution of them in order for $I'$ not to be a unit ideal.
+Eliminating $z$ and shifting $x \to x+1$, $y \to y+1$,
+our objective is to calculate the Gr\"obner basis for the proper ideal
+\[
+ I = (x^2+xy+y^2, x^{2^{l_1}}+a,~ y^{2^{l_2}}+b )
+\]
+where $a=a'+1$ and $b = b'+1$. So
+\[
+ d_\mm = \dim_{\FF} \FF[x,y]/I.
+\]
+One can easily deduce by induction that $y^{2^m} + x^{2^m-1}(m x +y) \in I$ for any integer $m \ge 0$.
+And $b = \omega a^{2^{l_2 - l_1}}$ for a primitive third root of unity $\omega$.
+So we arrive at
+\[
+ I = ( y^2 + yx + x^2,~ yx^{2^{l_2} -1 } + b ( 1 + l_2 \omega^2 ),~ x^{2^{l_1}} + a )
+\]
+We apply the Buchberger criterion.
+If $a \neq 0$, i.e., $x_0 \neq 1$,
+then $b \neq 0$ and $I = (x+(\omega^2 + l_2)y, x^{2^{l_1}} + a)$,
+so $d_\mm = 2^{l_1}$
+
+If $a=b=0$,
+then $I = (y^2 + yx + x^2, yx^{2^{l_2}-1}, x^{2^{l_1}} )$.
+The three generators form Gr\"obner basis if $l_2 = l_1$.
+Thus, in this case, $d_\mm = 2^{l_1+1}-1$.
+If $ l_2 > l_1$, then $d_\mm = 2^{l_1+1}$.
+
+To summarize, except for the special point $(1,1,1)\in \FF^3$ of the affine space,
+each point in the algebraic set
+\[
+ V = \left\{ (x,y,z) \in \FF^3 ~\middle|~
+\begin{matrix}
+x+y+z+1 = xy+xz+yz+1 = 0 \\  
+x^{n_1'}-1 = y^{n_2'}-1 = z^{n_3'}-1 = 0
+\end{matrix}
+\right\}
+\]
+contribute $2^{l_1}$ to $d$. The contribution of $(1,1,1)$ is either $2^{l_1 +1}$ or $2^{l_1 +1}-1$.
+The latter occurs if and only if $l_1$ and $l_2$,
+the two smallest numbers of factors of $2$ in $n_1,n_2,n_3$,
+are equal. Let $d_0 = \#V$ be the number of points in $V$.
+The desired answer is
+\[
+ d = 2^{l_1} (d_0 -1) + 
+\begin{cases} 
+2^{l_1 +1} -1 & \text{if $l_1 = l_2$ } \\
+2^{l_1 +1}    & \text{otherwise}
+\end{cases}
+\]
+where $l_1 \le l_2 \le l_3$ are the number of factors of $2$ in $n_i$.
+
+
+The algebraic set defined by $(x+y+z+1,~xy+xz+yz+1)$ is the union of two isomorphic lines
+intersecting only at $x=y=z=1$, one of which is parametrized by $x \in \FF$ as
+\[
+ (1+x, 1+\omega x, 1+\omega^2 x) \in \FF^3,
+\]
+and another is parametrized as
+\[
+ (1+x,1+\omega^2 x, 1+\omega x) \in \FF^3.
+\]
+where $\omega$ is a primitive third root of unity.
+Therefore, the purely geometric number $d_0 = 2 d_1 -1$ can be calculated by
+\[
+ d_1 = \deg_x \gcd \left( (1+x)^{n_1'}+1, (1+\omega x)^{n_2'}+1, (1+\omega^2 x)^{n_3'}+1 \right) .
+\]
+Using $(\alpha+\beta)^{2^p} = \alpha^{2^p} + \beta^{2^p}$ and $\omega^2 + \omega + 1 = 0$,
+one can easily compute some special cases as summarized in the following corollary.
+Some values of $k$ for small $L$ are presented in Table~\ref{tb:k-numerics} and Figure~\ref{fig:k-numerics}.
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}{.45\textwidth}
+\includegraphics[width=\textwidth]{k-numerics-graph-1}
+\end{minipage}
+\begin{minipage}{.45\textwidth}
+\includegraphics[width=\textwidth]{k-numerics-graph-2}
+\end{minipage}
+\caption{Number of encoded qubits $k$ of the cubic code
+defined on $L\times L \times L$ periodic lattice}
+\label{fig:k-numerics}
+\end{figure}
+
+
+\begin{cor}
+\label{cor:cubic-code-degeneracy-formula}
+Let $2^k$ be the ground-state degeneracy of
+the cubic code on the cubic lattice of size $L^3$ with periodic boundary conditions.
+($k=k(L)$ is the number of encoded qubits.)
+Then
+\begin{align*}
+\frac{k+2}{4} 
+&= \deg_x \gcd \left( (1+x)^{L}+1,~ (1+\omega x)^{L}+1,~ (1+\omega^2 x)^{L}+1 \right)_{\FF_4} \\
+&= \begin{cases}
+     1    & \text{if $L = 2^p+1$}, \\
+     L    & \text{if $L =2^p$}, \\
+     L-2  & \text{if $L = 4^p -1$}, \\
+     1    & \text{if $L = 2^{2p+1} -1$}.
+   \end{cases}
+\label{eq:cubic-code-formula-k}
+\end{align*}
+where $\omega^2 + \omega + 1 = 0$ and $p \ge 1$ is any integer.
+If $L = 2^r L'$, then $k(L)+2 = 2^r( k(L') + 2 )$.
+\end{cor}
+
+\begin{table}[tp]
+\centering
+\begin{tabular}{r|rll}
+\hline
+\multicolumn{4}{c}{$(k+2)/4 = 1 + 12 \sum_n q_n(L)$} \\
+\multicolumn{4}{c}{$q_n(L)$ is nonzero only if $n | L$.} \\
+\hline
+$q_n(L)$&  & $n$ & \\
+\hline
+1 & 15 & $= 2^4 -1$ & $=3 \cdot 5$  \\
+5 & 63 & $= 2^6 -1$ & $=3^2 \cdot 7$  \\
+20 & 255 & $= 2^8 -1$ & $=3 \cdot 5 \cdot 17$  \\
+80 & 1023 & $=2^{10}-1$ & $=3 \cdot 11 \cdot 31$  \\
+322 & 4095 & $= 2^{12} -1$ & $=3^2 \cdot 5 \cdot 7 \cdot 13$ \\
+\hline
+5 & 341 & $=(2^{10}-1)/(2^2 -1)$ & $= 11 \cdot 31$  \\
+6 & 1365 & $=(2^{12}-1)/(2^2 -1)$ & $=3 \cdot 5 \cdot 7 \cdot 13$  \\
+49 & 5461 & $=(2^{14}-1)/(2^2 -1)$ & $=43 \cdot 127$  \\
+\hline
+4 & 455 & $=(2^{12}-1)/(2^3 +1)$ & $= 5 \cdot 7 \cdot 13$  \\
+3 & 585 & $=(2^{12}-1)/(2^3 -1)$ & $= 3^2 \cdot 5 \cdot 13$  \\
+9 & 9709& $=(2^{18}-1)/(3(2^3+1))$& $= 7\cdot 19 \cdot 73$  \\
+5 & 11275&$=11(2^{10}+1)$ & $=5^2 \cdot 11 \cdot 41$ \\
+\hline
+\end{tabular}
+\caption{Numerical values of $k$ for \emph{odd} linear size $L$
+computed from Corollary~\ref{cor:cubic-code-degeneracy-formula}.
+The list is complete if $2 \le L \le 20000$.
+For example, if $L=945=15 \cdot 63$, then $\frac{k+2}{4} = 1 + 12\cdot(1+5) = 73$.
+}
+\label{tb:k-numerics}
+\end{table}
+
+
+\section{Real-space renormalization of the cubic code}
+\label{sec:real-space-RG-CubicCode}
+
+Renormalization group refers to a machinery 
+to extract essential properties of the system at long distances.
+For lattice spin models, the so-called ``block spin'' method amounts to
+considering a sequence of coarse-grained lattices
+and finding effective Hamiltonians pertaining to the coarse-grained lattices~\cite{Wilson1975RG,Kadanoff1977RG}.
+In the sequence of coarse-graining, short-ranged correlations will disappear,
+and long-ranged essential correlations will remain.
+Thus, if a generic Hamiltonian retains its form under the renormalization group flow,
+we expect that the Hamiltonian should represent a proper phase of matter,
+and can wonder about universal aspects of the phase.
+
+For topologically ordered systems,
+it is interesting to look at entanglement structure instead of correlation functions,
+since, as they are gapped, the correlation functions of local operators would decay 
+exponentially with the distance between the regions the operators act on~\cite{HastingsKoma2006CorDecay},
+and hence, if they are renormalization group fixed points, they will have zero correlation length.
+As we wish to ignore local deformations of the system,
+it is legitimate to apply a finite depth quantum circuit (local unitary) to the system
+so as to remove some local
+entanglement~\cite{VerstraeteCiracLatorreEtAl2005Renormalization,
+Vidal2007ER,AguadoVidal2007Entanglement,Vidal2008class,ChenGuWen2010transformation}.
+More precisely, one applies a finite composition of unitary operators on a ground state,
+each of which can be written as a product of local unitary operators of disjoint supports,
+and then try to identify spins in a product state.
+
+Code Hamiltonians admit an even simpler renormalization scheme.
+Under the local unitaries the Hamiltonian is conjugated,
+and spins in product states is readily identified by single-spin operators
+such as $\sigma^z$ acting on unentangled spins.
+If we restrict ourselves to translationally invariant case,
+we may also assume that the local unitaries obey the translation invariance.
+For example, it is well-known that the 2D toric code model
+is a renormalization group fixed point under this scheme%
+~\cite{AguadoVidal2007Entanglement}.
+
+In Chapter~\ref{chap:alg-theory}, we have developed enough tools for the simplified renormalization group flow computation.
+In fact, we have done a computation in Example~\ref{eg:wen-plaquette}.
+To warm up, let us compute the renormalization of the 2D toric code.
+The generating matrix is
+\[
+ \sigma =
+\begin{pmatrix}
+ 1+x & 0 \\
+ 1+y & 0 \\
+\hline
+\hline
+  0  & 1+\frac{1}{y} \\
+  0  & 1+\frac{1}{x} \\
+\end{pmatrix}
+\]
+If we coarse-grain the lattice by blocking two sites in $x$-direction,
+then every module is now viewed as a module over $\FF_2[x^{\pm 2}, y^{\pm 1}]$,
+and each entry of $\sigma$ is replaced by a $2 \times 2$ matrix,
+since $\sigma$ is a map between free modules $G$ and $P$.
+Concretely,
+\[
+ \sigma' = 
+\begin{pmatrix}
+ 1 & 1 & 0 & 0 \\
+ x & 1 & 0 & 0 \\
+ 1+y & 0 & 0 & 0 \\
+ 0 & 1+y & 0 & 0 \\
+\hline
+\hline
+ 0 & 0 & 1+\frac{1}{y} & 0 \\
+ 0 & 0 & 0 & 1+\frac{1}{y} \\
+ 0 & 0 & 1 & \frac{1}{x} \\
+ 0 & 0 & 1 & 1 
+\end{pmatrix}
+\]
+where the double line distinguishes $\sigma^x$-part and $\sigma^z$-part.
+Here, the variable $x$ really means the translation along $x$-direction by \emph{two} units of the original lattice.
+Applying local unitaries, we see
+\[
+ \sigma' \to
+\left(
+\begin{array}{cccc}
+ 1 & 1 & 0 & 0 \\
+ 0 & 1+x & 0 & 0 \\
+ 0 & 1+y & 0 & 0 \\
+ 0 & 1+y & 0 & 0 \\
+\hline
+\hline
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 1+\frac{1}{y} \\
+ 0 & 0 & 1 & \frac{1}{x} \\
+ 0 & 0 & 1 & 1
+\end{array}
+\right)
+\to
+\left(
+\begin{array}{cccc}
+ 1 & 1 & 0 & 0 \\
+ 0 & 1+x & 0 & 0 \\
+ 0 & 1+y & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\
+\hline
+\hline
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 1+\frac{1}{y} \\
+ 0 & 0 & 0 & 1+\frac{1}{x} \\
+ 0 & 0 & 1 & 1
+\end{array}
+\right)
+\to
+\left(
+\begin{array}{c|c|c|c}
+ 1 & 0 & 0 & 0 \\
+\hline
+ 0 & 1+x & 0 & 0 \\
+ 0 & 1+y & 0 & 0 \\
+\hline
+ 0 & 0 & 0 & 0 \\
+\hline
+\hline
+ 0 & 0 & 0 & 0 \\
+\hline
+ 0 & 0 & 0 & 1+\frac{1}{y} \\
+ 0 & 0 & 0 & 1+\frac{1}{x} \\
+\hline
+ 0 & 0 & 1 & 0
+\end{array}
+\right).
+\]
+In the last matrix, it is evident that the first qubit (all the first qubits on every site)
+and the fourth qubit are disentangled.
+Ignoring those, we see that the generating matrix and also the Hamiltonian retain the original form.
+A drawback of this computation is that it is hard to understand why this should happen.
+Fortunately, there is a better understanding for two-dimensional quantum double models~\cite{Kitaev2003Fault-tolerant},
+which includes the 2D toric code model,
+using so-called $G$-injective PEPS by Schuch, Cirac, and P\'erez-Garc\'ia~\cite{SchuchCiracPerez-Garcia2010G-injective}.
+Their conclusion is that
+the quantum double model is constructed with the regular representation of a finite symmetry group $G$,
+and it is a renormalization group fixed point
+because of the plethysm $\mathbb{C}G \otimes \mathbb{C}G \cong \mathbb{C}G \otimes (\mathbb{C}1)^{\oplus |G|}$ 
+of the regular representation.
+
+Now we return to the cubic code. We perform a similar computation as above,
+and find that under blocking of $2 \times 2 \times 2$ sites (16 spins in total)
+the cubic code model $A$ decomposes into two non-interacting Hamiltonians $A$ and $B$
+living in the coarse-grained lattice,
+one of which is the same as the original $A$,
+but the other $B$ looks different.
+Detailed calculation will be given below.
+The generating matrices are as follows.
+\[
+ \sigma_A = 
+\begin{pmatrix}
+ 1+x+y+z & 0 \\
+ 1+x y+y z+z x & 0 \\
+\hline
+\hline
+ 0 & 1+\frac{1}{xy}+\frac{1}{yz}+\frac{1}{zx} \\
+ 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} \\
+\end{pmatrix}, \quad
+ \sigma_B = 
+\left(
+ \begin{array}{cccc}
+ x+z & 1+x &   &   \\
+ 1+x & 1+z &   &   \\
+ x+y & 1+y &   &   \\
+ 1+y & 1+x &   &   \\
+\hline
+\hline
+   &   & 1+\frac{1}{y} & \frac{1}{x}+\frac{1}{y} \\
+   &   & 1+\frac{1}{x} & 1+\frac{1}{y} \\
+   &   & 1+\frac{1}{x} & \frac{1}{x}+\frac{1}{z} \\
+   &   & 1+\frac{1}{z} & 1+\frac{1}{x}
+\end{array}
+\right).
+\]
+We can repeat the renormalization group flow computation for the model $B$ only.
+We find that after blocking of $2 \times 2 \times 2$ sites,
+$B$ is renormalized to the identical two copies of $B$ itself.
+(Calculation will be given below.)
+\[
+ A \xrightarrow{2\times 2 \times 2} A \oplus B, \quad \text{ and } \quad
+B \xrightarrow{2 \times 2 \times 2} B \oplus B.
+\]
+The renormalization group yields an explicit method to produce the ground states of the cubic code,
+Start with a state one wish to encode, put auxiliary qubits in the trivial state,
+apply the inverse local unitaries, and iterate the overall process on the \emph{refined} lattice with more auxiliary qubits.
+It is slightly different from the MERA (Multiscale Entanglement Renormalization Ansatz)
+prescription of 2D toric code state developed 
+in~\cite{AguadoVidal2007Entanglement}.
+Rather a so-called branching MERA~\cite{EvenblyVidal2012class} is more appropriate.
+
+We do not have a deeper understanding why this should happen.
+However, there are some consistency checks
+from the degeneracy formula and the annihilator of the module of topological charges.
+Corollary~\ref{cor:cubic-code-degeneracy-formula} says that
+the number of encoded qubits $k$ is
+\begin{align*}
+k(L) = 4L -2 
+&= \left( 4 \frac{L}{2} - 2\right) & &+ \left( 4 \frac{L}{2} \right) \\
+&= \left( 4 \frac{L}{4} - 2\right) + \left( 4 \frac{L}{4} \right) & &+ \left( 4 \frac{L}{4} \right) + \left( 4 \frac{L}{4} \right)
+\end{align*}
+when the linear system size $L$ is a power of 2.
+The expression is decomposed to display contributions from the model $A$ and the model $B$ explicitly.
+It suggests that the model $A$, the original cubic code, 
+cannot give rise to an identical pair of models at coarse-grained lattice,
+whereas $B$ can.
+It is not too clear whether the two models $A$ and $B$ are really non-isomorphic.
+
+On the other hand, the annihilator of the topological charge module 
+tells us there is something special about $2 \times 2 \times 2$ blocking.
+The topological charge module is the torsion part of the virtual excitation module factored by trivial charge module,
+i.e., the torsion submodule of $\coker \epsilon$.
+As for the cubic code, $\coker \epsilon$ is a torsion module, which is a direct sum of two isomorphic summands.
+\begin{align*}
+& \coker \epsilon = R/\pp_{xyz} \oplus R / \overline{ \pp_{xyz} } , \\
+& R = \FF_2[x^{\pm 1},y^{\pm 1},z^{\pm 1}],\\
+& \pp_{xyz} = (1+x+y+z,1+xy+yz+zx) \subset R.\\
+\end{align*}
+where the bar denotes antipode map.
+We focus on the first summand $R/\pp_{xyz}$.
+If we replace $\FF_2$ with its algebraic closure $\FF$ for convenience,
+$R/\pp_{xyz} = (\FF[x,y,z]/\pp)_{xyz}$ is the coordinate ring of an affine variety defined by $\pp$
+localized on the complement of the union of three planes $xyz=0$.
+The variety is a union of two isomorphic lines, 
+as we have seen in the degeneracy calculation of Section~\ref{sec:cubic-code}.
+One line is parameterized as
+\[
+x = 1+ t, \quad y = 1+ \omega t, \quad z = 1 + \omega^2 t
+\]
+and the other is
+\[
+x = 1+t, \quad y = 1+ \omega^2 t, \quad z = 1+ \omega t
+\]
+where $\omega$ is the primitive third root of unity.
+The ideal $\pp_{xyz}$ is the annihilator of a module $M = R/\pp_{xyz}$.
+Under coarse-graining $M$ is promoted to a module over the coarse-grained
+translation group algebra, which is $R ' = \FF_2[x^{\pm 2}, y^{\pm 2}, z^{\pm 2}]$
+in our $2 \times 2 \times 2$ blocking.
+Then, the annihilator of $M$ in the new ring $R'$ is just $R' \cap I$.
+It is easy to verify that $R' \cap \pp_{xyz} = (1+x^2 + y^2 + z^2, 1+ x^2 y^2 + y^2 z^2 + z^2 x^2 ) = \pp'$
+using Gr\"obner basis.
+As rings, $R'/\pp'$ and $R/\pp_{xyz}$ are isomorphic.
+Thus, it is consistent that $A$ renormalizes to something similar to itself.
+Further, we see that the charge annihilator of $B$ must be the same as that of $A$.
+
+This observation tells us that $2^3$ blocking is special.
+If we had blocked $3^3$ sites, we would not see the self-reproducing behavior,
+since the charge annihilator would be different:
+\begin{align*}
+ \FF_2[x^{\pm 3}, y^{\pm 3}, z^{\pm 3}] \cap \pp_{xyz} = 
+& \left( 1+{y'}+{y'}^2+{y'}^3+{z'}+{y'} {z'}+{y'}^2 {z'}+{z'}^2+{y'} {z'}^2+{z'}^3, \right. \\
+& \left. 1+{x'}+{x'}^2+{y'}+{x'} {y'}+{y'}^2+{z'}+{x'} {z'}+{y'} {z'}+{z'}^2 \right)
+\end{align*}
+where $x'=x^3,y'=y^3,z'=z^3$.
+
+\subsection*{Calculation}
+
+The generating matrix $\sigma_A$
+for the stabilizer module of the cubic code
+transforms under the coarse-graining by blocking two sites along $x$-direction as
+\begin{align*}
+ \sigma_A \xrightarrow{\text{coarse-grain }x^2 \to x} \quad
+& \sigma_1 = \begin{pmatrix} \sigma_{1X} & 0 \\ 0 & \sigma_{1Z} \end{pmatrix} \\
+& \sigma_{1X} =
+\begin{pmatrix}
+ 1+y+z   & 1     \\
+ x       & 1+y+z \\
+ 1+y z   & y+z   \\
+ x y+x z & 1+y z \\
+\end{pmatrix}, \quad
+\sigma_{1Z} =
+\begin{pmatrix}
+ 1+\frac{1}{y z} & \frac{1}{x y}+\frac{1}{x z} \\
+ \frac{1}{y}+\frac{1}{z} & 1+\frac{1}{y z} \\
+ 1+\frac{1}{y}+\frac{1}{z} & \frac{1}{x} \\
+ 1 & 1+\frac{1}{y}+\frac{1}{z} \\
+\end{pmatrix}.
+\end{align*}
+We apply elementary symplectic transformations.
+Recall $\dagger$ is the transpose followed by entry-wise antipode 
+map $x \mapsto x^{-1}$, $y \mapsto y^{-1}$, $z \mapsto z^{-1}$.
+\[
+\sigma_2 = \begin{pmatrix} \sigma_{2X} & 0 \\ 0 & \sigma_{2Z} \end{pmatrix}
+ = 
+\begin{pmatrix} r_1 & 0 \\ 0 & r_1^\dagger \end{pmatrix} 
+\begin{pmatrix} \sigma_{1X} & 0 \\ 0 & \sigma_{1Z} \end{pmatrix}
+\begin{pmatrix} c_1 & 0 \\ 0 & c_1^\dagger \end{pmatrix}
+ \]
+where
+\begin{align*}
+\sigma_{2X} &=
+\left(\begin{array}{c|c}
+ 0 & 1 \\
+\hline
+ 1+x+y^2+z^2 & 0  \\
+ 1+y+y^2+z+y z+z^2 & 0  \\
+\hline
+ 0 & 0  \\
+\end{array}\right),
+%%%%
+& &
+%%%%
+\sigma_{2Z} =
+\left(
+\begin{array}{c|c}
+ 0 & 0 \\
+\hline
+0 & 1+\frac{1}{y^2}+\frac{1}{y}+\frac{1}{z^2}+\frac{1}{z}+\frac{1}{y z} \\
+0 & 1+\frac{1}{x}+\frac{1}{y^2}+\frac{1}{z^2} \\
+\hline
+1 & 0 \\
+\end{array}
+\right) ,
+%%%%%%
+\\
+%%%%%%
+ r_1 &= 
+\begin{pmatrix}
+ 1     & 0   & 0     & 0 \\
+ 1+y+z & 1   & 0     & 0 \\
+ y+z   & 0   & 1     & 0 \\  
+ 1+y z & y+z & 1+y+z & 1 \\
+\end{pmatrix},
+%%%%%%
+& &
+%%%%%
+c_1 =
+\begin{pmatrix}
+ 1     & 0 \\
+ 1+y+z & 1 \\
+\end{pmatrix}.
+\end{align*}
+The first and fourth qubit may be factored out from $\sigma_2$.
+A subsequent coarse-graining by blocking two sites in each $y$- and $z$-direction gives
+\begin{align*}
+\sigma_2 \xrightarrow{y^2 \to y,~~z^2 \to z} \quad
+& \sigma_3 = \begin{pmatrix} \sigma_{3X} & 0 \\ 0 & \sigma_{3Z} \end{pmatrix} \\
+\end{align*}
+\begin{align*}
+& \sigma_{3X} =
+\begin{pmatrix}
+ 1+x+y+z & 0 & 0 & 0 \\
+ 0 & 1+x+y+z & 0 & 0 \\
+ 0 & 0 & 1+x+y+z & 0 \\
+ 0 & 0 & 0 & 1+x+y+z \\
+ 1+y+z & 1 & 1 & 1 \\
+ z & 1+y+z & z & 1 \\
+ y & y & 1+y+z & 1 \\
+ y z & y & z & 1+y+z
+\end{pmatrix},
+\end{align*}
+\begin{align*}
+ & \sigma_{3Z} =
+\begin{pmatrix}
+ 1+\frac{1}{y}+\frac{1}{z} & \frac{1}{z} & \frac{1}{y} & \frac{1}{y z} \\
+ 1 & 1+\frac{1}{y}+\frac{1}{z} & \frac{1}{y} & \frac{1}{y} \\
+ 1 & \frac{1}{z} & 1+\frac{1}{y}+\frac{1}{z} & \frac{1}{z} \\
+ 1 & 1 & 1 & 1+\frac{1}{y}+\frac{1}{z} \\
+ 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & 0 & 0 & 0 \\
+ 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & 0 & 0 \\
+ 0 & 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & 0 \\
+ 0 & 0 & 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} \\
+\end{pmatrix}
+\end{align*}
+We keep applying elementary symplectic transformations.
+\[
+ \sigma_4 = \begin{pmatrix} \sigma_{4X} & 0 \\ 0 & \sigma_{4Z} \end{pmatrix}
+=
+\begin{pmatrix} r_{2X} & 0 \\ 0 & r_{2Z} \end{pmatrix}
+\begin{pmatrix} \sigma_{3X} & 0 \\ 0 & \sigma_{3Z} \end{pmatrix}
+\begin{pmatrix} c_{2X} & 0 \\ 0 & c_{2Z} \end{pmatrix}
+\]
+where
+\begin{align*}
+\sigma_{4X} = 
+\left(\begin{array}{c|c|cc}
+ 0 & 1 & 0 & 0  \\
+ 0 & 0 & 0 & 0  \\
+\hline
+ 0 & 0 & 1+x+y+z & 0  \\
+ 0 & 0 & 0 & 1+x+y+z  \\
+ 1+x+y+z & 0 & 0 & 0  \\
+ x+x y+z+x z & 0 & 1+y & y+z \\
+ y+x y & 0 & 1+z & 1+y       \\
+ x y+y z & 0 & y+z & 1+z     \\
+\end{array}\right),
+\end{align*}
+\begin{align*}
+\sigma_{4Z} =
+\left(\begin{array}{c|ccc}
+ 0 & 0 & 0 & 0 \\
+ 1 & 0 & 0 & 0 \\
+\hline
+ 0 & 1+\frac{1}{y} & 1+\frac{1}{z} & \frac{1}{y}+\frac{1}{z} \\
+ 0 & \frac{1}{y}+\frac{1}{z} & 1+\frac{1}{y} & 1+\frac{1}{z} \\
+ 0 & \frac{1}{x}+\frac{1}{x y}+\frac{1}{z}+\frac{1}{x z} & \frac{1}{y}+\frac{1}{x y} & \frac{1}{x y}+\frac{1}{y z} \\
+ 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & 0 & 0 \\
+ 0 & 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & 0 \\
+ 0 & 0 & 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z}
+\end{array}\right),
+\end{align*}
+\begin{align*}
+r_{2X} = 
+\begin{pmatrix}
+ 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0   \\
+ 1+y+z & 1 & 1 & 1 & 1+x+y+z & 0 & 0 & 0   \\
+ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0   \\
+ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0   \\
+ 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0   \\
+ 1+y+z & 0 & 0 & 0 & 1+y+z & 1 & 0 & 0   \\
+ y & 0 & 0 & 0 & y & 0 & 1 & 0   \\
+ y & 0 & 0 & 0 & y & 0 & 0 & 1   \\
+\end{pmatrix},
+\end{align*}
+\begin{align*}
+r_{2Z} =
+\begin{pmatrix}
+ 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & 0 & 0 & 1 & 1+\frac{1}{y}+\frac{1}{z} & \frac{1}{y} & \frac{1}{y} \\
+ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+ 1 & \frac{1}{x} & 0 & 0 & 1 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+\end{pmatrix}.
+\end{align*}
+\begin{align*}
+c_{2X} =
+\begin{pmatrix}
+ 1 & 0 & 0 & 0 \\
+ x & 1 & 1 & 1 \\
+ 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 1 \\
+\end{pmatrix}, \quad
+c_{2Z} =
+\begin{pmatrix}
+ 1 & 1+\frac{1}{y}+\frac{1}{z} & \frac{1}{y} & \frac{1}{y} \\
+ 0 & 1 & 0 & 0 \\
+ 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 1
+\end{pmatrix},
+\end{align*}
+Factoring out the first and second qubit from $\sigma_4$
+and applying elementary symplectic transformations,
+we arrive at
+\[
+ \sigma_5 = 
+\begin{pmatrix} \sigma_{5X} & 0 \\ 0 & \sigma_{5Z} \end{pmatrix}
+=
+\begin{pmatrix} r_{3X} & 0 \\ 0 & r_{3Z} \end{pmatrix}
+\left( \begin{pmatrix} \sigma_{4X} & 0 \\ 0 & \sigma_{4Z} \end{pmatrix} \rvert_{\{1,2\}^c} \right)
+\begin{pmatrix} c_{3X} & 0 \\ 0 & c_{3Z} \end{pmatrix}
+\]
+where
+\begin{align*}
+\sigma_{5X} =
+\begin{pmatrix}
+ 1+x+y+z & 0 & 0  \\
+ 1+x y+x z+y z & 0 & 0  \\
+ 0 & x+z & 1+x  \\
+ 0 & 1+x & 1+z  \\
+ 0 & x+y & 1+y  \\
+ 0 & 1+y & 1+x  \\
+\end{pmatrix},
+%%%%%
+\quad
+%%%%%
+\sigma_{5Z} =
+\begin{pmatrix}
+ 0 & 0 & 1+\frac{1}{x y}+\frac{1}{x z}+\frac{1}{y z} \\
+ 0 & 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} \\
+ 1+\frac{1}{y} & \frac{1}{x}+\frac{1}{y} & 0 \\
+ 1+\frac{1}{x} & 1+\frac{1}{y} & 0 \\
+ 1+\frac{1}{x} & \frac{1}{x}+\frac{1}{z} & 0 \\
+ 1+\frac{1}{z} & 1+\frac{1}{x} & 0
+\end{pmatrix},
+\end{align*}
+\begin{align*}
+r_3 =
+\begin{pmatrix}
+ 0 & 0 & 1 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 1 & 1 & 1 \\
+ 1 & 1 & x & 1 & 0 & 0 \\
+ 1 & 0 & 1 & 1 & 1 & 0 \\
+ 1 & 0 & 0 & 0 & 1 & 0 \\
+ 0 & 1 & 1+x & 1 & 0 & 0  \\
+\end{pmatrix},
+\quad
+r_{3Z} =
+\begin{pmatrix}
+1 & \frac{1}{x} & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 & 0 & 1 \\
+0 & 1 & 0 & 1 & 1 & 0 \\
+1 & 1 & 0 & 0 & 1 & 1
+\end{pmatrix},
+\end{align*}
+\begin{align*}
+c_3 =
+\begin{pmatrix}
+ 1 & 0 & 0 \\
+ 1 & 1 & 0 \\
+ x & 0 & 1 \\
+\end{pmatrix},
+\quad
+c_{3Z} =
+\begin{pmatrix}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{pmatrix}.
+\end{align*}
+It is clear that $\sigma_A$, $\sigma_1$, $\sigma_2$, $\sigma_3$, $\sigma_4$, and $\sigma_5$ are all equivalent
+because we applied only elementary symplectic transformations.
+$\sigma_5$ shows a decomposition of $\sigma$ into two non-interacting two models,
+one of which is $\sigma_A$ at $2 \times 2 \times 2$ coarse-grained lattice and another is $\sigma_B$.
+%%%%%
+We perform a similar renormalization for $\sigma_B$.
+The coarse-graining by blocking two sites in $x$-direction gives
+\begin{align*}
+\sigma_B \xrightarrow{x^2 \to x} \quad
+&\sigma_{B1} = \begin{pmatrix} \sigma_{B1X} & 0 \\ 0 & \sigma_{B1Z} \end{pmatrix} \\
+&
+\sigma_{B1X} =
+\begin{pmatrix}
+ z & 1 & 1 & 1   \\
+ x & z & x & 1   \\
+ 1 & 1 & 1+z & 0 \\
+ x & 1 & 0 & 1+z \\
+ y & 1 & 1+y & 0 \\
+ x & y & 0 & 1+y \\
+ 1+y & 0 & 1 & 1 \\
+ 0 & 1+y & x & 1 \\
+\end{pmatrix},
+\quad
+\sigma_{B1Z} =
+\begin{pmatrix}
+ 1+\frac{1}{y} & 0 & \frac{1}{y} & \frac{1}{x} \\
+ 0 & 1+\frac{1}{y} & 1 & \frac{1}{y} \\
+ 1 & \frac{1}{x} & 1+\frac{1}{y} & 0 \\
+ 1 & 1 & 0 & 1+\frac{1}{y} \\
+ 1 & \frac{1}{x} & \frac{1}{z} & \frac{1}{x} \\
+ 1 & 1 & 1 & \frac{1}{z} \\
+ 1+\frac{1}{z} & 0 & 1 & \frac{1}{x} \\
+ 0 & 1+\frac{1}{z} & 1 & 1
+\end{pmatrix}.
+\end{align*}
+Apply elementary symplectic transformations to factor out trivial qubits.
+\[
+\sigma_{B2} =
+ \begin{pmatrix} \sigma_{B2X} & 0 \\ 0 & \sigma_{B2Z} \end{pmatrix}
+=
+\begin{pmatrix} r_{4X} & 0 \\ 0 & r_{4Z} \end{pmatrix}
+\begin{pmatrix} \sigma_{B1X} & 0 \\ 0 & \sigma_{B1Z} \end{pmatrix}
+\begin{pmatrix} c_{4X} & 0 \\ 0 & c_{4Z} \end{pmatrix}
+\]
+where
+{\small
+\begin{align*}
+&\sigma_{B2X} =                    & & \sigma_{B2Z} = \\
+&\left(
+\begin{array}{c|cc|c}
+ 0 & 0 & 0 & 1 \\
+ 0 & 0 & 0 & 0 \\
+ 1 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\
+\hline
+ 0 & 1+y & y+z & 0       \\
+ 0 & 1+x+z+y z & y+z & 0 \\
+ 0 & 0 & x+y+z+y z & 0   \\
+ 0 & y+z & 1+x+y+y z & 0 \\
+\end{array}
+\right),
+& &
+%\sigma_{B2Z} =
+\left(\begin{array}{c|c|c|c}
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 0 \\
+ 1 & 0 & 0 & 0 \\
+\hline
+ 0 & 1+\frac{1}{x}+\frac{1}{z}+\frac{1}{y z} & 0 & \frac{1}{y}+\frac{1}{z} \\
+ 0 & 1+\frac{1}{y} & 0 & \frac{1}{y}+\frac{1}{z} \\
+ 0 & \frac{1}{y}+\frac{1}{z} & 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{y z} \\
+ 0 & 0 & 0 & \frac{1}{x}+\frac{1}{y}+\frac{1}{z}+\frac{1}{y z}
+\end{array}\right),
+\end{align*}
+\begin{align*}
+& r_{4X} = &  & r_{4Z} = \\
+& \begin{pmatrix}
+ 1 & 0 & z & 0 & 0 & 0 & 0 & 0    \\
+ y & 1 & 1+y & 0 & z & 1 & 1 & 1  \\
+ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0    \\
+ 1+y & 0 & 1 & 1 & 1 & 1 & 1+z & 0\\
+ 0 & 0 & y & 0 & 1 & 0 & 0 & 0         \\
+ 1+y & 0 & x+z+y z & 0 & 0 & 1 & 0 & 0 \\
+ 0 & 0 & 1+y & 0 & 0 & 0 & 1 & 1       \\
+ 1 & 0 & z & 0 & 0 & 0 & 0 & 1         \\
+\end{pmatrix},
+& &
+% r_{4Z} =
+\begin{pmatrix}
+ 1 & 1 & 0 & 1+\frac{1}{z} & 0 & 1+\frac{1}{y} & 1 & 1 \\
+ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ \frac{1}{z} & \frac{1}{x} & 1 & \frac{1}{x} & \frac{1}{y} & \frac{1}{x} & 1+\frac{1}{y} & 0 \\
+ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+ 0 & \frac{1}{z} & 0 & 1 & 1 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 \\
+ 0 & 1 & 0 & 1+\frac{1}{z} & 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 1+\frac{1}{z} & 0 & 0 & 1 & 1 \\
+\end{pmatrix}.
+\end{align*}
+\[
+c_{4X} =
+\begin{pmatrix}
+ 1 & 1 & 0 & 0   \\
+ 0 & 1 & 1+z & 0 \\
+ 0 & 0 & 1 & 0   \\
+ 0 & 1+z & z & 1 \\
+\end{pmatrix},
+\quad
+c_{4Z} =
+\begin{pmatrix}
+1 & 1 & 0 & \frac{1}{y} \\
+0 & 1 & 0 & 1 \\
+0 & 1+\frac{1}{y} & 1 & 1 \\
+0 & 0 & 0 & 1
+\end{pmatrix},
+\]
+}%small font
+Factoring out trivial qubits from $\sigma_{B2}$ and coarse-graining by blocking two sites along $z$-direction,
+we have
+\begin{align*}
+& \sigma_{B2}|_{\{1,2,3,4\}^c} \xrightarrow{z^2 \to z} \quad 
+\sigma_{B3} = \begin{pmatrix} \sigma_{B3X} & 0 \\ 0 & \sigma_{B3Z} \end{pmatrix}, \text{ where }
+\end{align*}
+\begin{align*}
+& \sigma_{B3X} = & & \sigma_{B3Z} =\\
+& \begin{pmatrix}
+ 1+y & 0 & y & 1    \\
+ 0 & 1+y & z & y    \\
+ 1+x & 1+y & y & 1  \\
+ z+y z & 1+x & z & y\\
+ 0 & 0 & x+y & 1+y  \\
+ 0 & 0 & z+y z & x+y\\
+ y & 1 & 1+x+y & y  \\
+ z & y & y z & 1+x+y\\
+\end{pmatrix},
+& &
+% \sigma_{B3Z} =
+\begin{pmatrix}
+ 1+\frac{1}{x} & \frac{1}{z}+\frac{1}{y z} & \frac{1}{y} & \frac{1}{z} \\
+ 1+\frac{1}{y} & 1+\frac{1}{x} & 1 & \frac{1}{y} \\
+ 1+\frac{1}{y} & 0 & \frac{1}{y} & \frac{1}{z} \\
+ 0 & 1+\frac{1}{y} & 1 & \frac{1}{y} \\
+ \frac{1}{y} & \frac{1}{z} & 1+\frac{1}{x}+\frac{1}{y} & \frac{1}{y z} \\
+ 1 & \frac{1}{y} & \frac{1}{y} & 1+\frac{1}{x}+\frac{1}{y} \\
+ 0 & 0 & \frac{1}{x}+\frac{1}{y} & \frac{1}{z}+\frac{1}{y z} \\
+ 0 & 0 & 1+\frac{1}{y} & \frac{1}{x}+\frac{1}{y}
+\end{pmatrix}.
+\end{align*}
+Again apply elementary symplectic transformations.
+\[
+\sigma_{B4} =
+ \begin{pmatrix} \sigma_{B4X} & 0 \\ 0 & \sigma_{B4Z} \end{pmatrix}
+=
+\begin{pmatrix} r_{5X} & 0 \\ 0 & r_{5Z} \end{pmatrix}
+\begin{pmatrix} \sigma_{B3X} & 0 \\ 0 & \sigma_{B3Z} \end{pmatrix}
+\begin{pmatrix} c_{5X} & 0 \\ 0 & c_{5Z} \end{pmatrix}
+\]
+where
+\[
+ \sigma_{B4X} =
+\left(\begin{array}{c|c|c|c}
+ 0 & 0 & 1 & 0 \\
+\hline
+ 1+x+y+x y^2+z+y z & 0 & 0 & x y+y^2+x y^2+y z \\
+\hline
+ 0 & 0 & 0 & 0 \\
+\hline
+ 1+x^2+x y+x^2 y+z+y^2 z & 0 & 0 & x^2 y+z+y z+y^2 z \\
+ x+y+x y+y^2 & 0 & 0 & 1+y+x y+y^2 \\
+ z+y^2 z & 0 & 0 & x+y+y z+y^2 z \\
+\hline
+ 0 & 1 & 0 & 0 \\
+\hline
+ y+x y+x y^2+y^2 z & 0 & 0 & 1+x+y+y^2+x y^2+z+y z+y^2 z
+\end{array}\right),
+\]
+\[
+ \sigma_{B4Z} =
+\left(\begin{array}{cc|c|c}
+ 0 & 0 & 0 & 0 \\
+\hline
+ 1+\frac{1}{y^2} & 1+\frac{1}{x} & 0 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{y z} \\
+\hline
+ 0 & 0 & 1 & 0 \\
+\hline
+ 1+\frac{1}{y} & 1+\frac{1}{y} & 0 & 1+\frac{1}{z} \\
+ 1+\frac{1}{x}+\frac{1}{x y} & \frac{1}{z} & 0 & \frac{1}{x z}+\frac{1}{y z} \\
+ \frac{1}{y^2} & \frac{1}{y} & 0 & 1+\frac{1}{x}+\frac{1}{z}+\frac{1}{y z} \\
+\hline
+ 0 & 0 & 0 & 0 \\
+\hline
+ 1+\frac{1}{y^2} & 0 & 0 & \frac{1}{x}+\frac{1}{y}+\frac{1}{z}+\frac{1}{y z}
+\end{array}\right),
+\]
+\[
+ r_{5X} =
+\left(\begin{array}{cccccccc}
+ 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 1+x+y+x y+z & 1 & 0 & 0 & 0 & 0 & 1+y & 0 \\
+ 1+x+y & y & 1 & 1 & 1+x & 1+y & x+y & 1+y \\
+ 1+x^2+y z & 0 & 0 & 1 & 0 & 0 & 1+x & 0 \\
+ x+y & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+ z+y z & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+ y+x y+z+y z & 0 & 0 & 0 & 0 & 0 & y & 1
+\end{array}\right),
+\]
+\[
+ r_{5Z} =
+\left(\begin{array}{cccccccc}
+ 1 & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{x y}+\frac{1}{z} & \frac{1}{x y} & 1+\frac{1}{x^2}+\frac{1}{y z} & \frac{1}{x}+\frac{1}{y} & \frac{1}{z}+\frac{1}{y z} & 0 & \frac{1}{y}+\frac{1}{x y}+\frac{1}{z}+\frac{1}{y z} \\
+ 0 & 1 & \frac{1}{y} & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1+\frac{1}{x} & 0 & 1 & 0 & 0 & 0 \\
+ 0 & 0 & 1+\frac{1}{y} & 0 & 0 & 1 & 0 & 0 \\
+ 0 & 1+\frac{1}{y} & 1+\frac{1}{y} & 1+\frac{1}{x} & 0 & 0 & 1 & \frac{1}{y} \\
+ 0 & 0 & 1+\frac{1}{y} & 0 & 0 & 0 & 0 & 1
+\end{array}\right),
+\]
+\[
+ c_{5X} = 
+\left(\begin{array}{cccc}
+ y & 0 & 1 & 1+y \\
+ 1+x+x y & 1 & 1+x & y+x y \\
+ 1+y & 0 & 1 & y \\
+ 0 & 0 & 0 & 1
+\end{array}\right),
+\quad
+c_{5Z} =
+\left(\begin{array}{cccc}
+ \frac{1}{y} & 0 & 1 & \frac{1}{z} \\
+ 0 & 1 & 0 & 1 \\
+ 1+\frac{1}{y} & 0 & 1 & \frac{1}{z} \\
+ 0 & 0 & 0 & 1
+\end{array}\right).
+\]
+Factor out the first, third, and seventh qubits from $\sigma_{B4}$,
+and coarse-grain by blocking two sites along $y$-direction.
+\[
+\sigma_{B4} \xrightarrow{y^2 \to y} \quad 
+\sigma_{B5} = \begin{pmatrix} \sigma_{B5X} & 0 \\ 0 & \sigma_{B5Z} \end{pmatrix}, \text{ where }
+\]
+\[
+\sigma_{B5X} =
+\left(\begin{array}{cccc}
+ 1+x+x y+z & 1+z & y+x y & x+z \\
+ y+y z & 1+x+x y+z & x y+y z & y+x y \\
+ 1+x^2+z+y z & x+x^2 & z+y z & x^2+z \\
+ x y+x^2 y & 1+x^2+z+y z & x^2 y+y z & z+y z \\
+ x+y & 1+x & 1+y & 1+x \\
+ y+x y & x+y & y+x y & 1+y \\
+ z+y z & 0 & x+y z & 1+z \\
+ 0 & z+y z & y+y z & x+y z \\
+% x y+y z & 1+x & 1+x+y+x y+z+y z & 1+z \\
+% y+x y & x y+y z & y+y z & 1+x+y+x y+z+y z
+ x y+y z & 1+x & (1+x+z)(1+y) & 1+z \\
+ y+x y & x y+y z & y+y z & (1+x+z)(1+y)
+\end{array}\right),
+\]
+\[
+\sigma_{B5Z} =
+\left(\begin{array}{cccccc}
+ 1+\frac{1}{y} & 0 & 1+\frac{1}{x} & 0 & 1+\frac{1}{x} & \frac{1}{y}+\frac{1}{y z} \\
+ 0 & 1+\frac{1}{y} & 0 & 1+\frac{1}{x} & 1+\frac{1}{z} & 1+\frac{1}{x} \\
+ 1 & \frac{1}{y} & 1 & \frac{1}{y} & 1+\frac{1}{z} & 0 \\
+ 1 & 1 & 1 & 1 & 0 & 1+\frac{1}{z} \\
+ 1+\frac{1}{x} & \frac{1}{x y} & \frac{1}{z} & 0 & \frac{1}{x z} & \frac{1}{y z} \\
+ \frac{1}{x} & 1+\frac{1}{x} & 0 & \frac{1}{z} & \frac{1}{z} & \frac{1}{x z} \\
+ \frac{1}{y} & 0 & 0 & \frac{1}{y} & 1+\frac{1}{x}+\frac{1}{z} & \frac{1}{y z} \\
+ 0 & \frac{1}{y} & 1 & 0 & \frac{1}{z} & 1+\frac{1}{x}+\frac{1}{z} \\
+ 1+\frac{1}{y} & 0 & 0 & 0 & \frac{1}{x}+\frac{1}{z} & \frac{1}{y}+\frac{1}{y z} \\
+ 0 & 1+\frac{1}{y} & 0 & 0 & 1+\frac{1}{z} & \frac{1}{x}+\frac{1}{z}
+\end{array}\right).
+\]
+Apply elementary symplectic transformations to factor out two more qubits.
+\[
+\sigma_{B6} =
+ \begin{pmatrix} \sigma_{B6X} & 0 \\ 0 & \sigma_{B6Z} \end{pmatrix}
+=
+\begin{pmatrix} r_{6X} & 0 \\ 0 & r_{6Z} \end{pmatrix}
+\begin{pmatrix} \sigma_{B5X} & 0 \\ 0 & \sigma_{B5Z} \end{pmatrix}
+\begin{pmatrix} \id_{4 \times 4} & 0 \\ 0 & c_{6Z} \end{pmatrix}
+\]
+where
+\[
+ \sigma_{B6X} =
+\left(\begin{array}{cccc}
+ 1+x+x y+z & 1+z & y+x y & x+z \\
+ y+y z & 1+x+x y+z & x y+y z & y+x y \\
+\hline
+ 0 & 0 & 0 & 0 \\
+\hline
+ x y+x^2 y & 1+x^2+z+y z & x^2 y+y z & z+y z \\
+ x+y & 1+x & 1+y & 1+x \\
+ y+x y & x+y & y+x y & 1+y \\
+ z+y z & 0 & x+y z & 1+z \\
+\hline
+ 0 & 0 & 0 & 0 \\
+\hline
+% x y+y z & 1+x & 1+x+y+x y+z+y z & 1+z \\
+% y+x y & x y+y z & y+y z & 1+x+y+x y+z+y z % original formula from Mathematica
+ x y+y z & 1+x & (1+x+z)(1+y) & 1+z \\
+ y+x y & x y+y z & y+y z & (1+x+z)(1+y) % manual factoring
+\end{array}\right),
+\]
+\[
+ \sigma_{B6Z} =
+\left(\begin{array}{c|c|c|ccc}
+ 0 & \frac{1}{y}+\frac{1}{x y} & 0 & \frac{1}{y^2}+\frac{1}{y} & \frac{1}{x}+\frac{1}{y}+\frac{1}{z}+\frac{1}{x z} & \frac{1}{x^2}+\frac{1}{x}+\frac{1}{x y}+\frac{1}{x z} \\
+ 0 & 1+\frac{1}{y} & 0 & 1+\frac{1}{x} & 1+\frac{1}{z} & 1+\frac{1}{x} \\
+\hline
+ 1 & 0 & 0 & 0 & 0 & 0 \\
+\hline
+ 0 & 1+\frac{1}{y} & 0 & 1+\frac{1}{y} & 1+\frac{1}{z} & 1+\frac{1}{z} \\
+ 0 & \frac{1}{x y}+\frac{1}{y z} & 0 & \frac{1}{y}+\frac{1}{x y} & 1+\frac{1}{x}+\frac{1}{z^2}+\frac{1}{x z} & 1+\frac{1}{x^2}+\frac{1}{z^2}+\frac{1}{y z} \\
+ 0 & 1+\frac{1}{x} & 0 & \frac{1}{x y}+\frac{1}{z} & \frac{1}{x}+\frac{1}{z} & \frac{1}{x^2}+\frac{1}{x} \\
+ 0 & 0 & 0 & \frac{1}{y^2}+\frac{1}{y} & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & \frac{1}{y}+\frac{1}{x y} \\
+\hline
+ 0 & 0 & 1 & 0 & 0 & 0 \\
+\hline
+ 0 & 0 & 0 & \frac{1}{y^2}+\frac{1}{y} & 1+\frac{1}{x}+\frac{1}{y}+\frac{1}{z} & 1+\frac{1}{x}+\frac{1}{x y}+\frac{1}{z} \\
+ 0 & 1+\frac{1}{y} & 0 & 0 & 1+\frac{1}{z} & \frac{1}{x}+\frac{1}{z}
+\end{array}\right),
+\]
+\[
+ r_{6X} =
+\left(\begin{array}{cccccccccc}
+ 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 1+y & 0 & 1 & 1 & 1+x & x & y & 0 & 1+y & 0 \\
+ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+ x+y & 0 & 0 & 0 & 1+x+z & x & y & 1 & 1+y & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{array}\right),
+\]
+\[
+ r_{6Z} =
+\left(\begin{array}{cccccccccc}
+ 1 & 0 & 1+\frac{1}{y} & 0 & 0 & 0 & 0 & \frac{1}{x}+\frac{1}{y} & 0 & 0 \\
+ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1+\frac{1}{x} & 0 & 1 & 0 & 0 & 1+\frac{1}{x}+\frac{1}{z} & 0 & 0 \\
+ 0 & 0 & \frac{1}{x} & 0 & 0 & 1 & 0 & \frac{1}{x} & 0 & 0 \\
+ 0 & 0 & \frac{1}{y} & 0 & 0 & 0 & 1 & \frac{1}{y} & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+ 0 & 0 & 1+\frac{1}{y} & 0 & 0 & 0 & 0 & 1+\frac{1}{y} & 1 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{array}\right),
+\]
+\[
+ c_{6Z} =
+\left(\begin{array}{cccccc}
+ 1 & 0 & 1 & \frac{1}{y} & 1 & 1+\frac{1}{x}+\frac{1}{z} \\
+ 0 & 1 & 0 & 0 & 0 & 0 \\
+ 0 & \frac{1}{y} & 1 & 0 & \frac{1}{z} & 1+\frac{1}{x}+\frac{1}{z} \\
+ 0 & 0 & 0 & 1 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 1
+\end{array}\right).
+\]
+The third and eighth qubits in $\sigma_{B6}$ are trivial.
+We finally finish our lengthy transformation.
+\[
+ \sigma_{B7} =
+ \begin{pmatrix} \sigma_{B7X} & 0 \\ 0 & \sigma_{B7Z} \end{pmatrix}
+=
+\begin{pmatrix} r_{7X} & 0 \\ 0 & r_{7Z} \end{pmatrix}
+\left( \begin{pmatrix} \sigma_{B6X} & 0 \\ 0 & \sigma_{B6Z} \end{pmatrix}\rvert_{\{3,8\}^c} \right)
+\begin{pmatrix} c_{7X} & 0 \\ 0 & c_{7Z} \end{pmatrix}
+\]
+where
+\[
+ \sigma_{B7X} =
+\left(\begin{array}{cccc}
+ x+z & 1+x & 0 & 0 \\
+ 1+x & 1+z & 0 & 0 \\
+ x+y & 1+y & 0 & 0 \\
+ 1+y & 1+x & 0 & 0 \\
+ 0 & 0 & x+z & 1+x \\
+ 0 & 0 & 1+x & 1+z \\
+ 0 & 0 & x+y & 1+y \\
+ 0 & 0 & 1+y & 1+x
+\end{array}\right), \quad
+\sigma_{B7Z} =
+\left(\begin{array}{cccc}
+ 1+\frac{1}{y} & \frac{1}{x}+\frac{1}{y} & 0 & 0 \\
+ 1+\frac{1}{x} & 1+\frac{1}{y} & 0 & 0 \\
+ 1+\frac{1}{x} & \frac{1}{x}+\frac{1}{z} & 0 & 0 \\
+ 1+\frac{1}{z} & 1+\frac{1}{x} & 0 & 0 \\
+ 0 & 0 & 1+\frac{1}{y} & \frac{1}{x}+\frac{1}{y} \\
+ 0 & 0 & 1+\frac{1}{x} & 1+\frac{1}{y} \\
+ 0 & 0 & 1+\frac{1}{x} & \frac{1}{x}+\frac{1}{z} \\
+ 0 & 0 & 1+\frac{1}{z} & 1+\frac{1}{x}
+\end{array}\right),
+\]
+\[
+ r_{7X} =
+\left(\begin{array}{cccccccc}
+ 1+z & 1 & 0 & 0 & z & 0 & 0 & 1 \\
+ 1+x & 1 & 1 & x & 0 & 1 & 0 & 1 \\
+ 1+x+y & 0 & 1 & x & 1 & 1+y & y & 1 \\
+ 1+y & 1 & 1 & 0 & 1+x & y & y & 1 \\
+ 1+x & 1 & 1 & x+z & 0 & 0 & 0 & 1 \\
+ x & 1 & 1 & x+z & 0 & 1 & 1 & 1 \\
+ 1+x & 1 & 1 & 1+x+z & 1 & 1 & 1 & 1 \\
+ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0
+\end{array}\right),
+\]
+\[
+r_{7Z} =
+\left(\begin{array}{cccccccc}
+ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 \\
+ 0 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 \\
+ 1 & 1 & \frac{1}{x} & 0 & 1 & 0 & 1 & 0 \\
+ 1+\frac{1}{y} & 1 & 1+\frac{1}{x}+\frac{1}{x y} & 0 & 1+\frac{1}{y} & 1 & 1+\frac{1}{y} & \frac{1}{y} \\
+ 1+\frac{1}{x}+\frac{1}{y} & \frac{1}{x} & \frac{1}{x^2}+\frac{1}{x}+\frac{1}{x y}+\frac{1}{z} & 0 & \frac{1}{x}+\frac{1}{y} & 0 & \frac{1}{x}+\frac{1}{y} & 1+\frac{1}{y}+\frac{1}{z} \\
+ 1+\frac{1}{x} & \frac{1}{x} & \frac{1}{x^2}+\frac{1}{x}+\frac{1}{z} & 0 & \frac{1}{x} & 0 & 1+\frac{1}{x} & 1+\frac{1}{z} \\
+ 1+\frac{1}{z} & \frac{1}{z} & \frac{1}{x z} & 1 & \frac{1}{z} & \frac{1}{z} & 1 & 1+\frac{1}{z}
+\end{array}\right),
+\]
+\[
+ c_{7X} =
+\left(\begin{array}{cccc}
+ 1 & 0 & 0 & 1+z \\
+ 0 & 1 & 0 & 1 \\
+ 1 & 0 & 1 & 1+z \\
+ 1 & 1 & 0 & 1+z
+\end{array}\right),\quad
+c_{7Z} =
+\left(\begin{array}{cccc}
+ \frac{1}{z} & 1+\frac{1}{z} & 1 & 0 \\
+ 1 & 1 & 0 & 0 \\
+ \frac{1}{y} & 1+\frac{1}{y} & 0 & 1 \\
+ 0 & 1 & 0 & 0
+\end{array}\right).
+\]
+We see that $\sigma_{B7}$ is a direct sum of two copies of $\sigma_B$.
+This verifies the bifurcation:
+\[
+ A \xrightarrow{2\times 2 \times 2} A \oplus B, \text{ and } B \xrightarrow{2 \times 2 \times 2} B \oplus B.
+\]
+
+\section{Thermal partition function of the cubic code}
+\label{sec:thermal-partition-function}
+
+The only relevant property of the cubic code in relation to a thermal partition function
+is that the generating map $\sigma$ for the stabilizer module is injective.
+\[
+ 0 \to G \xrightarrow{\sigma} P
+\]
+This property is shared with 1D Ising model (Example~\ref{eg:1d-ising}),
+2D toric code (Example~\ref{eg:2d-toric}), and 3D Chamon model (Example~\ref{eg:ChamonModel}).
+Slightly more generally, Lemma~\ref{lem:coker-epsilon-resolution-length-D} says that
+for two-dimensional exact code Hamiltonians one can choose an injective generating map 
+that gives rise to an equivalent Hamiltonian in the sense of Definition~\ref{defn:equiv-H}.
+
+Let $H = -\sum_i P_i$ be the Hamiltonian of the cubic code on $L \times L \times L$ periodic lattice.
+We set the coupling constant to be $1$ so that each term literally squares to the identity $P_i^2 = 1$.
+The thermal partition function is
+\[
+ \calZ = \calZ(\beta) = \trace \exp ( - \beta H )
+\]
+where $\beta$ is an inverse temperature.
+Since $H$ consists of commuting terms,
+the exponential function can be written as products.
+\[
+ \calZ = \trace \prod_i (\cosh \beta + P_i \sinh \beta) 
+ = \cosh^M \beta \trace \prod_i (1 + x P_i)
+\]
+where $M=tL^3$ is the number of terms in $H$ and $x = \tanh \beta$.
+Since the trace of a Pauli operator that is not identity is zero,
+only the term in the expansion of the product 
+that is proportional to the identity contributes to $\calZ$.
+If there are $N=qL^3$ qubits in the system, 
+the trace of the identity operator is $2^N$.
+\[
+ \frac{\calZ}{2^N \cosh^M \beta} = \sum_{\gamma \in \Gamma} x^{|\gamma|}
+\]
+where $\gamma$ runs over all possible collections of terms $P_i$ of $H$
+that multiply to the identity. $\Gamma$ contains the empty collection.
+Thus, $\Gamma$ is in one-to-one correspondence with $\ker \sigma_L$.
+(It may be nonzero due to the periodic boundary conditions
+although $\sigma$ was injective. See Section~\ref{sec:degeneracy}.)
+Therefore, the cardinality of $\Gamma$ is precisely
+\[
+ |\Gamma| = 2^{\dim_{\FF_2} \ker \sigma_L} = 2^{k} ,
+\]
+the ground-state degeneracy.
+The second equality is implied by Corollary~\ref{cor:k-formulas}.
+
+We know from Corollary~\ref{cor:cubic-code-degeneracy-formula} that $k$ is bounded by
+a linear function of $L$ for the cubic code; $k = O(L)$.
+Therefore, the partition function is sandwiched as
+\[
+ | \log \calZ(\beta) - L^3\log (2^q \cosh^t \beta) | \le k \log 2 = O(L).
+\]
+Thus, the free energy per unit volume in the thermodynamic limit
+is just a smooth function $\log( 2^q \cosh^t \beta )$ for all nonzero temperatures.
+This should contrast with three- or higher-dimensional toric code model 
+where the free energy density has a singularity at a nonzero temperature~\cite{NussinovOrtiz2008Autocorrelations}.
+
+The analyticity of the free energy does not directly invalidate
+a possibility of self-correction of encoded quantum information.
+The latter is rather a dynamical process,
+which may have little to do with the thermal equilibrium.
+In fact, it is quite subtle to analyze self-correcting power
+or to give a criterion on it, based on the thermal partition function.
+The existence or possibility of a good decoding process
+to extract the encoded quantum information
+would be a more appropriate way to address the question of self-correction.
+For instance, in the four-dimensional toric code model
+the thermal expectation value for any bare logical operator is zero.
+However, a special dressed logical operator defined with respect to a decoding algorithm
+can have a non-vanishing expectation value in the thermodynamic
+limit~\cite{ChesiLossBravyiEtAl2010Thermodynamic}.
+For the cubic code, the analyticity of the partition function suggests that
+it does not allow such a nonzero thermal expectation value for logical operators.
+Nevertheless, we can show that the characteristic time scale
+of the expectation values of logical operators dressed by a decoding algorithm,
+is very large at low temperatures.
+This is the topic of the next chapters.

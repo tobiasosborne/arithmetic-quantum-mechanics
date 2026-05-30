@@ -1,0 +1,784 @@
+%%%%%%%%%%%%%%%%%%%%%%
+%% consq-no-strings.tex
+%%%%%%%%%%%%%%%%%%%%%%
+
+The no-strings rule prohibits a nontrivial charge 
+to travel a distance longer than a constant times its size.
+We repeat the rule.
+
+\begin{center}
+\parbox{.8\textwidth}{
+Definition~\ref{defn:no-strings}:
+{\em
+A string segment is a finitely supported Pauli operator
+that creates excitations contained in the union of two finite boxes (anchor regions)
+of width $w$.
+The string segment is nontrivial 
+if the charge contained in one of the boxes is nontrivial.
+The distance between the boxes is the length of the string segment.
+We say that a model obeys no-strings rule
+if the length of any nontrivial string segment of width $w$
+is bounded by $\alpha w$ for some constant $\alpha \ge 1$.
+}}
+\end{center}
+
+\noindent
+The cubic code is an extreme case where a point charge cannot move distance $1$
+(Theorem~\ref{thm:CubicCode-no-strings}).
+It does not mean that isolation or diffusion of charges is impossible;
+Theorem~\ref{thm:logarithmic-energy-barrier-for-fractal-operator}
+actually gives a local process for the isolation to happen in the translationally invariant case.
+The isolation process for a charge has to pay an energy penalty 
+upper bounded by the logarithm of the distance from others.
+
+In this chapter, we illustrate the energy landscape of the cubic code Hamiltonian
+in a view towards self-correcting quantum memory.
+We show that the separation or isolation of charges
+requires an energy barrier logarithmically high in the separation distance.
+This can be visualized as follows.
+Imagine all the energy eigenstates as points on an imaginary ``land,''
+and introduce a metric on the land by the minimum number of local operations
+one has to apply in order to map one state to another.
+Consider a function on the land given by the energy of the energy eigenstate.
+Our logarithmic energy barrier means that the energy function, or ``energy landscape,''
+has a macroscopic number of local minimums separated by macroscopic energy barriers.
+These minimums correspond to low-energy excited states 
+in which the separation between defects is approximately the system size.
+
+The energy landscape with the large number of the local minimums 
+suggests a possibility of a spin glass phase at a sufficiently low temperature.
+Note that there is no quenched disorder in the Hamiltonian~\cite{BinderYoung1986SpinGlass,Weissman1993SpinGlass},
+and the glassy feature, if present, would be protected ``topologically''~\cite{BravyiHastingsMichalakis2010stability}.
+A spin glass phase can indeed be realized for some classical spin Hamiltonians 
+with logarithmic energy barriers such as the model discovered by Newman and Moore~\cite{NewmanMoore1999Glassy}.
+Interplay between the topological order and the spin glassiness has been studied recently by
+several authors~\cite{Chamon2005Quantum,TsomokosOsborneCastelnovo2010Interplay}.
+
+The logarithmic energy barrier is an optimal bound up to constants
+because of Theorem~\ref{thm:logarithmic-energy-barrier-for-fractal-operator}
+and \ref{thm:fractal-exists-in-3D}.
+An obvious difficulty in proving the lower bound on the energy barrier
+is that there are a huge number of paths to isolate a charge.
+Relying on scale-invariant nature of the no-strings rule,
+we introduce a technique which may be regarded
+as a renormalization group in the space of error paths.
+
+
+Also, we attempt to estimate the length of the separation process:
+How many local operations do we need in order to isolate a charge?
+Put differently,
+how large is a quantum mechanical tunneling probability between two ground states
+in presence of local perturbations?
+Since the tunneling amplitude would be non-vanishing only for
+virtual process that is mediated by an operator acting on the ground space,
+the question translates into the theory of error correcting codes
+as to find the weight distribution of logical operators.
+We do not answer this question at a satisfactory level,
+but we find a superlinear lower bound on the code distance assuming the no-strings rule.
+
+
+\section{Logarithmic energy barrier}
+\label{sec:log-barrier}
+
+We consider a regular $D$-dimensional cubic lattice $\Lambda$
+with periodic boundary conditions and linear size $L$, that is, $\Lambda=\ZZ_L^D$.
+Each site $u\in \Lambda$ is populated by a finite number of qubits.
+The class of models we are going to discuss is that of code Hamiltonians
+\begin{equation}
+H=-\sum_{a=1}^{M} G_a,
+\label{eq:stabH}
+\end{equation}
+where each term $G_a$  is a multi-qubit Pauli operator 
+(a tensor product of $I,X,Y,Z$ with an overall $\pm 1$ sign)
+and different terms commute with each other;
+$G_a G_b =G_b G_a$ and $G_a^2=I$.
+We assume that each generator $G_a$ acts nontrivially (by $X,Y$ or $Z$)
+only on a set of qubits located at vertices of an elementary cube.
+It is allowed to have more than one generator per cube.
+Any short-range stabilizer Hamiltonian can be written in this form by performing
+a coarse-graining of the lattice.
+We continue to assume that $H$ is frustration-free%
+\footnote{This is always the case for independent generators $G_a$. 
+Since our goal is to obtain a lower bound on the
+energy barrier, we can assume that the generators are independent, although it does not
+play any role in our analysis.},
+The Hamiltonian may or may not be translation-invariant.
+
+Consider any multi-qubit Pauli operator $E$.
+A state $\psi = E\,  \psi_0 $
+is an excited eigenstate of $H$. Obviously, $G_a \, \psi=\pm \psi$
+where the sign depends on whether $G_a$ commutes (plus)
+or anticommutes (minus) with $E$.
+Any flipped generator ($G_a\, \psi=-\psi$) will be referred to as a {\bf defect}.
+Different defects may occupy the same elementary cube.
+It should be emphasized that 
+a {\em configuration of  defects}, called a {\bf syndrome}, in $\psi$ is the same for all ground states $\psi_0$.
+An eigenstate with $m$ defects has energy $2m$ above the ground state.
+For brevity, we shall use the term {\bf vacuum} for a  ground state of $H$
+whenever its choice  is not important.
+A Pauli operator $E$ whose action on the vacuum creates no defects is either a stabilizer ($E\in \mathcal G$),
+or a {\bf logical operator} ($E\notin \mathcal G$, but $E$ commutes with $\mathcal G$).
+In the former case any ground state of $H$ is invariant under $E$.
+In the latter case $E$ maps some ground state of $H$ to an orthogonal ground state.
+
+A Hamiltonian is  said to have topological order if it
+has a degenerate ground state and different ground states are locally indistinguishable.
+We shall need a slightly stronger version of this condition
+that involves properties of both ground and excited states.
+These properties depend on a length scale $L_{tqo}$ that must
+be bounded as $L_{tqo}\ge  L^\gamma$ for some constant $\gamma>0$.
+(For code Hamiltonians, $L_{tqo}$ corresponds to the code distance.)
+Most of stabilizer code Hamiltonians with topological order satisfy our conditions
+with $L_{tqo} \sim L$.
+Our first topological quantum order condition concerns ground states,
+which is a rephrasing of Definition~\ref{defn:tqo}:
+\begin{defn}
+\label{defn:TQO1}
+{\bf TQO1} refers to the following condition: 
+If a Pauli operator $E$ creates no defects when applied to the vacuum
+and its support can be enclosed by a cube of linear size $L_{tqo}$ then $E$
+is a stabilizer,  $E\in \mathcal G$.
+\end{defn}
+Our second TQO condition concerns excited states.
+A cluster of defects $S$ will be called {\bf neutral} if it can be created
+from the vacuum by a Pauli operator $E$ whose support can be enclosed
+by a cube of linear size $L_{tqo}$ without creating any other defects.
+Otherwise we say that $S$ is a {\bf charged} cluster.
+Given a region $A \subseteq \Lambda$ we shall use a notation
+$\mathcal B _r(A)$ for the $r$-neighborhood of $A$, that is, a set of all points that have distance at most $r$ from $A$.
+Here and below we use $\ell_{\infty}$-distance on $\ZZ_L^D$.
+We shall need the following condition saying that neutral clusters of defects can be
+created from the vacuum locally.%
+\footnote{If a lattice has a boundary, charged defects
+might be created locally on the boundary, as it is the case for the planar version of the toric
+code. This is the reason why we restrict ourselves to periodic boundary conditions.}
+\begin{defn}
+\label{defn:TQO2}
+{\bf TQO2} refers to the following condition:
+Let $S$ be a neutral cluster of defects 
+and $C_{min}(S)$ be the smallest cube that encloses $S$.
+Then $S$ can be created from the vacuum 
+by a Pauli operator supported on $\mathcal B_1(C_{min}(S))$.
+\end{defn}
+%
+%
+\begin{rem}
+\label{rem:TransInv-strongTQO}
+A translationally invariant exact code Hamiltonian satisfies
+both of our topological order conditions.
+In particular, the cubic code satisfies the present TQO conditions.
+[~$\because$
+TQO1 is immediate from Lemma~\ref{lem:local-tqo=exact},
+and TQO2 follows from an argument similar to the proof of Lemma~\ref{lem:local-tqo=exact}.
+Indeed, given a neutral cluster $e$ of defects,
+we have an equation $e = \epsilon p$ for some $p$ of the Pauli module.
+$p$ is computed by the standard division algorithm applied to the columns of
+the excitation map $\epsilon$.
+If $e$ is centered at origin, then the degree of $p$ does not exceed
+that of $e$, which implies the second TQO condition.%
+]
+\end{rem}
+
+
+Let us consider a process of building a cluster of defects $S$ (syndrome) from the vacuum.
+It can be described by an {\bf error path} 
+--- a finite sequence of local Pauli errors  $E_1,\ldots,E_T$ such that
+$E = E_T \cdots E_2 E_1$ creates $S$ from the vacuum.
+For simplicity, we assume that each local error  $E_t$ 
+is a single-qubit Pauli operator $\sigma^x$, $\sigma^y$, or $\sigma^z$.
+Applying this sequence of errors to a ground state $\psi_0$
+generates a sequence of states $\{ \psi(t)\}_{t=0,\ldots,T}$,
+where and $\psi(T)=E \, \psi_0$ is the excited state of defect configuration $S$.
+We will say that $S$ has {\bf energy barrier $\omega$}
+if for any Pauli operator $E$ that creates $S$ from the vacuum 
+and for any error path implementing $E$,
+at least one of the intermediate states has more than $\omega$ defects.
+Note that we do not impose any restriction on the length of the path $T$ as long as it is finite.
+In particular, one and the same error may be repeated in the error path several times
+at different time steps.
+Similarly, we consider the energy barrier for a logical operator $\overline{P}$;
+we say that a logical operator $\overline{P}$ has {\bf energy barrier $\omega$}
+if for any error path implementing $\psi_0 \mapsto \overline P \, \psi_0$
+at least one of the intermediate states $\psi(t)$ has more than $\omega$ defects.
+
+
+For any integer $p\ge 0$, define a {\bf level-$p$ unit of length $\xi(p)$} as%
+\footnote{The choice of the constant $10$ is somewhat arbitrary.
+We do not try to optimize constants in our proof.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+\xi(p)=(10\alpha)^p, \quad p=0,1,\ldots.
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let $S$ be any non-empty syndrome.
+Recall that each defect in $S$ can be associated with some elementary cube of the lattice.
+\begin{defn}
+\label{defn:psparse}
+A syndrome $S$ is said to be {\bf sparse at level $p$} 
+if the set of elementary cubes occupied by the defects in $S$
+can be partitioned into a disjoint union of clusters
+such that each cluster has diameter at most $\xi(p)$
+and any pair of distinct clusters combined together has diameter larger
+than $\xi(p+1)$. Otherwise, $S$ is {\bf non-sparse at level $p$}.
+\end{defn}
+\noindent
+For example, suppose all defects in $S$ occupy the same elementary cube.
+Since an elementary cube has diameter $1$, such a syndrome $S(t)$ is sparse at any level $p \ge 0$.
+If $S$ occupies a pair of adjacent cubes, $S(t)$ is sparse at any level $p\ge 1$,
+but is non-sparse at level $p=0$.
+Note that the partition of $S$ into clusters required for level-$p$ sparsity
+is unique whenever it exists.
+The non-sparsity provides a lower bound on the number of defects in a cluster
+as follows.
+\begin{lem}
+\label{lemma:counting}
+A non-empty syndrome $S$ that is non-sparse at all levels $q=0,\ldots,p$
+contains at least $p+2$ defects.
+\end{lem}
+\begin{proof}
+Let $C^{(0)}_1,\ldots, C^{(0)}_g$ be elementary cubes occupied by $S$.
+Obviously, $S$ contains at least $g$ defects.
+Since $S$ is non-empty and non-sparse at level $0$,
+we have $g \ge 2$ and there exists
+a pair of cubes $C_a^{(0)}, C_b^{(0)}$ such that the union
+$C_a^{(0)} \cup C_b^{(0)}$ has diameter at most $\xi(1)$.
+Combining the pair $C_a^{(0)}, C_b^{(0)}$  into a single cluster,
+we obtain a partition $S = C_1^{(1)} \cup \cdots \cup C_{g-1}^{(1)}$
+where each cluster $C_a^{(1)}$ has diameter at most $\xi(1)$.
+Since $S$ is non-sparse at level $1$, we have $g-1 \ge 2$,
+and there exists a pair of clusters $C_a^{(1)}, C_b^{(1)}$ such that the union
+$C_a^{(1)}\cup C_b^{(1)}$ has diameter at most $\xi(2)$.
+Combining the pair $C_a^{(1)}, C_b^{(1)}$ into a single cluster and
+proceeding in the same way we arrive at $g \ge p+2$.
+\end{proof}
+
+A configuration of defects created by applying a Pauli operator $E$ to the vacuum
+will be called a {\em syndrome caused by $E$}.
+The process of building up a logical operator $\overline{P}$ 
+by a sequence of local errors $E_1,\ldots,E_T$ can be described by
+a {\bf syndrome history} $\{S(t)\}_{t=0,\ldots,T}$.
+Here $S(t)$ is the syndrome caused by the product $E_t \cdots E_2 E_1$,
+a partial implementation of $\overline{P}$ up to a step $t$.
+The following concerns the size of local errors
+\begin{lem}
+\label{lem:large-support-for-nontrivial-transition}
+Let $Q_j$ be Pauli operators causing  a chain of transitions
+\[
+\mathrm{vac} \xrightarrow{Q_1} S_1 \xrightarrow{Q_2}  S_2 \xrightarrow{Q_3} \ldots \xrightarrow{Q_r} S_r
+\xrightarrow{Q_{r+1}} \mathrm{vac}.
+\]
+Let $P_j$ be some Pauli operator creating the syndrome $S_j$ from the vacuum.
+Suppose the support of any operator $P_j$ and any operator $Q_j$
+can be enclosed by $n$ or less cubes of linear size $R$ such that $4nR < \ltqo$.
+Then, the product $\overline{Q} = Q_1\cdots Q_r Q_{r+1}$ is a stabilizer.
+\end{lem}
+\begin{proof}
+Let $\psi_0$ be any ground state.
+Define a sequence of states
+\begin{align*}
+\psi(1) &= P_1 Q_1\cdot \psi_0, \\
+\psi(j+1) &=  (P_j P_{j+1}) Q_{j+1} \cdot \psi(j) \quad \text{ for $j=1,\ldots,r-1$},\\
+\psi(r+1) &= Q_{r+1} P_{r} \cdot \psi(r).
+\end{align*}
+Obviously,
+\begin{align*}
+\psi(j) &= \pm P_j \cdot (Q_1 \cdots Q_j) \cdot  \psi_0 \quad \text{for $j=1,\ldots,r$} \\
+\psi(r+1) &= \pm \overline{Q}\cdot \psi_0.
+\end{align*}
+It follows that all states $\psi(j)$ are ground states,
+and the transition from $\psi(j)$ to $\psi(j+1)$ 
+can be caused by a Pauli operator
+\[
+O_j = P_j P_{j+1} Q_{j+1}.
+\]
+Let $M_j$ be the support of $O_j$. 
+By assumption, $M_j$ can be enclosed by at most $3n$ cubes of linear size $R$.
+If $M_j$ is a connected set,
+i.e., one can connect any pair of qubits from $M_j$ by a path $(u_1,\ldots,u_l)$
+such that the distance between $u_a$ and $u_{a+1}$ is $1$,
+then $M_j$ can be enclosed by a single cube of linear size at most $3nR$.
+That $3nR < \ltqo$ implies $O_j$ is a stabilizer by the topological order condition.
+Generally, $M_j$ consists of several disconnected components $M_j^\alpha$,
+such that the distance between any pair of distinct components is at least $2$.
+The restriction of $O_j$ on a connected component 
+commutes with any stabilizer generator,
+and is supported in a box of linear size $3nR$,
+which is smaller than $\ltqo$ by assumption.
+Therefore, the restrictions are stabilizers,
+and their product $O_j$ is also a stabilizer.
+In other words, $\psi(j+1)=\pm \psi(j)$ for all $j$.
+It means that $\overline{Q}\, \psi_0 = \pm \psi_0$ for any ground state $\psi_0$.
+We conclude that $\overline{Q}$ is a stabilizer.
+\end{proof}
+
+
+The no-strings rule says that an isolated charged defect belonging to some sparse syndrome
+cannot be moved further than distance $\alpha$ away by a sequence of local errors.
+Since the no-strings rule is scale invariant,
+it may be applied to a coarse-grained lattice to show that isolated
+charged clusters cannot be moved further than distance $\alpha \xi(p)$ away.
+In order to exploit the scale invariance,
+we define a {\bf level-$p$ syndrome history}
+as a subsequence of the original syndrome history $\{S(t)\}_{t=0,\ldots,T}$
+that includes only those syndromes $S(t)$ that are non-sparse
+at all levels $q=0,\ldots,p-1$.
+The level-$0$ syndrome history includes all syndromes $S(t)$,
+the level-$1$ syndrome history omits $S(t)$ that is sparse at level 0,
+and so on.
+When $S(t')$ and $S(t'')$ are a consecutive pair of level-$p$ syndromes,
+we define a {\bf level-$p$ error $E$} connecting $S(t')$ and $S(t'')$
+as the product of all single-qubit errors $E_j$ that occurred between $S(t')$ and $S(t'')$.
+Level-$p$ errors are represented by horizontal arrows on Fig.~\ref{fig:RG}.
+Note that we do not have any bound on the number
+of single-qubit errors $E_j$ in the interval between $S(t')$ and $S(t'')$.
+In the worst case, $E$ could act nontrivially on every qubit in the system.
+%
+A main technical lemma of this chapter below asserts, loosely speaking, that
+if a syndrome history does not have a deep enough non-sparse hierarchy,
+any error path is equivalent to one that is localized around the defects.
+% We would like to show that $E$ can be regarded as an approximately local error
+% on a coarse-grained lattice characterized by the unit of length $\xi(p)$.
+
+
+\begin{lem}
+\label{lemma:RG2}
+Let $S'= S(t')$ and $S''= S(t'')$ be a consecutive pair of syndromes in the level-$p$ syndrome history
+of a Hamiltonian obeying the no-strings rule.
+Let $E$ be the product of all errors $E_j$ that occurred between $S'$ and $S''$.
+Suppose that any $S(t)$ contains at most $m$ defects.
+If 
+\[
+16 m \xi(p) < L_{tqo},
+\]
+then there exists an error $\tilde{E}$  supported on $\mathcal B _{\xi(p)}(S'\cup S'')$
+such that $E\tilde{E}$ is a stabilizer.
+\end{lem}
+
+\begin{figure}[tb]
+\centerline{\includegraphics[height=4cm]{rg_scheme5}}
+\caption{Renormalization group technique 
+used to prove a logarithmic  lower bound on the energy barrier for logical operators.
+Horizontal axis represents time. 
+Vertical axis represents RG level $p=0,1,\ldots,p_{max}$.
+A sequence of level-$0$ errors (single-qubit Pauli operators) 
+implementing a logical operator $\overline{P}$
+defines a level-$0$ syndrome history (yellow circles)
+that consists of sparse (S) and non-sparse (D) syndromes.
+The history begins and ends with the vacuum ($0$).
+For any level $p\ge 1$ we define a level-$p$ syndrome history
+by retaining only non-sparse syndromes at the lower level.
+A syndrome is called non-sparse at level $p$ if it
+cannot be partitioned into clusters of size $\le (10\alpha)^p$
+separated by distance $\ge (10\alpha)^{p+1}$,
+where $\alpha$ is a constant coefficient from the no-strings rule.
+Each  level-$p$ error (horizontal arrows) connecting syndromes $S',S''$
+is equivalent to the product of all level-$(p-1)$ errors between $S',S''$
+modulo a stabilizer.
+We prove that these stabilizers can be chosen such that
+level-$p$ errors act on $2^{O(p)}$ qubits.
+Since at the highest  level $p=p_{max}$
+a single level-$p$ error is a logical operator,
+one must have $p_{max}=\Omega(\log{L})$.
+We prove that level-$p$ non-sparse syndromes contain $\Omega(p)$ defects
+which implies that at least one syndrome at level $p=p_{max}-2$
+consists of $\Omega(\log{L})$ defects.}
+\label{fig:RG}
+\end{figure}
+
+\begin{proof}
+The proof is by induction in $p$.
+When $p=0$, $E=E_j$ is a single-qubit error.
+If the qubit acted on by $E$ does
+not belong to $\mathcal B_{1}(S'\cup S'')$, one must have $S'=S''$.
+It means that $E$ is a single-qubit error with a trivial syndrome.
+The topological order condition implies that $E$ is a stabilizer.
+Choosing $\tilde{E}=I$ proves the lemma for $p=0$.
+
+Suppose the assertion is true for some level $p \ge 0$.
+Let $S'=S(t')$ and $S''=S(t'')$ be consecutive syndromes in the level-$(p+1)$
+history. Consider first the trivial case when
+$S'=S(t')$ and $S''=S(t'')$ are also consecutive syndromes in the level-$p$ history.
+Then $S'$ and $S''$ are connected by a single%
+\footnote{%
+The word `single' does not necessarily mean a single blob of errors supported in a small ball; 
+it just means a single arrow in the level-$p$ history.
+For instance, suppose that a model permits neutral point defects.
+Two neutral defects separated by distance 1 is a non-sparse at level 0 and 1.
+If we annihilate one of them, put sparsely many neutral defects,
+and finally put a neutral defect adjacent to one of the defects,
+then the whole process is described by a consecutive pair in the level 1 history.
+The `single' level-1 error in this case consists of many components.%
+}
+level-$p$ error $E$ which, by induction hypothesis, has support on $\mathcal B _{\xi(p)}(S'\cup S'')$
+modulo stabilizers.
+The latter is contained in $\mathcal B_{\xi(p+1)}(S'\cup S'')$ which proves the induction step.
+
+The nontrivial case is when there is at least one level-$p$ syndrome between $S'$ and $S''$.
+The interval of the level-$p$ syndrome history between $S'$ and $S''$ can be represented
+(after properly redefining the time variable $t$) as
+\[
+S'\xrightarrow{E_\text{lead}}
+S(1) \xrightarrow{E_1}
+S(2) \xrightarrow{E_2}
+\cdots
+ \xrightarrow{E_{\tau-1}}
+S(\tau) \xrightarrow{E_\text{tail}}
+S''.
+\]
+Here all syndromes $S(1),\ldots,S(\tau)$ are sparse at the level $p$ and
+all transitions are caused by level-$p$ errors.
+The sparsity implies that
+the set of elementary cubes occupied by  $S(t)$ has a unique
+partition into a disjoint union of clusters $C_a(t)$ such that
+each cluster has diameter at most $\xi(p)$ and the distance
+between any pair, if any, of clusters is at least
+\begin{align*}
+\mathrm{dist}(C_a(t),C_b(t)) & \ge   \xi(p+1)-2\xi(p) \ge (10\alpha -2)\xi(p)  \ge   8\alpha \xi(p).
+\end{align*}
+Represent any intermediate syndrome as a disjoint union
+\begin{equation}
+\label{S1+}
+S(t)=S^c(t) \cup S^n(t), \quad t=1,\ldots,\tau,
+\end{equation}
+where $S^c(t)$ and $S^n(t)$ include all charged and all neutral clusters $C_a(t)$, respectively.
+Let $g$ be  the number of clusters in $S^c(t)$. We claim  that $g$  does not depend on $t$.
+Indeed, since a level-$p$ error $E_t$ acts on $\xi(p)$-neighborhood of $S(t) \cup S(t+1)$
+by the induction hypothesis,
+the sparsity condition implies that $E_t$
+cannot create or annihilate a charged cluster $C_a(t)$ from the vacuum, 
+or map a charged cluster  to a neutral cluster and vice versa.
+The same argument shows that each  cluster $C_a(t)\subseteq  S^c(t)$ can `move' 
+at most by $\xi(p)$ per time step,
+that is, we can parameterize
+\[
+S^c(t)=C_1(t) \cup \ldots \cup C_g(t)
+\]
+such that
+a `world-line' of the $a$-th charged cluster
+obeys the continuity condition
+\begin{equation}
+\label{cont+}
+\mathrm{dist}(C_a(t+1),C_a(t)) \le \xi(p).
+\end{equation}
+We can now use the no-strings rule to show that
+all charged clusters are `locked' near their
+initial positions, so that their world-lines
+are essentially parallel to the time axis.  More precisely, we claim that
+\begin{equation}
+\label{locking+}
+\mathrm{dist}(C_a(t), C_a(1)) \le \alpha  \xi(p)  \quad \text{for all $1\le t \le \tau$}.
+\end{equation}
+Indeed, suppose Eq.~\eqref{locking+} is false for some $a$.
+Using the continuity Eq.~\eqref{cont+},
+one can find a time step $t_1$
+such that $\mathrm{dist}(C_a(t_1), C_a(1))>\alpha \xi(p)$ and
+$\mathrm{dist}(C_a(t), C_a(1)) \le \alpha \xi(p)$ for all $1\le t<t_1$.
+Let $E_{close}$ be the product of all level-$p$ errors $E_j$
+that occurred between $S(1)$ and $S(t_1)$ within distance $(2+\alpha)\xi(p)$
+from $C_a(1)$. Since all intermediate syndromes are sparse at level $p$,
+the net effect of $E_{close}$ is to annihilate the  charged cluster  $C_a(1)$
+and create the charged cluster $C_a(t_1)$.
+Equivalently, applying $E_{close}$ to the vacuum creates a pair of charged clusters
+$C_a(1)$ and $C_a(t_1)$.
+However, this contradicts to the no-strings rule since
+$C_a(1)$ and $C_a(t_1)$ have linear size at most $\xi(p)$ while
+the distance between them is greater than $\alpha \xi(p)$.
+Thus we have proved Eq.~\eqref{locking+}.
+
+We say that $\vec{x}\in \Lambda$ is {\em close to $S'$} if $\vec{x}\in \mathcal B_{\xi(p+1)}(S')$,
+and $\vec{x}\in \Lambda$ is {\em close to $S''$} if $\vec{x}\in \mathcal B_{\xi(p+1)}(S'')$.
+%
+Let $E_t$ be the level-$p$ error causing the transition from  $S(t)$ to $S(t+1)$,
+where $t=1,\ldots,\tau-1$.
+By induction hypothesis, we may assume that the support of $E_t$ is in $\mathcal B_{\xi(p)}(S(t) \cup S(t+1))$.
+Let $E^c_t$ be the restriction of $E_t$ onto $\mathcal B_{\xi(p)}(S^c(t)\cup S^c(t+1))$,
+and $E^n_t$ be the restriction of $E_t$ onto $\mathcal B_{\xi(p)}(S^n(t)\cup S^n(t+1))$.
+The sparsity of $S(t)$ implies that
+\begin{equation}
+\label{EcEn+}
+E_t = E^c_t \cdot E^n_t.
+\end{equation}
+We claim that {\em any error $E^c_t$ is close to $S'$}.
+Indeed, each cluster in $S^c(1)$ is within distance $2\xi(p)$ from $S'$ 
+since, otherwise, a single level-$p$ error $E_\text{lead}$,
+supported in $\mathcal B_{\xi(p)}(S' \cup S(1) )$ by induction hypothesis (modulo stabilizers),
+would be able to create a charged cluster from the vacuum.
+Using Eq.~\eqref{locking+}, we infer that 
+$C_a(t) \subseteq \mathcal B_{(2+\alpha)\xi(p)}(S')$ for all $a=1,\ldots,g$.
+Therefore, $E^c_t$ is close to $S'$.
+
+
+We wish to find a ``localized'' leading error $\tilde{E}_\text{lead}$
+that maps the syndrome $S'$ to $S^c(1)$ such that the support of
+$\tilde{E}_\text{lead}$ is close to $S'$.
+For each neutral cluster $C \in S^n(1)$ of diameter at most $\xi(p)$,
+let $O'(C)$ be a Pauli operator creating $C$ from the vacuum.
+Because of our TQO2, we can choose $O'(C)$ to be supported in $\mathcal B_1(C)$.
+Set
+\[
+\tilde{E}_\text{lead} = E_\text{lead} \prod_{ C \in S^n(1) } O'(C),
+\]
+We have seen that $S^c(1)$ is within $(2+\alpha)\xi(p)$-neighborhood of $S'$.
+If $E_\text{lead}$ has a disconnected component $E(C)$,
+isolated by distance $\xi(p)$ and centered at a neutral cluster $C$ of $S^n(1)$,
+then $E(C) O'(C)$ is a stabilizer.
+Hence, $\tilde E_\text{lead}$ is close to $S'$ modulo stabilizers.
+If $E_\text{lead}$ does not have such a component, $\tilde E_\text{lead}$ is already close to $S'$.
+Certainly, $\tilde E_\text{lead}$ maps $S'$ to $S^c(1)$.
+We can apply the same rules to the error $E_\text{tail}$ and the syndrome $S^n(\tau)$.
+We find a localized error
+\[
+\tilde{E}_\text{tail} = E_\text{tail} \cdot \prod_{C \in S^n(\tau) } O''(C)
+\]
+modulo stabilizers
+such that $\tilde{E}_\text{tail}$ maps $S^c(\tau)$ to $S''$ 
+and the support of $\tilde{E}_\text{tail}$ is close to $S''$.
+The operator $O''(C)$ above creates a neutral cluster $C \in S^n(\tau)$ from the vacuum.
+
+We can now define a localized level-$(p+1)$ error $\tilde{E}$
+whose support is close to $S'\cup S''$ as
+\begin{equation}
+\label{tildeE_cluster}
+\tilde{E}=\tilde{E}_\text{tail} \cdot E^c_{\tau-1} \cdots E^c_{1} \cdot \tilde{E}_\text{lead}.
+\end{equation}
+By construction, it describes an error path
+\[
+S'\xrightarrow{\tilde{E}_\text{lead}}
+S^c(1) \xrightarrow{E^c_1}
+S^c(2) \xrightarrow{E^c_2}
+\cdots
+ \xrightarrow{E^c_{\tau-1}}
+S^c(\tau) \xrightarrow{\tilde{E}_\text{tail}}
+S''.
+\]
+It remains to check that $E \cdot \tilde{E}$ is a stabilizer.
+Combining Eq.~\eqref{EcEn+} and
+Eq.~\eqref{tildeE_cluster} we
+conclude that
+\[
+E\cdot \tilde{E} = \pm (\tilde{E}_\text{lead} E_\text{lead}) \cdot E^n_1 \cdots E^n_{\tau-1} \cdot (\tilde{E}_\text{tail} E_\text{tail}).
+\]
+Applying  $E\cdot \tilde{E}$ to the vacuum generates the following chain of transitions:
+\begin{align}
+\label{chain1_cluster}
+\mathrm{vac} \xrightarrow{\tilde{E}_\text{lead} E_\text{lead}}
+S^n(1) \xrightarrow{E^n_1}
+S^n(2) \xrightarrow{E^n_2} \cdots 
+ \xrightarrow{E^n_{\tau-1}}
+S^n(\tau) \xrightarrow{\tilde{E}_\text{tail} E_\text{tail}}
+\mathrm{vac}
+\end{align}
+Each syndrome $S^n(t)$ consists of at most $m$ neutral clusters of diameter $\xi(p)$, 
+i.e., it can be created from the vacuum by an error
+whose support can be enclosed by at most $m$ cubes of linear size $2+\xi(p)$,
+due to our TQO2.
+The first transition $\tilde{E}_\text{lead} E_\text{lead}$
+or the last transition $\tilde{E}_\text{tail} E_\text{tail}$
+is caused by errors whose support can be enclosed by at most $m$ cubes of linear size $2+\xi(p)$.
+All intermediate ones are supported on $\mathcal B_{\xi(p)}(S^n(t)\cup S^n(t+1))$.
+Hence their support can be enclosed by at most $2m$ cubes of linear size $2+\xi(p)$.
+Now the statement that $E\cdot \tilde{E}$ is a stabilizer follows from Lemma~\ref{lem:large-support-for-nontrivial-transition}.
+\end{proof}
+
+Now we state two theorems that apply to any stabilizer Hamiltonian Eq.~\eqref{eq:stabH}
+on a $D$-dimensional lattice that obeys the topological order condition (TQO1,2)
+and the no-strings rule.
+The numerical constants for the Hamiltonian are
+$\alpha \ge 1$ in the no-strings rule
+and $1 \ge \gamma>0$ in the bound $\ltqo \ge L^\gamma$
+where $L$ is the linear system size.
+
+\begin{theorem}
+\label{thm:lop-log-energy-barrier}
+The energy barrier for any logical operator is at least $c \log{L}$ for some constant $c=c(\alpha,\gamma)$.
+\end{theorem}
+\begin{proof}
+Consider a syndrome history of an implementation of a logical operator $E$.
+We keep the initial and the final syndromes (the empty syndromes) at all levels;
+the syndrome history starts and ends with the vacuum at any level $p$.
+It suffices to treat the case where
+all intermediate syndromes $S(t)$ are non-empty.
+Let $p_{max}$ be the highest RG level, that is, the smallest integer $p \ge 0$
+such that a single level-$p$ error $E$ maps the vacuum to itself, see Fig.~\ref{fig:RG}.
+Let $m$ be the maximum number of defects in the syndrome history at any given moment.
+
+Suppose that $16m \xi(p_{max}) < \ltqo$.
+Then Lemma~\ref{lemma:RG2} applied to the level-$p_{max}$ syndrome history
+with $S'=S''=\emptyset$ (vacuum),
+would imply $\tilde{E}=I$.
+Since $E$ is not a stabilizer by assumption, we must have $16 m \xi(p_{max}) \ge \ltqo$.
+Since the syndrome history must contain a syndrome $S(t)$ non-sparse at all levels $0,\ldots,p_{max}-2$,
+Lemma~\ref{lemma:counting} implies $m \ge p_{max}$.
+And, TQO1 requires $\ltqo \ge L^\gamma$.
+Therefore, $ 16(10\alpha)^{2m} \ge 16m(10\alpha)^m \ge 16 m (10\alpha)^{p_{max}} \ge L^\gamma $,
+and $m = \Omega(L)$.
+\end{proof}
+
+\begin{theorem}
+\label{thm:cluster-log-energy-barrier}
+Let $S$ be a neutral cluster of defects
+containing a charged cluster $S' \subseteq S$ of diameter $r$
+such that there are no other defects within distance $R$ from $S'$.
+If $r+R < L_{tqo}$,
+then the energy barrier for creating $S$ from the vacuum is at least $c \log R$
+for some constant $c=c(\alpha)$.
+\end{theorem}
+\begin{proof}
+Let $S$ be a neutral cluster of defects and $E$ be a Pauli operator creating $S$ from the vacuum,
+with $S' \subset S$ of diameter $r$ being charged.
+Consider a hierarchy of syndrome histories similar to the one shown on Fig.~\ref{fig:RG},
+where we now maintain the initial syndrome $\emptyset$ and the final syndrome $S$ for all levels.
+Let $p_{max}$ be the highest RG level.
+Then a single level-$p_{max}$ error $E$ creates $S$ from the vacuum.
+Since there must be a syndrome that is non-sparse for all levels $0,1,\ldots,p_{max}-2$,
+Lemma~\ref{lemma:counting} implies $m \ge p_{max}$
+where $m$ is the maximum number of defects in the syndrome history.
+
+Suppose $16 m \xi(p_{max}) < \ltqo$ 
+Lemma~\ref{lemma:RG2} implies that 
+$E$ is the equivalent modulo stabilizers to $\tilde{E}$ 
+supported on $\mathcal B _{\xi(p_{max})}(S)$.
+If $\xi(p_{max}) < R/4$,
+then $\tilde{E}$ must act on two separated regions, one near $S'$ and another far from $S'$.
+This means that $S'$ alone can be created by a Pauli operator whose support is enclosed by a cube of linear size $r+R/2$.
+Since $r+R < L_{tqo}$, it is contradictory to the assumption that $S'$ is charged.
+Therefore, $\xi(p_{max}) \ge R/4$, and $m = \Omega(R)$.
+%
+If $16 m \xi(p_{max}) \ge \ltqo$, then, since $\ltqo > R$, we also have $m = \Omega(R)$.
+\end{proof}
+
+
+
+\section{Superlinear code distance}
+\label{sec:superlinear-distance}
+
+We have shown that in a process of isolating a charged cluster, there is a logarithmic energy barrier.
+The following theorem quantifies how long the process must be.
+%
+The proof again makes use of renormalization group,
+and shows that there is a subset of `fractal dimension' $\gamma > 1$ in the support of $E$,
+the operator that makes two separated clusters from the vacuum of which one is charged.
+We assume that $E$ has weight minimum possible.
+
+Let $w$ be an odd positive number.
+We say a set of sites $C \subset \Lambda$ is a {\bf level-$p$ chunk} if $\mathrm{diam}(C) < w^p$.
+A \emph{path} in the lattice is a finite sequence of sites $(u_1,u_2,\ldots,u_n)$ such that $d(u_i,u_{i+1})=1$.
+(Recall that we use the $l_\infty$ metric $d$.)
+Using paths, we can say whether a set is connected.
+
+\begin{defn}
+A connected level-$p$ chunk $C \subseteq S$ is \emph{maximal} with respect to a set of sites $S$
+if there exist a connected subset $C^\circ \subseteq C$
+and a path $\zeta = (u_1,\ldots,m,\ldots,u_n) \subseteq C^\circ$ satisfying
+\begin{enumerate}
+ \item[(i)]   $d(u_1,u_n)=w^p-w^{p-1}$,
+ \item[(ii)]  $d(u_1,m),d(u_n,m)\ge \frac{w^p-w^{p-1}}{2}$,
+ \item[(iii)]  $C^\circ$ contains the connected component of $m$ in $\mathcal{B}_{\frac{w^{p}-w^{p-1}}{2}}(m) \cap S$, and
+ \item[(iv)] $C$ contains the connected component of $C^\circ$ in $\mathcal{B}_{\frac{w^{p-1}}{2}}(C^\circ)\cap S$.
+\end{enumerate}
+\end{defn}
+
+The last two conditions restricts the position of $\zeta$ in $C$ such that $\zeta$ lies sufficiently far from the boundary of $C$.
+The site $m$ will be referred to as a {\bf midpoint} of $C$.
+Let $S$ be the support of the Pauli operator $E$,
+any restriction of which obeys the no-strings rule.
+
+\begin{lem}
+Given a path $\zeta$ in $S$ joining $u_1$ and $u_n$ such that $d(u_1,u_n)=lw^p-1$,
+there are $l$ disjoint maximal chunks of level $p$ whose midpoints are on $\zeta$.
+\label{lem:max_chunks_on_path}
+\end{lem}
+\begin{proof}
+For convenience, we assume that the $z$-coordinates of $u_1$ and $u_n$ are
+$0$ and $lw^p-1$, respectively.
+Consider $l+1$ planes $P_i$ perpendicular to the $z$-axis, whose $z$-coordinates are $iw^p$ for $i=0,1,\ldots,l$.
+In each region between the two consecutive planes $P_{i-1}$ and $P_i$,
+there is a subpath $\zeta_i=(u_{j_{i-1}},\ldots,u_{j_{i}})$ such that $d(u_{j_{i-1}},u_{j_{i}})=w^p-1$.
+Choose $m_i \in \zeta_i$ such that $d(u_{j_{i-1}},m_i),d(m_i,u_{j_{i}}) \ge \frac{w^p -1}{2}$.
+Let $C_i$ be the connected component of $m_i$ within $S \cap \mathcal B_{\frac{w^p}{2}}(m_i)$.
+Add, if necessary, some points of $\zeta_i$ to $C_i$ to get a maximally connected $C'_i$.
+This $C'_i$ is a maximal chunk of sites with midpoint being $m_i$.
+Any two $C'_i$'s are disjoint since each of them lies in a unique region enclosed by $P_{i-1}$ and $P_i$.
+\end{proof}
+
+
+\begin{lem}
+For sufficiently large $w$,
+a maximal level $(p+1)$ chunk $C$ with respect to $S$
+admits a decomposition into $w+1$ or more maximal chunks of level $p$ with respect to $S$.
+\label{lem:many_max_in_max}
+\end{lem}
+\begin{proof}
+Recall that $S$ is the support of the Pauli operator $E$, any restriction of which obeys no-strings rule.
+Define the \emph{boundary} of a subset $U$ of $S$ to be $\partial U = \mathcal B_1(U) \cap U^c \cap S$.
+Then, any subset $U$ of sites with boundary enclosed in a two disjoint regions can be regarded as a string segment.
+
+By the definition of the maximal chunk,
+there exists a path $(u_1,\ldots,m,\ldots,u_n)$ in $C^\circ \subseteq C$ such that $d(u_1,u_n)=w^{p+1}-w^p$.
+We assume that the $z$-coordinates of $u_1, u_n$ differ by $w^{p+1}-w^p$.
+We will show that there are sufficiently long and separated paths in $C^\circ$,
+to which we apply Lemma~\ref{lem:max_chunks_on_path} to find $w+1$ maximal chunks of level $p$.
+They will lie in $\mathcal B_\frac{w^p}{2}(C^\circ)$, and hence in $C$.
+
+Let $M$ ($N$) be the subset of $S$ consisted of sites
+whose $z$-coordinates differ from that of $u_1$ ($u_n$) by at most $\eta w^p$.
+First, suppose $\partial C^\circ$ is not contained in $M \cup N$.
+Since $u_1 \in M$ and $u_n \in N$, there is a site $s \in C^\circ$
+adjacent (of distance 1) to $\partial C^\circ$ such that $d(s,u_1),d(s,u_n) > \eta w^p$.
+Furthermore, $d(s,m) \ge \frac{w^{p+1}-w^p}{2}-1$;
+otherwise, $C^\circ$ contains a site in the boundary, which is a contradiction.
+
+Consider the shortest network $\mathcal{N}$ of paths in $C^\circ$ connecting four sites $u_1,m,u_n,s$.
+(The length of a network of paths is the number of sites in the union of the paths.)
+Let $\zeta$ be the shortest path in $\mathcal{N}$ from $u_1$ to $u_n$.
+If $s$ is not contained in $\mathcal B_{3w^p}(\zeta)$,
+then $\zeta' \subseteq \mathcal{N}$ joining $s$ to a site on $\zeta$
+has a subpath $\zeta'' \subseteq \zeta'$ of diameter at least $2w^p$
+such that $\zeta''$ is separated from $\zeta$ by $w^p$.
+Applying Lemma~\ref{lem:max_chunks_on_path} to $\zeta$ and $\zeta''$,
+we find at least $w+1$ maximal chunk of level $p$.
+If $m$ is not contained in $\mathcal B_{3w^p}(\zeta)$,
+a similar argument reveals at least $w+1$ maximal chunk of level $p$.
+
+Suppose both $s$ and $m$ are contained in $\mathcal B_{3w^p}(\zeta)$.
+Observe that $\zeta \setminus ( \mathcal B_{4w^p}(s) \cup \mathcal B_{4w^p}(m) )$
+consists of three connected components $\zeta_1,\zeta_2,\zeta_3$,
+two of which have diameter $\ge \frac{w^{p+1}-w^p}{2}-8w^p$ and the other has diameter $\ge (\eta - 4)w^p$.
+Two distinct $\mathcal B_{\frac{w^p}{2}}(\zeta_i)$ and $\mathcal B_{\frac{w^p}{2}}(\zeta_j)$ ($i,j=1,2,3$)
+do not overlap because of the minimality of $\zeta$. Applying Lemma~\ref{lem:max_chunks_on_path},
+we find $w + \eta - 21$ maximal chunks of level $p$.
+Choosing $\eta > 21$, we get the desired result.
+
+Next, suppose $\partial C^\circ$ is contained in $M \cup N$.
+Let $s_M, s_N \in C^\circ \setminus (M\cup N)$ be sites adjacent to $M$ and $N$, respectively.
+The separation between $M$ and $N$ is $(w-1-2\eta)w^p$.
+If it is greater than $\eta' \alpha w^p$, there must be a $z$-plane $P$ that contains $s_M$ or $s_N$
+such that $P \cap C^\circ$ has diameter $> \eta' w^p$; Otherwise, the no-strings rule is violated.
+Let $v_1, v_2 \in P \cap C^\circ$ be sites separated by $\eta' w^p$.
+The four sites, $u_1,u_n,v_1,v_2$ are sufficiently separated and connected by some paths in $C^\circ$.
+Arguing as before, we find $(w -1) + \eta'-16$ maximal chunks of level $p$.
+The choice of $\eta' > 17$ and $w > 1+2\eta+\eta'\alpha$ proves the lemma.
+\end{proof}
+
+
+\begin{theorem}
+Let $E$ be a Pauli operator creating $S$, a neutral cluster of defects
+containing a charged cluster $S' \subseteq S$ of diameter $r$
+such that there are no other defects within distance $R$ from $S'$.
+If $r+2R < L_{tqo}$, then the weight of $E$ must be $\ge c R^\gamma$ for some constant $\gamma > 1$ and $c$.
+\label{thm:separation_charged_defects}
+\end{theorem}
+\begin{proof}
+The support of the minimal Pauli operator $E$ in Theorem~\ref{thm:separation_charged_defects}
+must admit a path connecting $S'$ and $S \setminus S'$.
+Otherwise, $S'$ can be regarded as being created locally,
+and our topological order condition demands the cluster be neutral.
+Since the path has length $\ge R$,
+Lemma~\ref{lem:max_chunks_on_path} says we have a maximal chunk of level $p$
+where $p$ is such that $w^p \le R < w^{p+1}$.
+Lemma~\ref{lem:many_max_in_max} implies any maximal chunk of level $p$ must contain
+at least $(w+1)^p$ sites.
+This concludes the proof with $\gamma=\frac{\log(w+1)}{\log w}>1$.
+\end{proof}
+A similar argument proves the lower bound $d=\Omega(L^\gamma)$ on the code distance $d$ of the cubic code
+since the minimal logical operator must contain a path of length $L$.

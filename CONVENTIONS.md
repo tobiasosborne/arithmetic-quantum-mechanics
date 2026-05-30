@@ -2171,3 +2171,254 @@ must state which cotangent object it uses before quoting a phase-label
 dimension, Weyl carrier size, or agreement/inequivalence comparison. No
 finite-ring-wide cotangent table, database-backed cotangent row, or helper
 coverage claim follows from this convention.
+
+## (aw) Derivative Constraints on Residue Weyl-Heisenberg Elements
+
+For the residue-site field layer, derivative data are allowed to select or
+reject Weyl-Heisenberg elements only through their residue phase labels.
+
+Input data are:
+
+```text
+B -> A                    finite commutative algebra with named base,
+S <= Spec(A)              finite selected finite-residue support,
+K_x = kappa(x)            locally anchored residue field for each x in S,
+E_S = direct_sum_x K_x^2  residue-site phase-label group,
+WH(E_S) -> E_S            Weyl-Heisenberg central extension label map pi.
+```
+
+The arithmetic quantum field at this layer is the projective unitary
+representation of `WH(E_S)` fixed by the local finite-field Weyl conventions
+and by tensoring the local projective representations over the direct sum
+`E_S`. This convention tracks the represented Weyl elements by their labels in
+`E_S`; central phases are not selection data unless separately declared.
+
+An admissible map family is not an arbitrary set-map family. It is a named
+finite additive subgroup, or named finite `B`-submodule when available,
+`F <= Gamma(Spec(A), O) = A`. Coordinate-pair maps are elements of `F^2`.
+The residue label map is
+
+```text
+lambda_(S,F) : F^2 -> E_S,
+lambda_(S,F)(q,p) = ((q mod x, p mod x))_(x in S).
+```
+
+Let `d : A -> Omega^1_(A/B)` be the universal `B`-derivation. A derivative
+predicate is a specified subset `P <= Omega^1_(A/B) x Omega^1_(A/B)`; in the
+linear cases used in the report it is an additive subgroup, for example
+`dq=0`, `dp=0`, or `dp=lambda*dq` after the scalar/action has been named.
+The derivative-selected residue labels are
+
+```text
+C_P(S,F) =
+  lambda_(S,F)({(q,p) in F^2 : (dq,dp) in P}) <= E_S.
+```
+
+The selected Weyl-Heisenberg elements are `pi^(-1)(C_P(S,F))`. The rejected
+Weyl-Heisenberg elements are `pi^(-1)(E_S \ C_P(S,F))`. Equivalently, at the
+projective level, the selected Weyl operators are exactly the labels
+`W(e)` with `e in C_P(S,F)`.
+
+A derivative predicate has an internal bite at `(S,F)` when
+
+```text
+C_P(S,F) proper_subset lambda_(S,F)(F^2),
+```
+
+so the derivative rejects labels that the same map family otherwise
+represents. It has an ambient bite when `C_P(S,F)` is a proper subset of
+`E_S`. If `P` is an additive subgroup, then `C_P(S,F)` is an additive subgroup
+of `E_S`; otherwise it is only a subset. Any claim that a derivative predicate
+is intrinsic to residue labels, independent of representatives in `F`, must
+state the required fibre-saturation condition separately. Without such a
+condition, the convention uses the displayed image definition and makes no
+representative-independent stronger claim.
+
+## (ax) Scheme-Incidence Code-Source Convention
+
+For code-source conjectures after `AQM-88`, a finite scheme is not allowed to
+silently mean a chain complex.  A bare finite residue-site scheme supplies
+finite Weyl-Heisenberg sites.  A CSS chain complex requires extra incidence
+data.
+
+The finite incidence input is:
+
+```text
+k = F_2 unless another finite field is named,
+S_i finite sets for i = 0,1,2,
+X_i = Spec(k^(S_i)) the corresponding finite reduced schemes,
+I_10 <= S_1 x S_0 and I_21 <= S_2 x S_1 incidence relations.
+```
+
+The incidence relations define F_2-linear boundary maps by parity:
+
+```text
+partial_1(e) = sum_{v : (e,v) in I_10} v,
+partial_2(f) = sum_{e : (f,e) in I_21} e.
+```
+
+The datum is a CSS source only after the chain condition
+`partial_1 partial_2 = 0` is checked.  With qubit Weyl labels on `S_1`, put
+
+```text
+E = F_2^(S_1)_q direct_sum F_2^(S_1)_p,
+R_X = im(delta^0) = im(partial_1^T),
+R_Z = im(partial_2),
+L = (R_X direct_sum 0) + (0 direct_sum R_Z) <= E.
+```
+
+The selected Weyl-Heisenberg elements are the central preimage of `L` under the
+label map `WH(E) -> E`.  This is the same CSS-isotropy convention as AQM-08,
+rewritten for finite schemes whose point sets carry explicitly named
+incidence relations.
+
+A constant finite group scheme in this convention is only the following
+explicit finite affine case.  For a finite abstract group `G`,
+
+```text
+G_k = Spec(k^G)
+```
+
+with multiplication, unit, and inverse maps induced contravariantly by the
+corresponding maps of finite sets.  The underlying scheme `Spec(k^G)` is just
+the product-field spectrum from AQM-40; the group law and any chosen generators
+are additional structure.  Therefore a toric-code construction from a constant
+group scheme must name the group law and the chosen commuting generators before
+using them to define edge and face incidences.
+
+## (ay) Split Algebraic Torus Quant2 Test Convention
+
+For the split two-dimensional algebraic torus over `k = F_q`, use
+
+```text
+T = G_m^2 = Spec(k[x, x^(-1), y, y^(-1)])
+          = D(xy) <= Spec(k[x,y]).
+```
+
+The raw arithmetic-field `Quant2` layer is the closed-point finite-residue
+layer of convention `(y)`: for an open `U <= T`,
+
+```text
+E_T(U) = direct_sum_{z in U cap |T|_cl} kappa(z)^2
+```
+
+with finite support, Weyl-Heisenberg group `WH(E_T(U))`, and projective
+unitary representation fixed by the finite-field Weyl convention.  Regular
+Laurent-function profiles are not automatically quasi-local Weyl elements;
+they become Weyl operators only after restriction to a named finite support or
+after a later completion convention is fixed.
+
+The rational support is
+
+```text
+T(k) = (k^*)^2.
+```
+
+It is a finite support inside the closed-point layer, not the full closed-point
+scheme when `T` has infinitely many closed points.  A chosen pair of units
+`alpha, beta in k^*` defines the finite subgroup
+
+```text
+G_(alpha,beta) = <alpha> x <beta> <= T(k).
+```
+
+If `alpha` and `beta` have orders `N_x` and `N_y`, this support has
+`N_x N_y` vertices.  The statement that all of `k^*` is generated by one
+primitive unit is not used unless such a unit is explicitly named or sourced.
+
+The toric-code-like edge layer is separate from the raw residue-site Quant2
+layer.  After choosing `alpha,beta`, put
+
+```text
+S_0 = G_(alpha,beta),
+S_1 = G_(alpha,beta) x {x,y},
+S_2 = G_(alpha,beta),
+```
+
+with qubit labels on `S_1`.  The boundary maps are the Cayley-square maps
+displayed in `AQM-90`.  The resulting selected Weyl-Heisenberg elements are
+the central preimage of the CSS subgroup
+
+```text
+L_square = (im(partial_1^T) direct_sum 0)
+           + (0 direct_sum im(partial_2))
+         <= F_2^(S_1) direct_sum F_2^(S_1).
+```
+
+Thus the algebraic torus supplies a natural source of two multiplicative
+directions and commuting squares, but the finite step units and the decision
+to put qubit Weyl labels on the edge set are named extra structure.
+
+## (az) Haah-Laurent Versus Algebraic-Torus Convention
+
+When comparing Haah's translation-invariant Laurent-polynomial code formalism
+with the algebraic-torus `Quant2` test case, keep two Laurent rings distinct.
+
+The algebraic-torus coordinate ring is
+
+```text
+A_T = k[x, x^(-1), y, y^(-1)]
+```
+
+where `x` and `y` are regular invertible coordinate functions on
+`T = Spec(A_T)`.  The Haah translation ring is
+
+```text
+R_tr = F_p[X, X^(-1), Y, Y^(-1)] = F_p[Z^2]
+```
+
+where `X` and `Y` are lattice translation operators.  The same abstract
+Laurent algebra appears in both places, but its role is different: `A_T` is a
+coordinate algebra, while `R_tr` is a group algebra acting on finite-support
+Pauli/Weyl labels.  Do not identify them without naming the bridge.
+
+The bridge used in `AQM-91` is finite and periodic.  After choosing
+`alpha,beta in k^*` of orders `N_x,N_y`, let
+
+```text
+G = <alpha> x <beta> <= T(k).
+```
+
+For labels over `F_p`, set
+
+```text
+R_G = F_p[X, X^(-1), Y, Y^(-1)] / (X^(N_x)-1, Y^(N_y)-1)
+    = F_p[C_(N_x) x C_(N_y)].
+```
+
+As a vector space, `R_G` is the finite periodic configuration module with basis
+the sites of `G`; multiplication by `X` and `Y` shifts by the chosen torus
+steps.  This is not automatically the coordinate ring of the finite set `G`;
+it is the finite quotient of the translation group algebra.
+
+For the qubit toric-square comparison, order the edge label module as
+
+```text
+P_G = R_G^4 = (q_x, q_y, p_x, p_y)
+    ~= F_2^(G x {x,y})_q direct_sum F_2^(G x {x,y})_p.
+```
+
+With the AQM-90 edge orientation, the Haah toric generator matrix is used in
+the orientation-equivalent form
+
+```text
+sigma_square =
+  [ 1 + X^(-1)   0
+    1 + Y^(-1)   0
+    0            1 + Y
+    0            1 + X ].
+```
+
+Its selected Weyl-Heisenberg labels are `im(sigma_square) <= P_G`; the
+selected Weyl-Heisenberg elements are the central preimage of that submodule.
+The excitation map is
+
+```text
+epsilon_square = sigma_square^dagger lambda sigma_square.
+```
+
+This Haah excitation map is not the Kähler derivation
+`d: A_T -> Omega^1_(A_T/k)` from `AQM-90`.  The derivation is an infinitesimal
+coordinate-ring operation; the Haah map is a finite-difference/symplectic
+constraint on translation labels.  Any proposed relationship between them must
+be stated as an additional construction and checked on finite supports.

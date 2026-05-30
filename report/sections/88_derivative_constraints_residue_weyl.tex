@@ -1,0 +1,278 @@
+% SHARD-ID: AQM-88-DERIVATIVE-CONSTRAINTS-RESIDUE-WEYL
+% SHARD-TITLE: Derivative Constraints on Residue Weyl-Heisenberg Fields
+% SHARD-SUMMARY: Defines derivative selections as selected and rejected Weyl-Heisenberg elements in the residue-site phase group.
+% SHARD-SUMMARY: Formalizes breadth-first map-family tests without using arbitrary set maps from \(\Spec R\).
+% SHARD-SUMMARY: Works \( \mathbb Z/6\mathbb Z \), dual-number, product, and two-site nonreduced examples.
+% SHARD-KEYWORDS: derivative constraints, Weyl-Heisenberg, residue fields, finite rings, Spec, Z6, Kahler differentials
+
+\section{Derivative Constraints on Residue Weyl-Heisenberg Fields}
+\label{sec:derivative-constraints-residue-weyl}
+
+\subsection{Status and Source Anchors}
+
+This shard replaces the rejected outside-in attempt.  Its output is a
+constraint rule: derivative predicates on named regular coordinate families
+select and reject Weyl-Heisenberg elements.
+
+The residue-site Weyl anchors are AQM-23, AQM-28, AQM-49, AQM-78, and AQM-81.
+Finite Weyl laws are sourced through
+\path{references/symplectic_qecc/SOURCES.md}: Ashikhmin--Knill
+source lines 249--313 and Bombin--Martin--Delgado source lines 1206--1259;
+finite Heisenberg sources are catalogued in
+\path{references/heisenberg_weil/SOURCES.md}.  The algebraic source is the
+Stacks algebra snapshot registered in
+\path{references/algebraic_geometry/SOURCES.md}.  Use locators
+250--278, 2972--3023, 33793--33872, 34103--34120, and 34310--34340.
+The convention is \texttt{CONVENTIONS.md} \texttt{(aw)}.
+
+\subsection{Lamport Dependency Skeleton}
+
+\[
+\begin{array}{rcl}
+D1&:&B\to A\text{ finite commutative algebra; }S\subset\Spec A\text{ finite selected finite-residue support.}\\
+D2&:&E_S=\bigoplus_{x\in S}\kappa(x)^2,\quad
+      \pi:\operatorname{WH}(E_S)\to E_S.\\
+D3&:&\rho_S:\operatorname{WH}(E_S)\to PU(\mathcal C_S)\text{ is the residue Weyl field.}\\
+D4&:&F\leq A=\Gamma(\Spec A,\mathcal O)\text{ is a named regular coordinate family.}\\
+D5&:&\lambda_{S,F}(q,p)=((q\bmod x,p\bmod x))_{x\in S}.\\
+D6&:&d:A\to\Omega^1_{A/B}\text{ and }P\subset\Omega^1_{A/B}\times\Omega^1_{A/B}.\\
+D7&:&C_P(S,F)=\lambda_{S,F}\{(q,p)\in F^2:(dq,dp)\in P\}.\\
+L1&:&C_P(S,F)\text{ gives selected/rejected elements of }\operatorname{WH}(E_S).\\
+L2&:&F,P\text{ additive }\Rightarrow C_P(S,F)\leq E_S.\\
+L3&:&\text{Representative-free derivative claims require fibre saturation.}\\
+T1&:&\mathbb Z/6\mathbb Z\text{ has qubit-factor }\otimes\text{qutrit-factor Weyl kinematics and no }d\text{-rejection.}\\
+T2&:&\mathbb F_3[t]/(t^2(t-1))\text{ has genuine shallow-depth }d\text{-rejections.}
+\end{array}
+\]
+
+\subsection{Definitions D1--D7}
+
+For \(x\in S\), put \(K_x=\kappa(x)\) and
+\[
+  E_x=K_x{}_q\oplus K_x{}_p,\qquad
+  \omega_x((q,p),(q',p'))=pq'-p'q .
+\]
+The residue phase group is \(E_S=\bigoplus_{x\in S}E_x\).  Its
+Weyl-Heisenberg group is a central extension
+\[
+  1\to Z\to\operatorname{WH}(E_S)\xrightarrow{\pi}E_S\to0
+\]
+with the product of the local finite-field commutator characters.  The
+arithmetic quantum field at this layer is
+\[
+  \rho_S:\operatorname{WH}(E_S)\to PU(\mathcal C_S).
+\]
+Write \(W(e)\) for the projective Weyl operator labelled by \(e\in E_S\).
+
+A map family here is not an arbitrary set-map family.  It is a named finite
+additive subgroup, or named finite \(B\)-submodule when available,
+\[
+  F\leq A=\Gamma(\Spec A,\mathcal O).
+\]
+Coordinate-pair maps are elements \((q,p)\in F^2\).  Their residue phase
+labels are
+\[
+  \lambda_{S,F}(q,p)=((q\bmod x,p\bmod x))_{x\in S}\in E_S .
+\]
+
+Let \(d:A\to\Omega^1_{A/B}\) be the universal derivation.  A derivative
+predicate \(P\) is a displayed condition on \((dq,dp)\).  The basic predicate is
+\[
+  P_{\rm flat}=\{(0,0)\},
+\]
+and, after a scalar/action \(\mu\) is named,
+\[
+  P_\mu=\{(\xi,\eta):\eta=\mu\xi\}.
+\]
+The selected residue labels are
+\[
+  C_P(S,F)=
+  \lambda_{S,F}\{(q,p)\in F^2:(dq,dp)\in P\}\subseteq E_S .
+\]
+
+\paragraph{Facts \(L1\)--\(L3\).}
+The selected and rejected Weyl-Heisenberg elements are
+\[
+  \operatorname{Sel}_P(S,F)=\pi^{-1}(C_P(S,F)),\qquad
+  \operatorname{Rej}_P(S,F)=\pi^{-1}(E_S\setminus C_P(S,F)).
+\]
+If \(F\) and \(P\) are additive, then \(C_P(S,F)\) is an additive subgroup of
+\(E_S\).  A derivative predicate gives a representative-free yes/no condition
+on labels in \(\lambda_{S,F}(F^2)\) exactly when it is constant on every fibre
+of \(\lambda_{S,F}\).
+
+\emph{Proof.}
+The map \(\pi\) forgets only the central coordinate, so a Weyl-Heisenberg
+element is selected exactly when its phase label lies in \(C_P(S,F)\).  If
+\(F\) and \(P\) are additive, then
+\(\{(q,p)\in F^2:(dq,dp)\in P\}\) is a subgroup of \(F^2\), and
+\(\lambda_{S,F}\) is a homomorphism, so its image is a subgroup.  Finally, two
+coordinate pairs with the same \(\lambda_{S,F}\)-value label the same
+projective Weyl operator; the derivative condition is label-intrinsic exactly
+when all representatives in that fibre give the same answer.
+
+\subsection{Breadth-First Test Discipline}
+
+A breadth-first test is a finite queue of named families
+\[
+  F_0\subseteq F_1\subseteq\cdots\subseteq A
+\]
+and named predicates \(P\).  At each node one records
+\[
+  \lambda_{S,F_i}(F_i^2)\subseteq E_S,\qquad C_P(S,F_i)\subseteq E_S,
+\]
+then translates \(C_P(S,F_i)\) to selected/rejected Weyl-Heisenberg elements by
+Facts \(L1\)--\(L3\).  The derivative has an \emph{internal bite} when
+\[
+  C_P(S,F_i)\subsetneq\lambda_{S,F_i}(F_i^2),
+\]
+and an \emph{ambient bite} when \(C_P(S,F_i)\subsetneq E_S\).  These are
+constraints on Weyl-Heisenberg elements, not informal diagnostics.
+
+\subsection{Example 1: \texorpdfstring{\(\mathbb Z/6\mathbb Z\)}{Z/6Z} T1}
+
+Let \(A=\mathbb Z/6\mathbb Z\), \(B=\mathbb Z\), and
+\[
+  S=\{(2),(3)\}.
+\]
+AQM-23 proves
+\[
+  \kappa(2)=\mathbb F_2,\qquad \kappa(3)=\mathbb F_3,
+\]
+and the Chinese remainder map gives
+\[
+  A\cong\mathbb F_2\times\mathbb F_3,\qquad
+  a\mapsto(a\bmod2,a\bmod3).
+\]
+Hence
+\[
+  E_S=\mathbb F_2^2\oplus\mathbb F_3^2 .
+\]
+The residue Weyl field is the tensor product of a qubit-factor projective
+representation and a qutrit-factor projective representation, because the
+phase group is the orthogonal direct sum of the two local phase groups.
+
+For the derivative, the quotient exact sequence over \(B=\mathbb Z\) gives
+\[
+  \Omega^1_{A/\mathbb Z}=0.
+\]
+Thus \(dq=dp=0\) for every \(q,p\in A\).  With \(F=A\),
+\(\lambda_{S,A}(A^2)=E_S\), and therefore
+\[
+  C_{P_{\rm flat}}(S,A)=E_S,\qquad
+  \operatorname{Sel}_{P_{\rm flat}}(S,A)=\operatorname{WH}(E_S),\qquad
+  \operatorname{Rej}_{P_{\rm flat}}(S,A)=\emptyset .
+\]
+So \(d\) rejects no residue Weyl element in this example.  The nontrivial
+content is the mixed-residue Weyl kinematics.
+
+\subsection{Example 2: Products and Dual Numbers}
+
+For \(A=\mathbb F_3\times\mathbb F_3\) over \(B=\mathbb F_3\), write
+\(e_0=(1,0)\), \(e_1=(0,1)\).  If \(e^2=e\), then
+\[
+  (2e-1)de=0,\qquad (2e-1)^2=1,
+\]
+so \(de=0\).  Therefore every \(ae_0+be_1\) has zero derivative, and the full
+family \(F=A\) gives \(C_{P_{\rm flat}}(S,A)=E_S\).  Product idempotents
+separate sites without causing derivative rejection.
+
+For
+\[
+  A=k[\epsilon]/(\epsilon^2),\qquad k=\mathbb F_3,\qquad S=\{(\epsilon)\},
+\]
+AQM-54 computes
+\[
+  \Omega^1_{A/k}\cong k\,d\epsilon,\qquad
+  d(a+b\epsilon)=b\,d\epsilon.
+\]
+The residue map is \(a+b\epsilon\mapsto a\), so \(E_S=k^2\).  With \(F=A\),
+the flat predicate requires the \(\epsilon\)-coefficients of \(q\) and \(p\)
+to vanish, but every residue pair is represented by constants.  Hence
+\[
+  C_{P_{\rm flat}}(S,A)=E_S.
+\]
+The derivative sees the nilpotent coefficient, but the reduced residue
+Weyl-Heisenberg group has no corresponding rejection.  If \(F=k\epsilon\),
+then \(\lambda_{S,F}(F^2)=\{0\}\), so only \(W(0)\) is selected; this is a
+map-family support restriction.
+
+\subsection{Example 3: A Two-Site Nonreduced Breadth-First Test T2}
+
+Let
+\[
+  A=k[t]/(t^2(t-1)),\qquad k=\mathbb F_3,\qquad
+  S=\{x_0=(t),\ x_1=(t-1)\}.
+\]
+Both residues are \(k\), so \(E_S=k^2\oplus k^2\).  Write elements as
+\[
+  u=a+bt+ct^2.
+\]
+The residues are
+\[
+  r_0(u)=a,\qquad r_1(u)=a+b+c.
+\]
+For \(f=t^2(t-1)=t^3-t^2\), one has \(f'=3t^2-2t=t\) in \(k\).  Hence
+\[
+  \Omega^1_{A/k}\cong A\,dt/(t\,dt),\qquad
+  d(a+bt+ct^2)=b\,dt.
+\]
+
+First take
+\[
+  F_1=\langle1,t\rangle_k.
+\]
+The scalar residue map is \(a+bt\mapsto(a,a+b)\), so \(F_1\) represents every
+scalar residue pair and \(\lambda_{S,F_1}(F_1^2)=E_S\).  For
+\[
+  e=((q_0,p_0),(q_1,p_1)),
+\]
+the flat predicate imposes \(q_1-q_0=0\) and \(p_1-p_0=0\).  Thus
+\[
+  C_{P_{\rm flat}}(S,F_1)=\{((q,p),(q,p)):q,p\in k\}.
+\]
+The selected Weyl-Heisenberg elements are the central preimage of this
+diagonal subgroup.  The rejected elements are exactly those with
+\[
+  q_0\ne q_1\quad\text{or}\quad p_0\ne p_1.
+\]
+Only \(3^2\) of the \(3^4\) residue phase labels are selected.
+
+For \(P_\mu=\{dp=\mu\,dq\}\), \(\mu\in k\), the selected labels are
+\[
+  C_{P_\mu}(S,F_1)
+  =
+  \{e\in E_S:p_1-p_0=\mu(q_1-q_0)\}.
+\]
+Thus \(3^3\) labels are selected and \(3^4-3^3\) are rejected.  This is a
+derivative constraint stated directly on Weyl-Heisenberg labels.
+
+Now take the next family
+\[
+  F_2=\langle1,t,t^2\rangle_k=A.
+\]
+The derivative still records only \(b\), but the residue difference is
+\[
+  r_1(u)-r_0(u)=b+c.
+\]
+For \(P_{\rm flat}\), set \(b_q=b_p=0\) and choose \(c_q,c_p\) to match any
+desired residue differences.  Therefore
+\[
+  C_{P_{\rm flat}}(S,F_2)=E_S.
+\]
+For \(P_\mu\), choose \(b_q\), set \(b_p=\mu b_q\), and use \(c_q,c_p\) to
+match the two desired residue differences.  Hence \(C_{P_\mu}(S,F_2)=E_S\).
+The derivative bite at \(F_1\) disappears at \(F_2\).
+
+\subsection{Conclusion}
+
+The corrected rule is
+\[
+  (A,B,S,F,P)\leadsto C_P(S,F)\subseteq E_S
+  \leadsto \pi^{-1}(C_P(S,F))\subseteq\operatorname{WH}(E_S).
+\]
+All derivative conclusions in this residue-site layer must end as selected or
+rejected Weyl-Heisenberg elements.  The examples show no \(d\)-rejection for
+\(\mathbb Z/6\mathbb Z\), no reduced residue rejection for dual numbers, and
+real shallow-depth bites for \(\mathbb F_3[t]/(t^2(t-1))\) that disappear when
+the map family is enlarged.

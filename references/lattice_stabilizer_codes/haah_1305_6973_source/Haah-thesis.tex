@@ -1,0 +1,205 @@
+\documentclass[letterpaper,10pt,defended]{cit_thesis}
+
+
+\title{Lattice quantum codes and \\ exotic topological phases of matter}
+\author{Jeongwan Haah}
+\date{May 15, 2013}
+
+
+\pdfminorversion=5
+\pdfobjcompresslevel=2
+
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0.,0.,0.4}
+\definecolor{darkred}{rgb}{0.5,0.,0.}
+\usepackage[pdftex,colorlinks=true,linkcolor=darkblue,citecolor=darkred,urlcolor=blue]{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{prop}[lem]{Proposition}
+\theoremstyle{definition} \newtheorem{defn}{Definition}[chapter]
+\theoremstyle{definition} \newtheorem{rem}{Remark}[chapter]
+\theoremstyle{definition} \newtheorem{example}{Example}[chapter]
+
+% brackets.
+\newcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\ket}[1]{\left| {#1} \right\rangle}
+
+
+% mathematical operators
+\newcommand{\trace}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\tr}{\mathop{\mathrm{tr}}\nolimits}
+\newcommand{\im}{\mathop{\mathrm{im}}\nolimits}
+\newcommand{\coker}{\mathop{\mathrm{coker}}\nolimits}
+\newcommand{\ann}{\mathop{\mathrm{ann}}\nolimits}
+\newcommand{\rank}{\mathop{\mathrm{rank}}\nolimits}
+\newcommand{\codim}{\mathop{\mathrm{codim}}\nolimits}
+\newcommand{\rad}{\mathop{\mathrm{rad}}\nolimits}
+\newcommand{\Tor}{\mathop{\mathrm{Tor}}\nolimits}
+\newcommand{\lspan}{\mathop{\mathrm{span}}\nolimits}
+\newcommand{\diam}{\mathop{\mathrm{diam}}\nolimits}
+\newcommand{\ev}{\mathop{\mathrm{ev}}\nolimits} %evaluation map, used in extracting toric codes.
+\newcommand{\lt}{\mathop{\mathrm{lt}}\nolimits} % leading term. used in the comm-alg appendix. 
+
+% symbols
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\dd}{\mathrm{d}} % integrand
+
+% abbreviations
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\ltqo}{{L_{tqo}}}
+
+
+\newcommand{\drawgenerator}[8]{%
+\xymatrix@!0{%
+& #8 \ar@{-}[ld]\ar@{.}[dd] \ar@{-}[rr] & & #7 \ar@{-}[ld]  \\%
+#1 \ar@{-}[rr] \ar@{-}[dd] &  & #2 \ar@{-}[dd] &            \\%
+& #6 \ar@{.}[ld] &  & #5 \ar@{-}[uu] \ar@{.}[ll]       \\%
+#3 \ar@{-}[rr] &  & #4 \ar@{-}[ru]                       %
+}%
+}
+
+
+\begin{document}
+
+\maketitle
+
+
+\begin{acknowledgments}
+I would like to thank my advisor John Preskill for his inspiring comments and advice, 
+and forgivingness and encouragement during my graduate study.
+The thesis would not have been possible without reverence to his standard of clear understanding.
+I should add that my enjoyable last four years are deeply rooted in him.
+
+A special thanks to Sergey Bravyi for the fruitful collaboration and numerous insights.
+It is not too much to say that the algebraic formulation of this thesis
+grew out from his note on the degeneracy computation.
+The interaction with him gave me an opportunity to do a research internship
+at IBM Watson Research Center, which was a valuable experience.
+I thank Charles Bennett, John Smolin, and Graeme Smith.
+
+L. Yong-uck Chung, who had been my roommate for years, helped me to study algebra.
+He was always willing to explain concepts and related theorems however easy or hard they were.
+Informal discussions with him were absolutely important for me.
+I also thank Eric Rains and Tom Graber for giving insights and answers for mathematical questions.
+
+I appreciate the inspiring discussion with Guifre Vidal and Daniel Gottesman while I was visiting Perimeter Institute,
+which led my attention to the entanglement renormalization group flow.
+
+I also thank Alexei Kitaev for his encouragement and numerous useful comments.
+I was honored to have discussions with him.
+
+I thank my friend I. Han-young Kim, who shared moments of inspiration.
+
+Thanks to the members of IQI and more broadly IQIM for creating an exciting environment,
+including Ann Harvey,
+%
+Michael Beverland,
+Ersen Bilgin,
+Peter Brooks,
+Bill Fefferman,
+Alex Kubica,
+Shaun Maguire,
+Prabha Mandayam,
+Sujeet Shukla,
+%
+Gorjan Alagic,
+Salman Beigi,
+Sergio Boixo,
+Darrick Chang,
+Glen Evenbly,
+Steve Flammia,
+Lukasz Fidkowski,
+Alexey Gorshkov,
+Zhengcheng Gu,
+Liang Jiang,
+Stephen Jordan,
+Robert K\"onig,
+Yi-Kai Liu,
+Nate Lindner,
+Spiros Michalakis,
+Fernando Pastawski,
+Norbert Schuch,
+Stephanie Wehner,
+and
+Beni Yoshida.
+
+I am grateful for comments from Soonwon Choi and Alex Kubica on drafts of these thesis chapters.
+\end{acknowledgments}
+
+
+\begin{abstract}
+This thesis addresses whether it is possible to build a robust memory device for quantum information. Many schemes for fault-tolerant quantum information processing have been developed so far, one of which, called topological quantum computation, makes use of degrees of freedom that are inherently insensitive to local errors. However, this scheme is not so reliable against thermal errors. Other fault-tolerant schemes achieve better reliability through active error correction, but incur a substantial overhead cost. Thus, it is of practical importance and theoretical interest to design and assess fault-tolerant schemes that work well at finite temperature without active error correction.
+
+
+In this thesis, a three-dimensional gapped lattice spin model is found which demonstrates for the first time that a reliable quantum memory at finite temperature is possible, at least to some extent. When quantum information is encoded into a highly entangled ground state of this model and subjected to thermal errors, the errors remain easily correctable for a long time without any active intervention, because a macroscopic energy barrier keeps the errors well localized. As a result, stored quantum information can be retrieved faithfully for a memory time which grows exponentially with the square of the inverse temperature. In contrast, for previously known types of topological quantum storage in three or fewer spatial dimensions the memory time scales exponentially with the inverse temperature, rather than its square. 
+
+
+This spin model exhibits a previously unexpected topological quantum order, in which ground states are locally indistinguishable, pointlike excitations are immobile, and the immobility is not affected by small perturbations of the Hamiltonian. The degeneracy of the ground state, though also insensitive to perturbations, is a complicated number-theoretic function of the system size, and the system bifurcates into multiple noninteracting copies of itself under real-space renormalization group transformations. The degeneracy, the excitations, and the renormalization group flow can be analyzed using a framework that exploits the spin model's symmetry and some associated free resolutions of modules over polynomial algebras.
+\end{abstract}
+
+
+\tableofcontents
+%  (tables of contents, figures, other front matter)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+\input{intro}
+
+
+\chapter{Additive quantum codes}
+\label{chap:additive-codes}
+\input{additive-codes}
+
+\chapter{Algebraic formulation for translationally invariant codes}
+\label{chap:alg-theory}
+\input{alg-theory}
+
+\chapter{Structure of exact Hamiltonians on lattices}
+\label{chap:lowD-codes}
+\input{lowD-codes}
+
+
+\chapter{Cubic code}
+\label{chap:cubic-code}
+\input{cubic-code}
+
+\chapter{Consequences of no-strings rule}
+\label{chap:consq-no-strings}
+\input{consq-no-strings}
+
+\chapter{Renormalization group decoder and error threshold theorem}
+\label{chap:RG-decoder}
+\input{RG-decoder}
+
+\chapter{Self-correcting quantum memory}
+\label{chap:q-mem}
+\input{q-mem}
+
+\appendix
+
+\chapter{Commutative algebra}
+\label{app:algebra}
+\input{comm-alg}
+
+\input{Haah-thesis.bbl}
+\end{document}

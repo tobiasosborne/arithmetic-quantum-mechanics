@@ -1,0 +1,274 @@
+% SHARD-ID: AQM-90-ALGEBRAIC-TORUS-QUANT2
+% SHARD-TITLE: Algebraic Torus Quant2 Test Case
+% SHARD-SUMMARY: Builds the split algebraic torus arithmetic-field Quant2 layer from closed finite-residue points.
+% SHARD-SUMMARY: Computes Laurent differentials and records exactly how derivative predicates select Weyl-Heisenberg labels.
+% SHARD-SUMMARY: Derives the toric-code-like Cayley-square edge complex from named torus units and expresses the result as Weyl constraints.
+% SHARD-KEYWORDS: algebraic torus, Gm, Quant2, Weyl-Heisenberg, Laurent polynomials, dlog, toric code, Cayley complex
+
+\section{Algebraic Torus Quant2 Test Case}
+\label{sec:algebraic-torus-quant2}
+
+\subsection{Status and Source Anchors}
+
+This shard develops the first careful test case for the algebraic torus.
+Stacks supplies spectra, \(D(f)\), localization, standard opens, and Kähler
+differentials in \path{references/algebraic_geometry/stacks_project_algebra.tex},
+lines 2972--3211, 33793--33872, and 34310--34340; affine morphisms and
+anti-equivalence in \path{references/algebraic_geometry/stacks_project_schemes.tex},
+lines 841--963; and finite closed-point residues by the AQM-28
+Nullstellensatz locator.  The term \(\mathrm d\log\) is anchored by
+\path{references/log_geometry/stacks_project_tag_0FMU.html}, lines 214--223.
+The Weyl step is AQM-14, AQM-28, AQM-78, and convention \texttt{(ay)}.  CSS
+constraints are AQM-08 and AQM-89.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{array}{rcl}
+D1&:&k=\mathbb F_q,\quad A_T=k[x,x^{-1},y,y^{-1}],\quad T=\Spec A_T.\\
+D2&:&T=D(xy)\subset\Spec k[x,y],\quad T(k)=(k^\times)^2.\\
+D3&:&E_T(U)=\bigoplus_{z\in U\cap |T|_{\rm cl}}\kappa(z)^2,\quad
+      \rho_U:\operatorname{WH}(E_T(U))\to PU(\mathcal C_U).\\
+L1&:&\text{Nonzero Laurent monomials have infinite full closed support.}\\
+D4&:&\mathrm d\log x=x^{-1}dx,\quad \mathrm d\log y=y^{-1}dy.\\
+L2&:&\Omega^1_{A_T/k}=A_T\,\mathrm d\log x\oplus A_T\,\mathrm d\log y.\\
+L3&:&d(x^ay^b)=x^ay^b(\bar a\,\mathrm d\log x+\bar b\,\mathrm d\log y).\\
+T1&:&d\text{-flat monomial labels need fibre saturation on finite supports.}\\
+D5&:&\alpha,\beta\in k^\times,\quad G=\langle\alpha\rangle\times\langle\beta\rangle.\\
+T2&:&G\text{ gives a Cayley-square complex selecting edge Weyl labels.}
+\end{array}
+\]
+
+\subsection{The Torus as a Scheme}
+
+Let \(A_T=k[x,x^{-1},y,y^{-1}]\).  Equivalently, \(A_T=k[x,y]_{xy}\), so
+\[
+  T=\Spec A_T=D(xy)\subset\mathbb A^2_k.
+\]
+Thus a prime of \(T\) is a prime of \(k[x,y]\) not containing \(x\) or \(y\).
+A \(k\)-rational point is a \(k\)-algebra map \(A_T\to k\), hence is determined
+by nonzero images of \(x\) and \(y\).  Therefore
+\[
+  T(k)=(k^\times)^2.
+\]
+For \(a,b\in k^\times\), the corresponding maximal ideal is
+\[
+  \mathfrak m_{a,b}=(x-a,y-b)A_T,\qquad \kappa(\mathfrak m_{a,b})=k.
+\]
+
+The torus group law is not a slogan.  It is the affine morphism with
+\[
+  m^\#(x)=x\otimes x,\quad m^\#(y)=y\otimes y,\quad
+  e^\#(x)=e^\#(y)=1,\quad i^\#(x)=x^{-1},\quad i^\#(y)=y^{-1}.
+\]
+The group axioms reduce, under affine anti-equivalence, to associativity,
+unit, and inverse identities for multiplication of Laurent monomials.  This is
+the precise sense in which \(T\) is an algebraic group object used here.
+
+\subsection{Raw Closed-Point Quant2}
+
+For an open \(U\subset T\), the raw arithmetic-field Quant2 label group is
+\[
+  E_T(U)=\bigoplus_{z\in U\cap |T|_{\rm cl}}\kappa(z)^2,
+\]
+with finite support, and the arithmetic quantum field is
+\[
+  \rho_U:\operatorname{WH}(E_T(U))\longrightarrow PU(\mathcal C_U).
+\]
+This is exactly the AQM-28 closed-point construction applied to \(A_T\).
+The rational support \(S_{\rm rat}=T(k)=(k^\times)^2\) is a finite subtheory
+with \((q-1)^2\) residue sites, each of residue field \(k\).  It is not the full torus theory, because the closed points of
+\(T\) are infinite: for every monic irreducible \(\pi(x)\ne x\), the ideal
+\[
+  (\pi(x),y-1)A_T
+\]
+is a closed point with residue \(k[x]/(\pi)\), and AQM-29 records infinitely
+many such \(\pi\).
+
+\paragraph{Lemma \(L1\).}
+Every Laurent monomial \(x^ay^b\), \(a,b\in\mathbb Z\), is nonzero at every
+closed point of \(T\).  Hence its full closed-point profile has infinite
+support.
+
+\emph{Proof.}
+The elements \(x\) and \(y\) are units in \(A_T\).  Their images in every
+residue field \(\kappa(z)\) are therefore nonzero units, as are all Laurent
+monomials \(x^ay^b\).  Since the closed-point set is infinite, the support is
+infinite.
+
+Thus Laurent monomials define formal full profiles.  They define actual Weyl
+operators only after restriction to a finite closed support \(S\), for example
+\(S_{\rm rat}\) or \(G\subset T(k)\).
+
+\subsection{The Derivation on Laurent Monomials}
+
+Let \(d:A_T\to\Omega^1_{A_T/k}\) be the universal \(k\)-derivation.  Define
+\[
+  \mathrm d\log x=x^{-1}dx,\qquad
+  \mathrm d\log y=y^{-1}dy.
+\]
+For every \(A_T\)-module \(M\), a \(k\)-derivation \(D:A_T\to M\) is determined
+freely by \(D(x)\) and \(D(y)\), because the inverse relation gives
+\[
+  D(x^{-1})=-x^{-2}D(x),\qquad D(y^{-1})=-y^{-2}D(y).
+\]
+Conversely, arbitrary \(u,v\in M\) define a derivation by the Laurent Leibniz
+rule with \(D(x)=u\), \(D(y)=v\).  Hence
+\[
+  \Omega^1_{A_T/k}\cong A_T\,dx\oplus A_T\,dy
+  =A_T\,\mathrm d\log x\oplus A_T\,\mathrm d\log y.
+\]
+
+\paragraph{Lemma \(L3\).}
+For \(a,b\in\mathbb Z\),
+\[
+  d(x^ay^b)=x^ay^b(\bar a\,\mathrm d\log x+\bar b\,\mathrm d\log y),
+\]
+where \(\bar a,\bar b\in k\) are the images of the integers.
+
+\emph{Proof.}
+The formula follows from the Leibniz rule for positive exponents.  The inverse
+relations above give the negative-exponent case.  Add the \(x\)- and
+\(y\)-parts.
+
+Since \(x^ay^b\) is a unit and \(\mathrm d\log x,\mathrm d\log y\) are a basis,
+\[
+  d(x^ay^b)=0\quad\Longleftrightarrow\quad
+  a\equiv b\equiv0\pmod p.
+\]
+Thus the derivative is highly nontrivial on Laurent families: it kills
+\(p\)-power monomials but not ordinary coordinate monomials.
+
+\subsection{Derivative Selection Is Not Automatically Label-Intrinsic}
+
+For a finite exponent set \(M\subset\mathbb Z^2\), set
+\[
+  U_M=\langle x^ay^b:(a,b)\in M\rangle_k\subset A_T.
+\]
+For a finite support \(S\subset |T|_{\rm cl}\), the residue label map is
+\[
+  \lambda_{S,M}:U_M^2\to E_T(S).
+\]
+The flat derivative predicate selects
+\[
+  C_{\rm flat}(S,M)=
+  \lambda_{S,M}\{(q,p)\in U_M^2:dq=dp=0\}\subset E_T(S).
+\]
+The selected Weyl-Heisenberg elements are exactly
+\[
+  \operatorname{Sel}_{\rm flat}(S,M)=\pi^{-1}(C_{\rm flat}(S,M)),
+\]
+where \(\pi:\operatorname{WH}(E_T(S))\to E_T(S)\) is the label map.
+
+The crucial warning is fibre saturation.  Over \(k=\mathbb F_5\), on the full
+rational support \(S=T(k)\), the functions \(x\) and \(x^5\) have the same
+residue profile because \(a^5=a\) for every \(a\in\mathbb F_5\).  But
+\[
+  d(x)=x\,\mathrm d\log x\ne0,\qquad
+  d(x^5)=5x^5\,\mathrm d\log x=0.
+\]
+Therefore the same Weyl label can have a non-flat representative and a flat
+representative if the family contains both \(x\) and \(x^5\).  By AQM-88, the
+image definition still gives a selected subset, but it is not a
+representative-free derivative predicate on labels unless the chosen family
+and predicate are checked to be fibre-saturated.
+
+\subsection{Cayley Squares from Torus Units}
+
+Choose units \(\alpha,\beta\in k^\times\), with orders \(N_x,N_y\), and set
+\[
+  G=\langle\alpha\rangle\times\langle\beta\rangle\subset T(k).
+\]
+Write a point as \(g=(u,v)\).  Define
+\[
+  Xg=(\alpha u,v),\qquad Yg=(u,\beta v).
+\]
+The two translations commute because multiplication in \(k^\times\) commutes:
+\[
+  XYg=YXg=(\alpha u,\beta v).
+\]
+Now form the finite incidence sets
+\[
+  S_0=G,\qquad S_1=G\times\{x,y\},\qquad S_2=G.
+\]
+Over \(\mathbb F_2\), define
+\[
+  \partial_1(g,x)=g+Xg,\qquad
+  \partial_1(g,y)=g+Yg,
+\]
+and
+\[
+  \partial_2(g)=(g,x)+(Xg,y)+(Yg,x)+(g,y).
+\]
+Then
+\[
+\begin{aligned}
+\partial_1\partial_2(g)
+&=g+Xg+Xg+XYg+Yg+YXg+g+Yg\\
+&=XYg+YXg=0 .
+\end{aligned}
+\]
+This is the torus group law showing up as a boundary identity.
+
+Put qubit Weyl labels on the edge set \(S_1\):
+\[
+  E_\square(G)=\mathbb F_2^{S_1}{}_q\oplus\mathbb F_2^{S_1}{}_p.
+\]
+The CSS subgroup selected by the square complex is
+\[
+  L_\square(G)=
+  (\operatorname{im}\partial_1^T\oplus0)+(0\oplus\operatorname{im}\partial_2)
+  \subset E_\square(G).
+\]
+By AQM-08, \(\partial_1\partial_2=0\) is exactly the isotropy condition.  The
+selected and rejected Weyl-Heisenberg elements are therefore
+\[
+  \operatorname{Sel}_\square(G)=\pi^{-1}(L_\square(G)),\qquad
+  \operatorname{Rej}_\square(G)=
+  \pi^{-1}(E_\square(G)\setminus L_\square(G)).
+\]
+
+\subsection{Worked Finite Examples}
+
+For \(k=\mathbb F_3\), choose \(\alpha=\beta=2\).  Both have order \(2\).
+Thus \(G=T(\mathbb F_3)\), with
+\[
+  |S_0|=4,\qquad |S_1|=8,\qquad |S_2|=4.
+\]
+This is the \(2\times2\) periodic square complex.  It is already a valid edge
+Weyl-Heisenberg constraint system, though it is very small.
+
+For \(k=\mathbb F_5\), choose \(\alpha=\beta=2\).  Since
+\(2,2^2=4,2^3=3,2^4=1\), both units have order \(4\).  Hence
+\[
+  G=T(\mathbb F_5),\qquad |S_0|=16,\quad |S_1|=32,\quad |S_2|=16.
+\]
+The face at \(g=(1,1)\) is
+\[
+  ((1,1),x)+((2,1),y)+((1,2),x)+((1,1),y),
+\]
+whose boundary cancels because both paths end at \((2,2)\).  This has the
+same size as the \(k=4\) toric instance validated in AQM-05 and AQM-06, now
+with provenance from torus group law plus the named unit \(2\).
+
+For \(k=\mathbb F_2\), \(k^\times=\{1\}\).  No nontrivial finite step is
+available on \(T(k)\).  The rational-support Cayley-square route therefore
+degenerates at \(\mathbb F_2\), even though qubit edge labels may still be
+placed on a nontrivial torus coming from a larger field such as \(\mathbb F_5\).
+
+\subsection{Conclusion}
+
+The algebraic torus gives a sharper test case than the constant finite group
+scheme.  Raw Quant2 on \(T\) is the closed-point residue Weyl field of
+AQM-28.  The rational support \(T(k)\) is only a finite truncation.  The
+derivation has canonical logarithmic coordinates and kills exactly the
+\(p\)-power Laurent directions in the monomial basis, but derivative
+constraints on finite rational Weyl labels are not automatically
+representative-free.  Finally, after choosing two finite unit steps, the torus
+group law produces a square chain complex whose output is precisely a selected
+subgroup of the edge Weyl-Heisenberg group.  This is the rigorous toric-code
+analogue to pursue next, not as a bare consequence of \(\Spec A_T\), but as
+\[
+  (T,\ x,y,\ \alpha,\beta,\ \mathbb F_2\text{-edge labels})
+  \leadsto L_\square\subset E_\square
+  \leadsto \pi^{-1}(L_\square)\subset\operatorname{WH}(E_\square).
+\]

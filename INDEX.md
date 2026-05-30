@@ -181,6 +181,10 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-85-QSA-AGREEMENT-INEQUIVALENCE-TABLE` | `report/sections/85_quantum_system_association_agreement_inequivalence_table.tex` | Agreement and Inequivalence Table |
 | `AQM-86-QSA-DEGENERATE-OVERRESTRICTIVE-CASES` | `report/sections/86_quantum_system_association_degenerate_overrestrictive_cases.tex` | Degenerate and Over-Restrictive Cases |
 | `AQM-87-QSA-OPEN-PROBLEMS-NEXT-TARGETS` | `report/sections/87_quantum_system_association_open_problems_next_targets.tex` | Open Problems and Next Catalogue Targets |
+| `AQM-88-DERIVATIVE-CONSTRAINTS-RESIDUE-WEYL` | `report/sections/88_derivative_constraints_residue_weyl.tex` | Derivative Constraints on Residue Weyl-Heisenberg Fields |
+| `AQM-89-SCHEME-INCIDENCE-CODE-SOURCES` | `report/sections/89_scheme_incidence_code_sources.tex` | Scheme-Incidence Sources for Code Complexes |
+| `AQM-90-ALGEBRAIC-TORUS-QUANT2` | `report/sections/90_algebraic_torus_quant2.tex` | Algebraic Torus Quant2 Test Case |
+| `AQM-91-HAAH-LAURENT-TORUS-QUANT2` | `report/sections/91_haah_laurent_torus_quant2.tex` | Haah Laurent Modules and Torus Quant2 |
 
 ## Source Topics
 
@@ -196,6 +200,7 @@ Source manifests should be created under `references/<topic>/SOURCES.md`.
 | Spin geometry | `references/spin_geometry/SOURCES.md` | Atiyah PDF and text extraction acquired for Riemann-surface spin structures as square roots of canonical line bundles and spinor-parity statements. |
 | Log geometry | `references/log_geometry/SOURCES.md` | Stacks tag 0FMU HTML snapshot acquired for logarithmic differentials, \(d\log\), residues, and the log-pole exact sequence. |
 | Toric codes and Levin-Wen models | `references/toric_code/SOURCES.md` | Kitaev arXiv source bundle acquired for the toric-code stabilizer convention. |
+| Lattice stabilizer codes and Laurent-polynomial methods | `references/lattice_stabilizer_codes/SOURCES.md` | Haah source bundles acquired for cubic codes, translation-group algebra/free-module Pauli Hamiltonians, lattice-code lecture notes, the 2D prime-qudit toric-code classification theorem, and adjacent Haah--Vijay--Fu fracton polynomial methods. |
 | Symplectic QECC and stabilizer geometry | `references/symplectic_qecc/SOURCES.md` | Gottesman, Ashikhmin-Knill, and Gross arXiv source bundles acquired for stabilizer symplectic conventions, qudit error bases, finite Hudson/Gaussian states, and prime-field Pauli comparisons. |
 | Weyl-Heisenberg and Weil representations | `references/heisenberg_weil/SOURCES.md` | Prasad, Beny-Crann-Lee-Park-Youn, Bekka, Solomon, Lysenko, Sidana-Kashyap, Gluesing-Luerssen-Pllaha, Trias, Hashimoto-Horibe-Hayashi, Korbelar-Tolar, Galindo, Poonen, and Kudla sources acquired for LCA, ring, finite Frobenius-ring, finite Clifford, local, and adelic Weyl-Heisenberg representation conventions. |
 | Finite commutative ring database | `references/finite_ring_database/SOURCES.md` | Nowicki, Behboodi-Beyranvand-Hashemi-Khabazian, Blackburn-McLean, Alabiad-Alkhamees, GAP, Sage, OSCAR, Nemo, FLINT, and SQLite sources acquired for finite-ring catalogue planning, tooling, and storage choices. |

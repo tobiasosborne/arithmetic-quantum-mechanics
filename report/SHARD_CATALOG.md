@@ -789,3 +789,39 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Turns the preserved Step 21--22 blockers into explicit source, convention, computation, and run targets.
 - Summary: Records parafermion, fusion-category, finite-ring, completion, dynamics, and noncommutative/nonunital boundaries as questions or proposals.
 - Keywords: quantum-system association, open problems, next targets, blockers, finite rings, fusion category, completions, dynamics
+
+## `AQM-88-DERIVATIVE-CONSTRAINTS-RESIDUE-WEYL`
+
+- Source: `report/sections/88_derivative_constraints_residue_weyl.tex`
+- Title: Derivative Constraints on Residue Weyl-Heisenberg Fields
+- Summary: Defines derivative selections as selected and rejected Weyl-Heisenberg elements in the residue-site phase group.
+- Summary: Formalizes breadth-first map-family tests without using arbitrary set maps from \(\Spec R\).
+- Summary: Works \( \mathbb Z/6\mathbb Z \), dual-number, product, and two-site nonreduced examples.
+- Keywords: derivative constraints, Weyl-Heisenberg, residue fields, finite rings, Spec, Z6, Kahler differentials
+
+## `AQM-89-SCHEME-INCIDENCE-CODE-SOURCES`
+
+- Source: `report/sections/89_scheme_incidence_code_sources.tex`
+- Title: Scheme-Incidence Sources for Code Complexes
+- Summary: Separates bare finite spectra from schemes equipped with incidence or group-law data.
+- Summary: Gives checked Weyl-label targets for Steane, Reed-Muller, Shor, and toric-code source conjectures.
+- Summary: Explains why the constant finite group-scheme toric route is structured extra data, not a consequence of \(\Spec R\) alone.
+- Keywords: scheme incidence, group scheme, toric code, Steane code, Reed-Muller, Shor code, Weyl-Heisenberg constraints
+
+## `AQM-90-ALGEBRAIC-TORUS-QUANT2`
+
+- Source: `report/sections/90_algebraic_torus_quant2.tex`
+- Title: Algebraic Torus Quant2 Test Case
+- Summary: Builds the split algebraic torus arithmetic-field Quant2 layer from closed finite-residue points.
+- Summary: Computes Laurent differentials and records exactly how derivative predicates select Weyl-Heisenberg labels.
+- Summary: Derives the toric-code-like Cayley-square edge complex from named torus units and expresses the result as Weyl constraints.
+- Keywords: algebraic torus, Gm, Quant2, Weyl-Heisenberg, Laurent polynomials, dlog, toric code, Cayley complex
+
+## `AQM-91-HAAH-LAURENT-TORUS-QUANT2`
+
+- Source: `report/sections/91_haah_laurent_torus_quant2.tex`
+- Title: Haah Laurent Modules and Torus Quant2
+- Summary: Compares Haah's Laurent-polynomial module formalism with the algebraic-torus Quant2 shard.
+- Summary: Identifies the finite periodic bridge where the AQM-90 Cayley square becomes Haah's toric-code matrix.
+- Summary: Records lessons for expressing arithmetic-field dynamics as Weyl-Heisenberg label constraints.
+- Keywords: Haah, Laurent polynomials, algebraic torus, Quant2, toric code, Weyl-Heisenberg, finite support
