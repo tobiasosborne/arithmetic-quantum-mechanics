@@ -34,14 +34,15 @@ L1&:&\text{A closed point }x\in X_r\text{ splits over }k_s\text{ through }
       B_x=\kappa(x)\otimes_{k_r}k_s.\\
 L2&:&\text{The naive diagonal label map multiplies the trace commutator by }
       n=s/r.\\
-L3&:&\text{A trace-one element }c_x\in B_x\text{ gives a Weyl-compatible
-      label embedding.}\\
+L3&:&\text{A trace-one element }c_x\in B_x\text{ preserves the non-half Weyl
+      multiplier.}\\
 T1&:&\text{Trace-normalized local embeddings induce monomorphisms of
       open-local Weyl nets.}\\
 T2&:&\text{Prime-to-}p\text{ scales have canonical coherent embeddings.}\\
 T3&:&X_0=\Spec\mathbb F_3\text{ gives }
       \varinjlim_{3\nmid r}M_{3^r}(\mathbb C).\\
-T4&:&\text{Frobenius acts by }W(q,p)\mapsto W(q^3,p^3).
+T4&:&\text{Frobenius is an }\mathbb F_3\text{-linear trace-Weyl action }
+      W(q,p)\mapsto W(q^3,p^3).
 \end{array}
 \]
 
@@ -122,20 +123,21 @@ Define
 \[
   \tau_{s,r,x}(q,p_0)=((q_y,c_y p_{0,y}))_{y\mapsto x}.
 \]
-For \(e=(q,p_0)\) and \(f=(q',p'_0)\), the fine exponent becomes
+The AQM-28 closed-point Weyl law is the non-half product law
 \[
-\begin{aligned}
-  \sum_{y\mapsto x}
-  \Tr_{\kappa(y)/\mathbb F_p}
-  \bigl(c_y(p_{0,y}q'_y-q_y p'_{0,y})\bigr)
-  &=
-  \Tr_{K/\mathbb F_p}
-  \bigl(\Tr_{B_x/K}(c_x(a\otimes1))\bigr)\\
-  &=
-  \Tr_{K/\mathbb F_p}(a).
-\end{aligned}
+  W(q,p_0)W(q',p'_0)=\psi_x(p_0q')W(q+q',p_0+p'_0),
 \]
-Thus \(\tau_{s,r,x}\) preserves the character-valued Weyl commutator.  It is
+so multiplier preservation must be checked before claiming an algebra map.  For
+\(e=(q,p_0)\), \(f=(q',p'_0)\), trace transitivity gives
+\[
+  \sum_y\Tr_{\kappa(y)/\mathbb F_p}(c_y p_{0,y}q'_y)=\Tr_{K/\mathbb F_p}\!\bigl(\Tr_{B_x/K}(c_x(p_0q'\otimes1))\bigr)=\Tr_{K/\mathbb F_p}(p_0q'),
+\]
+Thus the actual Weyl multiplier is preserved; the adjoint scalar follows by
+setting \(q'=q\).  For \(a=p_0q'-q p'_0\), the same calculation gives
+\[
+  \sum_y\Tr_{\kappa(y)/\mathbb F_p}\bigl(c_y(p_{0,y}q'_y-q_y p'_{0,y})\bigr)=\Tr_{K/\mathbb F_p}(a),
+\]
+Thus \(\tau_{s,r,x}\) also preserves the character-valued Weyl commutator.  It is
 injective because \(c_x\ne0\), so some component \(c_y\) is nonzero.
 
 Taking the direct sum of \(\tau_{s,r,x}\) over the finite support of a label
@@ -221,11 +223,10 @@ definition yet.
 
 For the first missing full-tower step, \(r=1,s=3\), the naive trace is zero on
 \(\mathbb F_3\) because \(\Tr_{\mathbb F_{27}/\mathbb F_3}(1)=3=0\).  A
-trace-one element exists but is a choice.  For example, if
-\(\theta^3+2\theta^2+1=0\), then this irreducible cubic has root trace
-\(\Tr(\theta)=1\), and \((q,p)\mapsto(q,\theta p)\) is a valid embedding
-\(\mathcal A_1\hookrightarrow\mathcal A_3\).  Choosing \(\theta\) is extra
-structure, not a canonical consequence of \(k\subset k_3\).
+trace-one element exists but is a choice.  For any chosen \(\theta\in
+\mathbb F_{27}\) with \(\Tr(\theta)=1\), \((q,p)\mapsto(q,\theta p)\) is a
+valid embedding \(\mathcal A_1\hookrightarrow\mathcal A_3\).  Choosing
+\(\theta\) is extra structure, not a canonical consequence of \(k\subset k_3\).
 
 \subsection{Frobenius on the Point Net T4}
 
@@ -235,24 +236,23 @@ At scale \(r\), define
 \]
 The trace is Frobenius-invariant:
 \[
-  \Tr_{k_r/\mathbb F_3}(a^3)
-  =
-  \sum_{i=0}^{r-1}a^{3^{i+1}}
-  =
-  \sum_{i=0}^{r-1}a^{3^i}
-  =
-  \Tr_{k_r/\mathbb F_3}(a).
+  \Tr_{k_r/\mathbb F_3}(a^3)=
+  \sum_{i=0}^{r-1}a^{3^{i+1}}=\sum_{i=0}^{r-1}a^{3^i}
+  =\Tr_{k_r/\mathbb F_3}(a).
 \]
-Therefore \(F_r\) preserves the Weyl commutator and induces
+The map \(F_r\) is \(\mathbb F_3\)-linear and \(k_r\)-semilinear, not a
+\(k_r\)-linear symplectic automorphism in the sense of AQM-42 when \(r>1\).
+Since \(\Tr((p q')^3)=\Tr(p q')\), it preserves the non-half multiplier and
+commutator, so it induces
 \[
   \Phi_r(W_r(q,p))=W_r(q^3,p^3).
 \]
-This is a Clifford/Gaussian automorphism of order \(r\).  For
-\(k_2=\mathbb F_3[u]/(u^2+1)\), \(u^3=-u\), so
+This is an \(\mathbb F_3\)-linear trace-Weyl algebra automorphism of order
+\(r\), Clifford after choosing an \(\mathbb F_3\)-basis, not a \(k_r\)-linear
+Gaussian map.  For \(k_2=\mathbb F_3[u]/(u^2+1)\), \(u^3=-u\), so
 \[
   \Phi_2(W(a+bu,c+du))=W(a-bu,c-du).
 \]
-
 The prime-to-\(3\) embeddings are Frobenius-equivariant.  Indeed
 \[
   S_{s,r}F_r(q,p)=(q^3,n^{-1}p^3)
@@ -276,5 +276,5 @@ subtower; the full tower exists only after coherent trace-one or compatible
 character data are added.  For the arithmetic point over \(\mathbb F_3\), the
 canonical continuum object currently justified by the report is the
 prime-to-\(3\) algebraic colimit of the matrix algebras \(M_{3^r}(\mathbb C)\),
-and Frobenius acts on it by the compatible Clifford automorphisms
-\(W(q,p)\mapsto W(q^3,p^3)\).
+with Frobenius acting by the compatible \(\mathbb F_3\)-linear trace-Weyl
+automorphisms \(W(q,p)\mapsto W(q^3,p^3)\), not by \(k_r\)-linear Gaussian maps.

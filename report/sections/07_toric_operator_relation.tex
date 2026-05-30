@@ -71,7 +71,7 @@ not \(C^0\to C^1\). On ghost degree one it maps to two-check ghosts, not to
 faces. Thus \(Q_{\mathrm{cell}}\) is not literally \(Q_{\mathrm{gh}}\) on any
 canonical low-ghost subspace of \(\mathcal H_{\mathrm{gh}}\).
 
-If one wants a Fock-space operator whose one-particle restriction is
+If one wants a cell-fermion operator whose one-particle restriction is
 \(Q_{\mathrm{cell}}\), one must build a different Fock space. Choose an
 oriented signed cellular boundary over \(\mathbb Z\),
 \[
@@ -82,7 +82,8 @@ oriented signed cellular boundary over \(\mathbb Z\),
 \]
 Let \(W=W_0\oplus W_1\oplus W_2\) be the complex vector space with basis the
 oriented cells, and let \(a_\sigma^*,a_\sigma\) be creation and annihilation
-operators for cell fermions. The second-quantized cellular differential is
+operators for cell fermions. The number-preserving CAR bilinear with this
+one-particle matrix is
 \[
   \widehat Q_{\mathrm{cell}}
   =
@@ -90,12 +91,16 @@ operators for cell fermions. The second-quantized cellular differential is
   +
   \sum_{f,e}(\delta^1_{\mathbb Z})_{fe}a_f^*a_e .
 \]
-It preserves fermion number and raises cell degree. Its square is zero because
-\(\delta^1_{\mathbb Z}\delta^0_{\mathbb Z}=0\), and on the one-particle sector
-\(W\) it is exactly the signed cellular cochain differential. This is a
-cell-fermion Fock space, not the check-ghost Fock space used by
-\(Q_{\mathrm{gh}}\). Reducing the signed incidence matrices modulo \(2\) gives
-the CSS supports used below.
+It preserves fermion number and raises the cell degree of each one-particle
+label. On the one-particle sector \(W\), its restriction is exactly the signed
+cellular cochain differential and squares to zero because
+\(\delta^1_{\mathbb Z}\delta^0_{\mathbb Z}=0\). No full-Fock nilpotence claim is
+made for this number-preserving bilinear. Such a claim would require a
+separate graded exterior-chain derivation with Koszul signs, which is not fixed
+in the local conventions here. This is therefore only a one-particle
+cell-fermion comparison, not a check-ghost construction and not the
+check-ghost Fock space used by \(Q_{\mathrm{gh}}\). Reducing the signed
+incidence matrices modulo \(2\) gives the CSS supports used below.
 
 \subsection{The Induced Operator Construction}
 

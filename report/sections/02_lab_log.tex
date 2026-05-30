@@ -6,16 +6,17 @@
 
 \section{Lab Log}
 
+Chronology boundary: this shard is complete through the 2026-05-26 minimal-fermion entry below, which reaches
+Section~\ref{sec:minimal-fermion-geometry-catalogue}; the master report now continues through AQM-91.  For later status, use the shard text, report maps, \texttt{INDEX.md}, and the relevant source manifests until a log catch-up pass.
+
 \subsection*{2026-05-24}
 
 Initial lab-book scaffold created.
 
 \begin{itemize}
   \item Established \texttt{report.tex} as the sharded LaTeX master.
-  \item Added report source maps, convention and index files, source-manifest
-  placeholders, run-bundle rules, and a tool runner.
-  \item Recorded that no sources have been acquired and no scientific claims
-  have been checked yet.
+  \item Added report source maps, convention and index files, source-manifest placeholders, run-bundle rules, and a tool runner.
+  \item Recorded that no sources have been acquired and no scientific claims have been checked yet.
 \end{itemize}
 
 \subsection*{2026-05-24 Steane Clifford Ghost Gaussians}
@@ -25,8 +26,7 @@ derivations.  The latest addition is
 Section~\ref{sec:clifford-group-ghost-gaussian-theorem}: arbitrary Clifford
 covariance is stated for signed Pauli stabilizer presentations, and
 presentation changes are lifted by number-preserving fermionic Gaussian
-operations on the ghosts.  The accompanying Steane run checks all standard
-H/P/CNOT Clifford generators and the elementary GL6 ghost moves.
+operations on the ghosts.  Generated evidence is registered through \path{scripts/lattice_codes/steane_all_clifford_ghost_gaussians.jl}, \path{runs/2026-05-24-steane-all-clifford-ghost-gaussians/}, and its CSVs.
 
 \subsection*{2026-05-24 Arithmetic Quantum Fields}
 
@@ -34,8 +34,7 @@ Section~\ref{sec:arithmetic-quantum-fields} adds the first explicit
 arithmetic-quantum-field proposal.  A finite function space
 \(E\leq\operatorname{Map}(X,V)\) receives a pointwise symplectic form; after
 quotienting its radical, its Weyl-Heisenberg displacements define the field
-observable algebra.  The run bundle checks finite-set, vector-space, and
-finite-variety examples over \(F_3\).
+observable algebra.  Generated examples are registered through \path{scripts/bridges/arithmetic_quantum_fields.jl}, \path{runs/2026-05-24-arithmetic-quantum-fields/}, and AQM-14 CSV rows in \texttt{INDEX.md}.
 
 \subsection*{2026-05-24 Projective Sheaf Fields}
 
@@ -44,13 +43,9 @@ Sections~\ref{sec:projective-sheaf-field-definitions} and
 version; Section~\ref{sec:projective-line-stalks} works out the rational-point
 stalks; Section~\ref{sec:stalks-as-field-germs} records the working dictionary
 ``stalk equals local field germ, fiber equals sampled field value.''  Local
-Stacks Project TeX sources now ground the definitions of
-presheaf, sheaf, stalk, projective space, varieties, twists, and
-\(H^0(\mathbf P^n,\mathcal O(d))\).  The run bundle checks
-\(\mathbf P^1_{\mathbb F_3}\) with \(H^0(\mathcal O(d))\otimes\mathbb F_3^2\)
-for \(d=0,\ldots,4\), including the \(d=1\) pairing radical, the \(d=4\)
-evaluation kernel, the local germs whose residues give the evaluation rows,
-and the full \(d=0,\ldots,4\) scalar residue table.
+Stacks Project TeX sources now ground the definitions of presheaf, sheaf,
+stalk, projective space, varieties, twists, and
+\(H^0(\mathbf P^n,\mathcal O(d))\).  Generated projective-line evidence is registered through \path{scripts/bridges/projective_line_sheaf_fields.jl}, \path{runs/2026-05-24-projective-line-sheaf-fields/}, and AQM-15--AQM-18 CSV rows in \texttt{INDEX.md}.
 
 \subsection*{2026-05-25 Canonical Boson/Fermion Field Test}
 
@@ -65,9 +60,9 @@ variables remain a sourced GAR/fermionic phase-space calculus for later work.
 
 Sections~\ref{sec:grassmann-weyl-fermion-displacements} and
 \ref{sec:grassmann-weyl-fermion-displacement-derivations} correct the
-Grassmann displacement question using Cahill--Glauber's Physical Review A
-source converted with \texttt{marker}.  The abstract displacement symbols are
-represented by
+Grassmann displacement question using the active official arXiv source chain
+\texttt{cahill-glauber-density-fermions-1999} in \path{references/canonical_fields/SOURCES.md}; its local TeX locator is \path{references/canonical_fields/cahill_glauber_physics_9808029v1_source/fxxx.tex}.
+The older APS PDF and \texttt{marker} artifacts are historical source-integrity records only, not active report locators.  The abstract displacement symbols are represented by
 \(D(\gamma)=\exp(\sum_i(a_i^\dagger\gamma_i-\gamma_i^*a_i))\) inside the
 Grassmann-extended finite CAR algebra.  The derivation shard proves unitarity,
 the operator shifts \(a_i\mapsto a_i+\gamma_i\), and the Grassmann-valued ray

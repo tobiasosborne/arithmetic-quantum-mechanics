@@ -1,3 +1,3 @@
-# Algebraic certificate only: no full physical or ghost Hilbert matrices are built.
+# Algebraic summary/check record only: no full physical or ghost Hilbert matrices are built.
 k,nqubits,nchecks,max_check_weight,all_projectors_commute,all_checks_square_to_identity,stabilizer_rank,independent_check_relations,logical_qubits,physical_hilbert_dim_exact,code_dim_exact,boundary_rank_degree_one_exact,h0_dim_exact,q_square_certificate,anticommutator_certificate,degree_zero_homology_matches_code
 4,32,32,4,true,true,30,2,2,4294967296,4,4294967292,4,true,true,true

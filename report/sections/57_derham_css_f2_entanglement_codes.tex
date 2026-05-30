@@ -11,11 +11,15 @@ This shard continues the finite \(C^1\)-basis CSS prototype of AQM-54--AQM-56.
 Its qubits and Bell sectors are conditional on the displayed prototype
 stabilizers; they are not canonical tangent-Weyl consequences of
 \(\Spec A\).  It uses the same source anchors:
-Stacks algebra lines 33793--33872, 34103--34120, 34310--34340, and
-34388--34524 for K\"ahler differentials and the de Rham complex, AQM-08 for
-the CSS/stabilizer dictionary, and \texttt{CONVENTIONS.md} (ao) for the
-de Rham CSS test.  The new claims in this shard are direct solutions of the
-displayed prototype stabilizer equations.
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+33793--33872, 34103--34120, 34310--34340, and 34388--34524 for K\"ahler
+differentials and the de Rham complex, AQM-08 for the CSS/stabilizer
+dictionary, and \texttt{CONVENTIONS.md} (ao) for the de Rham CSS test.  The new
+claims in this shard are direct solutions of the displayed prototype
+stabilizer equations.  For a displayed \(C^1\) basis label \(u\), the notation
+\(X_u\) and \(Z_u\) means the corresponding support Pauli, and all listed
+stabilizer equations below use the added all-\(+1\) phase convention.  The
+de Rham calculation itself fixes only the support spaces \(R_X\) and \(R_Z\).
 The local entanglement test used below is the following.  If two qubits \(p,q\)
 are constrained by
 \[
@@ -107,11 +111,16 @@ so
   R_X=\langle a_0,\ c_0,\ b_0+c_1,\ c_2\rangle.
 \]
 For \(C^2\), write \(\omega=dx\wedge dy\).  The relation \(x^2dx=0\)
-implies \(x^2\omega=0\).  The nonzero \(d_1\)-values are
+implies \(x^2\omega=0\), so the target basis used for the transpose is
+\[
+  \omega,\quad x\omega,\quad y\omega,\quad xy\omega.
+\]
+Against this basis, the nonzero \(d_1\)-values are
 \[
   d_1(b_0)=\omega,\quad d_1(c_1)=\omega,\quad
   d_1(b_1)=x\omega,\quad d_1(d_1)=y\omega.
 \]
+The displayed rows have image rank \(3\); the \(xy\omega\) row is zero.
 Thus
 \[
   R_Z=\langle b_0+c_1,\ b_1,\ d_1\rangle.
@@ -165,8 +174,13 @@ Hence
 \[
   R_X=\langle a_0,a_2,c_0,c_2,c_4,b_0+c_1,b_2+c_3\rangle.
 \]
-Again let \(\omega=dx\wedge dy\), with \(x^4\omega=0\).  The nonzero
-\(d_1\)-rows are
+Again let \(\omega=dx\wedge dy\), with \(x^4\omega=0\).  The target basis used
+for the transpose is
+\[
+  \omega,x\omega,x^2\omega,x^3\omega,
+  y\omega,xy\omega,x^2y\omega,x^3y\omega.
+\]
+Against this basis, the nonzero \(d_1\)-rows are
 \[
 \begin{array}{rclcrcl}
 d_1(b_0)&=&\omega,&&d_1(c_1)&=&\omega,\\
@@ -175,6 +189,8 @@ d_1(c_3)&=&x^2\omega,&&d_1(b_3)&=&x^3\omega,\\
 d_1(d_1)&=&y\omega,&&d_1(d_3)&=&x^2y\omega.
 \end{array}
 \]
+The displayed row image has rank \(6\); the \(xy\omega\) and \(x^3y\omega\)
+rows are zero.
 Thus
 \[
   R_Z=\langle b_0+c_1,\ b_1,\ b_2+c_3,\ b_3,\ d_1,\ d_3\rangle.

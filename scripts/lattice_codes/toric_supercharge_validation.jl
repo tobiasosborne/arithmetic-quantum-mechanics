@@ -27,7 +27,7 @@ function main()
     ), ",")
 
     with_csv(path, header;
-             sentinel="Algebraic certificate only: no full physical or ghost Hilbert matrices are built.") do io
+             sentinel="Algebraic summary/check record only: no full physical or ghost Hilbert matrices are built.") do io
         println(io, join((
             summary.k,
             summary.nqubits,

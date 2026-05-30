@@ -2,20 +2,20 @@
 % SHARD-TITLE: The Arithmetic Quantum Field on \(\Spec\mathbb Z\)
 % SHARD-SUMMARY: Builds the closed-prime residue-qudit net for \(\Spec\mathbb Z\) and separates the generic \(\mathbb Q\) sector.
 % SHARD-SUMMARY: Proves that \(z\mapsto z+1\) is not a scheme automorphism of \(\Spec\mathbb Z\).
-% SHARD-SUMMARY: Defines the internal integer residue-translation action and proves its profinite, nonlocal character.
-% SHARD-KEYWORDS: Spec Z, prime qudits, generic point, incomplete tensor product, translation, profinite integers
+% SHARD-SUMMARY: Defines the internal integer residue-translation action and its squarefree residue-product extension.
+% SHARD-KEYWORDS: Spec Z, prime qudits, generic point, incomplete tensor product, translation, squarefree residues
 
 \section[The Arithmetic Quantum Field on Spec Z]{The Arithmetic Quantum Field on \(\Spec\mathbb Z\)}
 \label{sec:spec-z-arithmetic-quantum-field}
 \subsection{Status and Source Anchors}
 
-This shard extends \texttt{CONVENTIONS.md} (u)--(y) and (ai).  The
-source-local scheme facts are from
-\path{references/algebraic_geometry/stacks_project_algebra.tex}: lines
+This shard extends \texttt{CONVENTIONS.md} (u)--(y) and (ai).  Source-local
+scheme facts are from \path{references/algebraic_geometry/stacks_project_algebra.tex}: lines
 120--158, 250--274, 2972--2983, 3104--3160, 3251--3298, 3310--3342, and
 4657--4703 cover prime ideals, residue fields, \(\Spec\), Zariski opens,
-functoriality, quasi-compact opens, and generic points.  AQM-28 supplies the
-finite closed-residue Weyl net, and AQM-42 supplies finite-support dynamics.
+functoriality, quasi-compact opens, and generic points.  AQM-28 is the
+finite-field finite-support pattern; this is the separate convention (ai)
+\(\Spec\mathbb Z\) closed-prime extension.
 \subsection{Lamport Dependency Skeleton}
 
 \[
@@ -23,17 +23,14 @@ finite closed-residue Weyl net, and AQM-42 supplies finite-support dynamics.
 D1&:&X=\Spec\mathbb Z,\quad \eta=(0),\quad x_\ell=(\ell).\\
 L1&:&\operatorname{Prime}(\mathbb Z)=\{0\}\cup\{(\ell):\ell\text{ prime}\}.\\
 L2&:&\kappa(\eta)=\mathbb Q,\quad \kappa(x_\ell)=\mathbb F_\ell.\\
-L3&:&\text{Nonempty opens are }\{\eta\}\cup\{x_\ell:\ell\notin S\}
-      \text{ with }S\text{ finite}.\\
-D2&:&E_{\rm cl}(U)=\bigoplus_{x_\ell\in U}\mathbb F_\ell^2,\quad
-      \mathcal A_{\rm cl}(U)=\varinjlim_{S\Subset U_{\rm cl}}\bigotimes_{\ell\in S}M_\ell(\mathbb C).\\
+L3&:&\text{Nonempty opens are }\{\eta\}\cup\{x_\ell:\ell\notin S\}\text{ with }S\text{ finite}.\\
+D2&:&E_{\rm cl}(U)=\bigoplus_{x_\ell\in U}\mathbb F_\ell^2,\quad \mathcal A_{\rm cl}(U)=\varinjlim_{S\Subset U_{\rm cl}}\bigotimes_{\ell\in S}M_\ell(\mathbb C).\\
 T1&:&U\mapsto\mathcal A_{\rm cl}(U)\text{ is the closed-prime open-local AQF}.\\
 D3&:&\mathcal H^\Omega_{\rm cl}=\ell^2(\bigoplus_\ell\mathbb F_\ell).\\
 L4&:&\eta\text{ is a }\mathbb Q\text{-Weyl sector, not a finite qudit.}\\
 T2&:&\operatorname{End}_{\rm Sch}(\Spec\mathbb Z)=\{\mathrm{id}\}.\\
 D4&:&\alpha_n=\prod_\ell^{\rm loc}\operatorname{Ad}T_\ell(n\bmod \ell).\\
-T3&:&\alpha:\mathbb Z\curvearrowright\mathcal A_{\rm cl}(X)
-      \text{ is faithful and extends profinitely.}\\
+T3&:&\alpha:\mathbb Z\curvearrowright\mathcal A_{\rm cl}(X)\text{ is faithful and extends to }\prod_\ell\mathbb F_\ell.\\
 T4&:&\alpha_n,\ n\ne0,\text{ is not implemented in the }|0\rangle\text{ sector.}
 \end{array}
 \]
@@ -127,7 +124,8 @@ the algebraic infinite tensor product of one \(\ell\)-level qudit for each
 rational prime \(\ell\).
 
 \emph{Proof.}
-This is AQM-28 applied to the finite-residue closed points of \(X\).  If
+This repeats AQM-28's finite-support construction on finite-residue closed
+prime points, as a separate extension beyond AQM-28's finite-field scope.  If
 \(U\subset V\), then \(U_{\rm cl}\subset V_{\rm cl}\), so extension by identity
 gives a unital injective \(*\)-homomorphism
 \(\mathcal A_{\rm cl}(U)\hookrightarrow\mathcal A_{\rm cl}(V)\).  Disjoint
@@ -175,7 +173,10 @@ the same calculation gives \(R_\mathbb Q(r)T_\mathbb Q(q)
 nondegenerate: if \(q\ne0\), choose \(r=(2q)^{-1}\); if \(r\ne0\), choose
 \(q=(2r)^{-1}\).
 
-Because every nonempty open contains \(\eta\), the generic-sector local rule is
+Because every nonempty open contains \(\eta\), set
+\(\mathcal A_\eta=\operatorname{span}_{\mathbb C}\{T_\mathbb Q(q)R_\mathbb Q(r)\}\)
+as an algebraic Weyl span; no C\(^*\)-completion, adelic replacement, or
+Stone--von Neumann uniqueness is claimed here.  The generic-sector local rule is
 \[
   \mathcal A_{\rm gen}(U)=
   \begin{cases}\mathbb C,&U=\emptyset,\\
@@ -226,9 +227,9 @@ automorphism \(\alpha_n\) of \(\mathcal A_{\rm cl}(X)\).  On one Weyl operator,
 The maps \(n\mapsto\alpha_n\) define a faithful action of \(\mathbb Z\) on
 \(\mathcal A_{\rm cl}(X)\).  On \(\mathcal A(S)\) the action factors through
 \(\mathbb Z/N_S\mathbb Z\), where \(N_S=\prod_{\ell\in S}\ell\).  Therefore it
-extends to the compact residue product \(\prod_\ell\mathbb F_\ell\), and hence
-to \(\widehat{\mathbb Z}\) after reducing each \(p\)-adic coordinate modulo
-\(p\).
+extends to the squarefree compact residue product \(\prod_\ell\mathbb F_\ell\).
+The induced \(\widehat{\mathbb Z}\)-action factors through coordinatewise
+reduction \(\widehat{\mathbb Z}\to\prod_\ell\mathbb F_\ell\).
 
 \emph{Proof.}
 The group law follows from \(T_\ell(n)T_\ell(m)=T_\ell(n+m)\).  If
@@ -264,8 +265,9 @@ infinitely many \(\ell\).  Hence \(U\Omega=0\), impossible for a unitary.
 The checked surprise is that the scheme has no translation, while the quantum
 closed-prime field has a faithful arithmetic translation action by residues.
 Finite experiments see only \(\mathbb Z/N_S\mathbb Z\), while the infinite
-algebra sees the profinite completion.  The global translation by \(1\) is an
-automorphism of the quasi-local algebra but not a unitary in the
+algebra sees the squarefree residue quotient \(\prod_\ell\mathbb F_\ell\); any
+\(\widehat{\mathbb Z}\)-action factors through it.  The global translation by
+\(1\) is an automorphism of the quasi-local algebra but not a unitary in the
 finite-excitation vacuum sector: a large arithmetic symmetry, not a local
 observable.
 

@@ -135,14 +135,15 @@ For \(s\in G(U_{i_0\cdots i_p})\), put
 \[
   \partial s=
   \sum_{j=0}^p(-1)^j
-  r_{U_{i_0\cdots i_p},\,U_{i_0\cdots\widehat{i_j}\cdots i_p}}(s),
+  r_{U_{i_0\cdots\widehat{i_j}\cdots i_p},\,U_{i_0\cdots i_p}}(s),
 \]
 where \(r\) is the covariant extension map.  The same sign cancellation as in
 Lemma \(L1\) gives \(\partial^2=0\), hence \(\check H_p(\mathcal U,G)\).
 
-For the residue-qudit label layer, \(E(W)=\bigoplus_{x\in W}E_x\), with
-extension by zero along inclusions.  Assume the cover \(\mathcal U\) is finite
-and \(E(U)\) is the finite-support direct sum used in AQM-24--AQM-26.
+For the residue-qudit label layer, Weyl sites are the finite-residue sites
+\(C(W)=W\cap |X|_{\rm cl}\) of AQM-28, or all points in finite all-closed
+spectra.  Thus \(E(W)=\bigoplus_{x\in C(W)}E_x\) is the finite-support direct
+sum, with extension by zero along inclusions.  Assume \(\mathcal U\) is finite.
 
 \paragraph{Theorem \(T1\).}
 For every finite cover \(\mathcal U\) of \(U\),
@@ -153,13 +154,13 @@ For every finite cover \(\mathcal U\) of \(U\),
 \]
 
 \emph{Proof.}
-For a point \(x\in U\), let \(I_x=\{i\in I:x\in U_i\}\).  This set is
+For a Weyl site \(x\in C(U)\), let \(I_x=\{i\in I:x\in U_i\}\).  This set is
 nonempty because \(\mathcal U\) covers \(U\).  Since direct sums distribute
 over the finite Cech chain groups,
 \[
   \check C_p(\mathcal U,E)
   \cong
-  \bigoplus_{x\in U}
+  \bigoplus_{x\in C(U)}
   \left(
     \bigoplus_{i_0<\cdots<i_p,\ i_j\in I_x}E_x
   \right).
@@ -176,8 +177,8 @@ satisfies \(\partial h+h\partial=\operatorname{id}-\epsilon\), where
 the full simplex has homology \(E_x\) in degree \(0\) and \(0\) in higher
 degrees.  Taking the direct sum over \(x\) gives the displayed result.
 
-So the full label cosheaf carries no higher cover obstruction: every label is
-assembled pointwise from the cover, and all higher cycles are simplex
+So the finite-support label cosheaf carries no higher cover obstruction: every
+label is assembled pointwise from the cover, and higher cycles are simplex
 boundaries.
 
 \subsection{Quantum Counterparts D6--P1}
@@ -273,7 +274,4 @@ ordinary Cech cohomology group.
 
 \subsection{Conclusion}
 
-Classical Cech cohomology is the abelian cover-complex layer.  In AQF it
-splits into layered descent tests: label Cech homology, stabilizer cokernels,
-state marginal comparison maps, and observable-net colimit comparison maps.
-Only the first two are cohomology or homology groups at this stage.
+Classical Cech cohomology is the abelian cover-complex layer.  In AQF it splits into label Cech homology, stabilizer cokernels, state marginal maps, and observable-net colimit comparison maps.  Only the first two are cohomology or homology groups at this stage.

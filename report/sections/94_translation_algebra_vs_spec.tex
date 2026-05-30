@@ -1,0 +1,248 @@
+% SHARD-ID: AQM-94-TRANSLATION-ALGEBRA-SPEC
+% SHARD-TITLE: Translation Haah Data versus Bare Spectrum
+% SHARD-SUMMARY: Isolates the most restrictive Haah layer: translation group algebras, antipodes, identity-coefficient traces, and finite periodic quotients.
+% SHARD-SUMMARY: Explains why the translation basis of \(\mathbb F_p[\Lambda]\) is not the Zariski point set of \(\Spec\mathbb F_p[\Lambda]\).
+% SHARD-SUMMARY: Gives examples and a checklist for recognizing when a scheme proposal has reached the translation Haah layer.
+% SHARD-KEYWORDS: Haah, translation algebra, Spec, Laurent module, group algebra, antipode, toric code, finite periodic quotient
+
+\section{Translation Haah Data versus Bare Spectrum}
+\label{sec:translation-haah-data-versus-bare-spectrum}
+
+\subsection{Status and Source Anchors}
+
+This shard is a local synthesis, not a new classification theorem.  Its Haah
+anchors are \path{references/lattice_stabilizer_codes/SOURCES.md} and the
+local TeX locators
+\path{references/lattice_stabilizer_codes/haah_1204_1063_source/alg-code-hamiltonian-v6.tex}
+lines 169--183, 416--432, 514--544, and 634--667;
+\path{references/lattice_stabilizer_codes/haah_1305_6973_source/alg-theory.tex}
+lines 700--716 and 1515--1567; and
+\path{references/lattice_stabilizer_codes/haah_1812_11193_source/cph2d-arXiv3.tex}
+lines 321--365, 409--453, and 505--511.  The torus comparison is AQM-90,
+AQM-91, and \texttt{CONVENTIONS.md} \texttt{(az)}--\texttt{(ba)}.  The
+residue-spectrum and product-field warnings are AQM-40, AQM-81, AQM-36,
+AQM-37, and conventions \texttt{(ad)}, \texttt{(aa)}, and \texttt{(ab)}.
+
+\subsection{Lamport Dependency Skeleton}
+\[
+\begin{gathered}
+D1:(G,P,\lambda,\sigma)\text{ is the permissive pre-Haah datum over }A.\\
+D2:\Spec A\text{ adds sheaf/support/fibre geometry but not sites.}\\
+D3:\text{finite Weyl data adds a self-dual label convention.}\\
+D4:R=\mathbb F_p[\Lambda],\ \bar{(\cdot)},\ \operatorname{tr},\ \dagger
+   \text{ are the translation layer.}\\
+D5:P=R^{2q},\quad
+\lambda_q=\begin{pmatrix}0&I_q\\-I_q&0\end{pmatrix},\quad
+\epsilon=\sigma^\dagger\lambda_q.\\
+L1:\sigma^\dagger\lambda_q\sigma=0,\qquad
+L2:\ker\epsilon=\operatorname{im}\sigma\text{ only when sourced.}
+\end{gathered}
+\]
+
+\subsection{From Permissive to Restrictive}
+
+Following \texttt{CONVENTIONS.md} \texttt{(ba)}, the permissive layer is a
+\emph{pre-Haah datum} \((G,P,\lambda,\sigma)\) over a commutative ring \(A\):
+modules, a chosen alternating or symplectic form when available, and a
+generator map.  Here \(\epsilon=\sigma^\dagger\lambda\) and
+\(\ker\epsilon/\operatorname{im}\sigma\) are only local definitions of a
+logical-defect module, not a physical logical Pauli group, Hilbert space, or
+Hamiltonian.
+
+A \emph{scheme Haah datum} interprets the same package on \(X=\Spec A\) by
+sheaves, supports, localization, residue fibres, and nilpotent thickenings.
+By convention \texttt{(ba)}, it still does not identify points of \(\Spec A\)
+with translation sites.  A \emph{finite Weyl-Haah datum} adds finite
+self-duality for Weyl-Heisenberg labels; AQM-81 gives the residue-field case,
+while finite-ring versions require the Frobenius-ring or generating-character
+sources in \path{references/heisenberg_weil/SOURCES.md}.
+
+The most restrictive layer is the \emph{translation Haah datum}: choose an
+abelian translation group \(\Lambda\) and
+\[
+  R=\mathbb F_p[\Lambda],
+\]
+for example \(R=\mathbb F_p[X^{\pm1},Y^{\pm1}]\) when
+\(\Lambda=\mathbb Z^2\).  Haah's source-local package uses Laurent
+coefficients for finite-support Pauli or qudit labels and exponents for
+translation positions
+(\path{references/lattice_stabilizer_codes/haah_1204_1063_source/alg-code-hamiltonian-v6.tex},
+lines 169--183).
+
+\subsection{The Exact Translation Package}
+
+Let \(\Lambda\) be abelian.  Haah's qubit source takes
+\[
+  P=R^{2q},\qquad R=\mathbb F_2[\Lambda],
+\]
+as the Pauli module for finite-support Paulis on
+\(\Lambda\times\{1,\ldots,q\}\), modulo phase factors; the prime-qudit
+two-dimensional source uses \(R=\mathbb F_p[x^\pm,y^\pm]\)
+(\path{references/lattice_stabilizer_codes/haah_1204_1063_source/alg-code-hamiltonian-v6.tex},
+lines 416--420 and 532--544;
+\path{references/lattice_stabilizer_codes/haah_1812_11193_source/cph2d-arXiv3.tex},
+lines 321--365).
+
+The antipode is \(\overline{g}=g^{-1}\), or \(x\mapsto x^{-1}\),
+\(y\mapsto y^{-1}\); \(v^\dagger\) is transpose followed by this involution.
+The trace is the identity-coefficient functional
+\[
+  \operatorname{tr}\left(\sum_{g\in\Lambda}a_g g\right)=a_1,
+\]
+not a field trace.  These are the sourced conventions in
+\path{references/lattice_stabilizer_codes/haah_1204_1063_source/alg-code-hamiltonian-v6.tex},
+lines 422--434 and 514--525, with the two-variable coefficient-of-\(1\)
+bracket in
+\path{references/lattice_stabilizer_codes/haah_1812_11193_source/cph2d-arXiv3.tex},
+lines 354--365 and 505--511.
+
+A generator matrix \(\sigma:R^t\to P\) selects a stabilizer submodule.  With
+\[
+  \epsilon=\sigma^\dagger\lambda_q:P\to R^t,
+\]
+generator commutation is \(\sigma^\dagger\lambda_q\sigma=0\), giving the
+complex \(R^t\xrightarrow{\sigma}P\xrightarrow{\epsilon}R^t\) and
+\(\operatorname{im}\sigma\subseteq\ker\epsilon\)
+(\path{references/lattice_stabilizer_codes/haah_1204_1063_source/alg-code-hamiltonian-v6.tex},
+lines 634--667).  When topological order is sourced, the stronger exactness is
+\(\ker\epsilon=\operatorname{im}\sigma\)
+(\path{references/lattice_stabilizer_codes/haah_1305_6973_source/alg-theory.tex},
+lines 700--716;
+\path{references/lattice_stabilizer_codes/haah_1812_11193_source/cph2d-arXiv3.tex},
+lines 409--453).
+
+\subsection{Why This Is Not Just \texorpdfstring{\(\Spec R\)}{Spec R}}
+
+The central separation is role, not notation.  In AQM-90 the ring
+\[
+  A_T=k[x^{\pm1},y^{\pm1}]
+\]
+is a coordinate ring for the split torus \(T=\Spec A_T\).  In AQM-91 and
+\texttt{CONVENTIONS.md} \texttt{(az)}, the ring
+\[
+  R_{\rm tr}=\mathbb F_p[X^{\pm1},Y^{\pm1}]
+\]
+is a translation group algebra acting on finite-support labels.  The same
+abstract Laurent algebra can be written in both places, but the basis
+\(\{X^aY^b\}_{(a,b)\in\mathbb Z^2}\) is group-basis data, not the set of
+Zariski points of \(\Spec R_{\rm tr}\).
+
+AQM-90 proves a concrete warning: as a scheme, the torus has infinitely many
+closed points, while Laurent monomials have infinite full closed support and
+only become Weyl operators after restriction to a finite support.  Haah's
+finite-support coefficients are instead indexed by translation exponents.
+Therefore no shard should read a point of \(\Spec\mathbb F_p[\Lambda]\) as a
+Haah lattice site unless it has first named a finite-support bridge such as
+the AQM-91 periodic bridge.
+
+\subsection{Examples}
+
+\paragraph{1. The infinite Laurent translation algebra.}
+For \(R_{\rm tr}=\mathbb F_p[\mathbb Z^2]\), the translation basis is
+\[
+  \{X^aY^b:(a,b)\in\mathbb Z^2\}.
+\]
+This is the coefficient basis for Haah finite-support labels.  If the same
+ring is viewed as a coordinate ring, then \(\Spec R_{\rm tr}\) is the split
+torus studied in AQM-90.  The exponent pair \((a,b)\) is not a point of this
+spectrum.
+
+\paragraph{2. A finite periodic quotient.}
+AQM-91 names the finite bridge.  Choose finite orders \(N_x,N_y\) and set
+\[
+  R_{G,p}=
+  \mathbb F_p[X^{\pm1},Y^{\pm1}]/(X^{N_x}-1,Y^{N_y}-1)
+  =\mathbb F_p[C_{N_x}\times C_{N_y}].
+\]
+As an \(\mathbb F_p\)-vector space it has basis
+\[
+  \{X^iY^j:0\le i<N_x,\ 0\le j<N_y\}.
+\]
+This is the finite periodic translation configuration module in AQM-91, with
+\(X\) and \(Y\) acting as shifts.  It is not automatically the coordinate ring
+of the finite set of sites.
+
+\paragraph{3. The AQM-91 qubit toric square.}
+For the qubit toric comparison, AQM-91 specializes to \(p=2\) and writes
+\[
+  P_G=R_G^4=(q_x,q_y,p_x,p_y).
+\]
+With the AQM-90 edge orientation, the source-local Haah matrix is
+\[
+  \sigma_\square=
+  \begin{pmatrix}
+  1+X^{-1} & 0\\
+  1+Y^{-1} & 0\\
+  0 & 1+Y\\
+  0 & 1+X
+  \end{pmatrix}.
+\]
+Then \(\epsilon_\square=\sigma_\square^\dagger\lambda_2\) and
+\(\epsilon_\square\sigma_\square=0\) give the Haah form of the AQM-90 square
+boundary identity.  AQM-91 cites the infinite-ring toric exactness
+\(\ker\epsilon_{\rm tr}=\operatorname{im}\sigma_{\rm tr}\) to
+\path{references/lattice_stabilizer_codes/haah_1305_6973_source/alg-theory.tex},
+lines 1515--1567, and it deliberately does not assert the same finite-periodic
+equality without a local finite-periodic check.
+
+\paragraph{4. The modular thickening \( \mathbb F_3[C_3]\).}
+This is a local derivation, with the nilpotent-sensitive comparison anchored
+by AQM-37.  Let \(g\) generate \(C_3\).  In characteristic \(3\),
+\[
+  \mathbb F_3[C_3]\cong\mathbb F_3[g]/(g^3-1)
+  =\mathbb F_3[g]/((g-1)^3).
+\]
+With \(u=g-1\), this is \(\mathbb F_3[u]/(u^3)\).  AQM-37 records the same
+ring as \(\mathbb F_3[t]/(t^3-1)\cong\mathbb F_3[u]/(u^3)\), with one reduced
+closed point and a thickened Hilbert layer
+\(\ell^2(\mathbb F_3[u]/(u^3))\).  The translation basis is still
+\(\{1,g,g^2\}\).  Thus the spectrum is a single third-order thickened point,
+while the translation module has three group-basis elements.
+
+\paragraph{5. A split product warning.}
+This is a local derivation using the product-field spectrum convention of
+AQM-40 and \texttt{CONVENTIONS.md} \texttt{(ad)}.  Over \(\mathbb F_3\),
+\[
+  \mathbb F_3[C_2]\cong \mathbb F_3[t]/(t^2-1)
+  \cong \mathbb F_3[t]/(t-1)\times\mathbb F_3[t]/(t+1)
+  \cong\mathbb F_3\times\mathbb F_3.
+\]
+Therefore its spectrum has two reduced product-field points.  The translation
+basis is \(\{1,t\}\), while the product idempotents
+\[
+  e_+=2(1+t),\qquad e_-=2(1-t)
+\]
+are the split character or Fourier basis in this displayed example.  Passing
+to these idempotents is extra decomposition data, not the same as remembering
+the group-basis shifts used by a Haah finite-difference matrix.
+
+\subsection{Checklist for Reaching the Translation Haah Layer}
+
+A scheme proposal has reached the translation Haah layer only after naming or
+sourcing: an abelian translation group \(\Lambda\) or finite quotient; the
+group algebra \(R=\mathbb F_p[\Lambda]\) or periodic quotient; the group basis
+and finite-support convention; the antipode, dagger, and identity-coefficient
+trace; \(P=R^{2q}\) and \(\lambda_q\); a finite generator matrix \(\sigma\);
+the excitation map \(\epsilon=\sigma^\dagger\lambda_q\) and checked isotropy
+\(\sigma^\dagger\lambda_q\sigma=0\); a sourced exactness claim or the
+recorded quotient \(\ker\epsilon/\operatorname{im}\sigma\); a finite periodic
+or residue/Weyl bridge for finite Hilbert spaces; and an explicit warning for
+any Fourier, character, residue, or \(\Spec\)-point decomposition added to the
+translation basis.
+
+\subsection{Right Lesson}
+
+Bare \(\Spec A\) gives geometric supports, residue fields, localizations, and
+nilpotent thickenings in the conventions used by AQM-28, AQM-36, and AQM-81.
+It does not by itself give Haah lattice sites.  Haah's lesson for this
+programme is more restrictive and more useful: once a chosen commutative ring
+is a translation group algebra or a controlled quotient of one, modules over
+that ring can carry symplectic duality, an antipode, an identity-coefficient
+trace, and finite-difference stabilizer maps.  The physical code layer is the
+extra structured package
+\[
+  (R,\bar{(\cdot)},\operatorname{tr},P,\lambda_q,\sigma,\epsilon)
+\]
+together with finite-support or finite-periodic interpretation.  A scheme
+proposal may borrow this grammar, but it has not become Haah data until those
+translation choices are explicit and sourced.

@@ -20,9 +20,11 @@ corrected tangent-Weyl principle.
 
 \subsection{Definition: Evaluated Exact-One-Form Constraints}
 
-Let \(X=\Spec A\), and let \(S\) be a finite set of finite-residue points.  Put
+Let \(k\to A\) be the fixed base map, let \(X=\Spec A\), and let \(S\) be a
+finite set of finite-residue points.  All tangent and cotangent spaces below
+are relative to this base.  Put
 \[
-  K_P=\kappa(P),\qquad V_P=T_PX,\qquad V_P^*=T_P^*X
+  K_P=\kappa(P),\qquad V_P=T_{A/k,P}X,\qquad V_P^*=T_{A/k,P}^*X
 \]
 and
 \[
@@ -34,11 +36,14 @@ Let
 \[
   \rho_S:E_S\to PU(\mathcal H_{\rho_S})
 \]
-be the Weyl-Heisenberg projective representation.  For
+be the Weyl-Heisenberg projective representation.  For mixed finite-residue
+supports, \(E_S\) is an additive, equivalently prime-field-linear, label group
+with componentwise local trace characters; in the all-\(k\)-rational examples
+below it reduces to an ordinary \(k\)-vector space.  For
 \(\omega\in\Omega^1_{A/k}\), define its fibrewise evaluation
 \[
   \operatorname{ev}^1_S(\omega)=
-  (\omega\otimes1)_P{}_{P\in S}\in V_S^*.
+  \bigl((\omega\otimes1)_P\bigr)_{P\in S}\in V_S^*.
 \]
 The evaluated exact-one-form label space is
 \[
@@ -48,8 +53,10 @@ Since \(0\oplus V_S^*\) is isotropic, the Weyl operators
 \[
   \{W(0,\alpha):\alpha\in L_{\rm dR}(S)\}
 \]
-commute after the central phases are fixed.  Choosing eigenvalue phases then
-defines a stabilizer subspace of \(\mathcal H_{\rho_S}\).
+commute after the central phases are fixed.  A stabilizer eigenspace is defined
+only after choosing a compatible phased-stabilizer character on
+\(L_{\rm dR}(S)\), in the sense of \texttt{CONVENTIONS.md} (ac).  The standard
+coordinate display below uses the compatible all-\(+1\) choice.
 
 For explicit finite-field calculations one may use the standard coordinate
 display.  With \(+1\) phases, define
@@ -72,8 +79,9 @@ When all points are \(k=\mathbb F_p\)-rational, this is the simpler condition
 \subsection{Why This Is Compatible but Not Yet Full CSS}
 
 The construction is compatible because exact one-forms evaluate to cotangent
-vectors, and cotangent vectors are labels in \(T_PX\oplus T_P^*X\).  No basis of
-\(\Omega^1_{A/k}\) is used as a list of physical qubits.
+vectors, and cotangent vectors are labels in
+\(T_{A/k,P}X\oplus T^*_{A/k,P}X\).  No basis of \(\Omega^1_{A/k}\) is used as a
+list of physical qubits.
 
 It is not yet the old full de Rham CSS rule.  A tangent-type label
 \(w\in V_S\) commutes with all evaluated exact one-form labels exactly when
@@ -235,11 +243,11 @@ in coordinates it is \(\mathbb C|0,0,0,0\rangle\).
 The compatibility result is positive but austere:
 \[
   dA\quad\leadsto\quad L_{\rm dR}(S)\subset
-  \bigoplus_{P\in S}T_P^*X
+  \bigoplus_{P\in S}T^*_{A/k,P}X
 \]
 is a canonical cotangent-label construction inside the tangent-cotangent Weyl
-projective representation.  The examples show that using all exact forms on a
-finite rational support often gives
+projective representation, after the base \(k\to A\) has been fixed.  The
+examples show that using all exact forms on a finite rational support often gives
 \[
   L_{\rm dR}(S)=V_S^*
 \]

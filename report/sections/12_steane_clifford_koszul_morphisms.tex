@@ -153,10 +153,18 @@ independent generator basis, as transversal phase does here, the complexes are
 homotopy equivalent through their common zero-syndrome deformation retract, but
 the full higher-ghost cohomology remains presentation-labelled.
 
-\subsection{Exact Validation}
+\subsection{Run Artifact Record}
 
-The producer \path{steane_clifford_koszul_morphisms.jl} writes the Steane
-Clifford/Koszul run bundle. It records the Hadamard generator permutation, the
-phase generator-basis change, the logical label actions, the 63 contractible
-nonzero syndrome sectors, and the cohomology dimensions listed in
-Section~\ref{sec:steane-supercharge-cohomology}.
+The producer
+\path{scripts/lattice_codes/steane_clifford_koszul_morphisms.jl} writes the
+Steane Clifford/Koszul run bundle
+\path{runs/2026-05-24-steane-clifford-koszul-morphisms/}. Its summary CSV
+records Boolean and string fields for the Hadamard generator permutation, the
+phase generator-basis change, the binary logical-label images, the count of
+\(63\) nonzero syndrome sectors, the summary contractibility flag, and the
+cohomology dimensions listed in
+Section~\ref{sec:steane-supercharge-cohomology}. The companion generator-map
+CSV lists the six stabilizer-label images and their coordinates in the original
+generator basis. These artifacts record checked hypotheses and summary
+consequences used by the local derivation above; they do not contain full
+chain-map matrices, contraction homotopies, or residual identities.

@@ -39,5 +39,5 @@
 | Retrieved | 2026-05-24 |
 | Local file | `references/toric_code/bombin_martin_delgado_0605094_source.tar`; extracted source at `references/toric_code/bombin_martin_delgado_0605094_source/HomologicalErrorCorrection6.tex` |
 | SHA256 | `0be79b97bda25bd7f1d327fec2bcc45729ff6aa87d5b5c7c1fb19bc4a05c3466` |
-| Relevant locators | Lines 2050-2140: 2-complex chain groups, boundary maps, `partial^2=0`, cohomology, and star/boundary operator pairings. Lines 2565-2577: original toric codes as `[[2d^2,2,d]]` codes. |
+| Relevant locators | Lines 2050-2140: 2-complex chain groups, boundary maps, `partial^2=0`, cohomology, and star/boundary operator pairings. Lines 320-321 and 2488-2493: Shor's original nine-qubit code as a homological quantum code in the `[[d^2,1,d]]` family at `d=3`, giving `[[9,1,3]]`. Lines 2565-2577: original toric codes as `[[2d^2,2,d]]` codes. |
 | Notes | This is the source for the boundary-map/CSS unification convention. |

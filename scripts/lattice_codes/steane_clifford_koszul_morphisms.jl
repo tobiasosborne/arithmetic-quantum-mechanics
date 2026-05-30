@@ -31,7 +31,7 @@ function write_summary()
     ), ",")
     summary = steane_clifford_morphism_summary()
     with_csv(path, header;
-             sentinel="Exact Steane Clifford/Koszul morphism certificate for transversal H and P.") do io
+             sentinel="Steane Clifford/Koszul morphism summary/check record for transversal H and P.") do io
         println(io, join((
             summary.n,
             summary.stabilizer_generators,

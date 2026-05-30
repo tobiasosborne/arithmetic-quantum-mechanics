@@ -56,14 +56,18 @@ Thus the commutator is controlled by the symplectic form
 \[
   \omega((x,z),(x',z'))=z\cdot x'-x\cdot z' .
 \]
+This is the local convention used throughout the section: the first component
+is the \(X\)-exponent and the ordered \(X\)-then-\(Z\) mixed pairing is negative.
 
 A stabilizer specified by exponent labels \(L\subset V\) is commuting exactly
 when
 \[
   \omega(\ell,\ell')=0\quad\text{for all }\ell,\ell'\in L.
 \]
-That is, \(L\) is isotropic. If \(\dim L=r\), the joint eigenspace of the
-corresponding independent stabilizers has dimension
+That is, \(L\) is isotropic. Exponent labels determine this centralizer and
+commutation condition; an actual stabilizer code also requires compatible
+phases/eigenvalue characters. For the canonical CSS lifts used below, if
+\(\dim L=r\), the joint eigenspace has dimension
 \[
   p^{n-r}.
 \]
@@ -211,20 +215,23 @@ The Lagrangians appear one level down, in the logical symplectic module
 \]
 For example,
 \[
-  \Lambda_Z=Z^1\oplus B_1,\qquad
-  \Lambda_X=B^1\oplus Z_1
+  \Lambda_X=Z^1\oplus B_1,\qquad
+  \Lambda_Z=B^1\oplus Z_1
 \]
 are isotropic subspaces of \(L^\perp\) containing \(L\). Their quotients are
 \[
-  \Lambda_Z/L\cong H^1,\qquad
-  \Lambda_X/L\cong H_1.
+  \Lambda_X/L\cong H^1,\qquad
+  \Lambda_Z/L\cong H_1.
 \]
 These are complementary Lagrangian subspaces of the logical Pauli module, and
-the induced pairing is the natural evaluation pairing
+the induced symplectic pairing on the ordered \(X\)-then-\(Z\) logical labels
+is the negative of the natural evaluation pairing:
 \[
   H^1\times H_1\longrightarrow \mathbb F_p,\qquad
-  ([x],[z])\mapsto x(z).
+  ([x],[z])\mapsto -x(z).
 \]
+Equivalently, if the arguments are ordered \(Z\)-then-\(X\), the same
+symplectic form gives the positive evaluation \(x(z)\).
 Choosing a logical computational basis is choosing one of these Lagrangian
 polarizations.
 
@@ -256,9 +263,10 @@ logical information is recovered from the symplectic reduction \(L^\perp/L\).
 
 \subsection{Exact Validation}
 
-The validation script is \path{symplectic_css_bridge_validation.jl} under
-\path{scripts/lattice_codes/}. It builds oriented boundary matrices for the
-\(k=4\) periodic square torus over \(\mathbb F_p\) for \(p=2,3,5\). It
+The validation script is
+\path{scripts/lattice_codes/symplectic_css_bridge_validation.jl}. It builds
+oriented boundary matrices for the \(k=4\) periodic square torus over
+\(\mathbb F_p\) for \(p=2,3,5\). It
 verifies:
 \[
   \partial_1\partial_2=0,\qquad L\subseteq L^\perp,
@@ -268,7 +276,5 @@ verifies:
   \operatorname{rank}\partial_2=15,\qquad
   \dim H_1=32-15-15=2.
 \]
-The corresponding stabilizer subspace has rank \(30\), so the symplectic count
-gives \(32-30=2\) encoded qudits and Hilbert dimension \(p^2\). The generated
-CSV is \path{symplectic_css_bridge_summary.csv} in the
-\path{2026-05-24-symplectic-css-bridge} run bundle.
+The corresponding stabilizer subspace has rank \(30\), so the symplectic count gives \(32-30=2\) encoded qudits and Hilbert dimension \(p^2\). The generated
+CSV is \path{runs/2026-05-24-symplectic-css-bridge/data/symplectic_css_bridge_summary.csv}.

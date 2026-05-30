@@ -156,9 +156,11 @@ affine line is the total cotangent bundle
   \cong \Spec\mathbb R[x,p].
 \]
 Here \(x\) is the position coordinate and \(p\) is the fibre-linear momentum
-coordinate dual to \(dx\).  Its canonical algebraic symplectic form is
+coordinate dual to \(dx\).  With the tangent-cotangent ordering fixed in
+convention (ao), \(E_a=T_aX\oplus T_a^*X\), the corresponding algebraic
+symplectic form is
 \[
-  dp\wedge dx.
+  dx\wedge dp.
 \]
 At a real point, the corrected pointwise Weyl label space is therefore
 \[
@@ -167,14 +169,18 @@ At a real point, the corrected pointwise Weyl label space is therefore
 In the usual global affine coordinate this is the one-dimensional CCR label
 space with labels \((q,p)\in\mathbb R^2\), symplectic form
 \[
-  \Omega((q,p),(q',p'))=p q'-p'q.
+  \Omega((q,p),(q',p'))=p' q-p q'.
 \]
-By the AQM-19 finite-mode CCR convention, the irreducible regular projective
-representation has a Hilbert carrier.  In the standard analytic realization on
-\(L^2(\mathbb R)\), position is multiplication by \(x\) and momentum is
-represented formally by
+This is the tangent-cotangent sign of AQM-60, not the opposite sign used by the
+older AQM-19 comparison display \(W(q,p)=T(q)R(p)\).  To compare with that
+Schrodinger display, either reverse the translation/modulation order or identify
+the AQM-19 display momentum with \(-p\).  After making such a sign bridge, the
+irreducible regular projective representation has a Hilbert carrier.  In the
+standard analytic realization on \(L^2(\mathbb R)\), position is multiplication
+by \(x\) and the cotangent label \(p\) is represented formally with the
+corresponding sign convention by
 \[
-  -i\,\frac{d}{dx}.
+  i\,\frac{d}{dx}.
 \]
 The word ``formally'' is essential here.  The cotangent calculation supplies
 the label space for Weyl operators; the representation theorem supplies Hilbert
@@ -182,10 +188,11 @@ carriers.  It does not by itself choose a stabilizer family, self-adjoint
 domains, a Hamiltonian such as \(-d^2/dx^2+V(x)\), boundary conditions, or an
 equation of motion.
 
-The de Rham CSS proposal is different.  Applied literally to
-\(\mathbb R[x]\), it is infinite-dimensional and outside the finite-qudit
-scope.  Moreover \(d_0\) is surjective, so a naive finite-dimensional
-truncation would tend to impose all \(C^1\) directions as \(X\)-checks.  The
-physical particle-on-a-line quantisation therefore belongs to the
+The de Rham CSS proposal is different.  Applied literally to \(\mathbb R[x]\),
+it is infinite-dimensional and outside the finite-qudit scope.  Moreover
+\(d_0\) is surjective in the full polynomial complex, so any finite-dimensional
+truncation would need its own truncation rule before one could infer a concrete
+set of \(C^1\) checks.  The physical particle-on-a-line quantisation therefore
+belongs to the
 tangent-cotangent Weyl representation layer plus further analytic dynamics,
 not to the finite de Rham CSS stabilizer prototype.

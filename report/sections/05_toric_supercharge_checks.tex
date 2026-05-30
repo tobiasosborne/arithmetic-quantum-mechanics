@@ -107,8 +107,8 @@ representative.
 
 The validation script is
 \path{scripts/lattice_codes/toric_supercharge_validation.jl}. It checks the
-construction algebraically, not by building the full Hilbert matrices. For the
-\(k=4\) torus it verifies:
+stabilizer data algebraically, not by building the full physical or ghost
+Hilbert matrices. For the \(k=4\) torus it verifies:
 
 \begin{itemize}
   \item \(n=2k^2=32\) physical qubits and \(32\) local checks;
@@ -116,15 +116,19 @@ construction algebraically, not by building the full Hilbert matrices. For the
   \item the binary symplectic commutator of every pair of checks is zero;
   \item the stabilizer rank is \(2k^2-2=30\);
   \item the code dimension is \(2^{32-30}=4\);
-  \item the CAR/projector algebra certifies \(Q^2=0\) and
-  \(Q Q^*+Q^*Q=H_{\mathrm{TC}}\);
+  \item the stored \texttt{q\_square\_certificate} and
+  \texttt{anticommutator\_certificate} booleans are true because the checked
+  commuting-projector and involutive-check hypotheses needed by the
+  CAR/projector proof hold;
   \item the degree-zero \(Q\)-cohomology dimension is \(4\).
 \end{itemize}
 
-The generated CSV lives in the run bundle
-\path{runs/2026-05-24-toric-supercharge/} as
-\path{data/toric_supercharge_summary.csv}. Its first row is a sentinel noting
-that no full physical or ghost Hilbert matrices are built.
+The generated CSV is
+\path{runs/2026-05-24-toric-supercharge/data/toric_supercharge_summary.csv}.
+Its first row is a sentinel noting
+that no full physical or ghost Hilbert matrices are built. Thus the run records
+the checked hypotheses and summary booleans used by the formal proof above; it
+is not a stored matrix-level certificate for \(Q^2=0\) or the anticommutator.
 
 \subsection{Boundary Maps and the Same Construction}
 
@@ -215,5 +219,5 @@ It also records that \(Q_{\mathrm{cell}}^2=0\), that the middle cellular
 cohomology has \(2\) binary generators, that the \(Z\)-basis cocycle space has
 \(2^{17}=131072\) elements, and that quotienting by the \(2^{15}=32768\)
 star-generated coboundaries leaves \(4\) classes.
-The run output is the CSV \path{toric_chain_ghost_unification.csv} in the
-\path{2026-05-24-toric-chain-ghost-unification} run bundle.
+The run output is
+\path{runs/2026-05-24-toric-chain-ghost-unification/data/toric_chain_ghost_unification.csv}.

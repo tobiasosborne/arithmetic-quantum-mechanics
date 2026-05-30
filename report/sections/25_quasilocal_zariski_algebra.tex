@@ -1,26 +1,32 @@
 % SHARD-ID: AQM-25-QUASILOCAL-ZARISKI-ALGEBRA
 % SHARD-TITLE: Quasi-Local Zariski Algebra
-% SHARD-SUMMARY: Records the directed-system choice for building a quasi-local algebra from Zariski regions.
-% SHARD-SUMMARY: Proves that open-local algebras over quasi-compact opens form the natural filtered system.
-% SHARD-SUMMARY: Reinterprets the closed-complement construction as a closed-support system rather than the primary quasi-local net.
-% SHARD-KEYWORDS: quasi-local algebra, directed system, filtered colimit, Zariski open, quasi-compact open, closed support
+% SHARD-SUMMARY: Restricts the AQM-24 quasi-local construction to finite spectra and finite supports.
+% SHARD-SUMMARY: Records that quasi-compact opens in affine spectra have a terminal global open and therefore are not the infinite affine finite-region spine.
+% SHARD-SUMMARY: Points infinite affine locality to the AQM-28 finite closed-support construction.
+% SHARD-KEYWORDS: quasi-local algebra, directed system, filtered colimit, finite spectrum, finite support, closed support
 
 \section{Quasi-Local Zariski Algebra}
 \label{sec:quasilocal-zariski-algebra}
 
 \subsection{Status and Source Anchors}
 
-This shard records the answer to the directed-system question left by
-AQM-24.  The Zariski-topology source remains
+This shard records the finite-spectrum answer to the directed-system question
+left by AQM-24.  It is restricted to the same residue-qudit setting as AQM-24:
+finite spectra with finite local Weyl factors and tensor-by-identity
+inclusions.  It does not define a general infinite affine quasi-local algebra
+by taking a colimit over quasi-compact opens.
+
+The Zariski-topology source remains
 \path{references/algebraic_geometry/stacks_project_algebra.tex}: standard
 opens form a basis in lines 3104--3117, \(\operatorname{Spec}R\) is
 quasi-compact in lines 3251--3273, and the topology has a quasi-compact open
 basis with quasi-compact intersections in lines 3275--3298.
 
 No analytic completion convention is fixed here.  The object constructed below
-is the algebraic quasi-local \(*\)-algebra, i.e. the filtered colimit of the
-local finite-region \(*\)-algebras.  A later \(C^*\)-completion should be
-recorded as an additional convention.
+is the algebraic finite-support \(*\)-algebra.  Because \(X\) is finite in
+this shard, that algebra has the global finite tensor product \(\mathcal A(X)\)
+as a terminal value.  The later infinite affine finite-region construction is
+AQM-28: finite closed supports inside \(U\cap |X|_{\rm cl}\).
 
 \subsection{Lamport Dependency Skeleton}
 
@@ -28,19 +34,23 @@ recorded as an additional convention.
 \begin{array}{rcl}
 D1&:&\text{A directed set is a preorder in which any two elements have
       a common upper bound.}\\
-D2&:&\mathsf O(X)=\{\text{Zariski opens of }X\},\quad
-      \mathsf K(X)=\{\text{quasi-compact Zariski opens of }X\}.\\
-D3&:&U\in\mathsf K(X)\mapsto\mathcal A(U)
-      \text{ is the open-local algebra of AQM-24.}\\
-L1&:&\mathsf O(X)\text{ is directed under inclusion.}\\
-L2&:&\mathsf K(X)\text{ is directed under inclusion.}\\
-T1&:&(\mathcal A(U))_{U\in\mathsf K(X)}
-      \text{ is the natural quasi-local directed system.}\\
-T2&:&\text{Closed complements are naturally indexed by closed supports.}
+D2&:&X\text{ is a finite residue-qudit spectrum as in AQM-24}.\\
+D3&:&\mathsf F(X)=\{S\subset X:S\text{ finite}\},\quad
+      \mathcal A(S)=\bigotimes_{x\in S}\mathcal A_x.\\
+L1&:&\mathsf F(X)\text{ is directed under inclusion.}\\
+L2&:&S\subset T\Rightarrow
+      \mathcal A(S)\hookrightarrow\mathcal A(T)
+      \text{ functorially by tensoring identities.}\\
+T1&:&\varinjlim_{S\in\mathsf F(X)}\mathcal A(S)=\mathcal A(X)
+      \text{ for finite }X.\\
+T2&:&\text{Quasi-compact opens in affine spectra have a global terminal
+      open and are not the infinite finite-region index.}\\
+T3&:&\text{Infinite affine locality is the finite closed-support system of
+      AQM-28.}
 \end{array}
 \]
 
-\subsection{Directed Region Posets D1--L2}
+\subsection{Finite-Support Poset D1--L2}
 
 A preorder \(I\) is called directed if for every \(i,j\in I\) there exists
 \(k\in I\) such that \(i\leq k\) and \(j\leq k\).  A directed system of
@@ -51,78 +61,104 @@ A preorder \(I\) is called directed if for every \(i,j\in I\) there exists
   \alpha_{jk}\alpha_{ij}=\alpha_{ik}.
 \]
 
-Let \(X=\operatorname{Spec}R\).  Write \(\mathsf O(X)\) for the set of
-Zariski open subsets ordered by inclusion.  Write \(\mathsf K(X)\) for the
-quasi-compact open subsets ordered by inclusion.  At the present concrete
-level, \(\mathsf K(X)\) can be represented by finite unions of standard opens
+Let \(X=\operatorname{Spec}R\) be one of the finite residue-qudit spectra of
+AQM-24.  For a finite support \(S\subset X\), AQM-24 defines
 \[
-  D(f_1)\cup\cdots\cup D(f_n),
+  \mathcal A(S)=\bigotimes_{x\in S}\mathcal A_x
 \]
-using the Stacks source cited above.
+with empty tensor product \(\mathbb C\).  Write
+\[
+  \mathsf F(X)=\{S\subset X:S\text{ finite}\}
+\]
+ordered by inclusion.  Since \(X\) is finite here, every subset is finite.
 
 \paragraph{Lemma \(L1\).}
-\(\mathsf O(X)\) is directed under inclusion.
+\(\mathsf F(X)\) is directed under inclusion.
 
 \emph{Proof.}
-If \(U,V\subset X\) are open, then \(U\cup V\) is open and contains both.
-Thus \(U\cup V\) is a common upper bound.
+If \(S,T\subset X\) are finite, then \(S\cup T\) is finite and contains both.
+Thus \(S\cup T\) is a common upper bound.
 
 \paragraph{Lemma \(L2\).}
-\(\mathsf K(X)\) is directed under inclusion.
+The finite-support algebras form a directed system.
 
 \emph{Proof.}
-If \(U,V\) are quasi-compact opens, then \(U\cup V\) is open.  To show it is
-quasi-compact, let \((W_a)\) be an open cover of \(U\cup V\).  It restricts to
-an open cover of \(U\) and to an open cover of \(V\).  Since \(U\) and \(V\)
-are quasi-compact, finitely many \(W_a\)'s cover \(U\), and finitely many
-\(W_a\)'s cover \(V\).  The union of those two finite subfamilies covers
-\(U\cup V\).  Hence \(U\cup V\in\mathsf K(X)\), and it is a common upper
-bound.
-
-\subsection{The Quasi-Local System T1}
-
-For \(U\in\mathsf K(X)\), let \(\mathcal A(U)\) be the open-local Weyl
-observable algebra from AQM-24.  For \(U\subset V\), use the inclusion
+For \(S\subset T\), use AQM-24's inclusion
 \[
-  \iota_{U,V}:\mathcal A(U)\hookrightarrow\mathcal A(V),\qquad
-  a\mapsto a\otimes\mathbf 1_{V\setminus U}.
+  \iota_{S,T}:\mathcal A(S)\hookrightarrow\mathcal A(T),\qquad
+  a\mapsto a\otimes\mathbf 1_{T\setminus S}.
 \]
+AQM-24 proves that these maps are injective unital \(*\)-homomorphisms and
+that \(\iota_{T,U}\iota_{S,T}=\iota_{S,U}\) for \(S\subset T\subset U\).
+Together with Lemma \(L1\), these are exactly the directed-system axioms.
+
+\subsection{Finite-Spectrum Quasi-Local System T1}
+
+Define the finite-spectrum algebraic quasi-local algebra by
+\[
+  \mathcal A_{\rm finqloc}(X)
+  :=
+  \varinjlim_{S\in\mathsf F(X)}\mathcal A(S).
+\]
+For an open \(U\subset X\), use the same construction inside \(U\):
+\[
+  \mathcal A_{\rm finqloc}(U)
+  :=
+  \varinjlim_{S\in\mathsf F(U)}\mathcal A(S).
+\]
+Since \(X\) and \(U\) are finite in this shard, \(X\) and \(U\) are terminal
+objects in their finite-support posets.
 
 \paragraph{Theorem \(T1\).}
-\((\mathcal A(U),\iota_{U,V})_{U\in\mathsf K(X)}\) is a directed system of
-\(*\)-algebras.  Its algebraic filtered colimit
 \[
-  \mathcal A_{\rm qloc}(X)
-  :=
-  \varinjlim_{U\in\mathsf K(X)}\mathcal A(U)
+  \mathcal A_{\rm finqloc}(X)\cong\mathcal A(X),\qquad
+  \mathcal A_{\rm finqloc}(U)\cong\mathcal A(U).
 \]
-is the natural Zariski quasi-local algebra for the present programme.
+Thus AQM-25 supplies the finite-spectrum analogue of a quasi-local algebra,
+not an infinite affine finite-region construction.
 
 \emph{Proof.}
-The index category is directed by Lemma \(L2\).  For every inclusion
-\(U\subset V\), AQM-24 proves that \(\iota_{U,V}\) is an injective unital
-\(*\)-homomorphism.  The same lemma proves functoriality:
+The colimit over a directed system with terminal object is the terminal value.
+Here \(X\) is terminal in \(\mathsf F(X)\), and \(U\) is terminal in
+\(\mathsf F(U)\).  The comparison maps are the AQM-24 inclusions into the
+terminal tensor product.
+
+\subsection{Quasi-Compact Opens Boundary T2}
+
+The following tempting construction is not adopted here:
 \[
-  \iota_{V,W}\circ\iota_{U,V}=\iota_{U,W}
+  \varinjlim_{U\in\mathsf K(X)}\mathcal A(U),
+  \qquad
+  \mathsf K(X)=\{\text{quasi-compact Zariski opens of }X\}.
 \]
-for \(U\subset V\subset W\).  These are exactly the axioms of a directed
-system.  The displayed \(\varinjlim\) is therefore well-defined as the
-algebraic colimit of this system.
+For an affine scheme \(X=\operatorname{Spec}R\), the Stacks source cited above
+records that \(X\) is quasi-compact.  Hence \(X\in\mathsf K(X)\), and it is a
+terminal object under inclusion.  Whenever all the algebras \(\mathcal A(U)\)
+are already defined, this colimit is just the global algebra \(\mathcal A(X)\).
+That terminal-object fact is harmless in the finite-spectrum examples below,
+but it does not model finite-region quasi-local behavior on an infinite affine
+space.
 
-\subsection{Closed Supports T2}
+Therefore quasi-compact opens may be used here only as topological control data
+or in finite/global examples.  They are not the general affine region poset for
+the programme until an additional nonterminal region convention, infinite
+tensor-product convention, or \(C^*\)-completion convention is fixed.
 
-The closed-complement assignment from AQM-24 sends an open \(U\) to
+\subsection{Closed Supports and AQM-28 T3}
+
+The closed-complement assignment from AQM-24 still sends an open \(U\) to
 \[
   \mathcal A(X\setminus U).
 \]
 With opens ordered by inclusion, this assignment is contravariant.  Therefore
-it is not the primary quasi-local system if ``local region grows'' is meant to
+it is not the primary open-local system if ``local region grows'' is meant to
 match \(U\subset V\).
 
-The same construction becomes covariant if it is indexed directly by closed
-supports.  Let \(\mathsf Z(X)\) be the set of Zariski closed subsets ordered by
-inclusion.  Since a finite union of closed subsets is closed, \(\mathsf Z(X)\)
-is directed: \(Z,Z'\subset Z\cup Z'\).  The assignment
+In finite spectra, the same tensor-factor construction becomes covariant if it
+is indexed directly by finite supports, and by finite closed supports when the
+intended support is a vanishing locus.  If \(Z,Z'\) are closed subsets of the
+finite \(X\), then \(Z\cup Z'\) is closed and finite, and
+\(Z,Z'\subset Z\cup Z'\).  The assignment
 \[
   Z\longmapsto\mathcal A(Z)
 \]
@@ -130,18 +166,29 @@ with the same tensor-by-identity inclusions is then a directed system.  This is
 best read as a closed-support or vanishing-locus quasi-local algebra, not as
 the open-local observable algebra.
 
+For infinite affine schemes of finite type over \(\mathbb F_q\), this shard
+does not use all points of all quasi-compact opens as Weyl sites.  AQM-28 gives
+the current convention: closed finite-residue sites only, finite supports
+\(S\Subset U\cap |X|_{\rm cl}\), and
+\[
+  \mathcal A(U)
+  =
+  \varinjlim_{S\Subset U\cap |X|_{\rm cl}}\mathcal A(S).
+\]
+That is the finite closed-support spine for later infinite affine locality.
+
 \subsection{Finite Checks}
 
 For \(X=\operatorname{Spec}\mathbb F_p\), the space has a largest open
-\(X\).  Hence the directed system has a terminal object and
+\(X\).  Hence the finite-support directed system has a terminal object and
 \[
-  \mathcal A_{\rm qloc}(X)=\mathcal A(X)\cong M_p(\mathbb C).
+  \mathcal A_{\rm finqloc}(X)=\mathcal A(X)\cong M_p(\mathbb C).
 \]
 
 For \(X=\operatorname{Spec}(\mathbb Z/6\mathbb Z)\), all opens are
-quasi-compact and \(X\) is again terminal.  The quasi-local algebra is
+finite and \(X\) is again terminal.  The finite-spectrum quasi-local algebra is
 \[
-  \mathcal A_{\rm qloc}(X)
+  \mathcal A_{\rm finqloc}(X)
   =
   M_2(\mathbb C)\otimes M_3(\mathbb C)\cong M_6(\mathbb C).
 \]
@@ -154,12 +201,15 @@ and their common upper bound is the full open \(X\).
 
 \subsection{Conclusion}
 
-For the quasi-local algebra, the natural general convention is
+For AQM-24 finite spectra, the algebraic finite-region convention is
 \[
-  \boxed{\mathcal A_{\rm qloc}(X)
-  =\varinjlim_{U\in\mathsf K(X)}\mathcal A(U)}
+  \boxed{\mathcal A_{\rm finqloc}(X)
+  =\varinjlim_{S\in\mathsf F(X)}\mathcal A(S)=\mathcal A(X)}
 \]
-with \(\mathsf K(X)\) the quasi-compact Zariski opens and with inclusions
-following open inclusion.  The closed-complement possibility is retained as a
-separate closed-support construction, useful for vanishing loci and defects,
-but not as the primary open-local quasi-local algebra.
+with \(S\) ranging over finite supports and with inclusions given by tensoring
+identities.  The quasi-compact-open colimit is not the general affine
+finite-region construction, because affine \(X\) itself is quasi-compact and
+terminal.  The closed-complement possibility is retained only as a separate
+closed-support construction, useful for vanishing loci and defects.  Later
+infinite affine locality should cite the AQM-28 finite closed-support system,
+not a quasi-compact-open global colimit from this shard.

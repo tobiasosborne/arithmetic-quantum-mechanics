@@ -1,7 +1,7 @@
 % SHARD-ID: AQM-79-QSA-GEOMETRIC-FIELD-HOM-X-V
 % SHARD-TITLE: Geometric Field Association Hom(X,V)
 % SHARD-SUMMARY: Reviews the geometric field-space branch of the QSA catalogue without asserting a general Hom(X,V) quantisation.
-% SHARD-SUMMARY: Separates all-map, finite-support, sheaf-section, regular-function, and rational-truncation choices using only local anchors.
+% SHARD-SUMMARY: Separates all-map, finite-support, sheaf-section, localized regular-function, reduced-smearing, and rational-truncation choices using only local anchors.
 % SHARD-SUMMARY: Records how the structure of X constrains field spaces before the finite Weyl-Heisenberg boundary of AQM-78.
 % SHARD-KEYWORDS: quantum-system association, Hom(X,V), Map(X,V), sheaf sections, regular functions, finite support, observable nets
 
@@ -84,12 +84,12 @@ quotiented by the radical. &
 AQM-15--AQM-18, \texttt{(r)} \\
 \addlinespace
 \texttt{Review:} regular-function profiles &
-For \(X=\Spec\mathbb F_q[x]\), geometry constrains functions to
-\(\Gamma(D(h),\mathcal O_X)=\mathbb F_q[x]_h\). &
-\texttt{Gap} as a full quasi-local operator except for zero profile;
-\texttt{Checked} for finite reduced smearings. &
-Nonzero profiles have cofinite support; a polynomial \(h\) gives a finite
-support \(Z_{\rm cl}(h)\) for \(W_h^{\rm red}\). &
+For \(X=\Spec R\), \(R=\mathbb F_q[x]\), \(U=D(s)\) gives
+\(\Gamma(U,\mathcal O_X)=R_s\); a separate \(h\ne0\) may select \(Z_{\rm cl}(h)\). &
+\texttt{Gap} for nonzero \(R_s^2\) profiles as finite operators;
+\texttt{Checked} for reduced polynomial smearings. &
+Localized profiles evaluate only where \(\pi\nmid s\); finite support
+\(Z_{\rm cl}(h)\) uses \(P,Q\in R\) modulo \(\operatorname{rad}(h)\). &
 AQM-49--AQM-52, \texttt{(ak)}--\texttt{(al)} \\
 \addlinespace
 \texttt{Review:} observable nets &
@@ -182,34 +182,34 @@ Weyl pairing samples.  For \(\mathcal O(d)\otimes\mathbb F_3^2\), the stalk
 reduces to \(V=\mathbb F_3^2\) only after a chosen local frame is reduced
 modulo the maximal ideal.
 
-\textbf{Review.}  The affine-line regular-function branch in AQM-49--AQM-52
-is another structure-sensitive replacement for a vague Hom-space.  On
-\(U=D(h)\subset\Spec\mathbb F_q[x]\), a pair
-\((F,G)\in\mathbb F_q[x]_h^2\) gives a residue profile
+\textbf{Review.}  The affine-line regular-function branch in AQM-49--AQM-52 is a
+structure-sensitive replacement for a vague Hom-space.  Put \(R=\mathbb F_q[x]\).
+On \(U=D(s)\), \(s\ne0\), a pair
+\((F,G)\in R_s^2\) gives a residue profile at closed points \(x_\pi\in U\),
+equivalently \(\pi\nmid s\):
 \[
-  \operatorname{ev}_U(F,G)_\pi=(F\bmod\pi,\ G\bmod\pi)\in\kappa(x_\pi)^2.
+  \operatorname{ev}_U(F,G)_\pi=(F(x_\pi),G(x_\pi))\in\kappa(x_\pi)^2.
 \]
-By AQM-49 and convention \texttt{(ak)}, a nonzero profile on a nonempty
-standard open has cofinite closed support, so it is generally a formal
-infinite-volume profile rather than a quasi-local Weyl operator.
+Denominators are invertible there; this localized datum is not evaluated at
+closed points with \(\pi\mid s\).  By AQM-49 and convention \texttt{(ak)}, a
+nonzero profile on a nonempty standard open has cofinite closed support in that
+open, so it is formal infinite-volume data, not a quasi-local Weyl operator.
 
-\textbf{Checked.}  A nonzero polynomial \(h\) has a different role: it
-selects the finite closed support
+\textbf{Checked.}  A separate nonzero polynomial \(h\in R\) may instead select the finite closed support
 \[
   Z_{\rm cl}(h)=\{x_\pi:\pi\mid h\}.
 \]
-Then AQM-49 defines the reduced smeared label and operator
+AQM-49's reduced smearing over this support uses polynomial labels
+\((P,Q)\in R^2\), equivalently classes modulo \(\operatorname{rad}(h)\):
 \[
-  W_h^{\rm red}(F,G)
-  =
-  W_{Z_{\rm cl}(h)}
-  \bigl((F\bmod\pi,\ G\bmod\pi)_{\pi\mid h}\bigr).
+  W_h^{\rm red}(P,Q)=
+  W_{Z_{\rm cl}(h)}\bigl((P\bmod\pi,\ Q\bmod\pi)_{\pi\mid h}\bigr).
 \]
-AQM-50 checks this line by line over \(\mathbb F_3\), including rational
-two-qutrit supports, a quadratic \(9\)-level site, and the repeated-factor
-case where multiplicities are invisible to the reduced support net.
-AQM-51--AQM-52 and convention \texttt{(al)} check that affine symmetries move
-regular functions, finite supports, and reduced smearings compatibly, while
+It does not evaluate arbitrary localized elements where denominators vanish.
+AQM-50 checks this over \(\mathbb F_3\), including rational two-qutrit
+supports, a quadratic \(9\)-level site, and repeated factors invisible to the
+reduced net.  AQM-51--AQM-52 and convention \texttt{(al)} check that affine
+symmetries move profiles, supports, and reduced smearings compatibly while
 preserving the profile/operator distinction.
 
 \subsection{Observable Nets and the AQM-78 Boundary}

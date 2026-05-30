@@ -27,7 +27,7 @@ D3&:&\ell_1=(1,0,-1,0),\quad \ell_2=(0,1,0,1),\quad
 L1&:&L\text{ is Lagrangian}.\\
 L2&:&L\cap E(A)=0\text{ and }L\cap E(B)=0.\\
 T1&:&D_U(L;\{A,B\})\cong L\ne0.\\
-T2&:&\text{The stabilizer state is entangled and has maximally mixed
+T2&:&\text{The stabilizer state has maximally mixed
       one-site marginals}.\\
 T3&:&\text{A global Lagrangian is not the same as stabilizer descent.}
 \end{array}
@@ -147,43 +147,50 @@ The one-site density matrix on \(A\) is
   I_3/3,
 \]
 and the same computation gives \(I_3/3\) on \(B\).  Thus the one-site
-restrictions are maximally mixed.  This agrees with Lemma \(L2\): the global
-Lagrangian has no nonzero labels supported on a single site.
+restrictions are maximally mixed.  This agrees with Lemma \(L2\): the inherited
+one-site stabilizer label spaces are trivial, although the reduced density
+matrices have all one-site operators in their commutants.
 
 \subsection{Corrected Local-to-Global Statement T3}
 
 \paragraph{Theorem \(T3\).}
-Choosing a full stabilizer is not equivalent to local-to-global gluing.  The
-correct label-level statement is:
+Choosing a global phased Lagrangian is not equivalent to local-to-global
+gluing.  The proved label-level statement used here is:
 \[
 \begin{array}{c}
-\text{full global stabilizer state}\\
-\Longleftrightarrow\\
-\text{global phased Lagrangian }L\leq E(U),
+\text{global phased Lagrangian }L\leq E(U)
+\text{ with AQM-38 phase }\alpha\\
+\Longrightarrow\\
+\text{full global stabilizer state},
 \end{array}
 \]
+with the converse requiring a separate stabilizer-state classification theorem.
 whereas
 \[
 \begin{array}{c}
-\text{full global stabilizer generated from the cover }\mathcal U\\
+\text{fixed global phased Lagrangian generated from }\mathcal U\\
 \Longleftrightarrow\\
-\text{global phased Lagrangian }L\leq E(U)\text{ with }
-D_U(L;\mathcal U)=0,
+\text{its labels satisfy }D_U(L;\mathcal U)=0
+\text{ and phases are restrictions of }\alpha .
 \end{array}
 \]
-plus phase compatibility on overlaps.
+Independently chosen local phased stabilizers on an overlapping cover require
+additional overlap compatibility of the eigencharacters with the Weyl
+multiplier; no such phase-descent theorem is proved here.
 
 \emph{Proof.}
-The first equivalence is AQM-38 Theorem \(T1\).  The second equivalence is
-AQM-38 Theorem \(T2\) applied to a Lagrangian \(L\), with phase compatibility
-added because labels alone do not choose eigenvalues.  AQM-38 Theorem \(T3\)
-proves that product local stabilizer states satisfy the condition.  Theorem
-\(T1\) above proves that the Lagrangian condition alone does not imply it.
+The first implication is AQM-38 Theorem \(T1\).  AQM-38 Theorem \(T2\) proves
+that \(D_U(L;\mathcal U)=0\) is exactly local generation of the global labels.
+For a fixed global phased stabilizer \((L,\alpha)\), the local phases are just
+the restrictions of \(\alpha\).  AQM-38 Theorem \(T3\) proves that product local
+stabilizer states satisfy the condition.  Theorem \(T1\) above proves that the
+Lagrangian condition alone does not imply it.
 
 \subsection{Conclusion}
 
-The broad equivalence must be rejected in this form.  A Lagrangian is a full
-global stabilizer.  A zero descent defect is the extra condition that this
-stabilizer is generated from the local pieces of a chosen cover.  Nonzero
-defect is the stabilizer-label analogue of the state-presheaf phenomenon from
-AQM-27: local restrictions can miss global correlations.
+The broad equivalence must be rejected in this form.  A phased Lagrangian gives
+a full global stabilizer state by AQM-38; the converse is not used here.  A
+zero descent defect is the extra condition that the stabilizer labels are
+generated from the local pieces of a chosen cover.  Nonzero defect is the
+stabilizer-label analogue of the state-presheaf phenomenon from AQM-27: local
+restrictions can miss global correlations.

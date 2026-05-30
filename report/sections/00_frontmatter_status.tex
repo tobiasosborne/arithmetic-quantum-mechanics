@@ -6,9 +6,10 @@
 
 \section{Frontmatter, Status, and Scope}
 
-This lab book tracks a research programme connecting arithmetic zeta functions,
-arithmetic quantum mechanics, supersymmetric quantum mechanics, and
-topological lattice models such as Kitaev and Levin-Wen systems.
+This lab book tracks a research programme investigating possible bridges
+between arithmetic zeta functions, arithmetic quantum mechanics,
+supersymmetric quantum mechanics, and topological lattice models such as
+Kitaev and Levin-Wen systems.
 
 No mathematical or physical claim in this lab book is treated as established
 until it is marked as \emph{Source-local} or \emph{Checked} and linked to a
@@ -23,14 +24,19 @@ programme-level analogies from results.
 
 \subsection{Evidence Chain}
 
-Every substantive assertion should be traceable through:
+Every substantive assertion should carry the provenance required by its status:
 
 \begin{enumerate}
-  \item a local source manifest under \texttt{references/},
-  \item a convention entry in \texttt{CONVENTIONS.md},
-  \item a derivation, script, test, or run bundle when computation is involved,
-  \item an index row in \texttt{INDEX.md}, and
-  \item a report shard in this lab book.
+  \item a \emph{Question} or \emph{Proposal} is allowed to name a gap, but must
+  not be worded as an established result;
+  \item a \emph{Source-local} claim must cite the relevant local source
+  manifest and locator under \texttt{references/};
+  \item a locally derived claim must point to the derivation and to any
+  convention in \texttt{CONVENTIONS.md} on which the derivation depends;
+  \item a computational or generated-data claim must point to the producer,
+  run bundle, schema entry, and \texttt{INDEX.md} row; and
+  \item a \emph{Checked} claim must identify the local derivation, test, or run
+  artifact that checks the invariant being used.
 \end{enumerate}
 
 Missing links are allowed during exploration only when they are explicit.

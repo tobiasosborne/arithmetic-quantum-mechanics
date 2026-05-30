@@ -103,13 +103,24 @@ Put qudits on \(C^1\).  With the basis dot pairing, form
 \]
 Since \(d_1d_0=0\), every element of \(R_X\) is orthogonal to every element of
 \(R_Z\).  By AQM-08, this is exactly the CSS isotropy condition.  After
-choosing phases, this gives commuting stabilizer equations.  This is a
-candidate dynamical principle: exact one-forms and coexact one-forms become
-local checks, and the remaining logical labels are controlled by the finite
-de Rham cohomology
+choosing compatible phases, this gives commuting stabilizer equations.  This is
+a candidate dynamical principle: exact one-forms and coexact one-forms become
+local checks, and the encoded-qudit count is controlled by the finite de Rham
+cohomology
 \[
   H^1_{\rm dR}(A/k)=\ker d_1/\operatorname{im}d_0.
 \]
+The full CSS logical Pauli module is larger than this cohomology half: with the
+chosen finite bases and dot pairing it is the symplectic reduction
+\[
+  L^\perp/L
+  \cong
+  \bigl(\ker d_1/\operatorname{im}d_0\bigr)
+  \oplus
+  \bigl(\ker d_0^T/\operatorname{im}d_1^T\bigr),
+\]
+matching the cohomology-plus-dual/homology convention of AQM-08 and
+\texttt{CONVENTIONS.md} (l).
 
 This test deliberately does not claim that the ring alone chooses all phases,
 a Hamiltonian normalization, or a metric.  Three further calculable branches

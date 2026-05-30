@@ -1,0 +1,274 @@
+% SHARD-ID: AQM-92-HAAH-DATA-SCHEME-MODULES
+% SHARD-TITLE: Haah Data over Schemes: Permissive Module Grammar
+% SHARD-SUMMARY: Defines a broad pre-Haah datum over a commutative ring and its scheme interpretation over \(\Spec A\).
+% SHARD-SUMMARY: Separates algebraic module constraints, adjoint/excitation maps, and defect quotients from Weyl, Hilbert, Hamiltonian, locality, and code layers.
+% SHARD-SUMMARY: Tests the grammar on fields, product rings, dual numbers, \(\mathbb Z/6\mathbb Z\), and \(\mathbb F_3[t]/(t^n-1)\).
+% SHARD-KEYWORDS: Haah, scheme module, Spec, Laurent module, symplectic form, excitation map, defect module, nilpotent
+
+\section{Haah Data over Schemes: Permissive Module Grammar}
+\label{sec:haah-data-scheme-modules}
+
+\subsection{Status and Source Anchors}
+
+\textbf{Status: local definitions and proposals, with source-local Haah
+inputs.}  This shard implements convention \texttt{(ba)}: a pre-Haah datum is
+only an algebraic control package, a scheme Haah datum is its
+\(\Spec(A)\)-interpretation through sheaves, and neither layer by itself gives
+Pauli operators, Hilbert spaces, locality, Hamiltonians, or codes
+(\path{CONVENTIONS.md}, lines 2462--2505).  The affine-scheme and module-sheaf
+background is Stacks: \(\Spec(R)\), \(D(f)\), and residue fields are in
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+273--278 and 2972--3023; associated module sheaves, global sections,
+localizations, stalks, and exactness of \(M\mapsto\widetilde M\) are in
+\path{references/algebraic_geometry/stacks_project_schemes.tex}, lines
+664--718.
+
+The Haah source-local inputs are fixed by the lattice-stabilizer manifest
+\path{references/lattice_stabilizer_codes/SOURCES.md}, lines 17--43.  In the
+free-module source, Haah encodes translation-invariant commuting Pauli
+Hamiltonians by maps between free modules over a Laurent/translation group
+algebra
+(\path{references/lattice_stabilizer_codes/haah_1204_1063_source/alg-code-hamiltonian-v6.tex},
+lines 168--183).  The Pauli module over \(R=\mathbb F_2[\Lambda]\), the
+antipode, trace, commutation form, \(P=R^{2q}\), and
+\(\sigma^\dagger\lambda_q\sigma=0\) criterion are source-local in the same
+file, lines 411--525 and 528--544.  The generator-label map
+\(\sigma:G\to P\) and excitation map \(\epsilon=\sigma^\dagger\lambda_q\) are
+also in Haah's thesis
+(\path{references/lattice_stabilizer_codes/haah_1305_6973_source/alg-theory.tex},
+lines 320--337).  The complex condition
+\(\epsilon\circ\sigma=0\) and \(\operatorname{im}\sigma\subseteq\ker\epsilon\)
+are source-local in
+\path{references/lattice_stabilizer_codes/haah_1204_1063_source/alg-code-hamiltonian-v6.tex},
+lines 656--667.  AQM-91 records the finite periodic bridge and warns that
+Haah's translation Laurent ring is not automatically the coordinate ring of an
+algebraic torus (AQM-91, lines 41--91 and 165--200).
+
+\subsection{The Source-Local Grammar to Generalize}
+
+Haah's source-local data have five algebraic pieces before any scheme
+generalization is attempted.  First, there is a coefficient ring, in the source
+case a translation group algebra.  Second, the Pauli label module \(P\) is free
+over that ring.  Third, a generator-label module \(G\) maps to \(P\) by
+\(\sigma:G\to P\).  Fourth, a Laurent symplectic form \(\lambda_q\), together
+with the dagger induced by transpose and the antipode, gives the excitation
+map \(\epsilon=\sigma^\dagger\lambda_q\).  Fifth, isotropy or commutation is
+the equation \(\sigma^\dagger\lambda_q\sigma=0\).  The preceding paragraph
+cites the local source lines for each item.
+
+\textbf{Local proposal.}  The general lesson kept here is not ``every
+\(\Spec(A)\) is a Pauli lattice''.  The lesson is the module grammar
+\[
+  G \xrightarrow{\sigma} P,\qquad
+  P \xrightarrow{\epsilon} G^\vee,\qquad
+  \epsilon\sigma=0,
+\]
+plus the habit of recording the quotient \(\ker\epsilon/\operatorname{im}\sigma\)
+when it is defined.  All translation, finite support, Pauli, Hilbert, and
+Hamiltonian meanings are deliberately stripped away unless a later layer adds
+the extra data named in convention \texttt{(ba)}.
+
+\subsection{Pre-Haah Data over a Ring}
+
+\paragraph{Definition D1: permissive pre-Haah datum.}
+Let \(A\) be a commutative ring.  A \emph{pre-Haah datum over \(A\)} is a tuple
+\[
+  \mathcal D=(G,P,\sigma,\lambda_{\rm opt})
+\]
+where \(G\) and \(P\) are specified \(A\)-modules, \(\sigma:G\to P\) is an
+\(A\)-linear map, and \(\lambda_{\rm opt}\) is either absent or is a specified
+\(A\)-linear map
+\[
+  \lambda:P\to P^\vee,\qquad P^\vee=\operatorname{Hom}_A(P,A).
+\]
+When \(\lambda\) is absent, the datum records only the generated submodule
+\(\operatorname{im}\sigma\subseteq P\).  It has no excitation map and no defect
+quotient.
+
+\paragraph{Definition D2: formed and isotropic datum.}
+If \(\lambda\) is present, define the formal excitation map
+\[
+  \epsilon=\sigma^\vee\circ\lambda:P\longrightarrow G^\vee.
+\]
+This is a local definition in the category of \(A\)-modules; it is the
+identity-involution analogue of Haah's source-local
+\(\sigma^\dagger\lambda_q\).  The formed datum is \emph{isotropic} if
+\[
+  \epsilon\sigma=\sigma^\vee\lambda\sigma=0.
+\]
+Only in the formed isotropic case do we define the formal logical-defect module
+\[
+  \mathcal L_{\rm alg}(\mathcal D)
+  =
+  \ker(\epsilon)/\operatorname{im}(\sigma).
+\]
+This quotient is an algebraic module diagnostic.  It is not a physical logical
+operator group unless a finite Weyl-Haah or translation Haah datum supplies the
+missing representation and locality data, as required by
+\path{CONVENTIONS.md}, lines 2493--2505.
+
+\paragraph{Definition D3: perfection and finite local bases.}
+The word \emph{symplectic} is reserved here for a chosen alternating
+\(\lambda:P\to P^\vee\) that is an isomorphism.  Matrix adjoints, local ranks,
+residue-fibre nondegeneracy, and base-changed duals require finite locally free
+or finite projective hypotheses.  Stacks defines finite locally free modules in
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+19004--19017, and records the equivalence with finite projective conditions in
+lines 19027--19053.  The dual of a finite locally free sheaf is finite locally
+free, and tensoring with one is exact
+(\path{references/algebraic_geometry/stacks_project_cohomology.tex}, lines
+13836--13845).  The Hom-tensor comparison used when duals are moved through
+base change is guaranteed for finite projective modules in
+\path{references/algebraic_geometry/stacks_project_algebra.tex}, lines
+19351--19357.  Without these hypotheses, \(\epsilon\) may still be a formal
+module map, but fibrewise matrix claims are not made here.
+
+\subsection{Scheme Haah Data over \texorpdfstring{\(\Spec A\)}{Spec A}}
+
+\paragraph{Definition D4: scheme interpretation.}
+Let \(X=\Spec(A)\).  A \emph{scheme Haah datum} is a pre-Haah datum over \(A\)
+viewed through the quasi-coherent sheaves
+\[
+  \widetilde G,\qquad \widetilde P,\qquad
+  \widetilde\sigma:\widetilde G\to\widetilde P,
+\]
+and, when present, \(\widetilde\lambda:\widetilde P\to\widetilde{P^\vee}\).
+On a standard open \(D(f)\), the restricted modules are \(G_f\) and \(P_f\);
+at \(x=\mathfrak p\), the stalks are \(G_{\mathfrak p}\) and
+\(P_{\mathfrak p}\) by the Stacks affine-module-sheaf result cited above.
+The residue fibre used in this shard is the local definition
+\[
+  P(x)=P_{\mathfrak p}\otimes_{A_{\mathfrak p}}\kappa(\mathfrak p),
+  \qquad
+  G(x)=G_{\mathfrak p}\otimes_{A_{\mathfrak p}}\kappa(\mathfrak p).
+\]
+
+The permissive scheme layer allows quasi-coherent modules when the intended
+operation is restriction, localization, stalks, support language, or residue
+fibres.  It asks for coherent modules when a finite-equation or finite-support
+scheme-theoretic statement is intended: on locally Noetherian schemes,
+coherent is equivalent to quasi-coherent finite type/finitely presented in the
+sense recorded in
+\path{references/algebraic_geometry/stacks_project_coherent.tex}, lines
+2224--2242, and quasi-coherent submodules and quotients of coherent modules
+remain coherent by lines 2328--2344.  It asks for finite locally free modules
+when the operation needs local bases, ranks, perfect forms, duals compatible
+with fibres, or a matrix \(\sigma^\vee\lambda\sigma\) whose entries have stable
+local meaning.
+
+\subsection{Restrictive Ladder}
+
+\begin{center}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.22\linewidth}p{0.33\linewidth}p{0.34\linewidth}}
+\textbf{Layer} & \textbf{Added data} & \textbf{Allowed claim} \\
+\hline
+Pre-Haah & \(A\)-modules \(G,P\), map \(\sigma\) &
+\(\operatorname{im}\sigma\subseteq P\) is an algebraic submodule. \\
+Formed pre-Haah & \(\lambda:P\to P^\vee\) &
+\(\epsilon=\sigma^\vee\lambda\), isotropy, and
+\(\ker\epsilon/\operatorname{im}\sigma\) if isotropic. \\
+Scheme Haah & sheaves on \(X=\Spec A\) &
+restriction, localization, stalks, residue fibres, support, and base-change
+questions. \\
+Finite locally free & finite projective/local-basis hypotheses &
+matrix adjoints, perfect forms, fibrewise ranks, and dual-compatible
+comparisons. \\
+Finite Weyl or translation & generating characters, finite self-duality, group
+algebra, antipode, trace, finite support &
+Weyl labels or Haah translation-stabilizer interpretations; these are outside
+this shard. \\
+\end{tabular}
+\end{center}
+
+\subsection{Examples at the Scheme-Module Layer}
+
+\paragraph{Field \(k\).}
+\textbf{Local derivation.}  A field has exactly one prime ideal, \((0)\), so
+\(\Spec(k)\) has one point.  For \(k=\mathbb F_p\), AQM-22 gives this
+calculation and separates \(\Spec(\mathbb F_p)\) from the \(p\)-element
+underlying set (AQM-22, lines 48--69).  A finite locally free pre-Haah datum is
+just finite-dimensional \(k\)-vector spaces \(G\) and \(P\), a matrix
+\(\sigma\), and optionally an alternating matrix \(\lambda\).  Then
+\(\epsilon=\sigma^T\lambda\) and
+\(\mathcal L_{\rm alg}=\ker\epsilon/\operatorname{im}\sigma\) are vector-space
+objects if \(\sigma^T\lambda\sigma=0\).  The finite-field Weyl qudit statement
+belongs to AQM-22/AQM-81, not to this bare module example.
+
+\paragraph{Product field ring \(k^n\).}
+AQM-40 proves that \(R=k^n\) has points
+\(\mathfrak m_i=\ker(\operatorname{pr}_i)\), residues \(k\), and singleton
+opens \(D(e_i)\) (AQM-40, lines 51--97); convention \texttt{(ad)} records that
+\(\Spec(k^n)\) has \(n\), not \(q^n\), points for \(k=\mathbb F_q\)
+(\path{CONVENTIONS.md}, lines 1012--1035).  \textbf{Local derivation:} since
+the idempotents \(e_i\) are orthogonal and sum to \(1\), every \(R\)-module
+\(M\) decomposes as \(\bigoplus_i e_iM\).  Thus a scheme Haah datum over
+\(k^n\) is componentwise \(n\) field-level data after applying the idempotents.
+AQM-40, lines 232--277, warns that stabilizer codes are later choices of
+isotropic labels and phases; the product ring itself supplies no incidence
+complex or lattice locality.
+
+\paragraph{Dual numbers \(k[\varepsilon]/(\varepsilon^2)\).}
+Stacks defines dual numbers as the \(k\)-module with basis \(1,\varepsilon\)
+and \(\varepsilon^2=0\)
+(\path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
+2918--2924).  \textbf{Local derivation:} every prime contains the nilpotent
+\(\varepsilon\), so the topological spectrum is the one point of the quotient
+\(k\), while the structure sheaf still remembers the nilpotent direction.
+For a free module datum, write
+\[
+  \sigma=\sigma_0+\varepsilon\sigma_1,\qquad
+  \lambda=\lambda_0+\varepsilon\lambda_1 .
+\]
+The isotropy equation expands to the zeroth-order condition
+\(\sigma_0^T\lambda_0\sigma_0=0\) and the first-order condition
+\[
+  \sigma_1^T\lambda_0\sigma_0+
+  \sigma_0^T\lambda_1\sigma_0+
+  \sigma_0^T\lambda_0\sigma_1=0 .
+\]
+This is an algebraic deformation calculation only.  For
+\(\mathbb F_3[\varepsilon]/(\varepsilon^2)\), AQM-82 records that the reduced
+residue-site workflow has one \(\mathbb F_3\) site, while the thickened
+Artin-Weyl layer needs the separate AQM-36 top-coefficient generating
+character (AQM-82, lines 128--156).
+
+\paragraph{\(\mathbb Z/6\mathbb Z\).}
+AQM-23 proves the Chinese-remainder isomorphism
+\(\mathbb Z/6\mathbb Z\cong\mathbb F_2\times\mathbb F_3\), computes the two
+prime ideals \((2)\) and \((3)\), and gives residues \(\mathbb F_2\) and
+\(\mathbb F_3\) (AQM-23, lines 57--100).  Therefore a module-level Haah datum
+over \(\mathbb Z/6\mathbb Z\) splits into its two residue/product components
+after the Chinese-remainder idempotents are chosen.  The formed equations
+\(\epsilon\sigma=0\) and the algebraic defect module are componentwise
+equations over the two fields.  AQM-23, lines 102--225, supplies a separate
+finite Weyl residue construction for this ring; this shard uses none of that
+as a consequence of the bare pre-Haah datum.
+
+\paragraph{\(\mathbb F_3[t]/(t^n-1)\).}
+AQM-35 writes \(n=3^s m\), \(3\nmid m\), proves
+\[
+  t^n-1=(t^m-1)^{3^s},
+\]
+and records that the closed residue Weyl sites are the irreducible factors of
+the squarefree part \(t^m-1\) (AQM-35, lines 27--54).  At the present layer,
+take \(A=R_n=\mathbb F_3[t]/(t^n-1)\) and choose modules, \(\sigma\), and
+possibly \(\lambda\) over the full nonreduced ring.  The residue fibres of the
+scheme Haah datum see the quotients \(K_\pi=\mathbb F_3[t]/(\pi)\), while
+\(\sigma\), \(\lambda\), \(\ker\epsilon\), and
+\(\mathcal L_{\rm alg}\) may still contain nilpotent information over \(R_n\).
+AQM-35, lines 241--246, states that nilpotents are invisible to the reduced
+residue-qudit layer, and AQM-37, lines 34--65 and 171--174, treats the
+separate thickened Weyl layer.  No periodic Haah lattice is obtained here
+unless a translation quotient, antipode, trace, and finite-support bridge like
+AQM-91 is added.
+
+\subsection{What This Layer Does Not Yet Give}
+
+\begin{itemize}
+\item It does not turn a bare \(\Spec(A)\) into sites of a lattice, a Pauli module, a Weyl representation, a Hilbert space, a Hamiltonian, locality, or a quantum code.
+\item It does not supply Haah's dagger unless the needed duality, finite locally free hypotheses, and, for translation data, antipode/trace conventions are named.
+\item It does not assert exactness \(\ker\epsilon=\operatorname{im}\sigma\); outside source-local Haah examples or checked finite computations, \(\ker\epsilon/\operatorname{im}\sigma\) is only a module to study.
+\item It does not quantize arbitrary finite rings.  Finite Weyl-Haah data need finite self-duality, residue-field labels, or a certified Frobenius-ring generating character, exactly as convention \texttt{(ba)} requires.
+\item It does not identify coordinate rings with translation group algebras.  That bridge is extra data, and AQM-91 is the local model for making it finite and explicit.
+\end{itemize}

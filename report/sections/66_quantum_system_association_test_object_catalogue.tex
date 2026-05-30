@@ -1,7 +1,7 @@
 % SHARD-ID: AQM-66-QSA-TEST-OBJECT-CATALOGUE
 % SHARD-TITLE: Quantum-System Association Test Object Catalogue
 % SHARD-SUMMARY: Freezes the first test-object list for the quantum-system association programme.
-% SHARD-SUMMARY: Records available, question, and blocked status rows for finite sets, finite rings, quotient examples, and infinite boundaries.
+% SHARD-SUMMARY: Records row-local available anchors, open questions, and helper gaps for finite sets, finite rings, quotient examples, and infinite boundaries.
 % SHARD-SUMMARY: Points every row to local evidence or an explicit planned derivation instead of asserting comparison results.
 % SHARD-KEYWORDS: quantum-system association, catalogue, finite sets, finite rings, nilpotents, quotient rings, infinite boundaries
 
@@ -22,14 +22,17 @@ AQM-65.  The main local anchors are AQM-14 and
 \path{runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv}
 for finite function-space checks; AQM-23, AQM-34, AQM-36, and AQM-40 for
 finite-ring examples; \path{runs/2026-05-26-finite-ring-database/README.md}
-and its CSV review exports for finite-ring helper status; and AQM-29, AQM-30,
-and AQM-45 for infinite boundary examples.
+and indexed CSV review exports under
+\path{runs/2026-05-26-finite-ring-database/data/} for finite-ring helper
+status; and AQM-29, AQM-30, and AQM-45 for infinite boundary examples.
 
-The status words in the tables are row-local:
-\emph{available} means a precise object and at least one local workflow anchor
-already exist; \emph{question} means a proposed object or workflow still needs
-a local source, derivation, or convention; \emph{blocked} means the local
-helper or workflow records an explicit missing-evidence obstruction.
+The status summaries in the tables are row-local prose, not comparison
+tokens from convention \texttt{(au)}: \emph{available anchor} means a precise
+object and at least one local workflow anchor already exist;
+\emph{open question} means a proposed object or workflow still needs a local
+source, derivation, or convention; \emph{helper gap} and \emph{blocked helper}
+mean a local helper or workflow records an explicit missing-evidence
+obstruction.
 
 \subsection{Workflows to Evaluate}
 
@@ -38,7 +41,7 @@ current short list is:
 \[
 \begin{array}{ll}
 \text{finite-set carrier, tensor, direct-sum workflows} & \text{AQM-67--AQM-70 planned},\\
-\text{finite symplectic field labels} & \text{AQM-14 and its 2026-05-24 run},\\
+\text{finite symplectic field labels} & \text{AQM-14; full CSV paths in the table below},\\
 \text{residue-field sites} & \text{AQM-22, AQM-23, AQM-28, AQM-40},\\
 \text{nilpotent-sensitive or thickened Frobenius layer} & \text{AQM-36 and AQM-37},\\
 \text{tangent-cotangent Weyl kinematics} & \text{AQM-58, AQM-61, AQM-62},\\
@@ -46,8 +49,8 @@ current short list is:
 \end{array}
 \]
 The finite-ring database helpers are evidence about the current helper scope,
-not a populated catalogue: the 2026-05-26 run README records that
-\path{finite_rings.sqlite} is schema-only, with no populated or audited ring
+not a populated catalogue: \path{runs/2026-05-26-finite-ring-database/README.md}
+records that \path{data/finite_rings.sqlite} is schema-only, with no populated or audited ring
 rows, while the CSV files are in-memory MVP review exports.
 
 \subsection{Finite Sets and Finite Function Spaces}
@@ -59,11 +62,11 @@ rows, while the CSV files are in-memory MVP review exports.
 Object & Status & Planned workflows & Local anchor or needed evidence\\
 \midrule
 \(X_0=\emptyset\). & question & Finite-set carrier, tensor-site, direct-sum, and all-map field-label edge case. & Step 03--06 planned derivations must fix empty direct sum, empty tensor product, and Gram-choice conventions.\\
-\(X_1=\{\ast\}\). & question / available & Structureless one-point workflows are planned; one finite-residue site is already available after choosing \(X=\Spec\mathbb F_3\). & AQM-22 for the prime-field one-site anchor; Step 03 for the structureless set carrier.\\
-\(X_2=\{1,2\}\). & available & All-map \(F_3^2\)-valued field labels; later finite-set carrier, tensor, and direct-sum comparisons. & AQM-14 and the row \texttt{finite\_two\_points\_all\_maps} in the 2026-05-24 CSV.\\
-\(X_3=\{1,2,3\}\). & available & Same workflows as \(X_2\), with checked all-map field labels. & AQM-14 and the row \texttt{finite\_set\_3\_full} in the 2026-05-24 CSV.\\
+\(X_1=\{\ast\}\). & open question; available anchor & Structureless one-point workflows are planned; one finite-residue site is already available after choosing \(X=\Spec\mathbb F_3\). & AQM-22 for the prime-field one-site anchor; Step 03 for the structureless set carrier.\\
+\(X_2=\{1,2\}\). & available & All-map \(F_3^2\)-valued field labels; later finite-set carrier, tensor, and direct-sum comparisons. & AQM-14 and the row \texttt{finite\_two\_points\_all\_maps} in \path{runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv}.\\
+\(X_3=\{1,2,3\}\). & available & Same workflows as \(X_2\), with checked all-map field labels. & AQM-14 and the row \texttt{finite\_set\_3\_full} in \path{runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv}.\\
 \(X_n=\{1,\ldots,n\}\). & question & General finite-set carrier, tensor-site, direct-sum, and all-map field-label family. & PLAN.md Step 02 fixes the family; AQM-67--AQM-70 still need the general derivations.\\
-\(\mathbb F_3\), \(\mathbb F_3^2\), the parabola \(y=x^2\), and \(G_m(\mathbb F_3)\) as finite point sets with chosen scalar function spaces. & available & Finite symplectic field-label tests with radicals and reduced Weyl labels. & AQM-14 and the named rows in \path{arithmetic_quantum_field_examples.csv}; no comparison with structureless carriers is asserted here.\\
+\(\mathbb F_3\), \(\mathbb F_3^2\), the parabola \(y=x^2\), and \(G_m(\mathbb F_3)\) as finite point sets with chosen scalar function spaces. & available & Finite symplectic field-label tests with radicals and reduced Weyl labels. & AQM-14 and the named rows in \path{runs/2026-05-24-arithmetic-quantum-fields/data/arithmetic_quantum_field_examples.csv}; no comparison with structureless carriers is asserted here.\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -79,9 +82,9 @@ row silently replaces a nonreduced or product presentation by another object.
 \toprule
 Object & Status & Planned workflows & Local anchor or needed evidence\\
 \midrule
-\(R=k\). & available & Residue-field site, finite-set one-point comparison, underlying-set comparison, and tangent-cotangent kinematics. & AQM-22, AQM-61, and the finite-ring CSV row \texttt{F\_3}.\\
-\(R=k^n\), especially \(k^2\) and the MVP row \(k\times k\). & available & Product-ring residue sites, tensor-site comparison, and tangent-cotangent zero-label comparison. & AQM-40, AQM-58, AQM-61, and the finite-ring CSV row \texttt{F\_3xF\_3}.\\
-\(R=k[\epsilon]/(\epsilon^2)\). & available / blocked & Residue-qudit layer, nilpotent-sensitive layer, tangent-cotangent Weyl kinematics, and finite-ring helper rows. & AQM-34 and AQM-36 anchor report workflows; AQM-61 anchors tangent-cotangent.  The finite-ring MVP residue helper is blocked by \texttt{missing\_certified\_maximal\_ideal\_decomposition\_in\_this\_slice}, while the thickened-Frobenius row is available.\\
+\(R=k\). & available & Residue-field site, finite-set one-point comparison, underlying-set comparison, and tangent-cotangent kinematics. & AQM-22, AQM-61, and row \texttt{F\_3} in \path{runs/2026-05-26-finite-ring-database/data/ring_quantization_summary.csv}.\\
+\(R=k^n\), especially \(k^2\) and the MVP row \(k\times k\). & available & Product-ring residue sites, tensor-site comparison, and tangent-cotangent zero-label comparison. & AQM-40, AQM-58, AQM-61, and row \texttt{F\_3xF\_3} in \path{runs/2026-05-26-finite-ring-database/data/ring_quantization_summary.csv}.\\
+\(R=k[\epsilon]/(\epsilon^2)\). & available anchor; helper gap & Residue-qudit layer, nilpotent-sensitive layer, tangent-cotangent Weyl kinematics, and finite-ring helper rows. & AQM-34 and AQM-36 anchor report workflows; AQM-61 anchors tangent-cotangent.  The finite-ring MVP residue helper is blocked by \texttt{missing\_certified\_maximal\_ideal\_decomposition\_in\_this\_slice}, while the thickened-Frobenius row is available.\\
 \(R=k[t]/(t^3)\). & available & Cubic fat-point tangent-cotangent and thickened-Weyl tests. & AQM-36 and AQM-61; database MVP coverage would need a new presentation row before use there.\\
 \(R_p=k[t]/(p)\) for monic \(p\), with first targets \(p=t^2-1,t^2+1,t^3-1,t^6-1\). & available & Residue-qudit quotient workflow and nilpotent-sensitive workflow when \(p\) has repeated factors. & AQM-34 gives the general quotient recipe; AQM-35 and AQM-37 give the \(t^n=1\) specializations.\\
 \(?\,R=k[x,y]/I\) for a two-direction local Artin standard example. & question & Candidate object for comparing residue, thickened, and tangent-cotangent workflows. & The ideal \(I\) must be fixed by a local source or exact derivation before this becomes a standard row.  AQM-61 already treats \(k[u,v]/(u^2,v^2)\) for tangent-cotangent kinematics only.\\
@@ -97,11 +100,11 @@ Object & Status & Planned workflows & Local anchor or needed evidence\\
 \toprule
 Object & Status & Planned workflows & Local anchor or needed evidence\\
 \midrule
-\(\mathbb Z/6\mathbb Z\). & available / blocked & Residue-field site workflow and finite-ring database helper status; possible thickened-Frobenius comparison later. & AQM-23 and the finite-ring CSV row \texttt{Z/6Z} make the residue row available.  The thickened-Frobenius helper is blocked by a missing certified generating character.\\
-\(\mathbb F_2\times\mathbb F_3\). & available & Product presentation to track separately from its canonical MVP representative. & \path{ring_presentations.csv} records a certified-isomorphic merge to the \(\mathbb Z/6\mathbb Z\) canonical row; later comparisons must name which presentation is being used.\\
-\(\mathbb Z/4\mathbb Z\), \(\mathbb Z/8\mathbb Z\), \(\mathbb Z/9\mathbb Z\). & blocked & Residue and thickened-Frobenius database-helper rows. & \path{ring_quantization_obstruction.csv} records missing certified maximal-ideal decomposition for the residue helper and missing generating character for the thickened helper.\\
+\(\mathbb Z/6\mathbb Z\). & available anchor; helper gap & Residue-field site workflow and finite-ring database helper status; possible thickened-Frobenius comparison later. & AQM-23 and row \texttt{Z/6Z} in \path{runs/2026-05-26-finite-ring-database/data/ring_quantization_summary.csv} make the residue row available.  The thickened-Frobenius helper is blocked by a missing certified generating character.\\
+\(\mathbb F_2\times\mathbb F_3\). & available & Product presentation to track separately from its canonical MVP representative. & \path{runs/2026-05-26-finite-ring-database/data/ring_presentations.csv} records a certified-isomorphic merge to the \(\mathbb Z/6\mathbb Z\) canonical row; later comparisons must name which presentation is being used.\\
+\(\mathbb Z/4\mathbb Z\), \(\mathbb Z/8\mathbb Z\), \(\mathbb Z/9\mathbb Z\). & blocked & Residue and thickened-Frobenius database-helper rows. & \path{runs/2026-05-26-finite-ring-database/data/ring_quantization_obstruction.csv} records missing certified maximal-ideal decomposition for the residue helper and missing generating character for the thickened helper.\\
 \(\mathbb F_2[\epsilon]/(\epsilon^2)\). & blocked & Even dual-number finite-ring helper row; possible comparison with \(k=\mathbb F_2\) conventions later. & The MVP quantisation rows are blocked by missing residue decomposition and missing generating character; no report comparison is asserted.\\
-The one-element zero ring. & blocked / not applicable & Database edge case only until layer semantics are fixed. & CONVENTIONS.md \texttt{(an)} and the finite-ring CSV rows record \texttt{not\_applicable\_until\_layer\_semantics}; no Hilbert-space claim is made.\\
+The one-element zero ring. & blocked helper; layer not applicable & Database edge case only until layer semantics are fixed. & CONVENTIONS.md \texttt{(an)} and \path{runs/2026-05-26-finite-ring-database/data/ring_quantization_summary.csv} plus \path{runs/2026-05-26-finite-ring-database/data/ring_quantization_obstruction.csv} record \texttt{not\_applicable\_until\_layer\_semantics}; no Hilbert-space claim is made.\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -114,9 +117,9 @@ The one-element zero ring. & blocked / not applicable & Database edge case only 
 \toprule
 Object & Status & Planned workflows & Local anchor or needed evidence\\
 \midrule
-\(\Spec\mathbb F_3[t]\). & available / question & Closed-point finite-residue quasi-local net; finite rational-support truncations; formal regular-function profiles; generic-point boundary. & AQM-29, AQM-48, AQM-49, and AQM-50.  Infinite-product, completion, and generic-sector comparisons remain later questions.\\
-\(\Spec\mathbb F_3[x,y]\). & available / question & Closed-point finite-residue net and rational \(3^2\)-point truncation; tangent-cotangent rational-support checks. & AQM-30 and AQM-62.  Full comparison with two-direction local Artin limits requires a fixed Artin standard object.\\
-\(\Spec\mathbb Z\). & available / question & Closed-prime residue-qudit net, incomplete tensor representation after a reference-vector choice, and generic \(\mathbb Q\) boundary sector. & AQM-45.  Adelic, local-field, and full generic-sector completion conventions are not fixed here.\\
+\(\Spec\mathbb F_3[t]\). & available anchor; open question & Closed-point finite-residue quasi-local net; finite rational-support truncations; formal regular-function profiles; generic-point boundary. & AQM-29, AQM-48, AQM-49, and AQM-50.  Infinite-product, completion, and generic-sector comparisons remain later questions.\\
+\(\Spec\mathbb F_3[x,y]\). & available anchor; open question & Closed-point finite-residue net and rational \(3^2\)-point truncation; tangent-cotangent rational-support checks. & AQM-30 and AQM-62.  Full comparison with two-direction local Artin limits requires a fixed Artin standard object.\\
+\(\Spec\mathbb Z\). & available anchor; open question & Closed-prime residue-qudit net, incomplete tensor representation after a reference-vector choice, and generic \(\mathbb Q\) boundary sector. & AQM-45.  Adelic, local-field, and full generic-sector completion conventions are not fixed here.\\
 \bottomrule
 \end{tabular}
 \end{center}

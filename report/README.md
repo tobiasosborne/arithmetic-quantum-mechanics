@@ -109,6 +109,9 @@ before treating report edits as complete.
 | 89 | `AQM-89-SCHEME-INCIDENCE-CODE-SOURCES` | `report/sections/89_scheme_incidence_code_sources.tex` | Scheme-Incidence Sources for Code Complexes |
 | 90 | `AQM-90-ALGEBRAIC-TORUS-QUANT2` | `report/sections/90_algebraic_torus_quant2.tex` | Algebraic Torus Quant2 Test Case |
 | 91 | `AQM-91-HAAH-LAURENT-TORUS-QUANT2` | `report/sections/91_haah_laurent_torus_quant2.tex` | Haah Laurent Modules and Torus Quant2 |
+| 92 | `AQM-92-HAAH-DATA-SCHEME-MODULES` | `report/sections/92_haah_data_scheme_modules.tex` | Haah Data over Schemes: Permissive Module Grammar |
+| 93 | `AQM-93-FINITE-RING-HAAH-LAYERS` | `report/sections/93_finite_ring_haah_layers.tex` | Finite-Ring Haah Layers: Residues, Thickenings, and Blockers |
+| 94 | `AQM-94-TRANSLATION-ALGEBRA-SPEC` | `report/sections/94_translation_algebra_vs_spec.tex` | Translation Haah Data versus Bare Spectrum |
 
 ## Maintenance Rules
 

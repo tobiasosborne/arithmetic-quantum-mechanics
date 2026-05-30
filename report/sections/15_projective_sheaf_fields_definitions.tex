@@ -218,14 +218,40 @@ and scalar multiplication inherited from the tensor construction.  Hence
 
 \emph{Proof.}
 The map \(B\) is bilinear because it is a sum of products of linear evaluation
-maps.  The form \(\omega_V\) is bilinear by definition.  Therefore their
-tensor product pairing is bilinear on pure tensors and hence bilinear after
-extension.  Also
+maps.  It is also symmetric from the displayed formula:
+\(B(s,t)=B(t,s)\).  The form \(\omega_V\) is bilinear by definition.
+Therefore their tensor product pairing is bilinear on pure tensors and hence
+bilinear after extension.  For a pure tensor,
 \[
   \Omega(s\otimes v,s\otimes v)=B(s,s)\omega_V(v,v)=0,
 \]
-and the same alternating identity follows for arbitrary sums by bilinearity
-and the alternating property of \(\omega_V\).
+but arbitrary sums require the mixed terms.  Let
+\[
+  \phi=\sum_i s_i\otimes v_i .
+\]
+Then
+\[
+  \Omega(\phi,\phi)
+  =
+  \sum_i B(s_i,s_i)\omega_V(v_i,v_i)
+  +
+  \sum_{i<j}
+  \bigl(
+    B(s_i,s_j)\omega_V(v_i,v_j)
+    +
+    B(s_j,s_i)\omega_V(v_j,v_i)
+  \bigr).
+\]
+The first sum is zero because \(\omega_V(v_i,v_i)=0\).  For the mixed terms,
+symmetry of \(B\) gives the common scalar \(B(s_i,s_j)\), and the alternating
+property of \(\omega_V\) gives
+\[
+  0=\omega_V(v_i+v_j,v_i+v_j)
+   =\omega_V(v_i,v_j)+\omega_V(v_j,v_i).
+\]
+Thus every mixed pair cancels, so \(\Omega(\phi,\phi)=0\).  This last step uses
+the diagonal alternating identity itself, not an inference from skew-symmetry;
+in characteristic \(2\), skew-symmetry and alternation are not interchangeable.
 
 \paragraph{Lemma \(L3\).}
 Let

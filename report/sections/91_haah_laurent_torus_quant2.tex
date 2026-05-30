@@ -1,8 +1,8 @@
 % SHARD-ID: AQM-91-HAAH-LAURENT-TORUS-QUANT2
 % SHARD-TITLE: Haah Laurent Modules and Torus Quant2
 % SHARD-SUMMARY: Compares Haah's Laurent-polynomial module formalism with the algebraic-torus Quant2 shard.
-% SHARD-SUMMARY: Identifies the finite periodic bridge where the AQM-90 Cayley square becomes Haah's toric-code matrix.
-% SHARD-SUMMARY: Records lessons for expressing arithmetic-field dynamics as Weyl-Heisenberg label constraints.
+% SHARD-SUMMARY: Identifies the \(p=2\) finite periodic bridge where the AQM-90 Cayley square becomes Haah's toric-code matrix.
+% SHARD-SUMMARY: Records proposal-level lessons for future arithmetic-field Weyl-Heisenberg label constraints.
 % SHARD-KEYWORDS: Haah, Laurent polynomials, algebraic torus, Quant2, toric code, Weyl-Heisenberg, finite support
 
 \section{Haah Laurent Modules and Torus Quant2}
@@ -25,12 +25,13 @@ D1&:&A_T=k[x^{\pm1},y^{\pm1}],\quad T=\Spec A_T.\\
 D2&:&R_{\rm tr}=\mathbb F_p[X^{\pm1},Y^{\pm1}]=\mathbb F_p[\mathbb Z^2].\\
 D3&:&x,y\text{ are torus coordinates; }X,Y\text{ are translation operators.}\\
 D4&:&G=\langle\alpha\rangle\times\langle\beta\rangle\subset T(k).\\
-D5&:&R_G=\mathbb F_p[X^{\pm1},Y^{\pm1}]/(X^{N_x}-1,Y^{N_y}-1).\\
-D6&:&P_G=R_G^4\cong
+D5&:&R_{G,p}=\mathbb F_p[X^{\pm1},Y^{\pm1}]/(X^{N_x}-1,Y^{N_y}-1).\\
+D6&:&\text{For the AQM-90 comparison, }p=2,\ R_G=R_{G,2}.\\
+D7&:&P_G=R_G^4\cong
 \mathbb F_2^{G\times\{x,y\}}{}_q\oplus
 \mathbb F_2^{G\times\{x,y\}}{}_p.\\
 L1&:&\sigma_\square\text{ reproduces the AQM-90 square CSS subgroup.}\\
-L2&:&\sigma_\square^\dagger\lambda\sigma_\square=0
+L2&:&\sigma_\square^\dagger\lambda_2\sigma_\square=0
 \text{ is }\partial_1\partial_2=0.\\
 L3&:&d:A_T\to\Omega^1_{A_T/k}\text{ is not Haah's excitation map.}\\
 T1&:&\text{Use finite Laurent matrices as Weyl-label selection principles.}
@@ -39,8 +40,9 @@ T1&:&\text{Use finite Laurent matrices as Weyl-label selection principles.}
 
 \subsection{The Same Laurent Ring in Two Different Roles}
 
-Haah's starting point is translation invariance.  A lattice with translation
-group \(\mathbb Z^2\) gives the group algebra
+Haah's starting point is translation invariance.  For prime-qudit labels over
+\(\mathbb F_p\), a lattice with translation group \(\mathbb Z^2\) gives the
+group algebra
 \[
   R_{\rm tr}=\mathbb F_p[\mathbb Z^2]
   =\mathbb F_p[X^{\pm1},Y^{\pm1}].
@@ -71,25 +73,26 @@ Choose \(\alpha,\beta\in k^\times\), with orders \(N_x,N_y\), and set
 \[
   G=\langle\alpha\rangle\times\langle\beta\rangle\subset T(k).
 \]
-AQM-90 uses this \(G\) as a finite vertex set.  Haah's periodic lattice with
-the same periods uses
+AQM-90 uses this \(G\) as a finite vertex set.  The corresponding generic
+prime-qudit periodic translation quotient is
 \[
-  R_G=
+  R_{G,p}=
   \mathbb F_p[X^{\pm1},Y^{\pm1}]/(X^{N_x}-1,Y^{N_y}-1).
 \]
-As an \(\mathbb F_p\)-vector space, \(R_G\) has the basis
+As an \(\mathbb F_p\)-vector space, \(R_{G,p}\) has the basis
 \(\{X^iY^j:0\le i<N_x,\ 0\le j<N_y\}\), hence one basis vector for each site of
 the chosen finite torus subgroup.  Multiplication by \(X\) and \(Y\) is the
 shift by \(\alpha\) and \(\beta\).
 
-This is the exact bridge.  It is not the claim that \(R_{\rm tr}\) is the
+This is the finite bridge.  It is not the claim that \(R_{\rm tr}\) is the
 coordinate ring of \(\Spec A_T\).  It is the finite periodic claim that the
-translation quotient \(R_G\) acts on the same site-indexed label module that
-AQM-90 built from \(G\).
+translation quotient acts on a site-indexed label module.  The literal
+comparison with AQM-90's qubit edge module is the specialization \(p=2\),
+written \(R_G=R_{G,2}\) below.
 
 \subsection{Recovering Haah's Toric Matrix from AQM-90}
 
-Use qubit edge labels and order
+Now specialize to \(p=2\).  Use qubit edge labels and order
 \[
   P_G=R_G^4=(q_x,q_y,p_x,p_y).
 \]
@@ -159,7 +162,7 @@ This is exactly AQM-90's CSS subgroup
   +(0\oplus\operatorname{im}\partial_2).
 \]
 
-Haah also gives a stronger test.  Let
+Haah also gives the excitation-map test.  Let
 \[
   \epsilon_\square=\sigma_\square^\dagger\lambda_2:P_G\to R_G^2.
 \]
@@ -176,14 +179,25 @@ The matrix equation
 \[
   \sigma_\square^\dagger\lambda_2\sigma_\square=0
 \]
-is the Haah form of the AQM-90 identity \(\partial_1\partial_2=0\).  The
-strong toric exactness statement is
+is the Haah form of the AQM-90 identity \(\partial_1\partial_2=0\).  Over the
+infinite translation ring \(R_{\rm tr}\), the corresponding toric map
+\(\sigma_{\rm tr}\) has excitation map
+\(\epsilon_{\rm tr}=\sigma_{\rm tr}^\dagger\lambda_2\), and the source-local
+toric exactness statement is
 \[
-  \ker\epsilon_\square=\operatorname{im}\sigma_\square,
+  \ker\epsilon_{\rm tr}=\operatorname{im}\sigma_{\rm tr},
 \]
-with the usual finite-periodic caveat that finite quotients can create global
-logical labels.  For AQM purposes, this exactness equation is a sharper
-selection principle than bare isotropy.
+as recorded in the local Haah thesis locator
+\path{references/lattice_stabilizer_codes/haah_1305_6973_source/alg-theory.tex},
+lines 1515--1567.  On the finite periodic quotient \(R_G\), this shard does
+not assert that equality without a local finite-periodic check.  The object to
+record is instead the possible logical quotient
+\[
+  \ker\epsilon_\square/\operatorname{im}\sigma_\square .
+\]
+For AQM purposes, the source-local exactness equation is a sharper anchor and
+proposal template than bare isotropy, while the finite-periodic quotient is a
+quantity to measure.
 
 \subsection{What Is Not Shared}
 
@@ -216,12 +230,12 @@ submodule or kernel inside a finite Weyl label module, not an informal family
 of functions.  The output must be a selected or rejected subset of
 \(\operatorname{WH}(P_G)\).
 
-The second lesson is exactness.  AQM-90 verified the square boundary identity.
-Haah teaches us to ask for the pair
+The second lesson is exactness discipline.  AQM-90 verified the square
+boundary identity.  Haah teaches us to ask for the pair
 \[
   \operatorname{im}\sigma\subseteq\ker(\sigma^\dagger\lambda)
 \]
-and then to measure the quotient
+and then to measure, rather than erase, the finite-periodic quotient
 \[
   \ker(\sigma^\dagger\lambda)/\operatorname{im}\sigma.
 \]

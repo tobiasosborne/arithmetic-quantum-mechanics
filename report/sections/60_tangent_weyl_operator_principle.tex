@@ -17,7 +17,9 @@ differentials are sourced from
 33793--33872 and 34310--34340.  Tangent spaces are sourced from
 \path{references/algebraic_geometry/stacks_project_varieties.tex}, lines
 2915--3019.  Finite Weyl operators use AQM-28.  The stabilizer/CSS isotropy
-dictionary is AQM-08.  The real CCR comparison is AQM-19.
+dictionary is AQM-08.  The tangent-cotangent carrier convention is
+\texttt{CONVENTIONS.md} (ao), with the relative/intrinsic warning in
+\texttt{CONVENTIONS.md} (av).  The real CCR comparison is AQM-19.
 \end{sloppypar}
 
 The corrected principle is not ``put a Hilbert space on the tangent space'' and
@@ -30,9 +32,9 @@ selection principle choosing commuting Weyl operators.
 
 \[
 \begin{array}{rcl}
-D1&:&X=\Spec A,\quad P\in X,\quad K=\kappa(P).\\
-D2&:&V_P^*=T_P^*X=\Omega^1_{A/k}\otimes_AK.\\
-D3&:&V_P=T_PX=\operatorname{Hom}_K(V_P^*,K).\\
+D1&:&k\to A\text{ is fixed},\quad X=\Spec A,\quad P\in X,\quad K=\kappa(P).\\
+D2&:&V_P^*=T_{A/k,P}^*X=\Omega^1_{A/k}\otimes_AK.\\
+D3&:&V_P=T_{A/k,P}X=\operatorname{Hom}_K(V_P^*,K).\\
 D4&:&E_P=V_P\oplus V_P^*.\\
 D5&:&\omega((v,\alpha),(w,\beta))=\beta(v)-\alpha(w).\\
 D6&:&\rho_P:E_P\to PU(\mathcal H_{\rho_P})
@@ -42,9 +44,10 @@ D7&:&e\in E_P\text{ labels a Weyl operator }W_P(e)\text{ on }
 D8&:&E_S=\bigoplus_{P\in S}E_P,\quad
       \rho_S=\bigotimes_{P\in S}\rho_P
       \text{ for finite }S.\\
-D9&:&L\subset E_S\text{ isotropic } \Rightarrow
-      \{W(e):e\in L\}\text{ is a commuting family after phases}.\\
-D10&:&\text{Chosen phases for }L\text{ define a stabilizer eigenspace}.\\
+D9&:&L\subset E_S\text{ isotropic, meaning trivial Weyl commutator}
+      \Rightarrow \{W(e):e\in L\}\text{ commutes}.\\
+D10&:&\text{A compatible phased-stabilizer character on }L
+       \text{ defines a joint eigenspace}.\\
 D11&:&C^0=A\to C^1=\Omega^1_{A/k}\to C^2=\Omega^2_{A/k}
       \text{ is a separate finite CSS prototype}.\\
 T1&:&D1\text{--}D10\text{ are the tangent-Weyl operator workflow}.\\
@@ -54,7 +57,8 @@ T2&:&D11\text{ and residue-Weyl constructions are comparison/prototype layers}.
 
 \subsection{The Local Symplectic Label Space}
 
-Let \(V=V_P=T_PX\) and \(V^*=V_P^*=T_P^*X\).  Define
+Let \(V=V_P=T_{A/k,P}X\) and \(V^*=V_P^*=T^*_{A/k,P}X\), all relative to the
+fixed base map \(k\to A\).  Define
 \[
   E_P=V\oplus V^*
 \]
@@ -71,6 +75,16 @@ It is nondegenerate: if \(v\ne0\), choose \(\beta\in V^*\) with
 \(\alpha(w)\ne0\).  Pairing with \((0,\beta)\) or \((w,0)\) gives a nonzero
 value.  Hence \(E_P\) is the local symplectic label space.
 
+In coordinates \(V=K\,\partial_x\), \(V^*=K\,dx\), this convention gives
+\[
+  \omega((q,p),(q',p'))=p' q-p q'.
+\]
+Thus it agrees with the \(dx\wedge dp\) sign used in AQM-58 after that shard's
+repair.  It is opposite to the display obtained from the residue-Weyl ordering
+\(W(q,p)=T(q)R(p)\); comparison with that ordering requires either reversing
+the translation/modulation order or replacing the display momentum by its
+negative.
+
 For finite \(K\), the Weyl-Heisenberg step constructs projective unitary
 representations of \(E_P\).  With central character
 \[
@@ -83,7 +97,7 @@ the irreducible finite representation has carrier dimension
 \]
 This is where Hilbert carriers enter the recipe: they are carriers of the
 Weyl-Heisenberg projective representation.  They are not assigned directly to
-\(T_PX\).
+\(T_{A/k,P}X\).
 
 \subsection{Stabilizer Selection Is the Isotropic Step}
 
@@ -91,11 +105,14 @@ A stabilizer principle chooses label data
 \[
   L\subset E_S=\bigoplus_{P\in S}E_P
 \]
-whose symplectic pairings vanish.  This isotropy condition is exactly what is
-needed for the corresponding Weyl operators to commute, up to the central
-phases fixed by the representation convention.  After the selection principle
-also fixes eigenvalue phases, the selected stabilizer subspace is the joint
-eigenspace inside the carrier of \(\rho_S\).
+whose Weyl commutator bicharacter is trivial.  For a common residue field this
+is the usual vanishing of the summed symplectic pairing; for mixed finite
+residue fields it is the componentwise product of the local trace-character
+commutators.  This isotropy condition is exactly what is needed for the
+corresponding Weyl operators to commute after the central lifts are fixed.
+After the selection principle also fixes a compatible phased-stabilizer
+character on \(L\), the selected stabilizer subspace is the joint eigenspace
+inside the carrier of \(\rho_S\).
 
 Thus the role previously being described by the wrong geometric word is played
 by the stabilizer-selection principle itself.  A maximal isotropic choice is a
@@ -208,13 +225,13 @@ commuting operator family.
 The corrected workflow is:
 \[
 \begin{array}{ll}
-1. & \text{Choose }X=\Spec A.\\
+1. & \text{Choose a base map }k\to A\text{ and set }X=\Spec A.\\
 2. & \text{Compute points }P\text{ and residue fields }\kappa(P).\\
-3. & \text{Compute }T_PX\text{ and }T_P^*X.\\
-4. & \text{Build }E_P=T_PX\oplus T_P^*X.\\
+3. & \text{Compute the relative }T_{A/k,P}X\text{ and }T^*_{A/k,P}X.\\
+4. & \text{Build }E_P=T_{A/k,P}X\oplus T^*_{A/k,P}X.\\
 5. & \text{Quantise }E_P\text{ by Weyl-Heisenberg projective representations}.\\
 6. & \text{Use a separate principle to select isotropic Weyl labels}.\\
-7. & \text{Take the joint eigenspace of the selected commuting operators}.
+7. & \text{Choose compatible stabilizer phases and take the joint eigenspace}.
 \end{array}
 \]
 AQM-61--AQM-63 use this workflow.  AQM-55--AQM-57 remain useful only as

@@ -56,10 +56,14 @@ are preserved because they match the recorded SHA256 values.
     commutators, center, and central extension.
   - Lines 969--981 define the left Schrödinger representation.
   - Lines 1127--1136 record the commutative-ring module structure.
-  - Lines 1637--1649 record displacement operators and the operator-basis
-    result.
+  - Lines 1637--1651 record displacement operators, trace orthogonality, and
+    the operator-basis/Hilbert-Schmidt orthonormal-basis result.
   - Lines 1677--1718 give arithmetic-type finite examples from ideals and
     trace pairings.
+  - Lines 1720--1727 identify the quotient by the center with
+    `A_{I,f} + B_{I,f}` and define the trace-skew form `delta`.
+  - Lines 1731--1748 record explicit but largely non-canonical basis choices
+    for the arithmetic-type modules and the induced matrix identification.
 
 ### E. Beny, J. Crann, A. Lee, S. Park, and S. Youn, Gaussian Quantum Information
 
@@ -78,8 +82,11 @@ are preserved because they match the recorded SHA256 values.
   - Lines 305--328 define LCA dual groups and Haar-measure conventions.
   - Lines 411--434 define 2-cocycles, Heisenberg multipliers, and the unique
     irreducible projective representation.
+  - Lines 446--456 record cocycle normalization by a square-root choice and
+    the non-uniqueness of that choice.
   - Lines 461--473 define canonical Weyl systems
     `F x Fhat` and the representation `W(x,gamma)=T_x M_gamma`.
+  - Lines 477--490 record the canonical normalization for 2-regular groups.
   - Lines 505--528 give the odd-qudit Weyl/Pauli example.
   - Lines 531--542 give the p-adic example.
 
@@ -122,9 +129,13 @@ are preserved because they match the recorded SHA256 values.
 - Local anchors:
   - Lines 341--355 state the finite odd-exponent Heisenberg problem and note
     the even-order caveat.
-  - Lines 359--424 define finite symplectic abelian groups, Heisenberg
-    extensions, Stone-von Neumann uniqueness, and the canonical representation
-    theorem.
+  - Lines 359--371 define finite symplectic abelian groups,
+    orthogonals/lagrangians, and the `L x L^*` form after a splitting of the
+    lagrangian sequence.
+  - Lines 376--404 record central-extension hypotheses and Stone-von Neumann
+    uniqueness for the tautological central character.
+  - Lines 423--424 state the canonical representation theorem under the
+    odd-exponent setup.
   - Lines 531--548 construct canonical isotropic subgroups for finite
     p-groups.
 
@@ -146,6 +157,11 @@ are preserved because they match the recorded SHA256 values.
   - Lines 103--110 define finite Frobenius rings and generating characters.
   - Lines 127--145 define symplectic and character-symplectic duals.
   - Lines 180--197 define ring Pauli operators and the Pauli group.
+  - Lines 789--807 define generalized Frobenius and trace for Galois rings,
+    note the finite-field trace at `b=1`, and record `chi(r)=zeta^Tr(r)` as a
+    generating character.
+  - Lines 810--825 compare trace-symplectic duals with `chi`-symplectic duals
+    for Galois rings.
   - Lines 1136--1138 summarize the extension to finite commutative local
     Frobenius rings and Galois rings.
 
@@ -168,6 +184,9 @@ are preserved because they match the recorded SHA256 values.
     Frobenius ring.
   - Lines 353--355 record the multiplication formula for `X(a)Z(b)`.
   - Lines 412--423 define the Pauli group and label map.
+  - Lines 436--460 record trace vanishing, trace-inner-product
+    orthonormality, and the nice-error-basis interpretation for the error
+    basis.
   - Lines 469--504 define the symplectic inner product and duality used for
     self-orthogonal stabilizer codes.
 
@@ -188,6 +207,9 @@ are preserved because they match the recorded SHA256 values.
     Heisenberg groups over `Z_N`, semidirect products, and a projective Weil
     representation.
   - Lines 748--778 define the finite Heisenberg group over `Z_N`.
+  - Lines 813--828 give the stated `N`-dimensional Schrödinger representation
+    and its uniqueness up to unitary equivalence, with implementer fixed up to
+    phase.
   - Lines 993--1019 record the exact sequence
     `0 -> Z_N^2 -> Tp_N -> Sp_N -> 1` and the splitting problem.
   - Lines 3076--3121 state the main conclusions and the lifting of the
@@ -249,11 +271,17 @@ are preserved because they match the recorded SHA256 values.
 - SHA256:
   `f76e42db6742e3095c5f23d8390e77f5de442704d8826ae85e1afcb67e204bb5`
 - Local anchors:
-  - Lines 36--55 summarize the extension of Weil representations to
+  - Lines 49--55 summarize the extension of Weil representations to
     coefficient rings.
-  - Lines 91--121 define the local/finite field setting, coefficient ring
-    `A`, and additive characters.
-  - Lines 123--146 state the Stone-von Neumann model over `A`-algebras.
+  - Lines 69--75 set the finite/local nonarchimedean field hypotheses,
+    residual characteristic not `2`, the minimal coefficient ring `A`, and the
+    lack of restrictive assumptions on `A`-algebras.
+  - Lines 77--92 state the `A`-algebra Stone-von Neumann model, including the
+    everywhere-irreducible substitute, scalar-extension compatibility, model
+    independence, and the boundary that full irreducible uniqueness is asserted
+    there only for fields and not pursued over rings.
+  - Lines 96--115 define the Weil representation via central extensions and
+    record model-independence across self-dual subgroups.
 
 ### Bjorn Poonen, Tate's Thesis Notes
 

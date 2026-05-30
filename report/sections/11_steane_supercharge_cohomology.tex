@@ -240,9 +240,14 @@ presentation-dependent derived enhancement of the stabilizer equations.
 
 \subsection{Exact Validation}
 
-The producer \path{steane_supercharge_molecular.jl} writes three CSV files in
-the Steane molecular run bundle. The summary CSV records \(\dim D=3\),
-\(\dim C=4\), \(\dim L=6\), \(\dim L^\perp=8\), \(|\mathcal K|=8192\),
-\(\dim H^0(Q)=2\), and full cohomology dimension \(128\). The vector CSV
-records the two codeword cosets and the logical representatives \((u,0)\),
-\((0,u)\). The cohomology CSV records the seven dimensions displayed above.
+The producer \path{scripts/lattice_codes/steane_supercharge_molecular.jl}
+writes the CSV files
+\path{runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_summary.csv},
+\path{runs/2026-05-24-steane-supercharge-molecular/data/steane_molecular_vectors.csv},
+and
+\path{runs/2026-05-24-steane-supercharge-molecular/data/steane_cohomology_by_degree.csv}.
+The summary CSV records \(\dim D=3\), \(\dim C=4\), \(\dim L=6\),
+\(\dim L^\perp=8\), \(|\mathcal K|=8192\), \(\dim H^0(Q)=2\), and full
+cohomology dimension \(128\). The vector CSV records the two codeword cosets
+and the logical representatives \((u,0)\), \((0,u)\). The cohomology CSV records
+the seven dimensions displayed above.

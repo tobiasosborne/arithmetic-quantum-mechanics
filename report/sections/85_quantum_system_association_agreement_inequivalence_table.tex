@@ -1,7 +1,7 @@
 % SHARD-ID: AQM-85-QSA-AGREEMENT-INEQUIVALENCE-TABLE
 % SHARD-TITLE: Agreement and Inequivalence Table
 % SHARD-SUMMARY: Synthesizes QSA Steps 03--20 as a gap-first comparison ledger using the local status-token convention.
-% SHARD-SUMMARY: Records only locally witnessed agreements and inequivalences, with unsupported comparisons left blocked, unknown, or at AQM-84 proposal boundaries.
+% SHARD-SUMMARY: Records only locally witnessed agreements and inequivalences, with unsupported comparisons left blocked or unknown under the local status-token convention.
 % SHARD-SUMMARY: Carries the finite-ring, source, quotient-collapse, Artin, and infinite-completion blockers into the Step 22 handoff.
 % SHARD-KEYWORDS: quantum-system association, agreement, inequivalence, gap table, blockers, finite rings, infinite boundaries
 
@@ -37,9 +37,10 @@ listed only as one obstruction among the locally recorded differences.
 compared as an agreement or inequivalence result in this shard.
 \texttt{degenerate} marks locally recorded collapse or forgotten-structure
 cases.  \texttt{blocked}, \texttt{unknown}, and \texttt{not\_applicable} keep
-their meanings from convention \texttt{(au)}.  The labels
-\emph{generic-sector proposal} and \emph{completion proposal} are inherited
-from the AQM-84 boundary vocabulary and are not finite Weyl-site claims.
+their meanings from convention \texttt{(au)}.  AQM-84 boundary categories
+such as \emph{generic-sector proposal} and \emph{completion proposal} are
+prose classifiers for witness and gap columns, not status tokens in this
+table.  They are not finite Weyl-site claims.
 
 \subsection{Core Comparison Ledger}
 
@@ -72,10 +73,10 @@ expression.  No full Fock or statistics comparison follows. &
 AQM-70, AQM-74 \\
 \addlinespace
 Formal finite-set carrier versus finite symplectic field labels &
-\texttt{available}/\texttt{unknown}. &
+\texttt{available}. &
 AQM-71 has checked finite field-label rows after choosing \(V\), \(E\), a
-pairing, radical quotient, and Weyl step.  AQM-67 has only formal basis
-labels.  No map compares those full outputs. &
+pairing, radical quotient, and Weyl step.  AQM-67 has only formal basis labels;
+comparison remains \texttt{unknown} because no map compares the full outputs. &
 AQM-67, AQM-71 \\
 \addlinespace
 Fermionic one-particle carrier versus uniform direct-sum particle carrier &
@@ -86,9 +87,10 @@ multiplier do not reduce by this map. &
 AQM-72, AQM-74 \\
 \addlinespace
 CCR/CAR/Fock layers versus finite AND/OR grammar &
-\texttt{blocked}/\texttt{unknown}. &
+\texttt{blocked}. &
 AQM-72 states that no local map, quotient, invariant, or derivation compares
-the full CCR/CAR or Grassmann-Weyl outputs with the finite grammar. &
+the full CCR/CAR or Grassmann-Weyl outputs with the finite grammar; comparison
+remains \texttt{unknown}. &
 AQM-70, AQM-72 \\
 \addlinespace
 Finite phase labels to Weyl-Heisenberg kinematics &
@@ -116,10 +118,10 @@ tensor-site bookkeeping. &
 AQM-68, AQM-83 \\
 \addlinespace
 Product-field residue sites versus product-field cotangent-first labels &
-\texttt{inequivalence}/\texttt{degenerate}. &
+\texttt{inequivalence}. &
 For \(k^n\), AQM-83 cites AQM-58 and AQM-77: residue sites give \(n\)
 finite Weyl factors, while the relative cotangent labels over \(k\) vanish
-at every product point. &
+at every product point, so the cotangent output is \texttt{degenerate}. &
 AQM-58, AQM-77, AQM-83 \\
 \addlinespace
 Intrinsic versus relative cotangent choices &
@@ -139,13 +141,23 @@ the \(t^n=1\) family has reduced dimension \(3^m\) and thickened dimension
 AQM-36, AQM-37, AQM-81, AQM-82 \\
 \addlinespace
 Infinite closed-point finite supports versus quasi-local, incomplete tensor,
-formal infinite-volume, generic, or completion layers &
-\texttt{available}/\texttt{blocked}, with AQM-84 proposal labels. &
-AQM-84 classifies the statuses but does not compare them as equivalent.
-Finite supports, algebraic quasi-local colimits, reference-vector Hilbert
-representations, formal infinite-volume profiles, generic sectors, and
-analytic completions remain separate rows. &
+or formal infinite-volume layers &
+\texttt{available}. &
+AQM-84 classifies finite supports, algebraic quasi-local colimits,
+reference-vector Hilbert representations, and formal infinite-volume profiles
+as separate boundary categories.  Their comparison is \texttt{blocked}; formal
+infinite-volume operators still need a completion convention. &
 AQM-84 \\
+\addlinespace
+Algebraic generic-fibre layers versus completed infinite boundary layers &
+\texttt{available}. &
+The named algebraic sectors are locally anchored: convention \texttt{(z)}
+records the algebraic \(K=\mathbb F_q(t)\) Weyl layer, and AQM-45 records the
+optional \(\mathbb Q\)-generic sector for \(\Spec\mathbb Z\).  Completion
+comparisons remain \texttt{blocked}; these are global generic-fibre layers, not
+closed-point finite sites or analytic/local, adelic, profinite, \(C^*\), or
+infinite-product completions. &
+AQM-45, AQM-84, convention \texttt{(z)} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -160,7 +172,7 @@ Object row & Established comparison status & Blocked or unknown comparison & Anc
 \midrule
 \(\mathbb F_3\) &
 \texttt{available}: one residue qutrit site; cotangent-first labels over
-\(\mathbb F_3\) are \texttt{degenerate}/zero. &
+\(\mathbb F_3\) have \texttt{degenerate} zero output. &
 Underlying three-point all-map system is a separate finite-set object, not an
 agreement with \(\Spec\mathbb F_3\). &
 AQM-22, AQM-77, AQM-80, AQM-81 \\
@@ -174,9 +186,7 @@ AQM-40, AQM-58, AQM-83 \\
 \(\mathbb Z/6\mathbb Z\) &
 \texttt{available}: mixed residue carrier
 \(\ell^2(\mathbb F_2)\otimes\ell^2(\mathbb F_3)\). &
-Common-field vector-space readings are \texttt{not\_applicable};
-cotangent and thickened comparisons remain \texttt{unknown}/\texttt{blocked}.
-Further quotient-collapse rows are blocked. &
+Common-field vector-space readings are \texttt{not\_applicable}; cotangent and thickened comparisons are \texttt{unknown} or \texttt{blocked} by row; further quotient-collapse rows are blocked. &
 AQM-23, AQM-80, AQM-81, AQM-83 \\
 \addlinespace
 \(\mathbb F_3[\epsilon]/(\epsilon^2)\) and
@@ -220,10 +230,13 @@ MVP scope. &
 AQM-66, AQM-77, AQM-80, AQM-81, AQM-82 \\
 \addlinespace
 \(\Spec\mathbb F_q[t]\), \(\Spec\mathbb F_q[x,y]\), and \(\Spec\mathbb Z\) &
-\texttt{available}: finite closed supports and algebraic quasi-local
-closed-point nets; selected incomplete tensor representations where recorded. &
-\texttt{blocked} or AQM-84 proposal labels: generic sectors, analytic/local,
-adelic, profinite, \(C^*\), and infinite-volume operator completions. &
+\texttt{available}: finite closed supports, algebraic quasi-local
+closed-point nets, selected incomplete tensor representations where recorded,
+and the algebraic generic sectors for \(K=\mathbb F_q(t)\) and
+\(\mathbb Q\) where separately anchored. &
+\texttt{blocked}: curve-generic sectors without a recorded convention and
+analytic/local, adelic, profinite, \(C^*\), and infinite-volume operator
+completions.  AQM-84 proposal categories are gap prose, not status tokens. &
 AQM-29, AQM-30, AQM-45, AQM-48, AQM-84 \\
 \bottomrule
 \end{tabular}

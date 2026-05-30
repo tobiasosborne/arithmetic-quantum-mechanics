@@ -46,7 +46,7 @@ Produced by: `scripts/lattice_codes/toric_supercharge_validation.jl`
 Run bundle: `runs/2026-05-24-toric-supercharge/`
 Report shard: `AQM-05-TORIC-SUPERCHARGE`
 Sentinel: row 1 begins with `#` and states that this is an algebraic
-certificate; no full physical or ghost Hilbert matrices are built.
+summary/check record; no full physical or ghost Hilbert matrices are built.
 
 | column | type | description |
 |---|---|---|
@@ -63,8 +63,8 @@ certificate; no full physical or ghost Hilbert matrices are built.
 | code_dim_exact | string | Exact toric-code protected-subspace dimension. |
 | boundary_rank_degree_one_exact | string | Exact rank of the degree-one-to-degree-zero boundary map in the ghost formulation. |
 | h0_dim_exact | string | Exact degree-zero homology/cohomology dimension selected by the local-check ghost supercharge. |
-| q_square_certificate | bool | Algebraic certificate that `Q^2=0`, using commuting projectors and fermion anticommutation. |
-| anticommutator_certificate | bool | Algebraic certificate that `{Q,Q^*}=sum_i P_i`, using commuting projectors and fermion anticommutation. |
+| q_square_certificate | bool | Summary boolean that the checked commuting-projector and fermion-anticommutation hypotheses used for `Q^2=0` hold; not a stored matrix-level certificate. |
+| anticommutator_certificate | bool | Summary boolean that the checked commuting-projector and fermion-anticommutation hypotheses used for `{Q,Q^*}=sum_i P_i` hold; not a stored matrix-level certificate. |
 | degree_zero_homology_matches_code | bool | Whether the computed degree-zero quotient dimension matches the toric-code code dimension. |
 
 ## toric_chain_ghost_unification.csv
@@ -230,8 +230,8 @@ ghost degree.
 Produced by: `scripts/lattice_codes/steane_clifford_koszul_morphisms.jl`
 Run bundle: `runs/2026-05-24-steane-clifford-koszul-morphisms/`
 Report shard: `AQM-12-STEANE-CLIFFORD-KOSZUL-MORPHISMS`
-Sentinel: row 1 begins with `#` and states that this is an exact
-Clifford/Koszul morphism certificate for transversal `H` and `P`.
+Sentinel: row 1 begins with `#` and states that this is a
+Clifford/Koszul morphism summary/check record for transversal `H` and `P`.
 
 | column | type | description |
 |---|---|---|

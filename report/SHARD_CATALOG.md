@@ -227,10 +227,10 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 
 - Source: `report/sections/25_quasilocal_zariski_algebra.tex`
 - Title: Quasi-Local Zariski Algebra
-- Summary: Records the directed-system choice for building a quasi-local algebra from Zariski regions.
-- Summary: Proves that open-local algebras over quasi-compact opens form the natural filtered system.
-- Summary: Reinterprets the closed-complement construction as a closed-support system rather than the primary quasi-local net.
-- Keywords: quasi-local algebra, directed system, filtered colimit, Zariski open, quasi-compact open, closed support
+- Summary: Restricts the AQM-24 quasi-local construction to finite spectra and finite supports.
+- Summary: Records that quasi-compact opens in affine spectra have a terminal global open and therefore are not the infinite affine finite-region spine.
+- Summary: Points infinite affine locality to the AQM-28 finite closed-support construction.
+- Keywords: quasi-local algebra, directed system, filtered colimit, finite spectrum, finite support, closed support
 
 ## `AQM-26-PRESHEAVES-COSHEAVES-OBSERVABLE-NETS`
 
@@ -409,8 +409,8 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Title: The Arithmetic Quantum Field on \(\Spec\mathbb Z\)
 - Summary: Builds the closed-prime residue-qudit net for \(\Spec\mathbb Z\) and separates the generic \(\mathbb Q\) sector.
 - Summary: Proves that \(z\mapsto z+1\) is not a scheme automorphism of \(\Spec\mathbb Z\).
-- Summary: Defines the internal integer residue-translation action and proves its profinite, nonlocal character.
-- Keywords: Spec Z, prime qudits, generic point, incomplete tensor product, translation, profinite integers
+- Summary: Defines the internal integer residue-translation action and its squarefree residue-product extension.
+- Keywords: Spec Z, prime qudits, generic point, incomplete tensor product, translation, squarefree residues
 
 ## `AQM-46-AFFINE-LINE-SYMMETRY-WEYL-NET`
 
@@ -597,7 +597,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/66_quantum_system_association_test_object_catalogue.tex`
 - Title: Quantum-System Association Test Object Catalogue
 - Summary: Freezes the first test-object list for the quantum-system association programme.
-- Summary: Records available, question, and blocked status rows for finite sets, finite rings, quotient examples, and infinite boundaries.
+- Summary: Records row-local available anchors, open questions, and helper gaps for finite sets, finite rings, quotient examples, and infinite boundaries.
 - Summary: Points every row to local evidence or an explicit planned derivation instead of asserting comparison results.
 - Keywords: quantum-system association, catalogue, finite sets, finite rings, nilpotents, quotient rings, infinite boundaries
 
@@ -714,7 +714,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/79_quantum_system_association_geometric_field_hom_x_v.tex`
 - Title: Geometric Field Association Hom(X,V)
 - Summary: Reviews the geometric field-space branch of the QSA catalogue without asserting a general Hom(X,V) quantisation.
-- Summary: Separates all-map, finite-support, sheaf-section, regular-function, and rational-truncation choices using only local anchors.
+- Summary: Separates all-map, finite-support, sheaf-section, localized regular-function, reduced-smearing, and rational-truncation choices using only local anchors.
 - Summary: Records how the structure of X constrains field spaces before the finite Weyl-Heisenberg boundary of AQM-78.
 - Keywords: quantum-system association, Hom(X,V), Map(X,V), sheaf sections, regular functions, finite support, observable nets
 
@@ -768,7 +768,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/85_quantum_system_association_agreement_inequivalence_table.tex`
 - Title: Agreement and Inequivalence Table
 - Summary: Synthesizes QSA Steps 03--20 as a gap-first comparison ledger using the local status-token convention.
-- Summary: Records only locally witnessed agreements and inequivalences, with unsupported comparisons left blocked, unknown, or at AQM-84 proposal boundaries.
+- Summary: Records only locally witnessed agreements and inequivalences, with unsupported comparisons left blocked or unknown under the local status-token convention.
 - Summary: Carries the finite-ring, source, quotient-collapse, Artin, and infinite-completion blockers into the Step 22 handoff.
 - Keywords: quantum-system association, agreement, inequivalence, gap table, blockers, finite rings, infinite boundaries
 
@@ -804,7 +804,7 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/89_scheme_incidence_code_sources.tex`
 - Title: Scheme-Incidence Sources for Code Complexes
 - Summary: Separates bare finite spectra from schemes equipped with incidence or group-law data.
-- Summary: Gives checked Weyl-label targets for Steane, Reed-Muller, Shor, and toric-code source conjectures.
+- Summary: Distinguishes checked Weyl-label selections from sourced targets, proposals, and unreconstructed naturality claims.
 - Summary: Explains why the constant finite group-scheme toric route is structured extra data, not a consequence of \(\Spec R\) alone.
 - Keywords: scheme incidence, group scheme, toric code, Steane code, Reed-Muller, Shor code, Weyl-Heisenberg constraints
 
@@ -822,6 +822,33 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Source: `report/sections/91_haah_laurent_torus_quant2.tex`
 - Title: Haah Laurent Modules and Torus Quant2
 - Summary: Compares Haah's Laurent-polynomial module formalism with the algebraic-torus Quant2 shard.
-- Summary: Identifies the finite periodic bridge where the AQM-90 Cayley square becomes Haah's toric-code matrix.
-- Summary: Records lessons for expressing arithmetic-field dynamics as Weyl-Heisenberg label constraints.
+- Summary: Identifies the \(p=2\) finite periodic bridge where the AQM-90 Cayley square becomes Haah's toric-code matrix.
+- Summary: Records proposal-level lessons for future arithmetic-field Weyl-Heisenberg label constraints.
 - Keywords: Haah, Laurent polynomials, algebraic torus, Quant2, toric code, Weyl-Heisenberg, finite support
+
+## `AQM-92-HAAH-DATA-SCHEME-MODULES`
+
+- Source: `report/sections/92_haah_data_scheme_modules.tex`
+- Title: Haah Data over Schemes: Permissive Module Grammar
+- Summary: Defines a broad pre-Haah datum over a commutative ring and its scheme interpretation over \(\Spec A\).
+- Summary: Separates algebraic module constraints, adjoint/excitation maps, and defect quotients from Weyl, Hilbert, Hamiltonian, locality, and code layers.
+- Summary: Tests the grammar on fields, product rings, dual numbers, \(\mathbb Z/6\mathbb Z\), and \(\mathbb F_3[t]/(t^n-1)\).
+- Keywords: Haah, scheme module, Spec, Laurent module, symplectic form, excitation map, defect module, nilpotent
+
+## `AQM-93-FINITE-RING-HAAH-LAYERS`
+
+- Source: `report/sections/93_finite_ring_haah_layers.tex`
+- Title: Finite-Ring Haah Layers: Residues, Thickenings, and Blockers
+- Summary: Defines a layer stack from bare finite spectra to Haah-like Weyl data without promoting arbitrary finite rings to codes.
+- Summary: Separates residue-field Weyl labels from nilpotent-sensitive Frobenius or generating-character layers.
+- Summary: Uses finite-field, product, mixed-residue, dual-number, and cyclic quotient examples to mark available and blocked structures.
+- Keywords: finite rings, Haah, Spec R, residue fields, Frobenius rings, Weyl-Heisenberg, Laurent modules, blockers
+
+## `AQM-94-TRANSLATION-ALGEBRA-SPEC`
+
+- Source: `report/sections/94_translation_algebra_vs_spec.tex`
+- Title: Translation Haah Data versus Bare Spectrum
+- Summary: Isolates the most restrictive Haah layer: translation group algebras, antipodes, identity-coefficient traces, and finite periodic quotients.
+- Summary: Explains why the translation basis of \(\mathbb F_p[\Lambda]\) is not the Zariski point set of \(\Spec\mathbb F_p[\Lambda]\).
+- Summary: Gives examples and a checklist for recognizing when a scheme proposal has reached the translation Haah layer.
+- Keywords: Haah, translation algebra, Spec, Laurent module, group algebra, antipode, toric code, finite periodic quotient
