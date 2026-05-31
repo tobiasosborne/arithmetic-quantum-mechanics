@@ -1,0 +1,232 @@
+% SHARD-ID: AQM-95-HAAH-SHEAF-SITE-SPECTRUM-ORIENTATION
+% SHARD-TITLE: Haah Sheaf, Site, and Spectrum Orientation
+% SHARD-SUMMARY: Records a speculative orientation dictionary separating Haah physical sites from the spectrum of the translation algebra.
+% SHARD-SUMMARY: Recasts Haah modules as sheaves over \(\Spec\mathbb F_p[\Lambda]\) while keeping qubits over the translation site object.
+% SHARD-SUMMARY: Illustrates the distinction with infinite lattices, finite periodic quotients, split group algebras, and modular thickenings.
+% SHARD-KEYWORDS: Haah, sheaf, translation algebra, site object, Spec, group algebra, module, finite periodic quotient
+
+\section{Haah Sheaf, Site, and Spectrum Orientation}
+\label{sec:haah-sheaf-site-spectrum-orientation}
+
+\subsection{Status}
+
+\textbf{Status: speculative orientation synthesis.}  This shard records a
+working dictionary prompted by the question: if Haah's Laurent-polynomial
+formalism is secretly sheaf-theoretic, what geometric object is underneath
+the qubits?  It adds no new source, convention, run artifact, or theorem.  The
+source-local inputs are AQM-91, AQM-92, AQM-94, and conventions
+\texttt{(az)}--\texttt{(ba)}.  In particular, AQM-94 separates pre-Haah data,
+scheme Haah data, finite Weyl-Haah data, and translation Haah data
+(AQM-94, lines 45--70), and it warns that the group basis of
+\(\mathbb F_p[\Lambda]\) is not the Zariski point set of
+\(\Spec\mathbb F_p[\Lambda]\) (AQM-94, lines 114--136).
+
+\subsection{The First Answer}
+
+The cleanest first answer is:
+\[
+  \text{the qubits live over a translation site object, not over }
+  \Spec\mathbb F_p[\Lambda].
+\]
+For an infinite translation-invariant model, the site object is
+\[
+  X_{\rm site}=\Lambda\times\{1,\ldots,q\},
+\]
+where \(\Lambda\) is the translation group and \(q\) is the number of
+qubits or qudits per unit cell.  For a finite periodic model, replace
+\(\Lambda\) by a finite quotient \(G\):
+\[
+  X_{\rm site}=G\times\{1,\ldots,q\}.
+\]
+A finite-support Pauli label is then a section with finite support over this
+discrete site object.  Algebraically, for prime labels,
+\[
+  \Gamma_c(X_{\rm site},\mathbb F_p^{2})
+  \cong \mathbb F_p[\Lambda]^{2q}.
+\]
+This is the reason Haah's Pauli module is a free module over the translation
+group algebra.  The basis elements \(g\in\Lambda\) label translated cells; they
+are coefficient-basis labels, not prime ideals.
+
+\subsection{The Sheaf-Theoretic Answer}
+
+There is nevertheless a natural scheme in the background.  Once the
+translation algebra is named,
+\[
+  R_{\rm tr}=\mathbb F_p[\Lambda],
+\]
+one can form
+\[
+  X_{\rm alg}=\Spec R_{\rm tr}.
+\]
+Haah's module complex can then be sheafified.  A generator module, Pauli module,
+and stabilizer map
+\[
+  G\xrightarrow{\sigma}P
+\]
+give quasi-coherent sheaves
+\[
+  \widetilde G\xrightarrow{\widetilde\sigma}\widetilde P
+\]
+on \(X_{\rm alg}\).  With the translation-layer antipode, identity-coefficient
+trace, and Laurent symplectic form fixed as in AQM-94, the excitation map gives
+a complex
+\[
+  \widetilde G
+  \xrightarrow{\widetilde\sigma}
+  \widetilde P
+  \xrightarrow{\widetilde\epsilon}
+  \widetilde{G^\vee}.
+\]
+The algebraic diagnostic
+\[
+  \ker\epsilon/\operatorname{im}\sigma
+\]
+is therefore also a module, hence a quasi-coherent sheaf, when the quotient is
+taken at the scheme-Haah layer of AQM-92.
+
+This is the sheaf-theoretic reading that seems most faithful: Haah's
+translation-invariant constraints are coherent module or sheaf data over the
+spectral object \(X_{\rm alg}\).  But the physical tensor factors remain
+indexed by \(X_{\rm site}\), and any identification between these two layers
+requires an explicit bridge.
+
+\subsection{Two Objects, Two Roles}
+
+\begin{center}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.24\linewidth}p{0.32\linewidth}p{0.34\linewidth}}
+\textbf{Layer} & \textbf{Object} & \textbf{Role} \\
+\hline
+Site layer & \(\Lambda\times\{1,\ldots,q\}\), or
+\(G\times\{1,\ldots,q\}\) periodically &
+Indexes physical qubits or qudits and finite-support Pauli labels. \\
+Translation algebra & \(R_{\rm tr}=\mathbb F_p[\Lambda]\) &
+Packages translation shifts and finite-difference stabilizer matrices. \\
+Scheme layer & \(X_{\rm alg}=\Spec R_{\rm tr}\) &
+Supports sheaves \(\widetilde P,\widetilde G\), localization, fibres, support,
+and algebraic defect modules. \\
+Finite Weyl layer & finite quotient, residue, or Frobenius/self-dual data &
+Turns selected labels into Weyl-Heisenberg operators and finite Hilbert
+carriers. \\
+\end{tabular}
+\end{center}
+
+The temptation is to collapse the first and third rows because Laurent
+monomials look like coordinates.  AQM-91 separates this notation explicitly:
+lowercase \(x,y\) are coordinate functions on an algebraic torus, while
+uppercase \(X,Y\) are translation operators (AQM-91, lines 41--68).
+
+\subsection{Example 1: Infinite Laurent Translation Algebra}
+
+Let \(\Lambda=\mathbb Z^2\).  Then
+\[
+  R_{\rm tr}=\mathbb F_p[X^{\pm1},Y^{\pm1}].
+\]
+The physical site set is \(\mathbb Z^2\times\{1,\ldots,q\}\).  A finitely
+supported Pauli label is a Laurent-polynomial vector in
+\[
+  P=R_{\rm tr}^{2q}.
+\]
+The sheaf-theoretic object is instead
+\[
+  \Spec\mathbb F_p[X^{\pm1},Y^{\pm1}],
+\]
+the split algebraic torus.  The exponent pair \((a,b)\) of \(X^aY^b\) is a
+lattice translation label, not a point of this spectrum; AQM-94 records this
+as Example 1 (AQM-94, lines 140--148).
+
+\subsection{Example 2: Finite Periodic Quotient}
+
+Let \(G=C_{N_x}\times C_{N_y}\).  The finite periodic translation algebra is
+\[
+  R_{G,p}
+  =
+  \mathbb F_p[X^{\pm1},Y^{\pm1}]
+  /(X^{N_x}-1,Y^{N_y}-1).
+\]
+As a vector space it has one group-basis element \(X^iY^j\) for each periodic
+site.  Multiplication by \(X\) and \(Y\) shifts those sites.  This is the
+finite bridge used in AQM-91 (AQM-91, lines 70--91).
+
+For the qubit toric square, AQM-91 writes
+\[
+  P_G=R_{G,2}^4
+  \cong
+  \mathbb F_2^{G\times\{x,y\}}{}_q
+  \oplus
+  \mathbb F_2^{G\times\{x,y\}}{}_p
+\]
+and recovers the Haah toric matrix from the Cayley-square boundary maps
+(AQM-91, lines 93--138).  This is a successful finite site-to-module bridge.
+It is still not the statement that the sites are the points of
+\(\Spec R_{G,2}\).
+
+\subsection{Example 3: Functions on a Finite Site Set}
+
+For a finite set or finite group \(G\), the coordinate ring of the discrete
+site scheme is
+\[
+  k^G=\operatorname{Map}(G,k).
+\]
+The scheme \(\Spec(k^G)\) has one reduced point per site when \(k\) is a
+field, as in the product-field convention AQM-40.  This object is natural if
+one wants functions on the site set.
+
+The translation algebra \(k[G]\) is different.  It encodes convolution and
+shifts.  A Haah finite-difference matrix uses \(k[G]\), not \(k^G\), unless a
+Fourier or character decomposition has been explicitly named.  Thus a finite
+model has two natural algebras:
+\[
+  k^G \quad\text{for functions on sites},\qquad
+  k[G]\quad\text{for translations and shift operators}.
+\]
+They may be related in semisimple cases, but that relation is extra data.
+
+\subsection{Example 4: Modular Thickening Warning}
+
+Let \(G=C_3\) and work over \(\mathbb F_3\).  If \(g\) generates \(G\), then
+\[
+  \mathbb F_3[G]\cong \mathbb F_3[g]/(g^3-1)
+  =\mathbb F_3[g]/((g-1)^3)
+  \cong \mathbb F_3[u]/(u^3).
+\]
+As a translation module, the group basis is still \(\{1,g,g^2\}\), so a
+periodic chain has three translated positions.  As a scheme, however,
+\(\Spec\mathbb F_3[u]/(u^3)\) is one third-order thickened point.  AQM-94 uses
+this as a warning: spectral points and translation-basis sites can differ
+dramatically in modular characteristic (AQM-94, lines 174--184).
+
+\subsection{Example 5: Split Character Basis Warning}
+
+Over \(\mathbb F_3\),
+\[
+  \mathbb F_3[C_2]\cong \mathbb F_3[t]/(t^2-1)
+  \cong \mathbb F_3\times\mathbb F_3.
+\]
+The spectrum has two reduced product-field points, while the translation basis
+is \(\{1,t\}\).  Passing from the translation basis to the two idempotent
+factors is a finite Fourier or character-basis step, not a tautological
+identification of sites with \(\Spec\)-points.  AQM-94 records this split
+product warning in its Example 5.
+
+\subsection{Working Proposal}
+
+The working proposal is to read Haah as a two-object construction.
+
+\begin{enumerate}
+\item The qubit or qudit tensor factors live over a site object
+\(\Lambda\times\{1,\ldots,q\}\), or over a finite quotient
+\(G\times\{1,\ldots,q\}\).
+\item The translation-invariant stabilizer rules live as modules over
+\(R_{\rm tr}=\mathbb F_p[\Lambda]\), or over a finite periodic quotient.
+\item Those modules sheafify over \(\Spec R_{\rm tr}\), giving support,
+localization, fibres, defect sheaves, and algebraic geometry.
+\item A physical Weyl/Hilbert interpretation requires the translation-layer
+finite-support convention, or a separate finite residue/Frobenius bridge.
+\end{enumerate}
+
+Thus Haah's definitions can be cleanly reinterpreted sheaf-theoretically, but
+the sheaf geometry is not automatically the same object as the lattice of
+qubits.  The bridge between the site object and the spectral object is part of
+the data to construct, not a fact to assume.

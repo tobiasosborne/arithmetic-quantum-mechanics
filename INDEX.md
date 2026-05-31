@@ -188,6 +188,7 @@ Every CSV must be listed here and in `data/SCHEMA.md`.
 | `AQM-92-HAAH-DATA-SCHEME-MODULES` | `report/sections/92_haah_data_scheme_modules.tex` | Haah Data over Schemes: Permissive Module Grammar |
 | `AQM-93-FINITE-RING-HAAH-LAYERS` | `report/sections/93_finite_ring_haah_layers.tex` | Finite-Ring Haah Layers: Residues, Thickenings, and Blockers |
 | `AQM-94-TRANSLATION-ALGEBRA-SPEC` | `report/sections/94_translation_algebra_vs_spec.tex` | Translation Haah Data versus Bare Spectrum |
+| `AQM-95-HAAH-SHEAF-SITE-SPECTRUM-ORIENTATION` | `report/sections/95_haah_sheaf_site_spectrum_orientation.tex` | Haah Sheaf, Site, and Spectrum Orientation |
 
 ## Source Topics
 

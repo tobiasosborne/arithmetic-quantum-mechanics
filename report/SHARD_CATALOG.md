@@ -852,3 +852,12 @@ Stable labels, summaries, and search keywords for the lab book rooted at
 - Summary: Explains why the translation basis of \(\mathbb F_p[\Lambda]\) is not the Zariski point set of \(\Spec\mathbb F_p[\Lambda]\).
 - Summary: Gives examples and a checklist for recognizing when a scheme proposal has reached the translation Haah layer.
 - Keywords: Haah, translation algebra, Spec, Laurent module, group algebra, antipode, toric code, finite periodic quotient
+
+## `AQM-95-HAAH-SHEAF-SITE-SPECTRUM-ORIENTATION`
+
+- Source: `report/sections/95_haah_sheaf_site_spectrum_orientation.tex`
+- Title: Haah Sheaf, Site, and Spectrum Orientation
+- Summary: Records a speculative orientation dictionary separating Haah physical sites from the spectrum of the translation algebra.
+- Summary: Recasts Haah modules as sheaves over \(\Spec\mathbb F_p[\Lambda]\) while keeping qubits over the translation site object.
+- Summary: Illustrates the distinction with infinite lattices, finite periodic quotients, split group algebras, and modular thickenings.
+- Keywords: Haah, sheaf, translation algebra, site object, Spec, group algebra, module, finite periodic quotient
