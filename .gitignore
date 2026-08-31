@@ -1,0 +1,38 @@
+# Third-party source bodies are not ours to redistribute. refs/LEDGER.md is the
+# durable, committed record of what was fetched, verified, and hashed.
+refs/*
+!refs/LEDGER.md
+
+# LaTeX build artefacts. labbook/main.pdf is the campaign product and IS
+# committed; see the negation below.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.pdf
+!labbook/main.pdf
+
+# Lane logs are process exhaust. Lane SUMMARY.md, PATCH.md, verdicts and
+# checkers are the record and are committed explicitly.
+theory/lanes/**/*.log
+theory/lanes/**/raw/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Julia (not currently used)
+.julia/
+*.ji
+Manifest.toml
+
+# Editor/OS noise
+.DS_Store
+*~
