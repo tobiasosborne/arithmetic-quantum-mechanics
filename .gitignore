@@ -18,6 +18,9 @@ refs/*
 *.toc
 *.pdf
 !labbook/main.pdf
+# Figures and frozen result records are content, not build artefacts.
+!labbook/figures/**
+!numerics/**/results/**
 
 # Lane logs are process exhaust. Lane SUMMARY.md, PATCH.md, verdicts and
 # checkers are the record and are committed explicitly.

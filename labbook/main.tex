@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+
+% =============================================================================
+% Arithmetic Quantum Mechanics -- Lab Book
+%
+% This file is the labbook's single entry point (CLAUDE.md L9, L11). It loads
+% the shared preamble -- packages, theorem environments, and the
+% \provenance{}/\status*{} macros described in labbook/WRITING-GUIDE.md -- and
+% then \input{}s one file per labbook/sections/*.tex topic (L2: one topic per
+% section).
+%
+% Build:  cd labbook && latexmk -pdf main.tex     (or: cd labbook && make)
+% Gate:   scripts/check-labbook.sh -- L11 lockstep: every claims/CLAIMS.md
+%         claim id and every definitions.md "Dn" must be cited somewhere
+%         under labbook/sections/, and no verbatim-family environment may
+%         appear anywhere in this tree (WRITING-GUIDE.md Rule 2).
+% =============================================================================
+
+% --- Page geometry -----------------------------------------------------------
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% --- Mathematics --------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% --- Colour (status labels, provenance block) --------------------------------
+\usepackage{xcolor}
+
+\definecolor{AQMproved}{HTML}{1B7F3B}      % PROVED / PROVED-conditional -- green
+\definecolor{AQMsketch}{HTML}{B8790A}      % SKETCH -- amber
+\definecolor{AQMconjecture}{HTML}{2255A4}  % CONJECTURE -- blue
+\definecolor{AQMrefuted}{HTML}{A31515}     % REFUTED -- red
+\definecolor{AQMprovrule}{HTML}{999999}    % rule above a \provenance block
+
+% --- Hyperlinks (colours above must be \definecolor'd before this loads) ----
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  linkcolor  = AQMconjecture,
+  citecolor  = AQMproved,
+  urlcolor   = AQMconjecture,
+  pdftitle   = {Arithmetic Quantum Mechanics --- Lab Book},
+  pdfauthor  = {Tobias J. Osborne},
+  pdfsubject = {Campaign lab book: canonical quantum systems for arithmetic schemes},
+}
+
+% =============================================================================
+% Theorem-like environments. definition / theorem / proposition / lemma /
+% conjecture share one running counter, numbered per section; scope is
+% unnumbered and always follows a statement (WRITING-GUIDE.md Rule 4).
+% =============================================================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{scope}{Scope}
+
+% =============================================================================
+% \provenance{ids}{proved in}{tested by}{reviewed in}
+%
+% A small block placed immediately after a statement (after its scope block,
+% where present) carrying its campaign bookkeeping. Campaign ids -- claim ids
+% from claims/CLAIMS.md, D-numbers from definitions.md -- live ONLY here,
+% never inside a definition's or result's descriptive name
+% (WRITING-GUIDE.md Rule 1).
+% =============================================================================
+\newcommand{\provenance}[4]{%
+  \par\addvspace{4pt}%
+  {\color{AQMprovrule}\noindent\rule{\linewidth}{0.4pt}}\par\vspace{2pt}%
+  \noindent\begin{minipage}{\linewidth}
+  \small\sffamily
+  \textbf{Provenance.}~ids: #1;\quad proved in: #2;\quad tested by: #3;\quad reviewed in: #4.
+  \end{minipage}\par\addvspace{6pt}%
+}
+
+% =============================================================================
+% Status labels. Rendered text is EXACTLY the status word used in
+% claims/CLAIMS.md (CLAUDE.md L4/L5): PROVED, SKETCH, CONJECTURE, REFUTED.
+% \statusProvedConditional renders the SAME word "PROVED" (the status column
+% never grows a fifth word) marked with a dagger; the condition itself
+% belongs in the statement text (PRD.md: "A conditional PROVED must display
+% its condition in the statement itself"), never abbreviated into the label.
+% =============================================================================
+\newcommand{\AQMstatusLabel}[2]{\textsf{\bfseries\small\colorbox{#1}{\textcolor{white}{~#2~}}}}
+\newcommand{\statusProved}{\AQMstatusLabel{AQMproved}{PROVED}}
+\newcommand{\statusProvedConditional}{\AQMstatusLabel{AQMproved}{PROVED}\textsuperscript{$\dagger$}}
+\newcommand{\statusSketch}{\AQMstatusLabel{AQMsketch}{SKETCH}}
+\newcommand{\statusConjecture}{\AQMstatusLabel{AQMconjecture}{CONJECTURE}}
+\newcommand{\statusRefuted}{\AQMstatusLabel{AQMrefuted}{REFUTED}}
+
+\title{Arithmetic Quantum Mechanics\\[2pt]\large Lab Book}
+\author{Tobias J.\ Osborne}
+\date{Campaign log --- compiled \today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\input{sections/00_overview}
+
+\end{document}
