@@ -22,10 +22,15 @@ refs/*
 !labbook/figures/**
 !numerics/**/results/**
 
-# Lane logs are process exhaust. Lane SUMMARY.md, PATCH.md, verdicts and
-# checkers are the record and are committed explicitly.
-theory/lanes/**/*.log
-theory/lanes/**/raw/
+# Lane directories are isolated scratch space, not the record. A lane writes
+# there; the orchestrator verifies its output and promotes the artifacts that
+# survive to their trunk locations (theory/, theory/checks/, theory/verdicts/,
+# claims/). Only each lane's SUMMARY.md and PATCH.md are kept, as the durable
+# trace of what the lane reported and proposed.
+theory/lanes/**
+!theory/lanes/**/
+!theory/lanes/**/SUMMARY.md
+!theory/lanes/**/PATCH.md
 
 # Python
 __pycache__/
