@@ -116,3 +116,60 @@ the checker, not a pass.
 Sources land before the proof cites them. The checker is written **from this
 brief**, not from the prover's shard, so that it is independent evidence. The
 critic sees the shard and the checker, never the prover's reasoning.
+
+---
+
+## Errata (orchestrator, 2026-08-31, after wave-1 verification)
+
+These correct defects in the brief above. They are binding; where an erratum
+contradicts the original text, the erratum wins.
+
+**E1 — the brief under-specified the operator model, and the omission hides in
+characteristic 2.** The brief fixes the cocycle identity `β − β^T = ω` and the
+Weyl relation `W(v)W(v') = ψ(β(v,v')) W(v+v')` with `β(v,v') = a b'`. Those are
+mutually consistent. But the brief never says *which* Schrödinger model realizes
+them, and the two naive models do not. Writing `X(a)|y> = |y+a>` and
+`Z(b)|y> = ψ(by)|y>`, an independent orchestrator computation over
+`q ∈ {2,3,4,5,8,9}` (exact, by specialising `ζ_p` to an element of order `p` in
+`F_ℓ`) gives
+
+- `W(a,b) = Z(b)X(a)`  =>  cocycle `−a b'`,
+- `W(a,b) = X(a)Z(b)`  =>  cocycle `b a'`,
+
+and **neither is `a b'` in odd characteristic**. Both naive orderings in fact
+polarize `−ω`, not `ω`. The prover must therefore state the model explicitly and
+pick one of: (i) `W(a,b) = Z(−b)X(a)`, equivalently replacing `ψ` by `ψ̄`;
+(ii) restate D3 as `β(v,v') = b a'` and carry `β − β^T = −ω`; (iii) flip the sign
+convention of `ω`. Any is acceptable; leaving it implicit is not, and whichever
+is chosen must be the one the checker runs.
+
+The point of method: at `p = 2` all three options coincide, because `−1 = 1`. A
+sign convention validated only in characteristic 2 is not validated.
+
+**E2 — C7 does not test isotropy.** Since `ω` is alternating, `ω(v,v) = 0` for
+every `v`, so *every* `κ`-line in `V` is isotropic and the count `q+1` is just
+`|P¹(κ)|`. The gate tests line-counting, not isotropy, and `WH-POL` must be
+stated as a claim about maximal isotropic (Lagrangian) subspaces, with the
+observation that in a two-dimensional symplectic space every line is one. The
+brief's `--red-nonisotropic` mutation is consequently ill-posed for lines: the
+check lane correctly redirected it to non-isotropic order-`q` *subgroups*, which
+exist only for `q` non-prime, and verified their non-existence by census at
+`q ∈ {2,3,5}` rather than asserting it.
+
+**E3 — C1 is blind at `p = 2`.** `β^T − β = −ω = ω` in characteristic 2, so C1
+cannot distinguish `β` from its transpose exactly where the campaign most needs
+it. At `q ∈ {2,4,8}` only C3 catches a transposed cocycle. C1 alone would
+certify the wrong convention in the characteristic this increment exists to
+protect. This is the mirror image of E1, and together they say: **each
+characteristic conceals a different sign defect, so no convention is validated
+until it is validated in both.**
+
+**E4 — C9 was decoration as specified.** None of the brief's five mutations
+reaches it. The check lane added `--red-halfweyl` to reach it and flagged the
+addition. Five sub-checks remain unreached by any mutation and are named as
+decoration in the lane's `RED-MATRIX.md`, each with the mutation that would
+reach it; closing those is follow-up work, not a blocker for this increment.
+
+**E5 — C8's literal form is vacuous at `p = 2`** (there is only one primitive
+square root of unity). Its substantive content is the `κ^×`-torsor of the `q−1`
+nontrivial characters, and that is what `WH-CHOICE` must be tested against.
