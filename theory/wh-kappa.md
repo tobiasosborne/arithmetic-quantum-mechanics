@@ -139,7 +139,7 @@ by `<2>2` and nondegeneracy. So `g` is `κ`-linear, and `det g = 1` by `<1>5`.
   (`theory/verdicts/wh-kappa-r1.md`, OBJ-3 `(b)1`), including its warning that
   the tempting route via "`ω`-self-adjoint endomorphisms are the `κ`-scalars" is
   **false at `p = 2`**. Both are recomputed here, independently:
-  `fp_symmetry.py` gate `S1` enumerates the `F_p`-linear isometries of the
+  `theory/checks/wh_kappa/fp_symmetry.py` gate `S1` enumerates the `F_p`-linear isometries of the
   `κ`-valued `ω` by complete backtracking and finds exactly `|SL_2(κ)| =
   6,24,60,120,504,720` at `q = 2,3,4,5,8,9`, every one of them `κ`-linear and
   set-equal to an independent `SL_2` enumeration; gate `S4` finds `8` and `64`
@@ -278,7 +278,7 @@ iff `Q_β(v₀)κ ⊆ ker ψ` iff `Q_β(v₀) = 0`, by `L-VAL`), and **how many 
 there are is a `β`-dependent number**: `2` for `β₀`, and in general `2` or `0`
 according to the type of `Q_β` (§6 `<1>5`). Enumerated at `q = 2,3,4,5,8,9`:
 `q+1` lines, `q` characters each, `q(q+1) = 6,12,20,30,72,90` pairs, exactly two
-lines with `Q_{β₀}|_L = 0` (`beta_census.py` `B6` reports `#{Q=0} = 2q−1`, i.e.
+lines with `Q_{β₀}|_L = 0` (`theory/checks/wh_kappa/beta_census.py` `B6` reports `#{Q=0} = 2q−1`, i.e.
 two lines, for the type of `β₀`). **QED** *(Theorem WH-POL)*
 
 ## 5. Theorem WH-SVN — one irreducible representation, of dimension `q`
@@ -385,8 +385,8 @@ facts are unused.
 
 **Evidence in this lane** (all exact-integer, no tolerance; logs in `runs/`,
 green exit 0 and every red mode exit 1, tabulated in `PATCH.md`):
-`beta_census.py` (B1–B10), `frame_mu.py` (M1–M4), `fp_symmetry.py` (S1–S4),
-`funct_sections.py` (F1–F5), `split24.py` (X1–X6), plus the two gates this lane
+`theory/checks/wh_kappa/beta_census.py` (B1–B10), `theory/checks/wh_kappa/frame_mu.py` (M1–M4), `theory/checks/wh_kappa/fp_symmetry.py` (S1–S4),
+`theory/checks/wh_kappa/funct_sections.py` (F1–F5), `theory/checks/wh_kappa/split24.py` (X1–X6), plus the two gates this lane
 adds to the pre-registered falsifier, `C10` (β-dichotomy) and `C11` (`D8`'s
 model), and the repair of `C7`'s dead `ψ`-isotropy branch (OBJ-5).
 

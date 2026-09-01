@@ -8,8 +8,8 @@
 Companion to `wh-kappa.md`; `D1`–`D11`, `L-ORTH`, `L-VAL`, `L-DUAL`, `L-TRIV`
 and Theorems 1–5 are cited from there by number. `p` prime, `κ = F_q`,
 `q = p^m`, `p = 2` in scope everywhere. Named computations live beside this file
-(`beta_census.py`, `frame_mu.py`, `fp_symmetry.py`, `funct_sections.py`,
-`split24.py`; logs in `runs/`), and the pre-registered falsifier is
+(`theory/checks/wh_kappa/beta_census.py`, `theory/checks/wh_kappa/frame_mu.py`, `theory/checks/wh_kappa/fp_symmetry.py`, `theory/checks/wh_kappa/funct_sections.py`,
+`theory/checks/wh_kappa/split24.py`; logs in `runs/`), and the pre-registered falsifier is
 `theory/checks/wh_kappa_check.py` with this lane's gates `C10`, `C11`.
 
 ## 6. Theorem WH-BETA — the polarizing cocycle is a second datum
@@ -51,7 +51,7 @@ characteristic; `μ` can be taken `μ_p`-valued iff `ψ∘Q_β = ψ∘Q_{β'}`, 
 symmetric; conversely `β+s ∈ Adm(ω)` for symmetric `s`, freely and transitively.
 A symmetric `κ`-bilinear form on `V = κ²` is free on `s(e,e), s(e,f), s(f,f)`, so
 `|Sym(V)| = q³ = |Adm(ω)|`. **QED**
-  `<2>1.` *Checked, exhaustively:* `beta_census.py` gate `B1` re-verifies
+  `<2>1.` *Checked, exhaustively:* `theory/checks/wh_kappa/beta_census.py` gate `B1` re-verifies
   `β'−β'^T = ω` and `κ`-bilinearity for each of the `q³` members and finds them
   pairwise distinct, `q ∈ {2,3,4,5,8,9}`; `wh_kappa_check.py` gate `C10`
   re-verifies admissibility independently.
@@ -65,7 +65,7 @@ torsor, at odd `p` only. `<2>3.` For `s ∈ Sym(V)` put `f(v) := s(v,v)/2`; then
 condition for `φ_s(t,v) := (t+f(v), v)` to satisfy
 `φ_s((t,v)(t',v')) = φ_s(t,v)φ_s(t',v')` for the two products `β` and `β+s`;
 `φ_s` is bijective and fixes `κ×0`. **QED**
-  `<2>4.` *Checked, exhaustively:* `beta_census.py` gate `B4` verifies `φ_s` is
+  `<2>4.` *Checked, exhaustively:* `theory/checks/wh_kappa/beta_census.py` gate `B4` verifies `φ_s` is
   an isomorphism on all `|V|²` pairs for **every** one of the `q³` members at
   `q = 3,5,9`; gate `B3` finds a single element-order profile
   `{1:1, p:q³−1}` there; red mode `--red-iso` (perturbing `φ_s` at one value)
@@ -168,7 +168,7 @@ and if `ψ(s(v,v)) = −1` for some `v` then that `μ(v)` has exact order `4`.
 `μ = i^m`. `<2>4.` **[ODD p]** `μ(v) := ψ(s(v,v)/2)` solves `(†)` inside `μ_p`,
 so at odd `p` nothing leaves the level-`μ_p` frame — the second proof, after
 `<1>2`, that the choice is immaterial there. **QED** *(Theorem WH-BETA)*
-  `<2>5.` *Checked:* `frame_mu.py` gate `M1` searches **all** `2^{q²}` candidate
+  `<2>5.` *Checked:* `theory/checks/wh_kappa/frame_mu.py` gate `M1` searches **all** `2^{q²}` candidate
   `μ_2` phase functions at `q = 2` and finds solutions for exactly the members
   with `ψ∘Q_β = ψ∘Q_{β'}`; `M2` and `M3` verify the explicit `l` and `m` on all
   `|V|²` pairs for every one of the `q³` members at `q = 2,4,8` (`μ_4` always
@@ -283,7 +283,7 @@ additive; multiplicativity is `(∗)`; `κ`-linearity of `g` is *imposed* in `D7
 `c(v,v') := ψ(s_g(v,v'))` is a symmetric 2-cocycle on `V`, of exponent `p`, so
 `L-TRIV` supplies `λ` solving `(∗)`. Hence
 `1 → V̂ → Aut_F^κ(A) → SL_2(κ) → 1` is exact at every characteristic. **QED**
-  `<2>1.` *Checked:* `split24.py` gate `X2` enumerates every fibre by complete
+  `<2>1.` *Checked:* `theory/checks/wh_kappa/split24.py` gate `X2` enumerates every fibre by complete
   search and finds `|Aut_F^κ| = 24, 216, 960, 3000 = q²|SL_2(κ)|` at
   `q = 2,3,4,5`, every fibre of size exactly `q²`; red mode `--red-fibre` exits
   non-zero.
@@ -353,7 +353,7 @@ representation of `Aut_F^κ(A)`, at every characteristic.**
 result is the critic's, the verification is this lane's and shares no code with
 it. `<2>2.` At `q = 2` (`|Aut_F^κ| = 24`) exhaustive search over all generating
 pairs finds **4 distinct complements of `V̂` of order 6**, every one using a
-phase of exact order 4 (`split24.py` `X4`). `<2>3.` At `q = 4`, lifting a
+phase of exact order 4 (`theory/checks/wh_kappa/split24.py` `X4`). `<2>3.` At `q = 4`, lifting a
 `(2,3,5)` generating pair of `SL_2(F_4)` over all `16×16` phase choices, **64
 lifts** satisfy `x² = y³ = (xy)^5 = 1` and generate a subgroup of order 60
 meeting `V̂` trivially; all 64 use order-4 phases (`X5`). `<2>4.` *No complement
@@ -408,7 +408,7 @@ and `ω(v,·)` being onto, hence `v = 0`), so its isometry group is
 `<1>3.` (c) `SL_2(κ) ⊆ Sp(V,ψ∘ω)` since `ω∘g = ω` implies `ψ∘ω∘g = ψ∘ω`, and by
 Thm 1 `<1>6` the containment is exactly the difference between preserving the
 `κ`-valued form and preserving its `ψ`-shadow. **QED**
-  `<2>1.` *Checked, by complete enumeration* (`fp_symmetry.py` `S1`,`S2`):
+  `<2>1.` *Checked, by complete enumeration* (`theory/checks/wh_kappa/fp_symmetry.py` `S1`,`S2`):
   `|SL_2(κ)| = 6, 24, 60, 120, 504, 720` against `|Sp_{2m}(F_p)| = 6, 24, 720,
   120, 1451520, 51840` at `q = 2,3,4,5,8,9` (indices `1,1,12,1,2880,72`),
   matching `p^{m²}∏_{i=1..m}(p^{2i}−1)` in every case; red mode
@@ -442,7 +442,7 @@ and `ζ^n = 1` iff `p | n`. Smallest instance `F_2 ⊂ F_4`. `<2>3.` The row say
 *the trace-normalised family*, not "the obvious functor": the round-1 wording
 quantified over candidates the proof never touched. The statement that
 quantifies over **all** families is `<1>3`. **QED**
-  `<2>4.` *Checked* (`funct_sections.py` gate `F1`): `n·Tr` verified for
+  `<2>4.` *Checked* (`theory/checks/wh_kappa/funct_sections.py` gate `F1`): `n·Tr` verified for
   `F_2⊂F_4, F_2⊂F_8, F_4⊂F_16, F_3⊂F_9, F_3⊂F_27, F_2⊂F_16, F_9⊂F_81`, with the
   restriction trivial exactly at `p | n`; red mode `--red-restrict` exits
   non-zero.
@@ -470,7 +470,7 @@ iff `c^{1/p} = c` iff `c ∈ F_p`. `<2>3.` Take `κ = F_{p^p}`. For `c ∈ F_p^�
 `F_{p^p}` restricts **trivially** to `F_p` — contradicting `ψ_{F_p} ∈ X(F_p)`
 along the inclusion `F_p ⊂ F_{p^p}`. First instance `F_2 ⊂ F_4`. **QED**
   `<2>4.` *Credit and check.* The obstruction is the round-1 verdict's (OBJ-2);
-  recomputed by `funct_sections.py` gates `F2`,`F3`: the Frobenius-invariant
+  recomputed by `theory/checks/wh_kappa/funct_sections.py` gates `F2`,`F3`: the Frobenius-invariant
   characters of `F_4, F_8, F_16, F_9, F_27` number exactly `p` each, and for
   `F_4`, `F_27` no nontrivial one survives restriction to the prime field; red
   mode `--red-section-exists` exits non-zero. The round-1 "sections exist by
