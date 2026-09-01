@@ -1,0 +1,440 @@
+\section{Lagrangian lines, Schr\"odinger models, and the uniqueness of the finite Weyl representation}
+\label{sec:models}
+
+\paragraph{Recollection (the setting of \S\ref{sec:foundations}).} For a
+finite field $\kappa=\mathbb{F}_q$, $q=p^m$, the symplectic object is
+$V(\kappa):=\kappa\oplus\kappa$ with the $\kappa$-bilinear, alternating,
+nondegenerate form $\omega\big((a,b),(a',b')\big):=ab'-a'b$
+(Definition~\ref{def:symplectic-object}); an admissible polarizing cocycle is
+a $\kappa$-bilinear $\beta:V(\kappa)\times V(\kappa)\to\kappa$ with
+$\beta-\beta^T=\omega$ (Definition~\ref{def:admissible-cocycles}); a phase
+datum is a nontrivial additive character $\psi:(\kappa,+)\to\mathbb{C}^\times$
+(Definition~\ref{def:phase-datum}); and the twisted algebra
+$A_{\psi,\beta}(V):=\bigoplus_{v\in V(\kappa)}\mathbb{C}\cdot W_\beta(v)$ has
+product $W_\beta(v)W_\beta(v'):=\psi(\beta(v,v'))W_\beta(v+v')$
+(Definition~\ref{def:weyl-algebra}); by Theorem~\ref{thm:wh-alg} it is simple
+of dimension $q^2$ with centre $\mathbb{C}\cdot 1$, for every
+$\beta\in\mathrm{Adm}(\omega)$.
+\provenance{D1, D2, D3, D4}{---}{---}{---}
+
+This section names the Lagrangian lines of $V(\kappa)$, the finite-dimensional
+modules of $A_{\psi,\beta}(V)$ they induce, and proves that there is exactly
+one such module up to unitary equivalence and that it realizes
+$A_{\psi,\beta}(V)$ as a full matrix algebra — a finite-field analogue of the
+Stone--von Neumann theorem — together with a genuinely characteristic-two
+phenomenon in how the induced characters behave.
+
+\subsection{Preliminary facts about finite abelian characters and cocycles}
+\label{ssec:prelim-facts}
+
+Four short, elementary facts about characters of finite abelian groups recur
+throughout the rest of the labbook; they are recorded once, here, and cited
+by name afterward. None of them is part of the claims DAG — they carry no
+claim id and no status label, being standard and immediate from the
+definitions of ``character'' and ``cocycle'' — but each is proved in full,
+since nothing in this labbook is asserted from memory.
+
+\begin{quote}
+\textbf{Fact 1 (orthogonality).}\label{fact:orth} \emph{If $G$ is a finite
+abelian group and $\chi:G\to\mathbb{C}^\times$ a nontrivial character, then
+$\sum_{u\in G}\chi(u)=0$.}
+\emph{Proof.} Pick $u_0\in G$ with $\chi(u_0)\neq 1$. Then
+$S:=\sum_{u}\chi(u) = \sum_u\chi(u+u_0) = \chi(u_0)\,S$, because
+$u\mapsto u+u_0$ permutes $G$; since $\chi(u_0)\neq 1$, $S=0$.
+
+\textbf{Fact 2 (valuation).}\label{fact:val} \emph{If $\psi$ is a phase datum
+for $\kappa$ (Definition~\ref{def:phase-datum}) then $\psi(\kappa)\subseteq\mu_p$;
+$\ker\psi$ is an $\mathbb{F}_p$-subspace of $\kappa$ of index $p$; and for
+$u\in\kappa$, $\psi(u\cdot)\equiv 1$ iff $u=0$.}
+\emph{Proof.} $\psi(t)^p=\psi(pt)=\psi(0)=1$ since $\mathrm{char}\,\kappa=p$,
+so $\psi(\kappa)\subseteq\mu_p$. $\ker\psi$ is an additive subgroup of a
+characteristic-$p$ field, hence an $\mathbb{F}_p$-subspace, and
+$\kappa/\ker\psi$ embeds nontrivially into $\mu_p\cong\mathbb{Z}/p$
+(Definition~\ref{def:phase-datum}), forcing index exactly $p$. If $u\neq 0$
+then $u\kappa=\kappa\not\subseteq\ker\psi$, i.e.\ $\psi(u\cdot)\not\equiv 1$.
+
+\textbf{Fact 3 (duality of elementary abelian groups).}\label{fact:dual}
+\emph{Let $U$ be a finite $\mathbb{F}_p$-vector space of dimension $d$. Then
+$\hat U:=\mathrm{Hom}(U,\mathbb{C}^\times)$ has order $p^d$, and every element
+of $\hat U$ takes values in $\mu_p$.}
+\emph{Proof.} For $\chi\in\hat U$, $\chi(u)^p=\chi(pu)=1$, so
+$\chi(U)\subseteq\mu_p\cong\mathbb{Z}/p$, i.e.\ $\hat U=\mathrm{Hom}_{\mathbb{F}_p}(U,\mu_p)$.
+Fixing an $\mathbb{F}_p$-basis of $U$, a homomorphism is a free choice of $d$
+values in $\mu_p$, so $|\hat U|=p^d$. (Applied below to $U=L$ a $\kappa$-line,
+an $\mathbb{F}_p$-space of dimension $m=[\kappa:\mathbb{F}_p]$, giving
+$|\hat L|=p^m=q$; later to $U=\kappa$ and $U=V(\kappa)$, of $\mathbb{F}_p$-dimension
+$m$ and $2m$, giving $|\hat\kappa|=q$ and $|\hat V|=q^2$.)
+
+\textbf{Fact 4 (triviality of symmetric cocycles of exponent $p$).}\label{fact:triv}
+\emph{Let $U$ be a finite abelian group of exponent $p$ and
+$c:U\times U\to\mathbb{C}^\times$ a symmetric $2$-cocycle: $c(u,u')=c(u',u)$
+and $c(u,u')c(u+u',u'')=c(u,u'+u'')c(u',u'')$. Then there is
+$\mu:U\to\mathbb{C}^\times$ with $c(u,u')=\mu(u+u')/\big(\mu(u)\mu(u')\big)$
+for all $u,u'$.}
+\emph{Proof.} On $E:=\mathbb{C}^\times\times U$ define
+$(z,u)(z',u'):=\big(zz'c(u,u'),u+u'\big)$; the cocycle identity gives
+associativity and symmetry of $c$ gives commutativity, so $E$ is a finite
+abelian group. Induction inside $E$ gives $(1,u)^p=(\gamma(u),0)$ with
+$\gamma(u):=c(u,u)c(2u,u)\cdots c((p{-}1)u,u)$. Fix an $\mathbb{F}_p$-basis
+$u_1,\dots,u_n$ of $U$; as $\mathbb{C}$ is algebraically closed, choose $z_i$
+with $z_i^p=\gamma(u_i)^{-1}$ and put $f_i:=(z_i,u_i)$, so $f_i^p=1$. The
+subgroup $H:=\langle f_1,\dots,f_n\rangle\leq E$ is then abelian of exponent
+dividing $p$, and since $U$ is free on $\{u_i\}$ there is a unique
+$\mathbb{F}_p$-linear $\sigma:U\to H$ with $\sigma(u_i)=f_i$ and
+$\mathrm{pr}_U\circ\sigma=\mathrm{id}_U$. Writing $\sigma(u)=(\mu(u),u)$, that
+$\sigma$ is a homomorphism reads exactly
+$\mu(u)\mu(u')c(u,u')=\mu(u+u')$.
+\end{quote}
+
+\subsection{Lagrangian lines and the algebra they generate}
+
+\begin{definition}[The quadratic form of a polarizing cocycle]
+\label{def:quadratic-form}
+For $\beta\in\mathrm{Adm}(\omega)$, define $Q_\beta : V(\kappa)\to\kappa$ by
+$Q_\beta(v):=\beta(v,v)$. For the reference cocycle,
+$Q_{\beta_0}(a,b)=ab$.
+\end{definition}
+
+\begin{scope}
+Under a symmetrized cocycle (available only at odd $p$; \S\ref{sec:polarizing-cocycle})
+$Q_\beta$ would vanish identically — that convention does not exist here, and
+$Q_\beta$ is not zero. This definition asserts nothing beyond the formula: it
+does not by itself claim $Q_\beta$ is a quadratic form in the technical sense
+(quadratic homogeneity and a bilinear polarization), which is established
+only where needed, at Theorem~\ref{thm:wh-beta-d} of \S\ref{sec:polarizing-cocycle}.
+\end{scope}
+
+\provenance{D6}{---}{---}{---}
+
+\begin{definition}[Schr\"odinger models, and the standard model]
+\label{def:schrodinger-model}
+For a $\kappa$-line $L\subset V(\kappa)$ put
+$A_L := \mathrm{span}_{\mathbb{C}}\{\,W_\beta(l) : l\in L\,\} \subseteq A_{\psi,\beta}(V)$.
+Given a unital $\mathbb{C}$-algebra homomorphism (character)
+$\chi : A_L \to \mathbb{C}$, the \emph{Schr\"odinger model} of $(L,\chi)$ is
+\[
+M_{L,\chi} := A_{\psi,\beta}(V) \otimes_{A_L} \mathbb{C}_\chi .
+\]
+The \emph{standard model} (taken for $\beta=\beta_0$) is
+$M_0 := \bigoplus_{y\in\kappa}\mathbb{C}\cdot e_y$, with $\{e_y\}$ declared
+orthonormal and
+\[
+W(a,b)\,e_y := \psi\big(-b(y+a)\big)\, e_{y+a}, \qquad\text{i.e.}\qquad
+W(a,b) = Z(-b)X(a),
+\]
+where $X(a)e_y := e_{y+a}$ and $Z(b)e_y := \psi(by)e_y$. \textbf{This is a
+stipulation.}
+\end{definition}
+
+\begin{scope}
+The sign in $W(a,b)=Z(-b)X(a)$ is not cosmetic: the naive assignment
+$W(a,b)=Z(b)X(a)$, without the sign, realizes a \emph{different} cocycle
+($-ab'$, not $\beta_0$'s $ab'$), and the discrepancy between the two is
+invisible at $p=2$ (where $-1=1$) and visible only at odd $p$ — a
+characteristic-dependent failure mode this definition is written to avoid
+by fixing the correct sign explicitly rather than leaving it to convention.
+That $M_0$, so defined, genuinely satisfies the multiplication law of
+Definition~\ref{def:weyl-algebra} is verified as part of the proof of
+Theorem~\ref{thm:wh-svn} below (Step 1) and checked computationally by gate
+C11 of \texttt{theory\slash{}checks\slash{}wh\_kappa\_check.py}.
+\end{scope}
+
+\provenance{D8}{---}{---}{---}
+
+\statusProved
+\begin{theorem}[Lagrangian lines, and the Schr\"odinger models they carry]
+\label{thm:wh-pol}
+Let $\kappa$, $V(\kappa)$, $\omega$, $\beta\in\mathrm{Adm}(\omega)$, $\psi$,
+$A_{\psi,\beta}(V)$, $Q_\beta$ (Definition~\ref{def:quadratic-form}) and
+$A_L$, $M_{L,\chi}$ (Definition~\ref{def:schrodinger-model}) be as above, for
+any finite field $\kappa$, $p=2$ included. Then:
+\begin{enumerate}[label=(\alph*)]
+\item every $\kappa$-line $L\subset V(\kappa)$ is $\omega$-isotropic
+($\omega(v,v')=0$ for all $v,v'\in L$), hence maximal isotropic; so
+\emph{Lagrangian line} and \emph{line} coincide as conditions on
+$L\subset V(\kappa)$, at every characteristic;
+\item there are exactly $q+1=|\mathbb{P}^1(\kappa)|$ such lines;
+\item $A_L$ is commutative of dimension $q$, and carries exactly $q$
+characters, forming a torsor under $\hat L=\mathrm{Hom}(L,\mathbb{C}^\times)$;
+\item $\dim_{\mathbb{C}} M_{L,\chi} = q$;
+\item \textbf{(precision, binding on this row.)} A \emph{Schr\"odinger
+model} is a \emph{pair} $(L,\chi)$: there are $q(q+1)$ such pairs, $q$ per
+line — but by Theorem~\ref{thm:wh-svn} below, \emph{all of them are
+isomorphic as $A_{\psi,\beta}(V)$-modules}. The count $q(q+1)$ is therefore a
+count of labels, not of isomorphism classes of module. Among the $q+1$
+lines, only those with $Q_\beta|_L \equiv 0$ carry the trivial character
+$\chi\equiv 1$ (since $\chi\equiv 1$ is a character of $A_L$ iff
+$Q_\beta(v_0)\kappa\subseteq\ker\psi$ iff $Q_\beta(v_0)=0$, for $L=\kappa v_0$),
+and how many lines have $Q_\beta|_L\equiv 0$ is itself $\beta$-dependent:
+exactly $2$ for the reference cocycle $\beta_0$ (\S\ref{sec:polarizing-cocycle}
+computes it in general).
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+This theorem does not assert that distinct pairs $(L,\chi)$ give distinct, let
+alone non-isomorphic, modules — to the contrary, part (e) is precisely the
+observation that they do not, once Theorem~\ref{thm:wh-svn} is available. It
+does not address the characteristic-two phenomenon in the values a character
+of $A_L$ can take; that is Theorem~\ref{thm:wh-pol-2} below. Nothing here
+depends on which $\beta\in\mathrm{Adm}(\omega)$ was chosen beyond the formula
+for $Q_\beta$.
+\end{scope}
+
+\provenance{D1, D4, D6, D8, WH-FORM, WH-ALG, WH-POL}{theory/wh-kappa.md \S4}{theory/checks/wh\_kappa\_check.py (C7)}{theory/verdicts/wh-kappa-r1.md}
+
+\begin{proof}
+(a) Write $L=\kappa v_0$. For $c,c'\in\kappa$,
+$\omega(cv_0,c'v_0)=cc'\,\omega(v_0,v_0)=0$ by $\kappa$-bilinearity
+(Theorem~\ref{thm:wh-form}(a)) and the computed alternating property
+(Theorem~\ref{thm:wh-form}(b)) — at $p=2$ antisymmetry alone would not give
+this, so the computed form of (b) is exactly what is used. Since
+$\dim_\kappa V(\kappa)=2$ and $\omega$ is nondegenerate, no subspace of
+dimension $2$ (i.e.\ all of $V(\kappa)$) is isotropic, so a line is a maximal
+isotropic subspace: \emph{every} line is automatically Lagrangian, and the
+isotropy condition singles out nothing among lines.
+
+(b) The nonzero vectors of $V(\kappa)$ number $q^2-1$, and each line contains
+$q-1$ of them, so there are $(q^2-1)/(q-1)=q+1=|\mathbb{P}^1(\kappa)|$ lines.
+
+(c) By Definitions~\ref{def:weyl-algebra} and \ref{def:quadratic-form},
+$W(cv_0)W(c'v_0)=\psi(\beta(cv_0,c'v_0))W((c+c')v_0)=\psi\big(cc'Q_\beta(v_0)\big)W((c+c')v_0)$,
+using $\beta(cv_0,c'v_0)=cc'\beta(v_0,v_0)=cc'Q_\beta(v_0)$ by
+$\kappa$-bilinearity. The phase is symmetric in $(c,c')$, so
+$A_L$ is commutative; $\dim_{\mathbb{C}}A_L=|L|=q$ since $\{W(l):l\in L\}$ is
+linearly independent (distinct basis elements of $A_{\psi,\beta}(V)$).
+\emph{Characters exist:} $c(c,c'):=\psi\big(cc'Q_\beta(v_0)\big)$ is a
+symmetric bi-additive, hence symmetric $2$-cocycle, on $(L,+)$, a group of
+exponent $p$; Fact~\ref{fact:triv} supplies $\mu:L\to\mathbb{C}^\times$ with
+$c(c,c')=\mu(c+c')/(\mu(c)\mu(c'))$, and $\chi(W(cv_0)):=\mu(c)^{-1}$ is then
+an algebra character of $A_L$ (it converts the twisted product into the
+untwisted one). \emph{Torsor:} for two characters $\chi,\chi'$ of $A_L$, the
+map $l\mapsto \chi'(W(l))/\chi(W(l))$ is a homomorphism $L\to\mathbb{C}^\times$,
+and conversely composing a character with any element of $\hat L$ gives
+another character; the action is free (a homomorphism fixing every
+$\chi(W(l))$ is trivial), and $|\hat L|=q$ by Fact~\ref{fact:dual}
+($U=L$, $d=m$).
+
+(d) $A_{\psi,\beta}(V)$ is free as a right $A_L$-module on any set of coset
+representatives $v_1,\dots,v_q$ of $L$ in $V(\kappa)$: the elements
+$\{W(v_i)W(l) : l\in L\}$ are, up to the nonzero scalars
+$\psi(\beta(v_i,l))$, exactly the basis elements $\{W(v_i+l):l\in L\}$ of the
+coset $v_i+L$. So $A_{\psi,\beta}(V)\cong A_L^{\oplus q}$ as right
+$A_L$-modules, and $M_{L,\chi}=A_{\psi,\beta}(V)\otimes_{A_L}\mathbb{C}_\chi$
+has dimension $q^2/q=q$.
+
+(e) There are $q$ characters per line by (c) and $q+1$ lines by (b), giving
+$q(q+1)$ pairs $(L,\chi)$; that they are all isomorphic as
+$A_{\psi,\beta}(V)$-modules is Theorem~\ref{thm:wh-svn}(c) below (which uses
+only parts (a)--(d) of this theorem, not this part, so there is no circular
+dependency). For $L=\kappa v_0$, $\chi\equiv 1$ is a character of $A_L$ iff
+$c(c,c')=\psi(cc'Q_\beta(v_0))\equiv 1$ iff $Q_\beta(v_0)\kappa\subseteq\ker\psi$;
+since $Q_\beta(v_0)\kappa$ is either $\{0\}$ or all of $\kappa$ (it is a
+$\kappa$-subspace, being the image of scalar multiplication by
+$Q_\beta(v_0)$) and $\ker\psi\neq\kappa$ (Fact~\ref{fact:val}), this holds
+iff $Q_\beta(v_0)=0$. For $\beta=\beta_0$, $Q_{\beta_0}(a,b)=ab$
+(Definition~\ref{def:quadratic-form}) vanishes exactly on the two coordinate
+lines $\{a=0\}$ and $\{b=0\}$, so exactly $2$ of the $q+1$ lines carry the
+trivial character.
+\end{proof}
+
+\subsection{The characteristic-two phase phenomenon}
+
+\statusProvedConditional
+\begin{theorem}[Forced order-four phases in the induced characters, at
+characteristic two]
+\label{thm:wh-pol-2}
+Let $L=\kappa v_0\subset V(\kappa)$ be a line with $Q_\beta(v_0)\neq 0$
+(Definition~\ref{def:quadratic-form}), and let $\chi$ be any character of
+$A_L$ (Definition~\ref{def:schrodinger-model}, Theorem~\ref{thm:wh-pol}(c)).
+\begin{itemize}
+\item \textbf{[$p=2$.]} $\chi$ takes a value of exact multiplicative order
+$4$ on some $W(l)$, $l\in L$: the phases of the model are forced out of
+$\mu_2=\psi(\kappa)$ into $\mu_4$. For the reference cocycle $\beta_0$, the
+lines with $Q_{\beta_0}|_L\equiv 0$ are exactly the two coordinate axes
+(Theorem~\ref{thm:wh-pol}(e)), so this phenomenon applies to $q-1$ of the
+$q+1$ lines.
+\item \textbf{[$p$ odd.]} No such phenomenon occurs: every character of
+$A_L$ can be, and by the construction of Theorem~\ref{thm:wh-pol}(c) is,
+$\mu_p$-valued.
+\end{itemize}
+\end{theorem}
+
+\begin{scope}
+This theorem says nothing about lines with $Q_\beta|_L\equiv 0$ (there the
+trivial character is available and no order-$4$ value is forced), and
+nothing about the algebra $A_{\psi,\beta}(V)$ globally — only about the
+values a character of the specific commutative subalgebra $A_L$ can take.
+It does not identify \emph{which} $\mu_4$ this is inside a larger structure;
+that question, and its relation to the level-$\mu_p$ Weyl frame, is taken up
+in \S\ref{sec:polarizing-cocycle}.
+\end{scope}
+
+\provenance{D6, D8, WH-POL, WH-POL-2}{theory/wh-kappa.md \S4 \textit{step} $\langle 1\rangle 5,\langle 1\rangle 6$}{theory/checks/beta\_census.py (B6, \texttt{\#\{Q=0\}})}{theory/verdicts/wh-kappa-r1.md}
+
+\begin{proof}
+Write $Q_0:=Q_\beta(v_0)\neq 0$ and $\nu(c):=\chi(W(cv_0))$ for the character
+$\chi$ constructed in the proof of Theorem~\ref{thm:wh-pol}(c); $\nu(0)=1$,
+and setting $c'=c$ in the cocycle relation there,
+$\nu(c)^2 = \psi(c^2Q_0)\,\nu(2c)$.
+
+\textbf{[$p=2$.]} Here $2c=0$, so $\nu(2c)=\nu(0)=1$ and $\nu(c)^2=\psi(c^2Q_0)$.
+The Frobenius map $c\mapsto c^2$ is injective, hence bijective, on the finite
+field $\kappa$, so $\{c^2Q_0 : c\in\kappa\}=Q_0\kappa=\kappa$ (as $Q_0\neq 0$).
+Since $\psi$ is nontrivial, $\psi(c^2Q_0)=-1$ for some $c\in\kappa$ — because
+$-1$ is the unique nontrivial element of $\mu_2=\{1,-1\}$ and $\psi(\kappa)=\mu_2$
+by Fact~\ref{fact:val} — giving $\nu(c)^2=-1$, i.e.\ $\nu(c)$ has exact
+order $4$. The count of lines follows from Theorem~\ref{thm:wh-pol}(e).
+
+\textbf{[$p$ odd.]} Put $\mu(c):=\psi(c^2Q_0/2)$ (division by $2$ makes sense,
+$p$ being odd). Then, directly,
+$\psi\big((c^2+c'^2)Q_0/2\big)\,\psi(cc'Q_0) = \psi\big((c+c')^2Q_0/2\big)$,
+i.e.\ $\mu(c)\mu(c')\,\psi(cc'Q_0)=\mu(c+c')$: $\mu$ already solves the
+cocycle relation of Theorem~\ref{thm:wh-pol}(c) with values entirely inside
+$\psi(\kappa)=\mu_p$, so no order-$4$ (or any value outside $\mu_p$) is ever
+forced.
+\end{proof}
+
+\subsection{Uniqueness of the finite Weyl representation}
+
+\statusProved
+\begin{theorem}[Uniqueness of the finite Weyl representation]
+\label{thm:wh-svn}
+Let $\kappa$, $\beta\in\mathrm{Adm}(\omega)$, $\psi\in X(\kappa)$, and
+$A_{\psi,\beta}(V)$ be as above. Then:
+\begin{enumerate}[label=(\alph*)]
+\item the induced module $M_0$ of $(L_0,\chi_0)$, $L_0:=0\oplus\kappa$,
+$\chi_0\equiv 1$, has basis $\{e_y\}_{y\in\kappa}$ with
+$W_{\beta_0}(a,b)e_y = \psi\big(-b(y+a)\big)e_{y+a}$ — i.e.\ the stipulated
+standard model of Definition~\ref{def:schrodinger-model} genuinely satisfies
+the multiplication law of Definition~\ref{def:weyl-algebra};
+\item every simple $A_{\psi,\beta}(V)$-module is unitarily equivalent to
+$M_0$ (equivalently, to any $M_{L,\chi}$), and an $A_{\psi,\beta}(V)$-linear
+map $M_0\to M_0$ is a scalar;
+\item consequently $H_\beta(\kappa)$ has, up to unitary equivalence, exactly
+one irreducible unitary representation with central character $\psi$, of
+dimension $q$, and every $\mathbb{C}$-algebra automorphism of
+$A_{\psi,\beta}(V)$ is inner;
+\item for $\{e_y\}$ orthonormal, every $W_{\beta_0}(v)$ acts unitarily, and
+in general the unitary intertwiner between two irreducible unitary
+representations with the same central character is unique up to a scalar
+in $U(1)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+This theorem is stated and proved without invoking Maschke's theorem,
+Artin--Wedderburn, Skolem--Noether, Jacobson density, or Pontryagin duality
+as black boxes: every step is elementary, using only
+Theorem~\ref{thm:wh-alg} (simplicity) and Theorem~\ref{thm:wh-pol}. It is
+uniform in the characteristic: no clause is restricted to odd $p$ or to
+$p=2$, and no step below treats $p=2$ differently. It does not exhibit the
+isomorphism $A_{\psi,\beta}(V)\cong M_q(\mathbb{C})$ as canonical — that
+non-canonicity is the separate content of Theorem~\ref{thm:wh-alg-mat}
+immediately below.
+\end{scope}
+
+\provenance{D1, D4, D8, WH-ALG, WH-POL, WH-SVN}{theory/wh-kappa.md \S5}{theory/checks/wh\_kappa\_check.py (C3,C6,C11)}{theory/verdicts/wh-kappa-r1.md; theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+\emph{(a) The standard model, verified.} Since $Q_{\beta_0}(0,b)=0\cdot b=0$,
+$\chi_0\equiv 1$ is a character of $A_{L_0}$ by Theorem~\ref{thm:wh-pol}(e).
+Take coset representatives $(y,0)$, $y\in\kappa$, of $L_0$ in $V(\kappa)$ and
+put $e_y := W_{\beta_0}(y,0)\otimes 1 \in M_{L_0,\chi_0}$. Then
+\[
+W_{\beta_0}(a,b)\,e_y = \psi\big(\beta_0((a,b),(y,0))\big)\,W_{\beta_0}(a+y,b)\otimes 1
+= W_{\beta_0}(a+y,b)\otimes 1,
+\]
+since $\beta_0((a,b),(y,0))=a\cdot 0=0$. To evaluate this against $\chi_0$
+the $L_0$-part must be moved to the \emph{right}:
+\begin{align*}
+W_{\beta_0}(a+y,0)\,W_{\beta_0}(0,b) &= \psi\big((a+y)b\big)\,W_{\beta_0}(a+y,b), \quad\text{so} \\
+W_{\beta_0}(a+y,b) &= \psi\big({-}b(y+a)\big)\,W_{\beta_0}(a+y,0)\,W_{\beta_0}(0,b).
+\end{align*}
+Tensoring against $\chi_0(W_{\beta_0}(0,b))=1$ gives
+$W_{\beta_0}(a,b)e_y=\psi(-b(y+a))\,e_{a+y}$ as claimed, and $\dim M_0=q$ by
+Theorem~\ref{thm:wh-pol}(d). (The sign here is exactly Definition~\ref{def:schrodinger-model}'s
+stipulation, now derived rather than assumed: the naive un-signed assignment
+$W(a,b)=Z(b)X(a)$ realizes the \emph{different} cocycle $-ab'$ and fails to
+satisfy Definition~\ref{def:weyl-algebra}'s multiplication law for
+$\beta_0(v,v')=ab'$ at odd $p$ — gate C11 of
+\texttt{theory\slash{}checks\slash{}wh\_kappa\_check.py} reports $0$ violations for the
+signed model at all six tested $q\in\{2,3,4,5,8,9\}$, against $36,400,3888$
+violations for the unsigned model at $q=3,5,9$ and, tellingly, $0$ violations
+at $q=2,4,8$ — the defect is invisible at $p=2$, where $-1=1$, and visible
+only once $p$ is odd.)
+
+\emph{(b) Uniqueness and Schur.} $\pi:A_{\psi,\beta}(V)\to\mathrm{End}_{\mathbb{C}}(M_0)$
+is a unital, nonzero algebra homomorphism, so $\ker\pi$ is a proper two-sided
+ideal, hence $0$ by simplicity (Theorem~\ref{thm:wh-alg}): $\pi$ is
+injective. Since $\dim\mathrm{End}_{\mathbb{C}}(M_0)=q^2=\dim A_{\psi,\beta}(V)$,
+$\pi$ is also surjective, giving $A_{\psi,\beta}(V)\cong\mathrm{End}_{\mathbb{C}}(M_0)$.
+Consequently $A_{\psi,\beta}(V)\cong M_0^{\oplus q}$ as a left module over
+itself (the columns of $\mathrm{End}_{\mathbb{C}}(M_0)$), so \emph{any} simple
+module $N$ — generated by any nonzero $n\in N$ — is a quotient of
+$A_{\psi,\beta}(V)\cong M_0^{\oplus q}$; restricting the quotient map to one
+summand gives a nonzero map $M_0\to N$, which is surjective (its image is a
+nonzero submodule of the simple $N$) and injective (its kernel is a proper
+submodule of the simple $M_0$), hence an isomorphism $M_0\cong N$. For an
+$A$-endomorphism $\varphi$ of $M_0$: $\varphi$, as a $\mathbb{C}$-linear
+endomorphism of a finite-dimensional $\mathbb{C}$-vector space, has an
+eigenvalue $\lambda\in\mathbb{C}$ ($\mathbb{C}$ is algebraically closed), and
+$\ker(\varphi-\lambda)$ is then a nonzero $A$-submodule of the simple $M_0$,
+so $\varphi=\lambda\cdot\mathrm{id}$: $\mathrm{End}_A(M_0)=\mathbb{C}\cdot\mathrm{id}$.
+
+\emph{(c) Representations of $H_\beta(\kappa)$ and inner automorphisms.} A
+representation of $H_\beta(\kappa)$ with central character $\psi$ is exactly
+an $A_{\psi,\beta}(V)$-module (the remark after Theorem~\ref{thm:wh-comm});
+irreducibility is simplicity of the module, so (b) applies: there is exactly
+one such representation up to isomorphism, of dimension $q$. For
+automorphisms: given $\alpha\in\mathrm{Aut}_{\mathbb{C}}(A_{\psi,\beta}(V))$,
+twist the action on $M_0$ by $\alpha$, i.e.\ put $a\cdot_\alpha m:=\pi(\alpha(a))m$;
+this twisted module $M_0^\alpha$ is again simple of dimension $q$, hence
+$\cong M_0$ by (b), via some invertible $T$; unwinding, $\alpha=\mathrm{Ad}_T$,
+with $T$ unique up to a scalar by the Schur clause of (b). No
+Skolem--Noether theorem is invoked.
+
+\emph{(d) Unitarity.} Since $|\psi(\cdot)|=1$ (Fact~\ref{fact:val}), each
+$W_{\beta_0}(a,b)$ of (a) sends the orthonormal $\{e_y\}$ to
+$\{\psi(-b(y+a))e_{a+y}\}$, again orthonormal: every $W_{\beta_0}(v)$ is
+unitary for this inner product, with no averaging needed. (For a general
+$\beta$, the Weyl operators generate the \emph{finite} level-$\mu_p$ frame
+$\mathcal{F}^{(p)}_{\psi,\beta}$ of Definition~\ref{def:level-frame} in
+\S\ref{sec:polarizing-cocycle}, of order $p q^2$; averaging any inner product
+on the simple module over this finite group makes every $\pi(W_\beta(v))$
+unitary there too.) If $T$ intertwines two unitary representations sharing
+central character $\psi$, then $T^*T$ commutes with every operator of the
+first, so $T^*T=c\cdot\mathrm{id}$ with $c>0$ by the Schur clause of (b); then
+$c^{-1/2}T$ is unitary, and two unitary intertwiners differ by a unimodular
+scalar, i.e.\ an element of $U(1)$.
+\end{proof}
+
+\statusProved
+\begin{theorem}[The twisted algebra as a matrix algebra, non-canonically]
+\label{thm:wh-alg-mat}
+$A_{\psi,\beta}(V) \cong M_q(\mathbb{C})$, by an isomorphism that depends on
+a choice of Lagrangian line and character $(L,\chi)$ (Definition~\ref{def:schrodinger-model})
+and a choice of basis of $M_{L,\chi}$, and is \textbf{not} canonical.
+\end{theorem}
+
+\begin{scope}
+This theorem asserts existence of \emph{an} isomorphism to $M_q(\mathbb{C})$
+and the dependence of any such isomorphism on auxiliary choices; it does not
+assert, and Theorem~\ref{thm:wh-canon} of \S\ref{sec:canonicity} shows
+precisely how much of this data can be removed, that any two such
+isomorphisms agree, nor that a canonical one exists.
+\end{scope}
+
+\provenance{D4, D8, WH-ALG, WH-SVN, WH-ALG-MAT}{theory/wh-kappa.md \S5 \textit{step} $\langle 1\rangle 2$}{theory/checks/wh\_kappa\_check.py (C5)}{theory/verdicts/wh-kappa-r1.md}
+
+\begin{proof}
+This is exactly the isomorphism $\pi:A_{\psi,\beta}(V)\xrightarrow{\sim}\mathrm{End}_{\mathbb{C}}(M_0)$
+constructed in the proof of Theorem~\ref{thm:wh-svn}(b); choosing the basis
+$\{e_y\}_{y\in\kappa}$ of $M_0$ identifies $\mathrm{End}_{\mathbb{C}}(M_0)$
+with $M_q(\mathbb{C})$. The construction visibly used a Lagrangian line $L_0$,
+a character $\chi_0$ of $A_{L_0}$, and the basis $\{e_y\}$ of the resulting
+module; a different line, character, or basis gives a different isomorphism,
+related to this one by an inner automorphism of $M_q(\mathbb{C})$
+(Theorem~\ref{thm:wh-svn}(c)) composed with the change of basis, and no
+choice among these is distinguished by the data $(\kappa,\psi,\beta)$ alone.
+\end{proof}

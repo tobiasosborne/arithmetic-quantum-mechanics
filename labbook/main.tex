@@ -23,6 +23,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{enumitem}    % lettered sub-clauses (a),(b),... inside statements
+\usepackage{longtable}   % the overview's claims-status table spans pages
+\usepackage{booktabs}    % \toprule/\midrule/\bottomrule for that table
 
 % --- Colour (status labels, provenance block) --------------------------------
 \usepackage{xcolor}
@@ -61,6 +64,7 @@
 
 \theoremstyle{remark}
 \newtheorem*{scope}{Scope}
+\newtheorem*{remark}{Remark}
 
 % =============================================================================
 % \provenance{ids}{proved in}{tested by}{reviewed in}
@@ -105,5 +109,12 @@
 \clearpage
 
 \input{sections/00_overview}
+\input{sections/01_foundations}
+\input{sections/02_schrodinger_models}
+\input{sections/03_polarizing_cocycle}
+\input{sections/04_weil_representation}
+\input{sections/05_canonicity}
+\input{sections/06_fp_symmetry}
+\input{sections/07_functoriality}
 
 \end{document}

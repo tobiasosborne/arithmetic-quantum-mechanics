@@ -1,0 +1,158 @@
+\section{What \texorpdfstring{$\kappa$}{kappa}-linear symmetry hides: the \texorpdfstring{$\mathbb{F}_p$}{Fp}-shadow of the form}
+\label{sec:fp-symmetry}
+
+\paragraph{Recollection.} For $\beta\in\mathrm{Adm}(\omega)$ and phase datum
+$\psi$, the Weyl frame is
+$\mathcal{F} = \{\mathbb{C}^\times W_\beta(v) : v\in V(\kappa)\} \subset A_{\psi,\beta}(V)$,
+and $\mathrm{Aut}_{\mathcal{F}}(A)$ is the group of $\mathbb{C}$-algebra
+automorphisms of $A_{\psi,\beta}(V)$ preserving $\mathcal{F}$
+(Definition~\ref{def:weyl-frame}); $\mathrm{Aut}_{\mathcal{F}}^\kappa(A) \subseteq \mathrm{Aut}_{\mathcal{F}}(A)$
+is the further subgroup whose induced permutation of $V(\kappa)$ is
+\emph{$\kappa$-linear} — data \emph{imposed} on top of
+$\mathrm{Aut}_{\mathcal{F}}(A)$, not derived from it
+(Definition~\ref{def:weyl-frame}'s scope). By
+Theorem~\ref{thm:wh-weil-a}, $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ surjects
+onto $SL_2(\kappa)$ with kernel $\hat V$, at every characteristic.
+\provenance{D4, D7, WH-WEIL-a}{---}{---}{---}
+
+This section makes good on the promissory note left in
+Definition~\ref{def:weyl-frame}: exactly how much symmetry the imposed
+$\kappa$-linearity clause discards. The answer is that $A_{\psi,\beta}(V)$
+and its frame $\mathcal{F}$ do not, in fact, remember the $\kappa$-module
+structure of $V(\kappa)$ at all — they are built from the bare abelian group
+$(V(\kappa),+)$ and the cocycle $\psi\circ\beta$ — so the \emph{full} frame
+symmetry group is larger than $SL_2(\kappa)$ whenever $\kappa$ is a proper
+extension of its prime field, and the discarded symmetry is measured
+exactly.
+
+\statusProved
+\begin{theorem}[The twisted algebra does not remember the $\kappa$-structure
+of $V(\kappa)$]
+\label{thm:wh-symm}
+\begin{enumerate}[label=(\alph*)]
+\item $A_{\psi,\beta}(V)$ and its frame $\mathcal{F}$ are determined by the
+abelian group $(V(\kappa),+)$ together with the $\mathbb{C}^\times$-valued
+function $\psi\circ\beta$ on $V(\kappa)\times V(\kappa)$ alone; nothing in
+either object refers to scalar multiplication by $\kappa$;
+\item consequently, dropping the imposed $\kappa$-linearity clause of
+Definition~\ref{def:weyl-frame}, the frame automorphisms with merely
+$\mathbb{F}_p$-linear induced permutation $g$ of $V(\kappa)$ surject, with
+the \emph{same} kernel $\hat V$, onto the isometry group
+$Sp(V(\kappa),\psi\circ\omega) \cong Sp_{2m}(\mathbb{F}_p)$ of the
+$\mathbb{F}_p$-valued alternating form $\psi\circ\omega$; so
+$|\mathrm{Aut}_{\mathcal{F}}(A)| = q^2\cdot|Sp_{2m}(\mathbb{F}_p)|$;
+\item $SL_2(\kappa) \subseteq Sp_{2m}(\mathbb{F}_p)$, with index exactly $1$
+when $m=1$ and strictly greater than $1$ as soon as $m>1$: by complete
+enumeration, $|SL_2(\kappa)| = 6,24,60,120,504,720$ against
+$|Sp_{2m}(\mathbb{F}_p)| = 6,24,720,120,1451520,51840$ at
+$q=2,3,4,5,8,9$ respectively — indices $1,1,12,1,2880,72$. So
+Definition~\ref{def:weyl-frame}'s $\kappa$-linearity clause discards genuine
+symmetry the algebra has, whenever $\kappa$ is a proper extension of its
+prime field.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+This theorem does not claim $Sp_{2m}(\mathbb{F}_p)$ acts by automorphisms
+preserving anything beyond the frame $\mathcal{F}$ and the abelian group
+structure — in particular it says nothing about whether this larger
+symmetry is compatible with the $\kappa$-linear structure used elsewhere in
+this labbook (Theorem~\ref{thm:wh-form}(f) shows, to the contrary, that the
+\emph{$\kappa$-valued} form $\omega$ itself sees only $SL_2(\kappa)$ among
+$\mathbb{F}_p$-linear maps: the enlargement here is possible only because
+$\mathrm{Aut}_{\mathcal{F}}(A)$ is built from the strictly weaker
+$\mathbb{F}_p$-valued shadow $\psi\circ\omega$). At the prime field, $m=1$,
+the two groups coincide and nothing is discarded; this is the campaign's
+guiding path.
+\end{scope}
+
+\provenance{D1, D7, WH-WEIL-a, WH-FORM, WH-SYMM}{theory/wh-kappa-choice.md \S9}{theory/checks/fp\_symmetry.py (S1,S2,S3)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+(a) By Definition~\ref{def:weyl-algebra}, the structure constants of
+$A_{\psi,\beta}(V)$ in the basis $\{W_\beta(v)\}$ are exactly the values
+$\psi(\beta(v,v'))$, indexed by pairs of elements of the abelian group
+$(V(\kappa),+)$; by Definition~\ref{def:weyl-frame}, $\mathcal{F}$ is the
+set of $\mathbb{C}^\times$-lines through this same basis, again indexed only
+by $(V(\kappa),+)$. Neither construction refers to multiplication by
+elements of $\kappa$.
+
+(b) Repeat the argument of Theorem~\ref{thm:wh-weil-a}'s proof
+\emph{without} imposing $\kappa$-linearity on $g$: frame preservation still
+gives $\alpha(W_\beta(v))=\lambda(v)W_\beta(gv)$ with $g$ an (a priori only
+additive) bijection of $V(\kappa)$ and $\lambda$ satisfying relation $(*)$
+there, since that derivation used only additivity of $g$, never
+$\kappa$-linearity. Applying $\alpha$ to Theorem~\ref{thm:wh-comm}(c), an
+identity entirely in $\psi\circ\omega$, gives
+$\psi\big(\omega(gv,gv')\big)=\psi\big(\omega(v,v')\big)$ for all $v,v'$ —
+i.e.\ $g\in Sp(V(\kappa),\psi\circ\omega):=\{g \text{ additive} : \psi\circ\omega\circ(g\times g)=\psi\circ\omega\}$
+— rather than the stronger $\omega\circ g=\omega$ used before. The
+surjectivity argument via Fact~\ref{fact:triv} applies verbatim to any such
+$g$ (it never used $\kappa$-linearity, only that $(V(\kappa),+)$ has
+exponent $p$), so every $g\in Sp(V(\kappa),\psi\circ\omega)$ lifts; the
+kernel computation ($g=\mathrm{id}$ forces $\lambda\in\hat V$, identified
+with $V(\kappa)$ via $u\mapsto\psi(\omega(u,\cdot))$) is unchanged, giving
+the same kernel $\hat V$ of order $q^2$. Nondegeneracy of $\psi\circ\omega$
+as an $\mathbb{F}_p$-bilinear form on the $2m$-dimensional $\mathbb{F}_p$-space
+$V(\kappa)$: if $\psi(\omega(v,\cdot))\equiv 1$ then $\omega(v,\cdot)\equiv0$
+(Fact~\ref{fact:val}, since $\omega(v,\cdot)$ is either $0$ or onto $\kappa$,
+being $\kappa$-linear, and $\kappa\not\subseteq\ker\psi$), so $v=0$ by
+Theorem~\ref{thm:wh-form}(c). A nondegenerate alternating form on a
+$2m$-dimensional space over $\mathbb{F}_p$ has isometry group (by
+definition, matching the notation \texttt{notation.md} fixes for
+$Sp_{2m}(\mathbb{F}_p)$) exactly $Sp_{2m}(\mathbb{F}_p)$.
+
+(c) If $g\in SL_2(\kappa)$ then $\omega\circ(g\times g)=\omega$
+(Theorem~\ref{thm:wh-form}(e)), so certainly
+$\psi\circ\omega\circ(g\times g)=\psi\circ\omega$, i.e.\
+$SL_2(\kappa)\subseteq Sp(V(\kappa),\psi\circ\omega)$. This containment is
+exactly the gap between Theorem~\ref{thm:wh-form}(f) — which shows the
+$\mathbb{F}_p$-linear isometries of the \emph{$\kappa$-valued} $\omega$ are
+no larger than $SL_2(\kappa)$ — and the present, strictly weaker condition
+of isometry for the $\mathbb{F}_p$-valued shadow $\psi\circ\omega$ alone: an
+$\mathbb{F}_p$-linear $g$ can preserve $\psi\circ\omega$ without preserving
+$\omega$ itself. Complete enumeration
+(\texttt{theory\slash{}checks\slash{}fp\_symmetry.py}, gates S1 and S2) computes both
+orders directly at $q=2,3,4,5,8,9$, matching the closed form
+$|Sp_{2m}(\mathbb{F}_p)| = p^{m^2}\prod_{i=1}^m(p^{2i}-1)$ in every case,
+and confirms the indices $1,1,12,1,2880,72$; at $m=1$ (the prime field) the
+two group orders coincide, since $Sp_2(\mathbb{F}_p)=SL_2(\mathbb{F}_p)$ by
+definition in dimension $2$, and nothing is discarded.
+\end{proof}
+
+\begin{remark}[The characteristic-two orthogonal phenomenon survives the
+enlargement]
+The $\mu_2$-phase criterion of Theorem~\ref{thm:wh-weil-c}
+($g\in O(Q_\beta)$) makes sense verbatim for merely $\mathbb{F}_p$-linear
+$g$, at $p=2$: $\psi\circ Q_\beta\circ g=\psi\circ Q_\beta$ is a condition
+on an $\mathbb{F}_p$-valued quadratic form $\psi\circ Q_\beta$ with polar
+form $\psi\circ\omega$, so the relevant subgroup inside the enlarged
+symmetry group of Theorem~\ref{thm:wh-symm} is
+$O(\psi\circ Q_\beta) \cap Sp_{2m}(\mathbb{F}_p)$. Direct enumeration
+(gate S3) finds its order to be $2,72,40320$ at $q=2,4,8$, of index
+$3,10,36$ in $Sp_{2m}(\mathbb{F}_p)$ — exactly the \emph{same} index that
+$|O(Q_\beta)\cap SL_2(\kappa)|=2,6,14$ has inside $SL_2(\kappa)$
+(Theorem~\ref{thm:wh-weil-c}). So the characteristic-two orthogonal
+phenomenon of \S\ref{sec:weil} is not an artefact of the imposed
+$\kappa$-linearity in Definition~\ref{def:weyl-frame}: it survives, at the
+same relative index, inside the larger, intrinsic symmetry group
+$Sp_{2m}(\mathbb{F}_p)$ that Theorem~\ref{thm:wh-symm} exhibits. This
+observation is recorded as part of the same source theorem as
+Theorem~\ref{thm:wh-symm}, under the same provenance
+(\texttt{theory\slash{}wh-kappa-choice.md} \S9, step $\langle1\rangle4$).
+\end{remark}
+
+\begin{remark}[Reading]
+Two independent non-canonicities are now on record, and they are logically
+independent of each other. Theorem~\ref{thm:wh-beta-type} of
+\S\ref{sec:polarizing-cocycle} shows the system does not remember which
+polarizing cocycle $\beta$ was chosen, in a way that is invisible at odd
+characteristic and genuinely two-valued at $p=2$. This theorem shows the
+system does not remember the $\kappa$-module structure of $V(\kappa)$
+itself, at every characteristic and every $m>1$, regardless of $\beta$.
+Both are statements about what the definition actually depends on, in the
+sense of \texttt{PRD.md}'s ``canonical'' requirement: any assignment
+$\mathrm{Spec}\,R \mapsto$ quantum system general enough to restrict to this
+one on $\mathrm{Spec}\,\mathbb{F}_q$ carries both phenomena, not as defects,
+but as exactly the symmetry and the choice the construction is built from.
+\end{remark}

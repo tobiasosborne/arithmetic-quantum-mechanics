@@ -1,0 +1,634 @@
+\section{The polarizing cocycle as a second datum: the characteristic-two dichotomy}
+\label{sec:polarizing-cocycle}
+
+This section proves the increment's central structural fact. The quantum
+system attached to a finite field $\kappa$ is built not from the field alone,
+and not from the field together with a single choice of additive character
+$\psi$: it is built from \emph{three} data — $\kappa$, $\psi$, and a
+polarizing cocycle $\beta$, a choice inside the torsor
+$\mathrm{Adm}(\omega)$ of Definition~\ref{def:admissible-cocycles} that is no
+more optional, and no more a matter of convention, than $\psi$ itself. What
+this section shows is exactly how much that third choice matters. At odd
+characteristic it turns out not to matter at all: a canonical representative
+exists inside $\mathrm{Adm}(\omega)$, and every other admissible cocycle
+produces an isomorphic Heisenberg group by an isomorphism fixing the centre.
+At characteristic two no canonical representative exists, and the choice is
+not immaterial: the torsor $\mathrm{Adm}(\omega)$ splits into exactly two
+orbits under the natural symmetry group $SL_2(\kappa)$, distinguished by the
+Arf invariant of an associated quadratic form, and the two orbits produce two
+genuinely non-isomorphic Heisenberg groups — a fact detectable by an operator
+identity inside the quantum system itself.
+
+This is not a defect in the construction, and not a gap for a better
+convention to close. It is a theorem about what the construction actually
+depends on, carrying an intrinsic, computable invariant that says exactly
+when two choices of cocycle agree and when they do not. A sharp result of
+this shape — naming precisely the choice at stake and exhibiting the
+invariant that classifies it — is a positive structural statement about the
+definition, not a negative one, and it is this labbook's principal new
+content.
+
+\subsection{The torsor of admissible polarizing cocycles, restated}
+
+\begin{definition}[Admissible polarizing cocycles, restated in full]
+\label{def:admissible-cocycles-restated}
+For the symplectic object $(V(\kappa),\omega)$ of
+Definition~\ref{def:symplectic-object},
+\[
+\mathrm{Adm}(\omega) := \big\{\, \beta : V(\kappa)\times V(\kappa) \to \kappa
+\ \big|\ \beta \text{ is $\kappa$-bilinear and } \beta - \beta^T = \omega
+\,\big\}.
+\]
+A \emph{polarizing cocycle} is a choice of element $\beta\in\mathrm{Adm}(\omega)$,
+and it is a \textbf{datum} of the construction, on the same footing as the
+phase datum $\psi$ — not a convention fixed once and for all. The
+\emph{reference cocycle} is $\beta_0\big((a,b),(a',b')\big):=ab'$, a label
+for a point of the torsor below, not a canonical point of it. Write
+$\mathrm{Sym}(V)$ for the set of symmetric $\kappa$-bilinear forms on
+$V(\kappa)$.
+\end{definition}
+
+\begin{scope}
+This restates Definition~\ref{def:admissible-cocycles} verbatim; nothing new
+is stipulated here. What is new in this section is everything that is
+\emph{proved} about $\mathrm{Adm}(\omega)$: its torsor structure
+(Theorem~\ref{thm:wh-beta-a}), the immateriality of the choice at odd $p$
+(Theorem~\ref{thm:wh-beta-b}), and its genuine two-way split at $p=2$
+(Theorems~\ref{thm:wh-beta-c}--\ref{thm:wh-beta-eps}).
+\end{scope}
+
+\provenance{D1, D2}{---}{---}{---}
+
+\statusProved
+\begin{theorem}[The admissible cocycles form a torsor of size $q^3$]
+\label{thm:wh-beta-a}
+$\mathrm{Adm}(\omega)$ is a torsor under $\mathrm{Sym}(V)$ acting by
+$\beta \mapsto \beta+s$, $s\in\mathrm{Sym}(V)$; consequently
+$|\mathrm{Adm}(\omega)| = q^3$.
+\end{theorem}
+
+\begin{scope}
+This is purely a statement about the set $\mathrm{Adm}(\omega)$ and its free
+transitive action; it does not yet distinguish any point of the torsor, does
+not use the characteristic in any way, and does not address isomorphism of
+the associated Heisenberg groups — those are the later theorems of this
+section.
+\end{scope}
+
+\provenance{D1, D2, WH-BETA-a}{theory/wh-kappa-choice.md \S6 \textit{step} $\langle 1\rangle 1$}{theory/checks/beta\_census.py (B1); theory/checks/wh\_kappa\_check.py (C10)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+If $\beta,\beta'\in\mathrm{Adm}(\omega)$, put $s:=\beta'-\beta$. Then
+$s - s^T = (\beta'-\beta^T{}') - (\beta - \beta^T) = \omega - \omega = 0$,
+i.e.\ $s\in\mathrm{Sym}(V)$. Conversely, for $s\in\mathrm{Sym}(V)$,
+$(\beta+s)-(\beta+s)^T = (\beta-\beta^T)+(s-s^T) = \omega+0=\omega$, so
+$\beta+s\in\mathrm{Adm}(\omega)$. The action $\beta\mapsto\beta+s$ is
+therefore well defined, free (if $\beta+s=\beta+s'$ then $s=s'$), and
+transitive (any $\beta'\in\mathrm{Adm}(\omega)$ equals $\beta+(\beta'-\beta)$
+for the $s=\beta'-\beta\in\mathrm{Sym}(V)$ just exhibited). A symmetric
+$\kappa$-bilinear form on $V(\kappa)=\kappa e\oplus\kappa f$ is determined
+freely by the three values $s(e,e),s(e,f),s(f,f)\in\kappa$ (symmetry forces
+$s(f,e)=s(e,f)$, and bilinearity determines everything else), so
+$|\mathrm{Sym}(V)|=q^3$; since $\mathrm{Adm}(\omega)$ is nonempty
+($\beta_0\in\mathrm{Adm}(\omega)$) and a torsor under $\mathrm{Sym}(V)$, it
+has the same cardinality, $q^3$.
+\end{proof}
+
+\subsection{Odd characteristic: a canonical representative}
+
+\statusProvedConditional
+\begin{theorem}[Immateriality of the polarizing cocycle at odd characteristic]
+\label{thm:wh-beta-b}
+\textbf{[$p$ odd.]} $\mathrm{Adm}(\omega)$ contains exactly one antisymmetric
+member, $\omega/2$, and it is $SL_2(\kappa)$-invariant. For every
+$s\in\mathrm{Sym}(V)$, the map
+\[
+\varphi_s(t,v) := \Big(t + \tfrac{1}{2}s(v,v),\ v\Big)
+\]
+is a group isomorphism $H_\beta(\kappa)\to H_{\beta+s}(\kappa)$ fixing the
+centre $\kappa\times 0$ pointwise, for \emph{every} $\beta\in\mathrm{Adm}(\omega)$.
+Hence at odd characteristic the choice of polarizing cocycle is immaterial:
+every admissible cocycle produces a Heisenberg group isomorphic, by an
+explicit isomorphism fixing the centre, to every other, and $\omega/2$ is a
+canonical basepoint of the torsor.
+\end{theorem}
+
+\begin{scope}
+This theorem is restricted to odd $p$ by hypothesis, not by omission: at
+$p=2$, division by $2$ is division by zero, $\omega/2$ has no referent, and
+Theorem~\ref{thm:wh-beta-c} shows the phenomenon this theorem describes
+simply does not occur. Nothing here compares $H_\beta(\kappa)$ for different
+$\beta$ as algebras or as sources of quantum systems beyond the group
+isomorphism exhibited; the algebra-level statement is
+Theorem~\ref{thm:wh-beta-level}.
+\end{scope}
+
+\provenance{D2, D5, WH-BETA-a, WH-BETA-b}{theory/wh-kappa-choice.md \S6 \textit{step} $\langle 1\rangle 2$}{theory/checks/beta\_census.py (B2,B3,B4); theory/checks/wh\_kappa\_check.py (C10)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+\emph{Existence and uniqueness of the antisymmetric point.} Since $p$ is odd,
+$2\in\kappa^\times$, and $\omega/2$ is $\kappa$-bilinear with
+$(\omega/2)-(\omega/2)^T = \omega/2+\omega/2=\omega$ (using
+$\omega^T=-\omega$, i.e.\ antisymmetry of $\omega$, itself immediate from
+Theorem~\ref{thm:wh-form}(b): $\omega(v,v')+\omega(v',v)=\omega(v+v',v+v')-\omega(v,v)-\omega(v',v')=0$),
+so $\omega/2\in\mathrm{Adm}(\omega)$ and is manifestly antisymmetric. If
+$\beta,\beta'\in\mathrm{Adm}(\omega)$ are both antisymmetric, then
+$s:=\beta'-\beta\in\mathrm{Sym}(V)$ (Theorem~\ref{thm:wh-beta-a}) is also
+antisymmetric, so $2s=0$, so $s=0$ ($p$ odd): the antisymmetric point is
+unique. \emph{Invariance.} $SL_2(\kappa)$ preserves $\omega$
+(Theorem~\ref{thm:wh-form}(e)), hence preserves the scalar multiple
+$\omega/2$.
+
+\emph{The isomorphism $\varphi_s$.} Put $f(v):=s(v,v)/2$. By bilinearity and
+symmetry of $s$, $s(v+v',v+v')=s(v,v)+2s(v,v')+s(v',v')$, so
+$f(v+v')=f(v)+f(v')+s(v,v')$. Unwinding the group law of
+Definition~\ref{def:heisenberg-group} for $H_\beta(\kappa)$ and
+$H_{\beta+s}(\kappa)$,
+\[
+\varphi_s\big((t,v)(t',v')\big) = \varphi_s\big(t+t'+\beta(v,v'),\,v+v'\big)
+= \big(t+t'+\beta(v,v')+f(v+v'),\,v+v'\big),
+\]
+while
+\[
+\varphi_s(t,v)\,\varphi_s(t',v') = \big(t+f(v),v\big)\big(t'+f(v'),v'\big)
+= \big(t+t'+f(v)+f(v')+(\beta{+}s)(v,v'),\,v+v'\big),
+\]
+computed inside $H_{\beta+s}(\kappa)$. The two right-hand sides agree
+precisely because $f(v+v')=f(v)+f(v')+s(v,v')$. So $\varphi_s$ is a group
+homomorphism; it is a bijection (identity on the second coordinate, an
+affine bijection $t\mapsto t+f(v)$ on the first, for each fixed $v$), hence
+an isomorphism, and $\varphi_s(t,0)=(t+f(0),0)=(t,0)$ since
+$f(0)=s(0,0)/2=0$: the centre is fixed pointwise.
+\end{proof}
+
+\subsection{Characteristic two: no symmetric distinguished point}
+
+\statusProvedConditional
+\begin{theorem}[Absence of a symmetric distinguished cocycle at characteristic two]
+\label{thm:wh-beta-c}
+\textbf{[$p=2$.]} $\mathrm{Adm}(\omega)$ contains no antisymmetric member;
+the criterion that singles out a canonical basepoint at odd characteristic
+(Theorem~\ref{thm:wh-beta-b}) distinguishes nothing here.
+\end{theorem}
+
+\begin{scope}
+This theorem only rules out \emph{this particular} route to a canonical
+choice (antisymmetry). It does not by itself assert that no other route to a
+canonical choice exists, nor that the resulting Heisenberg groups actually
+differ — those stronger, positive facts are
+Theorems~\ref{thm:wh-beta-d}--\ref{thm:wh-beta-type} below.
+\end{scope}
+
+\provenance{D2, WH-BETA-a, WH-BETA-c}{theory/wh-kappa-choice.md \S6 \textit{step} $\langle 1\rangle 3$}{theory/checks/beta\_census.py (B2)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+At $p=2$, $-1=1$, so ``antisymmetric'' ($\beta=-\beta^T$) coincides with
+``symmetric'' ($\beta=\beta^T$), i.e.\ $\beta-\beta^T=0$. But every
+$\beta\in\mathrm{Adm}(\omega)$ has $\beta-\beta^T=\omega$
+(Definition~\ref{def:admissible-cocycles-restated}), and
+$\omega\big((1,0),(0,1)\big)=1\neq 0$ (Theorem~\ref{thm:wh-form}(c)), so
+$\omega\neq 0$: no member of $\mathrm{Adm}(\omega)$ can be symmetric, hence
+none can be antisymmetric either.
+\end{proof}
+
+\subsection{The quadratic form of a cocycle, and the order profile of its
+Heisenberg group}
+
+\statusProvedConditional
+\begin{theorem}[The quadratic form of a polarizing cocycle, and the
+element-order profile of its Heisenberg group]
+\label{thm:wh-beta-d}
+\textbf{[$p=2$.]} Let $\beta\in\mathrm{Adm}(\omega)$, with
+$Q_\beta(v):=\beta(v,v)$ as in Definition~\ref{def:quadratic-form}. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $Q_\beta(cv)=c^2Q_\beta(v)$ for $c\in\kappa$, $v\in V(\kappa)$, and
+$Q_\beta(v+v')=Q_\beta(v)+Q_\beta(v')+\omega(v,v')$ for all $v,v'$: $Q_\beta$
+is a $\kappa$-quadratic form on $V(\kappa)$ with polar form $\omega$;
+\item in $H_\beta(\kappa)$, $(t,v)^2 = \big(Q_\beta(v),0\big)$ for every
+$(t,v)$; consequently, writing $n_0:=|Q_\beta^{-1}(0)|$ (which is always
+$\geq 1$, since $Q_\beta(0)=0$), the multiset of element orders of
+$H_\beta(\kappa)$ is
+\[
+\{\,1:1,\quad 2: q\,n_0-1,\quad 4: q^3-q\,n_0\,\}\,;
+\]
+\item hence $\mathrm{Adm}(\omega)$ meets \emph{at least two} isomorphism
+classes of Heisenberg group: by direct enumeration at $q=2$, $6$ of the $8$
+admissible cocycles give the order profile $\{1{:}1,2{:}5,4{:}2\}$ ($n_0=3$)
+and the remaining $2$ give $\{1{:}1,2{:}1,4{:}6\}$ ($n_0=1$), and these are
+different multisets, hence non-isomorphic groups.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+Part (iii) establishes only that \emph{at least} two isomorphism classes
+occur, by exhibiting two different order profiles at the single value $q=2$;
+it does not claim that exactly two classes occur for every $q$, nor identify
+the classes by name (this lane computes order profiles, not group names —
+that two of the eight cocycles at $q=2$ happen to give the quaternion group
+and the other six the dihedral group of order $8$ is a fact the
+orchestrator's independent census records, but it is not part of what this
+row proves). The full classification, valid at every $q=2^m$ and carrying an
+intrinsic invariant, is Theorem~\ref{thm:wh-beta-type} below, which depends
+on this one.
+\end{scope}
+
+\provenance{D2, D6, WH-BETA-a, WH-BETA-d}{theory/wh-kappa-choice.md \S6 \textit{step} $\langle 1\rangle 4$}{theory/checks/beta\_census.py (B3,B6); theory/checks/wh\_kappa\_check.py (C10)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+(i) By $\kappa$-bilinearity, $Q_\beta(cv)=\beta(cv,cv)=c^2\beta(v,v)=c^2Q_\beta(v)$.
+Expanding $Q_\beta(v+v')=\beta(v+v',v+v')=\beta(v,v)+\beta(v,v')+\beta(v',v)+\beta(v',v')$;
+at $p=2$, addition and subtraction coincide, so
+$\beta(v,v')+\beta(v',v)=\beta(v,v')-\beta(v',v)=\omega(v,v')$
+(Definition~\ref{def:admissible-cocycles-restated}), giving
+$Q_\beta(v+v')=Q_\beta(v)+Q_\beta(v')+\omega(v,v')$.
+
+(ii) In $H_\beta(\kappa)$, $(t,v)(t,v)=\big(2t+\beta(v,v),\,2v\big)=\big(Q_\beta(v),0\big)$
+at $p=2$, since $2t=0$ and $2v=0$. If $(t,v)=(0,0)$ this is the identity
+(order $1$). If $(t,v)\neq(0,0)$ and $Q_\beta(v)=0$, then $(t,v)^2=(0,0)$, so
+$(t,v)$ has order exactly $2$; the number of such elements is
+$q\,n_0 - 1$ (for each of the $n_0$ vectors $v$ with $Q_\beta(v)=0$, all $q$
+values of $t$ occur, and the pair $(t,v)=(0,0)$ is excluded). If
+$Q_\beta(v)\neq 0$, then $(t,v)^2=(Q_\beta(v),0)\neq(0,0)$, but
+$(t,v)^4=\big((t,v)^2\big)^2=\big(2Q_\beta(v),0\big)=(0,0)$, so $(t,v)$ has
+order exactly $4$; there are $q(q^2-n_0)=q^3-qn_0$ such elements ($q^2-n_0$
+choices of $v$, $q$ choices of $t$ each). These three counts sum to
+$1+(qn_0-1)+(q^3-qn_0)=q^3=|H_\beta(\kappa)|$, as they must.
+
+(iii) The order profile just derived is a group-isomorphism invariant (an
+isomorphism of groups preserves the multiset of element orders), so
+different profiles certify non-isomorphic groups. At $q=2$, exhaustive
+enumeration over all $8$ members of $\mathrm{Adm}(\omega)$
+(\texttt{theory\slash{}checks\slash{}beta\_census.py}, gates B3 and B6) computes $n_0$ for
+each and finds exactly the two values $n_0=3$ (for $6$ of the $8$ cocycles,
+giving profile $\{1{:}1,2{:}5,4{:}2\}$ by the formula of (ii)) and $n_0=1$
+(for the remaining $2$, giving $\{1{:}1,2{:}1,4{:}6\}$); these are distinct
+multisets, exhibiting two isomorphism classes.
+\end{proof}
+
+\subsection{The Arf classification}
+
+\begin{definition}[The Artin--Schreier map, and the type of a polarizing cocycle]
+\label{def:artin-schreier}
+For $\kappa$ of characteristic $2$, define $\wp:\kappa\to\kappa$ by
+$\wp(x):=x^2+x$. The \emph{type} of $\beta\in\mathrm{Adm}(\omega)$ is
+\[
+\mathrm{Arf}(Q_\beta) := Q_\beta(e)\,Q_\beta(f) \ \in\ \kappa/\wp(\kappa),
+\]
+computed in any symplectic $\kappa$-basis $(e,f)$ of $V(\kappa)$, i.e.\ a
+basis with $\omega(e,f)=1$.
+\end{definition}
+
+\begin{scope}
+This is a stipulation, meaningful only at $p=2$. That the value
+$\mathrm{Arf}(Q_\beta)$ does not depend on the choice of symplectic basis,
+that $\kappa/\wp(\kappa)$ has exactly two elements, and that both values
+actually occur among the members of $\mathrm{Adm}(\omega)$, are not part of
+the definition; they are exactly the content of
+Theorem~\ref{thm:wh-beta-type} below, whose provenance names the argument
+DAG's current row for this material (the single source's own
+cross-reference for this content predates a later renaming in the DAG).
+\end{scope}
+
+\provenance{D10}{---}{---}{---}
+
+\statusSketch
+\begin{theorem}[Classification of characteristic-two polarizing cocycles by
+the Arf invariant]
+\label{thm:wh-beta-type}
+\textbf{[$p=2$.]} Let $\beta\in\mathrm{Adm}(\omega)$.
+\begin{enumerate}[label=(\roman*)]
+\item $\wp$ is additive with $\ker\wp=\{0,1\}=\mathbb{F}_2$, so $\kappa/\wp(\kappa)$
+has exactly two elements;
+\item $Q_\beta$ has a nonzero zero (some $v\neq 0$ with $Q_\beta(v)=0$) if
+and only if $\mathrm{Arf}(Q_\beta)=0$; in that case $n_0=|Q_\beta^{-1}(0)|=2q-1$,
+and otherwise $n_0=1$. Consequently $\mathrm{Arf}(Q_\beta)$ does not depend
+on the choice of symplectic basis used to compute it, and is invariant under
+$SL_2(\kappa)$;
+\item call $\beta$ \emph{hyperbolic} if $\mathrm{Arf}(Q_\beta)=0$ and
+\emph{anisotropic} otherwise. Two members of $\mathrm{Adm}(\omega)$ are
+carried to each other by an $SL_2(\kappa)$-isometry of their quadratic forms
+if and only if they have the same type; both types occur, with $q(q+1)/2$
+hyperbolic and $q(q-1)/2$ anisotropic quadratic forms compatible with
+$\omega$, and stabilizer orders $|O(Q_\beta)\cap SL_2(\kappa)| = 2(q-1)$
+(hyperbolic) and $2(q+1)$ (anisotropic);
+\item $H_\beta(\kappa)\cong H_{\beta'}(\kappa)$ if and only if
+$\mathrm{Arf}(Q_\beta)=\mathrm{Arf}(Q_{\beta'})$. So $\mathrm{Adm}(\omega)$
+meets \emph{exactly} two isomorphism classes of Heisenberg group, indexed by
+$\mathrm{Arf}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+This theorem is marked \textsc{sketch} for a procedural reason recorded in
+\texttt{theory\slash{}verdicts\slash{}wh-kappa-adjudication.md}: it was written in the
+repair wave that followed this increment's single hostile-critic round and
+has not itself been through one, per this campaign's capped review loop
+(\texttt{PRD.md}) — not because a specific gap is known. It does not extend
+beyond $p=2$ (Theorem~\ref{thm:wh-beta-b} covers odd $p$ by an entirely
+different, and there, complete, argument), and it does not address whether
+the type can be chosen compatibly along field embeddings — that question is
+recorded as open in \S\ref{sec:functoriality}.
+\end{scope}
+
+\provenance{D6, D10, WH-BETA-d, WH-BETA-TYPE}{theory/wh-kappa-choice.md \S6 \textit{step} $\langle 1\rangle 4,\langle 1\rangle 5$}{theory/checks/beta\_census.py (B5,B6,B7); theory/checks/wh\_kappa\_check.py (C10)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+(i) $\wp(x+y)-\wp(x)-\wp(y) = (x+y)^2-x^2-y^2 = 2xy = 0$ at $p=2$, so $\wp$
+is additive (a group homomorphism $(\kappa,+)\to(\kappa,+)$). Its kernel
+consists of the roots of $x^2+x=0$, a degree-$2$ polynomial, so
+$|\ker\wp|\leq 2$; both $x=0$ and $x=1$ are roots, so $\ker\wp=\{0,1\}=\mathbb{F}_2$
+exactly. By rank--nullity for the $\mathbb{F}_2$-linear map $\wp$ on the
+$m$-dimensional $\mathbb{F}_2$-space $\kappa$, $|\wp(\kappa)|=q/2$, so
+$|\kappa/\wp(\kappa)|=2$.
+
+(ii) In a symplectic basis $(e,f)$, write $v=ae+bf$; by
+Theorem~\ref{thm:wh-beta-d}(i), $Q_\beta(ae+bf)=\alpha a^2+ab+\delta b^2$
+with $\alpha:=Q_\beta(e)$, $\delta:=Q_\beta(f)$ (using $\omega(e,f)=1$ for
+the cross term). If $b=0$: $Q_\beta=\alpha a^2$ vanishes for some $a\neq 0$
+iff $\alpha=0$, and then $\mathrm{Arf}=\alpha\delta=0\in\wp(\kappa)$. If
+$b\neq 0$, rescale to $b=1$: $\alpha a^2+a+\delta=0$; multiplying by $\alpha$
+(when $\alpha\neq 0$) gives $(\alpha a)^2+(\alpha a)=\alpha\delta$, i.e.\
+$\wp(\alpha a)=\alpha\delta$, solvable for $a$ iff $\alpha\delta\in\wp(\kappa)$;
+when $\alpha=0$ the equation $a+\delta=0$ always has the solution $a=\delta$.
+So in every case, $Q_\beta$ has a nonzero zero iff $\alpha\delta\in\wp(\kappa)$,
+i.e.\ iff $\mathrm{Arf}(Q_\beta)=0\in\kappa/\wp(\kappa)$. When
+$\mathrm{Arf}(Q_\beta)=0$, the zero set of $Q_\beta$ is a union of
+$\kappa$-lines (by homogeneity $Q_\beta(cv)=c^2Q_\beta(v)$ of
+Theorem~\ref{thm:wh-beta-d}(i)); the computation above produces exactly two
+such lines (the two roots of $\wp(\alpha a)=\alpha\delta$ when $\alpha\neq0$,
+or the lines $b=0$ and $a=\delta$ when $\alpha=0$), giving
+$n_0 = 2(q-1)+1 = 2q-1$ nonzero-vector zeros plus the origin; when
+$\mathrm{Arf}(Q_\beta)\neq 0$, $n_0=1$ (only the origin). Since
+$|\kappa/\wp(\kappa)|=2$ by (i), the class $\alpha\delta\bmod\wp(\kappa)$ is
+itself a basis-free condition — ``$Q_\beta$ is isotropic'' — so
+$\mathrm{Arf}(Q_\beta)$ is independent of the symplectic basis chosen to
+compute it, and $SL_2(\kappa)$-invariant since an $SL_2(\kappa)$-image of a
+symplectic basis is again symplectic (Theorem~\ref{thm:wh-form}(e)).
+
+(iii) \emph{Normal forms.} If $\mathrm{Arf}(Q_\beta)=0$, pick $e\neq 0$ with
+$Q_\beta(e)=0$ (by (ii)) and any $f$ with $\omega(e,f)=1$ (possible by
+nondegeneracy of $\omega$); replacing $f$ by $f+Q_\beta(f)e$ changes
+$Q_\beta(f)$ to $Q_\beta(f)+Q_\beta(f)^2Q_\beta(e) + Q_\beta(f)\omega(f,e)$, which
+simplifies (using $Q_\beta(e)=0$ and $\omega(f,e)=-\omega(e,f)=1$ at $p=2$)
+to $0$, giving $Q_\beta(ae+bf)=ab$: the hyperbolic normal form. If
+$\mathrm{Arf}(Q_\beta)\neq 0$ then $Q_\beta(v)\neq 0$ for every $v\neq 0$ (by
+(ii)); pick any $e\neq 0$, rescale by $\lambda=Q_\beta(e)^{-1/2}$ (Frobenius
+is bijective on $\kappa$, so square roots exist and are unique) to arrange
+$Q_\beta(e)=1$, then choose $f$ with $\omega(e,f)=1$; replacing $f$ by $f+ae$
+changes $Q_\beta(f)$ by $\wp(a)$ (direct computation from
+Theorem~\ref{thm:wh-beta-d}(i)), so $Q_\beta(f)$ can be moved to any chosen
+representative of its class modulo $\wp(\kappa)$. Both normalizations send a
+symplectic basis to a symplectic basis, hence are realized by elements of
+$SL_2(\kappa)$ (Theorem~\ref{thm:wh-form}(e)): two quadratic forms of the
+same type are $SL_2(\kappa)$-isometric, and by (ii) two of different type
+cannot be (they have different $n_0$, an isometry invariant). \emph{Counting.}
+Over a fixed symplectic basis, the $\kappa$-quadratic forms with polar form
+$\omega$ are exactly the $q^2$ maps $\alpha a^2+ab+\delta b^2$
+(parametrized freely by $(\alpha,\delta)\in\kappa^2$, by
+Theorem~\ref{thm:wh-beta-d}(i)); among these,
+$\#\{\alpha\delta\in\wp(\kappa)\} = q + (q-1)(q/2) = q(q+1)/2$ are
+hyperbolic (the case $\alpha=0$ contributes $q$ choices of $\delta$, and each
+of the $q-1$ nonzero $\alpha$ pairs with the $q/2$ elements of $\wp(\kappa)$)
+and the remaining $q(q-1)/2$ are anisotropic — both classes nonempty for
+every $q$. By orbit--stabilizer inside $SL_2(\kappa)$, of order
+$q(q^2-1)$, acting transitively within each type: stabilizer orders
+$q(q^2-1)/(q(q+1)/2) = 2(q-1)$ (hyperbolic) and
+$q(q^2-1)/(q(q-1)/2)=2(q+1)$ (anisotropic). \emph{Groups.} If
+$\mathrm{Arf}(Q_\beta)=\mathrm{Arf}(Q_{\beta'})$, the normal-form argument
+gives $Q_{\beta'}=Q_\beta\circ g$ for some $g\in SL_2(\kappa)$; then
+$r(v,v'):=\beta(gv,gv')-\beta'(v,v')$ is symmetric with $r(v,v)=0$ for all
+$v$ (both sides equal $Q_{\beta'}(v)$ by construction of $g$), so, fixing an
+$\mathbb{F}_2$-basis $b_i$ of $V(\kappa)$ and writing $v=\sum c_ib_i$,
+$h(v):=\sum_{i<j}c_ic_j\,r(b_i,b_j)$ satisfies
+$h(v+v')-h(v)-h(v')=r(v,v')$ (a direct expansion using $r$ symmetric and
+bilinear), and $(t,v)\mapsto(t+h(v),gv)$ is then a group isomorphism
+$H_{\beta'}(\kappa)\to H_\beta(\kappa)$ by the same computation as in the
+proof of Theorem~\ref{thm:wh-beta-b}. If instead
+$\mathrm{Arf}(Q_\beta)\neq\mathrm{Arf}(Q_{\beta'})$, the two groups have
+different values of $n_0$ (by (ii)), hence different element-order profiles
+(Theorem~\ref{thm:wh-beta-d}(ii)), so no group isomorphism of any kind
+exists between them.
+\end{proof}
+
+\begin{remark}
+Direct enumeration (\texttt{theory\slash{}checks\slash{}beta\_census.py}, gates B5--B7)
+confirms every clause above at $q=2,4,8$: $\mathrm{Arf}$ is constant on
+$SL_2(\kappa)$-orbits and takes exactly the two values across all $q^3$
+members of $\mathrm{Adm}(\omega)$; $|O(Q_\beta)\cap SL_2(\kappa)|=2,6,14$
+(hyperbolic) and $6,10,18$ (anisotropic), matching $2(q\mp 1)$ exactly; the
+element-order profiles come in exactly two sizes, $(6,2)$, $(40,24)$,
+$(288,224)$, at $q=2,4,8$ respectively; and the isomorphism constructed in
+the proof of (iii) is verified on all pairs within the hyperbolic class.
+\end{remark}
+
+\subsection{The type, detected inside the quantum system}
+
+\statusSketch
+\begin{theorem}[The Arf type is visible inside the quantum system]
+\label{thm:wh-beta-eps}
+\textbf{[$p=2$.]} Let $\beta\in\mathrm{Adm}(\omega)$ and $\psi$ a phase
+datum. Then, inside $A_{\psi,\beta}(V)$:
+\[
+W_\beta(v)^2 = \psi\big(Q_\beta(v)\big)\cdot 1 \qquad\text{for every } v\in V(\kappa),
+\]
+and
+\[
+q^{-1}\sum_{v\in V(\kappa)} W_\beta(v)^2 \;=\; \varepsilon\cdot 1,
+\qquad
+\varepsilon = \begin{cases} +1 & \beta \text{ hyperbolic } (\mathrm{Arf}(Q_\beta)=0), \\
+-1 & \beta \text{ anisotropic}. \end{cases}
+\]
+Equivalently, identifying $\kappa/\wp(\kappa)\cong\mathbb{F}_2$ via the trace
+$\mathrm{Tr}_{\kappa/\mathbb{F}_2}$ of Definition~\ref{def:phase-datum},
+$\varepsilon = (-1)^{\mathrm{Tr}(\mathrm{Arf}(Q_\beta))}$.
+\end{theorem}
+
+\begin{scope}
+The identity above is an equation inside the algebra $A_{\psi,\beta}(V)$
+itself, so it exhibits $\mathrm{Arf}(Q_\beta)$ as an invariant not merely of
+the abstract group $H_\beta(\kappa)$ but of the level-$\mu_p$ Weyl frame
+$\mathcal{F}^{(p)}_{\psi,\beta}$ of Definition~\ref{def:level-frame} below.
+As with Theorem~\ref{thm:wh-beta-type}, on which it depends, the
+\textsc{sketch} label reflects only that this material postdates the
+increment's single hostile-critic round, per
+\texttt{theory\slash{}verdicts\slash{}wh-kappa-adjudication.md}.
+\end{scope}
+
+\provenance{D3, D4, D6, D10, WH-BETA-EPS}{theory/wh-kappa-choice.md \S6 \textit{step} $\langle 1\rangle 6$}{theory/checks/beta\_census.py (B6,B8)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+\emph{The square identity.} By Definition~\ref{def:weyl-algebra} and
+Definition~\ref{def:quadratic-form}, $W_\beta(v)^2=\psi(\beta(v,v))W_\beta(2v)=\psi(Q_\beta(v))W_\beta(0)=\psi(Q_\beta(v))\cdot 1$,
+using $2v=0$ at $p=2$.
+
+\emph{The hyperbolic value.} For the hyperbolic normal form $Q(a,b)=ab$
+(Theorem~\ref{thm:wh-beta-type}(iii)),
+$\sum_{a,b\in\kappa}\psi(ab) = \sum_a\Big(\sum_b\psi(ab)\Big)$; for $a\neq 0$,
+$b\mapsto\psi(ab)$ is a nontrivial character of $\kappa$, so the inner sum
+vanishes by Fact~\ref{fact:orth}; for $a=0$ the inner sum is $q$. So the
+double sum is $q$, giving $\varepsilon=+1$ for this normal form. Since
+$\sum_v\psi(Q_\beta(v))$ is invariant under precomposing $Q_\beta$ with any
+bijection of $V(\kappa)$, in particular under the $SL_2(\kappa)$-isometries
+of Theorem~\ref{thm:wh-beta-type}(iii), $\varepsilon=+1$ for \emph{every}
+hyperbolic $\beta$, not only the normal form.
+
+\emph{The anisotropic value.} Sum $\sum_v\psi(Q(v))$ over \emph{all} $q^2$
+quadratic forms $Q(a,b)=\alpha a^2+ab+\delta b^2$ compatible with $\omega$
+(Theorem~\ref{thm:wh-beta-type}(iii)) and exchange the order of summation:
+\[
+\sum_{\alpha,\delta\in\kappa}\ \sum_{a,b\in\kappa}\psi(\alpha a^2+ab+\delta b^2)
+= \sum_{a,b\in\kappa}\psi(ab)\Big(\sum_\alpha\psi(\alpha a^2)\Big)\Big(\sum_\delta\psi(\delta b^2)\Big).
+\]
+By Fact~\ref{fact:orth}, $\sum_\alpha\psi(\alpha a^2)=q$ if $a=0$ (else the
+character $\alpha\mapsto\psi(\alpha a^2)$ is nontrivial, since squaring is
+injective on $\kappa$, and the sum vanishes); likewise for the $\delta$-sum.
+So only the term $a=b=0$ survives, and the total is $q^2\cdot\psi(0)=q^2$.
+By Theorem~\ref{thm:wh-beta-type}(iii) there are $q(q+1)/2$ hyperbolic forms,
+each contributing $q$ (just shown), and $q(q-1)/2$ anisotropic forms, each
+contributing the same value $S$ (by isometry-invariance, exactly as for the
+hyperbolic case). So
+$\tfrac{q(q+1)}{2}\cdot q + \tfrac{q(q-1)}{2}\cdot S = q^2$, giving
+$S = \dfrac{q^2 - \tfrac{q^2(q+1)}{2}}{\tfrac{q(q-1)}{2}} = \dfrac{q^2\big(1-\tfrac{q+1}{2}\big)}{\tfrac{q(q-1)}{2}}
+= \dfrac{-q^2(q-1)/2}{q(q-1)/2} = -q$. So $\varepsilon=-1$ on the anisotropic
+class.
+
+\emph{Reading $\varepsilon$ through the trace.} $\mathrm{Tr}_{\kappa/\mathbb{F}_2}$
+is additive and $\mathbb{F}_2$-valued; $\mathrm{Tr}(\wp(x))=\mathrm{Tr}(x^2)+\mathrm{Tr}(x)=\mathrm{Tr}(x)+\mathrm{Tr}(x)=0$
+(using $\mathrm{Tr}(x^2)=\mathrm{Tr}(x)$, since Frobenius permutes the terms
+of the trace sum, and $2\,\mathrm{Tr}(x)=0$ at $p=2$), so
+$\mathrm{Tr}$ kills $\wp(\kappa)$; it is nonzero (e.g.\ on a normal-basis
+generator), hence onto $\mathbb{F}_2$, and $\dim_{\mathbb{F}_2}\wp(\kappa)=m-1=\dim_{\mathbb{F}_2}\ker\mathrm{Tr}$
+by the rank computation of Theorem~\ref{thm:wh-beta-type}(i), so
+$\wp(\kappa)=\ker\mathrm{Tr}$ exactly: $\mathrm{Tr}$ descends to an
+isomorphism $\kappa/\wp(\kappa)\xrightarrow{\sim}\mathbb{F}_2$. Under this
+identification the hyperbolic class ($\mathrm{Arf}=0$) corresponds to
+$\mathrm{Tr}=0$ and $\varepsilon=+1=(-1)^0$, and the anisotropic class to
+$\mathrm{Tr}=1$ and $\varepsilon=-1=(-1)^1$.
+\end{proof}
+
+\subsection{The level statement: what the algebra forgets, and what it does not}
+
+\begin{definition}[The level-$\mu_p$ frame]
+\label{def:level-frame}
+\[
+\mathcal{F}^{(p)}_{\psi,\beta} := \big\{\, \zeta^j\, W_\beta(v) \ :\ j\in\mathbb{Z}/p,\ v\in V(\kappa) \,\big\}
+\ \subset\ A_{\psi,\beta}(V)^\times,
+\]
+the finite group of Weyl unitaries with phases in $\mu_p=\psi(\kappa)$
+(Fact~\ref{fact:val}), for $\zeta$ a primitive $p$-th root of unity as in
+Definition~\ref{def:phase-datum}.
+\end{definition}
+
+\begin{scope}
+$\mathcal{F}^{(p)}_{\psi,\beta}$ is recorded separately from the Weyl frame
+$\mathcal{F}_\beta := \{\mathbb{C}^\times W_\beta(v) : v\in V(\kappa)\}\subset A_{\psi,\beta}(V)$
+(the set of $\mathbb{C}^\times$-lines through Weyl operators; studied in
+\S\ref{sec:weil} below) because the two behave differently under a change of
+$\beta$, exactly as Theorem~\ref{thm:wh-beta-level} makes precise: the pair
+$(A_{\psi,\beta}(V),\mathcal{F}_\beta)$ turns out not to depend on $\beta$ at
+all, while $\mathcal{F}^{(p)}_{\psi,\beta}$ — equivalently the isomorphism
+class of $H_\beta(\kappa)$ itself — does, and only at $p=2$.
+\end{scope}
+
+\provenance{D11}{---}{---}{---}
+
+\statusSketch
+\begin{theorem}[The algebra and its Weyl frame do not depend on $\beta$; the
+level-$\mu_p$ frame does, at $p=2$]
+\label{thm:wh-beta-level}
+For all $\beta,\beta'\in\mathrm{Adm}(\omega)$ there is an algebra
+isomorphism $A_{\psi,\beta}(V)\to A_{\psi,\beta'}(V)$ of the form
+$W_\beta(v)\mapsto\mu(v)W_{\beta'}(v)$ for some
+$\mu : V(\kappa)\to\mathbb{C}^\times$ — a \emph{frame isomorphism}, carrying
+$\mathcal{F}_\beta$ to $\mathcal{F}_{\beta'}$ — and this holds \textbf{at
+every characteristic}. Moreover:
+\begin{itemize}
+\item $\mu$ can be chosen $\mu_p$-valued if and only if
+$\psi\circ Q_\beta = \psi\circ Q_{\beta'}$;
+\item \textbf{[$p=2$]} $\mu$ can always be chosen $\mu_4$-valued, regardless
+of type.
+\end{itemize}
+Hence the pair $\big(A_{\psi,\beta}(V),\mathcal{F}_\beta\big)$ does not
+depend on $\beta$ at all, while the level-$\mu_p$ frame
+$\mathcal{F}^{(p)}_{\psi,\beta}$ — equivalently the isomorphism class of
+$H_\beta(\kappa)$ (Theorem~\ref{thm:wh-beta-type}) — does depend on $\beta$,
+and does so only at $p=2$.
+\end{theorem}
+
+\begin{scope}
+This theorem does not contradict Theorems~\ref{thm:wh-beta-c}--\ref{thm:wh-beta-eps}:
+it is a statement about the algebra $A_{\psi,\beta}(V)$ and its
+$\mathbb{C}^\times$-frame $\mathcal{F}_\beta$, which turn out to be
+$\beta$-independent, while those theorems are about the finite group
+$H_\beta(\kappa)$ (equivalently, the level-$\mu_p$ frame), which is not. The
+distinction between the two frames is exactly what makes both statements
+true simultaneously. This row is \textsc{sketch} for the same procedural
+reason as Theorems~\ref{thm:wh-beta-type}--\ref{thm:wh-beta-eps}, and the
+explicit $\mu_2$/$\mu_4$-valued formulas at $p=2$ are presented at the level
+of detail the source shard gives them, verified computationally rather than
+re-derived symbol-by-symbol here.
+\end{scope}
+
+\provenance{D2, D4, D11, WH-BETA-a, WH-BETA-d, WH-BETA-LEVEL}{theory/wh-kappa-choice.md \S6 \textit{step} $\langle 1\rangle 7$}{theory/checks/frame\_mu.py (M1,M2,M3,M4)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+Put $s:=\beta'-\beta\in\mathrm{Sym}(V)$ (Theorem~\ref{thm:wh-beta-a}). Direct
+expansion of the multiplication law of Definition~\ref{def:weyl-algebra}
+shows $v\mapsto\mu(v)W_{\beta'}(v)$ is an algebra map exactly when
+\[
+\frac{\mu(v)\mu(v')}{\mu(v+v')} = \psi\big({-}s(v,v')\big) \qquad(\dagger)
+\]
+for all $v,v'$, and any such map automatically carries $\mathcal{F}_\beta$
+to $\mathcal{F}_{\beta'}$, since it sends each line
+$\mathbb{C}^\times W_\beta(v)$ to the line $\mathbb{C}^\times W_{\beta'}(v)$.
+The right-hand side $\psi\circ(-s)$ is a symmetric $2$-cocycle on
+$(V(\kappa),+)$, a group of exponent $p$ (every element of the
+characteristic-$p$ field $\kappa$, hence of $V(\kappa)$, has additive order
+dividing $p$), so Fact~\ref{fact:triv} supplies a solution $\mu$ of
+$(\dagger)$: \textbf{the frame isomorphism exists at every characteristic},
+with no restriction on $\beta,\beta'$.
+
+\emph{Necessity of the $\mu_p$ criterion.} Normalize $\mu(0)=1$ (forced by
+$(\dagger)$ at $v=v'=0$, since $\mu(0)^2/\mu(0)=\mu(0)=\psi(0)=1$). At
+$p=2$, setting $v'=v$ in $(\dagger)$ gives $\mu(v)^2/\mu(0)=\mu(v)^2=\psi(s(v,v))=\psi\big(Q_{\beta'}(v)-Q_\beta(v)\big)$.
+So $\mu$ is $\mu_2$-valued (i.e.\ $\mu(v)^2=1$ for every $v$) if and only if
+$\psi(Q_{\beta'}(v))=\psi(Q_\beta(v))$ for every $v$, i.e.\ iff
+$\psi\circ Q_\beta=\psi\circ Q_{\beta'}$; at odd $p$ the analogous
+computation with $2\in\kappa^\times$ gives the same criterion for
+$\mu_p$-valuedness in general.
+
+\emph{Sufficiency, $p=2$.} Fix an $\mathbb{F}_2$-basis $b_1,\dots,b_{2m}$ of
+$V(\kappa)$ and write $\psi(s(b_i,b_j))=(-1)^{\sigma_{ij}}$,
+$\sigma_{ij}\in\{0,1\}$, for the finitely many structure values of the
+symmetric form $s$ on this basis (well defined since
+$\psi(\kappa)=\mu_2=\{\pm 1\}$ at $p=2$, Fact~\ref{fact:val}). If
+$\sigma_{ii}=0$ for every $i$ (the case $\psi\circ Q_\beta=\psi\circ Q_{\beta'}$
+just characterized), the $\mathbb{F}_2$-bilinear cochain
+$\ell(v):=\sum_{i<j}c_ic_j\sigma_{ij}$, for $v=\sum_i c_ib_i$, solves
+$(\dagger)$ with values in $\mu_2=\{\pm 1\}$, by a direct check against the
+defining bilinear expansion of $s$. In general — without assuming
+$\sigma_{ii}=0$ — the integer-valued cochain
+$m(v):=2\sum_{i<j}c_ic_j\sigma_{ij}+\sum_i c_i\sigma_{ii}\ \big(\mathrm{mod}\ 4\big)$
+solves $(\dagger)$ with $\mu(v):=i^{m(v)}\in\mu_4$ ($i=\sqrt{-1}$): this is
+the explicit construction of \texttt{theory\slash{}wh-kappa-choice.md} \S6,
+verified against all $|V(\kappa)|^2$ pairs $(v,v')$ for every one of the
+$q^3$ members of $\mathrm{Adm}(\omega)$ at $q=2,4,8$ by gates M2 and M3 of
+\texttt{theory\slash{}checks\slash{}frame\_mu.py} (which finds $\mu_4$-valued solutions
+always, and $\mu_2$-valued solutions for exactly the $q$ pairs $(\beta,\beta')$
+with $\psi\circ Q_\beta=\psi\circ Q_{\beta'}$, matching the necessity
+criterion above exactly).
+
+\emph{Sufficiency, odd $p$.} $\mu(v):=\psi\big(s(v,v)/2\big)$ solves
+$(\dagger)$: since $s$ is symmetric bilinear,
+$s(v,v)+s(v',v')-s(v+v',v+v')=-2s(v,v')$, so
+$\mu(v)\mu(v')/\mu(v+v') = \psi\big([s(v,v)+s(v',v')-s(v+v',v+v')]/2\big)=\psi(-s(v,v'))$,
+matching $(\dagger)$ exactly, with values entirely inside $\psi(\kappa)=\mu_p$:
+this reproves, independently of Theorem~\ref{thm:wh-beta-b}, that nothing
+leaves the level-$\mu_p$ frame once $p$ is odd — a second, algebra-level
+confirmation that the choice of $\beta$ is immaterial there.
+
+Gate M1 of \texttt{theory\slash{}checks\slash{}frame\_mu.py} additionally searches all
+$2^{q^2}$ candidate $\mu_2$-valued phase functions exhaustively at $q=2$ and
+confirms solutions exist exactly for the pairs the necessity criterion
+predicts; gate M4 checks the odd-$p$ formula at $q=3,5,9$.
+\end{proof}

@@ -1,0 +1,470 @@
+\section{The symplectic object of a finite field, and its twisted operator algebra}
+\label{sec:foundations}
+
+Throughout the labbook $p$ denotes a prime, $m \geq 1$ an integer, $q := p^m$,
+and $\kappa := \mathbb{F}_q$ the finite field of order $q$, with prime field
+$\mathbb{F}_p \subseteq \kappa$. \textbf{The case $p = 2$ is in scope
+everywhere in this campaign}: no definition or theorem below is stated only
+for odd $p$ and silently assumed to extend; where a statement holds only for
+$p=2$ or only for odd $p$ this is marked in the statement itself, never left
+to a reader's guess. This section builds the ground floor of the
+construction — the symplectic vector space attached to $\kappa$, the two
+choices (a polarizing cocycle and an additive character) the quantum system
+is built from, the twisted operator algebra those choices produce, and its
+associated Heisenberg group — and proves the three structural facts that hold
+\emph{uniformly} in the characteristic and for \emph{every} admissible choice
+of cocycle. What is and is not canonical about the choices themselves is the
+subject of later sections, in particular \S\ref{sec:polarizing-cocycle}.
+
+\subsection{The symplectic space of a finite field}
+
+\begin{definition}[The symplectic object attached to a finite field]
+\label{def:symplectic-object}
+For a finite field $\kappa$, put $V(\kappa) := \kappa \oplus \kappa$, and
+define
+\[
+\omega : V(\kappa) \times V(\kappa) \to \kappa, \qquad
+\omega\big((a,b),(a',b')\big) := ab' - a'b .
+\]
+\end{definition}
+
+\begin{scope}
+This is a stipulation: a vector space and a bilinear pairing written down by
+formula. On its own it asserts nothing about $\omega$ — not that it is
+$\kappa$-bilinear, not that it is alternating, not that it is nondegenerate.
+Those are properties, established as Theorem~\ref{thm:wh-form} below. No
+restriction on the characteristic is built into the definition; $p=2$ is
+included on the same footing as every other prime.
+\end{scope}
+
+\provenance{D1}{---}{---}{---}
+
+\subsection{Polarizing cocycles: the datum $\beta$, introduced}
+\label{ssec:beta-introduced}
+
+The Weyl operators of \S\ref{ssec:weyl-algebra} below are built not from
+$\omega$ directly but from a bilinear map whose antisymmetrization is
+$\omega$. Choosing one such map is a second datum of the construction, on
+exactly the same footing as the choice of additive character
+$\psi$ of \S\ref{ssec:phase-datum}. This subsection only introduces the
+datum and its notation; the fact that it forms a torsor, that it is
+immaterial at odd characteristic, and that it splits the construction into
+two genuinely different isomorphism types at $p=2$ is the content of
+Theorems~\ref{thm:wh-beta-a}--\ref{thm:wh-beta-type} in
+\S\ref{sec:polarizing-cocycle}, and is not anticipated here.
+
+\begin{definition}[Admissible polarizing cocycles, and the reference cocycle]
+\label{def:admissible-cocycles}
+Fix a finite field $\kappa$ and its symplectic object $(V(\kappa),\omega)$ of
+Definition~\ref{def:symplectic-object}. The set of \emph{admissible
+polarizing cocycles} is
+\[
+\mathrm{Adm}(\omega) := \big\{\, \beta : V(\kappa)\times V(\kappa) \to \kappa
+\ \big|\ \beta \text{ is $\kappa$-bilinear and } \beta - \beta^T = \omega
+\,\big\},
+\]
+where $\beta^T(v,v') := \beta(v',v)$. A \emph{polarizing cocycle} is a choice
+of element $\beta \in \mathrm{Adm}(\omega)$, and it is a \textbf{datum of the
+construction}, on the same footing as the character $\psi$ of
+Definition~\ref{def:phase-datum} — not a convention fixed once and for all.
+The map
+\[
+\beta_0\big((a,b),(a',b')\big) := ab'
+\]
+lies in $\mathrm{Adm}(\omega)$ and is called the \emph{reference cocycle}: a
+label for a point of the torsor of Definition~\ref{def:admissible-cocycles},
+not a canonical point of it (Theorem~\ref{thm:wh-beta-a}).
+\end{definition}
+
+\begin{scope}
+Nothing here asserts that $\mathrm{Adm}(\omega)$ is nonempty, that it has any
+particular size, that $\beta_0$ is a typical or a distinguished element of
+it, or that the choice of $\beta$ is or is not immaterial to anything built
+from it. All of that is claimed, and proved, later:
+Theorems~\ref{thm:wh-beta-a}--\ref{thm:wh-beta-type} of
+\S\ref{sec:polarizing-cocycle} are where this datum's structure is actually
+established. In particular the tempting
+odd-characteristic habit of writing $\omega/2$ for ``the'' polarizing cocycle
+is not part of this definition and is not available at $p=2$, where division
+by $2$ is division by $0$; \S\ref{sec:polarizing-cocycle} makes this
+precise.
+\end{scope}
+
+\provenance{D2}{---}{---}{---}
+
+\subsection{The phase datum}
+\label{ssec:phase-datum}
+
+\begin{definition}[Phase datum, and the trace-normalized family]
+\label{def:phase-datum}
+A \emph{phase datum} for $\kappa$ is a nontrivial additive character
+$\psi : (\kappa,+) \to \mathbb{C}^\times$, i.e.\ a group homomorphism with
+$\psi \not\equiv 1$. Write $X(\kappa)$ for the set of such $\psi$. Inside
+$X(\kappa)$, the \emph{trace-normalized family} is defined as follows: for
+$\kappa = \mathbb{F}_{p^m}$ put
+\[
+\mathrm{Tr}_{\kappa/\mathbb{F}_p}(z) := z + z^p + z^{p^2} + \cdots +
+z^{p^{m-1}} ,
+\]
+and for $\zeta$ a primitive $p$-th root of unity in $\mathbb{C}$, put
+\[
+\psi_\zeta(z) := \zeta^{\,\mathrm{Tr}_{\kappa/\mathbb{F}_p}(z)} .
+\]
+\end{definition}
+
+\begin{scope}
+Two choices are named here and neither is suppressed: the character $\psi$
+itself (an arbitrary element of $X(\kappa)$), and, when working inside the
+distinguished family, the root of unity $\zeta$. The absolute trace
+$\mathrm{Tr}_{\kappa/\mathbb{F}_p}$ is canonical — it is the same
+$\mathbb{F}_p$-linear map regardless of any further choice — but $\psi_\zeta$
+is canonical only once $\zeta$ is fixed, and \S\ref{sec:functoriality} shows
+in detail how far a compatible choice of $\psi$ across a tower of fields can
+and cannot be made.
+\end{scope}
+
+\provenance{D3}{---}{---}{---}
+
+\subsection{Weyl operators, the twisted algebra, and the Heisenberg group}
+\label{ssec:weyl-algebra}
+
+\begin{definition}[Weyl operators and the twisted observable algebra]
+\label{def:weyl-algebra}
+Fix a phase datum $\psi$ as in Definition~\ref{def:phase-datum} and a
+polarizing cocycle $\beta \in \mathrm{Adm}(\omega)$ as in
+Definition~\ref{def:admissible-cocycles}. The \emph{twisted operator algebra}
+$A_{\psi,\beta}(V)$ is the $\mathbb{C}$-vector space
+\[
+A_{\psi,\beta}(V) := \bigoplus_{v \in V(\kappa)} \mathbb{C}\cdot W_\beta(v)
+\]
+with the product fixed, once and for all, on basis elements by
+\[
+W_\beta(v)\, W_\beta(v') := \psi\big(\beta(v,v')\big)\, W_\beta(v+v') .
+\]
+\end{definition}
+
+\begin{scope}
+The ordering of the product on the right ($\psi(\beta(v,v'))$, not
+$\psi(\beta(v',v))$) is fixed as part of the definition and is not
+symmetrized; which of the two orderings a later stipulated model (such as
+$M_0$ of \S\ref{sec:models}) actually realizes is a computation, not a
+convention, and is checked explicitly there. $A_{\psi,\beta}(V)$ depends on
+$\kappa$, $\psi$ and $\beta$ and on nothing else; that this dependence is
+associative, unital and of dimension $q^2$ is Theorem~\ref{thm:wh-comm}(a)
+below, not part of the stipulation.
+\end{scope}
+
+\provenance{D4}{---}{---}{---}
+
+\begin{definition}[The Heisenberg group of a polarizing cocycle]
+\label{def:heisenberg-group}
+With $\beta \in \mathrm{Adm}(\omega)$ as above, the \emph{Heisenberg group of
+$\beta$} is the set $H_\beta(\kappa) := \kappa \times V(\kappa)$ with product
+\[
+(t,v)(t',v') := \big(t+t'+\beta(v,v'),\ v+v'\big).
+\]
+\end{definition}
+
+\begin{scope}
+This construction uses no character $\psi$; it is a group attached to
+$\kappa$ and $\beta$ alone. It does depend on $\beta$, and — this is the
+content of \S\ref{sec:polarizing-cocycle} — at $p=2$ its isomorphism class as
+an abstract group depends on more than the isomorphism class of the pair
+$(V(\kappa),\omega)$: it depends on which point of the torsor
+$\mathrm{Adm}(\omega)$ was chosen. Nothing about that dependence is claimed
+or used here.
+\end{scope}
+
+\provenance{D5}{---}{---}{---}
+
+\subsection{The form is bilinear, alternating, nondegenerate, and its
+isometries}
+
+\statusProved
+\begin{theorem}[The symplectic form of a finite field, at every characteristic]
+\label{thm:wh-form}
+Let $\kappa$ be any finite field, $p=2$ included, with $V(\kappa)$ and
+$\omega$ as in Definition~\ref{def:symplectic-object}. Then:
+\begin{enumerate}[label=(\alph*)]
+\item $\omega$ is $\kappa$-bilinear;
+\item $\omega(v,v) = 0$ for every $v \in V(\kappa)$ — \emph{alternating} in
+the strong sense, not merely antisymmetric;
+\item $\omega$ is nondegenerate: if $\omega(v,\cdot) \equiv 0$ then $v=0$;
+\item every $\beta \in \mathrm{Adm}(\omega)$ (Definition~\ref{def:admissible-cocycles})
+is a $2$-cocycle for the abelian group $(V(\kappa),+)$, i.e.
+$\beta(v,v')+\beta(v+v',v'') = \beta(v,v''+v)+\beta(v',v'')$ for all
+$v,v',v''$ — equivalently $\beta(v,v')+\beta(v+v',v'')=\beta(v',v'')+\beta(v,v'+v'')$
+— and $\beta - \beta^T = \omega$;
+\item the group of $\kappa$-linear automorphisms $g$ of $V(\kappa)$ with
+$\omega(gv,gv')=\omega(v,v')$ for all $v,v'$ is exactly $SL_2(\kappa)$;
+\item the group of merely $\mathbb{F}_p$-linear automorphisms $g$ of
+$V(\kappa)$ (i.e.\ additive maps that need not commute with multiplication by
+$\kappa$) with $\omega(gv,gv')=\omega(v,v')$ for all $v,v'$ is \emph{also}
+exactly $SL_2(\kappa)$ — the larger class of symmetries one might a priori
+expect contains nothing beyond the $\kappa$-linear ones.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+Part (f) is a statement about the $\kappa$-valued form $\omega$ itself; it is
+emphatically \emph{not} a statement about the $\mathbb{F}_p$-valued form
+$\psi\circ\omega$ obtained by composing with a character, whose isometries
+are the strictly larger group $Sp_{2m}(\mathbb{F}_p)$ once $m>1$ — that is
+Theorem~\ref{thm:wh-symm} of \S\ref{sec:fp-symmetry}. Nothing here addresses
+which $\beta\in\mathrm{Adm}(\omega)$ is chosen, or classifies
+$\mathrm{Adm}(\omega)$ itself; that is \S\ref{sec:polarizing-cocycle}.
+\end{scope}
+
+\provenance{D1, D2, WH-FORM}{theory/wh-kappa.md \S1}{theory/checks/wh\_kappa\_check.py (C1,C2); theory/checks/fp\_symmetry.py (S1)}{theory/verdicts/wh-kappa-r1.md}
+
+\begin{proof}
+(a) Fix $v=(a,b)$, $v'=(a',b')$. Each argument of $\omega$ occurs exactly
+once in the formula $ab'-a'b$, and $\kappa$ is commutative, so scaling either
+argument by $c\in\kappa$ scales the value by $c$, and additivity in each slot
+is distributivity of multiplication over addition in $\kappa$. This holds
+verbatim at $p=2$: no step divides by $2$ or by anything else.
+
+(b) $\omega\big((a,b),(a,b)\big) = ab-ab=0$, an identity in the commutative
+ring $\kappa$ that cancels two literally equal terms, not two terms related
+by a factor of $2$. It therefore holds at $p=2$ exactly as it holds
+elsewhere. This is worth pausing on: antisymmetry alone, $\omega(v,v')=-\omega(v',v)$,
+gives only $2\omega(v,v)=0$ on setting $v'=v$, which is vacuous once $2=0$.
+So at $p=2$, (b) is a strictly stronger statement than antisymmetry and must
+be — and here is — verified by the direct computation above, not inferred
+from it.
+
+(c) If $\omega(v,\cdot)\equiv 0$ for $v=(a,b)$ then in particular
+$\omega\big((a,b),(0,1)\big)=a=0$ and $\omega\big((a,b),(1,0)\big)=-b=0$, so
+$v=0$.
+
+(d) $\beta-\beta^T=\omega$ is the definition of $\mathrm{Adm}(\omega)$
+(Definition~\ref{def:admissible-cocycles}). For the cocycle identity: $\beta$
+is bi-additive (it is $\kappa$-bilinear, hence in particular additive in each
+argument), and for any bi-additive $\beta$ both sides of the cocycle identity
+expand, term by term, to $\beta(v,v')+\beta(v,v'')+\beta(v',v'')$; the
+identity holds without using anything about $\omega$ beyond bi-additivity of
+$\beta$.
+
+(e) Write $v=(a,b)$, $v'=(a',b')$ as the columns of a $2\times 2$ matrix over
+$\kappa$; then $\omega(v,v')=ab'-a'b=\det[v\,|\,v']$ by direct expansion. For
+$g\in GL_2(\kappa)$, $[gv\,|\,gv']=g[v\,|\,v']$ as matrices, and
+multiplicativity of the determinant for $2\times 2$ matrices over a
+commutative ring (itself a polynomial identity verified by direct expansion,
+holding in every characteristic) gives $\omega(gv,gv')=\det(g)\cdot\omega(v,v')$.
+Hence $\omega\circ g=\omega$ iff $(\det g - 1)\,\omega \equiv 0$; since
+$\omega\big((1,0),(0,1)\big)=1\neq 0$, this holds iff $\det g = 1$, i.e.\ iff
+$g\in SL_2(\kappa)$.
+
+(f) Let $g:V(\kappa)\to V(\kappa)$ be additive (not assumed $\kappa$-linear)
+with $\omega(gv,gu)=\omega(v,u)$ for all $v,u$.
+\begin{itemize}
+\item \emph{$g$ is bijective.} If $gv=0$ then $\omega(v,u)=\omega(gv,gu)=0$
+for every $u$, so $v=0$ by (c); thus $g$ is injective, hence bijective since
+$V(\kappa)$ is finite.
+\item \emph{$g$ sends the standard basis to a $\kappa$-basis.} Let
+$v_1=(1,0)$, $v_2=(0,1)$, so $\omega(v_1,v_2)=1$. Then
+$\omega(gv_1,gv_2)=\omega(v_1,v_2)=1\neq 0$; were $gv_1,gv_2$
+$\kappa$-dependent, bilinearity and (b) would force $\omega(gv_1,gv_2)=0$
+(if, say, $gv_2=c\cdot gv_1$ then $\omega(gv_1,gv_2)=c\,\omega(gv_1,gv_1)=0$
+by (a) and (b)). So $\{gv_1,gv_2\}$ is $\kappa$-independent, hence a basis of
+the $2$-dimensional space $V(\kappa)$.
+\item \emph{$g$ is $\kappa$-linear.} Fix $c\in\kappa$, $u\in V(\kappa)$, and
+put $w := g(cu) - c\cdot g(u)$ (subtraction makes sense because $g$ is
+additive, hence $\mathbb{Z}$-linear, even before $\kappa$-linearity is
+known). For $i=1,2$,
+\[
+\omega(gv_i,w) = \omega\big(gv_i,g(cu)\big) - c\,\omega(gv_i,gu)
+= \omega(v_i,cu) - c\,\omega(v_i,u) = c\,\omega(v_i,u)-c\,\omega(v_i,u) = 0,
+\]
+using the hypothesis $\omega(g\cdot,g\cdot)=\omega(\cdot,\cdot)$ for the
+middle equality and $\kappa$-bilinearity (a) for the outer ones. Since
+$\{gv_1,gv_2\}$ is a basis, $\omega(gv_1,\cdot)$ and $\omega(gv_2,\cdot)$ have
+trivial common kernel only at $0$ by nondegeneracy (c) applied after a change
+of basis, so $w=0$. Hence $g(cu)=c\cdot g(u)$ for all $c,u$: $g$ is
+$\kappa$-linear.
+\end{itemize}
+By $\kappa$-linearity and (e), $\det g = 1$, so $g\in SL_2(\kappa)$; the
+converse containment is immediate from (e). This closes (f).
+\end{proof}
+
+\begin{remark}
+Part (f) forecloses a tempting shortcut: one might hope to characterize the
+$\mathbb{F}_p$-linear isometries of $\omega$ as the ``$\omega$-self-adjoint
+$\mathbb{F}_p$-endomorphisms,'' by analogy with the real symplectic case.
+This is false at $p=2$: exhaustive enumeration finds $8$ and $64$
+$\omega$-self-adjoint $\mathbb{F}_p$-endomorphisms of $V(\kappa)$ at $q=2,4$
+respectively, against only $2$ and $4$ $\kappa$-scalars — the self-adjointness
+route simply does not isolate $SL_2(\kappa)$ once $p=2$, and the direct
+argument above is what closes (f) instead. Independently, complete
+backtracking search over the $\mathbb{F}_p$-linear isometries of the
+$\kappa$-valued form finds exactly $|SL_2(\kappa)| = 6,24,60,120,504,720$ of
+them at $q=2,3,4,5,8,9$, matching an independent enumeration of $SL_2(\kappa)$
+set-for-set at every one of these values (\texttt{theory\slash{}checks\slash{}fp\_symmetry.py},
+gates S1 and S4).
+\end{remark}
+
+\subsection{Weyl relations, uniformly in the characteristic and for every
+choice of cocycle}
+
+\statusProved
+\begin{theorem}[The Weyl commutation relations, for every admissible cocycle]
+\label{thm:wh-comm}
+Let $\kappa$ be any finite field, $\psi$ a phase datum
+(Definition~\ref{def:phase-datum}), and $\beta \in \mathrm{Adm}(\omega)$ an
+\emph{arbitrary} admissible polarizing cocycle
+(Definition~\ref{def:admissible-cocycles}). Then, inside $A_{\psi,\beta}(V)$
+of Definition~\ref{def:weyl-algebra}:
+\begin{enumerate}[label=(\alph*)]
+\item $A_{\psi,\beta}(V)$ is a unital associative $\mathbb{C}$-algebra of
+dimension $q^2$, with unit $W_\beta(0)$;
+\item every $W_\beta(v)$ is invertible, with
+$W_\beta(v)^{-1} = \psi\big(\beta(v,v)\big)\, W_\beta(-v)$;
+\item $W_\beta(v)\,W_\beta(v') = \psi\big(\omega(v,v')\big)\, W_\beta(v')\,W_\beta(v)$
+for all $v,v'\in V(\kappa)$;
+\item $W_\beta(u)\,W_\beta(v)\,W_\beta(u)^{-1} = \psi\big(\omega(u,v)\big)\,W_\beta(v)$
+for all $u,v\in V(\kappa)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+No part of this theorem uses which admissible cocycle $\beta\in\mathrm{Adm}(\omega)$
+was chosen, nor any property of $\beta$ beyond bi-additivity and the defining
+relation $\beta-\beta^T=\omega$; in particular nothing here distinguishes the
+reference cocycle $\beta_0$ from any other point of the torsor. No hypothesis
+on the characteristic is used beyond what already went into
+Theorem~\ref{thm:wh-form}. What \emph{is} $\beta$-dependent — the
+isomorphism class of the group $H_\beta(\kappa)$ itself, at $p=2$ — is not
+addressed here.
+\end{scope}
+
+\provenance{D1, D2, D3, D4, WH-FORM, WH-COMM}{theory/wh-kappa.md \S2}{theory/checks/wh\_kappa\_check.py (C3,C4)}{theory/verdicts/wh-kappa-r1.md}
+
+\begin{proof}
+(a) Associativity on basis elements amounts to
+\[
+\big(W_\beta(v)W_\beta(v')\big)W_\beta(v'')=W_\beta(v)\big(W_\beta(v')W_\beta(v'')\big),
+\]
+which unwinds to the $2$-cocycle identity for $\psi\circ\beta$; this holds
+because $\beta$ is a $2$-cocycle (Theorem~\ref{thm:wh-form}(d)) and $\psi$ is
+multiplicative. Since $\beta(0,v)=\beta(v,0)=0$ ($\kappa$-bilinearity), and
+$\psi(0)=1$, $W_\beta(0)$ is a two-sided unit. The dimension is
+$|V(\kappa)|=q^2$ by construction.
+
+(b) By bi-additivity, $\beta(v,-v)=-\beta(v,v)$, so
+$W_\beta(v)W_\beta(-v)=\psi\big(\beta(v,-v)\big)W_\beta(0)=\psi\big(-\beta(v,v)\big)\cdot 1$,
+and symmetrically on the other side; since $\psi$ takes values in
+$\mathbb{C}^\times$, this exhibits a two-sided inverse.
+
+(c) By the defining product, $W_\beta(v)W_\beta(v')=\psi\big(\beta(v,v')\big)W_\beta(v+v')$
+and $W_\beta(v')W_\beta(v)=\psi\big(\beta(v',v)\big)W_\beta(v+v')$. By (b),
+$W_\beta(v+v')$ is invertible, so
+\[
+W_\beta(v)W_\beta(v') = \psi\big(\beta(v,v')-\beta(v',v)\big)\,W_\beta(v')W_\beta(v)
+= \psi\big(\omega(v,v')\big)\,W_\beta(v')W_\beta(v),
+\]
+the last step by the defining relation $\beta-\beta^T=\omega$ of
+Definition~\ref{def:admissible-cocycles}.
+
+(d) Multiply (c) on the right by $W_\beta(v)^{-1}$, whose existence is (b).
+\end{proof}
+
+\begin{remark}[The centre of the Heisenberg group, and the algebra as a
+group-algebra quotient]
+The group $H_\beta(\kappa)$ of Definition~\ref{def:heisenberg-group} is
+indeed a group: associativity is the cocycle identity of
+Theorem~\ref{thm:wh-form}(d), the identity is $(0,0)$, and $(t,v)$ has
+inverse $(-t+\beta(v,v),-v)$. Its centre is exactly $\kappa\times 0$: $(t,v)$
+is central iff $\beta(v,v')-\beta(v',v)=0$ for every $v'$, i.e.\ iff
+$\omega(v,\cdot)\equiv 0$, i.e.\ iff $v=0$ by
+Theorem~\ref{thm:wh-form}(c). Consequently $A_{\psi,\beta}(V)$ is the
+quotient of the group algebra $\mathbb{C}[H_\beta(\kappa)]$ by the two-sided
+ideal identifying the central element $(t,0)$ with the scalar $\psi(t)$: the
+algebra is a family over $\psi\in X(\kappa)$ at \emph{fixed} $\beta$, and the
+group $H_\beta(\kappa)$ itself depends on $\beta$ — a dependence that,
+Theorem~\ref{thm:wh-beta-type} shows, is not always trivial once $p=2$.
+\end{remark}
+
+\subsection{Simplicity of the twisted algebra}
+
+\statusProved
+\begin{theorem}[Central simplicity of the twisted algebra, with no polarization]
+\label{thm:wh-alg}
+With $\kappa$, $\psi$ and $\beta \in \mathrm{Adm}(\omega)$ as in
+Theorem~\ref{thm:wh-comm}, the algebra $A_{\psi,\beta}(V)$ of
+Definition~\ref{def:weyl-algebra} is simple, has centre $\mathbb{C}\cdot 1$,
+and $\dim_{\mathbb{C}} A_{\psi,\beta}(V) = q^2$.
+\end{theorem}
+
+\begin{scope}
+This theorem uses no choice of Lagrangian line, no module, and no property of
+$\beta$ beyond Theorem~\ref{thm:wh-comm}; in particular it holds for every
+$\beta\in\mathrm{Adm}(\omega)$, uniformly. It does not by itself identify
+$A_{\psi,\beta}(V)$ with a matrix algebra $M_q(\mathbb{C})$ — that
+identification exists (Theorem~\ref{thm:wh-alg-mat} of
+\S\ref{sec:models}) but needs a polarization and is not canonical, whereas
+simplicity and the dimension count here need none.
+\end{scope}
+
+\provenance{D4, WH-COMM, WH-ALG}{theory/wh-kappa.md \S3}{theory/checks/wh\_kappa\_check.py (C5,C6)}{theory/verdicts/wh-kappa-r1.md}
+
+\begin{proof}
+Define the \emph{Weyl average} $E : A_{\psi,\beta}(V) \to A_{\psi,\beta}(V)$
+by
+\[
+E(x) := q^{-2}\sum_{u\in V(\kappa)} W_\beta(u)\, x\, W_\beta(u)^{-1}.
+\]
+
+\emph{Step 1: $E\big(\sum_v a_v W_\beta(v)\big) = a_0\cdot 1$.} By
+Theorem~\ref{thm:wh-comm}(d), $W_\beta(u)W_\beta(v)W_\beta(u)^{-1} =
+\psi(\omega(u,v))W_\beta(v)$, so
+\[
+E\Big(\sum_v a_v W_\beta(v)\Big) = \sum_v a_v \Big(q^{-2}\sum_u \psi\big(\omega(u,v)\big)\Big) W_\beta(v).
+\]
+Fix $v\neq 0$. By Theorem~\ref{thm:wh-form}(a),(c), $\omega(\cdot,v)$ is a
+nonzero $\kappa$-linear map $V(\kappa)\to\kappa$, hence surjective (a nonzero
+linear map between finite-dimensional vector spaces over the same field onto
+a $1$-dimensional target is onto). So $u\mapsto\psi(\omega(u,v))$ is a
+character of the additive group $V(\kappa)$ that is nontrivial (since $\psi$
+is nontrivial and $\omega(\cdot,v)$ is onto $\kappa$). A nontrivial character
+$\chi$ of a finite abelian group $G$ sums to zero: fixing $u_0$ with
+$\chi(u_0)\neq 1$, the substitution $u\mapsto u+u_0$ permutes $G$, so
+$S:=\sum_u\chi(u)$ satisfies $S=\chi(u_0)S$, forcing $S=0$ since
+$\chi(u_0)\neq 1$. Applying this to $\chi = \psi(\omega(\cdot,v))$ gives
+$\sum_u\psi(\omega(u,v))=0$ for $v\neq 0$; for $v=0$ the sum is
+$q^2\cdot\psi(0)=q^2$. Hence $E(\sum_v a_vW_\beta(v)) = a_0\cdot W_\beta(0) =
+a_0\cdot 1$, since $W_\beta(0)$ is the unit (Theorem~\ref{thm:wh-comm}(a)).
+
+\emph{Step 2: $Z(A_{\psi,\beta}(V)) = \mathbb{C}\cdot 1$.} If $z$ is central
+then $W_\beta(u)zW_\beta(u)^{-1}=z$ for every $u$, so $z=E(z)=a_0\cdot 1$ by
+Step 1; conversely every scalar is central.
+
+\emph{Step 3: simplicity.} Let $I$ be a nonzero two-sided ideal and pick
+$0\neq x=\sum_v a_vW_\beta(v) \in I$ with some coefficient $a_{v_0}\neq 0$.
+Then $y := W_\beta(v_0)^{-1}x \in I$ (as $I$ is a left ideal), and by
+Theorem~\ref{thm:wh-comm}(b),(c) each $W_\beta(v_0)^{-1}W_\beta(v)$ is a
+nonzero scalar multiple of $W_\beta(v-v_0)$; in particular the coefficient of
+$W_\beta(0)$ in $y$ is a nonzero scalar multiple of $a_{v_0}$, hence nonzero.
+Now $E(y)\in I$: $E$ is a $\mathbb{C}$-linear combination of the maps
+$x\mapsto W_\beta(u)xW_\beta(u)^{-1}$, and $I$ is a two-sided ideal, so each
+term $W_\beta(u)yW_\beta(u)^{-1}$ lies in $I$ and so does their average. By
+Step 1, $E(y)=c\cdot 1$ with $c\neq 0$ (the coefficient of $W_\beta(0)$ in
+$y$), so $1\in I$ and $I=A_{\psi,\beta}(V)$.
+
+\emph{Step 4: dimension.} $\dim_{\mathbb{C}}A_{\psi,\beta}(V)=|V(\kappa)|=q^2$
+directly from Definition~\ref{def:weyl-algebra}.
+\end{proof}
+
+\begin{remark}[Why the quantifier over $\beta$ can be widened after the
+fact]
+Theorems~\ref{thm:wh-comm} and \ref{thm:wh-alg} are stated for \emph{every}
+$\beta\in\mathrm{Adm}(\omega)$, not merely the reference cocycle $\beta_0$.
+This widening is legitimate precisely because no step of either proof used
+more than the defining relation $\beta-\beta^T=\omega$ and bi-additivity: the
+commutator computation in Theorem~\ref{thm:wh-comm}(c)--(d) depends on
+$\beta$ only through $\omega=\beta-\beta^T$, and simplicity in
+Theorem~\ref{thm:wh-alg} depends only on $\omega$ being nondegenerate. That
+the choice of $\beta$ is nonetheless \emph{not} immaterial to everything
+built from it — it is invisible to the pair $(A_{\psi,\beta}(V),\text{Weyl
+frame})$ but not to the Heisenberg group $H_\beta(\kappa)$ itself once
+$p=2$ — is the subject of \S\ref{sec:polarizing-cocycle}.
+\end{remark}

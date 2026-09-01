@@ -1,0 +1,266 @@
+\section{The choices the construction depends on, and what is canonical}
+\label{sec:canonicity}
+
+\paragraph{Recollection.} $\kappa=\mathbb{F}_q$; $\psi\in X(\kappa)$ a phase
+datum, $\beta\in\mathrm{Adm}(\omega)$ a polarizing cocycle
+(Definitions~\ref{def:phase-datum}, \ref{def:admissible-cocycles-restated});
+$A_{\psi,\beta}(V)$ the resulting twisted algebra, simple of dimension $q^2$
+(Theorem~\ref{thm:wh-alg}), with a unique simple unitary module up to
+unitary equivalence (Theorem~\ref{thm:wh-svn}); by
+Theorem~\ref{thm:wh-beta-level}, for fixed $\psi$ every two choices of
+$\beta$ give algebras related by an explicit frame isomorphism.
+\provenance{D2, D3, D4, WH-ALG, WH-SVN}{---}{---}{---}
+
+Sections~\ref{sec:polarizing-cocycle} and \ref{sec:weil} named the choices
+the construction depends on and measured exactly how much they matter. This
+section assembles that information into a single statement: precisely which
+data beyond $\kappa$ the construction needs, and precisely what survives
+canonically once those choices are made. The headline fact is that the
+\emph{projective} Hilbert space is canonical — it does not depend on which
+unitary model, which polarization, or (granting one more ingredient from
+\S\ref{sec:polarizing-cocycle}) which polarizing cocycle was used to build
+it — even though the Hilbert space itself is not.
+
+\begin{definition}[The model groupoid, and its projectivization]
+\label{def:model-groupoid}
+$\mathrm{Mod}_{\psi,\beta}(\kappa)$ is the category whose objects are pairs
+$(M,\pi)$ with $\pi : A_{\psi,\beta}(V) \to \mathrm{End}_{\mathbb{C}}(M)$ a
+unital algebra homomorphism making $M$ a simple module and every
+$\pi(W_\beta(v))$ unitary, and whose morphisms $(M,\pi)\to(M',\pi')$ are
+unitary intertwiners $T:M\to M'$ ($T\pi(a)=\pi'(a)T$ for all $a$).
+$\mathrm{PMod}_{\psi,\beta}(\kappa)$ is the same category with each
+$\mathrm{Hom}$-set replaced by $\mathrm{Hom}/U(1)$ (intertwiners identified
+when they differ by a unimodular scalar).
+\end{definition}
+
+\begin{scope}
+This definition alone asserts nothing about the size or connectivity of
+$\mathrm{Mod}_{\psi,\beta}(\kappa)$; that it is nonempty, connected, and has
+automorphism group $U(1)$ at every object is
+Theorem~\ref{thm:wh-canon}(c) below, using Theorem~\ref{thm:wh-svn}, not
+part of the stipulation here.
+\end{scope}
+
+\provenance{D9}{---}{---}{---}
+
+\subsection{Exactly two data beyond the field}
+
+\statusProved
+\begin{theorem}[The construction depends on exactly two data beyond $\kappa$]
+\label{thm:wh-choice}
+\begin{enumerate}[label=(\alph*)]
+\item $X(\kappa) = \hat\kappa\setminus\{1\}$ has $q-1$ elements and is a
+free transitive $\kappa^\times$-torsor under $(u\cdot\psi)(x):=\psi(ux)$
+(a single point when $q=2$, where $\kappa^\times$ is trivial);
+\item beyond $\kappa$, the construction of $A_{\psi,\beta}(V)$ uses
+\textbf{exactly two} further data: a nontrivial character
+$\psi\in X(\kappa)$ and a polarizing cocycle $\beta\in\mathrm{Adm}(\omega)$
+— given $(\psi,\beta)$, $A_{\psi,\beta}(V)$ (Definition~\ref{def:weyl-algebra})
+involves no further choice, while exhibiting a concrete Hilbert space
+(rather than the abstract algebra) needs a pair $(L,\chi)$ in addition
+(Definition~\ref{def:schrodinger-model});
+\item distinct $\psi,\psi'\in X(\kappa)$ give representations of the
+\emph{same} group $H_\beta(\kappa)$ (which, by Definition~\ref{def:heisenberg-group},
+does not involve $\psi$ at all) with distinct central characters, hence
+inequivalent as representations of $H_\beta(\kappa)$;
+\item $A_{\psi,\beta}(V) \cong A_{\psi',\beta'}(V)$ for \emph{every}
+$\psi,\psi'\in X(\kappa)$ and $\beta,\beta'\in\mathrm{Adm}(\omega)$; but the
+frame-preserving isomorphisms between two such algebras form a torsor under
+$\mathrm{Aut}_{\mathcal{F}}^\kappa(A_{\psi,\beta}(V))$
+(Theorem~\ref{thm:wh-weil-a}), a group of order $q^2\,|SL_2(\kappa)| \geq 24$
+— so no single isomorphism among them is distinguished by the data
+$(\kappa,\psi,\psi',\beta,\beta')$ alone.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+Part (b) corrects an earlier working hypothesis of this campaign, that the
+construction depended on a single datum beyond $\kappa$: that hypothesis is
+refuted by Theorem~\ref{thm:wh-beta-a} and Theorem~\ref{thm:wh-beta-d} of
+\S\ref{sec:polarizing-cocycle}, which show $\beta$ is a second, independent
+choice. Part (d) asserts the algebras are abstractly isomorphic; it does not
+assert any \emph{particular} isomorphism among them is preferred, and
+Theorem~\ref{thm:wh-canon} below is precisely about what survives this
+non-uniqueness.
+\end{scope}
+
+\provenance{D2, D3, D4, WH-ALG, WH-BETA-a, WH-WEIL-a, WH-CHOICE}{theory/wh-kappa-choice.md \S7}{theory/checks/wh\_kappa\_check.py (C8 in its E5 form, C10)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+(a) $|\hat\kappa|=q$ by Fact~\ref{fact:dual} ($U=\kappa$, $d=m$), so
+$|X(\kappa)|=q-1$. The action $(u\cdot\psi)(x):=\psi(ux)$ preserves
+nontriviality: if $\psi\not\equiv 1$ and $u\neq 0$ then, as $x\mapsto ux$ is
+a bijection of $\kappa$, $u\cdot\psi\equiv 1$ would force $\psi\equiv 1$,
+false. It is free: $u\cdot\psi=\psi$ means $\psi((u-1)x)=1$ for all $x$,
+i.e.\ $(u-1)\kappa\subseteq\ker\psi$; if $u\neq 1$ then $(u-1)\in\kappa^\times$
+so $(u-1)\kappa=\kappa\not\subseteq\ker\psi$ (Fact~\ref{fact:val}, $\psi$
+nontrivial), forcing $u=1$. A free action of the order-$(q-1)$ group
+$\kappa^\times$ on the order-$(q-1)$ set $X(\kappa)$ has exactly one orbit
+of size $q-1$, hence is transitive. At $q=2$, $\kappa^\times=\{1\}$ and
+$X(\kappa)$ is a single point — the $q=2$ choice, per
+Theorem~\ref{thm:wh-beta-c}, lives entirely in $\beta$, not in $\psi$.
+
+(b) Immediate from Definitions~\ref{def:weyl-algebra} and
+\ref{def:schrodinger-model}: the structure constants of $A_{\psi,\beta}(V)$
+are $\psi(\beta(v,v'))$, a function of $\kappa$, $\psi$, $\beta$ alone, while
+$M_{L,\chi}$ additionally names a line $L$ and a character $\chi$ of $A_L$.
+
+(c) A representation of $H_\beta(\kappa)$ with central character $\psi$
+restricts on the centre $\kappa\times 0$ to $\psi\cdot\mathrm{id}$ (the
+remark after Theorem~\ref{thm:wh-comm}); an intertwiner between
+representations with central characters $\psi\neq\psi'$ would have to
+commute with the centre acting as $\psi\cdot\mathrm{id}$ on one side and
+$\psi'\cdot\mathrm{id}$ on the other, forcing it to be $0$ on the difference
+$(\psi(t)-\psi'(t))\cdot\mathrm{id}\neq 0$ for suitable $t$ — no nonzero
+intertwiner exists, so the two representations of the fixed group
+$H_\beta(\kappa)$ are inequivalent.
+
+(d) \emph{Existence, for every pair.} By Theorem~\ref{thm:wh-beta-level},
+$A_{\psi,\beta}(V)\cong A_{\psi,\beta_0}(V)$ for every $\beta$ (via a frame
+isomorphism, taking $\beta'=\beta_0$ there), and symmetrically
+$A_{\psi',\beta'}(V)\cong A_{\psi',\beta_0}(V)$. For the reference cocycle,
+$W_\psi(a,b)\mapsto W_{\psi_u}(u^{-1}a,b)$ (for $\psi'=u\cdot\psi=\psi_u$ as
+in (a)) is an isomorphism $A_{\psi,\beta_0}(V)\to A_{\psi_u,\beta_0}(V)$,
+since $\beta_0(u^{-1}a,b')=u^{-1}\beta_0(v,v')$ makes the structure
+constants match: $\psi_u(\beta_0(u^{-1}v,u^{-1}v'))=\psi(u\cdot u^{-2}\beta_0(v,v'))=\psi(u^{-1}\beta_0(v,v'))$,
+consistently with the images $W_{\psi_u}(u^{-1}v)$. Composing the three
+maps ($A_{\psi,\beta}\to A_{\psi,\beta_0}\to A_{\psi',\beta_0}\to A_{\psi',\beta'}$,
+the middle map since $X(\kappa)$ is a $\kappa^\times$-torsor by (a)) gives an
+isomorphism $A_{\psi,\beta}(V)\to A_{\psi',\beta'}(V)$ for arbitrary
+$\psi,\psi',\beta,\beta'$. \emph{Non-uniqueness.} The frame-preserving
+isomorphisms between two fixed such algebras, once nonempty, form a free
+transitive right $\mathrm{Aut}_{\mathcal{F}}^\kappa(A_{\psi,\beta}(V))$-set
+under postcomposition (compose one such isomorphism with an automorphism of
+the source), and $|\mathrm{Aut}_{\mathcal{F}}^\kappa(A_{\psi,\beta}(V))|=q^2|SL_2(\kappa)|$
+by Theorem~\ref{thm:wh-weil-a}, at least $4\cdot 6=24$. More than one
+isomorphism exists whenever this group is nontrivial (always), and the data
+$(\kappa,\psi,\psi',\beta,\beta')$ do not name a preferred one: e.g.\ a
+family $\{h_u\}$, $h_u:=\mathrm{diag}(u^{-j},u^{j-1})$ for a further
+arbitrary choice of $j\in\mathbb{Z}/(q-1)$, gives infinitely many mutually
+inconsistent \emph{coherent} systems of isomorphisms across the
+$\kappa^\times$-action of (a) — the family of isomorphisms is trivializable,
+but not canonically: choosing one is a section, not a theorem.
+\end{proof}
+
+\subsection{The projective Hilbert space is canonical}
+
+\statusProved
+\begin{theorem}[Canonicity of the projective Hilbert space, at fixed
+$(\kappa,\psi,\beta)$]
+\label{thm:wh-canon}
+\begin{enumerate}[label=(\alph*)]
+\item $\mathrm{Mod}_{\psi,\beta}(\kappa)$ (Definition~\ref{def:model-groupoid})
+is a nonempty, connected groupoid, with automorphism group $U(1)$ at every
+object;
+\item consequently every $\mathrm{Hom}$-set of $\mathrm{PMod}_{\psi,\beta}(\kappa)$
+is a singleton, so every diagram in it commutes trivially, and the limit
+$\varprojlim_{\mathrm{PMod}_{\psi,\beta}(\kappa)} P(M)$ exists with every
+projection an isomorphism; define $P(H_\psi(\kappa))$ to be this limit. The
+underlying Hilbert space $H_\psi(\kappa)$ itself is canonical only up to a
+$U(1)$ of identifications (one for each object of
+$\mathrm{Mod}_{\psi,\beta}(\kappa)$ chosen as a representative), but the
+\emph{projective} Hilbert space $P(H_\psi(\kappa))$ is canonical in
+$(\kappa,\psi)$, for fixed $\beta$.
+\end{enumerate}
+\end{theorem}
+
+\begin{scope}
+This theorem fixes $\beta$ throughout; that the resulting
+$P(H_\psi(\kappa))$ does not, in fact, depend on the choice of $\beta$
+either is the separate, weaker-status content of
+Theorem~\ref{thm:wh-canon-beta} below, which is not needed for and does not
+feed back into this proof. Nothing here addresses canonicity of a specific
+\emph{vector} in $H_\psi(\kappa)$, only of the isomorphism class of the pair
+$(M,\pi)$ up to the $U(1)$ ambiguity of unitary intertwiners.
+\end{scope}
+
+\provenance{D9, WH-SVN, WH-CHOICE, WH-CANON}{theory/wh-kappa-choice.md \S7 \textit{step} $\langle 1\rangle 3,\langle 1\rangle 4$}{---}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+(a) Nonempty: Theorem~\ref{thm:wh-svn}(a) exhibits the standard model
+$M_0$, unitary by Theorem~\ref{thm:wh-svn}(d). Connected: any two objects
+$(M,\pi)$, $(M',\pi')$ are unitarily isomorphic by
+Theorem~\ref{thm:wh-svn}(b)--(d) (uniqueness of the simple module up to
+unitary equivalence), so a morphism exists between any two objects, in
+either direction. $\mathrm{Aut}(M,\pi)=U(1)$: by
+Theorem~\ref{thm:wh-svn}(b)'s Schur clause, any self-intertwiner is a
+scalar; a unitary one is then a scalar of modulus $1$, and every element of
+$U(1)$ is realized (scalars commute with everything, hence intertwine
+trivially).
+
+(b) In a connected groupoid where every object has automorphism group
+$U(1)$, every $\mathrm{Hom}$-set is a $U(1)$-torsor (fix one isomorphism
+between two objects; every other differs from it by an automorphism of the
+source, i.e.\ by an element of $U(1)$). Quotienting each $\mathrm{Hom}$-set
+by this $U(1)$ therefore collapses it to a single point: every
+$\mathrm{Hom}$-set of $\mathrm{PMod}_{\psi,\beta}(\kappa)$ is a singleton.
+Consequently, for any two morphisms $f,g$ in $\mathrm{PMod}_{\psi,\beta}(\kappa)$
+with the same source and target, $f=g$ automatically (both are \emph{the}
+unique element of that singleton $\mathrm{Hom}$-set): every square of
+transition maps commutes, not by verification, but because there is only
+one morphism available to fill it. A category in which every $\mathrm{Hom}$-set
+is a singleton is equivalent to the terminal (one-object, one-morphism)
+category, so the limit of the identity diagram $P(M) \rightsquigarrow P(M)$
+over $\mathrm{PMod}_{\psi,\beta}(\kappa)$ exists and every object, with its
+unique family of identifying isomorphisms to every other, computes it: this
+is $P(H_\psi(\kappa))$. Since the ordinary (non-projectivized) $\mathrm{Hom}$-sets
+of $\mathrm{Mod}_{\psi,\beta}(\kappa)$ are $U(1)$-torsors and not
+singletons, no single Hilbert space among the objects is preferred over
+$U(1)$-many identifications with it — but every one of them projects
+isomorphically onto the same limit $P(H_\psi(\kappa))$.
+\end{proof}
+
+\subsection{Independence from the polarizing cocycle as well}
+
+\statusSketch
+\begin{theorem}[The projective Hilbert space does not depend on $\beta$
+either]
+\label{thm:wh-canon-beta}
+$P(H_\psi(\kappa))$, as constructed in Theorem~\ref{thm:wh-canon}, is
+independent of the choice of polarizing cocycle $\beta\in\mathrm{Adm}(\omega)$
+used to build it: the frame isomorphism $A_{\psi,\beta}(V)\to A_{\psi,\beta'}(V)$
+of Theorem~\ref{thm:wh-beta-level} transports unitary simple modules and
+induces an equivalence $\mathrm{Mod}_{\psi,\beta}(\kappa)\to\mathrm{Mod}_{\psi,\beta'}(\kappa)$,
+which in turn induces \emph{the} unique isomorphism between the two limits
+$P(H_\psi(\kappa))$ constructed at $\beta$ and at $\beta'$.
+\end{theorem}
+
+\begin{scope}
+This theorem is \textsc{sketch} for the same procedural reason as the
+$p=2$ rows of \S\ref{sec:polarizing-cocycle} it depends on
+(Theorem~\ref{thm:wh-beta-level}): it postdates this increment's single
+hostile-critic round. It asserts that the \emph{limit} is independent of
+$\beta$, not that any specific object of $\mathrm{Mod}_{\psi,\beta}(\kappa)$
+equals, on the nose, an object of $\mathrm{Mod}_{\psi,\beta'}(\kappa)$ — the
+identification goes through the transport functor described in the proof,
+consistently with the fact that the underlying group $H_\beta(\kappa)$
+genuinely changes isomorphism type with $\beta$ at $p=2$
+(Theorem~\ref{thm:wh-beta-type}).
+\end{scope}
+
+\provenance{WH-CANON, WH-BETA-LEVEL, WH-CANON-BETA}{theory/wh-kappa-choice.md \S7 \textit{step} $\langle 1\rangle 4.\langle 2\rangle 1$}{---}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+By Theorem~\ref{thm:wh-beta-level} there is a frame isomorphism
+$\Phi : A_{\psi,\beta}(V)\to A_{\psi,\beta'}(V)$, $W_\beta(v)\mapsto\mu(v)W_{\beta'}(v)$,
+with $\mu$ unimodular (by the same argument as
+Remark~\ref{rem:proj-unitary}: taking absolute values in the defining
+relation $(\dagger)$ of Theorem~\ref{thm:wh-beta-level}'s proof makes
+$|\mu|$ a homomorphism from a finite group to $\mathbb{R}_{>0}$, hence
+trivial). Transport of structure along $\Phi$ sends an object $(M,\pi)$ of
+$\mathrm{Mod}_{\psi,\beta}(\kappa)$ to $(M,\pi')$ with
+$\pi'(a'):=\pi(\Phi^{-1}(a'))$ for $a'\in A_{\psi,\beta'}(V)$: $M$ stays
+simple (an equivalence of module categories along an algebra isomorphism
+preserves simplicity), and each $\pi'(W_{\beta'}(v))=\pi(\Phi^{-1}(W_{\beta'}(v)))=\overline{\mu(v)}\,\pi(W_\beta(v))$
+remains unitary (a unimodular scalar times a unitary operator). This is an
+equivalence of categories
+$\mathrm{Mod}_{\psi,\beta}(\kappa)\to\mathrm{Mod}_{\psi,\beta'}(\kappa)$,
+compatible with the projectivization functors to
+$\mathrm{PMod}_{\psi,\beta}(\kappa)$ and $\mathrm{PMod}_{\psi,\beta'}(\kappa)$
+of Theorem~\ref{thm:wh-canon}(b). Both projectivized categories have
+singleton $\mathrm{Hom}$-sets (Theorem~\ref{thm:wh-canon}(b), applied at
+$\beta$ and at $\beta'$ respectively), so the induced map between their
+limits $P(H_\psi(\kappa))_\beta \to P(H_\psi(\kappa))_{\beta'}$ is again the
+unique morphism available between two terminal-equivalent categories, hence
+an isomorphism, and the unique one compatible with the transport functor.
+\end{proof}

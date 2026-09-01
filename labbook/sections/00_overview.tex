@@ -24,23 +24,72 @@ asserted at a strength its evidence does not support.
 \subsection*{Status}
 \label{sec:overview-status}
 
-No claim has yet been established in this campaign. The argument DAG
-\texttt{claims/CLAIMS.md} carries its schema and its status vocabulary but no
-rows, and \texttt{definitions.md} carries the conventions governing it but no
-numbered definitions. The table below shows the columns this section will
-carry once the DAG is populated; its single row is a placeholder, not a
-claim.
+The argument DAG \texttt{claims/CLAIMS.md} currently carries \textbf{28}
+rows, all issued by the campaign's first increment
+(\texttt{briefs/wh-kappa-target.md}): the canonical quantum system attached
+to a finite field $\kappa$, with every choice it depends on named. Of these,
+\textbf{22} are \statusProved{} (four of them \statusProvedConditional{},
+meaning the proved statement is restricted to $p=2$ or to odd $p$ and
+displays that restriction in its own text — never abbreviated into the
+label), \textbf{4} are \statusSketch{} (an argument exists and is written
+down, but has not yet been through this campaign's hostile-critic round),
+\textbf{1} is \statusConjecture{}, and \textbf{1} is \statusRefuted{} (with
+its surviving weaker statement recorded in the adjacent row). Every
+definition D1--D11 of \texttt{definitions.md} and every row below is
+restated in full, under a descriptive name, in the sections that follow;
+the table records only where.
 
-\begin{center}
-\begin{tabular}{|p{2.6cm}|p{7.8cm}|p{2.2cm}|}
-\hline
-\textbf{Claim id} & \textbf{Statement} & \textbf{Status} \\
-\hline
-\emph{(none yet)} &
-\emph{No claim has been established. This row records the table's columns
-only; it is added to, one row per entry of \texttt{claims/CLAIMS.md}, as the
-argument DAG is populated.} &
-\emph{---} \\
-\hline
-\end{tabular}
-\end{center}
+The increment's central finding, proved in \S\ref{sec:polarizing-cocycle},
+is that the construction depends on a second datum beyond the field and the
+additive character: a \emph{polarizing cocycle}. At odd characteristic this
+choice is immaterial and has a canonical representative. At characteristic
+two it is not immaterial: the admissible cocycles split into exactly two
+$SL_2(\kappa)$-orbits, distinguished by the Arf invariant of an associated
+quadratic form, giving two genuinely non-isomorphic Heisenberg groups — a
+fact detectable by an operator identity inside the quantum system itself.
+Per \texttt{PRD.md}, a sharp result of this shape is a positive structural
+statement about the definition, not a negative one.
+
+\begin{longtable}{@{}p{3.3cm}p{6.2cm}p{2.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Claim id} & \textbf{Statement (short)} & \textbf{Status} & \textbf{Where} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim id} & \textbf{Statement (short)} & \textbf{Status} & \textbf{Where} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\emph{continued on next page}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{WH-FORM} & The symplectic form is $\kappa$-bilinear, alternating, nondegenerate; its $\kappa$-linear and $\mathbb{F}_p$-linear isometries coincide, both $SL_2(\kappa)$. & \statusProved & Thm.~\ref{thm:wh-form} \\
+\texttt{WH-COMM} & The Weyl commutation relations hold uniformly in $p$, for every admissible cocycle. & \statusProved & Thm.~\ref{thm:wh-comm} \\
+\texttt{WH-ALG} & The twisted algebra is simple, dimension $q^2$, centre $\mathbb{C}$, for every cocycle. & \statusProved & Thm.~\ref{thm:wh-alg} \\
+\texttt{WH-POL} & Every line is Lagrangian; a Schr\"odinger model is a pair $(L,\chi)$, and all such pairs give isomorphic modules. & \statusProved & Thm.~\ref{thm:wh-pol} \\
+\texttt{WH-POL-2} & At $p=2$, characters induced on a line with $Q_\beta\neq0$ are forced to order $4$; no such forcing at odd $p$. & \statusProvedConditional & Thm.~\ref{thm:wh-pol-2} \\
+\texttt{WH-SVN} & Uniqueness of the finite Weyl representation: one irreducible unitary representation of dimension $q$, intertwiner unique up to $U(1)$, every automorphism inner. & \statusProved & Thm.~\ref{thm:wh-svn} \\
+\texttt{WH-ALG-MAT} & The algebra is isomorphic to $M_q(\mathbb{C})$, by a non-canonical isomorphism. & \statusProved & Thm.~\ref{thm:wh-alg-mat} \\
+\texttt{WH-BETA-a} & Admissible polarizing cocycles form a torsor of size $q^3$ under the symmetric bilinear forms. & \statusProved & Thm.~\ref{thm:wh-beta-a} \\
+\texttt{WH-BETA-b} & At odd $p$, the cocycle is immaterial: $\omega/2$ is a canonical representative fixing an explicit isomorphism between any two choices. & \statusProvedConditional & Thm.~\ref{thm:wh-beta-b} \\
+\texttt{WH-BETA-c} & At $p=2$, no symmetric cocycle exists: the odd-$p$ route to a canonical choice is unavailable. & \statusProvedConditional & Thm.~\ref{thm:wh-beta-c} \\
+\texttt{WH-BETA-d} & At $p=2$, $Q_\beta$ is a quadratic form with polar form $\omega$; the resulting element-order profile of $H_\beta(\kappa)$ is computed, and at least two isomorphism classes occur. & \statusProvedConditional & Thm.~\ref{thm:wh-beta-d} \\
+\texttt{WH-BETA-TYPE} & \textbf{Heart of the increment.} The Arf invariant classifies $\mathrm{Adm}(\omega)$ into exactly two $SL_2(\kappa)$-orbits at $p=2$, both nonempty, giving exactly two isomorphism classes of Heisenberg group. & \statusSketch & Thm.~\ref{thm:wh-beta-type} \\
+\texttt{WH-BETA-EPS} & The Arf type is detected inside the quantum system itself, by an explicit operator identity. & \statusSketch & Thm.~\ref{thm:wh-beta-eps} \\
+\texttt{WH-BETA-LEVEL} & The algebra and its Weyl frame do not depend on $\beta$ at any characteristic; the finite level-$\mu_p$ frame does, and only at $p=2$. & \statusSketch & Thm.~\ref{thm:wh-beta-level} \\
+\texttt{WH-WEIL-a} & Frame automorphisms surject onto $SL_2(\kappa)$ with kernel $\hat V$, at every characteristic. & \statusProved & Thm.~\ref{thm:wh-weil-a} \\
+\texttt{WH-WEIL-b} & At odd $p$, this extension splits explicitly, giving a projective unitary representation of $SL_2(\kappa)$. & \statusProvedConditional & Thm.~\ref{thm:wh-weil-b} \\
+\texttt{WH-WEIL-c} & At $p=2$, $\mu_2$-valued phases occur exactly over the orthogonal subgroup $O(Q_\beta)$, proper for the reference cocycle. & \statusProvedConditional & Thm.~\ref{thm:wh-weil-c} \\
+\texttt{WH-WEIL-d} & At $p=2$, $\mu_4$ is forced exactly when $O(Q_\beta)$ is proper — always except the single case $q=2$, anisotropic. & \statusProvedConditional & Thm.~\ref{thm:wh-weil-d} \\
+\texttt{WH-WEIL-e} & Whether the extension splits at $p=2$ for every $q=2^m$; verified only at $q=2,4$. & \statusConjecture & Conj.~\ref{conj:wh-weil-e} \\
+\texttt{WH-SYMM} & The algebra does not remember the $\kappa$-module structure of $V(\kappa)$; its intrinsic $\mathbb{F}_p$-linear symmetry is the strictly larger $Sp_{2m}(\mathbb{F}_p)$ once $m>1$. & \statusProved & Thm.~\ref{thm:wh-symm} \\
+\texttt{WH-CHOICE} & Beyond $\kappa$, exactly two data: $\psi$ and $\beta$; the resulting algebras are always isomorphic, but no isomorphism among them is distinguished. & \statusProved & Thm.~\ref{thm:wh-choice} \\
+\texttt{WH-CANON} & The projective Hilbert space is canonical in $(\kappa,\psi)$, at fixed $\beta$. & \statusProved & Thm.~\ref{thm:wh-canon} \\
+\texttt{WH-CANON-BETA} & The projective Hilbert space is canonical independently of $\beta$ as well. & \statusSketch & Thm.~\ref{thm:wh-canon-beta} \\
+\texttt{WH-FUNCT-a} & The trace-normalized character family is not restriction-compatible along field extensions; trivial exactly when $p\mid n$. & \statusProved & Thm.~\ref{thm:wh-funct-a} \\
+\texttt{WH-FUNCT-b} & $(\kappa,\psi)\mapsto A_{\psi,\beta_0}(V(\kappa))$ is a functor on character-compatible embeddings. & \statusProved & Thm.~\ref{thm:wh-funct-b} \\
+\texttt{WH-FUNCT-b-SEC} & \emph{Refuted:} a Frobenius-compatible character exists for every finite field. & \statusRefuted & Thm.~\ref{thm:wh-funct-b-sec} \\
+\texttt{WH-FUNCT-c} & The Frobenius obstruction, exactly: invariance forces $c\in\mathbb{F}_p$, and $\mathbb{F}_{p^p}$ then restricts trivially to the prime field. & \statusProved & Thm.~\ref{thm:wh-funct-c} \\
+\texttt{WH-FUNCT-d} & Compatible character systems over an algebraic closure are exactly the restrictions of its characters nontrivial on $\mathbb{F}_p$. & \statusProved & Thm.~\ref{thm:wh-funct-d} \\
+\end{longtable}

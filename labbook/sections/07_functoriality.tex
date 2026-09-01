@@ -1,0 +1,282 @@
+\section{Functoriality in the field: what extends along embeddings, and what
+does not}
+\label{sec:functoriality}
+
+\paragraph{Recollection.} A phase datum for $\kappa=\mathbb{F}_{p^m}$ is a
+nontrivial additive character $\psi:(\kappa,+)\to\mathbb{C}^\times$, and the
+trace-normalized family is
+$\psi_\zeta(z) := \zeta^{\mathrm{Tr}_{\kappa/\mathbb{F}_p}(z)}$ for $\zeta$ a
+primitive $p$-th root of unity and
+$\mathrm{Tr}_{\kappa/\mathbb{F}_p}(z):=z+z^p+\cdots+z^{p^{m-1}}$
+(Definition~\ref{def:phase-datum}); by Theorem~\ref{thm:wh-choice}(a),
+$X(\kappa)$ is a $\kappa^\times$-torsor, so every $\psi\in X(\kappa)$ is
+$\psi_c := \psi_\zeta(c\,\cdot)$ for a unique $c\in\kappa^\times$.
+\provenance{D3}{---}{---}{---}
+
+Earlier sections fixed a single finite field $\kappa$ throughout. This
+section asks how the construction behaves as $\kappa$ varies along field
+embeddings: whether the trace-normalized family is itself compatible with
+restriction, whether the assignment $\kappa\mapsto A_{\psi,\beta_0}(V(\kappa))$
+is a functor, and — the question this campaign's earlier working hypothesis
+answered wrongly — whether a single compatible choice of character can be
+made once and for all, for every finite field simultaneously. It cannot; the
+precise obstruction is Frobenius, and the precise set of compatible choices
+that \emph{does} exist is named exactly.
+
+\statusProved
+\begin{theorem}[The trace-normalized family, restricted along an extension]
+\label{thm:wh-funct-a}
+Let $\kappa=\mathbb{F}_{p^m}\subseteq\kappa'=\mathbb{F}_{p^{mn}}$. Then
+$\psi'_\zeta|_\kappa = \psi_{\zeta^n}$ (both sides characters of $\kappa$,
+computed with the same $\zeta$): the restriction of $\kappa'$'s
+trace-normalized character to $\kappa$ is trivial exactly when $p\mid n$
+(smallest instance: $\mathbb{F}_2\subset\mathbb{F}_4$).
+\end{theorem}
+
+\begin{scope}
+This theorem is about the trace-normalized family specifically — a
+particular, and particularly natural, choice inside $X(\kappa)$ for every
+$\kappa$ — and asserts nothing about arbitrary families of characters; the
+statement that quantifies over \emph{all} compatible systems is
+Theorem~\ref{thm:wh-funct-c} below.
+\end{scope}
+
+\provenance{D3, WH-FUNCT-a}{theory/wh-kappa-choice.md \S10 \textit{step} $\langle 1\rangle 1$}{theory/checks/funct\_sections.py (F1)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+For $x\in\kappa$, $x^{p^m}=x$ (elements of $\mathbb{F}_{p^m}$ are exactly
+the fixed points of the $m$-th power of Frobenius), so the $mn$ summands of
+$\mathrm{Tr}_{\kappa'/\mathbb{F}_p}(x)=\sum_{k=0}^{mn-1}x^{p^k}$ repeat with
+period $m$: grouping into $n$ blocks of $m$ consecutive terms, each block
+sums to $\mathrm{Tr}_{\kappa/\mathbb{F}_p}(x)$ (using
+$x^{p^{k+m}}=(x^{p^m})^{p^k}=x^{p^k}$), so
+$\mathrm{Tr}_{\kappa'/\mathbb{F}_p}|_\kappa = n\cdot\mathrm{Tr}_{\kappa/\mathbb{F}_p}$.
+Hence $\psi'_\zeta(x) = \zeta^{\mathrm{Tr}_{\kappa'/\mathbb{F}_p}(x)} = \zeta^{n\cdot\mathrm{Tr}_{\kappa/\mathbb{F}_p}(x)}
+= (\zeta^n)^{\mathrm{Tr}_{\kappa/\mathbb{F}_p}(x)} = \psi_{\zeta^n}(x)$, and
+$\zeta^n=1$ (so $\psi_{\zeta^n}\equiv 1$) exactly when $p\mid n$, since
+$\zeta$ has exact order $p$.
+\end{proof}
+
+\statusProved
+\begin{theorem}[The reference algebra is functorial in character-compatible
+embeddings]
+\label{thm:wh-funct-b}
+Let $\mathcal{FF}^\pm$ be the category with objects the pairs $(\kappa,\psi)$,
+$\psi\in X(\kappa)$, and morphisms $(\kappa,\psi)\to(\kappa',\psi')$ the
+field embeddings $\iota:\kappa\hookrightarrow\kappa'$ with
+$\psi'\circ\iota=\psi$ (\emph{character-compatible} embeddings). Then
+\[
+(\kappa,\psi) \ \longmapsto\ A_{\psi,\beta_0}(V(\kappa))
+\]
+is a functor from $\mathcal{FF}^\pm$ to the category of unital
+$\mathbb{C}$-algebras and injective algebra homomorphisms, respecting
+composition and identities.
+\end{theorem}
+
+\begin{scope}
+This functor uses the reference cocycle $\beta_0$ throughout, on every
+object; it is not claimed that the resulting assignment is independent of
+this choice, nor that an analogous functor exists carrying a varying
+$\beta_\kappa$ compatibly along embeddings — the reference cocycle is used
+here because it is a fixed, explicit stipulation
+(Definition~\ref{def:admissible-cocycles-restated}), not because it is
+canonical (Theorem~\ref{thm:wh-beta-c} of \S\ref{sec:polarizing-cocycle}
+shows at $p=2$ it is not). Nor is this a statement about the quantum
+\emph{system} — the Hilbert space or the Heisenberg group — functorially in
+$\kappa$, only about the algebra.
+\end{scope}
+
+\provenance{D2, D4, WH-ALG, WH-FUNCT-b}{theory/wh-kappa-choice.md \S10 \textit{step} $\langle 1\rangle 2$}{theory/checks/funct\_sections.py (F5)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+For a character-compatible embedding $\iota:(\kappa,\psi)\to(\kappa',\psi')$,
+put $V(\iota)(a,b):=(\iota a,\iota b) : V(\kappa)\to V(\kappa')$, additive
+since $\iota$ is a field homomorphism. Since $\iota$ is multiplicative,
+$\beta_0\big(V(\iota)v,V(\iota)v'\big) = \iota(a)\,\iota(b') = \iota(ab') = \iota\big(\beta_0(v,v')\big)$.
+Define $W_\beta(v)\mapsto W'_{\beta_0}(V(\iota)v)$ on basis elements of
+$A_{\psi,\beta_0}(V(\kappa))$. This sends distinct basis elements to
+distinct basis elements ($V(\iota)$ is injective, $\iota$ being a field
+embedding), and is multiplicative: the image of
+$W_{\beta_0}(v)W_{\beta_0}(v')=\psi(\beta_0(v,v'))W_{\beta_0}(v+v')$ is
+$\psi(\beta_0(v,v'))\,W'_{\beta_0}(V(\iota)(v+v'))$, while the product of
+the images is
+$\psi'\big(\beta_0(V(\iota)v,V(\iota)v')\big)\,W'_{\beta_0}(V(\iota)(v+v'))
+= \psi'\big(\iota(\beta_0(v,v'))\big)\,W'_{\beta_0}(V(\iota)(v+v'))
+= \psi(\beta_0(v,v'))\,W'_{\beta_0}(V(\iota)(v+v'))$,
+using $\psi'\circ\iota=\psi$ (the compatibility condition). So the map is a
+unital, nonzero algebra homomorphism, hence injective by simplicity of the
+source (Theorem~\ref{thm:wh-alg}). It respects composition and identities
+because $\iota\mapsto V(\iota)$ does: $V(\iota'\circ\iota)=V(\iota')\circ V(\iota)$
+and $V(\mathrm{id})=\mathrm{id}$, directly from the definition of $V(\iota)$.
+\end{proof}
+
+\subsection{No compatible choice of character over every finite field}
+
+\statusRefuted
+\begin{theorem}[Refuted: a Frobenius-compatible character exists for every
+finite field]
+\label{thm:wh-funct-b-sec}
+\emph{(Claimed, and refuted.)} A section of the forgetful functor
+$\mathcal{FF}^\pm \to \{\text{finite fields}\}$ exists: a choice
+$\psi_\kappa\in X(\kappa)$ for every finite field $\kappa$ such that
+$\iota:\kappa\to\kappa'$ character-compatible (i.e.\
+$\psi_{\kappa'}\circ\iota=\psi_\kappa$) for \emph{every} field embedding
+$\iota$ — in particular, for the Frobenius self-embedding of every $\kappa$.
+\end{theorem}
+
+\begin{scope}
+This row is kept, refuted, rather than deleted, per this campaign's status
+discipline: a refutation carrying the surviving weaker statement is a
+result, not a gap to be erased. The surviving statement — exactly which
+obstruction blocks a section, and exactly which weaker compatible systems
+\emph{do} exist — is Theorem~\ref{thm:wh-funct-c} immediately below and
+Theorem~\ref{thm:wh-funct-d} thereafter. Nothing may depend on this row.
+\end{scope}
+
+\provenance{WH-FUNCT-b-SEC}{---}{theory/checks/funct\_sections.py (F2,F3)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{quote}
+\emph{Refutation.} Frobenius $x\mapsto x^p$ is a field embedding
+$\kappa\to\kappa$, so a section would in particular have to satisfy
+$\psi_\kappa\circ\mathrm{Frob}=\psi_\kappa$ for every $\kappa$. Theorem~\ref{thm:wh-funct-c}
+below shows this forces $\psi_\kappa=\psi_c$ for some $c$ in the \emph{prime}
+field $\mathbb{F}_p$, and that for $\kappa=\mathbb{F}_{p^p}$ every character
+of this Frobenius-invariant form restricts \emph{trivially} to
+$\mathbb{F}_p$ — contradicting $\psi_{\mathbb{F}_p}\in X(\mathbb{F}_p)$,
+which must be nontrivial by definition. So no section exists; the smallest
+instance of the obstruction is $\mathbb{F}_2\subset\mathbb{F}_4$. A
+previously considered route to a section, by induction along the tower
+$\mathbb{F}_{p^{n!}}$, is insufficient in any case: a character of
+$\mathbb{F}_{p^{n!}}$ compatible at that one stage can still restrict
+trivially to an intermediate field, so no such induction can repair the
+obstruction just exhibited.
+\end{quote}
+
+\statusProved
+\begin{theorem}[The Frobenius obstruction, stated exactly]
+\label{thm:wh-funct-c}
+There is no choice of $\psi_\kappa\in X(\kappa)$, one for each finite field
+$\kappa$, compatible with \emph{all} field embeddings. Precisely: writing
+$\psi_c := \psi_\zeta(c\,\cdot)$ for $c\in\kappa$ (Theorem~\ref{thm:wh-choice}(a)),
+a character $\psi_c$ is invariant under the Frobenius self-embedding of
+$\kappa=\mathbb{F}_{p^m}$ if and only if $c\in\mathbb{F}_p$; and for
+$\kappa=\mathbb{F}_{p^p}$, every $\mathbb{F}_p$-valued $c$ gives a character
+$\psi_c$ that restricts \emph{trivially} to the prime field
+$\mathbb{F}_p\subset\mathbb{F}_{p^p}$. The smallest instance is
+$\mathbb{F}_2\subset\mathbb{F}_4$.
+\end{theorem}
+
+\begin{scope}
+This theorem exhibits the precise obstruction at the specific extension
+degree $m=p$; it does not enumerate every extension degree at which some
+weaker compatibility fails, and it does not address (this is
+Theorem~\ref{thm:wh-funct-d}) which \emph{restricted} systems of compatible
+characters — over a sub-poset of embeddings, or with the ``for every
+embedding'' requirement relaxed — do exist.
+\end{scope}
+
+\provenance{D3, WH-FUNCT-a, WH-FUNCT-c}{theory/wh-kappa-choice.md \S10 \textit{step} $\langle 1\rangle 3$}{theory/checks/funct\_sections.py (F2,F3)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+\emph{Frobenius-invariance forces $c\in\mathbb{F}_p$.} Write
+$d:=c^{1/p}$ (the unique $p$-th root, Frobenius being bijective on the
+finite field $\kappa$). Since
+$\mathrm{Tr}_{\kappa/\mathbb{F}_p}(y^p)=\mathrm{Tr}_{\kappa/\mathbb{F}_p}(y)$
+for every $y$ (Frobenius cyclically permutes the $m$ summands of the trace,
+using $y^{p^m}=y$), we get
+$\psi_c(x^p) = \zeta^{\mathrm{Tr}(cx^p)} = \zeta^{\mathrm{Tr}((dx)^p)} = \zeta^{\mathrm{Tr}(dx)} = \psi_d(x)$,
+i.e.\ $\psi_c\circ\mathrm{Frob}=\psi_d$. Since $c\mapsto\psi_c$ is injective
+on $\kappa$ (if $\psi_c=\psi_{c'}$ then $\mathrm{Tr}((c-c')x)\equiv 0$ for
+all $x$, forcing $c=c'$ by the same nondegeneracy of the trace pairing used
+in Theorem~\ref{thm:wh-choice}(a)'s proof), $\psi_c$ is Frobenius-invariant
+iff $d=c$; since $d^p=c$ by definition of $d$, substituting $d=c$ gives
+$c^p=c$, and conversely $c^p=c$ gives $d=c^{1/p}=c$ (Frobenius being
+bijective). So the condition is exactly $c^p=c$, i.e.\ $c$ is a root of
+$X^p-X$, i.e.\
+(this polynomial having at most $p$ roots in a field, all $p$ elements of
+$\mathbb{F}_p$ among them by Fermat's little theorem for finite fields)
+$c\in\mathbb{F}_p$.
+
+\emph{Trivial restriction at $\kappa=\mathbb{F}_{p^p}$.} Here $m=p$. For
+$c\in\mathbb{F}_p$ and $x\in\mathbb{F}_p\subset\kappa$, every summand of
+$\mathrm{Tr}_{\kappa/\mathbb{F}_p}(cx)=\sum_{k=0}^{p-1}(cx)^{p^k}$ equals
+$cx$ (as $cx\in\mathbb{F}_p$ is already Frobenius-fixed), so
+$\mathrm{Tr}_{\kappa/\mathbb{F}_p}(cx)=p\cdot(cx)=0$ in characteristic $p$.
+So $\psi_c(x)=\zeta^0=1$ for every $x\in\mathbb{F}_p$: \emph{every}
+Frobenius-invariant character of $\mathbb{F}_{p^p}$ — the only kind a
+section could assign there — restricts trivially to the prime field,
+contradicting the requirement $\psi_{\mathbb{F}_p}\in X(\mathbb{F}_p)$
+(nontrivial by Definition~\ref{def:phase-datum}) forced by compatibility
+along the inclusion $\mathbb{F}_p\subset\mathbb{F}_{p^p}$. At $p=2$,
+$\mathbb{F}_{p^p}=\mathbb{F}_4$: the smallest instance.
+\end{proof}
+
+\subsection{The compatible systems that do exist}
+
+\statusProved
+\begin{theorem}[Compatible character systems over an algebraic closure]
+\label{thm:wh-funct-d}
+Fix an algebraic closure $\overline{\mathbb{F}}_p$, and consider the
+inclusion poset of its finite subfields. The compatible systems
+$(\psi_\kappa)_\kappa$ — one $\psi_\kappa\in X(\kappa)$ for every finite
+subfield $\kappa\subset\overline{\mathbb{F}}_p$, with
+$\psi_{\kappa'}|_\kappa=\psi_\kappa$ for every inclusion $\kappa\subseteq\kappa'$
+of finite subfields — are \textbf{exactly} the restrictions
+$\psi_\kappa:=\Psi|_\kappa$ of the additive characters $\Psi$ of
+$(\overline{\mathbb{F}}_p,+)$ with $\Psi|_{\mathbb{F}_p}\neq 1$.
+\end{theorem}
+
+\begin{scope}
+This theorem restricts attention to the inclusion poset of finite subfields
+of a \emph{fixed} algebraic closure, respecting compatibility only along
+inclusions of subfields, not along all abstract field embeddings between
+isomorphic-but-not-identical finite fields; Theorem~\ref{thm:wh-funct-b-sec}
+shows the latter, stronger requirement admits no solution at all. It says
+nothing about compatible choices of a polarizing cocycle $\beta$ along the
+same poset; whether the Arf type of \S\ref{sec:polarizing-cocycle} can be
+chosen compatibly there is not resolved by this labbook.
+\end{scope}
+
+\provenance{D3, WH-FUNCT-d}{theory/wh-kappa-choice.md \S10 \textit{step} $\langle 1\rangle 4$}{theory/checks/funct\_sections.py (F4)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+\emph{Restrictions are compatible systems.} Given such a $\Psi$, put
+$\psi_\kappa:=\Psi|_\kappa$; compatibility along $\kappa\subseteq\kappa'$
+holds by construction ($(\Psi|_{\kappa'})|_\kappa=\Psi|_\kappa$), and
+$\psi_\kappa$ is nontrivial for \emph{every} finite subfield $\kappa$: every
+such $\kappa$ contains $\mathbb{F}_p$, and $\Psi|_\kappa\equiv 1$ would
+force $\Psi|_{\mathbb{F}_p}\equiv 1$ too, contradicting the hypothesis on
+$\Psi$.
+
+\emph{Compatible systems arise this way.} Given a compatible system
+$(\psi_\kappa)$, define $\Psi(x):=\psi_\kappa(x)$ for any finite subfield
+$\kappa\ni x$ (every $x\in\overline{\mathbb{F}}_p$ lies in some finite
+subfield, $\overline{\mathbb{F}}_p$ being their union). This is well
+defined: if $x$ lies in two finite subfields $\kappa,\kappa'$, both lie
+inside a common finite subfield $\kappa''$ (e.g.\ their compositum, again
+finite), and compatibility along $\kappa\subseteq\kappa''$ and
+$\kappa'\subseteq\kappa''$ gives $\psi_\kappa(x)=\psi_{\kappa''}(x)=\psi_{\kappa'}(x)$.
+$\Psi$ is additive: any two elements lie in a common finite subfield, where
+$\Psi$ agrees with the additive character $\psi_\kappa$ of that subfield.
+And $\Psi|_{\mathbb{F}_p}=\psi_{\mathbb{F}_p}\neq 1$, by
+Definition~\ref{def:phase-datum}'s requirement on every $\psi_\kappa\in X(\kappa)$
+applied to $\kappa=\mathbb{F}_p$.
+
+\emph{The two constructions are mutually inverse}, and the condition
+``nontrivial on every finite subfield'' (needed termwise, since each
+$\psi_\kappa\in X(\kappa)$ by hypothesis) is equivalent to ``nontrivial on
+the prime field alone'': the forward implication is immediate ($\mathbb{F}_p$
+is itself one of the subfields), and the reverse is exactly what the first
+paragraph showed.
+\end{proof}
+
+\begin{remark}[What this section does not claim]
+Theorem~\ref{thm:wh-funct-b} is functoriality of the \emph{algebra} in
+character-compatible embeddings, for the fixed reference cocycle
+$\beta_0$ — not functoriality of the quantum system (Heisenberg group,
+Hilbert space) itself, and not a claim that any compatible choice of
+polarizing cocycle along embeddings exists. Whether the Arf type of
+Theorem~\ref{thm:wh-beta-type} can be chosen compatibly along field
+embeddings at $p=2$ is recorded as an open question by this campaign's
+source shard, not resolved here.
+\end{remark}

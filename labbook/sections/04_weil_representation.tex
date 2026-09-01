@@ -1,0 +1,402 @@
+\section{Symmetry of the Weyl frame: the Weil representation and its splitting problem}
+\label{sec:weil}
+
+\paragraph{Recollection.} $\kappa=\mathbb{F}_q$, $q=p^m$; $V(\kappa)=\kappa\oplus\kappa$
+with $\omega\big((a,b),(a',b')\big)=ab'-a'b$ (Definition~\ref{def:symplectic-object});
+$SL_2(\kappa)$ is the group of $\kappa$-linear automorphisms of $V(\kappa)$
+preserving $\omega$ (Theorem~\ref{thm:wh-form}(e)); a polarizing cocycle
+$\beta\in\mathrm{Adm}(\omega)$ and phase datum $\psi$ determine the algebra
+$A_{\psi,\beta}(V)=\bigoplus_v\mathbb{C}\cdot W_\beta(v)$
+(Definitions~\ref{def:admissible-cocycles-restated}, \ref{def:phase-datum},
+\ref{def:weyl-algebra}), and $Q_\beta(v):=\beta(v,v)$
+(Definition~\ref{def:quadratic-form}).
+\provenance{D1, D2, D3, D4, D6}{---}{---}{---}
+
+This section studies the symmetries of the Weyl frame itself: which
+permutations of the Weyl operators extend to algebra automorphisms, how
+large that symmetry group is, and whether $SL_2(\kappa)$ — the natural
+symmetry group of $(V(\kappa),\omega)$ — genuinely acts on the quantum
+system by honest algebra automorphisms (as opposed to merely projectively).
+The answer is uniform in one respect and characteristic-dependent in
+another: the group of frame automorphisms always surjects onto
+$SL_2(\kappa)$ with kernel the dual group $\hat V$, at every characteristic;
+but whether this extension \emph{splits} — whether $SL_2(\kappa)$ itself,
+not just a projective shadow of it, acts by algebra automorphisms — is
+settled affirmatively at odd $p$ and only partially resolved at $p=2$, where
+it interacts with the Arf dichotomy of \S\ref{sec:polarizing-cocycle}.
+
+\subsection{The Weyl frame and its two automorphism groups}
+
+\begin{definition}[The Weyl frame, and its $\kappa$-linear automorphisms]
+\label{def:weyl-frame}
+The \emph{Weyl frame} is
+\[
+\mathcal{F} := \big\{\, \mathbb{C}^\times\cdot W_\beta(v) \ :\ v\in V(\kappa) \,\big\}
+\ \subset\ A_{\psi,\beta}(V),
+\]
+the set of $\mathbb{C}^\times$-lines through Weyl operators. $\mathrm{Aut}_{\mathcal{F}}(A)$
+is the group of $\mathbb{C}$-algebra automorphisms $\alpha$ of
+$A_{\psi,\beta}(V)$ with $\alpha(\mathcal{F})=\mathcal{F}$.
+$\mathrm{Aut}_{\mathcal{F}}^\kappa(A)\subseteq\mathrm{Aut}_{\mathcal{F}}(A)$ is
+the subgroup consisting of those $\alpha$ whose induced permutation of
+$V(\kappa)$ (well defined since $\alpha$ permutes the lines of $\mathcal{F}$,
+which are indexed bijectively by $V(\kappa)$) is $\kappa$-linear.
+\end{definition}
+
+\begin{scope}
+The $\kappa$-linearity clause in the definition of
+$\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ is \textbf{imposed data}: nothing in
+$A_{\psi,\beta}(V)$ or $\mathcal{F}$ as built from $(V,+)$ and the cocycle
+$\psi\circ\beta$ forces an automorphism's induced permutation of $V(\kappa)$
+to respect scalar multiplication by $\kappa$ rather than merely by
+$\mathbb{F}_p$. Precisely how much symmetry this clause discards is
+Theorem~\ref{thm:wh-symm} of \S\ref{sec:fp-symmetry}; nothing here
+addresses that question.
+\end{scope}
+
+\provenance{D7}{---}{---}{---}
+
+\subsection{Exactness of the frame-automorphism extension, uniformly in the
+characteristic}
+
+Fix $\beta\in\mathrm{Adm}(\omega)$. For $g\in SL_2(\kappa)$, write
+$s_g(v,v') := \beta(gv,gv')-\beta(v,v')$ and $Q_g(v):=s_g(v,v)$; note that
+$Q_g(v)=Q_\beta(gv)-Q_\beta(v)$.
+
+\statusProved
+\begin{theorem}[Exactness of the frame-automorphism extension]
+\label{thm:wh-weil-a}
+At every characteristic, the sequence
+\[
+1 \longrightarrow \hat V \longrightarrow \mathrm{Aut}_{\mathcal{F}}^\kappa(A_{\psi,\beta}(V))
+\xrightarrow{\ \alpha\mapsto g\ } SL_2(\kappa) \longrightarrow 1
+\]
+is exact, where $\hat V := \mathrm{Hom}\big((V(\kappa),+),\mathbb{C}^\times\big)$; the
+kernel consists exactly of the conjugations $\mathrm{Ad}_{W_\beta(u)}$,
+$u\in V(\kappa)$.
+\end{theorem}
+
+\begin{scope}
+This theorem does not assert that the extension splits — that $SL_2(\kappa)$
+itself embeds back into $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ as a
+subgroup — only that it is exact. Splitting is addressed separately, and
+with a genuinely different answer at odd and even characteristic, in
+Theorems~\ref{thm:wh-weil-b} and \ref{conj:wh-weil-e} below. Nothing here
+concerns $\mathrm{Aut}_{\mathcal{F}}(A)$ without the imposed $\kappa$-linearity
+clause; that is Theorem~\ref{thm:wh-symm}.
+\end{scope}
+
+\provenance{D1, D4, D7, WH-ALG, WH-COMM, WH-WEIL-a}{theory/wh-kappa-choice.md \S8 \textit{step} $\langle 1\rangle 2,\langle 1\rangle 3$}{theory/checks/split24.py (X2)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+\emph{$s_g$ is symmetric bi-additive, and $s_{gh}(v,v')=s_h(v,v')+s_g(hv,hv')$.}
+Symmetry: $s_g(v,v')-s_g(v',v)=\omega(gv,gv')-\omega(v,v')=0$, since
+$g\in SL_2(\kappa)$ preserves $\omega$ (Theorem~\ref{thm:wh-form}(e)); the
+telescoping identity is immediate by expanding
+$\beta(ghv,ghv')-\beta(v,v')$ through the intermediate term
+$\beta(hv,hv')$. (For $\beta=\beta_0$ and $g=\left(\begin{smallmatrix}r&s\\t&u\end{smallmatrix}\right)$,
+direct expansion of $\beta_0(gv,gv')=rt\,aa'+ru\,ab'+st\,a'b+su\,bb'$ gives
+the explicit formula $s_g(v,v')=rt\,aa'+st(ab'+a'b)+su\,bb'$, using
+$ru-st=\det g=1$.)
+
+\emph{Description of $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$.} Frame
+preservation gives $\alpha(W_\beta(v))=\lambda(v)W_\beta(gv)$ for some
+function $\lambda:V(\kappa)\to\mathbb{C}^\times$ and some permutation $g$ of
+$V(\kappa)$, imposed to be $\kappa$-linear by definition of
+$\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$. Applying $\alpha$ to
+$W_\beta(v)W_\beta(v')=\psi(\beta(v,v'))W_\beta(v+v')$ and comparing basis
+elements forces $g$ additive (automatic here, being $\kappa$-linear) and
+\[
+\lambda(v)\lambda(v')\,\psi\big(s_g(v,v')\big) = \lambda(v+v') \tag{$*$}
+\]
+for all $v,v'$. Applying $\alpha$ to the commutation relation of
+Theorem~\ref{thm:wh-comm}(c) and using $\omega(gv,gv')=\det(g)\,\omega(v,v')$
+(Theorem~\ref{thm:wh-form}(e)'s proof) gives
+$\psi\big((\det g-1)\,\omega(v,v')\big)=1$ for all $v,v'$; since $\omega$ is
+onto $\kappa$ (Theorem~\ref{thm:wh-form}(a),(c)), Fact~\ref{fact:val} forces
+$\det g=1$, i.e.\ $g\in SL_2(\kappa)$. So $\alpha\mapsto g$ is a well-defined
+map $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)\to SL_2(\kappa)$, visibly a
+homomorphism (composition of automorphisms composes the induced
+permutations).
+
+\emph{The kernel.} If $g=\mathrm{id}$, $(*)$ reads
+$\lambda(v)\lambda(v')=\lambda(v+v')$, i.e.\ $\lambda\in\hat V$, a group of
+order $q^2$ by Fact~\ref{fact:dual} ($U=V(\kappa)$, $d=2m$). The map
+$u\mapsto\psi(\omega(u,\cdot))$, $V(\kappa)\to\hat V$, is injective (if
+$\psi(\omega(u,\cdot))\equiv 1$ then $\omega(u,\cdot)\equiv 0$ by
+Fact~\ref{fact:val}, so $u=0$ by nondegeneracy, Theorem~\ref{thm:wh-form}(c)),
+hence bijective ($|V(\kappa)|=q^2=|\hat V|$); so every kernel element has
+$\lambda=\psi(\omega(u,\cdot))$ for a unique $u\in V(\kappa)$, and by
+Theorem~\ref{thm:wh-comm}(d) this is exactly $\mathrm{Ad}_{W_\beta(u)}$.
+
+\emph{Surjectivity, uniformly in $p$.} For fixed $g\in SL_2(\kappa)$,
+$c(v,v'):=\psi(s_g(v,v'))$ is a symmetric $2$-cocycle on the exponent-$p$
+group $(V(\kappa),+)$ (symmetry of $c$ from symmetry of $s_g$, just shown;
+the cocycle identity from bi-additivity of $s_g$), so Fact~\ref{fact:triv}
+supplies $\lambda$ solving $(*)$: every $g\in SL_2(\kappa)$ is hit. This
+argument is uniform in the characteristic; nothing distinguishes $p=2$.
+\end{proof}
+
+\begin{remark}[Every frame automorphism is projectively unitary, at every
+characteristic]
+\label{rem:proj-unitary}
+Fix a model $(M,\pi)$ as in Theorem~\ref{thm:wh-svn}. Taking absolute values
+in $(*)$ makes $v\mapsto|\lambda(v)|$ a homomorphism from the finite group
+$V(\kappa)$ to the torsion-free group $(\mathbb{R}_{>0},\times)$, hence
+trivial: every $\lambda$ occurring in
+$\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ is automatically unimodular. By
+Theorem~\ref{thm:wh-svn}(c),(d), every $\alpha\in\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$
+is $\mathrm{Ad}_T$ for some $T$, unique up to a scalar; since $\alpha$
+permutes the \emph{unitary} Weyl operators (unimodular $\lambda$ times
+unitary $\pi(W_\beta(gv))$), $T$ may be chosen unitary and is then unique up
+to $U(1)$ (Theorem~\ref{thm:wh-svn}(d)). This gives an injective
+homomorphism $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)\to PU(M)$: a projective
+unitary representation of $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$, at every
+characteristic. Composed with a section $SL_2(\kappa)\to\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$
+of Theorem~\ref{thm:wh-weil-a}'s surjection — should one exist as an honest
+group homomorphism, i.e.\ should the extension split — this yields an
+honest (non-projective) representation of $SL_2(\kappa)$ by algebra
+automorphisms, and hence, via $\mathrm{Ad}$, a projective unitary
+representation of $SL_2(\kappa)$ itself on $M$. What is \emph{not} true is
+that this extends to all of $\mathrm{Aut}_{\mathbb{C}}(A)\cong PGL_q(\mathbb{C})$:
+at $q=2$, $T=\mathrm{diag}(2,1)$ conjugates $\pi(W(1,0))=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$
+to $\left(\begin{smallmatrix}0&2\\1/2&0\end{smallmatrix}\right)$, whose singular values $2,\,1/2$ differ, so it is not a
+scalar times a unitary — the frame hypothesis in
+Definition~\ref{def:weyl-frame} is exactly what is needed above.
+\end{remark}
+
+\subsection{Splitting at odd characteristic}
+
+\statusProvedConditional
+\begin{theorem}[The Weil representation of $SL_2(\kappa)$, at odd characteristic]
+\label{thm:wh-weil-b}
+\textbf{[$p$ odd.]} $\alpha_g\big(W_\beta(v)\big) := \psi\big(Q_g(v)/2\big)\,W_\beta(gv)$
+defines a splitting $g\mapsto\alpha_g$ of the extension of
+Theorem~\ref{thm:wh-weil-a}: $SL_2(\kappa)$ acts on $A_{\psi,\beta}(V)$ by
+$\mathbb{C}$-algebra automorphisms, with phases in $\mu_p$. Composed with
+Remark~\ref{rem:proj-unitary}, this exhibits a projective unitary
+representation of $SL_2(\kappa)$ on the model space of
+Theorem~\ref{thm:wh-svn}.
+\end{theorem}
+
+\begin{scope}
+This is an odd-characteristic statement only; Theorem~\ref{conj:wh-weil-e}
+addresses whether an analogous honest (non-projective) action of
+$SL_2(\kappa)$ by algebra automorphisms exists at $p=2$, and the answer
+there is open in general. Nothing here claims the splitting is unique, or
+canonical among splittings.
+\end{scope}
+
+\provenance{D4, D6, WH-WEIL-a, WH-SVN, WH-WEIL-b}{theory/wh-kappa-choice.md \S8 \textit{step} $\langle 1\rangle 4,\langle 1\rangle 7$}{theory/checks/split24.py (X4)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+Since $s_g$ is symmetric bilinear, $Q_g(v+v')=Q_g(v)+Q_g(v')+2s_g(v,v')$
+(the same polarization identity as in
+Definition~\ref{def:quadratic-form}'s use elsewhere), so
+\[
+\psi\big(Q_g(v+v')/2\big) = \psi\big(Q_g(v)/2\big)\,\psi\big(Q_g(v')/2\big)\,\psi\big(s_g(v,v')\big),
+\]
+which is exactly relation $(*)$ of Theorem~\ref{thm:wh-weil-a}'s proof for
+$\lambda(v):=\psi(Q_g(v)/2)$: $\alpha_g$ is a well-defined element of
+$\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ over $g$. That $g\mapsto\alpha_g$ is a
+homomorphism follows from the telescoping identity
+$s_{gh}(v,v')=s_h(v,v')+s_g(hv,hv')$ of Theorem~\ref{thm:wh-weil-a}'s proof,
+evaluated at $v=v'$ to give $Q_{gh}(v)=Q_h(v)+Q_g(hv)$, whence
+$\alpha_g(\alpha_h(W_\beta(v))) = \psi(Q_h(v)/2)\,\psi(Q_g(hv)/2)\,W_\beta(ghv)
+= \psi(Q_{gh}(v)/2)\,W_\beta(ghv) = \alpha_{gh}(W_\beta(v))$. This is an
+honest algebra automorphism, so $SL_2(\kappa)$ acts by algebra automorphisms
+with $\mu_p$ phases (division by $2$ makes sense since $p$ is odd); the
+projective unitary statement is Remark~\ref{rem:proj-unitary} applied to
+this section.
+\end{proof}
+
+\subsection{Characteristic two: the orthogonal subgroup and forced order-four
+phases}
+
+\statusProvedConditional
+\begin{theorem}[$\mu_2$-phases occur exactly over the orthogonal subgroup of
+$Q_\beta$]
+\label{thm:wh-weil-c}
+\textbf{[$p=2$.]} Write $O(Q_\beta) := \{\, g\in SL_2(\kappa) : Q_\beta\circ g = Q_\beta \,\}$.
+A frame automorphism $\alpha_{g,\lambda}$ (in the notation
+$\alpha(W_\beta(v))=\lambda(v)W_\beta(gv)$ of Theorem~\ref{thm:wh-weil-a}'s
+proof) has \emph{some} choice of $\lambda$ landing entirely in
+$\psi(\kappa)=\mu_2$ if and only if $g\in O(Q_\beta)$ — a condition on the
+chosen $\beta$, not on the characteristic alone. For the reference cocycle
+$\beta_0$, $O(Q_{\beta_0})\cap SL_2(\kappa)$ consists exactly of the matrices
+$\mathrm{diag}(r,r^{-1})$ and $\mathrm{antidiag}(s,s^{-1})$, $r,s\in\kappa^\times$;
+it has order $2(q-1)$ (equal to $2,6,14$ at $q=2,4,8$), and is a
+\textbf{proper} subgroup of $SL_2(\kappa)$ for every $q$.
+\end{theorem}
+
+\begin{scope}
+This theorem is about which $g$ admit a $\mu_2$-valued lift, for a
+\emph{fixed} $\beta$; it says nothing yet about what happens for
+$g\notin O(Q_\beta)$ (Theorem~\ref{thm:wh-weil-d}), and the concrete
+description of $O(Q_{\beta_0})$ is specific to the reference cocycle — for a
+general $\beta$ of hyperbolic type the order is the same, $2(q-1)$
+(Theorem~\ref{thm:wh-beta-type}(iii)), but the concrete matrices differ with
+the normal-form basis chosen there.
+\end{scope}
+
+\provenance{D6, WH-WEIL-a, D7, WH-WEIL-c}{theory/wh-kappa-choice.md \S8 \textit{step} $\langle 1\rangle 5$}{theory/checks/beta\_census.py (B6); theory/checks/fp\_symmetry.py (S3)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+Setting $v'=v$ in $(*)$ at $p=2$ ($2v=0$) gives $\lambda(v)^2=\psi(Q_g(v))$.
+So a solution $\lambda$ of $(*)$ is $\mu_2$-valued (i.e.\ $\lambda(v)^2=1$
+for every $v$) iff $Q_g(V(\kappa))\subseteq\ker\psi$, i.e.\ iff
+$\psi\circ Q_g\equiv 1$.
+
+\emph{For every $\beta$, this is already the exact isometry condition.}
+$Q_g(v)=Q_\beta(gv)-Q_\beta(v)$ is additive in $v$: expanding
+$Q_\beta(g(v+v'))-Q_\beta(v+v')$ via Definition~\ref{def:quadratic-form}'s
+polarization identity on both terms, the $\omega$-cross-terms cancel because
+$g$ preserves $\omega$ (Theorem~\ref{thm:wh-form}(e)), leaving
+$Q_g(v+v')=Q_g(v)+Q_g(v')$; also $Q_g(cv)=c^2Q_g(v)$ since $g$ is
+$\kappa$-linear. So, in a basis, $Q_g(a,b)=\alpha a^2+\delta b^2$ for some
+$\alpha,\delta\in\kappa$ (no cross term). If $\psi\circ Q_g\equiv 1$ then
+$\psi(\alpha a^2)=1$ for all $a$ (setting $b=0$); since $a\mapsto a^2$ is
+bijective on $\kappa$, this forces $\alpha=0$ by Fact~\ref{fact:val}, and
+likewise $\delta=0$: $Q_g\equiv 0$, i.e.\ $g\in O(Q_\beta)$. Conversely, if
+$g\in O(Q_\beta)$ then trivially $\psi\circ Q_g\equiv 1$, and moreover a
+$\mu_2$-valued $\lambda$ solving $(*)$ then \emph{exists}: $\psi\circ s_g$ is
+a symmetric cocycle with trivial diagonal ($\psi(s_g(v,v))=\psi(Q_g(v))=1$),
+exactly the case handled by the $\ell$-construction in the proof of
+Theorem~\ref{thm:wh-beta-level} (\S\ref{sec:polarizing-cocycle}). So
+$\psi\circ Q_g\equiv 1$ iff $g\in O(Q_\beta)$ iff a $\mu_2$-valued lift
+exists.
+
+\emph{The reference cocycle.} By the explicit formula of
+Theorem~\ref{thm:wh-weil-a}'s proof, $s_g(v,v')=rt\,aa'+st(ab'+a'b)+su\,bb'$
+for $\beta_0$, so $Q_g(a,b)=rt\,a^2+su\,b^2$ (the cross term drops at
+$p=2$). Thus $g\in O(Q_{\beta_0})$ iff $rt=0$ and $su=0$. Combined with
+$\det g=ru-st=1$: if $r=0$ then $st=-1=1$ (so $s,t\neq0$), and $su=0$ forces
+$u=0$, giving $g=\left(\begin{smallmatrix}0&s\\s^{-1}&0\end{smallmatrix}\right)$
+(using $t=s^{-1}$ from $st=1$) — an antidiagonal matrix; if $t=0$ then
+$ru=1$ (so $r,u\neq0$, $u=r^{-1}$), and $su=0$ forces $s=0$, giving
+$g=\mathrm{diag}(r,r^{-1})$; the case $r=t=0$ contradicts $\det g=1$. So
+$O(Q_{\beta_0})\cap SL_2(\kappa)=\{\mathrm{diag}(r,r^{-1})\}\cup\{\mathrm{antidiag}(s,s^{-1})\}$,
+of order $(q-1)+(q-1)=2(q-1)$ (each family is parametrized bijectively by
+$\kappa^\times$). Since $Q_{\beta_0}(a,b)=ab$ is the hyperbolic normal form
+(Theorem~\ref{thm:wh-beta-type}(iii)), this matches the general formula
+$2(q-1)$ there. Properness: $2(q-1) < q(q^2-1) = |SL_2(\kappa)|$ for every
+$q\geq 2$, since $q(q+1)\geq 6 > 2$.
+\end{proof}
+
+\statusProvedConditional
+\begin{theorem}[$\mu_4$ is forced exactly when the orthogonal subgroup is
+proper]
+\label{thm:wh-weil-d}
+\textbf{[$p=2$.]} If $g\notin O(Q_\beta)$, \emph{every} frame automorphism
+over $g$ carries a phase of exact multiplicative order $4$. Consequently
+$\mu_4$ is forced somewhere in $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ exactly
+when $O(Q_\beta)\cap SL_2(\kappa)$ is a proper subgroup of $SL_2(\kappa)$:
+this holds for $\beta_0$ at every $q$ (Theorem~\ref{thm:wh-weil-c}), and for
+\emph{every} $\beta\in\mathrm{Adm}(\omega)$ at $q=4,8$, by direct
+enumeration. It does \textbf{not} hold in the single case $q=2$ with $\beta$
+anisotropic, where $O(Q_\beta)\cap SL_2(\mathbb{F}_2)=SL_2(\mathbb{F}_2)$
+(order $6=|O(Q_\beta)\cap SL_2(\kappa)|$ from the anisotropic formula
+$2(q+1)$ of Theorem~\ref{thm:wh-beta-type}(iii) at $q=2$) and the entire
+group $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ admits $\mu_2$-valued phases
+throughout. So $\mu_4$ is \textbf{not} a characteristic-two invariant of
+$(V(\kappa),\omega,\psi)$ alone: whether it is forced depends on the type of
+$\beta$.
+\end{theorem}
+
+\begin{scope}
+This theorem uses only Theorem~\ref{thm:wh-weil-c} and the comparison of
+$2(q\mp1)$ against $|SL_2(\kappa)|=q(q^2-1)$; it does not itself re-derive
+the general-$q$ order $2(q+1)$ for the anisotropic stabilizer (that is
+Theorem~\ref{thm:wh-beta-type}(iii), only cited here). The claim for
+\emph{every} $\beta$ at $q=4,8$ rests on direct enumeration rather than a
+closed-form argument for general $q$.
+\end{scope}
+
+\provenance{D6, D10, WH-WEIL-c, WH-WEIL-d}{theory/wh-kappa-choice.md \S8 \textit{step} $\langle 1\rangle 6$}{theory/checks/split24.py (X4,X6, and the anisotropic cross-run at $q=2$)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{proof}
+By Theorem~\ref{thm:wh-weil-c}'s proof, any $\lambda$ solving $(*)$ over $g$
+satisfies $\lambda(v)^2=\psi(Q_g(v))$ for every $v$. If $g\notin O(Q_\beta)$
+then $Q_g\not\equiv 0$, and (by the same bijective-squaring argument as
+there) $\psi(Q_g(v))=-1$ for some $v$ — since $Q_g(v)=-1$'s preimage under
+$\psi$ being nontrivial requires only that $\psi(\kappa)=\mu_2=\{1,-1\}$
+(Fact~\ref{fact:val}) and $Q_g$ nonzero, hence onto a nonzero multiple of
+$\kappa$, hits every value including one where $\psi=-1$. Then
+$\lambda(v)^2=-1$, i.e.\ $\lambda(v)$ has exact order $4$: \emph{every}
+$\lambda$ solving $(*)$ over this $g$ (not just one choice) is forced to
+take an order-$4$ value at this particular $v$, since the equation
+$\lambda(v)^2=\psi(Q_g(v))=-1$ has no solution in $\mu_2$. Comparing
+$2(q-1)$ and $2(q+1)$ (Theorem~\ref{thm:wh-beta-type}(iii)) against
+$|SL_2(\kappa)|=q(q^2-1)=q(q-1)(q+1)$: $2(q-1)<q(q-1)(q+1)$ always
+(as $q(q+1)\geq 6$ for $q\geq 2$), so the hyperbolic stabilizer — in
+particular $O(Q_{\beta_0})\cap SL_2(\kappa)$ — is always proper, giving some
+$g\notin O(Q_\beta)$ and hence a forced order-$4$ phase, at every $q$. For
+the anisotropic stabilizer, $2(q+1)<q(q-1)(q+1)$ iff $2<q(q-1)$: this holds
+for $q\geq 4$ but \emph{fails} at $q=2$, where $q(q-1)=2$ exactly, so
+$2(q+1)=6=q(q-1)(q+1)=|SL_2(\mathbb{F}_2)|$: the anisotropic stabiliser is
+the whole group at $q=2$, so \emph{no} $g$ lies outside $O(Q_\beta)$, so no
+order-$4$ phase is forced by this argument, and — since $\mu_2$-valued lifts
+exist for every $g\in O(Q_\beta)$ by Theorem~\ref{thm:wh-weil-c}'s proof, and
+$\hat V$ is automatically $\mu_2$-valued (Fact~\ref{fact:dual}, exponent $p=2$)
+— the whole of $\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ admits $\mu_2$-valued
+phases in this one case. At $q=4,8$, exhaustive enumeration over every
+$\beta\in\mathrm{Adm}(\omega)$ (\texttt{theory\slash{}checks\slash{}split24.py}, gates X4
+and X6) confirms $O(Q_\beta)\cap SL_2(\kappa)$ is proper for both types,
+hence $\mu_4$ is forced for every $\beta$ there.
+\end{proof}
+
+\subsection{Does the extension split at characteristic two? A conjecture, and
+what is known}
+
+\statusConjecture
+\begin{conjecture}[Existence of a Weil representation of $SL_2(\kappa)$ at
+characteristic two]
+\label{conj:wh-weil-e}
+\textbf{[$p=2$.]} The extension of Theorem~\ref{thm:wh-weil-a} splits for
+every $q=2^m$: $SL_2(\kappa)$ acts on $A_{\psi,\beta}(V)$ by
+$\mathbb{C}$-algebra automorphisms, for some choice of splitting. This is
+verified for the reference cocycle $\beta_0$ at $q=2$ (exhaustive search
+finds exactly $4$ distinct complements of $\hat V$ of order $6$, over all
+generating pairs) and at $q=4$ ($64$ lifts of a $(2,3,5)$-presentation of
+$SL_2(\mathbb{F}_4)$ satisfy the defining relations and generate a subgroup
+of order $60$ meeting $\hat V$ trivially); in both verified cases every
+complement necessarily uses phases of exact order $4$ (no complement avoids
+$\mu_4$, since $|\hat V|\cdot|O(Q_{\beta_0})\cap SL_2(\kappa)|$ does not
+divide $|\mathrm{Aut}_{\mathcal{F}}^\kappa(A)|$'s $\mu_2$-part suitably: $6\nmid 8$
+at $q=2$, $60\nmid 96$ at $q=4$). No argument is known for general $q$.
+\end{conjecture}
+
+\begin{scope}
+This is recorded as a conjecture, not a theorem, precisely because the
+evidence is two finite instances and no general argument: per this
+campaign's discipline, a passing computational instance promotes nothing.
+The verified cases are for the reference cocycle $\beta_0$ only; splitting
+for other cocycles, and any relationship between splittings for cocycles of
+different Arf type, is not addressed. Should a splitting be found for
+general $q$, Remark~\ref{rem:proj-unitary} would then give a projective
+unitary representation of $SL_2(\kappa)$ at $p=2$ exactly as
+Theorem~\ref{thm:wh-weil-b} does at odd $p$.
+\end{scope}
+
+\provenance{D7, WH-WEIL-a, WH-WEIL-d, WH-WEIL-e}{---}{theory/checks/split24.py (X4,X5,X6)}{theory/verdicts/wh-kappa-adjudication.md}
+
+\begin{quote}
+\emph{What is known, stated as evidence and not as a proof.} At $q=2$,
+$|\mathrm{Aut}_{\mathcal{F}}^\kappa(A)|=q^2|SL_2(\kappa)|=4\cdot 6=24$;
+exhaustive search over generating pairs of order-$6$ subgroups meeting
+$\hat V=\mathbb{Z}/2\times\mathbb{Z}/2$ trivially finds exactly $4$
+complements, all using a phase of exact order $4$ somewhere
+(\texttt{split24.py} gate X4). At $q=4$, lifting a $(2,3,5)$
+generator-relation presentation of $SL_2(\mathbb{F}_4)\cong A_5$ over all
+$16\times 16=256$ candidate phase choices on the two generators finds
+exactly $64$ lifts satisfying $x^2=y^3=(xy)^5=1$ and generating a subgroup
+of order $60$ meeting $\hat V$ trivially, again always with order-$4$ phases
+(gate X5). That no complement can avoid $\mu_4$ in either case is confirmed
+by comparing group orders directly (gate X6): the $\mu_2$-phase part of
+$\mathrm{Aut}_{\mathcal{F}}^\kappa(A)$ has order $q^2\cdot|O(Q_{\beta_0})\cap SL_2(\kappa)|=4\cdot2=8$
+at $q=2$ and $16\cdot 6=96$ at $q=4$, and $|SL_2(\kappa)|=6$, respectively
+$60$, does not divide either. This settles the existence question
+affirmatively at these two finite values and settles that any splitting
+there must use order-$4$ phases; it establishes nothing for $q=2^m$,
+$m\geq 3$.
+\end{quote}
