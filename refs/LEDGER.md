@@ -345,6 +345,12 @@ here as a second, independent finite-field Heisenberg-group definition.)*
 
 ## Fetch log (for reproducibility)
 
+Refetch note (2026-09-01): the wh-kappa-era source bodies are git-ignored
+and were absent from this working copy after the reboot; `1710.09884` and
+`2202.00248` were refetched from `https://arxiv.org/e-print/<id>` and their
+raw-bundle SHA256 values reproduced the table above exactly. Other absent
+bodies remain readable at the v0.1 mirror paths until refetched.
+
 All ten `curl -sSL https://arxiv.org/e-print/<id>` fetches in this session
 returned HTTP 200 (after the expected redirect to `/src/<id>`) on the first
 attempt; none needed a retry. `file` was run on every payload before

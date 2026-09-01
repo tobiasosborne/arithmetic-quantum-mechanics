@@ -61,7 +61,7 @@ echo "[session-close] OK: labbook/main.pdf built."
 banner "3/4 + 4/4  theory/checks/*.py -- green, then every --help-advertised red mode"
 CHECKS_DIR="$REPO_ROOT/theory/checks"
 shopt -s nullglob
-checks=("$CHECKS_DIR"/*.py)
+mapfile -t checks < <(find "$CHECKS_DIR" -name "*.py" | sort)
 shopt -u nullglob
 
 if [[ ${#checks[@]} -eq 0 ]]; then
