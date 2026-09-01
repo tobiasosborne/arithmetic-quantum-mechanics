@@ -21,6 +21,24 @@ The campaign order behind this brief (each its own increment, each gated):
 3. **FCR-3:** the non-Frobenius obstruction as a sharp non-canonicity theorem.
 4. **FCR-4:** direct sums (the canonical local decomposition) and the order-4
    battery adjudicating competing definitions.
+5. **FCR-5** *(queued 2026-09-01, TJO-agreed):* the Spec formulation and its
+   equivalence with the ring-first construction — Spec R as a locally ringed
+   space, points carrying locality (the tensor factorization of FCR-4 indexed
+   by the finitely many points), stalks (full local rings, not residue
+   fields) carrying the local quantization. A theorem with a checker, not a
+   philosophy switch; the residue-field-only reading is already refuted by
+   the FCR-1 census (Z/9 vs F₃[ε] vs F₃ share Spec-with-residue-fields but
+   have distinct quantum systems).
+6. **FCR-6** *(queued 2026-09-01, TJO-agreed):* dynamics. The agreed framing:
+   "geometrize via Spec" is precisely a choice of which automorphisms count
+   as geometric — by WH-SYMM the bare quantum system does not remember the
+   ring, so the ring/Spec structure enters the physics through the dynamics,
+   as the selected symmetry sector. Aut(R) acts on Spec by permuting points
+   and acting on stalks; the increment states Aut(R)-covariance of the
+   assignment in that factored form. (v0.1 lineage, hints only: the
+   thickened Artin–Weyl shards and the jets/derivative-constraint layer,
+   e.g. its Step-18 convention "nilpotents are jet/internal degrees at
+   existing reduced points, not extra points".)
 
 Rationale for "local first, then direct sums": a finite commutative ring is
 canonically a finite product of local rings (primitive idempotents are unique),
