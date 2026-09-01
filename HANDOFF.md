@@ -45,7 +45,7 @@ and `κ`-linearity is imposed data the algebra does not carry, its intrinsic
 symmetry group being the larger `Sp_{2m}(F_p)` (`WH-SYMM`).
 
 **State:** 28 rows -- 22 PROVED, 4 SKETCH, 1 CONJECTURE, 1 REFUTED. D1-D11 in
-`definitions.md`, 37 symbols in `notation.md`, a 37-page labbook in lockstep,
+`definitions.md`, 35 symbols in `notation.md`, a 37-page labbook in lockstep,
 ten sources registered in `refs/LEDGER.md` with zero gaps.
 
 **The four SKETCH rows are procedural, not evidential.** They are the statements
