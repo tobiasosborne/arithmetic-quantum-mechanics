@@ -182,10 +182,45 @@ gate_freshness() {
     return 1
   fi
 
+  # Staleness must be decided by CONTENT HISTORY, not by mtime, whenever we are
+  # inside a git work tree. A checkout, a branch switch or a fresh clone rewrites
+  # every mtime to the moment of checkout, in arbitrary relative order, so an
+  # mtime-only test both misfires on a perfectly good tree and could pass on a
+  # bad one. mtime is still the right test for edits that are not yet committed,
+  # and it is the only test available outside git (the self-test sandboxes).
   local stale=()
-  while IFS= read -r -d '' f; do
-    [[ "$f" -nt "$main_pdf" ]] && stale+=("$f")
-  done < <(find "$labbook_dir" -type f -name '*.tex' -print0 2>/dev/null)
+  local use_mtime=1
+
+  if git -C "$labbook_dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    local dirty
+    dirty="$(git -C "$labbook_dir" status --porcelain -- '*.tex' 2>/dev/null)"
+    if [[ -z "$dirty" ]]; then
+      # Clean tree: ask git which commit last touched the sources, and which last
+      # touched the PDF. The PDF is current iff the sources' commit is an
+      # ancestor of (or the same as) the PDF's commit.
+      use_mtime=0
+      local root c_tex c_pdf
+      root="$(git -C "$labbook_dir" rev-parse --show-toplevel)"
+      c_tex="$(git -C "$root" rev-list -1 HEAD -- 'labbook/*.tex' 'labbook/**/*.tex' 2>/dev/null)"
+      c_pdf="$(git -C "$root" rev-list -1 HEAD -- 'labbook/main.pdf' 2>/dev/null)"
+      if [[ -z "$c_pdf" ]]; then
+        echo "[gate D] FAIL: $main_pdf is not committed, so its currency cannot be established."
+        return 1
+      fi
+      if [[ -n "$c_tex" ]] && ! git -C "$root" merge-base --is-ancestor "$c_tex" "$c_pdf"; then
+        echo "[gate D] FAIL: labbook sources were last changed in $c_tex, which is not an"
+        echo "[gate D]       ancestor of $c_pdf, the last commit to build main.pdf."
+        echo "[gate D] Rebuild: cd labbook && latexmk -pdf main.tex"
+        return 1
+      fi
+    fi
+  fi
+
+  if [[ $use_mtime -eq 1 ]]; then
+    while IFS= read -r -d '' f; do
+      [[ "$f" -nt "$main_pdf" ]] && stale+=("$f")
+    done < <(find "$labbook_dir" -type f -name '*.tex' -print0 2>/dev/null)
+  fi
 
   if [[ ${#stale[@]} -gt 0 ]]; then
     echo "[gate D] FAIL: $main_pdf is older than: ${stale[*]}"
@@ -310,6 +345,43 @@ EOF
     echo "[self-test] FAIL: gate D did not fire on a stale main.pdf (decoration)."; overall=1
   else
     echo "[self-test] OK: gate D fired on a stale main.pdf."
+  fi
+
+  # The two sandboxes above are not git repositories, so they exercise gate D's
+  # mtime path only. The git path -- the one that actually runs in this repo --
+  # needs its own mutant, or it is exactly the unreached gate this project keeps
+  # finding in other people's checkers.
+  echo "--- gate D (git path): a .tex committed after the pdf (expect FAIL) ---"
+  mkdir -p "$tmp/D_git/labbook/sections"
+  (
+    cd "$tmp/D_git" || exit 1
+    git init -q . && git config user.email t@e && git config user.name t
+    : >"labbook/main.pdf"; : >"labbook/sections/00_dummy.tex"
+    git add -A && git commit -q -m "labbook and pdf together"
+    printf '%% later edit\n' >>"labbook/sections/00_dummy.tex"
+    git add -A && git commit -q -m "edit the source, do not rebuild"
+  ) >/dev/null 2>&1
+  # equalise mtimes so ONLY the git path can decide
+  touch "$tmp/D_git/labbook/main.pdf" "$tmp/D_git/labbook/sections/00_dummy.tex"
+  if gate_freshness "$tmp/D_git/labbook" "$tmp/D_git/labbook/main.pdf"; then
+    echo "[self-test] FAIL: gate D git path did not fire on a source committed after the pdf."; overall=1
+  else
+    echo "[self-test] OK: gate D git path fired on a source committed after the pdf."
+  fi
+
+  echo "--- gate D (git path): pdf committed with its sources (expect PASS) ---"
+  mkdir -p "$tmp/D_gitok/labbook/sections"
+  (
+    cd "$tmp/D_gitok" || exit 1
+    git init -q . && git config user.email t@e && git config user.name t
+    : >"labbook/main.pdf"; : >"labbook/sections/00_dummy.tex"
+    git add -A && git commit -q -m "labbook and pdf together"
+  ) >/dev/null 2>&1
+  touch -d '1 hour ago' "$tmp/D_gitok/labbook/main.pdf"
+  if gate_freshness "$tmp/D_gitok/labbook" "$tmp/D_gitok/labbook/main.pdf"; then
+    echo "[self-test] OK: gate D git path passes a clean checkout whatever the mtimes."
+  else
+    echo "[self-test] FAIL: gate D git path false-positived on a clean checkout."; overall=1
   fi
 
   echo "--- gate D: main.pdf newer than every .tex source (expect PASS) ---"
