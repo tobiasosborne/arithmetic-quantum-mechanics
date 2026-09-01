@@ -31,6 +31,13 @@ Gates (from the brief's table):
       stay abstractly isomorphic
   C9  at p=2 the symmetrized cocycle is unavailable: 2 is not invertible and no
       code path may form omega/2
+  C10 the polarizing cocycle beta is a DATUM, not a convention: over the
+      admissible kappa-bilinear beta' = beta + s the Heisenberg groups
+      H_beta' = kappa x V fall into exactly ONE isomorphism class at odd p and
+      exactly TWO at p = 2, split by the Arf invariant of Q'(v) = beta'(v,v),
+      with the pre-registered counts of EXPECTED_BETA
+  C11 the standard model of D8, W(a,b) = Z(-b)X(a), realises D4 exactly at every
+      q, while the naive Z(b)X(a) fails at odd p and PASSES at p = 2 (E1+E3)
 A0 is an arithmetic self-test layer (ring, field, model), NOT one of the nine.
 """
 
@@ -57,6 +64,19 @@ MODES = {
     "--red-halfweyl":
         "EXTRA, not one of the brief's five: use the symmetrized cocycle omega/2; "
         "C9 must fire at p=2. Added because no mode in the brief reaches C9",
+    "--red-psi-polarization":
+        "EXTRA (lane wh-repair): feed a polarization that IS psi-isotropic but is "
+        "NOT kappa-isotropic; C7's kappa-isotropy branch must fire while its "
+        "psi-isotropy branch PASSES -- which is what shows that branch discriminates "
+        "rather than being the constant-false test it used to be. Not constructible "
+        "for q prime (every order-q subgroup is then a kappa-line)",
+    "--red-beta-rigid":
+        "EXTRA (lane wh-repair): treat D2's beta as the only admissible polarizing "
+        "cocycle instead of enumerating the torsor; C10 must fire at p=2. This is "
+        "the exact defect the round-1 verdict caught (OBJ-1)",
+    "--red-naive-order":
+        "EXTRA (lane wh-repair): build the standard model as the naive Z(b)X(a) "
+        "instead of D8's Z(-b)X(a); C11 must fire, and only at odd p (E1+E3)",
 }
 
 EXIT_OK, EXIT_FIRED, EXIT_NOT_CAUGHT = 0, 1, 2
@@ -358,6 +378,8 @@ class Setting:
         for _ in range(F.p):
             self.zpow.append(R.mul(self.zpow[-1], self.zroot))
         self.claimed_span_dim = q * q + 1 if mode == "--red-dim" else q * q
+        self.beta_rigid = (mode == "--red-beta-rigid")
+        self.model_order = "naive" if mode == "--red-naive-order" else "d8"
 
     # ---- psi -------------------------------------------------------------
     def psi_exp(self, x):
@@ -534,6 +556,30 @@ def nonisotropic_polarization(S):
                              list(images), divmod(bad[0], q), divmod(bad[1], q))
     return None, None, ("no F_p-linear graph over Q = kappa e2 is non-isotropic; "
                         "for q prime this is a theorem, not a gap (EXPECTATIONS D-f)")
+
+
+def psi_isotropic_polarization(S):
+    """P = graph of an F_p-linear g whose omega-form is psi-isotropic (Tr = 0
+    throughout) but NOT kappa-isotropic (omega != 0 somewhere), keeping
+    Q = kappa e2.  Returns (P, Q, description) or (None, None, reason)."""
+    F, q = S.F, S.q
+    Q = [b for b in range(q)]
+    for images, g in fp_linear_maps(F):
+        P = [a * q + g[a] for a in range(q)]
+        if len(set(P)) != q:
+            continue
+        if any(int(F.TR[int(S.OMEGA_TRUE[u, u2])]) != 0 for u in P for u2 in P):
+            continue
+        wit = [(u, u2) for u in P for u2 in P if int(S.OMEGA_TRUE[u, u2]) != 0]
+        if wit:
+            return P, Q, ("P = graph of the F_p-linear map with basis images %s; "
+                          "psi-isotropic (Tr(omega) = 0 throughout) but NOT "
+                          "kappa-isotropic (omega = %d at u=%s u'=%s)"
+                          % (list(images), int(S.OMEGA_TRUE[wit[0][0], wit[0][1]]),
+                             divmod(wit[0][0], q), divmod(wit[0][1], q)))
+    return None, None, ("no F_p-linear graph over Q = kappa e2 is psi-isotropic "
+                        "without being kappa-isotropic; for q prime every order-q "
+                        "subgroup is a kappa-line, so this is a theorem, not a gap")
 
 
 def subspaces_dim(p, m, k):
@@ -807,18 +853,31 @@ def gate_C7(S, M, pol):
                        % (len(iso), q + 1, len(lines)))
     P, Q = pol
     for name, G in (("P", P), ("Q", Q)):
-        if len(set(G)) != q:
+        gset = set(G)
+        if len(gset) != q:
             return False, "polarization %s does not have q elements" % name
         for x in G:
             for y in G:
-                if int(S.VADD[x, y]) not in set(G):
+                if int(S.VADD[x, y]) not in gset:
                     return False, "polarization %s is not a subgroup" % name
-                if FORM[x][y] != 0:
-                    return False, ("polarization %s is not isotropic: form = %d "
-                                   "at (%s,%s)" % (name, FORM[x][y],
-                                                   divmod(x, q), divmod(y, q)))
+        # psi-isotropy is tested FIRST and on its own.  It is what the model
+        # builder actually needs, and it is STRICTLY WEAKER than form = 0
+        # whenever q is not prime (census at q=4: 15 psi-isotropic order-q
+        # subgroups against 5 kappa-isotropic ones).  Nested inside the
+        # "form != 0" branch, as it was, this test read 0 != 0 and could never
+        # fire under any mutation.
+        for x in G:
+            for y in G:
                 if TR[FORM[x][y]] != 0:
-                    return False, "polarization %s is not psi-isotropic" % name
+                    return False, ("polarization %s is not psi-isotropic: "
+                                   "Tr(form) = %d at (%s,%s)"
+                                   % (name, TR[FORM[x][y]], divmod(x, q), divmod(y, q)))
+        for x in G:
+            for y in G:
+                if FORM[x][y] != 0:
+                    return False, ("polarization %s is psi-isotropic but not "
+                                   "kappa-isotropic: form = %d at (%s,%s)"
+                                   % (name, FORM[x][y], divmod(x, q), divmod(y, q)))
     census = subgroup_census(S)
     if census != EXPECTED_CENSUS[q]:
         return False, ("subgroup census %s != pre-registered %s "
@@ -942,6 +1001,124 @@ def gate_C9(S, M):
                   "for all y; the p=2 branch is not exercised" % (p, inverses[0]))
 
 
+EXPECTED_BETA = {                   # pre-registered: (class of D2's beta, other)
+    2: (6, 2), 3: (27, 0), 4: (40, 24), 5: (125, 0), 8: (288, 224), 9: (729, 0),
+}
+
+
+def gate_C10(S, M):
+    """the polarizing cocycle is a DATUM.  Enumerate the admissible kappa-bilinear
+    beta' = beta + s (s symmetric), re-verify beta' - beta'^T = omega for each,
+    and classify H_beta' = kappa x V by its element-order profile, computed by
+    brute-force powering (no closed form, no theory).  Odd p: one class.
+    p = 2: two, and the split is the Arf invariant of Q'(v) = beta'(v,v)."""
+    F, q, p, nV = S.F, S.q, S.F.p, S.nV
+    A, MU, NEG = F.ADD, F.MUL, F.NEG
+    a, b = S.VA[:, None], S.VB[:, None]
+    ap, bp = S.VA[None, :], S.VB[None, :]
+    params = ([(0, 0, 0)] if S.beta_rigid
+              else [(al, ga, de) for al in range(q) for ga in range(q) for de in range(q)])
+    ts = np.repeat(np.arange(q), nV)
+    vs = np.tile(np.arange(nV), q)
+    img = sorted({int(A[MU[x, x], x]) for x in range(q)})       # P(kappa) = x^2 + x
+    e_i, f_i = int(F.one) * q + 0, 0 * q + int(F.one)           # symplectic basis
+    classes = {}
+    for (al, ga, de) in params:
+        B = A[A[A[MU[a, bp], MU[al, MU[a, ap]]],
+                MU[ga, A[MU[a, bp], MU[ap, b]]]],
+              MU[de, MU[b, bp]]]
+        if not (A[B, NEG[B.T]] == S.OMEGA_TRUE).all():
+            return False, "beta' = beta + s(%d,%d,%d) is not admissible" % (al, ga, de)
+        Qd = np.array([int(B[i, i]) for i in range(nV)], dtype=np.int64)
+        curT, curV = ts.copy(), vs.copy()
+        order = np.zeros(len(ts), dtype=np.int64)
+        for k in range(1, q * nV + 1):
+            hit = (order == 0) & (curT == 0) & (curV == 0)
+            order[hit] = k
+            if (order != 0).all():
+                break
+            curT = A[A[curT, ts], B[curV, vs]]
+            curV = S.VADD[curV, vs]
+        if (order == 0).any():
+            return False, "H_beta' has an element of no finite order (not a group)"
+        prof = tuple(sorted((int(k), int((order == k).sum())) for k in set(order.tolist())))
+        if p == 2:
+            val = int(MU[Qd[e_i], Qd[f_i]])
+            key = (prof, min(int(A[val, y]) for y in img))
+        else:
+            key = (prof, 0)
+        classes.setdefault(key, []).append((al, ga, de))
+    d2key = [k for k, v in classes.items() if (0, 0, 0) in v][0]
+    counts = sorted((len(v) for v in classes.values()), reverse=True)
+    want = [c for c in EXPECTED_BETA[q] if c]
+    if sorted(counts, reverse=True) != sorted(want, reverse=True):
+        return False, ("admissible-cocycle classes %s, pre-registered %s"
+                       % (counts, want))
+    if p == 2 and len(classes) != 2:
+        return False, "p=2: %d isomorphism classes of H_beta', expected 2" % len(classes)
+    if p != 2 and len(classes) != 1:
+        return False, "odd p: %d isomorphism classes of H_beta', expected 1" % len(classes)
+    if p == 2:
+        arfs = {k[1] for k in classes}
+        if len(arfs) != 2:
+            return False, "the two classes are not separated by Arf (values %s)" % sorted(arfs)
+        return True, ("%d admissible kappa-bilinear cocycles, all readmitted, fall into 2 "
+                      "isomorphism classes of H_beta' of sizes %s, separated by Arf(Q) in "
+                      "kappa/P(kappa) = %s; D2's class has profile %s"
+                      % (len(params), counts, sorted(arfs), dict(d2key[0])))
+    return True, ("%d admissible kappa-bilinear cocycles, all readmitted, give a SINGLE "
+                  "isomorphism class of H_beta' with profile %s: at odd p the choice of "
+                  "beta is immaterial" % (len(params), dict(d2key[0])))
+
+
+def gate_C11(S, M):
+    """D8's standard model W(a,b) = Z(-b)X(a) realises D4 exactly, at every q;
+    the naive Z(b)X(a) realises it only at p = 2 (erratum E1 + erratum E3)."""
+    F, q, p = S.F, S.q, S.F.p
+    NEG = F.NEG
+
+    def build(sign):
+        ops = []
+        for v in range(S.nV):
+            aa, bb = int(S.VA[v]), int(S.VB[v])
+            perm, exps = [0] * q, [0] * q
+            for y in range(q):
+                yz = int(F.ADD[y, aa])
+                perm[y] = yz
+                t = int(F.MUL[bb, yz])
+                if sign < 0:
+                    t = int(NEG[t])
+                exps[y] = S.psi_exp(t)
+            ops.append((tuple(perm), tuple(exps)))
+        return ops
+
+    out = {}
+    for name, sign in (("d8", -1), ("naive", +1)):
+        ops = build(sign)
+        bad = 0
+        for i in range(S.nV):
+            for j in range(S.nV):
+                lhs = mono_mul(ops[i], ops[j], p)
+                rhs = mono_scale(ops[int(S.VADD[i, j])], S.psi_exp(S.beta(i, j)), p)
+                if not mono_eq(lhs, rhs, S.zpow):
+                    bad += 1
+        out[name] = bad
+    used = S.model_order
+    if out[used]:
+        return False, ("the declared standard model (%s) violates D4 in %d of %d "
+                       "pairs" % (used, out[used], S.nV ** 2))
+    other = "naive" if used == "d8" else "d8"
+    if p == 2 and out[other] != 0:
+        return False, ("at p=2 the two orderings must agree (-1 = 1) but the %s one "
+                       "has %d violations" % (other, out[other]))
+    if p != 2 and out[other] == 0:
+        return False, ("at odd p the %s ordering must violate D4, and it does not: "
+                       "the sign convention is unvalidated" % other)
+    return True, ("standard model %s: 0 violations of D4 in all %d pairs; the %s "
+                  "ordering has %d (E1: the two differ exactly at odd p; E3: they "
+                  "coincide at p=2)" % (used, S.nV ** 2, other, out[other]))
+
+
 # --------------------------------------------------------------------------
 # A0.4  Model self-tests: monomiality, dense cross-check, unitarity
 # --------------------------------------------------------------------------
@@ -1000,7 +1177,8 @@ def usage():
           % (list(QS),))
     print("MODES (green exits 0; every red mode must exit non-zero):")
     for name in ("green", "--red-symmetric", "--red-trivial-char", "--red-cocycle",
-                 "--red-nonisotropic", "--red-dim", "--red-halfweyl"):
+                 "--red-nonisotropic", "--red-dim", "--red-halfweyl",
+                 "--red-psi-polarization", "--red-beta-rigid", "--red-naive-order"):
         print("  %-20s %s" % (name, MODES[name]))
     print("\nexit codes: 0 all gates passed | 1 at least one gate fired "
           "| 2 red mode NOT caught (checker defect) or bad usage")
@@ -1056,8 +1234,10 @@ def main(argv):
         S = Setting(F, R, mode)
 
         constructible = True
-        if mode == "--red-nonisotropic":
-            P, Q, desc = nonisotropic_polarization(S)
+        if mode in ("--red-nonisotropic", "--red-psi-polarization"):
+            builder = (nonisotropic_polarization if mode == "--red-nonisotropic"
+                       else psi_isotropic_polarization)
+            P, Q, desc = builder(S)
             if P is None:
                 constructible = False
                 P, Q = standard_polarization(S)
@@ -1080,7 +1260,8 @@ def main(argv):
         gates = [("C1", gate_C1), ("C2", gate_C2), ("C3", gate_C3),
                  ("C4", gate_C4), ("C5", gate_C5), ("C6", gate_C6),
                  ("C7", lambda s, m: gate_C7(s, m, (P, Q))),
-                 ("C8", gate_C8), ("C9", gate_C9)]
+                 ("C8", gate_C8), ("C9", gate_C9),
+                 ("C10", gate_C10), ("C11", gate_C11)]
         for name, fn in gates:
             if not M.ok and name in ("C3", "C4", "C5", "C6"):
                 detail = "model not built: %s" % M.err
