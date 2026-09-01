@@ -1,0 +1,200 @@
+\section{The five smallest local rings, worked in full}
+\label{sec:smallest-rings}
+
+The three smallest orders of finite commutative local rings are $2$, $3$,
+and $4$, and order $4$ is a three-way tie.  This section exercises every
+definition of Section~\ref{sec:local-rings} on the resulting five rings
+\[
+\mathbb F_2,\qquad \mathbb F_3,\qquad \mathbb F_4,\qquad
+\mathbb Z/4,\qquad \mathbb F_2[\varepsilon]/(\varepsilon^2),
+\]
+computing their Weyl--Heisenberg groups and complete irreducible
+representation catalogues.  Every number in this section is verified by the
+exact-arithmetic census checker
+\texttt{theory/checks/small\_rings\_catalogue\_check.py}, written and run by
+an independent verifier lane that recomputed the orchestrator's catalogue
+blind; the checker runs green and carries eight mutation modes, each of
+which fails at its registered gate.  Statements here are census facts about
+these five rings; no generality beyond them is claimed except where a claim
+identifier is cited.
+
+\subsection{The data, ring by ring}
+
+All five rings are Frobenius: the socle is one-dimensional over the residue
+field, so generating characters exist and form a single free orbit of the
+unit group (the existence criterion and torsor structure of
+Section~\ref{sec:local-rings}).
+
+\begin{center}
+\begin{tabular}{llllll}
+$R$ & $\mathfrak m$ & $\kappa$ & $\operatorname{soc}(R)$ &
+$|R^\times|=|\operatorname{Gen}(R)|$ & reference $\psi$\\
+\hline
+$\mathbb F_2$ & $0$ & $\mathbb F_2$ & $R$ & $1$ & $(-1)^{x}$\\
+$\mathbb F_3$ & $0$ & $\mathbb F_3$ & $R$ & $2$ & $\zeta_3^{\,x}$\\
+$\mathbb F_4$ & $0$ & $\mathbb F_4$ & $R$ & $3$ & $(-1)^{\operatorname{Tr}(x)}$\\
+$\mathbb Z/4$ & $(2)$ & $\mathbb F_2$ & $(2)$ & $2$ & $i^{\,x}$\\
+$\mathbb F_2[\varepsilon]$ & $(\varepsilon)$ & $\mathbb F_2$ &
+$(\varepsilon)$ & $2$ & $(-1)^{a+b}$ for $x=a+b\varepsilon$\\
+\end{tabular}
+\end{center}
+
+\provenance{FCR-GEN}{theory/fcr-local.md \S1}{small\_rings\_catalogue\_check.py (ring-data gates)}{theory/lanes/smallrings/verify/VERIFICATION.md}
+
+\subsection{The Heisenberg groups are unitriangular matrix groups}
+
+\begin{proposition}[Matrix form of the reference-cocycle Heisenberg group]
+\label{prop:ut3}
+For every finite commutative unital ring $R$, the map
+\[
+(t,(a,b))\;\longmapsto\;
+\begin{pmatrix}1&a&t\\0&1&b\\0&0&1\end{pmatrix}
+\]
+is an isomorphism from the Heisenberg group of the reference cocycle
+$\beta_0((a,b),(a',b'))=ab'$ onto the unitriangular group
+$\mathrm{UT}_3(R)$.
+\end{proposition}
+
+\begin{proof}
+Multiplying the two displayed matrices gives upper-right entry
+$t+t'+ab'$, which is exactly the group law of the Heisenberg group of
+$\beta_0$; the map is a bijection by construction.
+\end{proof}
+
+\begin{scope}
+The identification is specific to the reference cocycle: at residue
+characteristic $2$ other admissible cocycles can give non-isomorphic groups
+(the quaternion type over $\mathbb F_2$ below), and those are not
+unitriangular in this way.
+\end{scope}
+
+\provenance{D16}{this section}{small\_rings\_catalogue\_check.py (cocycle gate)}{theory/lanes/smallrings/verify/VERIFICATION.md}
+
+The five groups, exactly:
+
+\begin{center}
+\begin{tabular}{llllll}
+$R$ & $|H|$ & centre & exponent & order profile & identification\\
+\hline
+$\mathbb F_2$ & $8$ & $\mathbb Z/2$ & $4$ & $1{:}1,\ 2{:}5,\ 4{:}2$ &
+dihedral $D_4$\\
+$\mathbb F_3$ & $27$ & $\mathbb Z/3$ & $3$ & $1{:}1,\ 3{:}26$ &
+extraspecial $3^{1+2}_{+}$\\
+$\mathbb F_4$ & $64$ & $(\mathbb Z/2)^2$ & $4$ & $1{:}1,\ 2{:}27,\ 4{:}36$ &
+characteristic-two Heisenberg\\
+$\mathbb Z/4$ & $64$ & $\mathbb Z/4$ & $8$ & $1{:}1,\ 2{:}7,\ 4{:}40,\ 8{:}16$ &
+$\mathrm{UT}_3(\mathbb Z/4)$\\
+$\mathbb F_2[\varepsilon]$ & $64$ & $(\mathbb Z/2)^2$ & $4$ &
+$1{:}1,\ 2{:}31,\ 4{:}32$ & $\mathrm{UT}_3(\mathbb F_2[\varepsilon])$\\
+\end{tabular}
+\end{center}
+
+The three order-$64$ groups are pairwise non-isomorphic: $\mathbb Z/4$ is
+separated by its cyclic centre and its sixteen elements of order $8$, while
+$\mathbb F_4$ and $\mathbb F_2[\varepsilon]$ share centre and exponent but
+differ in involution count.  The order-$8$ elements over $\mathbb Z/4$ come
+from the square law $(t,v)^2=(2t+\beta_0(v,v),\,2v)$: the fourth power is
+$(2\beta_0(v,v),0)$, nonzero exactly when $ab$ is odd.  Over
+$\mathbb F_2[\varepsilon]$ the identity $2v=0$ kills this mechanism: the
+jet direction deepens the ring without deepening the clock.  Mixed versus
+equal characteristic is thus visible in the bare group.
+
+\begin{remark}
+At $\mathbb F_3$ the group is independent of the cocycle choice (the
+odd-characteristic transport of Section~\ref{sec:local-rings}).  At
+$\mathbb F_2$ the eight admissible cocycles split six-to-two into a
+dihedral type and a quaternion type, separated by the Arf invariant of
+$Q_\beta(v)=\beta(v,v)$; the reference cocycle is of dihedral type.  For
+$\mathbb Z/4$ and $\mathbb F_2[\varepsilon]$ the classification of the
+$64$-element cocycle torsor is open and is the target of the running
+residue-characteristic-two increment.
+\end{remark}
+
+\provenance{WH-BETA-d, FCR-BETA-ODD}{theory/wh-kappa-choice.md \S6; theory/fcr-local.md \S4}{beta\_census.py; small\_rings\_catalogue\_check.py}{theory/verdicts/wh-kappa-adjudication.md}
+
+\subsection{The complete representation catalogues}
+
+The commutator subgroup is the full centre, so the abelianization is the
+phase module $R\oplus R$, and irreducible representations are stratified by
+the character of the centre, $\psi_u=\psi(u\,\cdot)$ for $u\in R$.
+
+\begin{proposition}[Catalogue census for the five smallest local rings]
+\label{prop:catalogue-census}
+For each of the five rings above and each $u\in R$, the number of
+irreducible unitary representations of the Heisenberg group with central
+character $\psi_u$ is $|\operatorname{Ann}(u)|^{2}$, and each has dimension
+$|R|/|\operatorname{Ann}(u)|$.  In particular the total count of
+irreducibles equals the number of conjugacy classes,
+\[
+\#\{\text{classes}\}
+=|R|^{2}+\sum_{u\neq 0}|\operatorname{Ann}(u)|^{2}
+\qquad(5,\;11,\;19,\;22,\;22\ \text{respectively}),
+\]
+and the sum of squared dimensions equals $|R|^{3}$.
+\end{proposition}
+
+\begin{scope}
+A census statement about these five rings only, established by exhaustive
+computation; the same stratification pattern for a general finite
+commutative local ring is expected but not claimed here — its general proof
+belongs to the planned non-Frobenius/collapse increment.
+\end{scope}
+
+\provenance{(census)}{small\_rings\_catalogue\_check.py (class-count and catalogue gates)}{same checker, mutation modes red-class-count, red-catalogue}{theory/lanes/smallrings/verify/VERIFICATION.md}
+
+The three strata carry distinct physics:
+
+\begin{itemize}
+\item \emph{Bottom, $u=0$:} the $|R|^{2}$ characters of the abelianization
+— the classical shadow.
+\item \emph{Top, $u\in R^\times$:} one Schr\"odinger representation per
+generating character, of dimension $|R|$, in the fixed model
+$W(a,b)=Z(-b)X(a)$ on $\ell^2(R)$: the qubit Pauli pair for $\mathbb F_2$;
+the qutrit clock--shift for $\mathbb F_3$; two $\mathbb F_4$-labelled qubits
+(three inequivalent copies, one per generating character); the ququart
+clock--shift $Z=\operatorname{diag}(1,i,-1,-i)$, $ZX=iXZ$ for $\mathbb Z/4$
+(two copies); and the jet-paired four-dimensional representation for
+$\mathbb F_2[\varepsilon]$ (two copies).  Irreducibility is pinned by exact
+trace-orthogonality of the $|R|^{2}$ Weyl operators.
+\item \emph{Middle, $u\in\mathfrak m\setminus 0$} (only the two thickened
+rings): four two-dimensional representations each, with central character
+supported on the socle.  These are qubit representations of the collapsed
+quotient $R/\operatorname{Ann}(u)\cong\mathbb F_2$ twisted by characters of
+the radical of the degenerate phase pairing.  The verifier's decomposition
+of the four-dimensional model with this central character found exactly two
+inequivalent two-dimensional blocks, each of multiplicity one — the model
+contains two of the four classes.
+\end{itemize}
+
+A ring is thickened exactly when its catalogue has a middle stratum: the
+representation theory detects the nilpotents.  Two honest cautions from the
+blind verification: $\mathbb F_4$ has \emph{three} top-stratum
+representations, not two; and as bare dimension--multiplicity tables the
+$\mathbb Z/4$ and $\mathbb F_2[\varepsilon]$ catalogues coincide
+($16\times\dim 1$, $4\times\dim 2$, $2\times\dim 4$) — the catalogue
+separates the two rings only through its central-character labelling and
+the underlying groups, not through the numbers alone.
+
+\subsection{Lagrangian labels and models}
+
+\begin{center}
+\begin{tabular}{lllll}
+$R$ & Lagrangians & free & non-free & model labels\\
+\hline
+$\mathbb F_2$ & $3$ & $3$ & $0$ & $6$\\
+$\mathbb F_3$ & $4$ & $4$ & $0$ & $12$\\
+$\mathbb F_4$ & $5$ & $5$ & $0$ & $20$\\
+$\mathbb Z/4$ & $7$ & $6$ & $1$ & $28$\\
+$\mathbb F_2[\varepsilon]$ & $7$ & $6$ & $1$ & $28$\\
+\end{tabular}
+\end{center}
+
+The fields show the $q+1$ lines of the projective line; the thickened rings
+show the six free lines of $\mathbb P^1(R)$ plus the non-free witness
+$\operatorname{soc}(R)\oplus\mathfrak m$ of
+Section~\ref{sec:local-rings}.  All labels with a fixed generating central
+character present one representation, but the non-free label is a genuinely
+different presentation: position and momentum are each sampled at depth
+$\mathfrak m$, a mixed frame with no field analogue.
+
+\provenance{FCR-POL}{theory/fcr-local.md \S7}{small\_rings\_catalogue\_check.py (Lagrangian gate, mutation mode red-drop-nonfree)}{theory/verdicts/fcr-local-adjudication.md}
