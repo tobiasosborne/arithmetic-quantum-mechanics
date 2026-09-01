@@ -51,12 +51,14 @@ hints, never of evidence (L12).
   ASSUME/PROVE for each nontrivial step, terminal QED steps, and every leaf
   justified by a definition number, a claim id, or a named computation. The
   labbook may linearize; the theory shard is ground truth and stays structured.
-- **L7 — Model policy.** Opus for cognition-heavy work (definitions, proofs,
-  critique, adjudication); Sonnet for mechanical work (checkers to spec,
-  search, fetching, typesetting, index upkeep). Prover and critic run as blind
-  lanes and the shared model family is recorded on every verdict. No model
-  drafts labbook prose beyond the structure the WRITING-GUIDE fixes; final
-  register is TJO's.
+- **L7 — Model policy.** *(Amended 2026-09-01, TJO directive.)* Cognition-heavy
+  work (definitions, proofs, critique, adjudication) and verifier work run on
+  `codex exec` with `gpt-5.6-sol` at `xhigh` reasoning, used extensively; the
+  cross-family gain from mixing models is judged marginal. Claude orchestrates
+  and may do mechanical work (search, fetching, typesetting, index upkeep)
+  directly or via Sonnet. Prover and critic still run as blind lanes and the
+  model of every lane is recorded on every verdict. No model drafts labbook
+  prose beyond the structure the WRITING-GUIDE fixes; final register is TJO's.
 - **L8 — Cross-session state → `HANDOFF.md`.** Not scratch TODO lists, not
   chat memory. (`bd` is not installed in this environment; if it is ever
   added, it takes over tracking and `HANDOFF.md` keeps only insights.)

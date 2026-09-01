@@ -394,6 +394,84 @@ idiosyncrasy, and `Q(v) = beta(v,v)` is the object to watch at `p = 2`: it is
 identically zero in odd characteristic under a symmetrized convention, and it
 is not zero here.
 
+---
+
+# FCR-1 addendum — sources for the finite-local-ring increment
+
+Registered 2026-09-01 by the orchestrator for `briefs/fcr-local-target.md`.
+Retrieval route noted per source; bodies on disk under `refs/`, git-ignored;
+this ledger is the committed record.
+
+## Summary table
+
+| id | title (verified from fetched file) | authors | file | retrieved | SHA256 |
+|---|---|---|---|---|---|
+| wood-ajm-1999 | Duality for modules over finite rings and applications to coding theory (Amer. J. Math. 121.3 (1999) 555–575, DOI 10.1353/ajm.1999.0024) | Jay A. Wood | `refs/wood-ajm-1999/wood_duality_ajm121_1999.pdf` (22 pp, full text; plus `pdftotext` extraction `.txt` whose line numbers are cited below) | 2026-09-01, `https://muse.jhu.edu/pub/1/article/849/pdf`, served in full without authentication | `11e84439cb3dc251c447e6cd792ad12ce332e3d9c7eb7b348a876114859d8963` |
+| stacks-algebra | Stacks Project, chapter "Commutative Algebra" (`algebra.tex`, master snapshot) | The Stacks Project authors | `refs/stacks-algebra/algebra.tex` | 2026-09-01, `https://raw.githubusercontent.com/stacks/stacks-project/master/algebra.tex` | `fa8bb92e58a4f78a2bd01b3b6a4a87de0a0d279f5dd90641b574dd5fbfffa4f3` |
+
+## wood-ajm-1999 — locators (into the `.txt` extraction; page numbers are the journal's)
+
+- `.txt:492-…` — **Theorem 3.10** (p. 562): for a finite ring `R`, t.f.a.e.:
+  (i) `R` is Frobenius; (ii) `R̂ ≅ R` as left modules; (iii) as right modules.
+- `.txt:556-562` — §4 opening (p. 563): definition of (left/right) *generating
+  character* as `ψ` with `r ↦ ψ(r·)` an isomorphism `R → R̂`; "From Theorem
+  3.10, a finite ring is Frobenius if and only if it admits a right or a left
+  generating character."
+- `.txt:570-…` — **Lemma 4.1** (p. 563, attributed in-source to
+  Claasen–Goldbach Cor. 3.6): `ψ` is a generating character iff `ker ψ`
+  contains no nonzero (right) ideal.
+- `.txt:595-…` — **Theorem 4.3** (p. 563): left generating iff right
+  generating (moot in our commutative case, recorded for scope hygiene).
+- `.txt:608-…` — **Example 4.4** (pp. 563–564): (i) finite fields via
+  `ψ(x) = ζ^{tr(x)}`; (ii) `Z/(m)` via `ψ(x) = e^{2πix/m}` — the explicit
+  generating character for the `Z/9`, `Z/27` seeds; (iii) finite direct sums
+  of Frobenius rings are Frobenius with product character (reserved for
+  FCR-4, registered now).
+- Role: **primary source** for `FCR-GEN`'s Frobenius ⟺ generating-character
+  equivalence and for the explicit seed characters. The `soc(R)`-simplicity
+  form of "Frobenius" for commutative local `R` is to be *derived* in the
+  shard (or checked by census), not read into Wood, whose definition of
+  Frobenius is via `R/rad(R) ≅ soc(R)`.
+
+## stacks-algebra — locators (line numbers in the fetched `algebra.tex`)
+
+- `algebra.tex:12699` `\label{section-artinian}` — §Artinian rings.
+- `algebra.tex:12724` `\label{lemma-artinian-finite-nr-max}` — finitely many
+  maximal ideals.
+- `algebra.tex:12739` `\label{lemma-artinian-radical-nilpotent}` — the
+  Jacobson radical of an Artinian ring is nilpotent (for local finite `R`:
+  `m` nilpotent).
+- `algebra.tex:12758` `\label{lemma-product-local}` — a ring with finitely
+  many maximal ideals and locally nilpotent Jacobson radical is the product
+  of its localizations at maximal ideals (the canonical local decomposition;
+  load-bearing only in FCR-4, registered now).
+- `algebra.tex:12787` `\label{lemma-artinian-finite-length}` — Artinian ⟺
+  finite length; Artinian ⟹ Noetherian.
+- Role: structure facts for convention group 1 of the FCR-1 brief. A finite
+  ring is Artinian (finite descending chains terminate — this one-line
+  observation is the shard's, not a citation).
+
+## Carried-over sources already registered above that FCR-1 may cite
+
+- `1710.09884` (Gluesing-Luerssen–Pllaha) — `StabCodesFrob5.tex:232-243`
+  Theorem `T-Frob`: for finite **commutative** Frobenius `R`, any two
+  generating characters differ by a unit (`χ' = u·χ`, `u ∈ R^×`) — the
+  torsor statement of `FCR-GEN`; `StabCodesFrob5.tex:254-261` Remark
+  `R-FrobProp`(a): generating iff no nonzero ideal in the kernel.
+- `2202.00248` (Sidana–Kashyap) — Galois-ring trace and generating
+  characters over local Frobenius rings (Prop `prop:charGR`, attributed
+  in-source to `[shuqin]`, flagged as second-hand there).
+- `2502.00387` (Bekka) — Stone–von Neumann for general rings: condition
+  (Isom) (`∇_λ : R → R̂` an isomorphism) **is precisely the generating-
+  character condition**; `CCR-GeneralRings-v5.tex:319-335` Theo2 then gives
+  uniqueness. The prover should check whether Bekka's (Sym)+(Isom)
+  hypotheses hold verbatim for a finite commutative Frobenius `R` with
+  `ψ ∈ Gen(R)` — if yes, `FCR-SVN` has a direct in-source proof path.
+- `0912.0574` (Prasad) — Stone–von Neumann–Mackey for LCA groups; applies
+  to `(R,+)` finite abelian with the duality `R ≅ R̂` supplied by `ψ`.
+
+---
+
 **N3 — role-narrowing on 1412.2490.** Its verified title is "Simple twisted
 group algebras of dimension `p^4` and their semi-centers", which is narrower
 than the general role the coverage table assigns it. The general facts it is
