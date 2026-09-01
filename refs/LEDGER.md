@@ -472,6 +472,38 @@ this ledger is the committed record.
 
 ---
 
+# FCR-2 addendum — sources for the residue-characteristic-2 increment
+
+Registered 2026-09-01 by the orchestrator for `briefs/fcr2-target.md`.
+Fetched from `https://arxiv.org/e-print/<id>`; SHA256 of the raw bundle,
+stored as `refs/arxiv-<id>/raw`.
+
+| id | title (verified from fetched TeX) | authors | main TeX | retrieved | SHA256 (raw) |
+|---|---|---|---|---|---|
+| 1108.0202 | Weil Representations associated to finite quadratic modules | Fredrik Strömberg | `weil_representations_for_fqm_arxiv.tex` | 2026-09-01 | `6b8a4fdcd016d6b75be05bf0632b15a4eb56e572a8fc95bf84338fc9f4f2669d` |
+| 1705.04572 | Computing invariants of the Weil representation | Stephan Ehlen, Nils-Peter Skoruppa | `invariants.tex` (+`preamble.tex`) | 2026-09-01 | `e6db276f24998182abb4509d58b952fb2ec60b7ca58db6d73ec893dd5eada16a` |
+
+- `1108.0202`, label `eq:milgrams_formula` — **Milgram's formula stated
+  verbatim in-source**: `|D|^{-1/2} Σ_{μ∈D} e(Q(μ)) = e_8(sign(𝒬))` for a
+  finite quadratic module `𝒬 = (D,Q)` — the `μ_8`-valued Gauss sum with
+  mod-8 signature that `FCR2-EPS` conjectures is the thickened-ring
+  generalization of the `WH-BETA-EPS` Arf sign. The paper also carries the
+  `oddity`/`p-excess` decomposition machinery and Jordan-component
+  formulas for such sums.
+- **Scope caution for the prover:** a finite quadratic module in these
+  sources is `Q : D → Q/Z` on a finite abelian group with
+  `Q(x+y)−Q(x)−Q(y)` the bilinear pairing; our `Q_β : V(R) → R` composed
+  with `ψ ∈ Gen(R)` gives `ψ∘Q_β : V → C^×`, and the corrected polarization
+  identity has the extra `2β − ω` structure (brief convention 1). The
+  bridge `(V, ψ∘Q_β)` ↦ finite quadratic module must be stated and checked,
+  not assumed; whether `ψ∘ω`-compatibility puts it in the sources'
+  hypotheses is part of `FCR2-EPS`.
+- Wall (Topology 1963) and Brown (Ann. Math. 95, 1972) remain unfetched
+  (paywalled); recorded as a GAP: `FCR2-EPS` cites Strömberg/Ehlen–Skoruppa
+  or stays CONJECTURE.
+
+---
+
 **N3 — role-narrowing on 1412.2490.** Its verified title is "Simple twisted
 group algebras of dimension `p^4` and their semi-centers", which is narrower
 than the general role the coverage table assigns it. The general facts it is
