@@ -1,0 +1,481 @@
+\section{Weyl--Heisenberg quantization over finite local rings}
+\label{sec:local-rings}
+
+This section records the first extension from finite fields to finite
+commutative local rings.  In the preferred three-stage pipeline (P1), the
+ring first produces the symplectic module $R^2$; a character and a polarizing
+cocycle then produce its Weyl algebra and Heisenberg group; finally the
+irreducible unitary representations are classified.  The decisive condition
+is that the chosen character generate the character module.  At odd residue
+characteristic this gives a single irreducible representation of dimension
+$|R|$.
+
+There is a genuine fork at the first stage.  Route A, used here, takes
+$R\oplus R$ with an $R$-valued alternating form and then composes with a
+chosen additive character.  Route B would take
+$R\oplus\widehat R$ with its canonical circle-valued Pontryagin pairing; it
+needs no character to become nondegenerate.  Route B and the comparison of
+the physics retained by the two routes are deferred; no result below ranks
+the routes.
+
+\subsection{The local datum and its phase space}
+
+\begin{definition}[Finite commutative local ring datum]
+\label{def:finite-local-datum}
+A finite local ring datum is $(R,\mathfrak m,\kappa,q)$ with $R$ a finite
+commutative unital local ring with $1\neq0$, $\mathfrak m$ its unique maximal
+ideal, $\kappa:=R/\mathfrak m$, and $q:=|\kappa|$; write $R^\times$ for its
+unit group.  For an ideal $I\subseteq R$, put
+\[
+ \operatorname{Ann}(I):=\{r\in R:rI=0\},
+ \qquad
+ \operatorname{soc}(R):=\operatorname{Ann}(\mathfrak m).
+\]
+These are stipulations.  Nilpotence of $\mathfrak m$, nonvanishing of the
+socle, and the other finite-local structure properties are established
+below, not assumed here.  The definition is uniform in the residue
+characteristic.
+\end{definition}
+
+\begin{scope}
+Only finite commutative unital local rings with $1\neq0$ are defined here.
+No Frobenius, characteristic, principal-ideal, or chain-ring hypothesis is
+part of the datum.
+\end{scope}
+
+\provenance{D12}{---}{---}{theory/verdicts/fcr-local-r1.md}
+
+\begin{definition}[Characters and generating characters]
+\label{def:local-generating-character}
+Let
+\[
+ \widehat R:=\operatorname{Hom}((R,+),\mathbb C^\times),
+ \qquad X(R):=\widehat R\setminus\{1\}.
+\]
+For $\psi\in X(R)$ and $u\in R$, put $\psi_u(x):=\psi(ux)$.  Define
+\[
+ I_\psi:=\sum\{I\subseteq R:I\text{ is an ideal and }I\subseteq\ker\psi\},
+ \qquad
+ \operatorname{Gen}(R):=\{\psi\in X(R):I_\psi=0\}.
+\]
+Thus $I_\psi$ is the largest ideal contained in $\ker\psi$, and a member of
+$\operatorname{Gen}(R)$ is a \emph{generating character}.  This definition
+is uniform in the residue characteristic; existence is not stipulated.
+\end{definition}
+
+\begin{scope}
+The definition includes every nontrivial additive character, not only a
+trace-normalized family.  It makes no assertion that generating characters
+exist for an arbitrary finite local ring.
+\end{scope}
+
+\provenance{D13}{---}{---}{theory/verdicts/fcr-local-r1.md}
+
+\begin{definition}[Symplectic module and phase perpendicularity]
+\label{def:local-symplectic-module}
+Put $V(R):=R\oplus R$ and
+\[
+ \omega\big((a,b),(a',b')\big):=ab'-a'b.
+\]
+Given $\psi\in X(R)$, write
+\[
+ B_\psi(v,w):=\psi(\omega(v,w)),
+ \qquad
+ L^{\perp_\psi}:=\{v\in V(R):B_\psi(v,l)=1
+                         \text{ for every }l\in L\}
+\]
+for an $R$-submodule $L\subseteq V(R)$.  A \emph{Lagrangian} is an
+$R$-submodule satisfying $L=L^{\perp_\psi}$, and
+$\operatorname{rad}(B_\psi):=V(R)^{\perp_\psi}$.  Bilinearity, strong
+alternation, $R$-nondegeneracy of $\omega$, and nondegeneracy of $B_\psi$
+are claims, not stipulations; the character-valued pairing $B_\psi$, not
+$R$-nondegeneracy alone, is load-bearing.  This definition is uniform in
+the residue characteristic.
+\end{definition}
+
+\begin{scope}
+Perpendicularity is defined only for $R$-submodules of $R^2$ and is measured
+through the chosen character.  No freeness condition is imposed on a
+Lagrangian.
+\end{scope}
+
+\provenance{D14}{---}{---}{theory/verdicts/fcr-local-r1.md}
+
+\begin{definition}[Admissible polarizing cocycles over a local ring]
+\label{def:local-polarizing-cocycle}
+For the symplectic module above, set
+\[
+\begin{split}
+ \operatorname{Adm}(\omega)
+   &:=\{\beta:V(R)\times V(R)\to R:
+          \beta\text{ is $R$-bilinear and }\beta-\beta^T=\omega\},\\
+ \operatorname{Sym}_R(V(R))
+   &:=\{s:V(R)\times V(R)\to R:
+          s\text{ is $R$-bilinear and }s=s^T\}.
+\end{split}
+\]
+A \emph{polarizing cocycle} is a named choice
+$\beta\in\operatorname{Adm}(\omega)$.  The reference member is
+\[
+ \beta_0\big((a,b),(a',b')\big):=ab'.
+\]
+This is the nonsymmetrized convention: no inverse of $2$ is assumed.  The
+definition is uniform in the residue characteristic.
+\end{definition}
+
+\begin{scope}
+The reference member is a stipulated coordinate formula, not a claim that
+the torsor has a canonical point.  The symmetrized member $\omega/2$ is used
+only under the explicit hypothesis $2\in R^\times$.
+\end{scope}
+
+\provenance{D15}{---}{---}{theory/verdicts/fcr-local-r1.md}
+
+\begin{definition}[Local Weyl algebra, Heisenberg group, and models]
+\label{def:local-weyl-system}
+For the data above define
+\[
+ A_{\psi,\beta}(V(R)):=\bigoplus_{v\in V(R)}\mathbb C\,W_\beta(v),
+ \qquad
+ W_\beta(v)W_\beta(v')
+   :=\psi(\beta(v,v'))W_\beta(v+v'),
+\]
+and
+\[
+ H_\beta(R):=R\times V(R),\qquad
+ (t,v)(t',v'):=(t+t'+\beta(v,v'),v+v').
+\]
+For an $R$-submodule $L$, put
+$A_L:=\operatorname{span}_{\mathbb C}\{W_\beta(l):l\in L\}$.  Given a unital
+algebra character $\chi:A_L\to\mathbb C$, put
+\[
+ M_{L,\chi}:=A_{\psi,\beta}(V(R))
+             \otimes_{A_L}\mathbb C_\chi.
+\]
+The fixed reference model is
+$\ell^2(R)=\bigoplus_{y\in R}\mathbb C e_y$, with $\{e_y\}$ orthonormal,
+\[
+ X(a)e_y:=e_{y+a},\qquad Z(b)e_y:=\psi(by),
+\]
+and, exactly,
+\[
+ W_{\beta_0}(a,b):=Z(-b)X(a),\qquad
+ W_{\beta_0}(a,b)e_y=\psi(-b(y+a))e_{y+a}.
+\]
+The sign and ordering are stipulations.  Every displayed formula is uniform
+in the residue characteristic and uses no half.
+\end{definition}
+
+\begin{scope}
+The algebra and group depend on the named cocycle, while the algebra and
+representation also depend on the named character.  A submodule and its
+character label a realization; neither is added to the underlying algebra
+datum.
+\end{scope}
+
+\provenance{D16}{---}{theory/checks/fcr\_local\_check.py (G4)}{theory/verdicts/fcr-local-r1.md}
+
+\subsection{Generating characters and the collapse boundary}
+
+\statusProved
+\begin{theorem}[Local Frobenius criterion and the unit torsor]
+\label{thm:local-frobenius-criterion}
+Let $R$ be a finite commutative local ring with maximal ideal
+$\mathfrak m$ and residue field $\kappa$.  Then
+\[
+ \operatorname{Gen}(R)\neq\varnothing
+ \quad\Longleftrightarrow\quad
+ \dim_\kappa\operatorname{soc}(R)=1.
+\]
+If $\psi\in\operatorname{Gen}(R)$, then $\psi_u$ is generating exactly when
+$u\in R^\times$, and $R^\times$ acts freely and transitively on
+$\operatorname{Gen}(R)$.
+\end{theorem}
+
+\begin{scope}
+No odd-characteristic hypothesis is used.  For rings whose socle has
+$\kappa$-dimension greater than one, the theorem asserts nonexistence of a
+generating character; it does not propose a replacement quantization.
+\end{scope}
+
+\provenance{D12, D13, FCR-GEN}{theory/fcr-local.md \S1}{theory/checks/fcr\_local\_check.py (G1,G8)}{theory/verdicts/fcr-local-r1.md}
+
+\begin{proof}
+Finiteness makes $R$ Artinian, so $\mathfrak m$ is nilpotent.  Wood's module
+socle $S({}_RR)$ equals $\operatorname{Ann}(\mathfrak m)$: every simple ideal
+$J$ has $\mathfrak mJ=0$, since $\mathfrak mJ=J$ would contradict
+nilpotence; conversely, if $0\neq x\in\operatorname{Ann}(\mathfrak m)$, then
+$Rx=\kappa x$ is one-dimensional over $\kappa$ and is simple.  Wood's local
+Frobenius condition is therefore
+$\kappa\cong\operatorname{soc}(R)$.
+
+Wood's character-module theorem and kernel-ideal criterion identify this
+condition with the existence of $\psi$ whose kernel contains no nonzero
+ideal, namely $I_\psi=0$.  For such a $\psi$, multiplication by a unit
+preserves $I_\psi=0$, whereas a nonunit lies in $\mathfrak m$ and kills the
+nonzero socle.  The character-module isomorphism then shows that every
+generating character is uniquely $\psi_u$ for a unit $u$.
+\end{proof}
+
+\statusProved
+\begin{theorem}[Radical of the character-valued symplectic pairing]
+\label{thm:local-phase-radical}
+Let $R$ be a finite commutative local ring and let $\psi\in X(R)$.  The form
+$\omega$ on $R^2$ is $R$-bilinear, strongly alternating, and
+$R$-nondegenerate, while
+\[
+ \operatorname{rad}(B_\psi)=I_\psi\oplus I_\psi.
+\]
+Consequently $B_\psi$ is nondegenerate if and only if
+$\psi\in\operatorname{Gen}(R)$.
+
+For
+$R=\mathbb F_3[x,y]/(x,y)^2$, write
+$\psi_{a,b,c}(r+sx+ty)=\zeta_3^{ar+bs+ct}$.  The two nontrivial characters
+with $(b,c)=(0,0)$ have $I_\psi=(x,y)$, and each of the remaining $24$ has
+$I_\psi=\mathbb F_3(cx-by)$.  Thus all $26$ nontrivial characters collapse
+the pairing through a proper quotient.
+\end{theorem}
+
+\begin{scope}
+The radical formula is uniform in the residue characteristic.  The
+square-zero-ring census records the obstruction at one designated seed only;
+it does not construct a quantum system for a degenerate pairing and does not
+state a general quotient-collapse theorem.
+\end{scope}
+
+\provenance{D12, D13, D14, FCR-RAD}{theory/fcr-local.md \S2}{theory/checks/fcr\_local\_check.py (G2,G3); exhaustive 26-character seed census in G1}{theory/verdicts/fcr-local-r1.md}
+
+\begin{proof}
+Testing $\omega((a,b),-)$ against $(0,r)$ and $(r,0)$ shows that a radical
+vector must have $aR,bR\subseteq\ker\psi$, hence $a,b\in I_\psi$.  The reverse
+inclusion follows because $I_\psi$ is an ideal.  Bilinearity and strong
+alternation are immediate from the displayed determinant formula, and tests
+against $(0,1)$ and $(1,0)$ prove $R$-nondegeneracy.  In the square-zero
+example every subspace of $(x,y)$ is an ideal; restricting the character to
+that two-dimensional space gives exactly the displayed kernel line, or all
+of $(x,y)$ when the restriction vanishes.
+\end{proof}
+
+\subsection{Odd residue characteristic: algebra and representation}
+
+\statusProved
+\begin{theorem}[Weyl commutation over a finite local ring]
+\label{thm:local-weyl-commutation}
+Let $R$ be a finite commutative local ring, let $\psi\in X(R)$, and let
+$\beta\in\operatorname{Adm}(\omega)$.  For every $v,v'\in V(R)$,
+\[
+ W_\beta(v)W_\beta(v')
+   =\psi(\omega(v,v'))W_\beta(v')W_\beta(v),
+\]
+and
+\[
+ W_\beta(u)W_\beta(v)W_\beta(u)^{-1}
+   =\psi(\omega(u,v))W_\beta(v).
+\]
+\end{theorem}
+
+\begin{scope}
+The identities are uniform in the residue characteristic and do not require
+$\psi$ to be generating.  They do not by themselves imply simplicity of the
+Weyl algebra.
+\end{scope}
+
+\provenance{D14, D15, D16, FCR-COMM}{theory/fcr-local.md \S3}{theory/checks/fcr\_local\_check.py (G2,G4)}{theory/verdicts/fcr-local-r1.md}
+
+\begin{proof}
+The two products have the same basis term $W_\beta(v+v')$.  Their scalar
+ratio is
+$\psi(\beta(v,v')-\beta(v',v))=\psi(\omega(v,v'))$; conjugation gives the
+second identity.
+\end{proof}
+
+\statusProvedConditional
+\begin{theorem}[Odd-characteristic transport of polarizing cocycles]
+\label{thm:local-beta-odd}
+Let $R$ be a finite commutative local ring with $2\in R^\times$.  Then
+$\operatorname{Adm}(\omega)$ is a torsor under
+$\operatorname{Sym}_R(V(R))$ and has $|R|^3$ elements.  Its unique
+antisymmetric member is $\omega/2$.  For every
+$\beta\in\operatorname{Adm}(\omega)$ and every symmetric $s$, the map
+\[
+ \varphi_s(t,v):=\left(t+\frac{s(v,v)}2,v\right)
+\]
+is an isomorphism $H_\beta(R)\to H_{\beta+s}(R)$ fixing the centre pointwise.
+\end{theorem}
+
+\begin{scope}
+The condition $2\in R^\times$ is essential to the displayed representative
+and transport.  No symmetry group of the ring-side phase space is analyzed
+here.
+\end{scope}
+
+\provenance{D14, D15, D16, FCR-BETA-ODD}{theory/fcr-local.md \S4}{theory/checks/fcr\_local\_check.py (G9)}{theory/verdicts/fcr-local-r1.md}
+
+\begin{proof}
+The difference of two admissible forms is symmetric, and adding a symmetric
+form preserves admissibility.  A symmetric form on $R^2$ is freely determined
+by three entries.  Antisymmetry and admissibility give $2\beta=\omega$, hence
+the unique member $\omega/2$.  Finally, for
+$f(v)=s(v,v)/2$, symmetry gives
+$f(v+w)=f(v)+f(w)+s(v,w)$, which is exactly the coboundary identity needed
+for $\varphi_s$ to respect the two group laws.
+\end{proof}
+
+\statusProvedConditional
+\begin{theorem}[Central simplicity and finite Stone--von Neumann theorem]
+\label{thm:local-stone-von-neumann}
+Let $R$ be a finite commutative local ring, let
+$\psi\in\operatorname{Gen}(R)$, let
+$\beta\in\operatorname{Adm}(\omega)$, and suppose $2\in R^\times$.  Then
+$A_{\psi,\beta}(V(R))$ is simple, has centre $\mathbb C\,1$, has complex
+dimension $|R|^2$, and is noncanonically isomorphic to
+$M_{|R|}(\mathbb C)$.  The group $H_\beta(R)$ has exactly one irreducible
+unitary representation with central character $\psi$, up to unitary
+equivalence; its dimension is $|R|$, unitary intertwiners are unique up to
+$U(1)$, and every complex algebra automorphism of the Weyl algebra is inner.
+\end{theorem}
+
+\begin{scope}
+The condition $2\in R^\times$ is used to transport an arbitrary cocycle to
+the fixed matrix model.  The matrix isomorphism depends on choices of
+realization and basis and is not part of the algebra datum.  No
+frame-preserving automorphism group is computed.
+\end{scope}
+
+\provenance{D12--D16, FCR-ALG, FCR-SVN}{theory/fcr-local.md \S5--\S6}{theory/checks/fcr\_local\_check.py (G4,G5,G6), including the G6 arena mutation}{theory/verdicts/fcr-local-r1.md}
+
+\begin{proof}
+Averaging conjugation by all Weyl basis elements kills every nonzero basis
+coefficient because the pairing is nondegenerate.  It follows that the
+centre is scalar and that every nonzero two-sided ideal contains $1$.
+The reference operators $Z(-b)X(a)$ give a nonzero representation on
+$\ell^2(R)$; simplicity makes it injective and the equal dimensions make it
+onto $\operatorname{End}_{\mathbb C}(\ell^2(R))$.  The preceding transport
+handles arbitrary $\beta$.
+
+Modules with central character $\psi$ are precisely modules over this full
+matrix algebra.  Its column module is the unique simple module and has
+dimension $|R|$.  Schur's argument makes intertwiners scalar; polar
+rescaling gives the $U(1)$ statement.  Twisting the column module by an
+algebra automorphism shows that the automorphism is conjugation by an
+invertible operator.
+\end{proof}
+
+\statusProvedConditional
+\begin{theorem}[Lagrangians and Schrödinger models over a local ring]
+\label{thm:local-lagrangians}
+Let $R$ be a finite commutative local ring, let
+$\psi\in\operatorname{Gen}(R)$, let
+$\beta\in\operatorname{Adm}(\omega)$, and suppose $2\in R^\times$.  Every
+Lagrangian $L\subseteq V(R)$ has $|L|=|R|$.  The coordinate axes are
+Lagrangian, and for every ideal $I\subseteq R$ so is
+\[
+ I\oplus\operatorname{Ann}(I).
+\]
+If $R$ is not a field, then
+\[
+ L_*:=\operatorname{soc}(R)\oplus\mathfrak m
+\]
+is a nonfree Lagrangian.  Every algebra character $\chi:A_L\to\mathbb C$
+produces a simple induced module $M_{L,\chi}$ of dimension $|R|$, and all
+these modules are isomorphic.
+\end{theorem}
+
+\begin{scope}
+This is a catalogue containing a general ideal family, not a classification
+of all Lagrangians over every local ring.  In particular, it does not claim
+that every Lagrangian is free or belongs to the displayed ideal family.
+\end{scope}
+
+\provenance{D12--D16, FCR-POL}{theory/fcr-local.md \S7}{theory/checks/fcr\_local\_check.py (G7), full submodule census at the two order-nine seeds}{theory/verdicts/fcr-local-r1.md}
+
+\begin{proof}
+Character orthogonality in the two orders gives
+$|L|\,|L^{\perp_\psi}|=|R|^2$, so a self-perpendicular module has order
+$|R|$.  Annihilator duality gives
+$\operatorname{Ann}(\operatorname{Ann}(I))=I$, hence the ideal family.
+For a nonfield local ring,
+$\operatorname{Ann}(\mathfrak m)=\operatorname{soc}(R)$ and
+$\operatorname{Ann}(\operatorname{soc}(R))=\mathfrak m$, so $L_*$ belongs
+to that family.  Its quotient by $\mathfrak mL_*$ needs at least two
+generators, whereas a free module of order $|R|$ would have rank one.
+
+The restriction of $\beta$ to a Lagrangian is symmetric, and
+$\chi_0(W(l))=\psi(-\beta(l,l)/2)$ is an algebra character.  The Weyl basis
+makes the algebra right-free over $A_L$ on representatives for $V(R)/L$, so
+the induced module has dimension $|R|$; uniqueness of the simple module
+then proves that all labels give isomorphic realizations.
+\end{proof}
+
+\statusProvedConditional
+\begin{proposition}[The two presentation data and bare-algebra ambiguity]
+\label{prop:local-choice}
+Let $R$ be a finite commutative local ring with $2\in R^\times$ and
+$\operatorname{Gen}(R)\neq\varnothing$.  Beyond $R$, the presentation uses
+exactly a generating character
+$\psi\in\operatorname{Gen}(R)$ and a cocycle
+$\beta\in\operatorname{Adm}(\omega)$.  Distinct generating characters give
+inequivalent representations of the same group $H_\beta(R)$ because their
+central characters differ.  All resulting bare algebras are isomorphic,
+but the torsor of bare-algebra isomorphisms has no point fixed by every
+target automorphism.
+\end{proposition}
+
+\begin{scope}
+The last assertion concerns all bare-algebra isomorphisms.  It neither
+computes nor identifies a frame-preserving isomorphism torsor and makes no
+claim about a ring-side Weil or metaplectic symmetry.
+\end{scope}
+
+\provenance{D12--D16, FCR-CHOICE}{theory/fcr-local.md \S8}{theory/checks/fcr\_local\_check.py (G8,G9)}{theory/verdicts/fcr-local-r1.md}
+
+\subsection{Clause-level return to an odd finite field}
+
+\statusProvedConditional
+\begin{theorem}[Clause-level compatibility with the odd-field system]
+\label{thm:local-field-regression}
+Let $R=\kappa$ be a finite field of odd characteristic and put
+$q:=|\kappa|$.  Specialization recovers on the nose:
+\begin{enumerate}[label=(\roman*)]
+\item the nontrivial-character set and its $\kappa^\times$-torsor of order
+      $q-1$;
+\item bilinearity, strong alternation, and nondegeneracy of $\omega$, together
+      with the zero radical of $\psi\circ\omega$;
+\item the Weyl commutator and conjugation identities;
+\item simplicity, scalar centre, dimension $q^2$, and a noncanonical
+      $M_q(\mathbb C)$ realization;
+\item the unique irreducible unitary representation of dimension $q$, its
+      $U(1)$-unique intertwiners, and innerness of algebra automorphisms;
+\item exactly $q+1$ Lagrangian lines, $q$ algebra characters per line,
+      $q(q+1)$ model labels, and one module-isomorphism class;
+\item the torsor of admissible cocycles of order $q^3$, its unique
+      antisymmetric member $\omega/2$, and the centre-fixing transports;
+\item the two named presentation data, the distinct-central-character
+      obstruction, and isomorphism of the resulting bare algebras.
+\end{enumerate}
+The specialized definitions give the same $V(\kappa)$, form, admissibility
+equation, Weyl and group laws, and fixed operator
+$W_{\beta_0}=Z(-b)X(a)$ with the same sign.
+\end{theorem}
+
+\begin{scope}
+This is deliberately a clause-level comparison.  It does not compare the
+field theory's frame-preserving isomorphism torsor of order
+$q^2|SL_2(\kappa)|$; the ring-side frame-preserving analysis is future work.
+It also does not compare the field theorem's cocycle or automorphism-group
+clauses, the $SL_2(\kappa)$-invariance of $\omega/2$, or the particular
+polarization-dependent matrix construction used in the field proof.
+\end{scope}
+
+\provenance{D12--D16, FCR-GEN, FCR-RAD, FCR-COMM, FCR-BETA-ODD, FCR-ALG, FCR-SVN, FCR-POL, FCR-CHOICE, FCR-REG}{theory/fcr-local.md \S9}{theory/checks/fcr\_local\_check.py (G10), exact counts, form and radical tables, fixed matrices, rank, commutant, lines, half-census, and group profile}{theory/verdicts/fcr-local-r1.md}
+
+\begin{proof}
+For a field, $\mathfrak m=0$, $\operatorname{soc}(R)=R$, and the only ideals
+are $0$ and $R$, so every nontrivial character is generating.  Substitution
+in the preceding results proves every listed clause.  A self-perpendicular
+subspace of the nondegenerate two-dimensional space is a line; nonzero
+vectors modulo $\kappa^\times$ give $(q^2-1)/(q-1)=q+1$ lines, and each line
+has $q$ additive characters.  No excluded symmetry or frame clause follows
+from these calculations.
+\end{proof}

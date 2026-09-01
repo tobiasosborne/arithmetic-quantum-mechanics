@@ -3,8 +3,9 @@
 Lane model: gpt-5.6-sol, reasoning xhigh, codex exec.
 
 These expectations come only from `briefs/fcr-local-target.md`, its permitted
-trunk conventions, and first-principles calculations recorded below.  `q`
-means `|R|`.  “N/A” means the brief does not register that gate at that seed;
+trunk conventions, and first-principles calculations recorded below.
+Throughout, `n:=|R|`; `q` retains its trunk meaning `|κ|`, so `n=q` only
+when `R` is a field.  “N/A” means the brief does not register that gate at that seed;
 the checker prints the scope exclusion rather than silently omitting a line.
 
 ## Exact representations and reference characters
@@ -22,9 +23,9 @@ equal-characteristic ring are little-endian coefficient tuples.
 | `F3[t]/t3` | `C3^3` | `Z[zeta_3]` | coefficient of `t^2` |
 | `F3[x,y]/(x,y)^2` | `C3^3` | `Z[zeta_3]` | coefficient of `y` (not generating) |
 
-For `n=3,9,27`, the coefficient-vector modulus is
-`Phi_n=X^(2n/3)+X^(n/3)+1`.  The checker verifies
-`Phi_n(X)(X^(n/3)-1)=X^n-1` and that the first `n` powers of `zeta_n` are
+For phase order `d=3,9,27`, the coefficient-vector modulus is
+`Phi_d=X^(2d/3)+X^(d/3)+1`.  The checker verifies
+`Phi_d(X)(X^(d/3)-1)=X^d-1` and that the first `d` powers of `zeta_d` are
 distinct.  No complex approximation is used.
 
 ## G1 — characters, kernel ideals, and generating characters
@@ -40,8 +41,8 @@ distinct.  No complex approximation is used.
 | `F3[x,y]/(x,y)^2` | 26 | `3:24, 9:2` | 0 |
 
 An additive group and its character group have the same order, so deleting
-the trivial character gives `q-1`.  The coordinate parameterization explicitly
-lists all `q` characters and checks that their tables are distinct and
+the trivial character gives `n-1`.  The coordinate parameterization explicitly
+lists all `n` characters and checks that their tables are distinct and
 additive.  For `Z/(3^k)`, `|I_{psi_c}|=gcd(c,3^k)`.  For either principal
 equal-characteristic chain, a character is generating exactly when its top
 coefficient is nonzero; the remaining two layers give the displayed `3` and
@@ -56,7 +57,7 @@ fires here with a size-3 ideal witness.
 
 ## G2 — the forms
 
-| `q` / seeds | vectors checked for `omega(v,v)=0` | ordered pairs for `beta-beta^T=omega` |
+| `n` / seeds | vectors checked for `omega(v,v)=0` | ordered pairs for `beta-beta^T=omega` |
 |---|---:|---:|
 | 3 / `F3` | 9 | 81 |
 | 9 / `F9`, `Z9`, `F3[e]/e2` | 81 each | 6,561 each |
@@ -74,7 +75,7 @@ seed (the red run is targeted at `F3`).
 
 ## G3 — the character-valued radical
 
-For every nontrivial character, all `q^4` pairs `(v,w)` are evaluated.  The
+For every nontrivial character, all `n^4` pairs `(v,w)` are evaluated.  The
 expected radical-size distribution is obtained by squaring every ideal size in
 G1:
 
@@ -129,10 +130,10 @@ scope.
 | `Z27`, `F3[t]/t3` | 729 / 729 each | 1 each |
 | non-Frobenius seed | N/A | N/A |
 
-Different shifts have disjoint matrix support.  Within a shift, the `q`
-phase rows are the `q` characters induced by a generating pairing; their exact
-Gram matrix is `q I`, since a nontrivial character sums to zero.  This gives
-rank `q^2` without division in a cyclotomic field.  The matrix commutant is
+Different shifts have disjoint matrix support.  Within a shift, the `n`
+phase rows are the `n` characters induced by a generating pairing; their exact
+Gram matrix is `n I`, since a nontrivial character sums to zero.  This gives
+rank `n^2` without division in a cyclotomic field.  The matrix commutant is
 solved exactly by phase-potential equations, giving one live component.
 
 Discriminating power: `--red-dim` sees rank 9 rather than the claimed 10 at
@@ -153,10 +154,10 @@ The checker separately records that the commutant of the non-faithful
 by direct computation and prevents the brief's `|I|^2` expectation from being
 silently conflated with the matrix-image quantity used by G5.
 
-Discriminating power: no registered mutation falsifies G6; the
-non-generating mode is the positive input G6 is meant to accept.  G6 is marked
-decoration in `fcr_local_RED-MATRIX.md`, with the exact arena-confusion
-mutation that would reach it.
+Discriminating power: `--red-g6-arena-confusion` replaces the formal
+commutant claim `|I_psi|^2=9` by the matrix-image dimension `3`.  The exhaustive
+central-label census still gives `9`, so G6 rejects the arena conflation while
+the unmutated non-generating probe remains valid positive input.
 
 ## G7 — all submodules and Lagrangians
 
@@ -200,7 +201,7 @@ non-field Frobenius seed).
 
 ## G9 — odd halving and the beta torsor
 
-| seed | `2^(-1)` in table encoding | `|Adm(omega)|=q^3` | `s` checked for `phi_s` |
+| seed | `2^(-1)` in table encoding | `|Adm(omega)|=n^3` | `s` checked for `phi_s` |
 |---|---:|---:|---:|
 | `F3` | 2 | 27 | all 27 |
 | `F9` | 2 | 729 | all 729 |
@@ -211,13 +212,13 @@ non-field Frobenius seed).
 | `F3[x,y]/(x,y)^2` | 2 | 19,683 | 128 seeded |
 
 A symmetric bilinear form on `R^2` is determined uniquely by three
-coefficients `(alpha,gamma,delta)`, giving `q^3` members `beta_0+s` of
+coefficients `(alpha,gamma,delta)`, giving `n^3` members `beta_0+s` of
 `Adm(omega)`.  Antisymmetry forces `2 alpha=2 delta=0` and
 `1+2 gamma=0`.  Since 2 is a unit, there is one solution, namely
 `beta_0+s=omega/2`.  At `F3`, `Z9`, and `F3[e]/e2` every full table is censused,
 as registered.  The coefficient census covers uniqueness at every other seed.
 
-For every selected `s`, the checker exhausts all `q^4` pairs in
+For every selected `s`, the checker exhausts all `n^4` pairs in
 `s(v+w,v+w)/2-s(v,v)/2-s(w,w)/2=s(v,w)`.  At order at most 9 every `s` is
 used.  At order 27, 128 distinct triples from a fixed PRNG seed exceed the
 brief's minimum of 100; the resulting 68,024,448 table comparisons per seed
@@ -234,7 +235,7 @@ the same nine fixed permutation/exponent matrices as
 `wh_kappa_check.py`'s corrected `Z(-b)X(a)` model; and profile
 `{1:1, 3:26}` for `H_beta0`.
 
-These are the `q=3` values `q-1`, `q+1`, `q^2`, and `q^3`, plus a literal
+These are the `n=3` values `n-1`, `n+1`, `n^2`, and `n^3`, plus a literal
 matrix fixture.  `--red-transpose` also reaches this gate after G2 and G4,
 because its active beta is no longer the fixed regression beta.
 
@@ -255,5 +256,7 @@ powering in the explicit group table.  As independent internal identities,
 each profile has exactly one identity, every reported order divides `|R|^3`,
 and the counts sum to `|R|^3` as displayed.  Equal-characteristic seeds have
 exponent 3 directly from characteristic 3 and the class-two power formula;
-this independently corroborates those census rows.  No registered mutation
-changes G11, so it is honestly labeled decoration in the red matrix.
+this independently corroborates those census rows.  The registered
+`--red-profile-drop-identity` mutation omits `(0,0)` from
+the powering census.  It leaves `n^3-1` records and no order-one element, so
+G11 rejects the profile.

@@ -119,3 +119,65 @@ every `π(W_β(v))` unitary, and whose morphisms are unitary intertwiners.
 group of Weyl unitaries with phases in `μ_p = ψ(κ)`.
 Recorded separately from `F` (D7) because the two behave differently: claim
 `WH-BETA-h` says `(A,F)` does not depend on `β` while `F^{(p)}` does, at `p = 2`.
+
+## D12 (finite commutative local ring datum)
+
+A *finite local ring datum* is `(R,𝔪,κ,q)` with `R` a finite commutative
+unital local ring with `1≠0`, `𝔪` its unique maximal ideal, `κ:=R/𝔪`, and
+`q:=|κ|`; write `R^×` for its unit group.
+For an ideal `I⊆R`, put `Ann(I):={r∈R:rI=0}` and
+`soc(R):=Ann(𝔪)`.  These are stipulations.  Nilpotence of `𝔪`, nonvanishing of
+the socle, and the other finite-local structure properties are established in
+`FCR-GEN`, not assumed here.  Uniform in the residue characteristic.
+
+## D13 (characters and generating characters of a finite local ring)
+
+Let `R̂:=Hom((R,+),C^×)` and `X(R):=R̂∖{1}`.  For `ψ∈X(R)` and `u∈R`, put
+`ψ_u(x):=ψ(ux)`.  Define
+`I_ψ:=Σ{I⊆R : I is an ideal and I⊆ker ψ}`, the largest ideal contained in
+`ker ψ`, and `Gen(R):={ψ∈X(R):I_ψ=0}`.  A member of `Gen(R)` is a
+*generating character*.  Uniform in the residue characteristic; existence is
+not stipulated and is claim `FCR-GEN`.
+
+## D14 (the symplectic object and phase perpendicularity over a local ring)
+
+For D12 put `V(R):=R⊕R` and
+`ω((a,b),(a',b')):=ab'−a'b`.  Given `ψ∈X(R)`, write
+`B_ψ(v,w):=ψ(ω(v,w))` and, for an `R`-submodule `L⊆V(R)`,
+`L^{⊥_ψ}:={v∈V(R):B_ψ(v,l)=1 for every l∈L}`.  A *Lagrangian* is an
+`R`-submodule with `L=L^{⊥_ψ}`; put `rad(B_ψ):=V(R)^{⊥_ψ}`.  R-bilinearity,
+strong alternation,
+R-nondegeneracy of `ω`, and nondegeneracy of `B_ψ` are claims, not
+stipulations; `B_ψ`, not R-nondegeneracy alone, is the load-bearing pairing.
+Uniform in the residue characteristic.
+
+## D15 (admissible polarizing cocycles over a local ring)
+
+For D14,
+`Adm(ω):={β:V(R)×V(R)→R | β is R-bilinear and β−β^T=ω}`.
+Put `Sym_R(V(R)):= {s:V(R)×V(R)→R | s is R-bilinear and s=s^T}`.
+A *polarizing cocycle* is a named choice `β∈Adm(ω)`.  The reference member is
+`β₀((a,b),(a',b')):=ab'`.  This is the non-symmetrized convention: no inverse
+of `2` is assumed.  Uniform in the residue characteristic.
+
+## D16 (Weyl algebra, Heisenberg group, and local Schrödinger models)
+
+For D12--D15 define
+`A_{ψ,β}(V(R)):=⨁_{v∈V(R)}C·W_β(v)` by
+`W_β(v)W_β(v'):=ψ(β(v,v'))W_β(v+v')`, and define
+`H_β(R):=R×V(R)` by
+`(t,v)(t',v'):=(t+t'+β(v,v'),v+v')`.
+For an `R`-submodule `L` put
+`A_L:=span_C{W_β(l):l∈L}`; given a unital algebra character
+`χ:A_L→C`, put `M_{L,χ}:=A_{ψ,β}(V(R))⊗_{A_L}C_χ`.
+
+The fixed reference model is `ℓ²(R)=⨁_{y∈R}C·e_y`, with `{e_y}` declared
+orthonormal,
+`X(a)e_y:=e_{y+a}`, `Z(b)e_y:=ψ(by)e_y`, and, exactly,
+
+    W_{β₀}(a,b):=Z(−b)X(a),
+    W_{β₀}(a,b)e_y=ψ(−b(y+a))e_{y+a}.
+
+The sign and ordering are stipulations inherited from D8's E1 resolution.
+Every formula in D16 is uniform in the residue characteristic and uses no
+half.

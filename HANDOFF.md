@@ -4,67 +4,83 @@
 
 # HANDOFF — live state
 
-Updated: 2026-08-31, session 1 (the reboot session).
+Updated: 2026-09-01, session 2 (the FCR-1 session).
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (the constitution; where it conflicts
 with anything recorded here, PRD wins)** -> this file.
 
 ## Where the campaign is
 
-Session 1 rebooted the repository and completed the first increment end to end.
-The previous lab book is frozen under `v0.1/` and is a source of hints only
-(L12): nothing in the trunk was copied from it.
+Two increments closed. Session 1 (2026-08-31) rebooted the repository and
+closed `Spec κ` for a finite field — see `theory/verdicts/wh-kappa-*`.
+Session 2 (2026-09-01) closed **FCR-1: finite commutative local rings at odd
+residue characteristic**, the first v0.1-material re-derivation increment.
+The previous lab book stays frozen under `v0.1/` (hints only, L12).
 
-North star: a general definition and workflow assigning canonical quantum
-systems -- Hilbert space, observable algebra, and where possible dynamics as
-automorphisms or projective unitary representations of symmetry groups, with
-fusion categories as the expected general endpoint -- to arbitrary arithmetic
-schemes. Guiding path: `F_p` and its canonical symplectic space `F_p x F_p`.
-Product: `labbook/main.pdf`.
+Standing directives recorded this session (TJO):
 
-## The first increment, closed
+- **P1 pipeline** (one philosophy, adopted per-increment on merit, never
+  blindly): object → symplectic object (classify required data) →
+  Weyl–Heisenberg group-like object (classify cocycle/phase data) → classify
+  projective unitary representations = the quantization. Fusion-categorical
+  relaxation is the declared endpoint, kept in view, claimed nowhere yet.
+  Recorded in `briefs/fcr-local-target.md`.
+- **Model policy (L7 amended):** cognition-heavy and verifier lanes run on
+  `codex exec`, model `gpt-5.6-sol`, reasoning `xhigh`. No Claude subagents.
+- **Spec framing (agreed):** Spec R geometrizes a finite ring only as a
+  locally ringed space — points carry locality, stalks (full local rings,
+  not residue fields) carry the local quantization; choosing Spec is
+  choosing which automorphisms count as geometric, so the ring enters the
+  physics through dynamics (WH-SYMM). Queued as FCR-5/FCR-6 in the brief.
 
-`Spec κ` for a finite field `κ`. One full capped loop ran: prove -> one hostile
-round -> one repair wave -> mechanical adjudication
-(`theory/verdicts/wh-kappa-adjudication.md`). The extra round that a FATAL on a
-headline claim would have bought was deliberately not spent.
+## The FCR-1 increment, closed
 
-**The result.** The quantum system attached to a finite field is determined by
-three data, not two: the field, a choice of additive character `ψ`, and a choice
-of polarizing cocycle `β ∈ Adm(ω)`. The third was hidden inside what the work
-order called a convention. It is vacuous at odd `p`, where `ω/2` is the unique
-antisymmetric admissible cocycle and hence canonical. It is real at `p = 2`,
-where the admissible cocycles fall into two isomorphism types -- at `q = 2`, six
-give `D_4` and two give `Q_8` -- separated by `Arf(Q_β)` for the quadratic form
-`Q_β(v) = β(v,v)`. Three independent computations agree on this.
+One full capped loop: prove -> one hostile round (`fcr-local-r1.md`,
+FAIL(OBJ-1): the regression claim overclaimed) -> one repair wave ->
+mechanical adjudication (`theory/verdicts/fcr-local-adjudication.md`).
 
-Two further canonicity findings: the trace character admits **no** sections along
-field embeddings (`WH-FUNCT-b-SEC`, REFUTED; it fails first at `F_2 ⊂ F_4`), so
-there is no functor on finite fields with embeddings, only on pairs `(κ,ψ)`;
-and `κ`-linearity is imposed data the algebra does not carry, its intrinsic
-symmetry group being the larger `Sp_{2m}(F_p)` (`WH-SYMM`).
+**The result.** `(κ, ψ, β)` generalizes to `(R, ψ ∈ Gen(R), β ∈ Adm(ω))`
+with existence of `ψ` an honest hypothesis: `Gen(R) ≠ ∅` iff `soc(R)` is
+one-dimensional over `κ` (Frobenius; Wood Thm 3.10 + a derived local socle
+criterion), and `Gen(R)` is a free transitive `R^×`-set. For arbitrary
+nontrivial `ψ` the phase radical is `I_ψ ⊕ I_ψ` — quantization degrades in a
+classified way (the non-Frobenius probe `F_3[x,y]/(x,y)²` has `Gen = ∅` by
+exhaustion). At odd residue characteristic the whole field package survives:
+central simplicity, `M_{|R|}(C)`, Stone–von Neumann, β-immateriality via
+`ω/2`. New phenomenon: **non-free Lagrangians** (`soc(R)⊕𝔪` for every
+non-field `R`), strictly enlarging the Schrödinger-model catalogue. The
+mixed-vs-equal-characteristic distinction is visible physics: gate G11's
+element-order profiles separate `Z/9` (`{1,3,9}`-orders) from `F_3[ε]`
+(exponent 3).
 
-**State:** 28 rows -- 22 PROVED, 4 SKETCH, 1 CONJECTURE, 1 REFUTED. D1-D11 in
-`definitions.md`, 35 symbols in `notation.md`, a 37-page labbook in lockstep,
-ten sources registered in `refs/LEDGER.md` with zero gaps.
-
-**The four SKETCH rows are procedural, not evidential.** They are the statements
-written in the repair wave (the Arf classification, the Gauss-sign identity, the
-level statement, `β`-independence of the projective model space). Each has a
-complete proof and exhaustive finite verification; none has faced a hostile
-round. One hostile round on `theory/wh-kappa-choice.md` would settle them.
+**State:** 37 claim rows — 31 PROVED, 4 SKETCH, 1 CONJECTURE, 1 REFUTED
+(the nine new `FCR-*` rows all PROVED, `FCR-REG` on its repaired clause-level
+statement). D1–D16 in `definitions.md`. Labbook 43 pages, lockstep gates
+green, `main.pdf` rebuilt. Falsifier `theory/checks/fcr_local_check.py`:
+green at 7 seeds, NINE red modes each dying at its registered gate.
+Sources: Wood AJM 1999 (full text, MUSE) and a Stacks algebra snapshot
+registered in `refs/LEDGER.md` with locators.
 
 ## Next useful steps
 
-1. One hostile round on `theory/wh-kappa-choice.md` to move the four procedural
-   SKETCH rows, if they are wanted at PROVED. This is a round, not research.
-2. The next increment of the definition: an arbitrary affine scheme of finite
-   type over `F_q`, by closed points, tested against the seed case first. The
-   open question the seed case raises is what plays the role of `β` there --
-   whether a polarizing cocycle must be chosen point by point, and what glues.
-3. `theory/wh-kappa-choice.md` is 503 lines against L2's 500 cap. Trim at the
-   next edit.
-4. The RED-MATRIX decoration inventory still names sub-checks no mutation
-   reaches. Checker work, not claim work.
-5. `scripts/setup-env.sh` must be run first in any new container: TeX, latexmk
-   and numpy are not preinstalled, and `bd` is unavailable.
+1. **FCR-2** (residue characteristic 2): `Z/4`, `F_2[t]/(t^k)`, Galois
+   rings; the β-classification, expected to generalize Arf — prior:
+   the `WH-BETA-EPS` Gauss sign should become an eighth root of unity
+   (Brown/Gauss–Milgram); needs sources before claims.
+2. **FCR-3** (non-Frobenius obstruction as sharp non-canonicity) and
+   **FCR-4** (direct sums; cross-term-vanishing lemma; the order-4 battery
+   `{F_4, Z/4, F_2[ε], F_2⊕F_2}` adjudicating route A vs route B).
+3. **FCR-5/FCR-6** (Spec equivalence theorem; dynamics via Aut(R) on Spec)
+   — queued in `briefs/fcr-local-target.md` §campaign order.
+4. Filed residuals earning no rounds (see adjudication): ring-side
+   frame-preserving torsor (goes with FCR-6); parity-free scope split of
+   `FCR-ALG` (goes with FCR-2); `WH-SYMM` ring analogue (symmetry increment).
+5. Old wh-kappa follow-ups unchanged: one hostile round on
+   `theory/wh-kappa-choice.md` would settle its four SKETCH rows; it is 503
+   lines against L2's cap; the wh-kappa RED-MATRIX still names unreached
+   sub-checks.
+6. `scripts/setup-env.sh` first in any new container (TeX, latexmk, numpy;
+   no `bd`). Codex is available on this host (`codex exec`, config defaults
+   to `gpt-5.6-sol` xhigh). Untracked pre-reboot leftovers `.beads/` and
+   `runs/` still sit at top level — TJO to decide (move into `v0.1/` or
+   delete).

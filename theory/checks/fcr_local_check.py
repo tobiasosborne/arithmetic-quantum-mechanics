@@ -4,7 +4,8 @@
 Written in the independent check lane from briefs/fcr-local-target.md alone.
 There are no repository imports.  Arithmetic is exact: finite rings are
 explicit addition/multiplication tables and phases live in Z[zeta_n], encoded
-as integer coefficient vectors modulo Phi_n for n in {3, 9, 27}.
+as integer coefficient vectors modulo Phi_d for d in {3, 9, 27}.
+The code writes ``n = |R|`` for ring order; ``q`` is reserved for ``|kappa|``.
 
 No gate uses ``assert`` (``python3 -O`` must not weaken the checker), no
 floating-point value is formed, and there is no tolerance.
@@ -41,6 +42,10 @@ MODES = {
         "claim |R|^2+1 independent Weyl operators at F3",
     "--red-halfweyl-drop":
         "use s(v,v), not s(v,v)/2, in the G9 coboundary map",
+    "--red-g6-arena-confusion":
+        "claim the formal Weyl commutant has the matrix-image dimension",
+    "--red-profile-drop-identity":
+        "omit the identity from the G11 powering census",
 }
 
 TARGET = {
@@ -51,21 +56,23 @@ TARGET = {
     "--red-torsor": ("Z9", "G8"),
     "--red-dim": ("F3", "G5"),
     "--red-halfweyl-drop": ("F3", "G9"),
+    "--red-g6-arena-confusion": ("Z9", "G6"),
+    "--red-profile-drop-identity": ("Z9", "G11"),
 }
 
 EXIT_GREEN, EXIT_RED_CAUGHT, EXIT_DEFECT = 0, 1, 2
 
 
 # ---------------------------------------------------------------------------
-# Exact Z[zeta_n] arithmetic, n = 3, 9, 27.
+# Exact Z[zeta_d] arithmetic, d = 3, 9, 27.
 # Phi_{3^k}(x) = x^(2*3^(k-1)) + x^(3^(k-1)) + 1.
 # ---------------------------------------------------------------------------
 class CycRing:
-    def __init__(self, n):
-        if n not in (3, 9, 27):
+    def __init__(self, phase_order):
+        if phase_order not in (3, 9, 27):
             raise ValueError("cyclotomic order must be 3, 9, or 27")
-        self.n = n
-        m = n // 3
+        self.phase_order = phase_order
+        m = phase_order // 3
         self.deg = 2 * m
         self.phi = [0] * (self.deg + 1)
         self.phi[0] = self.phi[m] = self.phi[self.deg] = 1
@@ -73,7 +80,7 @@ class CycRing:
         self.one = (1,) + (0,) * (self.deg - 1)
         self.zeta = self.reduce([0, 1])
         self.zpow = [self.one]
-        for _ in range(n):
+        for _ in range(phase_order):
             self.zpow.append(self.mul(self.zpow[-1], self.zeta))
 
     def reduce(self, coeffs):
@@ -108,23 +115,24 @@ class CycRing:
 
 def verify_cyclotomic(C):
     """Verify the prime-power formula and exact order without evaluation."""
-    m, n = C.n // 3, C.n
+    m, phase_order = C.phase_order // 3, C.phase_order
     # (x^(2m)+x^m+1)(x^m-1) = x^(3m)-1.
-    lhs = [0] * (n + 1)
+    lhs = [0] * (phase_order + 1)
     for i, a in enumerate(C.phi):
         if a:
             lhs[i + m] += a
             lhs[i] -= a
-    rhs = [0] * (n + 1)
-    rhs[0], rhs[n] = -1, 1
+    rhs = [0] * (phase_order + 1)
+    rhs[0], rhs[phase_order] = -1, 1
     if lhs != rhs:
         return False, "cyclotomic product identity failed"
-    if C.zpow[n] != C.one:
-        return False, "zeta_%d^%d != 1" % (n, n)
-    if len(set(C.zpow[:n])) != n:
-        return False, "the first %d powers of zeta_%d are not distinct" % (n, n)
+    if C.zpow[phase_order] != C.one:
+        return False, "zeta_%d^%d != 1" % (phase_order, phase_order)
+    if len(set(C.zpow[:phase_order])) != phase_order:
+        return False, "the first %d powers of zeta_%d are not distinct" % (
+            phase_order, phase_order)
     return True, "Phi_%d=x^%d+x^%d+1; zeta has exact order %d" % (
-        n, 2 * m, m, n)
+        phase_order, 2 * m, m, phase_order)
 
 
 # ---------------------------------------------------------------------------
@@ -134,12 +142,12 @@ class FiniteRing:
     def __init__(self, name, coord_mods, mul_coords, reference_param):
         self.name = name
         self.coord_mods = tuple(coord_mods)
-        self.q = int(np.prod(np.array(coord_mods, dtype=np.int64)))
+        self.n = int(np.prod(np.array(coord_mods, dtype=np.int64)))
         self.reference_param = tuple(reference_param)
-        self.elements = tuple(self._coords(i) for i in range(self.q))
+        self.elements = tuple(self._coords(i) for i in range(self.n))
         self.index = {x: i for i, x in enumerate(self.elements)}
-        self.ADD = np.zeros((self.q, self.q), dtype=np.int64)
-        self.MUL = np.zeros((self.q, self.q), dtype=np.int64)
+        self.ADD = np.zeros((self.n, self.n), dtype=np.int64)
+        self.MUL = np.zeros((self.n, self.n), dtype=np.int64)
         for i, x in enumerate(self.elements):
             for j, y in enumerate(self.elements):
                 self.ADD[i, j] = self.index[tuple(
@@ -149,12 +157,12 @@ class FiniteRing:
         self.zero = 0
         self.one = self.index[(1,) + (0,) * (len(coord_mods) - 1)]
         self.NEG = np.array([
-            next(j for j in range(self.q) if self.ADD[i, j] == 0)
-            for i in range(self.q)
+            next(j for j in range(self.n) if self.ADD[i, j] == 0)
+            for i in range(self.n)
         ], dtype=np.int64)
-        self.units = tuple(i for i in range(self.q)
+        self.units = tuple(i for i in range(self.n)
                            if np.any(self.MUL[i, :] == self.one))
-        self.maximal = tuple(i for i in range(self.q) if i not in set(self.units))
+        self.maximal = tuple(i for i in range(self.n) if i not in set(self.units))
         self.char_order = max(self.coord_mods)
         self.char_params = tuple(itertools.product(
             *[range(m) for m in self.coord_mods]))
@@ -167,19 +175,19 @@ class FiniteRing:
         return tuple(out)
 
     def char_table(self, param):
-        n = self.char_order
-        return tuple(sum(param[k] * x[k] * (n // self.coord_mods[k])
-                         for k in range(len(param))) % n
+        phase_order = self.char_order
+        return tuple(sum(param[k] * x[k] * (phase_order // self.coord_mods[k])
+                         for k in range(len(param))) % phase_order
                      for x in self.elements)
 
     def scaled_character(self, param, u):
         base = self.char_table(param)
-        return tuple(base[int(self.MUL[u, x])] for x in range(self.q))
+        return tuple(base[int(self.MUL[u, x])] for x in range(self.n))
 
     def ideal_in_kernel(self, char):
-        return frozenset(r for r in range(self.q)
+        return frozenset(r for r in range(self.n)
                          if all(char[int(self.MUL[r, x])] == 0
-                                for x in range(self.q)))
+                                for x in range(self.n)))
 
 
 def make_rings():
@@ -211,8 +219,8 @@ def make_rings():
                 (a * e + b * d) % 3,
                 (a * f + c * d) % 3)
 
-    def zn_mul(n):
-        return lambda x, y: ((x[0] * y[0]) % n,)
+    def zn_mul(modulus):
+        return lambda x, y: ((x[0] * y[0]) % modulus,)
 
     return {
         "F3": FiniteRing("F3", (3,), prime_mul, (1,)),
@@ -227,8 +235,8 @@ def make_rings():
 
 
 def verify_ring(R):
-    q, A, M = R.q, R.ADD, R.MUL
-    idx = np.arange(q, dtype=np.int64)
+    n, A, M = R.n, R.ADD, R.MUL
+    idx = np.arange(n, dtype=np.int64)
     if not np.array_equal(A[R.zero, :], idx):
         return False, "additive identity failed"
     if not np.array_equal(M[R.one, :], idx):
@@ -236,7 +244,7 @@ def verify_ring(R):
     if not np.array_equal(A, A.T) or not np.array_equal(M, M.T):
         return False, "commutativity failed"
     J, K = np.meshgrid(idx, idx, indexing="ij")
-    for i in range(q):
+    for i in range(n):
         if not np.array_equal(A[A[i, J], K], A[i, A[J, K]]):
             return False, "addition is not associative"
         if not np.array_equal(M[M[i, J], K], M[i, M[J, K]]):
@@ -248,10 +256,10 @@ def verify_ring(R):
         return False, "nonunits do not form a proper candidate maximal ideal"
     if any(int(A[x, y]) not in m for x in m for y in m):
         return False, "nonunits not additively closed"
-    if any(int(M[r, x]) not in m for r in range(q) for x in m):
+    if any(int(M[r, x]) not in m for r in range(n) for x in m):
         return False, "nonunits not an ideal"
     return True, "explicit %dx%d tables satisfy ring axioms; units=%d, |m|=%d" % (
-        q, q, len(R.units), len(R.maximal))
+        n, n, len(R.units), len(R.maximal))
 
 
 # ---------------------------------------------------------------------------
@@ -260,13 +268,13 @@ def verify_ring(R):
 class Setting:
     def __init__(self, ring, cyc, mode):
         self.R, self.C, self.mode = ring, cyc, mode
-        R, q = ring, ring.q
-        self.q, self.nV = q, q * q
-        self.VA = np.repeat(np.arange(q, dtype=np.int64), q)
-        self.VB = np.tile(np.arange(q, dtype=np.int64), q)
+        R, n = ring, ring.n
+        self.n, self.nV = n, n * n
+        self.VA = np.repeat(np.arange(n, dtype=np.int64), n)
+        self.VB = np.tile(np.arange(n, dtype=np.int64), n)
         a, b = self.VA[:, None], self.VB[:, None]
         ap, bp = self.VA[None, :], self.VB[None, :]
-        self.VADD = R.ADD[a, ap] * q + R.ADD[b, bp]
+        self.VADD = R.ADD[a, ap] * n + R.ADD[b, bp]
         self.OMEGA = R.ADD[R.MUL[a, bp], R.NEG[R.MUL[ap, b]]]
         self.BETA0 = R.MUL[a, bp]
         self.BETAT = R.MUL[ap, b]
@@ -290,15 +298,15 @@ class Setting:
         return self.reference
 
 
-def mono_mul(X, Y, n):
+def mono_mul(X, Y, phase_order):
     px, ex = X
     py, ey = Y
     return (tuple(px[k] for k in py),
-            tuple((ex[py[k]] + ey[k]) % n for k in range(len(py))))
+            tuple((ex[py[k]] + ey[k]) % phase_order for k in range(len(py))))
 
 
-def mono_scale(X, exponent, n):
-    return X[0], tuple((e + exponent) % n for e in X[1])
+def mono_scale(X, exponent, phase_order):
+    return X[0], tuple((e + exponent) % phase_order for e in X[1])
 
 
 def mono_equal(X, Y, C):
@@ -307,24 +315,24 @@ def mono_equal(X, Y, C):
 
 
 def build_model(S, char):
-    R, q, n = S.R, S.q, S.C.n
+    R, n, phase_order = S.R, S.n, S.C.phase_order
     ops = []
     for v in range(S.nV):
         a, b = int(S.VA[v]), int(S.VB[v])
         perm, exps = [], []
-        for y in range(q):
+        for y in range(n):
             ya = int(R.ADD[y, a])
             perm.append(ya)
             phase_arg = int(R.NEG[int(R.MUL[b, ya])])
-            exps.append(char[phase_arg] % n)
+            exps.append(char[phase_arg] % phase_order)
         ops.append((tuple(perm), tuple(exps)))
     return ops
 
 
 def commutant_dimension(ops, C):
     """Exact union-find-with-potentials solution of TW=WT."""
-    q, n = len(ops[0][0]), C.n
-    count = q * q
+    n, phase_order = len(ops[0][0]), C.phase_order
+    count = n * n
     parent = list(range(count))
     potential = [0] * count
     dead = [False] * count
@@ -333,25 +341,25 @@ def commutant_dimension(ops, C):
         if parent[x] == x:
             return x, 0
         root, up = find(parent[x])
-        potential[x] = (potential[x] + up) % n
+        potential[x] = (potential[x] + up) % phase_order
         parent[x] = root
         return root, potential[x]
 
     for perm, exps in ops:
-        for row in range(q):
-            for col in range(q):
-                u = row * q + col
-                w = perm[row] * q + perm[col]
-                delta = (exps[col] - exps[row]) % n
+        for row in range(n):
+            for col in range(n):
+                u = row * n + col
+                w = perm[row] * n + perm[col]
+                delta = (exps[col] - exps[row]) % phase_order
                 ru, pu = find(u)
                 rw, pw = find(w)
                 if ru == rw:
-                    if C.zpow[(pu - pw - delta) % n] != C.one:
+                    if C.zpow[(pu - pw - delta) % phase_order] != C.one:
                         dead[ru] = True
                 else:
                     # value(u)=z^delta value(w), potentials are value(node)=z^p value(root)
                     parent[rw] = ru
-                    potential[rw] = (pu - delta - pw) % n
+                    potential[rw] = (pu - delta - pw) % phase_order
                     dead[ru] = dead[ru] or dead[rw]
     roots = set()
     for x in range(count):
@@ -367,10 +375,10 @@ def exact_weyl_rank(ops, C):
     for perm, exps in ops:
         classes.setdefault(perm, set()).add(exps)
     perms = list(classes)
-    q = len(perms[0])
+    n = len(perms[0])
     for i in range(len(perms)):
         for j in range(i + 1, len(perms)):
-            if any(perms[i][x] == perms[j][x] for x in range(q)):
+            if any(perms[i][x] == perms[j][x] for x in range(n)):
                 return None, "different permutation classes have overlapping support"
     rank = 0
     for rows in classes.values():
@@ -378,9 +386,9 @@ def exact_weyl_rank(ops, C):
         for i, x in enumerate(rows):
             for j, y in enumerate(rows):
                 inner = C.zero
-                for k in range(q):
-                    inner = C.add(inner, C.zpow[(x[k] - y[k]) % C.n])
-                want = (q,) + (0,) * (C.deg - 1) if i == j else C.zero
+                for k in range(n):
+                    inner = C.add(inner, C.zpow[(x[k] - y[k]) % C.phase_order])
+                want = (n,) + (0,) * (C.deg - 1) if i == j else C.zero
                 if inner != want:
                     return None, "phase rows are neither equal nor exactly orthogonal"
         rank += len(rows)
@@ -392,21 +400,21 @@ def exact_weyl_rank(ops, C):
 # ---------------------------------------------------------------------------
 def gate_G1(S):
     R = S.R
-    if len(S.nontrivial) != R.q - 1:
-        return False, "|X(R)|=%d, expected %d" % (len(S.nontrivial), R.q - 1)
+    if len(S.nontrivial) != R.n - 1:
+        return False, "|X(R)|=%d, expected %d" % (len(S.nontrivial), R.n - 1)
     tables = [x["table"] for x in S.char_records]
-    if len(set(tables)) != R.q:
-        return False, "the %d character parameters do not give distinct tables" % R.q
+    if len(set(tables)) != R.n:
+        return False, "the %d character parameters do not give distinct tables" % R.n
     for rec in S.char_records:
         t, I = rec["table"], rec["ideal"]
         if any(t[int(R.ADD[x, y])] != (t[x] + t[y]) % R.char_order
-               for x in range(R.q) for y in range(R.q)):
+               for x in range(R.n) for y in range(R.n)):
             return False, "parameter %s is not additive" % (rec["param"],)
         if 0 not in I:
             return False, "I_psi omits zero"
         if any(int(R.ADD[x, y]) not in I for x in I for y in I):
             return False, "computed I_psi is not additively closed"
-        if any(int(R.MUL[r, x]) not in I for r in range(R.q) for x in I):
+        if any(int(R.MUL[r, x]) not in I for r in range(R.n) for x in I):
             return False, "computed I_psi is not an ideal"
         if any(t[x] != 0 for x in I):
             return False, "computed I_psi is not contained in ker psi"
@@ -443,11 +451,11 @@ def gate_G2(S):
     diag = np.diag(S.OMEGA)
     if np.any(diag != 0):
         v = int(np.flatnonzero(diag != 0)[0])
-        return False, "omega(v,v)=%d at v=%s" % (diag[v], divmod(v, S.q))
+        return False, "omega(v,v)=%d at v=%s" % (diag[v], divmod(v, S.n))
     for v in range(1, nV):
         if not np.any(S.OMEGA[v, :] != 0):
-            return False, "R-radical contains v=%s" % (divmod(v, S.q),)
-    e1, e2 = S.q, 1
+            return False, "R-radical contains v=%s" % (divmod(v, S.n),)
+    e1, e2 = S.n, 1
     # Exhaust all pairs against the coordinate expansion; ring distributivity
     # (A0) then certifies additivity and homogeneity, without a cubic triple loop.
     first_expand = R.ADD[
@@ -467,7 +475,7 @@ def gate_G2(S):
         bad = np.argwhere(diff != S.OMEGA)[0]
         i, j = int(bad[0]), int(bad[1])
         return False, "beta-beta^T != omega at %s,%s (%d vs %d)" % (
-            divmod(i, S.q), divmod(j, S.q), diff[i, j], S.OMEGA[i, j])
+            divmod(i, S.n), divmod(j, S.n), diff[i, j], S.OMEGA[i, j])
     return True, "alternating on %d vectors; R-nondegenerate/bilinear; beta identity on %d pairs" % (
         nV, nV * nV)
 
@@ -479,7 +487,7 @@ def gate_G3(S):
         exp_omega = np.take(np.array(table, dtype=np.int64), S.OMEGA)
         actual = frozenset(int(v) for v in range(nV)
                            if np.all(exp_omega[v, :] == 0))
-        expected = frozenset(a * S.q + b for a in I for b in I)
+        expected = frozenset(a * S.n + b for a in I for b in I)
         if actual != expected:
             return False, "rad(psi o omega) size %d != |I x I|=%d for %s" % (
                 len(actual), len(expected), rec["param"])
@@ -497,29 +505,29 @@ def gate_G4(S):
     if S.R.name not in FROBENIUS:
         return True, "N/A: no generating character at this seed"
     char = S.chosen_character()
-    ops, n, nV = build_model(S, char), S.C.n, S.nV
+    ops, phase_order, nV = build_model(S, char), S.C.phase_order, S.nV
     bad_weyl = bad_comm = 0
     first_weyl = first_comm = None
     for i in range(nV):
         for j in range(nV):
-            lhs = mono_mul(ops[i], ops[j], n)
-            rhs = mono_scale(ops[int(S.VADD[i, j])], char[int(S.BETA[i, j])], n)
+            lhs = mono_mul(ops[i], ops[j], phase_order)
+            rhs = mono_scale(ops[int(S.VADD[i, j])], char[int(S.BETA[i, j])], phase_order)
             if not mono_equal(lhs, rhs, S.C):
                 bad_weyl += 1
                 if first_weyl is None:
                     first_weyl = (i, j)
-            rhs_comm = mono_scale(mono_mul(ops[j], ops[i], n),
-                                  char[int(S.OMEGA[i, j])], n)
+            rhs_comm = mono_scale(mono_mul(ops[j], ops[i], phase_order),
+                                  char[int(S.OMEGA[i, j])], phase_order)
             if not mono_equal(lhs, rhs_comm, S.C):
                 bad_comm += 1
                 if first_comm is None:
                     first_comm = (i, j)
     if bad_weyl:
         return False, "Weyl relation fails in %d/%d pairs; first=%s" % (
-            bad_weyl, nV * nV, tuple(divmod(x, S.q) for x in first_weyl))
+            bad_weyl, nV * nV, tuple(divmod(x, S.n) for x in first_weyl))
     if bad_comm:
         return False, "commutation relation fails in %d/%d pairs; first=%s" % (
-            bad_comm, nV * nV, tuple(divmod(x, S.q) for x in first_comm))
+            bad_comm, nV * nV, tuple(divmod(x, S.n) for x in first_comm))
     return True, "Z(-b)X(a): Weyl and commutation identities exact on %d pairs" % (
         nV * nV)
 
@@ -558,9 +566,12 @@ def gate_G6(S):
     comm = len(central)
     if I != frozenset((0, 3, 6)):
         return False, "psi_3 has I=%s, expected (3)={0,3,6}" % sorted(I)
-    if comm <= 1 or comm != len(I) ** 2:
-        return False, "commutant dimension=%d, expected |I|^2=%d" % (
-            comm, len(I) ** 2)
+    formal_claim = (matrix_comm if S.mode == "--red-g6-arena-confusion"
+                    else len(I) ** 2)
+    if comm <= 1 or comm != formal_claim:
+        return False, ("formal Weyl commutant dimension=%d, claimed %d; "
+                       "matrix-image dimension=%d") % (
+            comm, formal_claim, matrix_comm)
     if matrix_comm != 3:
         return False, "matrix-image commutant dimension=%d, expected 3" % matrix_comm
     return True, ("psi_3: I=(3), |I|=3; formal Weyl commutant dimension=9=|I|^2; "
@@ -568,10 +579,10 @@ def gate_G6(S):
 
 
 def cyclic_submodule(S, v):
-    R, q = S.R, S.q
-    a, b = divmod(v, q)
-    return frozenset(int(R.MUL[r, a]) * q + int(R.MUL[r, b])
-                     for r in range(q))
+    R, n = S.R, S.n
+    a, b = divmod(v, n)
+    return frozenset(int(R.MUL[r, a]) * n + int(R.MUL[r, b])
+                     for r in range(n))
 
 
 def all_submodules(S):
@@ -613,7 +624,7 @@ def gate_G7(S):
         return False, "submodule size histogram=%s" % hist
     free = [L for L in lags if any(cyclic_submodule(S, v) == L for v in L)]
     nonfree = [L for L in lags if L not in free]
-    if any(len(L) != S.q for L in lags):
+    if any(len(L) != S.n for L in lags):
         return False, "a self-perpendicular submodule does not have |R| elements"
     if len(lags) != 13 or len(free) != 12 or len(nonfree) != 1:
         return False, "Lagrangians total/free/nonfree=%s, expected (13,12,1)" % (
@@ -657,18 +668,18 @@ def sym_form_table(S, alpha, gamma, delta):
     return R.ADD[R.ADD[R.MUL[alpha, aa], R.MUL[gamma, cross]], R.MUL[delta, bb]]
 
 
-def seeded_symmetric_parameters(q, count):
-    rng = random.Random(0xF0C100 + q)
+def seeded_symmetric_parameters(n, count):
+    rng = random.Random(0xF0C100 + n)
     chosen = set()
     while len(chosen) < count:
-        chosen.add((rng.randrange(q), rng.randrange(q), rng.randrange(q)))
+        chosen.add((rng.randrange(n), rng.randrange(n), rng.randrange(n)))
     return sorted(chosen)
 
 
 def gate_G9(S):
-    R, q = S.R, S.q
+    R, n = S.R, S.n
     two = int(R.ADD[R.one, R.one])
-    invs = [x for x in range(q) if int(R.MUL[two, x]) == R.one]
+    invs = [x for x in range(n) if int(R.MUL[two, x]) == R.one]
     if len(invs) != 1:
         return False, "2 has %d inverses" % len(invs)
     half = invs[0]
@@ -678,15 +689,15 @@ def gate_G9(S):
     if not np.array_equal(R.ADD[halfomega, R.NEG[halfomega.T]], S.OMEGA):
         return False, "omega/2 is not admissible"
 
-    all_params = list(itertools.product(range(q), repeat=3))
+    all_params = list(itertools.product(range(n), repeat=3))
     antisym = 0
     low_full = S.R.name in LOW_ADM_CENSUS
     if low_full:
         params = all_params
-    elif q <= 9:
+    elif n <= 9:
         params = all_params
     else:
-        params = seeded_symmetric_parameters(q, 128)
+        params = seeded_symmetric_parameters(n, 128)
 
     # At high order, census uniqueness by the coefficient equations.  At the
     # three registered low seeds, also compare every full table.
@@ -722,9 +733,9 @@ def gate_G9(S):
             bad = np.argwhere(lhs != rhs)[0]
             return False, "phi_s coboundary fails for s=%s at v=%d,w=%d" % (
                 (alpha, gamma, delta), int(bad[0]), int(bad[1]))
-    kind = "all" if q <= 9 else "seeded"
+    kind = "all" if n <= 9 else "seeded"
     return True, "2 inverse=%d; |Adm|=%d, unique antisymmetric omega/2; phi_s identity for %s %d s" % (
-        half, q ** 3, kind, len(params))
+        half, n ** 3, kind, len(params))
 
 
 F3_MODEL = (
@@ -739,12 +750,15 @@ F3_MODEL = (
 def h_profile(S, beta=None):
     R = S.R
     B = S.BETA0 if beta is None else beta
-    ts = np.repeat(np.arange(S.q, dtype=np.int64), S.nV)
-    vs = np.tile(np.arange(S.nV, dtype=np.int64), S.q)
+    ts = np.repeat(np.arange(S.n, dtype=np.int64), S.nV)
+    vs = np.tile(np.arange(S.nV, dtype=np.int64), S.n)
+    if S.mode == "--red-profile-drop-identity":
+        keep = (ts != R.zero) | (vs != 0)
+        ts, vs = ts[keep], vs[keep]
     cur_t = np.zeros(len(ts), dtype=np.int64)
     cur_v = np.zeros(len(vs), dtype=np.int64)
     orders = np.zeros(len(ts), dtype=np.int64)
-    for k in range(1, S.q ** 3 + 1):
+    for k in range(1, S.n ** 3 + 1):
         cur_t = R.ADD[R.ADD[cur_t, ts], B[cur_v, vs]]
         cur_v = S.VADD[cur_v, vs]
         hit = (orders == 0) & (cur_t == 0) & (cur_v == 0)
@@ -776,13 +790,13 @@ def gate_G10(S):
         return False, "F3 Z(-b)X(a) matrices differ from wh_kappa_check.py"
     lines = set()
     for v in range(1, S.nV):
-        a, b = divmod(v, S.q)
-        lines.add(tuple(sorted(int(S.R.MUL[r, a]) * S.q + int(S.R.MUL[r, b])
-                               for r in range(S.q))))
+        a, b = divmod(v, S.n)
+        lines.add(tuple(sorted(int(S.R.MUL[r, a]) * S.n + int(S.R.MUL[r, b])
+                               for r in range(S.n))))
     if len(lines) != 4:
         return False, "F3 line count=%d, wh regression expects 4" % len(lines)
     two = int(S.R.ADD[S.R.one, S.R.one])
-    inv_two = [x for x in range(S.q) if int(S.R.MUL[two, x]) == S.R.one]
+    inv_two = [x for x in range(S.n) if int(S.R.MUL[two, x]) == S.R.one]
     antisym = sum(1 for alpha, gamma, delta in itertools.product(range(3), repeat=3)
                   if int(S.R.ADD[alpha, alpha]) == 0
                   and int(S.R.ADD[delta, delta]) == 0
@@ -803,13 +817,16 @@ def gate_G11(S):
     prof = h_profile(S)
     if prof is None:
         return False, "some H_beta0 element failed to return to identity"
-    if sum(prof.values()) != S.q ** 3:
-        return False, "profile sum=%d, expected |R|^3=%d" % (
-            sum(prof.values()), S.q ** 3)
+    defects = []
+    if sum(prof.values()) != S.n ** 3:
+        defects.append("profile sum=%d, expected |R|^3=%d" % (
+            sum(prof.values()), S.n ** 3))
     if prof.get(1) != 1:
-        return False, "identity count=%s, expected 1" % prof.get(1)
-    if any((S.q ** 3) % order != 0 for order in prof):
-        return False, "an observed element order does not divide |H|"
+        defects.append("identity count=%s, expected 1" % prof.get(1))
+    if any((S.n ** 3) % order != 0 for order in prof):
+        defects.append("an observed element order does not divide |H|")
+    if defects:
+        return False, "; ".join(defects)
     return True, "H_beta0 element-order profile=%s; sum=%d=|R|^3" % (
         prof, sum(prof.values()))
 
@@ -845,7 +862,7 @@ def main(argv):
         order = [TARGET[mode][0]]
     failures = []
     print("fcr_local_check mode=%s" % mode)
-    print("exact arithmetic: explicit ring tables; Z[zeta_n] integer vectors; no floats/tolerances")
+    print("exact arithmetic: explicit ring tables; Z[zeta_d] integer vectors; no floats/tolerances")
     for name in order:
         R = rings[name]
         C = CycRing(R.char_order)
