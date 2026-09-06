@@ -4,12 +4,86 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-01, session 2, INTERRUPTED CLOSE (network outage). The
-FCR-2 prove lane finished its deliverables but its process died before the
-final handshake; everything recoverable is committed. Read this file fully
-before resuming.
+Updated: 2026-09-07, F1 sidequest (opened 2026-09-06). The mainline FCR-2 state below remains
+the interrupted 2026-09-01 state: prover finished, critic not run. This
+session explored the user's new sidequest and did not admit that lane.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## F1 sidequest — comparative formulation, qubits and tensor categories
+
+User directives: ground the work in the literature; explore all the relevant
+analogies rather than selecting one prematurely; compare the qubit analogue
+and tensor product in each; investigate tensor categories as possible primary
+quantum objects. Sol subagents permitted, Astra and Claude subagents forbidden.
+All four subagents used this session were Sol/xhigh.
+
+Deliverables: `docs/sidequests/f1-qm.md` is the comparative research map;
+`briefs/f1-sidequest.md` fixes scope. Labbook section 11, pp. 47–59 in the
+59-page PDF, gives the self-contained mathematics and source links. All thirteen
+new pages were visually inspected after the final typesetting fixes.
+Twenty-four primary PDFs (including a separately identified discovery thesis) are local under `refs/f1/`, with URLs, hashes and
+specific locators in `refs/LEDGER.md`; bodies remain git-ignored.
+
+The broad map covers direct quantum F_un/Thas frames, pointed and cyclotomic
+modules, Tits–Weyl models, bands/crowds, Hall/groupoid oscillators, quantum
+tori/Habiro, lambda descent, Bost–Connes, tropical/motivic boundaries and an adjacent fermionic tensor analogy.
+Positive literature anchor: Lorscheid 1201.1324 Proposition 5.5 covers the
+reference UT3 Heisenberg model. The newer crowd specialization retains the
+central cross-term relationally; its signed fibre has 27 points/319 triples,
+Krasner eight points/152 triples. Do not call either an ordinary finite group.
+
+Admitted core: `theory/sidequests/f1-cyclotomic.md`, seven PROVED F1 rows,
+after one blind Sol critique and repair. Data are finite abelian A,
+exp(A) dividing N, named phase embedding iota. The cocycle is eta(a)^(-1)
+with W=Z(chi)X(a); the ring identification chi_b=psi(-b·) recovers D8/D16.
+Independent-system tensor uses balanced smash and central product, not two
+independent centres. Raw ring comparison is a central pushout; F4 maps its
+order-64 raw group onto the order-32 phase group. The strict normalizer is
+affine/quadratic, while Fourier requires sums.
+
+Supporting comparisons are SKETCH in `theory/sidequests/f1-comparisons.md`.
+The revised projective cyclotomic matrix functor is also SKETCH. Its original
+unspecified geometric-category clause was rejected, not admitted as a vague
+universal conjecture. `theory/verdicts/f1-r1.md` and `f1-adjudication.md`
+record the capped review. Definitions use D1001–D1013, deliberately reserving
+the lower numbers for the pending mainline. Current claim counts: 52 total,
+38 PROVED, 12 SKETCH, one CONJECTURE, one REFUTED; old statuses unchanged.
+
+Qubit/tensor results worth retaining:
+
+- Normal partial maps on the rank-two pointed set span M2(C) after complex
+  realization; smash realizes as Hilbert tensor. This image is not the
+  unreduced partial-injection monoid algebra. Bare pointed-set QM therefore
+  need not be identified with the trivial N=1 perfect phase kernel.
+- Thas's rank-two frame has N+2 rays; its two-copy frame has
+  N(N+1)(N+2) nonproduct rays. At N=1: 3 one-system rays, 15 composite,
+  nine products and six nonproducts. This is factorization, not a Born rule.
+- Rep(D8) and Rep(Q8) have a two-dimensional object sigma with tensor square
+  the four invertible characters; Shimizu 1005.4500 identifies their distinct
+  Tambara–Yamagami parameters ±1/2 and indicators ±1. Fixed nontrivial
+  central-character sectors are not tensor closed. Internal fusion and
+  independent composition with matching central characters are different.
+- A fibre functor is needed for the proposed categorical qubit:
+  End_Rep(H)(sigma)=C and Hom_Rep(H)(1,sigma)=0, whereas after realization
+  the full observable algebra is M2(C). Category alone does not supply all
+  state vectors. Hall/Fock gives another tensor-categorical route: two
+  identical bosons in two modes have dimension three, not four.
+
+Exact checker `theory/checks/f1_check.py`: thirteen gates and thirteen named
+mutations, expectations in `f1_EXPECTATIONS.md`. Session-close discovered an
+existing interface mismatch: the five nested WH probes lacked --help and
+ff.py is an import-only library. Help was added without changing their
+mathematics; recursive discovery now excludes that one library explicitly.
+Final verification: `scripts/session-close.sh` passed every standalone
+checker green and every advertised red mode; the final PDF rebuild and
+lockstep gate passed, as did source-hash and local-link checks.
+
+Next F1 work should preserve the comparative scope: Tits-lift/Fourier
+comparison; nonreference/characteristic-two Heisenberg geometry; geometric
+meaning of additive phase kernels; central-graded tensor composition;
+finite sectors and transfer maps of Bost–Connes. No universal F1 quantum
+theory or preference for one approach was established.
 
 ## Where the campaign is
 

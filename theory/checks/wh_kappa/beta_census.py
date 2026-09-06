@@ -202,6 +202,9 @@ def arf(C, Q, mode):
 
 
 def main(argv):
+    if argv[1:] in (["--help"], ["-h"]):
+        print(__doc__)
+        return EXIT_OK
     mode = "green"
     for a in argv[1:]:
         if a in MODES:

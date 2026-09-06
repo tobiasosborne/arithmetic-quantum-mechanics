@@ -181,3 +181,182 @@ orthonormal,
 The sign and ordering are stipulations inherited from D8's E1 resolution.
 Every formula in D16 is uniform in the residue characteristic and uses no
 half.
+
+<!-- F1 sidequest definitions; D17–D999 remain available to mainline work. -->
+
+## D1001 (finite free cyclotomic F1 modules and complex realization)
+
+Fix `N>=1`, an abstract cyclic group `mu_N` of order `N`, and a named faithful
+character `iota:mu_N->C^x`.  Let `Free_*^{mu_N}` be the category of finite
+pointed sets carrying a `mu_N`-action which fixes the basepoint and is free on
+its complement; morphisms are pointed equivariant maps.  Define cyclotomic
+complex realization by
+`C_iota(S):=C[S]/(e_0, e_{us}-iota(u)e_s)` and by the induced linear maps.
+The embedding `iota` is part of the realization datum, not a canonical choice.
+
+## D1002 (finite hyperbolic cyclotomic phase datum)
+
+A finite hyperbolic phase datum at level `N` is a finite abelian group `A` with
+`exp(A)|N`, together with
+`A^vee:=Hom(A,mu_N)`, `V_A:=A x A^vee`,
+`c_A((a,chi),(b,eta)):=eta(a)^(-1)`, and
+`kappa_A((a,chi),(b,eta)):=chi(b)eta(a)^(-1)`.
+That `|A^vee|=|A|`, that `c_A` is a cocycle, and that `kappa_A` is perfect are
+claims `F1-DUAL` and `F1-WEYL`, not clauses of the definition.
+
+## D1003 (cyclotomic phase monoid and pointed Schrodinger module)
+
+For D1002 put `H_N(A):=mu_N x V_A` with
+`(u,v)(u',w):=(uu'c_A(v,w),v+w)`, and let `H_N(A)^0` be this set with an
+absorbing zero adjoined.  Put
+`S_A:={0} disjoint-union (mu_N x A)` and stipulate
+
+    (u,a,chi)[z,x]:=[uz chi(x+a),x+a],    0_H s:=0_S.
+
+On `C_iota(S_A)` put
+`X(a)e_x:=e_{x+a}`, `Z(chi)e_x:=iota(chi(x))e_x`, and
+`W(a,chi):=Z(chi)X(a)`.  The action law, faithfulness, exact Weyl relation,
+and algebraic consequences are claims `F1-WEYL` and `F1-REAL`.
+
+## D1004 (fixed-level isomorphisms and tensor products)
+
+Let `FinAb_N^iso` be the groupoid of finite abelian groups of exponent dividing
+`N` and group isomorphisms.  For `f:A->B`, define
+`f_*chi:=chi o f^(-1)`, `S(f)[u,x]:=[u,f(x)]`, and
+`H(f)(u,a,chi):=(u,f(a),f_*chi)`.
+For pointed `mu_N`-sets define
+`S smash_mu T:=(S smash T)/([us,t]~[s,ut])`.  For cyclotomic phase groups
+define the central product
+`H boxdot K:=(H x K)/{((u,1),(u^(-1),1)):u in mu_N}`.
+Functoriality and the strong symmetric monoidal comparison with direct products
+in `FinAb_N^iso` are claim `F1-FUNCT`.
+
+## D1005 (central pushout comparison with a finite ring)
+
+Let `R` be a finite commutative local ring datum D12 and let a named additive
+character `psi:(R,+)->mu_N` satisfy `iota o psi in Gen(R)` and
+`exp(R,+)|N`.  Put
+`chi_b(x):=psi(-bx)` and define
+
+    P_psi:=(mu_N x H_beta0(R))
+           /{(psi(t)^(-1),(t,0,0)):t in R},
+
+the central pushout of D16's raw reference Heisenberg group along `psi`.
+Perfect duality, the comparison with `H_N((R,+))`, and recovery of D8/D16 are
+claim `F1-RING`.
+
+## D1006 (strict cyclotomic normalizer and Fourier kernel)
+
+A *quadratic phase* is a map `theta:A->mu_N` with `theta(0)=1` for which
+`B_theta(a,x):=theta(a+x)theta(a)^(-1)theta(x)^(-1)` is a bicharacter.  Put
+`T_(t,f,theta)[u,x]:=[u theta(x),f(x)+t]` for `t in A`, `f in Aut(A)`.  The *strict
+cyclotomic normalizer* is the normalizer of the D1003 `mu_N`-level Weyl group
+inside `Aut_{Free_*^{mu_N}}(S_A)`.  Define
+
+    F_A e_x:=sum_(rho in A^vee)iota(rho(x))e_rho,
+    ev_a(rho):=rho(a),
+    J_A(a,chi):=(chi^(-1),ev_a) in V_(A^vee),
+    r_A(a,chi):=chi(a).
+
+The exact normalizer, Fourier covariance, and failure of strict realization
+are claim `F1-MON`.
+
+## D1007 (framed cyclotomic kernels and lifted phase isomorphisms)
+
+Fix the data of D1001. Put `K_N=Q[mu_N]/ker(iota)` where `iota` is extended
+linearly to the rational group ring. Let `Mat(K_N)` have finite sets `I` as
+objects and `J x I` matrices over `K_N` as morphisms `I->J`; composition is
+matrix multiplication, tensor on objects is Cartesian product and on maps
+is Kronecker product. The associated free pointed module is the **framed**
+object `S_I={0} disjoint-union(mu_N x I)` with sections `[1,i]`. Write
+`PMat(K_N)` for the groupoid of invertible matrices modulo `K_N^x`.
+Complex realization applies `iota` to entries. This is an additive
+cyclotomic envelope; it is not stipulated to be a category of F1 schemes.
+
+Let `LiftHyp_N` have the configurations of D1002 as objects. An arrow
+`A->B` is a pair `(g,r)` where `g:V_A->V_B` is a group isomorphism preserving
+`kappa` and `r:V_A->mu_N` satisfies
+`r(v)r(w)c_B(gv,gw)=c_A(v,w)r(v+w)`. It denotes the centre-fixing map
+`(u,v)->(u r(v),g(v))`; composition composes these maps. Tensor is `A x B`
+on objects and `(g x h, (v,w)->r(v)s(w))` on arrows, using the canonical
+reordering `V_(A x B)=V_A x V_B`. The unit is `A=0` and symmetry interchanges
+factors. No lift of an arbitrary symplectic map is assumed to exist.
+
+## D1008 (upper-unitriangular Heisenberg crowd over bands)
+
+A band `B` means a commutative pointed multiplicative monoid with a null
+ideal `N_B` in the semiring of formal sums of nonzero elements, such that
+each `a` has a unique `-a` with `a+(-a) in N_B`. Morphisms preserve the
+pointed monoid and null sums. Use the regular partial field `F_1^pm={0,1,-1}`
+with null sums those vanishing in `Z`, and the Krasner hyperfield `K={0,1}`
+with null sums containing either zero or at least two nonzero terms.
+
+Put `H_crowd(B)=B^3`, with identity `(0,0,0)`, represented by
+`h(a,b,t)=[[1,a,t],[0,1,b],[0,0,1]]`. Its ternary relation `R_H(B)` consists
+of triples `(h_1,h_2,h_3)` for which `sum a_i`, `sum b_i`, and the three
+cyclic versions of
+`t_1+t_2+t_3+a_1 b_2+a_1 b_3+a_2 b_3` belong to `N_B`.
+Its inverse set is `h^(-1)={k:(h,k,1) in R_H}` and its product set is
+`h*k={c:there exists d with (h,k,d),(c,d,1) in R_H}`.
+Crowd axioms, representability and ring realization are claim `F1-CROWD`.
+
+## D1009 (absolute projective frames and their product-state map)
+
+For D1001 put `F_N={0} disjoint-union mu_N`, with absorbing zero. For
+`r>=1` define the Cartesian frame `F_N^r` and its projective nonzero state
+set `P_N(r)=(F_N^r\{(0,...,0)})/mu_N`, using simultaneous multiplication
+of all coordinates. This is a different object from a free pointed module.
+Define `P_N(r) x P_N(s)->P_N(rs)` by the coordinate products
+`([x],[y])->[(x_i y_j)_(i,j)]`. Its image consists of *product rays*;
+the remaining rays are *nonproduct rays* in this factorization sense.
+No Born probability rule or total Hermitian form is stipulated.
+
+## D1010 (normal pointed maps, Hall algebra and algebraic Fock realization)
+
+Let `V_r={*,1,...,r}` for `r>=0`. A normal pointed map sends `*` to `*`
+and has at most one preimage for every non-basepoint; equivalently it is
+a partial injection of the nonzero sets. Wedge identifies basepoints;
+smash collapses all pairs with a basepoint in the Cartesian product.
+Let `L(S)=C[S\{*}]`, with its displayed basis orthonormal, and let `B(S)`
+be the complex span of the realized normal endomorphisms in `End_C(L(S))`.
+
+The rational Hall vector space has basis `u_r` and product given by
+counting pointed subsets `T` with specified `T` and `S/T` isomorphism
+classes. Define the algebraic Fock domain `F_alg=C[x]` with
+`<x^m,x^n>=delta_mn n!`, creation `a^dagger f=xf`, annihilation `a f=df/dx`.
+Its Hilbert completion is denoted `F_bos`. The Hall formula, adjointness
+on `F_alg`, and the CCR are claim `F1-HALL`; no bounded CCR is stipulated.
+
+## D1011 (categorical phase system and matching central-character product)
+
+For D1002--D1003 let `C_N(A)=Rep_C(H_N(A))`, the category of finite-dimensional
+complex representations and all linear intertwiners. Its internal tensor
+is the usual tensor with diagonal group action. Let `C_N(A)_lambda` be
+the full subcategory on which central `u in mu_N` acts as `lambda(u)I`.
+The unitary version uses invariant Hermitian inner products and the same
+linear intertwining spaces. Write `omega_A` for the forgetful tensor functor.
+
+For groups `H,K` with specified central `mu_N`, let
+`Rep(H) boxtimes_match Rep(K)` be the full subcategory of `Rep(H x K)`
+on which every `(u,u^(-1))` acts trivially. This is an explicit kernel
+condition, not an unspecified relative tensor product. The central-product
+comparison and grading are claim `F1-CAT`.
+
+## D1012 (the two order-eight qubit groups and their indicators)
+
+For `e in {0,1}` let `G_e` have underlying `F_2^3` and product
+`(t,a,b)(u,c,d)=(t+u+ad+e(ac+bd),a+c,b+d)`, all coordinates in `F_2`.
+Let `sigma_e(t,a,b)=(-1)^t i^(e(a+b)) Z^b X^a`, where
+`X=[[0,1],[1,0]]` and `Z=[[1,0],[0,-1]]`. In the exponent of `i`,
+`a,b` are their representatives in `{0,1}`. Define its indicator by
+`nu_2(sigma_e)=|G_e|^(-1) sum_g Tr(sigma_e(g^2))`.
+The identifications `G_0=D_8` (order eight) and `G_1=Q_8`, irreducibility,
+fusion rules and indicators are claim `F1-FUSION`.
+
+## D1013 (one-pair quantum torus and a selected central fibre)
+
+Fix `xi in C^x`. Define `T_xi=C<U^(+-1),V^(+-1)>/(VU-xi UV)`.
+If `xi` is a named primitive `N`th root, define the selected central
+fibre `T_xi(1,1)=T_xi/(U^N-1,V^N-1)`. No limit identification between
+the parameter `xi`, phase level `N`, and a finite-field cardinality is
+stipulated. Its clock/shift realization is claim `F1-TORUS`.

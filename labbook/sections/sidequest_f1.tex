@@ -1,0 +1,814 @@
+\clearpage
+\section{Sidequest: quantum mechanics over the field with one element}
+\label{sec:sidequest-f1}
+
+\textbf{Opened 6 September 2026.} This is a separate, literature-grounded
+exploration of arithmetic quantum mechanics over $\mathbb F_1$, also written
+$\mathbb F_{\mathrm{un}}$. Its north star is a precisely formulated quantum
+theory, with particular attention to the analogue of a qubit and to composition.
+The different established analogies are retained as separate candidates.
+The accompanying research map is \path{docs/sidequests/f1-qm.md}; primary
+source bodies, versions and retrieval hashes are indexed in
+\path{refs/LEDGER.md}. The finite-ring campaign is not superseded.
+
+There is substantial relevant literature, but the constructions preserve
+different structures. A field may specify the arithmetic base, the state
+coefficients, a counting parameter, or a deformation parameter. Confusing
+these roles would make the comparison misleading. In the present campaign,
+the arithmetic base is a finite field or ring and the amplitudes remain
+complex. The direct ``quantum $\mathbb F_{\mathrm{un}}$'' papers instead
+change the coefficient object of the states themselves.
+
+\subsection{What could count as a qubit?}
+
+Two distinguishable states, a two-dimensional Hilbert space, a simple object
+of categorical dimension two, and two simple objects of a category are
+different notions. The following table makes the distinction explicit.
+
+\begin{longtable}{@{}p{3.1cm}p{5.1cm}p{6.5cm}@{}}
+\toprule
+Approach & Qubit analogue & Composition \\
+\midrule
+\endhead
+Pointed $\mathbb F_1$ modules & A basepoint and two basis points. Complex
+linearization of normal partial maps gives $(\mathbb C^2,M_2(\mathbb C))$.
+& Smash product has four nonzero basis points and realizes as the Hilbert
+tensor product. Native basis states have no superpositions.\\[3pt]
+Cyclotomic modules & Two free $\mu_N$-orbits. For configuration $C_2$ and
+phase level two, clock and shift give the Heisenberg qubit.
+& Balanced smash of modules; central product of Heisenberg groups; ordinary
+tensor after complex realization.\\[3pt]
+Absolute Cartesian frames & Rank two has $N+2$ projective rays. At bare
+$\mathbb F_1$ these are $10,01,11$.
+& The rank-four frame has fifteen rays at $N=1$: nine product rays and six
+nonproduct rays. The operation on pairs is the Kronecker rule.\\[3pt]
+Thin symplectic geometry & Two coordinate polarizations, suggestive of
+position and momentum. These are not two Hilbert-state vectors.
+& Orthogonal sums of phase geometry; Hilbert tensor requires a realization.\\[3pt]
+Blueprint Heisenberg geometry & A chosen $\mathbb F_2$ fibre gives the
+reference order-eight group and its two-dimensional central-character module.
+& Ring realization and phase data precede the physical tensor product.\\[3pt]
+Bands and crowds & A relational Heisenberg object, with 27 signed or eight
+Krasner points. Neither number is a count of qubit states.
+& Geometric products exist; physical composition needs a specified phase
+and representation construction.\\[3pt]
+Hall/groupoid oscillator & No preferred qubit in one oscillator. Two colours
+give a two-dimensional one-particle sector after realization.
+& Full Fock spaces tensor on disjoint colour sets. Two identical bosons in
+two modes have dimension three; two distinguishable qubits have dimension four.\\[3pt]
+Representation categories & The two-dimensional simple object of
+$\operatorname{Rep}(D_8)$ or $\operatorname{Rep}(Q_8)$.
+& Internal fusion splits its square into four charges. Independent copies
+instead use an external tensor and a matching-central-character quotient.\\[3pt]
+Quantum torus & $VU=-UV$, $U^2=V^2=1$ gives $M_2(\mathbb C)$.
+& Two selected central fibres give $M_4(\mathbb C)$.\\[3pt]
+Arithmetic descent and Bost--Connes & A specified finite fibre or a chosen
+two-level encoding; no canonical qubit is supplied by the global arithmetic data.
+& Frobenius and transfer correspondences; tensor products of statistical
+systems after realization.\\[3pt]
+Tropical and motivic routes & Support or incidence information, without a
+specified positive two-state quantum system.
+& The relevant semiring, geometric or categorical tensor must be named.\\
+\bottomrule
+\end{longtable}
+
+\subsection{The developed geometric and physical analogies}
+
+\paragraph{Counting and thin geometry.}
+The projective count $1+q+\cdots+q^{r-1}$ specializes to $r$ at $q=1$;
+Gaussian coefficients specialize to subset counts. Tits's thin geometry
+therefore retains coordinate points, subsets and permutation symmetries.
+For symplectic rank $r$ the reflection group is
+$W(C_r)=(C_2)^r\rtimes S_r$, acting on symplectic pairs. A coordinate
+Lagrangian selects one direction from each pair, giving $2^r$ choices.
+This is the incidence content of the familiar specialization of
+$\prod_{i=1}^r(q^i+1)$.
+The geometric analogies are developed in
+\href{https://arxiv.org/abs/math/0404185}{Deitmar's \emph{Schemes over
+$\mathbb F_1$}, section 5}, and
+\href{https://arxiv.org/abs/1201.1324}{Lorscheid's Tits--Weyl models}.
+Here a \emph{Weyl group} is a reflection group, not the group of Weyl
+displacement operators. Moreover, $q^3\mapsto1$ for the order of
+$\mathrm{UT}_3(\mathbb F_q)$ is a polynomial specialization, not a limit
+of groups or a proof that its $\mathbb F_1$ geometry is empty.
+
+\paragraph{Direct quantum $\mathbb F_{\mathrm{un}}$.}
+\href{https://arxiv.org/abs/1312.4191}{Chang, Lewis, Minic and Takeuchi}
+construct a $q=1$ coordinate-state specialization of finite-field amplitude
+models: superposition disappears. This is different from this campaign's
+complex Hilbert space $\ell^2(\mathbb F_q)$.
+\href{https://arxiv.org/abs/1808.09694}{Thas's \emph{Absolute Quantum Theory}}
+uses larger Cartesian frames and develops monomial dynamics and
+quantum-information analogies. Its Hermitian expression is partial: a sum
+is allowed only when at most one term is nonzero. Orthogonality is
+disjointness of supports. The involution determines the unitary subgroup;
+inversion of phases makes all phase-permutation matrices unitary in this
+sense. Its cloning discussion distinguishes simple projective rays, which
+can be copied, from all frame states. These statements do not supply an
+ordinary positive-definite Hilbert inner product on the frame.
+
+\paragraph{An existing geometric Heisenberg model.}
+Lorscheid's Proposition 5.5 constructs Tits--Weyl models for standard
+parabolic unipotent radicals of $\mathrm{GL}_n$. For the upper-triangular
+Borel of $\mathrm{GL}_3$, this is the reference Heisenberg group
+\[
+h(a,b,t)=\begin{pmatrix}1&a&t\\0&1&b\\0&0&1\end{pmatrix},\qquad
+h(a,b,t)h(c,d,u)=h(a+c,b+d,t+u+ad).
+\]
+Its underlying blue scheme is affine three-space. Its Weyl extension has
+one point, while ring base extension recovers the full unipotent group.
+Thus a positive $\mathbb F_1$ model already exists; selecting a central
+character and constructing its representation are further steps. The
+whole polarizing-cocycle torsor, especially its characteristic-two types,
+is not supplied by that reference model. Likewise, a Tits lift of a
+reflection is not automatically a metaplectic or Weil lift.
+
+\paragraph{Cyclotomic conventions.}
+For the raw phase monoid $\{0\}\cup\mu_N$, integral realization gives
+$\mathbb Z[\mu_N]\simeq\mathbb Z[t]/(t^N-1)$. A cyclotomic blueprint may
+instead impose additive relations giving $\mathbb Z[\zeta_N]$.
+A faithful complex phase character is another named realization datum.
+These conventions are compared in
+\href{https://arxiv.org/abs/1301.0083}{Lorscheid's \emph{A blueprinted view
+on $\mathbb F_1$-geometry}}, section 1.1.4. The group $\mu_{q-1}$ reflects
+multiplicative field data; finite-field Weyl phases come from additive
+characters and lie in $\mu_p$. These two phase counts must not be identified.
+
+\subsection{Pointed modules, ordinary qubits and absolute frames}
+
+\begin{definition}[Normal pointed maps and their two products]
+For $r\geq0$ let $V_r=\{*,1,\ldots,r\}$. A normal pointed map preserves
+$*$ and has at most one preimage of each non-basepoint; it is a partial
+injection of the nonzero sets. Wedge identifies basepoints, while smash
+collapses all pairs containing a basepoint in the Cartesian product.
+Put $L(S)=\mathbb C[S\setminus\{*\}]$, with its basis orthonormal, and
+let $B(S)$ be the complex span of realized normal endomorphisms in
+$\operatorname{End}_{\mathbb C}L(S)$.
+\end{definition}
+\begin{scope}These objects have no native addition of vectors. The image
+algebra $B(S)$ is explicitly a complex realization.\end{scope}
+\provenance{D1010}{definitions.md}{f1\_check.py (M13)}{supporting comparison}
+
+\begin{proposition}[The pointed-set qubit after operator realization]
+{\normalfont\statusSketch}\quad For every positive-rank finite pointed set $S$,
+$B(S)=\operatorname{End}_{\mathbb C}L(S)$. For finite pointed sets $S,T$,
+\[
+L(S\wedge T)\simeq L(S)\otimes L(T).
+\]
+For positive ranks this identifies the image algebras with their tensor
+product. In particular, $V_2$ realizes to $(\mathbb C^2,M_2(\mathbb C))$,
+and $V_2\wedge V_2=V_4$ realizes to two qubits.
+\end{proposition}
+\begin{scope}The realization retains a distinguished basis. The concrete
+image algebra is not the unreduced partial-injection monoid algebra.
+Algebras are transported along bijections; arbitrary partial maps do not
+give unital maps between full endomorphism algebras.\end{scope}
+\provenance{F1-NORMAL}{f1-comparisons.md, section 3}{f1\_check.py (M13)}{supporting SKETCH}
+\begin{proof}
+The partial map taking $j$ to $i$ and everything else to the basepoint
+realizes as $E_{ij}$. These matrix units span the full algebra, and their
+partial inverses realize adjoints. Smash products of these maps give
+$E_{ij}\otimes E_{k\ell}$. The basis identification proves the tensor claim.
+\end{proof}
+
+At rank two the partial-injection monoid has seven elements, including
+zero. Its contracted monoid algebra has dimension six, whereas its image
+has dimension four: linear realization imposes relations such as
+$I=E_{00}+E_{11}$. Keeping only the two bijections gives the commutative
+span of $I$ and the swap. Thus the class of allowed morphisms matters.
+The pointed-module, normal-map and base-change conventions come from
+\href{https://arxiv.org/abs/1204.5395}{Szczesny}, pages 5--8.
+
+\begin{definition}[Cyclotomic projective Cartesian frames]
+Fix an abstract cyclic group $\mu_N$ of order $N\geq1$ and put
+$F_N=\{0\}\sqcup\mu_N$, with absorbing zero. For $r\geq1$, define
+\[
+P_N(r)=\bigl(F_N^r\setminus\{(0,\ldots,0)\}\bigr)/\mu_N
+\]
+by simultaneous scalar multiplication. The product-state map
+$P_N(r)\times P_N(s)\to P_N(rs)$ sends $([x],[y])$ to
+$[(x_i y_j)_{i,j}]$. Rays outside its image are called nonproduct rays
+in this factorization sense.
+\end{definition}
+\begin{scope}A Cartesian frame is different from a free pointed module.
+No probability rule or total Hermitian form is stipulated.\end{scope}
+\provenance{D1009}{definitions.md}{f1\_check.py (M11)}{supporting comparison}
+
+\begin{proposition}[Frame qubits and their nonproduct rays]
+{\normalfont\statusSketch}\quad For every $N\geq1$,
+\[
+|P_N(r)|=\frac{(N+1)^r-1}{N}.
+\]
+The rank-two product-state map is injective, so the rank-four frame has
+$(N+2)^2$ product rays and $N(N+1)(N+2)$ nonproduct rays.
+\end{proposition}
+\begin{scope}Nonproduct means failure of tensor factorization. It does not
+by itself establish a Born rule, interference or Bell correlations.\end{scope}
+\provenance{F1-FRAME}{f1-comparisons.md, section 2}{f1\_check.py (M11)}{supporting SKETCH}
+\begin{proof}
+Scalar multiplication acts freely on any nonzero tuple. For a nonzero
+product array, ratios within a nonzero row and column recover both
+factors up to scalars. The ray counts then follow by subtraction.
+\end{proof}
+
+For $N=1$ the one-system rays are $10,01,11$; the composite has fifteen
+rays, nine product and six nonproduct. The diagonal array
+$\left(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\right)$ is a nonproduct
+because product supports are rectangular. This larger frame is the
+reason a nonadditive theory can retain a factorization notion of
+entanglement while the coordinate-only model does not. In the strict
+pointed-map category, only simple vectors are morphisms from the unit;
+the additional frame states require an explicitly enlarged state notion.
+
+\subsection{A finite cyclotomic Weyl--Heisenberg formulation}
+
+\begin{definition}[Cyclotomic modules and named complex realization]
+Fix $N\geq1$, an abstract cyclic group $\mu_N$ of order $N$, and a named
+faithful character $\iota:\mu_N\to\mathbb C^\times$. Let
+$\mathrm{Free}_*^{\mu_N}$ be finite pointed sets with a $\mu_N$ action
+fixing the basepoint and free on its complement; maps are pointed
+equivariant maps. Define
+\[
+\mathbb C_\iota(S)=\mathbb C[S]/(e_0,\ e_{us}-\iota(u)e_s)
+\]
+and use the induced linear maps on morphisms.
+\end{definition}
+\begin{scope}The phase embedding is part of the realization datum. The
+objects are free phase sets, not Cartesian frames.\end{scope}
+\provenance{D1001}{definitions.md}{f1\_check.py}{f1-r1.md}
+
+\begin{definition}[Hyperbolic phase data and the pointed Schr\"odinger action]
+For a finite abelian group $A$ with exponent dividing $N$, put
+\[
+A^\vee=\operatorname{Hom}(A,\mu_N),\quad V_A=A\times A^\vee,
+\quad c_A((a,\chi),(b,\eta))=\eta(a)^{-1},
+\]
+\[
+\kappa_A((a,\chi),(b,\eta))=\chi(b)\eta(a)^{-1}.
+\]
+Define $H_N(A)=\mu_N\times V_A$ by
+$(u,v)(u',w)=(uu'c_A(v,w),v+w)$ and adjoin an absorbing zero to get
+$H_N(A)^0$. Put $S_A=\{0\}\sqcup(\mu_N\times A)$ and stipulate
+\[
+(u,a,\chi)[z,x]=[uz\chi(x+a),x+a],\qquad 0_Hs=0_S.
+\]
+On its realization let $X(a)e_x=e_{x+a}$,
+$Z(\chi)e_x=\iota(\chi(x))e_x$, and $W(a,\chi)=Z(\chi)X(a)$.
+\end{definition}
+\begin{scope}The abelian configuration group is extra data. No field
+structure, division by two or identification $A\simeq A^\vee$ is assumed.\end{scope}
+\provenance{D1002,D1003}{definitions.md}{f1\_check.py (M1--M3)}{f1-r1.md}
+
+\begin{theorem}[The finite cyclotomic Schr\"odinger system]
+{\normalfont\statusProved}\quad Fix $N\geq1$, cyclic $\mu_N$ of order $N$,
+a faithful $\iota:\mu_N\to\mathbb C^\times$, and a finite abelian $A$
+of exponent dividing $N$. For the associated phase system,
+$|A^\vee|=|A|$, characters extend from subgroups and separate points, and
+$\kappa_A$ is perfect. The displayed multiplication makes $H_N(A)$ a
+group with centre exactly $\mu_N$, acting faithfully on $S_A$.
+After the named complex realization,
+\[
+W(a,\chi)W(b,\eta)=\iota(\eta(a)^{-1})W(a+b,\chi\eta),\qquad
+\operatorname{Tr}(W(v)^*W(w))=|A|\delta_{v,w}.
+\]
+These operators span $\operatorname{End}_{\mathbb C}(\mathbb C[A])$.
+The irreducible unitary representation of $H_N(A)$ with central character
+$\iota$ is unique up to equivalence, has dimension $|A|$, and has
+intertwiners unique up to $U(1)$.
+\end{theorem}
+\begin{scope}This is finite Heisenberg theory for abelian configurations,
+with an explicit pointed module. A universal representation theorem for
+all proposed $\mathbb F_1$ geometries is not asserted.\end{scope}
+\provenance{F1-DUAL,F1-WEYL,F1-REAL}{f1-cyclotomic.md, sections 0--2}{f1\_check.py (M1--M3)}{f1-adjudication.md}
+\begin{proof}
+Character extension follows by adjoining a cyclic generator and choosing
+a root in $\mu_N$; the exponent hypothesis ensures the required root exists.
+Restriction and induction on the group order give $|A^\vee|=|A|$.
+A nontrivial character sums to zero by translating its sum. Character
+evaluation verifies the cocycle identity and action. Testing the two
+coordinate subgroups proves perfection. The trace vanishes unless both
+translation and character are trivial; the resulting $|A|^2$ orthogonal
+operators form a basis of the full matrix algebra. Matrix units then prove
+uniqueness of its simple module and scalar uniqueness of intertwiners.
+\end{proof}
+
+\begin{definition}[Fixed-level isomorphisms and balanced composition]
+Let $\mathrm{FinAb}_N^{\simeq}$ have the above configurations and their
+group isomorphisms. For $f:A\to B$, put
+$f_*\chi=\chi\circ f^{-1}$,
+$S(f)[u,x]=[u,f(x)]$ and
+$H(f)(u,a,\chi)=(u,f(a),f_*\chi)$.
+Define
+\[
+S\wedge_{\mu_N}T=(S\wedge T)/([us,t]\sim[s,ut]),\qquad
+H\boxdot K=(H\times K)/\{(u,u^{-1}):u\in\mu_N\}.
+\]
+In the last expression the two groups have specified central copies of
+$\mu_N$.
+\end{definition}
+\begin{scope}Functoriality is asserted on isomorphisms at a common phase
+level. Arbitrary configuration homomorphisms are not silently included.\end{scope}
+\provenance{D1004}{definitions.md}{f1\_check.py (M6)}{f1-r1.md}
+
+\begin{theorem}[Composition of independent phase systems]
+{\normalfont\statusProved}\quad Fix $N\geq1$ and a faithful phase realization
+$\iota$. The module, group and Hilbert assignments on
+$\mathrm{FinAb}_N^{\simeq}$ are strong symmetric monoidal, with comparisons
+\begin{gather*}
+S_A\wedge_{\mu_N}S_B\simeq S_{A\times B},\qquad
+H_N(A)\boxdot H_N(B)\simeq H_N(A\times B),\\
+\mathbb C[A]\otimes\mathbb C[B]\simeq\mathbb C[A\times B].
+\end{gather*}
+At $N=1$ the exponent condition forces $A=0$ and a one-dimensional
+phase-system realization, while free pointed modules of arbitrary rank
+still exist.
+\end{theorem}
+\begin{scope}The group tensor is a central quotient, not a Cartesian
+product retaining two independent centres. The level-one statement is
+restricted to perfect phase systems, not all $\mathbb F_1$ quantum routes.\end{scope}
+\provenance{F1-FUNCT,F1-ONE}{f1-cyclotomic.md, sections 3,5}{f1\_check.py (M1,M6)}{f1-adjudication.md}
+\begin{proof}
+The phase-set comparison sends $[[u,a],[v,b]]$ to $[uv,(a,b)]$.
+The corresponding group map multiplies central phases and takes the
+external character. Its kernel is the antidiagonal centre. Every
+associativity diagram multiplies the same phases and associates the
+same tuple, proving coherence. The Hilbert comparison is the basis map.
+\end{proof}
+
+\begin{definition}[Central pushout from a finite local ring]
+Let $R$ be finite commutative unital local with $1\ne0$, and let
+$\psi:(R,+)\to\mu_N$ be named, with exponent of $(R,+)$ dividing $N$.
+Assume $\iota\psi$ is generating, meaning its kernel contains no nonzero
+ideal. Let $H_{\beta_0}(R)$ have triples $(t,a,b)$ and product
+$(t+u+ad,a+c,b+d)$. Put
+\[
+\chi_b(x)=\psi(-bx),\qquad
+P_\psi=\bigl(\mu_N\times H_{\beta_0}(R)\bigr)
+/\{(\psi(t)^{-1},(t,0,0)):t\in R\}.
+\]
+\end{definition}
+\begin{scope}A generating character need not be faithful on the additive
+group. The raw Heisenberg group and its phase image are distinguished.\end{scope}
+\provenance{D1005,D12,D13,D16}{definitions.md}{f1\_check.py (M4,M5)}{f1-r1.md}
+
+\begin{theorem}[Exact recovery of the arithmetic reference convention]
+{\normalfont\statusProved}\quad Let $R$ be a finite commutative unital local
+ring with $1\ne0$, exponent of $(R,+)$ dividing $N\geq1$, and a named
+$\psi:(R,+)\to\mu_N$ such that the faithful complex realization
+$\iota\psi$ is generating. Then
+$b\mapsto\chi_b$ identifies $(R,+)$ with its phase dual and
+$P_\psi\simeq H_N((R,+))$ by
+$[u;(t,a,b)]\mapsto(u\psi(t),a,\chi_b)$.
+The raw group map has central kernel $\ker\psi$. Its realized operators are
+\[
+W(a,\chi_b)e_y=(\iota\psi)(-b(y+a))e_{y+a}=Z(-b)X(a)e_y,
+\]
+with product cocycle $(\iota\psi)(ab')$, uniformly including characteristic two.
+\end{theorem}
+\begin{scope}Only the reference cocycle is recovered here. This does not
+identify all raw polarizing-cocycle groups with one phase group.\end{scope}
+\provenance{F1-RING}{f1-cyclotomic.md, section 4}{f1\_check.py (M4,M5)}{f1-adjudication.md}
+
+For example, over $\mathbb F_4$ a nontrivial trace character has a
+two-element kernel. Its raw Heisenberg group has order 64 and its phase
+image order 32. Over $\mathbb F_2$, the order-eight reference group acts
+on the usual qubit. This supplies a checked bridge to the main campaign.
+
+\subsection{Fourier transform and a precisely scoped additive extension}
+
+\begin{definition}[Quadratic phases, strict normalizer and Fourier kernel]
+A quadratic phase is $\theta:A\to\mu_N$, $\theta(0)=1$, for which
+$B_\theta(a,x)=\theta(a+x)\theta(a)^{-1}\theta(x)^{-1}$ is a bicharacter.
+For $t\in A$, $f\in\operatorname{Aut}(A)$ put
+$T_{t,f,\theta}[u,x]=[u\theta(x),f(x)+t]$. The strict normalizer is the
+normalizer of the $\mu_N$-level Weyl group in
+$\operatorname{Aut}_{\mathrm{Free}_*^{\mu_N}}(S_A)$. Define
+\[
+F_Ae_x=\sum_{\rho\in A^\vee}\iota(\rho(x))e_\rho,\quad
+\operatorname{ev}_a(\rho)=\rho(a),\quad
+J_A(a,\chi)=(\chi^{-1},\operatorname{ev}_a),\quad r_A(a,\chi)=\chi(a).
+\]
+\end{definition}
+\begin{scope}A self-Fourier endomorphism additionally needs a pairing
+identifying $A$ with its dual. No such pairing is suppressed.\end{scope}
+\provenance{D1006}{definitions.md}{f1\_check.py (M7)}{f1-r1.md}
+
+\begin{theorem}[What remains monomial and what Fourier requires]
+{\normalfont\statusProved}\quad Fix $N\geq1$, a faithful $\iota$, and finite
+abelian $A$ of exponent dividing $N$. Its strict normalizer consists exactly of the
+$T_{t,f,\theta}$ and central phases. Its phase-space maps are
+\[
+(a,\chi)\longmapsto
+\bigl(f(a),(\chi B_\theta(a,-))\circ f^{-1}\bigr).
+\]
+For $|A|>1$, $F_A$ has full column support and cannot be the realization
+of a strict pointed map. Nevertheless,
+\[
+F_A^*F_A=|A|I,\qquad
+F_AW(v)=\iota(r_A(v))W(J_Av)F_A.
+\]
+\end{theorem}
+\begin{scope}Only bicharacters admitting a $\mu_N$-valued quadratic
+refinement occur in the strict subgroup. Enlarging phases alone does not
+make Fourier monomial. No canonical Weil splitting is asserted.\end{scope}
+\provenance{F1-MON}{f1-cyclotomic.md, section 6}{f1\_check.py (M7, Fourier only)}{f1-adjudication.md}
+
+\begin{definition}[Framed cyclotomic kernels and lifted phase isomorphisms]
+Put $K_N=\mathbb Q[\mu_N]/\ker\iota$. The category $\operatorname{Mat}(K_N)$
+has finite sets $I$ as objects and $J\times I$ matrices over $K_N$ as
+morphisms; tensor is Cartesian product of sets and Kronecker product of
+matrices. The associated modules are explicitly framed by $[1,i]$ in
+$S_I=\{0\}\sqcup(\mu_N\times I)$. Let $\operatorname{PMat}(K_N)$ be
+invertible matrices modulo $K_N^\times$, realized by entrywise evaluation.
+
+The groupoid $\operatorname{LiftHyp}_N$ has configurations $A$ as objects.
+An arrow is $(g,r)$ with $g:V_A\to V_B$ a group isomorphism preserving
+$\kappa$ and $r:V_A\to\mu_N$ satisfying
+\[
+r(v)r(w)c_B(gv,gw)=c_A(v,w)r(v+w).
+\]
+It denotes the centre-fixing map $(u,v)\mapsto(ur(v),g(v))$; composition
+composes these maps. Tensor is $A\times B$ on objects and
+$(g\times h,(v,w)\mapsto r(v)s(w))$ on arrows, with the canonical
+reordering of phase factors. The unit is $A=0$ and the symmetry is the swap.
+\end{definition}
+\begin{scope}This target is an additive cyclotomic envelope. It is not
+claimed to be a category of $\mathbb F_1$ schemes; arbitrary free torsors
+are not given coordinate matrices without a frame.\end{scope}
+\provenance{D1007}{definitions.md}{no general checker}{f1-adjudication.md, O1--O3 repair}
+
+\begin{proposition}[Projective realization of lifted phase symmetries]
+{\normalfont\statusSketch}\quad For $N\geq1$ and a named faithful $\iota$,
+there is a projective strong symmetric monoidal functor
+\[
+Q_N:\operatorname{LiftHyp}_N\longrightarrow\operatorname{PMat}(K_N)
+\]
+defined by the Egorov intertwining equations. Its complex realization is
+projectively unitary; affine-quadratic maps and Fourier have the values above.
+\end{proposition}
+\begin{scope}The lift is input data. Geometric descent of the additive
+envelope and a lift of every symplectic transformation remain separate questions.\end{scope}
+\provenance{F1-CORR}{f1-cyclotomic.md, section 7}{not claimed as computationally proved}{supporting SKETCH after scope repair}
+\begin{proof}
+The intertwining equations have coefficients in $K_N$ and a one-dimensional
+solution space after embedding in $\mathbb C$. Gaussian elimination has
+the same rank over either field, so there is a nonzero solution over
+$K_N$. Irreducibility makes it invertible; uniqueness up to scalar gives
+projective composition and tensor coherence. Unitary normalization is
+performed only after complex realization.
+\end{proof}
+
+\subsection{Relational Heisenberg geometry over bands}
+
+\begin{definition}[Bands and the upper-unitriangular crowd]
+A band is a commutative pointed multiplicative monoid $B$ with a null
+ideal $N_B$ of formal sums, in which every $a$ has a unique $-a$ with
+$a+(-a)\in N_B$; morphisms preserve null sums. The regular partial field
+$\mathbb F_1^\pm=\{0,1,-1\}$ uses sums vanishing in $\mathbb Z$.
+The Krasner hyperfield $\mathbb K=\{0,1\}$ declares a sum null exactly
+when it has zero or at least two nonzero terms.
+Define $H_{\mathrm{crowd}}(B)=B^3$, represented by $h(a,b,t)$ as above,
+with identity $(0,0,0)$. Its colaw consists of triples for which
+\[
+\sum_i a_i,\qquad \sum_i b_i,\qquad
+t_1+t_2+t_3+a_1b_2+a_1b_3+a_2b_3
+\]
+and both cyclic variants of the last sum lie in $N_B$.
+The inverse set of $h$ consists of $k$ with $(h,k,1)$ in the colaw;
+the product set $h*k$ consists of $c$ for which some $d$ has both
+$(h,k,d)$ and $(c,d,1)$ in the colaw.
+\end{definition}
+\begin{scope}Nullity is part of the band, not an invented binary addition.
+The signed band and the raw pointed phase monoid have different structure.\end{scope}
+\provenance{D1008}{definitions.md}{f1\_check.py (M10)}{supporting comparison}
+
+\begin{proposition}[A band-level Heisenberg crowd and its ring fibres]
+{\normalfont\statusSketch}\quad The functor $B\mapsto H_{\mathrm{crowd}}(B)$
+on bands, with the displayed colaw, is an affine algebraic crowd.
+For every commutative ring $R$, its fibre is exactly $\mathrm{UT}_3(R)$.
+The signed fibre has 27 points, 319 colaw triples and 23 points admitting
+an inverse inside that fibre. The Krasner fibre has eight points and
+152 colaw triples, with multivalued inverses.
+\end{proposition}
+\begin{scope}These finite fibres are not ordinary groups. Even a crowd
+product with the identity may be empty when its required inverse mediator
+is absent. No Hilbert representation is inferred from the point counts.\end{scope}
+\provenance{F1-CROWD}{f1-comparisons.md, section 1}{f1\_check.py (M10)}{supporting SKETCH}
+
+This specializes the algebraic $\mathrm{SL}_3$ crowd of
+\href{https://arxiv.org/abs/2305.13809}{Lorscheid--Thas (2023)}, section 5.4.
+Restricting to an identity-containing subset preserves the crowd axioms;
+the displayed coordinate relations are affine. Over rings they say
+$h_1h_2h_3=I$. The signed example retains
+$h(1,0,0)*h(0,1,0)=\{h(1,1,1)\}$, and hence the central cross-term,
+although $h(1,0,0)^2$ is absent. This provides a constructive second
+Heisenberg formulation, with a representation theory still to specify.
+
+\subsection{Tensor categories and the qubit fusion object}
+
+\begin{definition}[The categorical phase system]
+Let $\mathcal C_N(A)=\operatorname{Rep}_{\mathbb C}(H_N(A))$, with all
+linear intertwiners and internal tensor using the diagonal group action.
+Let $\mathcal C_N(A)_\lambda$ be the full subcategory on which central
+$u$ acts as $\lambda(u)I$. The unitary version chooses invariant Hermitian
+inner products and has the same intertwining spaces. Write $\omega_A$
+for the forgetful tensor functor. For groups $H,K$ with specified central
+$\mu_N$, define
+$\operatorname{Rep}(H)\boxtimes_{\mathrm{match}}\operatorname{Rep}(K)$
+as the full subcategory of $\operatorname{Rep}(H\times K)$ on which all
+$(u,u^{-1})$ act trivially.
+\end{definition}
+\begin{scope}The matching condition is explicit. It is not an
+unspecified relative tensor product, and it is different from internal fusion.\end{scope}
+\provenance{D1011}{definitions.md}{f1\_check.py (examples)}{supporting comparison}
+
+\begin{proposition}[Central sectors explain why the category matters]
+{\normalfont\statusSketch}\quad For $N\geq1$ and finite abelian $A$ of
+exponent dividing $N$, $\mathcal C_N(A)$ is a symmetric fusion
+category with a faithful tensor functor $\omega_A$, and
+\[
+\mathcal C_N(A)=\bigoplus_{\lambda\in\widehat{\mu_N}}
+\mathcal C_N(A)_\lambda,\qquad
+\mathcal C_N(A)_\lambda\otimes\mathcal C_N(A)_\nu
+\subseteq\mathcal C_N(A)_{\lambda\nu}.
+\]
+Moreover, for finite groups $H,K$ with specified central embeddings of $\mu_N$,
+\[
+\operatorname{Rep}(H\boxdot K)\simeq
+\operatorname{Rep}(H)\boxtimes_{\mathrm{match}}\operatorname{Rep}(K).
+\]
+On simple external tensors, the matching condition is equality of the
+two central characters. In particular a fixed nontrivial sector is not
+a tensor category by itself.
+\end{proposition}
+\begin{scope}The unit of matching composition on this family is
+$\operatorname{Rep}(\mu_N)$, with one simple per grade. It is not the
+unit for the unrestricted Deligne product.\end{scope}
+\provenance{F1-CAT}{f1-comparisons.md, section 5}{f1\_check.py (M6,M12; examples)}{supporting SKETCH}
+\begin{proof}
+Average an inner product over the finite group to obtain semisimplicity.
+Central character eigenspaces give the grading, and diagonal tensor
+multiplies eigencharacters. A representation factors through the central
+quotient precisely when its antidiagonal centre acts trivially; inflation
+and descent are inverse tensor functors. On an external simple the
+condition is $\lambda(u)\nu(u)^{-1}=1$.
+\end{proof}
+
+\begin{definition}[Dihedral and quaternion qubit data]
+For $e\in\{0,1\}$ let $G_e=\mathbb F_2^3$ with
+\[
+(t,a,b)(u,c,d)=(t+u+ad+e(ac+bd),a+c,b+d).
+\]
+Put
+\[
+\sigma_e(t,a,b)=(-1)^t i^{e(a+b)}Z^bX^a,\quad
+X=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+Z=\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+\]
+using representatives $a,b\in\{0,1\}$ in the exponent of $i$. Define
+$\nu_2(\sigma_e)=|G_e|^{-1}\sum_g\operatorname{Tr}(\sigma_e(g^2))$.
+\end{definition}
+\begin{scope}The group law distinguishes the two cocycle choices. The
+quaternion matrices require fourth-root phases in this monomial realization.\end{scope}
+\provenance{D1012}{definitions.md}{f1\_check.py (M12)}{supporting comparison}
+
+\begin{proposition}[Two qubit objects with the same fusion rules]
+{\normalfont\statusSketch}\quad $G_0=D_8$ of order eight and $G_1=Q_8$. Each has four
+one-dimensional characters and the single two-dimensional irreducible
+$\sigma_e$. Writing the four characters as $1,\alpha,\beta,\alpha\beta$,
+\[
+\sigma_e\otimes\sigma_e\simeq
+1\oplus\alpha\oplus\beta\oplus\alpha\beta,\qquad
+\nu_2(\sigma_0)=1,\quad\nu_2(\sigma_1)=-1.
+\]
+Their sourced tensor-category identifications are
+\[
+\operatorname{Rep}(D_8)\simeq\mathrm{TY}(\mathbb F_2^2,\chi_{\rm alt},1/2),
+\qquad
+\operatorname{Rep}(Q_8)\simeq\mathrm{TY}(\mathbb F_2^2,\chi_{\rm alt},-1/2).
+\]
+\end{proposition}
+\begin{scope}The displayed tensor square uses one diagonal symmetry
+group. It does not replace the external tensor describing independent qubits.\end{scope}
+\provenance{F1-FUSION}{f1-comparisons.md, section 6; Shimizu, p. 20}{f1\_check.py (M12)}{supporting SKETCH}
+
+The two-dimensional character is $2,-2$ on the two central elements and
+zero elsewhere. Squaring it gives the sum of the four quotient characters.
+Six elements square to $1$ in $D_8$ and only two do in $Q_8$, giving the
+indicator signs. The categorical identifications and their distinction
+are in \href{https://arxiv.org/abs/1005.4500}{Shimizu's
+\emph{Frobenius--Schur indicators in Tambara--Yamagami categories}},
+Definition 3.1, Table 1 and page 20.
+
+For two independent reference qubits the relevant group instead is
+$H_2(C_2)\boxdot H_2(C_2)=H_2(C_2\times C_2)$, of order 32.
+Its nontrivial-central-character irreducible has dimension four.
+Both this representation and internal fusion use the underlying Hilbert
+space $\mathbb C^2\otimes\mathbb C^2$, but their symmetry actions differ.
+This is a concrete reason to retain the tensor category, its sectors and
+its fibre functor as part of the quantum object.
+
+The fibre functor is essential to this particular formulation:
+\[
+\operatorname{End}_{\operatorname{Rep}(H)}(\sigma)=\mathbb C,\qquad
+\operatorname{Hom}_{\operatorname{Rep}(H)}(1,\sigma)=0
+\]
+for the nontrivial central character. The equivariant category alone does not give every
+state vector or every qubit observable. Those are recovered as vectors
+of $\omega(\sigma)=\mathbb C^2$ and elements of
+$\operatorname{End}_{\mathbb C}(\omega(\sigma))=M_2(\mathbb C)$.
+An alternative categorical state notion would have to be specified.
+
+\subsection{The independent Hall and categorical-oscillator route}
+
+\begin{definition}[Pointed-set Hall algebra and Fock realization]
+On the normal pointed-set category above, the rational Hall vector space
+has basis $u_r$ indexed by rank. Its product counts pointed subsets $T$
+with the prescribed isomorphism classes of $T$ and $S/T$.
+Put $\mathcal F_{\rm alg}=\mathbb C[x]$ with
+$\langle x^m,x^n\rangle=\delta_{mn}n!$, define
+$a^\dagger f=xf$, $af=df/dx$, and let $\mathcal F_{\rm bos}$ be the
+Hilbert completion.
+\end{definition}
+\begin{scope}Hall coefficients and the Fock space are additive
+realizations of the pointed-set data. Creation is unbounded.\end{scope}
+\provenance{D1010}{definitions.md}{f1\_check.py (M8,M9)}{supporting comparison}
+
+\begin{proposition}[A bosonic Heisenberg algebra from finite sets]
+{\normalfont\statusSketch}\quad The rational Hall algebra of finite normal
+pointed sets is $\mathbb Q[x]$ under
+\[
+u_mu_n=\binom{m+n}{m}u_{m+n},\qquad u_n\longmapsto x^n/n!.
+\]
+On $\mathcal F_{\rm alg}$, creation and annihilation are adjoints and
+$[a,a^\dagger]=I$. In the normalized basis $x^n/\sqrt{n!}$ their
+coefficients are $\sqrt{n+1}$ and $\sqrt n$.
+\end{proposition}
+\begin{scope}The polynomial Hall algebra alone is not the Weyl algebra;
+annihilation is additional operator structure. No finite-dimensional
+characteristic-zero CCR representation is asserted.\end{scope}
+\provenance{F1-HALL}{f1-comparisons.md, section 4}{f1\_check.py (M8,M9)}{supporting SKETCH}
+
+The subset count proves the Hall formula. The operator calculation is
+$d(xf)/dx-x\,df/dx=f$. The source construction is
+\href{https://arxiv.org/abs/1204.5395}{Szczesny's Hall algebra}, section 3.
+\href{https://arxiv.org/abs/math/0004133}{Baez--Dolan} give the factorial
+groupoid weights and the positive categorical relation
+\[
+A A^\dagger\simeq A^\dagger A\oplus\mathrm{id}.
+\]
+\href{https://arxiv.org/abs/1207.2054}{Morton--Vicary} realize the
+categorified Heisenberg algebra using spans of finite-set groupoids:
+add/remove histories split according to whether the removed point was
+just added. Their two-linearization retains the tower of
+$\operatorname{Rep}(S_n)$, with the stated finiteness/completion caveats.
+The connection to $\mathbb F_1$ is the equivalence between finite sets and
+the core of finite pointed modules. It is not a claim that these authors
+construct one universal $\mathbb F_1$ scheme theory.
+
+This supplies a categorical north star different from the finite Weyl
+system. Degree two of the representation-category tower has two simples
+in $\operatorname{Rep}(S_2)$; that is not automatically a qubit. With
+two colours, the one-particle complex space is a qubit and the two-boson
+sector is $\operatorname{Sym}^2(\mathbb C^2)$, of dimension three.
+A one-mode cutoff to $|0\rangle,|1\rangle$ instead has projected
+commutator $\operatorname{diag}(1,-1)$, and is not closed under creation.
+The Hall operation uses wedge and particle-number addition; the finite
+configuration tensor uses smash and rank multiplication.
+
+\subsection{Toric, analytic and arithmetic-statistical formulations}
+
+\begin{definition}[A quantum torus and its selected central fibre]
+For a named $\xi\in\mathbb C^\times$ put
+\[
+\mathcal T_\xi=\mathbb C\langle U^{\pm1},V^{\pm1}\rangle/(VU-\xi UV).
+\]
+If $\xi$ is a primitive $N$th root, put
+$\mathcal T_\xi(1,1)=\mathcal T_\xi/(U^N-1,V^N-1)$.
+\end{definition}
+\begin{scope}The parameter $\xi$, its order $N$ and a finite-field
+cardinality are different data. Central values are explicitly selected.\end{scope}
+\provenance{D1013}{definitions.md}{cyclic Weyl checks}{supporting comparison}
+
+\begin{proposition}[The qubit as a quantum-torus fibre]
+{\normalfont\statusSketch}\quad For $\xi$ primitive of order $N$,
+$\mathcal T_\xi(1,1)\simeq M_N(\mathbb C)$ via
+$Ue_j=e_{j+1}$ and $Ve_j=\xi^je_j$ on $\mathbb Z/N$.
+For $N=2$ this is a qubit algebra; two independent fibres tensor to
+$M_4(\mathbb C)$.
+\end{proposition}
+\begin{scope}The universal quantum torus has not been identified with
+a finite matrix algebra. At $\xi=1$ it is commutative.\end{scope}
+\provenance{F1-TORUS}{f1-comparisons.md, section 7}{f1\_check.py (cyclic cases)}{supporting SKETCH}
+
+The $N^2$ clock/shift words are trace-orthogonal and span, which proves
+the selected-fibre statement. This is the twisted-lattice picture of
+\href{https://arxiv.org/abs/math/0511263}{Neeb's rational quantum tori}.
+Monoidal tori retain character lattices; a chosen skew pairing is
+additional symplectic data. \href{https://arxiv.org/abs/0809.1564}{Manin's
+cyclotomic analytic geometry} supplies Habiro completions and evaluation
+or Taylor maps at roots of unity. It suggests an arithmetic interpolation
+problem for quantum fibres, but does not itself give a common Hilbert
+space or compatible Weil intertwiners. A deformation limit $\xi\to1$
+is different from all the preceding $q\to1$ operations.
+
+\paragraph{Frobenius descent.}
+\href{https://arxiv.org/abs/0906.3146}{Borger's lambda geometry} treats
+lambda structure as descent data below $\operatorname{Spec}\mathbb Z$.
+For flat schemes it can be expressed as commuting Frobenius lifts.
+Monoid algebras have the lift $m\mapsto m^p$. Its naive coordinatewise
+application to the integral Heisenberg group fails already on the
+additive subgroup: $(1+1)^p\ne1^p+1^p$ in $\mathbb Z$.
+This rejects that particular group-compatible lift, not all arithmetic
+descent. A quantum extension should specify whether arithmetic maps act
+by homomorphisms, noninvertible operators or correspondences. No qubit
+or Born rule is selected by lambda structure alone.
+
+\paragraph{A published quantum-statistical realization.}
+\href{https://arxiv.org/abs/0806.2401}{Connes--Consani--Marcolli's
+\emph{Fun with $\mathbb F_1$}}, Proposition 6.1 and Theorem 6.2,
+constructs an $\mathbb F_1$ model of the Bost--Connes endomotive, with
+the rational system recovered by scalar extension. It uses a cyclotomic
+tower and Frobenius/transfer correspondences. Its complex realization
+has the time evolution
+\[
+\sigma_t(\mu_n)=n^{it}\mu_n,\qquad \sigma_t(e(r))=e(r).
+\]
+In the standard representation on $\ell^2(\mathbb N_{>0})$,
+$He_n=(\log n)e_n$ and
+$\operatorname{Tr}(e^{-\beta H})=\zeta(\beta)$ for $\beta>1$;
+see \href{https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1994-1998/M_95_38/M_95_38_web.pdf}{Bost--Connes (1995)}.
+This is genuine quantum statistical dynamics, not a finite
+Stone--von Neumann representation. Choosing two energy levels provides
+an encoding but not a sector invariant under its full observable algebra.
+
+\href{https://arxiv.org/abs/1901.00020}{Lieber--Manin--Marcolli}, published
+in 2022, develop lifts to Grothendieck rings, assembler categories,
+spectra and Nori motives. This is an independent literature-based reason
+to explore categorical targets, without asserting that these categories
+are the fusion categories of the finite Heisenberg construction.
+
+\paragraph{Tropical and motivic boundaries.}
+The band/Krasner framework retains combinatorial flags beyond a single
+coordinate apartment. Boolean semirings, Krasner hyperfields, signed
+partial fields and pointed monoids have different additive information.
+\href{https://arxiv.org/abs/1405.4527}{Connes--Consani's Arithmetic Site}
+uses a tropical semiring on a multiplicative-semigroup topos to realize
+arithmetic correspondences. It does not prescribe a local Weyl algebra
+or positive quantum states. Relative and homotopical geometries broaden
+the candidate bases and targets, but no general Heisenberg representation
+theorem for those bases is established in this sidequest.
+Finally, \href{https://arxiv.org/abs/1209.4837}{Bejleri--Marcolli's
+\emph{Quantum field theory over $\mathbb F_1$}} concerns torifications
+and varieties attached to Feynman integrals; its introduction explicitly
+distinguishes that problem from physical Lagrangians and Feynman rules
+over $\mathbb F_1$.
+
+\paragraph{An additional tensor analogy: fermionic occupancy.}
+\href{https://arxiv.org/abs/1307.4522}{Lin--Wang--Wu--Yang (2013)}
+categorify the one-mode fermion algebra with
+$c^2=(c^\dagger)^2=0$ and $cc^\dagger+c^\dagger c=1$.
+Occupancy subsets suggest a combinatorial exterior-power route; this
+is our proposed $\mathbb F_1$ bridge, not their claim.
+\href{https://doi.org/10.4230/LIPIcs.FSCD.2018.17}{Hadzihasanovic--de
+Felice--Ng (2018)}, section 2, give a precise monoidal category of local
+fermionic modes and maps of definite parity. Its basic object has
+underlying space $\mathbb C^{1|1}$; tensor adds parity and the physical
+fermionic swap negates $|11\rangle$. The two occupancy labels therefore
+do not supply unrestricted qubit operations. Parity-preserving one-mode
+observables are diagonal, while a fixed-parity two-mode sector can encode
+a qubit. Signed phases are a candidate carrier for exchange signs over
+$\mathbb F_1$; the cited complex categorical construction does not prove
+that descent. This is a further composition law to compare with the
+bosonic and distinguishable-system routes.
+
+\subsection{Precisely formulated outputs and open comparisons}
+
+The finite arithmetic candidate is the configuration-to-phase-system
+functor, with a named phase realization and a checked tensor law. The
+categorical candidate retains
+\[
+\bigl(\mathcal C_N(A),\ \mathcal C_N(A)_\iota,\ \omega_A\bigr)
+\]
+together with internal fusion and matching external composition. The
+pointed normal-map candidate already realizes an ordinary qubit over
+the bare combinatorial base. The Heisenberg crowd is a geometric object
+with correct ring fibres, while the Hall/groupoid route gives an
+independent categorical oscillator. Bost--Connes supplies the arithmetic
+quantum-statistical test case. These are several precise formulations,
+not evidence that all the analogies must coincide.
+
+The next comparison problems are concrete: relate a chosen Tits reflection
+lift to its projective Fourier operator; extend the geometric Heisenberg
+model to nonreference cocycles; identify a genuine geometric home for the
+additive phase kernels; compare finite cyclotomic fibres with arithmetic
+transfer maps; and distinguish tensor products of distinguishable systems
+from bosonic particle-number sectors. A theory on arbitrary $\mathbb F_1$
+schemes still needs its input category, morphisms and realization functor
+specified. It is a research target, not a theorem or a well-formed
+universal conjecture supplied by the present literature.
+
+Seven finite-kernel claims are \statusProved{}; the extensions remain
+\statusSketch{}. Thirteen exact example gates and their mutations check
+the finite computations. The cited literature and our deductions are
+distinguished throughout.

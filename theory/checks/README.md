@@ -62,3 +62,9 @@ special-casing.
 A checker that only satisfies (1) is not done. A gate with no red mode, or
 a red mode `--help` does not advertise, is invisible to the session-close
 gate and reads as evidence it never earned (L1).
+
+Session-close discovery is recursive. `wh_kappa/ff.py` is an import-only
+arithmetic library with no executable checker entry point and is explicitly
+excluded; the five standalone probes beside it implement the same `--help`
+contract as the top-level checkers. The F1 sidequest expectations and mutation
+map are in `f1_EXPECTATIONS.md`.

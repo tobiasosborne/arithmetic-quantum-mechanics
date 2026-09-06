@@ -519,3 +519,98 @@ introductory material and are there **attributed to Karpilovsky**, which the
 lane correctly flagged as attributed-through rather than independently
 fetched. Treat those as ADMITTED steps under L3 until Karpilovsky is
 registered, and let the affected claim's status reflect that.
+
+---
+
+## F1 sidequest — comparative literature, qubits and tensor products
+Retrieved and inspected 2026-09-06. All source bodies below are local at
+`refs/f1/<key>/paper.pdf`, with `paper.txt` from `pdftotext -layout` and
+`retrieval.json`. PDFs are the source of record; SHA256 values are of PDF
+bytes. These bodies remain git-ignored under the existing source policy.
+Titles were checked against the PDF front matter. Source versions are
+recorded separately from later publication dates.
+
+| key | title / authors | date / version | retrieval URL | PDF SHA256 |
+|---|---|---|---|---|
+| `1312.4191` | Quantum F_un: the q=1 Limit of Galois Field Quantum Mechanics, Projective Geometry, and the Field with One Element — Chang, Lewis, Minic, Takeuchi | 2014; arXiv v3 | https://arxiv.org/pdf/1312.4191 | `9799a2d9566840921cf6bc51317b632475b81f0fb0aa65a3d1888a28935b955e` |
+| `1808.09694` | Absolute Quantum Theory (after Chang, Lewis, Minic and Takeuchi), and a road to quantum deletion — Koen Thas | 2018 preprint; journal 2019 | https://arxiv.org/pdf/1808.09694 | `52f3cc735a1af7712b6e6721bd6f27993316b8abb27d8803a210b166502ce2c6` |
+| `1607.04513` | Projective spaces over F1^ell — Koen Thas | 2016 | https://arxiv.org/pdf/1607.04513 | `ffe3085849f78524baf52fa10092dd9c091949299d5014e6eaf2ad865b90e26d` |
+| `math-0404185` | Schemes over F1 — Anton Deitmar | arXiv v7, 2006 | https://arxiv.org/pdf/math/0404185 | `b61f5a5c88f224fa3d8c56120bcfcd7ba02eec58bec1da5e857f47b83b96ae09` |
+| `math-0608179` | F1-schemes and toric varieties — Anton Deitmar | arXiv v10, 2014 | https://arxiv.org/pdf/math/0608179 | `ded5a59ebbf048184d6229a378a344e350e8ebb9ccbb2f2bbd4e6effe6434cb3` |
+| `1201.1324` | The geometry of blueprints. Part II: Tits-Weyl models of algebraic groups — Oliver Lorscheid | 2012 preprint; published 2018 | https://arxiv.org/pdf/1201.1324 | `f65b90c9e98899ea6f72bbc234f518b64d755a02d44aa4bfa456abdbcab1c33a` |
+| `1301.0083` | A blueprinted view on F1-geometry — Oliver Lorscheid | 2013, arXiv v2 | https://arxiv.org/pdf/1301.0083 | `1ec49646a2854cb96b47826cb6b4db7c46ecf94dde8d97ca49f56d8beae382fc` |
+| `2305.13809` | Towards the horizons of Tits’s vision — on band schemes, crowds and F1-structures — Oliver Lorscheid and Koen Thas | 2023 | https://arxiv.org/pdf/2305.13809 | `eda73526a426070a09f7a5cc95537efbc1b788a1d2147afd65bdae6c25626914` |
+| `1204.5395` | On the Hall algebra of semigroup representations over F1 — Matt Szczesny | 2012 | https://arxiv.org/pdf/1204.5395 | `517e2353f5448ee73dec4523ab131d59cc4529102f11328248f0f33c47265978` |
+| `math-0004133` | From Finite Sets to Feynman Diagrams — John C. Baez and James Dolan | 2000 preprint; published 2001 | https://arxiv.org/pdf/math/0004133 | `687de8249639c7f27fe1413b26034340e4b37b155afcce2af9256b56183ccc5d` |
+| `1207.2054` | The Categorified Heisenberg Algebra I: A Combinatorial Representation — Jeffrey C. Morton and Jamie Vicary | 2013, arXiv v2 | https://arxiv.org/pdf/1207.2054 | `a16e9513597feb440ee2f4923d95e5201785b650656a1cb3a6f66d7d4e6376d1` |
+| `1009.3295` | Heisenberg algebra and a graphical calculus — Mikhail Khovanov | 2010 preprint | https://arxiv.org/pdf/1009.3295 | `c01811fc205984b892bce7e4599be093dc1dbfd1faf8496527bd17f1ab354adb` |
+| `0906.3146` | Lambda-rings and the field with one element — James Borger | 2009 | https://arxiv.org/pdf/0906.3146 | `acf748e4c39b3a0a7462760dea0f3f9af6bd0abb647766f2740697b47d88cc92` |
+| `0806.2401` | Fun with F1 — Alain Connes, Caterina Consani and Matilde Marcolli | 2008 preprint; journal 2009 | https://arxiv.org/pdf/0806.2401 | `db7b379eaf061bb87714b4e59f725cebdff54556bfb39178dcf167a29475f7fa` |
+| `0809.1564` | Cyclotomy and analytic geometry over F1 — Yuri I. Manin | 2008 preprint | https://arxiv.org/pdf/0809.1564 | `d7186fe82b27d90d6c075cbe81303277cac4332ad54a3fcefe0d2870eaeed55c` |
+| `1405.4527` | The Arithmetic Site — Alain Connes and Caterina Consani | 2014 | https://arxiv.org/pdf/1405.4527 | `bcac55c2479d4a3c66a163454002847d0b14911993a6fde34bf5da6c232e0a46` |
+| `1901.00020` | Bost-Connes systems and F1-structures in Grothendieck rings, spectra, and Nori motives — Joshua F. Lieber, Yuri I. Manin and Matilde Marcolli | 2018/2019 preprint; book chapter 2022 | https://arxiv.org/pdf/1901.00020 | `313f74c69743222ae03e5becc2585c98c0151117f277266b4982cfbe9931da2d` |
+| `math-0511263` | On the classification of rational quantum tori and the structure of their automorphism groups — Karl-Hermann Neeb | 2005 preprint; revised 2007; journal 2008 | https://arxiv.org/pdf/math/0511263 | `d928c760b3e8100f662bbd01e35d2550fe60845dd46a5cfd13c98d8b1fa6277d` |
+| `bost-connes-1995` | Hecke Algebras, Type III Factors and Phase Transitions with Spontaneous Symmetry Breaking in Number Theory — Jean-Benoit Bost and Alain Connes | 1995 | https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1994-1998/M_95_38/M_95_38_web.pdf | `451920723394e27a9e17dad520444f7458fcb540ab8af8948b227cb109eb37c9` |
+| `1209.4837` | Quantum field theory over F1 — Dori Bejleri and Matilde Marcolli | 2012 | https://arxiv.org/pdf/1209.4837 | `2e48a5ae3e70d92585103ee2d9dc611e5b5ffe091cc477b04372d5e0c0b9cd7c` |
+
+### Claim-to-source locators and scope
+
+- **1312.4191** — Sections 2.1, 2.4 and 3.2, equations (17)–(23), (32)–(34): finite-field amplitudes and coordinate-state q=1 model.
+- **1808.09694** — Sections 3.2–3.5: Cartesian frames versus simple points; partial form equation (6), support orthogonality (7), monomial operators (9)–(11); Theorem 4.2: involution-dependent unitary group; section 6: cloning simple rays versus all frame states.
+- **1607.04513** — Section 1.3, pp. 2–3: extension conventions and functor-of-points frames. Used to contextualize Thas quantum states, not as a Hilbert-space construction.
+- **math-0404185** — Sections 1–2: monoids and monoid-algebra realization; section 5.1, pp. 14–16, and 5.2, p. 16: linear and symplectic F1 symmetries.
+- **math-0608179** — Theorem 4.1: toric nature under its stated connectedness/integrality/finiteness assumptions. Supporting scope source; no universal no-go for other F1 frameworks.
+- **1201.1324** — Definition 3.13 and Theorem 3.14, pp. 49–51: Tits–Weyl and extended Weyl data. Remark 5.4 and Proposition 5.5, pp. 78–79: standard GL_n parabolic unipotent radicals. Specialization to UT3 is our explicit deduction, not a quoted quantum theorem.
+- **1301.0083** — Section 1.1.4, pp. 14–15: cyclotomic blueprints, different from raw group-ring extension; Remark 2.6: model dependence; section 3.2: geometric unitary-representation terminology.
+- **2305.13809** — Theorems 1.1–1.2: Krasner combinatorial flags and crowd action. Definition 5.1: crowd axioms; Definition 5.9 and section 5.4: affine algebraic SL_n crowd. UT3 restriction and its signed/Krasner counts are new local derivations. Example 5.11 SL2 inverse closure MUST NOT be imported to UT3.
+- **1204.5395** — Definition 3, pp. 5–6: pointed modules and dimension; Definition 6, p. 8: normal maps; section 3, equation (8), pp. 9–11: Hall convolution and enveloping-algebra theorem. Our one-point specialization gives binomial coefficients.
+- **math-0004133** — Pages 14–16: groupoid cardinality; pp. 23–26: factorial-weighted Fock inner product, creation/removal, positive categorical CCR. The identification with the core of F1 vector spaces is our bridge.
+- **1207.2054** — Equation (1), p. 1: dense-domain CCR; equations (15)–(19), pp. 8–9; Lemma 2.1 and Theorem 2.7: spans and categorical relation; Corollary 3.3 and equation (73), p. 25: representation-category tower WITH Ind/completeness caveat. This source does not itself call its construction F1 geometry.
+- **1009.3295** — Theorem 1 and Conjecture 1, p. 4: Grothendieck-ring map injective, surjectivity conjectural in this source. Proposition 7, p. 31: induction/restriction decomposition. Do not present the full categorification conjecture as settled by this paper.
+- **0906.3146** — Introduction p. 2: flatness-qualified commuting Frobenius-lift description; section 2.2 p. 8: monoid algebras, toric lifts, mu_n and group-ring base extension. Coordinate-power failure on Heisenberg multiplication is our example, not a universal descent no-go.
+- **0806.2401** — Section 3 pp. 6–8: free cyclic sets and cyclotomic tower; section 4.1 equations (30)–(38), pp. 9–10: groupoid algebra/time evolution; Proposition 6.1 and Theorem 6.2, pp. 26–27: F1 endomotive model and realization.
+- **0809.1564** — Section 1.10: comparison and homotopical perspectives, stated as perspectives; Definition 2.2 and section 2.3: Habiro completion and root-of-unity Taylor maps; sections 2–3: analytic theory. No quantum-torus Hilbert interpolation theorem is asserted.
+- **1405.4527** — Definition 2.1: tropical semiring/topos; Theorems 2.6–2.7: adelic point space and zeta; section 4: Frobenius correspondences. Does not supply the proposed Weyl quantization functor.
+- **1901.00020** — Introduction and section map: geometric/categorical lifts, Euler-characteristic and motivic realization comparisons. Used for the existence of this developed categorical route, not a fusion classification.
+- **math-0511263** — Introduction and section 1: twisted lattice group algebras and central extensions; section 4: rational normal forms. The simple two-generator central-fibre example is rederived locally.
+- **bost-connes-1995** — Section 2 and section 7, p. 32 equation (3), p. 33 Theorem 25: standard Hamiltonian log(n), Gibbs regime and quantum statistical realization. Historical primary paper obtained from the IHES archive.
+- **1209.4837** — Introduction pp. 1–2 explicitly distinguishes geometry of Feynman-integral varieties from defining physical Lagrangians/rules over F1; Theorem 4.6, pp. 16–17: positive torification result under its hypotheses.
+
+### Discovery boundary and unresolved comparisons
+
+Search families: direct quantum F1 / absolute quantum theory; monoids,
+blueprints, Tits–Weyl, bands and crowds; Hall/groupoid Heisenberg;
+cyclotomy/Habiro/quantum tori; lambda Frobenius descent; Bost–Connes and
+arithmetic-site dynamics; motivic QFT. Follow-up reads checked definitions,
+finite-state scope, and the positive unipotent-radical theorem. The search
+is not an exhaustive bibliometric census. No inspected paper supplies one
+common functor covering all these quantum outputs. The finite phase model,
+UT3 crowd, frame counts and fusion comparisons are local derivations with
+separate status labels, not results attributed to these papers.
+
+### Tensor/qubit follow-up: Shimizu
+
+Kenichi Shimizu, *Frobenius–Schur indicators in Tambara–Yamagami categories*,
+arXiv:1005.4500v1 (2010). Retrieved 2026-09-06 from
+https://arxiv.org/pdf/1005.4500; local `refs/f1/1005.4500/paper.pdf`,
+SHA256 `774476ad5ba0e17a5c6e59f720e865827d4bfa10584ab19d72ce50dbb4ad9988`.
+Definition 3.1/equation (9), pp. 7–8: Tambara–Yamagami fusion rules;
+Table 1 p. 19 and p. 20: Rep(D8) and Rep(Q8) identified with
+TY(F2^2, alternating bicharacter, +1/2) and its -1/2 counterpart.
+Our exact character calculation independently recovers tensor squares
+and second indicators. This is the primary categorical source; simple
+labels are not equated with Hilbert-space basis states.
+
+### Adjacent fermionic tensor analogy and title verification
+
+**1307.4522** — Bing-Sheng Lin, Zhi-Xi Wang, Ke Wu and Zi-Feng Yang, *A diagrammatic categorification of the fermion algebra* (2013). Retrieved 2026-09-06
+from https://arxiv.org/pdf/1307.4522. Local `refs/f1/1307.4522/paper.pdf`; SHA256
+`7448a7257f10a06fbad2f7f3a63f14b045791f8aa96901897b2ed3dcbad42390`. Sections 2–4: one-mode CAR, its diagrammatic categorification and categorical Fock states. The PDF carries a later generated date while its arXiv version and journal publication are 2013. No F1 descent is claimed.
+
+**fermionic-circuits-2018** — Amar Hadzihasanovic, Giovanni de Felice and Kang Feng Ng, *A Diagrammatic Axiomatisation of Fermionic Quantum Circuits* (2018). Retrieved 2026-09-06
+from https://drops.dagstuhl.de/storage/00lipics/lipics-vol108-fscd2018/LIPIcs.FSCD.2018.17/LIPIcs.FSCD.2018.17.pdf. Local `refs/f1/fermionic-circuits-2018/paper.pdf`; SHA256
+`09e158fa61169c4040ec27c4b91c1c3d3737cbd736d62557c0be40a9573dadea`. Section 2, Definitions 1 and 3, pp. 17:2–17:4: graded Hilbert objects, definite-parity maps and tensor; physical fermionic swap. Section 4: completeness. Used for an adjacent categorical analogy, not as F1 geometry.
+
+**1709.08086** — Amar Hadzihasanovic, *The algebra of entanglement and the geometry of composition* (2017 thesis, v2). Retrieved 2026-09-06
+from https://arxiv.org/pdf/1709.08086. Local `refs/f1/1709.08086/paper.pdf`; SHA256
+`d25f30d435e563240f540b26b7f04253323c57ae2fca86d227e17503f72824c7`. Consulted discovery pointer: sections on graded/fermionic interpretation of ZW diagrams. This is NOT the 2018 three-author fermionic-circuits paper; the latter was fetched separately from its publisher. No consequential F1 claim relies on the thesis.

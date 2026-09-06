@@ -5,13 +5,14 @@
 # ORDER,
 #   1. scripts/check-labbook.sh              (L11 lockstep gate)
 #   2. the labbook build                     (latexmk -pdf main.tex)
-#   3. every theory/checks/*.py, green
-#   4. every red mode each theory/checks/*.py script advertises via --help
+#   3. every standalone checker under theory/checks/, recursively, green
+#   4. every red mode each checker advertises via --help
 # and fails loudly -- prints a banner per step, stops at the first failure
 # with a one-line diagnosis on stderr, and never reports success unless
 # every step actually passed.
 #
-# Tolerates theory/checks/ being empty (the current, pre-content state):
+# The imported wh_kappa/ff.py arithmetic library is not a standalone checker.
+# Tolerates theory/checks/ being empty:
 # steps 3-4 report "nothing to run" and pass, rather than fail on an empty
 # glob.
 #
@@ -61,7 +62,9 @@ echo "[session-close] OK: labbook/main.pdf built."
 banner "3/4 + 4/4  theory/checks/*.py -- green, then every --help-advertised red mode"
 CHECKS_DIR="$REPO_ROOT/theory/checks"
 shopt -s nullglob
-mapfile -t checks < <(find "$CHECKS_DIR" -name "*.py" | sort)
+# ff.py is an imported arithmetic library, with no standalone entry point.
+# Keep all five executable wh_kappa probes in recursive discovery.
+mapfile -t checks < <(find "$CHECKS_DIR" -name "*.py" ! -path "$CHECKS_DIR/wh_kappa/ff.py" | sort)
 shopt -u nullglob
 
 if [[ ${#checks[@]} -eq 0 ]]; then

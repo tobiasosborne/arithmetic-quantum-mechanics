@@ -48,3 +48,21 @@
 | `s_g`, `Q_g` | `s_g(v,v') = β(gv,gv') − β(v,v')`; `Q_g(v) = s_g(v,v)` | D7 |
 | `E` | the Weyl average `|V|^{-1}Σ_uW(u)(·)W(u)^{-1}` over the current base | D4, FCR-ALG |
 | `FF^±` | pairs `(κ,ψ)` and character-compatible embeddings | D3 |
+
+<!-- F1 sidequest notation. N is phase order, distinct from q, the field cardinality. -->
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `N, mu_N, iota` | cyclotomic level, abstract cyclic phase group, named faithful complex character | D1001 |
+| `A, A^vee, V_A, c_A, kappa_A` | finite abelian configuration, phase dual, hyperbolic phase group, cocycle and commutator | D1002 |
+| `Free_*^{mu_N}, C_iota, S_A, H_N(A)^0` | pointed phase category, complex realization, standard phase module and group-with-zero | D1001, D1003 |
+| `H_N(A), FinAb_N^iso, smash_mu, boxdot` | phase Heisenberg group, configuration groupoid, balanced smash and central product | D1003, D1004 |
+| `P_psi, chi_b` | central pushout, signed ring-dual character psi(-b·) | D1005 |
+| `theta, B_theta, T_(t,f,theta), F_A, J_A, r_A, ev_a` | quadratic phase and strict normalizer; Fourier map and lifted dual exchange | D1006 |
+| `K_N, Mat(K_N), PMat(K_N), LiftHyp_N, Q_N` | cyclotomic coefficient field, framed kernel categories, lifted phase groupoid and projective realization | D1007 |
+| `B, N_B, F_1^pm, K, H_crowd, R_H` | band, null ideal, regular partial field, Krasner hyperfield, Heisenberg crowd and colaw | D1008 |
+| `F_N, P_N(r)` | cyclotomic scalar monoid and projective Cartesian frame | D1009 |
+| `V_r, L(S), B(S), u_r, F_alg, F_bos, a^dagger` | rank-r pointed set, its Hilbert/image-algebra realization, Hall basis, Fock domain/completion and creation | D1010 |
+| `C_N(A), C_N(A)_lambda, omega_A, boxtimes_match` | representation category, central sector, forgetful tensor functor and matching external product | D1011 |
+| `G_e, sigma_e, nu_2` | order-eight dihedral/quaternion datum, qubit representation and indicator | D1012 |
+| `xi, T_xi, T_xi(1,1)` | quantum-torus parameter, algebra and selected central fibre | D1013 |
