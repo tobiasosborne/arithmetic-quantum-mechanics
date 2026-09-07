@@ -645,3 +645,74 @@ Section 2: fusion spaces, ordinary/quantum traces and partial traces, density ma
 Retrieved from https://arxiv.org/pdf/2211.03855; local `refs/f1/2211.03855/paper.pdf`.
 SHA256 `6cce2037f13baa7a8ec0af42c6ce17b58a344c0bbd02ec7d35505e0803051948`.
 Sections on fusion categories, their Hilbert-space enrichment, and Fibonacci/Ising encodings and braiding. Title verified from v3: older pointers use Topological Quantum Computation Through the Lens of Categorical Quantum Mechanics. Hilbert enrichment of Hom spaces is not a strong monoidal fibre functor on the anyon objects.
+
+## F1 operational increment — Hecke contexts, CP nets and exact specialization
+
+Retrieved and inspected 2026-09-07. All entries below have local PDF,
+text/OCR navigation data and retrieval.json under `refs/f1/<key>/`.
+The proof, not finite checks, supports the general q>0 assertions.
+
+**iwahori-1964** — Nagayoshi Iwahori, *On the structure of a Hecke ring of a Chevalley group over a finite field* (1964).
+Route: https://repository.dl.itc.u-tokyo.ac.jp/record/39909/files/jfs100207.pdf. Local `refs/f1/iwahori-1964/paper.pdf`;
+SHA256 `27efc0216ba5b152d4d4a411239cf66793ad93a4a05490f64c03f7101afc9a96`.
+p. 215: flag permutation commutant; Proposition 1.4/Corollary 1.5 pp. 220–221: commutant and opposite convention; Theorem 2.6: reduced-word moves; Lemma 3.1 pp. 230–231: Bruhat basis and q^length; Theorems 3.2 and 4.1 pp. 231–234: multiplication and presentation. The PDF is a scan; OCR and primary-extracts.tex are navigation derivatives, not replacement sources.
+
+**umegaki-1954** — Hisaharu Umegaki, *Conditional expectation in an operator algebra* (1954).
+Route: https://www.jstage.jst.go.jp/article/tmj1949/6/2-3/6_2-3_177/_pdf/-char/en. Local `refs/f1/umegaki-1954/paper.pdf`;
+SHA256 `870e524af7fa7c7e6e99a11aaab413eca83704d903e3148ab83ef7ce448b0a21`.
+Section 2, pp. 177–179: trace-pairing characterization, positive faithful conditional expectation, bimodule and Schwarz properties. Complete positivity is rederived by matrix amplification locally, not attributed to terminology absent from this paper.
+
+**stinespring-1955** — W. Forrest Stinespring, *Positive functions on C*-algebras* (1955).
+Route: https://www.ams.org/journals/proc/1955-006-02/S0002-9939-1955-0069403-4/S0002-9939-1955-0069403-4.pdf. Local `refs/f1/stinespring-1955/paper.pdf`;
+SHA256 `cff456fa4c19c224b27b41117b894a047377123b5d37f4fc8545e2483ea54991`.
+p. 211 section 2: matrix complete positivity; Theorem 1 pp. 212–213: dilation; Theorem 3 p. 215: positive functionals are CP. Used for operational meaning, not a claim that every isolated channel canonically extends to new fusion observables.
+
+**curtis-1988** — Charles W. Curtis, *Representations of Hecke algebras* (1988).
+Route: https://www.numdam.org/article/AST_1988__168__13_0.pdf. Local `refs/f1/curtis-1988/paper.pdf`;
+SHA256 `44809fc53e1e09de0601437a4e44e37152128ab8b4f4ff495b4621b8fc704714`.
+Sections on the standard basis, finite groups with a BN-pair and parabolic subalgebras. Supporting source for the type-A flag/Hecke and type-C comparison; local proofs carry the new subsystem-overlap and context claims.
+
+**goodman-wenzl-1993** — Frederick M. Goodman and Hans Wenzl, *The Temperley-Lieb algebra at roots of unity* (1993).
+Route: https://msp.org/pjm/1993/161-2/pjm-v161-n2-p05-p.pdf. Local `refs/f1/goodman-wenzl-1993/paper.pdf`;
+SHA256 `e7d4a6036b9e1633f3afaf17eddb3d16a163a25df0bfa4d757648831fd2c19fa`.
+Introduction pp. 307–309 and presentation/parameter conventions: Hecke quotient idempotents have adjacent coefficient q/(1+q)^2. The q=1 positive real endpoint and root-of-unity quotients are different constructions; the faithful flag trace does not descend through a nonzero ideal.
+
+**math-0002087** — Joseph Bernstein, Igor Frenkel and Mikhail Khovanov, *A Categorification of the Temperley-Lieb Algebra and Schur Quotients of U(sl2) via Projective and Zuckerman Functors* (published 1999; arXiv 2000).
+Route: https://arxiv.org/pdf/math/0002087. Local `refs/f1/math-0002087/paper.pdf`;
+SHA256 `ec0ec4a078c256056458cbc4c97b5ad517b951c573604815d586f66951783569`.
+Section 2.2 pp. 6–8: sl2 tensor-power centralizer/Temperley-Lieb interpretation. We use the endomorphism tower statement; a full rigid-category equivalence would need separately specified cups/caps and pivotal conventions.
+
+**0804.4304** — Louis H. Kauffman and Samuel J. Lomonaco Jr., *The Fibonacci Model and the Temperley-Lieb Algebra* (2008).
+Route: https://arxiv.org/pdf/0804.4304. Local `refs/f1/0804.4304/paper.pdf`;
+SHA256 `188600fd04327e34dcbd603eccbdec78cfd03b1b248ac5b62144c04933305358`.
+Sections constructing the Fibonacci recoupling model, golden ratio and root-of-unity loop parameter. This is an independently supplied quotient/trace construction, not the q=1 real Hecke family.
+
+**1707.01196** — Kenji Iohara, Gustav I. Lehrer and Ruibin B. Zhang, *Temperley-Lieb at roots of unity, a fusion category and the Jones quotient* (2017).
+Route: https://arxiv.org/pdf/1707.01196. Local `refs/f1/1707.01196/paper.pdf`;
+SHA256 `f3a6f25dc59047dd38fa1a92107da96cb8c012dbca7bae88beeb76725bde29f3`.
+Jones quotient and reduced fusion rules at roots of unity; at order-five data the even Fibonacci fusion rule is a separate specialization. Positive Markov/Jones trace and appropriate star structure are additional to the canonical real flag trace.
+
+**1611.04620** — Corey Jones and David Penneys, *Operator algebras in rigid C*-tensor categories* (2016 preprint; published 2017).
+Route: https://arxiv.org/pdf/1611.04620. Local `refs/f1/1611.04620/paper.pdf`;
+SHA256 `9ee71c611eb66032931ebe3131cb7c6007bf0f88d34fa70d3aa5f9f572768287`.
+Section 4.1 and Definition 4.20: conditional expectations and CP/ucp natural transformations on internal algebra objects; Lemma 4.27 and Theorem 4.28: categorical Stinespring; Definitions 4.29/4.32: states/traces. Their internal Vec(C) algebra objects are not silently identified with our object-indexed End_C(X) net.
+
+### Additional locators in already registered sources
+
+- **0707.4206** — section 2.4, equations (2.19)–(2.29): quantum traces;
+  section 2.5, equations (2.30)–(2.33): braiding/removal paths; equations
+  (2.43)–(2.45): density matrices with quantum-trace normalization.
+- **2211.03855** — section III.A.2, equations (39)–(42): exact Fibonacci
+  F/R data used in the supporting two- versus three-anyon channel witness.
+- **1204.5395** — Definition 6, p. 8: normal F1 maps; deleting the basepoint
+  identifies these with the partial injections in the q=1 operational functor.
+
+### What is derived here
+
+The intrinsic overlapping-subalgebra invariant q/(q+1)^2, the exact
+Kraus-Gram operational quotient and sharp 2n-1 context bound, and the
+partial-injection CP realization are local structured derivations. No
+literature-novelty claim is made. The finite-field source proves a flag
+context sector; it does not identify this with the full Weyl Hilbert space.
+The partial-flag corner category is explicitly constructed over a localized
+coefficient ring; no unspecified generic-category existence is assumed.

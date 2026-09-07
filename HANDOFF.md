@@ -4,11 +4,89 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-07, F1 sidequest (opened 2026-09-06). The mainline FCR-2 state below remains
+Updated: 2026-09-07, operational F1 result (sidequest opened 2026-09-06). The mainline FCR-2 state below remains
 the interrupted 2026-09-01 state: prover finished, critic not run. This
 session explored the user's new sidequest and did not admit that lane.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## Latest result — a positive operational F1 subsystem family
+
+The user's request to chase subsystem-first QM now has a concrete candidate:
+A(S)=C[Sym(S)], with coefficient-trace densities, Born effects, CP dynamics,
+subgroup expectations, and proper disjoint-assembly inclusions. The source
+normal-map category is FinPInj, with an actual dagger lax symmetric monoidal
+functor into finite traced C*-algebras and bistochastic CP maps. The empty
+partial map is the reference reset tau(a)1, not zero CP. Retained local
+Kraus lists provide coherent context-sensitive processes.
+
+Deliverables: docs/sidequests/f1-operational.md and labbook section 12,
+pp. 60–70 of the 70-page PDF. The original broad comparative map remains
+in docs/sidequests/f1-qm.md and section 11. The new section has an exported
+subsystem-overlap figure. The eleven new pages were visually inspected;
+no overfull box originates in the new section. Existing mainline typesetting
+warnings were not treated as new failures.
+
+Core results to retain:
+
+- Positive Hecke algebras H_n(q), all real q>0, with faithful coefficient
+  trace tau(T_u* T_v)=delta_uv q^length(u). At prime-power Q they are the
+  GL-invariant complete-flag transition algebras (Iwahori 1964). Ordered
+  block embeddings and UCP coefficient expectations are coherent.
+- Algebra types H1=C, H2=C², H3=C²+M2 do not depend on q, but two overlapping
+  H2 inclusions retain q through a=q/(q+1)², uniquely on q>=1. At one,
+  the standard S3 block is a collective qubit. Its full coefficient-trace
+  density is 3P, not P; a locally invisible transposition changes a return
+  probability from one to 1/4.
+- Equality of local Kraus Grams is exactly stable scalar-unitary mixing
+  and equality in all finite contexts. For n>=1, an ambient size 2n−1
+  suffices; for n>=2 it is sharp. Positive Born gaps at n=2,3 are 1/2
+  and 1/18. The analogous positive-Hecke generalization remains SKETCH.
+- Two disjoint size-three regions carry a Bell density 9P in C[S6],
+  marginals (3/2)z and CHSH 2sqrt(2). This explicitly checked example
+  remains supporting SKETCH, rather than a separately reviewed theorem.
+- The partial-flag corner category Gamma_q is explicit over a localized
+  coefficient ring; its q=1 tensor-power endomorphisms are C[S_n]. It
+  has additive/idempotent completion, but rigidity is not stipulated and
+  normalized systems exclude zero objects.
+- Apartment compression provides a UCP arithmetic-to-endpoint comparison
+  T_w(Q)->w, natural for ordered block inclusions and coefficient
+  expectations. It is not multiplicative and does NOT intertwine every
+  partial-flag corner compression. This limitation is displayed, not hidden.
+
+The generic nonzero unitary-fusion-category CP construction is also proved.
+Fibonacci illustrates locally invisible braids becoming visible in a larger
+fusion space. Type-C flags, the Temperley–Lieb/SU(2) centralizer tower,
+root-of-unity Fibonacci, and the original F1 routes remain distinct. In
+particular the faithful flag trace cannot descend to a nonzero TL quotient;
+that branch requires a separate Jones/Markov trace and duality conventions.
+
+Scope: this is a flag-context sector extracted from a **named polarized**
+Weyl system. The joint controlled-projector coupling is explicit, but there
+is no full Weyl/phase/polarization specialization or universal uniqueness
+claim. The next mathematical target is a coherent refinement/polarization
+comparison that includes these couplings, alongside the type-C branch.
+
+Review: Sol/xhigh prover and blind critic only; no Astra or Claude subagents.
+One round, one repair, mechanical adjudication in
+theory/verdicts/f1-operational-adjudication.md.
+O1 excluded zero objects; O2 consolidated mathematical checker gates and
+added deeper data mutations; O3 repaired full-density wording; O4 narrowed
+sample descriptions. No open MAJOR remains on the eleven promoted rows.
+Seven supporting rows stay SKETCH. Current register: **70 claims, 49 PROVED,
+19 SKETCH, one CONJECTURE, one REFUTED**. Seventeen new definitions bring
+the total to 46. Four admitted structured proof shards are each 200–500 lines.
+There are now 38 local F1 PDFs with ledger hashes/locators, nine added here;
+all hashes were checked. Source bodies remain ignored.
+
+Verification: the new exact checker passes fourteen aggregate mathematical
+gates; all twenty-five data mutations exit one with a named mathematical
+failure and no interpreter exception. Expectations record exact sampling
+and gate-level coverage, without claiming individual-assertion coverage.
+Full repository session-close verification PASSED: all 11 standalone green
+runs and all 84 advertised red modes. The final PDF rebuild and lockstep
+gate also passed after the last wording changes; source hashes, local links,
+claim/definition counts and the staged whitespace check passed.
 
 ## Latest F1 steering — subsystem families with genuine QM semantics
 
@@ -34,7 +112,7 @@ New source leads are local and registered: Comfort–Kissinger 2105.06244
 2304.10584 (mixed/coisotropic extension), Gurevich–Hadani 0705.4556
 (monoidal quantization), Bonderson–Shtengel–Slingerland 0707.4206
 (anyon density/measurement formalism), Ahmadi–Kissinger 2211.03855
-(fusion-space quantum computation). This was a conceptual scoping update;
+(fusion-space quantum computation). That preceding turn was a conceptual scoping update;
 no new theorem status was promoted and the mainline remains untouched.
 
 ## F1 sidequest — comparative formulation, qubits and tensor categories
@@ -47,7 +125,7 @@ All four subagents used this session were Sol/xhigh.
 
 Deliverables: `docs/sidequests/f1-qm.md` is the comparative research map;
 `briefs/f1-sidequest.md` fixes scope. Labbook section 11, pp. 47–59 in the
-59-page PDF, gives the self-contained mathematics and source links. All thirteen pages of the initial section were visually inspected. The
+then-59-page PDF, gives the self-contained mathematics and source links. All thirteen pages of the initial section were visually inspected. The
 subsequent operational clarification was checked at the opening/table
 boundary, and the rebuilt section has no overflowing text.
 The initial literature pass has twenty-four primary PDFs (including a
@@ -76,7 +154,7 @@ The revised projective cyclotomic matrix functor is also SKETCH. Its original
 unspecified geometric-category clause was rejected, not admitted as a vague
 universal conjecture. `theory/verdicts/f1-r1.md` and `f1-adjudication.md`
 record the capped review. Definitions use D1001–D1013, deliberately reserving
-the lower numbers for the pending mainline. Current claim counts: 52 total,
+the lower numbers for the pending mainline. At that initial admission the claim counts were 52 total,
 38 PROVED, 12 SKETCH, one CONJECTURE, one REFUTED; old statuses unchanged.
 
 Qubit/tensor results worth retaining:
@@ -133,8 +211,7 @@ Blind-verified; checker `theory/checks/small_rings_catalogue_check.py`
 (8 red modes); verdict `theory/verdicts/smallest-rings-verification.md`;
 labbook section 09 (46 pp PDF).
 
-**3. FCR-2 — MID-LOOP, prover done, critic NOT yet run.** This is the
-next agent's first task. State:
+**3. FCR-2 — MID-LOOP, prover done, critic NOT yet run.** Its review is the next mainline task after the active user sidequest. State:
 
 - Brief `briefs/fcr2-target.md`; sources registered (Strömberg 1108.0202
   carries Milgram's μ₈ formula verbatim; Ehlen–Skoruppa 1705.04572; the

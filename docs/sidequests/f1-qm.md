@@ -9,6 +9,14 @@ The north star is a precise formulation of quantum mechanics over `F_1`.
 The immediate task is comparative: explore the developed analogies before
 choosing which meaning of “over” should govern that formulation.
 
+**Operational continuation, 7 September 2026:**
+[Quantum mechanics in subsystem composition](f1-operational.md) constructs
+a positive Hecke family and its endpoint A(S) = C[Sym(S)]. Its overlapping
+subsystems intrinsically remember the arithmetic parameter; collective
+qubits, genuine CP semantics, and a sharp context bound make the
+subsystem-first proposal concrete. This is one developed branch of the
+comparative map below, with the remaining Weyl/polarization gap stated explicitly.
+
 **North-star clarification, 7 September 2026.** The user's primary object
 is now explicitly the **family of subsystems and the ways they compose**.
 Any proposed endpoint must admit a quantum operational realization:

@@ -6,7 +6,7 @@
 
 | symbol | meaning | first fixed in |
 |---|---|---|
-| `p`, `m`, `q` | prime, degree, `q = p^m` | D1 |
+| `p`, `m`, `q` | prime, degree, `q = p^m` for a finite field; in D1101, `q>0` is a real Hecke parameter with field specializations `q=Q` | D1, D1101 |
 | `κ`, `F_p` | the finite field `F_q` and its prime field; for D12, `κ=R/𝔪` is the residue field | D1, D12 |
 | `R`, `𝔪`, `R^×` | a finite commutative local ring; its maximal ideal; its unit group | D12 |
 | `soc(R)`, `Ann(I)` | `Ann(𝔪)`; the annihilator of an ideal `I` | D12 |
@@ -66,3 +66,21 @@
 | `C_N(A), C_N(A)_lambda, omega_A, boxtimes_match` | representation category, central sector, forgetful tensor functor and matching external product | D1011 |
 | `G_e, sigma_e, nu_2` | order-eight dihedral/quaternion datum, qubit representation and indicator | D1012 |
 | `xi, T_xi, T_xi(1,1)` | quantum-torus parameter, algebra and selected central fibre | D1013 |
+
+<!-- Operational F1 subsystem notation. Trace normalization is explicit in each datum. -->
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `H_n(q), T_i, T_w, ell(w), tau_n` | type-A Hecke algebra, generators, permutation basis, Coxeter length, coefficient trace | D1101 |
+| `iota_(m,n), E_(m,n)` | ordered block assembly and parabolic coefficient expectation | D1102 |
+| `a(C;B_1,B_2), Tr_2` | intrinsic minimum rank-one overlap; ordinary M2 trace | D1103 |
+| `Q, Fl(L), Cxt(L), A_w, tr_Fl` | finite-field cardinality, flags, context commutant, adjacency operators and normalized flag trace | D1104 |
+| `e_triv, r_2` | marked trivial spectral projection and its reference probability | D1105 |
+| `A_X, Tr_X, tau_X, d_X, j_X,Y, E_X,Y` | categorical endomorphism algebra, positive trace, normalized trace, dimension, assembly and expectation | D1121 |
+| `omega, rho, h, Phi_K, T_K` | normalized functional, categorical/coefficient-trace density, Heisenberg channel and density channel (context determines the stated trace) | D1106,D1122,D1123 |
+| `G(S), A(S), i_f, E_f, mu_S,T` | symmetric-group net and injection/expectation/assembly maps | D1125 |
+| `J_K, FinPInj, R(f)` | Kraus Gram, partial-injection category and CP realization | D1126,D1127 |
+| `alpha, W_alpha, P_alpha, e_alpha, Gamma_q, J_alpha` | partial-flag type, Young subgroup, Poincare polynomial, projection, corner category and incidence isometry | D1141 |
+| `U^ann, P_U^X, P_U^Z, K_ctx(L), C_i, R(g)` | Weyl annihilator, constraint projections, context register, controlled tests and Levi action | D1142 |
+| `z, Z_*, X_num, Y_anti, P_Bell, h_Bell` | standard S3 block and collective two-qubit operators/density | D1143 |
+| `J_ap, Omega_Q` | coordinate-apartment isometry and its UCP context comparison | D1144 |
