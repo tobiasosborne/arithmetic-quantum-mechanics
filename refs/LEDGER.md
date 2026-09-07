@@ -614,3 +614,34 @@ from https://drops.dagstuhl.de/storage/00lipics/lipics-vol108-fscd2018/LIPIcs.FS
 **1709.08086** — Amar Hadzihasanovic, *The algebra of entanglement and the geometry of composition* (2017 thesis, v2). Retrieved 2026-09-06
 from https://arxiv.org/pdf/1709.08086. Local `refs/f1/1709.08086/paper.pdf`; SHA256
 `d25f30d435e563240f540b26b7f04253323c57ae2fca86d227e17503f72824c7`. Consulted discovery pointer: sections on graded/fermionic interpretation of ZW diagrams. This is NOT the 2018 three-author fermionic-circuits paper; the latter was fetched separately from its publisher. No consequential F1 claim relies on the thesis.
+
+## F1 clarification — subsystem composition and quantum operational semantics
+
+Retrieved and inspected 2026-09-07. Each PDF and text extraction is local
+under `refs/f1/<id>/`; hashes are of the PDF bytes. This records source
+evidence for the conceptual scoping discussion, not new admitted claims.
+
+**2105.06244** — Cole Comfort and Aleks Kissinger, *A Graphical Calculus for Lagrangian Relations* (2021; arXiv v2 2022).
+Retrieved from https://arxiv.org/pdf/2105.06244; local `refs/f1/2105.06244/paper.pdf`.
+SHA256 `f95e3d90654921fe2c1a66c6fb8e66bea8824d6246176003319cde149c7b8598`.
+Definition 4.4: affine Lagrangian relation category and direct-sum tensor; Definition 4.14 and Theorem 4.16: odd-prime stabilizer process category modulo invertible scalars. Empty relation corresponds to zero. This quotient is not a complete normalized probabilistic semantics.
+
+**2304.10584** — Cole Comfort, *The Algebra for Stabilizer Codes* (2023).
+Retrieved from https://arxiv.org/pdf/2304.10584; local `refs/f1/2304.10584/paper.pdf`.
+SHA256 `cfa0bcf6efe6873ae0e63bb9a15a6c1e08eab02bc4270d1cbf5c1fc63322c57c`.
+Section 4, especially Theorems 4.2 and 4.5 and discussion of discarding: symplectic dilation and coisotropic semantics for the stated mixed stabilizer fragment. Does not identify every CP map with a relation.
+
+**0705.4556** — Shamgar Gurevich and Ronny Hadani, *Quantization of symplectic vector spaces over finite fields* (2007; published 2009).
+Retrieved from https://arxiv.org/pdf/0705.4556; local `refs/f1/0705.4556/paper.pdf`.
+SHA256 `a55fa0ded9c36ec964ff973e7d0ea5c632624c28bf9fbbf9be0db11de921fbb3`.
+Proposition 2.6.2: quantization functor on odd-characteristic symplectic isomorphisms; Proposition 2.7.1: monoidal product comparison; Proposition 2.7.5: isotropic reduction. Phase datum and source conventions are explicit; no characteristic-two theorem is imported.
+
+**0707.4206** — Parsa Bonderson, Kirill Shtengel and J. K. Slingerland, *Interferometry of non-Abelian Anyons* (2007; published 2008).
+Retrieved from https://arxiv.org/pdf/0707.4206; local `refs/f1/0707.4206/paper.pdf`.
+SHA256 `969f3954785d88d88b2a2590298a42e5a9ff01ce00e6b843c3d9a87cea66aec2`.
+Section 2: fusion spaces, ordinary/quantum traces and partial traces, density matrices and measurement formalism. Quantum-trace weights must be retained when comparing charge sectors; fixed-sector Hilbert densities use corresponding normalization.
+
+**2211.03855** — Fatimah Rita Ahmadi and Aleks Kissinger, *The ZX-calculus as a Language for Topological Quantum Computation* (arXiv v3, 2023).
+Retrieved from https://arxiv.org/pdf/2211.03855; local `refs/f1/2211.03855/paper.pdf`.
+SHA256 `6cce2037f13baa7a8ec0af42c6ce17b58a344c0bbd02ec7d35505e0803051948`.
+Sections on fusion categories, their Hilbert-space enrichment, and Fibonacci/Ising encodings and braiding. Title verified from v3: older pointers use Topological Quantum Computation Through the Lens of Categorical Quantum Mechanics. Hilbert enrichment of Hom spaces is not a strong monoidal fibre functor on the anyon objects.

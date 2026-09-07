@@ -10,6 +10,33 @@ session explored the user's new sidequest and did not admit that lane.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
 
+## Latest F1 steering — subsystem families with genuine QM semantics
+
+2026-09-07: the user's intended object is the category of **families of
+subsystems and their composition**, rather than individual particles.
+Extract enough intrinsic arithmetic structure from the p-qudit theory to
+remember p, forget chosen concrete realizations, and then formulate p→1.
+The endpoint MUST still be QM: density operators/normalized positive
+functionals, CP dynamics, the Born rule, and compatible assembly of states
+and processes. A functor realization in C*-algebraic quantum processes is
+the acceptance criterion. Fib is the example of nontrivial composition;
+the user has not conjectured that Fib equals the F1 endpoint.
+
+Do not impose a strong monoidal fibre functor to ordinary Hilbert spaces
+on every candidate. Proper inclusions of products of local algebras into
+composite algebras allow collective fusion degrees of freedom. Merely
+assigning isolated CP maps does not determine their extensions to those
+degrees of freedom. Classical/combinatorial input models remain surveyed,
+but are not by themselves acceptable endpoints under this clarification.
+
+New source leads are local and registered: Comfort–Kissinger 2105.06244
+(odd-prime affine Lagrangian/stabilizer process equivalence), Comfort
+2304.10584 (mixed/coisotropic extension), Gurevich–Hadani 0705.4556
+(monoidal quantization), Bonderson–Shtengel–Slingerland 0707.4206
+(anyon density/measurement formalism), Ahmadi–Kissinger 2211.03855
+(fusion-space quantum computation). This was a conceptual scoping update;
+no new theorem status was promoted and the mainline remains untouched.
+
 ## F1 sidequest — comparative formulation, qubits and tensor categories
 
 User directives: ground the work in the literature; explore all the relevant
@@ -20,9 +47,11 @@ All four subagents used this session were Sol/xhigh.
 
 Deliverables: `docs/sidequests/f1-qm.md` is the comparative research map;
 `briefs/f1-sidequest.md` fixes scope. Labbook section 11, pp. 47–59 in the
-59-page PDF, gives the self-contained mathematics and source links. All thirteen
-new pages were visually inspected after the final typesetting fixes.
-Twenty-four primary PDFs (including a separately identified discovery thesis) are local under `refs/f1/`, with URLs, hashes and
+59-page PDF, gives the self-contained mathematics and source links. All thirteen pages of the initial section were visually inspected. The
+subsequent operational clarification was checked at the opening/table
+boundary, and the rebuilt section has no overflowing text.
+The initial literature pass has twenty-four primary PDFs (including a
+separately identified discovery thesis), local under `refs/f1/`, with URLs, hashes and
 specific locators in `refs/LEDGER.md`; bodies remain git-ignored.
 
 The broad map covers direct quantum F_un/Thas frames, pointed and cyclotomic

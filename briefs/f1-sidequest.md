@@ -8,6 +8,30 @@ analogies**, with a precisely formulated conjectural or provable formulation
 of quantum mechanics over `F_1` as its north star. Do not select one model
 prematurely. Sol subagents are permitted; Astra and Claude subagents are not.
 
+## North-star clarification — 2026-09-07
+
+The user has sharpened the target: the primary object is the **family of
+subsystems and their assembly rules**, not a single-particle quantum system.
+The p=1 endpoint must admit an operational realization by C*-algebras,
+normalized positive linear functionals/density operators, CP dynamics and
+the Born rule. The category should retain enough arithmetic structure to
+remember p before any p→1 specialization is attempted.
+
+Fibonacci is the guiding example of nonstandard composition, not a proposed
+identification with the F1 endpoint. A strong monoidal fibre functor to
+ordinary Hilbert spaces is not a universal requirement. Local observable
+algebras may embed properly into the algebra of a composite. The realization
+must include compatible channel extensions and preparations, not only
+unrelated algebras or CP maps at each isolated object.
+
+First distinguish coherent Hilbert direct sums from classical C*-algebra
+direct sums, arithmetic subsystems from arbitrary encoded subspaces, and
+ordinary functorial realization from preservation of the standard tensor
+product. Existing combinatorial/classical models are possible inputs; their
+native state sets alone do not satisfy the new endpoint criterion. Preserve
+positivity and normalized probabilities as acceptance tests for any proposed
+specialization. No unspecified analytic limit of primes is assumed.
+
 ## Success criteria
 
 1. Explain the project's distinction between an arithmetic base and complex

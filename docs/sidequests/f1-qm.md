@@ -9,6 +9,40 @@ The north star is a precise formulation of quantum mechanics over `F_1`.
 The immediate task is comparative: explore the developed analogies before
 choosing which meaning of “over” should govern that formulation.
 
+**North-star clarification, 7 September 2026.** The user's primary object
+is now explicitly the **family of subsystems and the ways they compose**.
+Any proposed endpoint must admit a quantum operational realization:
+C*-algebras, normalized positive functionals/density operators, CP dynamics,
+Born probabilities, and compatible assembly of systems and processes.
+The strategy is to extract an intrinsic compositional category from
+arithmetic QM that still remembers p, then formulate a genuine p→1
+specialization of that structure. Fibonacci illustrates the desired kind
+of composition; it is not asserted to be the F1 answer.
+
+In particular, a strong monoidal fibre functor to ordinary Hilbert spaces
+is not imposed universally. The natural comparison from the tensor product
+of local observable algebras into a composite algebra may be a proper
+embedding: fusion observables can be collective. The source category and
+its realization must specify channel extensions and state preparations on
+these extra degrees of freedom. The classical and combinatorial models
+surveyed below are potential inputs, not automatically acceptable quantum
+endpoints. The earlier representation-category construction is one example
+with a fibre functor, not a restriction on this broader research target.
+
+A particularly relevant new literature entry is
+[Comfort–Kissinger's graphical calculus](https://arxiv.org/abs/2105.06244),
+Theorem 4.16: for odd primes, affine Lagrangian relations describe pure
+stabilizer processes modulo invertible scalars. This is an arithmetic
+process category whose objects, morphisms and composition remember p.
+Its projective quotient alone omits normalization information needed for
+the endpoint Born rule. [Comfort's mixed-state extension](https://arxiv.org/abs/2304.10584),
+section 4, adds discarding/coisotropic relations for the indicated stabilizer
+fragment. For the fusion comparison, see
+[Bonderson–Shtengel–Slingerland](https://arxiv.org/abs/0707.4206), section 2,
+on density operators, quantum traces and measurement, and
+[Ahmadi–Kissinger](https://arxiv.org/abs/2211.03855) on categorical fusion
+spaces and Fibonacci/Ising quantum computation.
+
 ## The answer suggested by the literature
 
 There is substantial mathematics here. It supports several different
