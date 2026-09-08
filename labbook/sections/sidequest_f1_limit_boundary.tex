@@ -1,0 +1,328 @@
+\clearpage
+\section{Positive mirabolic fibres and their regular boundary}
+\label{sec:f1-limit-boundary}
+
+The affine commutant at a finite field has a physical matrix trace.  To move
+away from arithmetic parameters, one needs an algebraic reason that the same
+coefficient trace stays positive.  Orbital valencies supply that reason for
+every real $q>1$.  At $q=1$ the form becomes degenerate: the full algebraic
+specialization remains, while its reference GNS representation retains only
+the ordinary symmetric-group Hecke algebra.  The operational boundary is
+therefore built from one-sided sections positive at every nearby real
+parameter, rather than from values sampled only at prime powers.
+
+\subsection{Orbit labels, valencies and the positive Gram form}
+
+\begin{definition}[Mirabolic orbit poset and based star-trace]
+For $w\in S_n$, define a partial order on $\{1,\ldots,n\}$ by
+\[
+ i\prec_wj\quad\Longleftrightarrow\quad
+ i<j\ \text{ and }\ w^{-1}(i)<w^{-1}(j).
+\]
+For an antichain $A$, set
+\[
+ \downarrow_w A=\{i:i=a\text{ or }i\prec_wa
+                         \text{ for some }a\in A\}.
+\]
+The orbit label $(w,A)$ denotes the affine orbital whose flag relative
+position is $w$ and whose vector has maximal-support antichain $A$; its
+adjacency basis element is $T_{w,A}$.  The empty antichain is the zero-vector
+Hecke basis.
+
+On the polynomial orbit-basis algebra define the conjugate-linear star by
+\[
+ T_{w,A}^*=T_{w^{-1},w^{-1}(A)}
+\]
+and the coefficient trace by
+\[
+ \tau_q(T_{w,A})=\begin{cases}1,&w=1, A=\varnothing,\\0,&\text{otherwise}.
+ \end{cases}
+\]
+The proposed positive domain is real $q>1$; evaluation at one is retained as
+a positive-semidefinite boundary form.
+\end{definition}
+\begin{scope}
+Vector negation is part of the orbital adjoint but does not change support
+antichains.  Positivity is not stipulated and is proved below.  No positive
+trace is claimed for $0<q<1$.
+\end{scope}
+\provenance{D1245, D1246}{theory/sidequests/f1-limit/mirabolic-trace.md}{theory/checks/f1\_limit\_check.py (L12); B1,B4 in theory/checks/f1\_limit\_mirabolic\_check.py}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Antichain classification and orbital valency]
+{\normalfont\statusProved}\quad
+Let $L=\mathbb F_Q^n$, fix a reference complete flag, and let $w\in S_n$.
+The residual stabilizer orbits on $L$ are indexed by antichains $A$ in the
+preceding poset.  The full affine orbital $(w,A)$ has exact valency
+\[
+ k_{w,A}(Q)=Q^{\ell(w)+|\downarrow_wA|-|A|}(Q-1)^{|A|}.
+\]
+\end{theorem}
+\begin{scope}
+This holds for every finite field, including characteristic two and extension
+fields.  It is an orbit-counting theorem, not a positivity statement at a
+non-arithmetic parameter.
+\end{scope}
+\provenance{F1-MIR-VAL}{theory/sidequests/f1-limit/mirabolic-trace.md}{theory/checks/f1\_limit\_check.py (L12, n at most 3 and Q=2,3)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+The intersection of the two Borels for relative position $w$ contains the
+diagonal torus and precisely the shears $I+cE_{ij}$ with $i\prec_wj$.
+Allowed shears change only coordinates below an existing support coordinate,
+so the maximal nonzero support is an invariant antichain.  Conversely,
+diagonal scaling normalizes the coordinates on $A$, and shears from each
+$a\in A$ create arbitrary coordinates in its strict downset.  The residual
+orbit therefore has $(Q-1)^{|A|}Q^{|\downarrow_wA|-|A|}$ elements.  The
+Bruhat cell of $w$ has $Q^{\ell(w)}$ flags, giving the formula.
+\end{proof}
+
+\begin{theorem}[Faithful positive mirabolic trace for all real parameters above one]
+{\normalfont\statusProved}\quad
+For every $n\geq1$ and every real $q>1$, the orbit-basis trace has diagonal
+Gram form
+\[
+ \tau_q(T_{w,A}^*T_{v,C})
+ =\delta_{(w,A),(v,C)}
+   q^{\ell(w)+|\downarrow_wA|-|A|}(q-1)^{|A|}.
+\]
+It is a faithful normalized trace, and its left regular representation makes
+the fibre a finite C*-algebra.
+\end{theorem}
+\begin{scope}
+The all-real conclusion follows from a polynomial identity and the displayed
+sign, not from numerical sampling at arithmetic values.  For $0<q<1$, odd
+$|A|$ gives a negative Gram entry.
+\end{scope}
+\provenance{F1-MIR-POS}{theory/sidequests/f1-limit/mirabolic-trace.md}{L12 checks finite orbit counts; the uniform positivity statement is proved analytically}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+At every prime power, distinct orbital adjacency matrices have disjoint
+support, and their normalized Hilbert--Schmidt squared norms equal their
+valencies.  Both the product coefficient and the valency are polynomials in
+$q$; equality at infinitely many prime powers makes them identical.  For
+$q>1$ every displayed diagonal entry is strictly positive.  Polynomial
+extension of matrix-trace cyclicity gives traciality.  Left multiplication is
+faithful because $L_x1=x$, and its adjoint is $L_{x^*}$.
+\end{proof}
+
+\subsection{Hecke retraction and the trace-supported endpoint}
+
+\begin{definition}[Hecke inclusion and vector expectation]
+Let
+\[
+ i_q:H_n(q)\longrightarrow R_n(q),\qquad T_w\longmapsto T_{w,\varnothing},
+\]
+and define coefficient deletion by
+\[
+ E_q(T_{w,A})=
+ \begin{cases}T_w,&A=\varnothing,\\0,&A\neq\varnothing.
+ \end{cases}
+\]
+\end{definition}
+\begin{scope}
+These are fixed-rank maps.  They do not provide a generic cross-rank map
+$R_m(q)\otimes R_n(q)\to R_{m+n}(q)$; in particular they leave room for
+separately constructed right module actions.
+\end{scope}
+\provenance{D1247}{theory/sidequests/f1-limit/mirabolic-trace.md}{theory/checks/f1\_limit\_mirabolic\_check.py (B4)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Vector coarse graining as a conditional expectation]
+{\normalfont\statusProved}\quad
+For every real $q>1$, $i_q$ is a trace-preserving unital *-monomorphism and
+$E_q$ is its trace-preserving UCP conditional expectation, with
+$E_qi_q=\mathrm{id}$.  Hence Hecke densities, effects and retained Kraus
+lists lift unchanged to the mirabolic fibre.
+\end{theorem}
+\begin{scope}
+The reverse operation $i_qE_q$ is generally a proper vector-sector coarse
+graining.  The statement concerns fixed-rank operational data only.
+\end{scope}
+\provenance{F1-MIR-EXPECT}{theory/sidequests/f1-limit/mirabolic-trace.md}{theory/checks/f1\_limit\_mirabolic\_check.py (B4)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+The Gram formula makes $E_q$ the trace-orthogonal projection onto the unital
+Hecke *-subalgebra.  Traciality gives bimodularity.  Testing a positive input
+against elements of the subalgebra proves positivity, and the identical
+argument in matrix amplifications proves complete positivity.  The basis
+formulas give trace preservation and $E_qi_q=\mathrm{id}$.
+\end{proof}
+
+\begin{definition}[Algebraic and trace-supported endpoints]
+The algebraic endpoint is the full based specialization $R_n(1)$ with the
+specialized trace $\tau_1$.  Its trace-supported endpoint is
+\[
+ R_n(1)/\mathcal N_{\tau_1},\qquad
+ \mathcal N_{\tau_1}=\{x:\tau_1(x^*x)=0\}.
+\]
+The two endpoint algebras are not identified by definition.
+\end{definition}
+\begin{scope}
+No C*-norm is placed on the degenerate algebraic endpoint.  Only its GNS
+quotient carries the faithful reference representation.
+\end{scope}
+\provenance{D1248}{theory/sidequests/f1-limit/mirabolic-trace.md}{theory/checks/f1\_limit\_mirabolic\_check.py (B4); theory/checks/f1\_limit\_check.py (L10)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[The mirabolic reference quotient at one]
+{\normalfont\statusProved}\quad
+At $q=1$, the coefficient trace is positive semidefinite and
+\[
+ \mathcal N_{\tau_1}=\operatorname{span}
+       \{T_{w,A}:A\neq\varnothing\}.
+\]
+This nullspace is a two-sided *-ideal, and
+\[
+ R_n(1)/\mathcal N_{\tau_1}\cong H_n(1)=\mathbb C[S_n]
+\]
+as a traced *-algebra.  The map $E_1$ is exactly the quotient map under the
+empty-orbit basis identification.
+\end{theorem}
+\begin{scope}
+The full algebraic specialization still contains the vector ideal.  The
+claim concerns the GNS quotient selected by the reference trace.
+\end{scope}
+\provenance{F1-MIR-END}{theory/sidequests/f1-limit/mirabolic-trace.md}{B4, exact rank-two interpolation and null Gram; L10 rank one}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Setting $q=1$ in the diagonal Gram formula leaves norm one exactly for
+$A=\varnothing$ and norm zero otherwise.  The nullspace of a positive
+tracial form is a two-sided *-ideal by Cauchy--Schwarz.  The surviving basis
+classes multiply by the Hecke rule at one, giving the group algebra and its
+coefficient trace.  Since $E_1$ deletes precisely the null basis, it is the
+quotient.
+\end{proof}
+
+\subsection{The actual one-sided operational category}
+
+\begin{definition}[Regular one-sided labels]
+Fix $J_\varepsilon=[1,1+\varepsilon]$.  A regular mirabolic section is
+\[
+ h(q)=\sum_{w,A}h_{w,A}(q)T_{w,A}(q),
+ \qquad h_{w,A}\in C(J_\varepsilon),
+\]
+with pointwise polynomial multiplication, the orbit star and continuous
+coefficient trace.  Hecke factors use their continuous section algebra on
+the same interval; separated register words use continuous coefficients in
+the product bases and the $C(J_\varepsilon)$-balanced common-parameter
+tensor.
+
+A regular density additionally satisfies $h(q)\geq0$ and
+$\tau_q(h(q))=1$ for every real $1<q\leq1+\varepsilon$.  A regular effect
+satisfies $0\leq e(q)\leq1$ there; a regular POVM consists of finitely many
+such positive sections summing to one.  Regular instrument coefficients are
+continuous and obey Kraus completeness at every real $q>1$ in the interval.
+\end{definition}
+\begin{scope}
+There is no C*-norm on the boundary section algebra.  Positivity only at
+prime powers is insufficient.  Coefficient-pole densities are excluded and
+require separate singular boundary data.
+\end{scope}
+\provenance{D1249}{theory/sidequests/f1-limit/mirabolic-boundary.md}{uniform theorem by proof; L10 and B4 give boundary examples}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Regular separated operational category]
+For each real $q>1$, quantum atoms are $[H_n]$ and $[R_n]$, $n\geq1$, with
+their faithful coefficient traces; nonempty finite classical wires have
+uniform trace.  The empty word has algebra $\mathbb C$, and ordered word
+tensor is the actual spatial tensor product.  The interval version uses the
+regular common-parameter sections just defined.
+
+Raw morphisms are finite typed planar circuits generated by all regular
+preparations, discards and finite POVMs; every retained same-register
+instrument
+\[
+ K:X\to X\underline O,
+ \qquad \sum_{o,i}K_{o,i}(q)^*K_{o,i}(q)=1;
+\]
+the explicit classical product, singleton, bijective relabeling and
+classical-wire routing maps; and
+\[
+ \begin{aligned}
+ \operatorname{up}_n&:[H_n]\to[R_n]&&\quad(E_q\text{ in Heisenberg form}),\\
+ \operatorname{down}_n&:[R_n]\to[H_n]&&\quad(i_q\text{ in Heisenberg form}).
+ \end{aligned}
+\]
+Instrument lists are retained under separated context tensor and factorwise
+inclusion.  With the uniform classical trace, the $o$-block of the output
+density is $|O|\sum_iK_{o,i}hK_{o,i}^*$.
+
+Composition is typed gluing and ordered tensor is horizontal juxtaposition.
+Equality is the congruence generated by category, monoidal and explicit
+classical-wiring relations, literal state/POVM equality, pointwise equality
+of coefficient Kraus Grams within each outcome, the routed list identities,
+and $\operatorname{down}_n\operatorname{up}_n=\mathrm{id}_{[H_n]}$.
+The reverse composite is $i_qE_q$ and is not an identity.  Germs identify
+circuits when these relations hold on a common smaller one-sided interval.
+There is no cross-rank mirabolic assembly generator.
+\end{definition}
+\begin{scope}
+The classical wiring is the explicit parameter-independent UCP presentation
+already proved for the core category; no unresolved wiring hypothesis remains.
+Equality is not an isolated-CP quotient and requires no continuous family of
+Kraus mixing matrices.  In particular $[R_m][R_n]$ is not identified with
+$[R_{m+n}]$.
+\end{scope}
+\provenance{D1257, D1218}{theory/sidequests/f1-limit/mirabolic-boundary.md; theory/sidequests/f1-limit/classical-wiring.md}{theory/checks/f1\_limit\_wiring\_check.py (W1--W5); B4}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Regular quotient boundary functor]
+Let $\Pi_n:R_n(1)\to H_n(1)$ be the GNS quotient $E_1$.  For a register word
+$X$, let $Q_X$ tensor $\Pi_n$ on every mirabolic factor and the identity on
+Hecke and classical factors; write $\overline X$ for the word obtained by
+replacing every mirabolic atom by its Hecke atom.  The endpoint category has
+these Hecke/classical words, the same wiring, all normalized preparations,
+POVMs and retained same-register instruments, the same label relations, and
+its UCP realization.
+
+The boundary functor evaluates continuous coefficients at one, applies $Q_X$
+to every density, effect and Kraus entry, and sends every up/down generator
+to the identity.  Evaluation at $q>1$ requires a chosen representative whose
+interval contains $q$.
+\end{definition}
+\begin{scope}
+Arbitrary UCP families with merely regular superoperator coefficients are not
+source morphisms.  The regular density and retained-Kraus restrictions are
+part of the functor's domain.
+\end{scope}
+\provenance{D1258}{theory/sidequests/f1-limit/mirabolic-boundary.md}{structured descent proof; B4 and W1--W5 test primitive data}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Regular operational mirabolic boundary]
+{\normalfont\statusProved}\quad
+The regular one-sided circuits and their germs form actual ordered monoidal
+categories with UCP realizations.  Coefficient evaluation followed by the
+factorwise GNS quotient defines a monoidal endpoint functor to the separated
+Hecke operational category.  It preserves all specified generators and
+typed relations.  Finite protocol Born weights converge, and conditioned
+weights converge whenever the limiting conditioning probability is positive.
+Every individual finite endpoint Hecke circuit has a local regular lift.
+\end{theorem}
+\begin{scope}
+All source densities, effects and instruments are positive or normalized for
+every nearby real $q>1$.  Arithmetic-only positivity and arbitrary
+coefficient-regular UCP superoperators are excluded.  No generic
+$R_m(q)\otimes R_n(q)$ assembly is asserted.
+\end{scope}
+\provenance{F1-MIR-REG}{theory/sidequests/f1-limit/mirabolic-boundary.md}{B4 and W1--W5 support primitive formulas; functoriality and positivity by structured proof}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Polynomial structure constants and the parameter-independent star make
+regular sections a *-algebra.  For a regular positive density $h$ and any
+endpoint Hecke element $x$, lift $x$ through the Hecke inclusion.  Positivity
+of $\tau_q(x(q)^*h(q)x(q))$ for every real $q>1$ passes to one by coefficient
+continuity.  Faithfulness of the endpoint quotient trace then forces
+$Q_X(h(1))\geq0$; normalization also passes to the limit.  The same argument
+handles effects and POVMs, while Kraus completeness passes algebraically and
+multiplicativity of $Q_X$ makes every branch map descend.
+
+The explicit wiring commutes with factorwise quotients.  Pointwise Gram
+equality is a congruence fibre by fibre and descends under the linear quotient
+map.  Hence the circuit quotient and endpoint functor are well defined.  A
+finite branch density has continuous coefficients by induction over its
+circuit, so trace pairings and finite event sums converge.  Positive-limit
+conditioning is ordinary quotient continuity.  Local endpoint lifts use
+square-root normalization in the continuous Hecke subalgebra followed by
+$i_q$, on one common neighborhood for the finitely many labels.
+\end{proof}
+
+The real-neighborhood hypothesis is sharp.  In $H_2(q)$, if $e_+,e_-$ are
+the two spectral projections, then
+\[
+ h(q)=(q-	frac32)e_++\frac{5}{2q}e_-
+\]
+is normalized and positive at every prime power $Q\geq2$, but has a negative
+$e_+$ coefficient for $1<q<3/2$.  It is not a regular density.  Conversely,
+the rank-one singular state $q(q-1)^{-1}(1-e)$ is positive and normalized for
+every $q>1$, but has a coefficient pole and does not annihilate the endpoint
+null ideal.  It is a legitimate punctured-fibre state requiring additional
+boundary data, not an object of the regular category.

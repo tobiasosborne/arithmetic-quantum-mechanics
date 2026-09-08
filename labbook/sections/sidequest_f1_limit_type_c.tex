@@ -1,0 +1,283 @@
+\clearpage
+\section{Decomposable-shuffle correspondences in type C and the affine bridge}
+\label{sec:f1-limit-type-c}
+
+Orthogonal direct sum of symplectic spaces does not produce a standard
+parabolic inclusion of type-C Hecke algebras.  It does, however, select a
+canonical subspace of decomposable isotropic flags.  Component flags and a
+shuffle word form an orthonormal basis of that subspace.  Compression to it
+and scaled averaging back give trace-adjoint UCP maps, while ternary shuffle
+bijections make the correspondence associative.  The same construction
+works for affine flag--vector spaces at prime-power fibres.
+
+\subsection{The decomposable type-C arena}
+
+\begin{definition}[Arithmetic type-C context algebra]
+Let $k=\mathbb F_Q$ and let $V$ be a $2n$-dimensional symplectic $k$-space.
+Write $X_C(V)$ for its complete isotropic flags
+\[
+ 0=U_0<U_1<\cdots<U_n,\qquad \dim U_i=i,
+\]
+where $U_n$ is Lagrangian.  With the flag basis of
+$K_V=\mathbb C[X_C(V)]$ orthonormal, define
+\[
+ A_C(V)=\operatorname{End}_{Sp(V)}(K_V)
+\]
+with Hilbert adjoint and normalized operator trace.
+\end{definition}
+\begin{scope}
+At a prime power this is the finite type-$C_n$ flag Hecke commutant.  No
+generic positive-real type-C Hecke category is stipulated here.
+\end{scope}
+\provenance{D1250}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B5)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Decomposable isotropic flags and shuffle isometry]
+Let $V,W$ have symplectic ranks $m,n$.  A complete isotropic flag in
+$V\perp W$ is decomposable when every step is $U_a\oplus Z_b$ for steps of
+component flags.  Let $\operatorname{Sh}(m,n)$ be the two-letter words with
+$m$ letters $V$ and $n$ letters $W$.  If $(a_r,b_r)$ counts the two letters
+in the first $r$ positions of $\sigma$, then
+\[
+ (U,Z,\sigma)\longmapsto
+       (U_{a_r}\oplus Z_{b_r})_{r=0}^{m+n}
+\]
+is the decomposable flag.  Linear extension gives the basis isometry
+\[
+ J_{V,W}:K_V\otimes K_W\otimes
+       \ell^2(\operatorname{Sh}(m,n))\longrightarrow K_{\mathrm{dec}}.
+\]
+Let $p_{V,W}=J_{V,W}J_{V,W}^*$.
+\end{definition}
+\begin{scope}
+The decomposable subspace is usually proper inside the full composite flag
+space.  The shuffle factor is retained as a matrix-coherent register, rather
+than discarded as a classical label.
+\end{scope}
+\provenance{D1251}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B5,B6)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Local-symmetry product-shuffle corner]
+Put
+\[
+ H_{V,W}=Sp(V)\times Sp(W),\qquad
+ \mathcal D_{V,W}=\operatorname{End}_{H_{V,W}}(K_{V\perp W}).
+\]
+The product-shuffle arena is the corner
+$p_{V,W}\mathcal D_{V,W}p_{V,W}$, whose unit is $p_{V,W}$ and whose trace is
+ordinary operator trace normalized by $\operatorname{rank}(p_{V,W})$.
+\end{definition}
+\begin{scope}
+This local-symmetry commutant is larger than the full-symplectic commutant.
+The corner type and its non-scalar unit are part of the construction.
+\end{scope}
+\provenance{D1252}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B5)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Decomposable flags are component flags plus a shuffle]
+{\normalfont\statusProved}\quad
+For symplectic spaces $V,W$ over any finite field, the preceding flag map is
+a bijection, and
+\[
+ p_{V,W}\mathcal D_{V,W}p_{V,W}
+ \cong A_C(V)\otimes A_C(W)\otimes
+       M_{\operatorname{Sh}(m,n)}(\mathbb C)
+\]
+as a traced *-algebra.
+\end{theorem}
+\begin{scope}
+This is an arithmetic finite-dimensional commutant identity.  It is not an
+algebra isomorphism between the full composite context and the product
+corner, and it includes all shuffle coherences.
+\end{scope}
+\provenance{F1-TC-DEC}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B5, Sp4 over F2)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+The dimensions of intersections with $V$ and $W$ recover the shuffle word
+and the nonrepeated intersections recover both component flags.  Thus the
+displayed map is bijective.  The subgroup $Sp(V)\times Sp(W)$ acts on the two
+component flag factors and trivially on the shuffle factor.  Its commutant on
+the decomposable space is therefore the tensor product of the two component
+commutants and the full matrix algebra on shuffles.
+\end{proof}
+
+\subsection{Restriction and preparation}
+
+\begin{definition}[Trace-adjoint type-C channels]
+Let $G=Sp(V\perp W)$ and let
+\[
+ \mathcal E_G(x)=|G|^{-1}\sum_{g\in G}U_gxU_g^*,
+ \qquad
+ r_{V,W}=\frac{\operatorname{rank}(p_{V,W})}{\dim K_{V\perp W}}.
+\]
+For $a\in A_C(V\perp W)$ and
+$x\in p_{V,W}\mathcal D_{V,W}p_{V,W}$, extended by zero on the orthogonal
+complement, define
+\[
+ \Phi_{V,W}(a)=p_{V,W}ap_{V,W},\qquad
+ \Psi_{V,W}(x)=r_{V,W}^{-1}\mathcal E_G(x).
+\]
+\end{definition}
+\begin{scope}
+The scale $r_{V,W}^{-1}$ is required for unitality and trace preservation.
+Compression is not asserted to be multiplicative on a generic full
+symplectic transition.
+\end{scope}
+\provenance{D1253}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B5)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Bidirectional positive type-C correspondence]
+{\normalfont\statusProved}\quad
+For every prime power $Q$ and finite symplectic $V,W$ over $\mathbb F_Q$,
+$\Phi_{V,W}$ and $\Psi_{V,W}$ are unital trace-preserving completely
+positive maps, and they are adjoint for the normalized traces:
+\[
+ \operatorname{tr}_{p}(\Phi_{V,W}(a)x)
+   =\operatorname{tr}_{G}(a\Psi_{V,W}(x)).
+\]
+\end{theorem}
+\begin{scope}
+These are restriction and preparation channels between two different
+observable algebras.  Mutual trace adjointness does not make them inverse
+*-isomorphisms.
+\end{scope}
+\provenance{F1-TC-CP}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B5, exact averaging and trace pairing)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Compression is CP and sends the full unit to the corner unit.  Transitivity
+of $Sp(V\perp W)$ on complete isotropic flags gives
+$\mathcal E_G(p_{V,W})=r_{V,W}I$, so scaled averaging is also UCP.  For
+$a$ commuting with $G$,
+\[
+ \operatorname{Tr}(pa)=\operatorname{Tr}(\mathcal E_G(p)a)
+   =r\operatorname{Tr}(a),
+\]
+which proves trace preservation.  The same averaging identity applied to
+$ax$ gives the displayed adjointness.
+\end{proof}
+
+\begin{definition}[Ternary shuffle coherence]
+For ranks $\ell,m,n$, let $\operatorname{Sh}(\ell,m,n)$ be the three-letter
+words with those multiplicities.  The two coherence maps are the canonical
+bijections
+\begin{align*}
+ \operatorname{Sh}(\ell,m)\times\operatorname{Sh}(\ell+m,n)
+   &\longrightarrow\operatorname{Sh}(\ell,m,n),\\
+ \operatorname{Sh}(m,n)\times\operatorname{Sh}(\ell,m+n)
+   &\longrightarrow\operatorname{Sh}(\ell,m,n),
+\end{align*}
+obtained by expanding each combined letter with the next letter of the inner
+word.  All iterated flag isometries, compression channels and trace-adjoint
+preparations are compared using these bijections and the ordinary Hilbert
+associator.
+\end{definition}
+\begin{scope}
+The coherence maps preserve the order of the three summands.  They are
+specified bijections, not silent equality of differently nested shuffle sets.
+\end{scope}
+\provenance{D1254}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B6)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Associativity of the type-C correspondence]
+{\normalfont\statusProved}\quad
+For three finite symplectic spaces over one finite field, the two iterations
+of decomposable restriction agree after the canonical ternary shuffle
+bijections.  Their trace-adjoint preparation maps agree in the reverse
+direction.
+\end{theorem}
+\begin{scope}
+The theorem is arithmetic and finite-dimensional.  It retains the shuffle
+register and supplies no symmetric exchange beyond the named reorderings.
+\end{scope}
+\provenance{F1-TC-COH}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B6, three rank triples)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Both nested isometries send a triple of component flags and a three-letter
+word to the same flag whose current step is the direct sum of the three
+current component steps.  Hence both iterated projections are the same
+diagonal projection.  Compression maps coincide.  Their normalized-trace
+adjoints coincide as well; equivalently, the nested rank fractions multiply
+to the rank fraction of this common projection.
+\end{proof}
+
+\subsection{The thin signed-permutation fibre}
+
+\begin{definition}[Thin type-C block comparison]
+At $q=1$, let $B_n$ be the signed permutation group.  Embed
+$B_m\times B_n$ in $B_{m+n}$ by preserving the two coordinate blocks.  Fix
+the convention that every signed permutation factors as a block signed
+permutation followed by one unsigned $(m,n)$ shuffle.  The induced
+group-algebra *-inclusion is the thin block assembly.
+\end{definition}
+\begin{scope}
+This definition concerns the group-algebra endpoint only.  It includes no
+generic type-C Hecke lift of the block map.
+\end{scope}
+\provenance{D1255}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B6, signed factorizations)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Unsigned shuffles are the thin block cosets]
+{\normalfont\statusProved}\quad
+For $m,n\geq0$, every element of $B_{m+n}$ has the fixed unique factorization
+above, so
+\[
+ \ell^2(B_{m+n})\cong
+ \ell^2(B_m\times B_n)\otimes\ell^2(\operatorname{Sh}(m,n)).
+\]
+For $m,n>0$ the block subgroup is proper and nonparabolic, although its group
+algebra embeds by a unital *-map.
+\end{theorem}
+\begin{scope}
+The theorem leaves open generic bimodules or right Hecke actions.  It states
+only that no standard generic $H(B_m,q)\otimes H(B_n,q)$ parabolic assembly
+has been supplied.
+\end{scope}
+\provenance{F1-TC-ONE}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_bridge\_check.py (B6, four signed block factorizations)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Move the unsigned shuffle of the two absolute-value blocks to the chosen side;
+what remains preserves both coordinate blocks and carries all signs.  This is
+unique.  The subgroup index is $\binom{m+n}{m}$.  It has full Coxeter rank
+$m+n$, whereas a proper parabolic subgroup has smaller rank, proving
+nonparabolicity.
+\end{proof}
+
+\subsection{Arithmetic affine decomposable composition}
+
+\begin{definition}[Affine decomposable product-shuffle arena]
+For finite vector spaces $L,M$ over one finite field, let
+$p^{\mathrm{aff}}_{L,M}$ project onto basis vectors consisting of a
+decomposable complete flag in $L\oplus M$ and an arbitrary vector
+$(x,y)\in L\oplus M$.  The local symmetry is
+\[
+ \operatorname{Aff}(L)\times\operatorname{Aff}(M).
+\]
+The affine product-shuffle corner, restriction and preparation maps are the
+local-symmetry commutant corner, compression by $p^{\mathrm{aff}}_{L,M}$,
+and inverse-rank-fraction scaled averaging over $\operatorname{Aff}(L\oplus
+M)$, exactly as in the symplectic formulas above.
+\end{definition}
+\begin{scope}
+This is arithmetic data at a prime-power fibre.  It is not a generic-real
+mirabolic assembly map and is not a generator of the regular separated
+boundary category.
+\end{scope}
+\provenance{D1256}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_mirabolic\_check.py (B7)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Arithmetic affine product-shuffle correspondence]
+{\normalfont\statusProved}\quad
+Let $L,M$ be finite-dimensional over $\mathbb F_Q$.  Decomposable flags and
+all vector labels identify the affine local-symmetry corner with
+\[
+ R_X(L)\otimes R_X(M)\otimes
+ M_{\operatorname{Sh}(\dim L,\dim M)}(\mathbb C).
+\]
+Compression from the full affine commutant and scaled full-affine averaging
+back are mutually trace-adjoint trace-preserving UCP maps, coherent for three
+summands under the ternary shuffle bijections.
+\end{theorem}
+\begin{scope}
+The hypotheses require a prime-power field.  The result does not infer
+positivity or composition for all real $q>1$, and it does not identify the
+full flag register with the product register.
+\end{scope}
+\provenance{F1-MIR-DEC}{theory/sidequests/f1-limit/type-c.md}{theory/checks/f1\_limit\_mirabolic\_check.py (B7, Q=2,3)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+The decomposable flag--vector basis is the tensor product of the two
+flag--vector bases and the shuffle basis, equivariantly for
+$\operatorname{Aff}(L)\times\operatorname{Aff}(M)$.  Taking commutants gives
+the displayed corner.  The full affine group is transitive on flag--vector
+basis elements, so averaging the decomposable projection gives its rank
+fraction times the identity.  The compression, scaled-average and ternary
+coherence proofs are therefore identical to the symplectic arguments.
+\end{proof}

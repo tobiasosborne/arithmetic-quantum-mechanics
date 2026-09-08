@@ -4,11 +4,70 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-07, operational F1 result (sidequest opened 2026-09-06). The mainline FCR-2 state below remains
-the interrupted 2026-09-01 state: prover finished, critic not run. This
-session explored the user's new sidequest and did not admit that lane.
+Updated: 2026-09-08, categorical-limit windup. The mainline FCR-2 state
+remains the interrupted 2026-09-01 state: prover finished, critic not run.
+The new Hecke/mirabolic categorical-limit package is admitted separately.
+Research has stopped; the user must steer any continuation.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## Categorical-limit package — windup 2026-09-08
+
+The user authorized comprehensive rigorous work with Sol and occasional Astra,
+then set a cutoff of 03:00 Europe/Berlin (01:00 UTC). **The cutoff was missed.**
+The clock was checked again at 05:04 UTC (07:04 Berlin), after agent usage-limit
+errors; research was stopped and only integration, verification and commit
+were continued. Do not resume automatically. The next work needs user steering.
+
+Delivered: 37 new PROVED claims, 62 new numbered definitions, 15 structured
+proof shards under `theory/sidequests/f1-limit/`, eight new self-contained
+labbook sections, a protocol figure, four retained blind verdicts and the
+combined adjudication `theory/verdicts/f1-limit-adjudication.md`.
+The full register is now **107 claims: 86 PROVED, 19 SKETCH, one CONJECTURE,
+one REFUTED**; there are **108 definitions**. Earlier mainline/FCR-2 statuses
+are unchanged. The final PDF build and full suite outcome are recorded below.
+
+Core result: the full finite graded self-adjoint completion has positive
+continuous traces, proper traced assembly inclusions and continuous UCP
+expectations. Its interval and germ operational categories include normalized
+states, effects, instruments, classical routing, preparations and discards.
+Endpoint objects and individual finite circuits lift locally, with explicit
+unitary connectors; every specified finite experiment has continuous Born
+weights, and conditioning converges when the limiting event has positive
+probability. No global canonical lift or lifting of arbitrary endpoint
+relations is claimed. The H3 experiment explicitly uses a Lüders instrument:
+preparation success 2/3, conditional return 1/4, joint endpoint probability1/6.
+
+Additional proved results: canonical unitary cactus exchange on positive Hecke
+categories; algebraic Day/right-module comparison; Schur-Weyl quotients and
+physical-trace convergence; explicit rigid/TL/Fibonacci comparison data;
+mirabolic vector/Weyl-Fourier identification, positive trace for every q>1,
+reference GNS quotient C[S_n], and a genuinely typed regular one-sided
+operational boundary functor; arithmetic type-C/affine shuffle correspondences.
+The trace weight on arbitrary projection objects is `w_X`, distinct from the
+existing fusion dimension `d_X`. Interval/germ Kraus equality is pointwise/
+eventual coefficient-Gram equality, without continuous mixing unitaries.
+
+Review: core Sol prover/Astra critic/Sol repair; composition Sol prover/Sol
+critic/root repair; bridge Sol prover/Sol critic/Astra+root repair; Karoubi
+Astra prover/Sol critic PASS. The precise fixes and scope are in adjudication.
+No re-review-to-fixed-point was run. The operational wiring hypothesis W is
+instantiated by D1218/CWIR-1--3, including the explicit singleton identity.
+
+Five further marked-module claims were drafted, and their independent Sol
+verdict is PASS, but **they are not admitted**: no D1271--D1276 or corresponding
+claim rows entered the root registries or labbook. Their complete drafts and
+verdict are preserved under `docs/research-drafts/f1-marked-action/` for the
+next session. They concern R_m(q) tensor H_n(q) -> R_(m+n)(q), a right module
+action, not a tensor law for two marked systems. Their checker is retained as
+supporting draft evidence. This is the clearest next integration task.
+
+Scope still excludes a universal specialization of the entire Weyl observable
+algebra, every phase and all polarizations. The proved system family is the
+named Hecke/flag sector with its explicit vector and polarization comparisons.
+Astra and Sol agents hit the account usage limit during final integration/
+review reporting. Their already written results were preserved; all agents
+were interrupted at windup and no further delegation is intended.
 
 ## Latest result — a positive operational F1 subsystem family
 

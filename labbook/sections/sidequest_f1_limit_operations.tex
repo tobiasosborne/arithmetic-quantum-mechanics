@@ -1,0 +1,432 @@
+\clearpage
+\section{Typed operations, classical histories and collective context}
+\label{sec:f1-limit-operations}
+
+The amplitude category has morphisms only within a fixed total degree.  An
+operational theory needs more: preparation, discard, measurement and channels
+must be arrows between observable algebras.  We build those arrows in
+Heisenberg orientation, retain their Kraus data, and keep two kinds of
+composition separate.  Juxtaposing registers produces a spatial tensor
+algebra; assembling them produces one larger collective corner whose
+observable algebra usually contains more operators.
+
+\subsection{Registers and primitive processes}
+
+\begin{definition}[Quantum atoms, classical wires and register words]
+For every nonempty composition $\alpha$, let $[\alpha]$ be a quantum atom
+with observable algebra
+\[
+ A_\alpha(q)=e_\alpha(q)H_{|\alpha|}(q)e_\alpha(q),
+ \qquad \tau_{\alpha,q}=P_\alpha(q)\tau_{|\alpha|,q}.
+\]
+A register word is a finite ordered word of quantum atoms and classical
+wires.  The algebra and reference trace of the word are the ordered spatial
+tensor products of the factor algebras and traces; the empty word has algebra
+$\mathbb C$.  For a nonempty finite set $O$, the wire $\underline O$ has
+algebra $\mathbb C^O$ and uniform trace
+\[
+ \tau_O(f)=|O|^{-1}\sum_{o\in O}f(o).
+\]
+The separated word $[\alpha][\beta]$ and collective atom
+$[\alpha\mathbin\Vert\beta]$ are different objects.
+\end{definition}
+\begin{scope}
+The empty outcome set is excluded from deterministic instruments.  A
+classical wire has a commutative algebra; a coherent additive direct sum in
+the completed amplitude category instead has matrix off-diagonal observables.
+\end{scope}
+\provenance{D1205}{theory/sidequests/f1-limit/operational-category.md; theory/sidequests/f1-limit/classical-wiring.md}{theory/checks/f1\_limit\_wiring\_check.py (W1--W3,W5)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Finite Heisenberg UCP category]
+Objects are finite-dimensional unital C*-algebras.  An arrow $A\to B$ is a
+unital completely positive map $\Phi:B\to A$.  If $A\to B\to C$ are
+represented by $\Phi:B\to A$ and $\Psi:C\to B$, their composite is
+$\Phi\circ\Psi:C\to A$; tensor is the spatial tensor of maps.  For faithful
+reference traces, the density dual is the unique map satisfying
+\[
+ \tau_B\bigl(\Phi_*(\rho)a\bigr)
+   =\tau_A\bigl(\rho\Phi(a)\bigr).
+\]
+\end{definition}
+\begin{scope}
+This target records operational UCP maps and their density duals.  It does not
+assert that every such map possesses a preferred Hecke-corner Kraus label.
+\end{scope}
+\provenance{D1206}{theory/sidequests/f1-limit/operational-category.md}{finite UCP examples in theory/checks/f1\_operational\_check.py}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Preparations, measurements and retained instruments]
+For a register word $X$, a preparation is a density
+$h\geq0$, $\tau_X(h)=1$, with Heisenberg functional
+$a\mapsto\tau_X(ha)$.  Discard is $\lambda\mapsto\lambda1_X$.  A POVM with
+outcome set $O$ is a family $e_o\geq0$, $\sum_oe_o=1_X$, and realizes
+\[
+ \mathbb C^O\longrightarrow A_X,\qquad
+ f\longmapsto\sum_of(o)e_o.
+\]
+An effect $0\leq e\leq1$ is the two-outcome POVM $(e,1-e)$.
+
+For equal-total compositions $\alpha,\,\beta$, a corner instrument is a
+finite family
+\[
+ K_{o,i}\in e_\beta H_n(q)e_\alpha,\qquad
+ \sum_{o,i}K_{o,i}^*K_{o,i}=e_\alpha,
+\]
+with type
+\[
+ K:[\alpha]\longrightarrow[\beta]\underline O
+\]
+and Heisenberg realization
+\[
+ \Phi_K((a_o)_o)=\sum_{o,i}K_{o,i}^*a_oK_{o,i}.
+\]
+At one fibre, two labels are equal when the normalized-basis coefficient
+Gram matrices agree separately in each outcome.  Equivalently, after zero
+padding they differ by a scalar-unitary mixing of the Kraus index within each
+outcome.
+\end{definition}
+\begin{scope}
+The quantum output of an instrument is retained.  A POVM alone specifies
+effects but no postmeasurement state.  Kraus indices may be mixed within an
+outcome, never across different classical outcomes.
+\end{scope}
+\provenance{D1207}{theory/sidequests/f1-limit/operational-category.md}{theory/checks/f1\_operational\_check.py (H8); theory/checks/f1\_limit\_wiring\_check.py (W3,W4)}{theory/verdicts/f1-limit-adjudication.md}
+
+The branch density for outcome $o$ is not the raw matrix sum when source and
+target corner traces have different normalizations.  It is
+\[
+ T_o(\rho)=\frac{P_\alpha(q)}{P_\beta(q)}
+             \sum_iK_{o,i}\rho K_{o,i}^*.
+\]
+Relative to $\tau_\beta\otimes\tau_O$, the $o$-block of the full recorded
+density is $|O|T_o(\rho)$.  Cyclicity proves that its trace is precisely the
+branch Born weight and that the sum of all branch masses is one.
+
+\begin{proposition}[UCP realization of primitive operations]
+{\normalfont\statusProved}\quad
+For every $q>0$, every preparation, discard, finite POVM and normalized
+corner instrument just defined is a typed UCP process.  Its Schrödinger dual
+is positive and trace preserving, and the branch density has the displayed
+corner and classical cardinality factors.
+\end{proposition}
+\begin{scope}
+This is a sufficient retained process class.  It makes no completeness claim
+for arbitrary CP maps between two corner algebras.
+\end{scope}
+\provenance{F1-LIM-OP}{theory/sidequests/f1-limit/operational-category.md}{theory/checks/f1\_operational\_check.py (H8); theory/checks/f1\_limit\_wiring\_check.py (W3)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Preparations are positive normalized functionals and discards are unital
+*-maps.  At matrix level a positive element of
+$M_r(\mathbb C^O)$ is a family of positive scalar matrices, so tensoring each
+with $e_o$ and summing proves complete positivity of the POVM map.  Each
+instrument summand has the form $a\mapsto K^*aK$; completeness makes their
+sum unital.  The density formula follows from cyclicity:
+\[
+ \tau_\beta(T_o(\rho)a)
+ =\tau_\alpha\!\left(\rho\sum_iK_{o,i}^*aK_{o,i}\right).
+\]
+\end{proof}
+
+\subsection{Assembly is a retraction, not an identification}
+
+\begin{definition}[Assembly and split]
+For parabolic atoms, let
+\[
+ \operatorname{asm}_{\alpha,\beta}:
+ [\alpha][\beta]\longrightarrow[\alpha\mathbin\Vert\beta]
+\]
+be represented in Heisenberg orientation by the trace-preserving conditional
+expectation
+\[
+ E_{\alpha,\beta}:A_{\alpha\mathbin\Vert\beta}
+       \longrightarrow A_\alpha\otimes A_\beta.
+\]
+Let $\operatorname{spl}_{\alpha,\beta}$ have the reverse type and be
+represented by the corner inclusion
+$j_{\alpha,\beta}:A_\alpha\otimes A_\beta
+\to A_{\alpha\mathbin\Vert\beta}$.  The defining relations include the
+three-block tower relations and
+\[
+ \operatorname{spl}\circ\operatorname{asm}
+    =\operatorname{id}_{[\alpha][\beta]}.
+\]
+The reverse composite is the collective coarse graining $jE$.
+\end{definition}
+\begin{scope}
+The map $jE$ is generally proper and is not set equal to the collective
+identity.  No assembly retraction is promoted to an isomorphism.
+\end{scope}
+\provenance{D1208}{theory/sidequests/f1-limit/operational-category.md}{theory/checks/f1\_limit\_check.py (L14); theory/checks/f1\_operational\_check.py (H3,H13)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Coherent collective assembly]
+{\normalfont\statusProved}\quad
+Assembly and split are associative UCP processes, $Ej=\mathrm{id}$, and
+$jE$ is the conditional expectation onto the separated product subalgebra.
+Preparing densities $h,k$ on separated registers and then assembling gives
+the collective density $j(h\otimes k)$.
+\end{theorem}
+\begin{scope}
+The conclusion uses contiguous ordered blocks and the normalized corner
+traces.  It supplies neither a block exchange nor equality of separated and
+collective observables.
+\end{scope}
+\provenance{F1-LIM-ASM}{theory/sidequests/f1-limit/operational-category.md}{L14; H3,H13}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+The Hecke block inclusion is a trace-preserving *-monomorphism and the
+coefficient expectation fixes its range, giving $Ej=\mathrm{id}$.  The two
+three-block inclusions and expectations agree on the standard basis, so the
+processes are associative.  Trace duality gives
+$\tau(j(h\otimes k)a)=(\tau_\alpha\otimes\tau_\beta)
+((h\otimes k)E(a))$, proving the density statement.
+\end{proof}
+
+\begin{definition}[Retained collective context and parallel lists]
+For $K:[\alpha]\to[\beta]\underline O$ and a right context $\gamma$, retain
+\[
+ K\triangleleft\gamma:
+ [\alpha\mathbin\Vert\gamma]
+ \longrightarrow[\beta\mathbin\Vert\gamma]\underline O,
+ \qquad
+ (K\triangleleft\gamma)_{o,i}
+   =\iota(K_{o,i}\otimes e_\gamma).
+\]
+For a second list $L:[\alpha']\to[\beta']\underline P$, the direct ordered
+collective parallel instrument has type
+\[
+ K\boxtimes_{\mathrm c}L:
+ [\alpha\mathbin\Vert\alpha']
+ \longrightarrow[\beta\mathbin\Vert\beta']\underline{O\times P}
+\]
+and list $(\iota(K_{o,i}\otimes L_{p,j}))_{(o,p),(i,j)}$.
+\end{definition}
+\begin{scope}
+These lists act on full collective corner algebras.  They are not inferred
+from the isolated CP shadows and preserve the displayed left-to-right order.
+\end{scope}
+\provenance{D1209}{theory/sidequests/f1-limit/operational-category.md}{theory/checks/f1\_operational\_check.py (H5,H8)}{theory/verdicts/f1-limit-adjudication.md}
+
+\subsection{Classical history wires}
+
+\begin{definition}[Classical products, relabeling and routing]
+Fix a singleton $*$.  A bijection $r:O\to P$ gives
+$\operatorname{rel}_r:\underline O\to\underline P$, represented by
+$r^*:C^P\to C^O$, $r^*f=f\circ r$.  Classical product and unit are the
+*-isomorphisms
+\[
+ \operatorname{mul}_{O,P}:\underline O\,\underline P
+      \longrightarrow\underline{O\times P},
+ \qquad \operatorname{unit}_{\mathrm c}:\underline *\longrightarrow\mathbf1,
+\]
+induced by $\delta_{(o,p)}\mapsto\delta_o\otimes\delta_p$ and
+$\mathbb C^{\{*\}}\cong\mathbb C$; their inverses are included.  Cartesian associators and
+singleton unitors are the corresponding relabelings.
+
+For every object word $X$, the routing isomorphism
+\[
+ \operatorname{route}_{O,X}:\underline O,X\longrightarrow X\,\underline O
+\]
+is represented by the spatial flip
+$A_X\otimes C^O\to C^O\otimes A_X$.  It is natural, involutive after
+exchanging source and target, and satisfies the usual nesting and unit
+relations.
+
+For instruments $K:[\alpha]\to[\beta]\underline O$ and
+$L:[\beta]\to[\gamma]\underline P$, define
+\begin{align*}
+ \operatorname{Seq}(L,K)
+ &= (\operatorname{id}\otimes\operatorname{mul}_{O,P})
+    (\operatorname{id}\otimes\operatorname{route}_{P,\underline O})
+    (L\otimes\operatorname{id}_{\underline O})K,\\
+ \operatorname{Seq}(L,K)&:[\alpha]\to[\gamma]\underline{O\times P}.
+\end{align*}
+Its branch list is $(L_{p,j}K_{o,i})_{(o,p),(j,i)}$.  For
+$K':[\alpha']\to[\beta']\underline{P'}$, define
+\begin{align*}
+ \operatorname{Par}(K,K')
+ &=(\operatorname{id}\otimes\operatorname{mul}_{O,P'})
+   (\operatorname{id}_{[\beta]}\otimes
+      \operatorname{route}_{O,[\beta']}\otimes
+      \operatorname{id}_{\underline{P'}})(K\otimes K'),\\
+ \operatorname{Par}(K,K')&:[\alpha][\alpha']
+       \to[\beta][\beta']\underline{O\times P'}.
+\end{align*}
+Sequential associativity uses $((o,p),r)\leftrightarrow(o,(p,r))$;
+sequential--parallel interchange uses
+\[
+ ((o,p),(o',p'))\longleftrightarrow((o,o'),(p,p')).
+\]
+One-outcome instruments use the singleton unitor. The single Kraus list
+$(e_\alpha)$, followed by that unitor, is the identity process on $[\alpha]$;
+its Heisenberg map is $a\mapsto e_\alpha a e_\alpha=a$.
+\end{definition}
+\begin{scope}
+Only a classical wire moves through a quantum output.  These maps do not
+provide a quantum block commutor at generic $q$.
+\end{scope}
+\provenance{D1218}{theory/sidequests/f1-limit/classical-wiring.md}{theory/checks/f1\_limit\_wiring\_check.py (W1--W5)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Presented operational categories and evaluation]
+At a fibre, take the strict ordered monoidal category generated by the
+register objects, preparations, discards, POVMs, retained instruments,
+assembly/split, context/parallel lists and classical wiring above.  Equality
+is the congruence generated by typed planar isomorphism, category and monoidal
+axioms, literal state and POVM equality, outcome-wise coefficient-Gram
+equality, the routed history relations, context identities and assembly
+tower relations.  It is not equality of one isolated CP shadow.
+
+On an interval, labels are continuous and two Kraus labels are equal when
+their coefficient Grams agree at every parameter.  At the endpoint, circuit
+germs are equal when the presentation relation, and in particular Gram
+equality, holds on a common smaller interval.  No continuous choice of a
+mixing unitary is required.  Realization sends objects to their algebras and
+generators to the stated UCP maps.  Evaluation substitutes the parameter in
+every label; only endpoint evaluation is canonical for an arbitrary germ.
+\end{definition}
+\begin{scope}
+The realization may be nonfaithful.  Local lifting of one circuit will not
+imply that every extra equation true only at the endpoint also lifts.
+\end{scope}
+\provenance{D1210, D1211}{theory/sidequests/f1-limit/operational-category.md; theory/sidequests/f1-limit/classical-wiring.md}{theory/checks/f1\_limit\_wiring\_check.py (W1--W5); H8,L14}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Sound typed operational category]
+{\normalfont\statusProved}\quad
+For every positive fibre, compact positive interval and endpoint germ, the
+preceding generators and relations define an ordered monoidal category with
+a monoidal UCP realization.  Routed sequential and parallel instruments are
+normalized, history associativity and interchange are typed by the displayed
+bijections, and pointwise or eventual Gram equality is a congruence.
+\end{theorem}
+\begin{scope}
+No classical retyping is hidden in planar isotopy.  No quantum exchange is
+asserted away from one, and no arbitrary CP-map completeness is claimed.
+\end{scope}
+\provenance{F1-LIM-OP}{theory/sidequests/f1-limit/operational-category.md; theory/sidequests/f1-limit/classical-wiring.md}{theory/checks/f1\_limit\_wiring\_check.py (W1--W5)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Every wiring box is a trace-preserving *-isomorphism represented by a finite
+permutation matrix.  Sequential completeness follows from
+\[
+ \sum_{o,p,i,j}K_{o,i}^*L_{p,j}^*L_{p,j}K_{o,i}=1,
+\]
+and parallel completeness factors into the two original sums.  The two
+associative histories have the same branch operator and differ only by their
+Cartesian bracketing.  Interchange follows from multiplicativity of the
+ordered block inclusion and the stated history bijection.  At each fibre,
+equal coefficient Grams are equivalent to outcome-wise scalar-unitary
+mixing; tensoring those finite unitaries proves congruence pointwise, without
+choosing them continuously.
+\end{proof}
+
+\subsection{A finite collective context detects retained Kraus data}
+
+\begin{definition}[Local contextual recovery map]
+For the complete $n$-constituent object, expand a retained list in the
+normalized basis and put
+\[
+ J_K(k,h)=\sum_i a_i(k)\overline{a_i(h)}.
+\]
+Embed the local regular operator explicitly into rank $2n-1$ by
+\[
+ \widetilde B_h(q)=\iota_{n,n-1}(B_h(q)\otimes1).
+\]
+Choose an involution $d\in S_{2n-1}$ fixing one local point and pairing the
+other $n-1$ local points with the complement.  The recovery map is
+\[
+ J\longmapsto\sum_{h,k}J(k,h)
+       \widetilde B_h(q)^*B_d(q)\widetilde B_k(q).
+\]
+The endpoint minor uses the distinct rows indexed by $h^{-1}dk$.
+\end{definition}
+\begin{scope}
+The neighborhood on which the minor stays invertible may depend on $n$.
+No sharp all-positive-parameter context bound is included.
+\end{scope}
+\provenance{D1215}{theory/sidequests/f1-limit/lifting.md}{theory/checks/f1\_limit\_check.py (L6); theory/checks/f1\_operational\_check.py (H11 at the endpoint)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Local contextual recovery of the Kraus Gram]
+{\normalfont\statusProved}\quad
+For every fixed $n\geq1$, some interval about one has the following property:
+one retained context of total rank $2n-1$ recovers the full normalized-basis
+Kraus Gram.  On that interval, equality in all retained contexts is
+equivalent to pointwise Gram equality, and at each fibre to stable
+scalar-unitary mixing.
+\end{theorem}
+\begin{scope}
+The scalar unitary supplied by the finite Gram lemma is fibrewise.  A
+continuous family of such unitaries is neither obtained nor required for
+equality in the repaired core category.
+\end{scope}
+\provenance{F1-LIM-CTX}{theory/sidequests/f1-limit/lifting.md}{L6; H11 at q=1}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+At one the intersection of the local subgroup with its $d$-conjugate is
+trivial, so the $(n!)^2$ permutations $h^{-1}dk$ are distinct.  The selected
+coefficient minor is therefore a permutation matrix.  Its entries vary
+continuously, so its determinant remains nonzero near one.  The displayed
+map is injective there.  Equality of its values forces equality of Grams;
+conversely every retained channel is linear in the same Gram coefficients.
+\end{proof}
+
+\subsection{Operations on the full additive completion}
+
+\begin{definition}[Controlled operations on completed objects]
+Let $X=(r_n,p_{X,n})$ be a nonzero finite-support family of self-adjoint
+matrix projections and put
+\[
+ \begin{aligned}
+ B_X&=\bigoplus_n p_{X,n}M_{r_n}(H_n^{\mathrm{cts}})p_{X,n},\\
+ \theta_X(a)&=\sum_n(\operatorname{Tr}_{r_n}\otimes\tau_n)(a_n),\qquad
+ w_X=\theta_X(1_X),\quad \tau_X=\theta_X/w_X.
+ \end{aligned}
+\]
+Quantum atoms are such objects; separated words use
+spatial tensor algebras and product traces, while classical wires retain the
+uniform trace above.  Include every normalized preparation, discard and
+finite POVM.  An instrument $X\to Y\underline O$ is a finite family
+\[
+ K_{o,i}\in\operatorname{Hom}(X,Y),\qquad
+ \sum_{o,i}K_{o,i}^*K_{o,i}=1_X,
+\]
+realized by $(a_o)_o\mapsto\sum_{o,i}K_{o,i}^*a_oK_{o,i}$.  Retain
+$K_{o,i}\otimes1_Z$, ordered parallel lists, traced assembly/split and finite
+typed circuits.
+
+The presentation uses the explicit sound classical wiring above.  At a fibre,
+Kraus equality is coefficient-Gram equality, equivalently stable
+scalar-unitary mixing within each outcome.  On an interval it is pointwise
+coefficient-Gram equality, and for germs it is such equality on a common
+smaller interval. Scalar-unitary cancellation proves congruence in each fibre; no continuous
+choice of mixing unitary is required.  Any finite classical control is a
+typed blockwise family of the admitted labels and contributes no additional
+arbitrary CP map.  The resulting fibre, interval and germ categories retain
+the realization and evaluation conventions above; their full circuit
+realizations are not stipulated to be faithful.
+\end{definition}
+\begin{scope}
+The construction assumes neither rigidity nor fusion and includes no
+arbitrary CP-map data.  Fibrewise stable mixing does not assert the existence
+of a continuous environmental unitary.
+\end{scope}
+\provenance{D1266}{theory/sidequests/f1-limit/karoubi-lifting.md; theory/sidequests/f1-limit/classical-wiring.md}{theory/checks/f1\_limit\_karoubi\_check.py (K1--K6, primitive examples); theory/checks/f1\_limit\_wiring\_check.py (W1--W5)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Operational completion of all finite projection objects]
+{\normalfont\statusProved}\quad
+With the displayed classical-wiring presentation and its UCP relations,
+every nonzero object in the full finite completion carries normalized
+states, effects, POVMs, retained instruments, traced assembly and finite
+protocols.  These generate an ordered UCP circuit category with continuous
+and germ evaluations.  Restriction to parabolic atoms recovers the preceding
+operational formulas.
+\end{theorem}
+\begin{scope}
+This statement uses the wiring and equality convention just stated.  It
+asserts neither all-CP completeness, rigidity, fusion, faithful
+circuit realization nor preservation of every additional endpoint equation.
+\end{scope}
+\provenance{F1-LIM-KOP}{theory/sidequests/f1-limit/karoubi-lifting.md; theory/sidequests/f1-limit/classical-wiring.md}{theory/checks/f1\_limit\_karoubi\_check.py (K1--K6, primitive examples); W1--W5; categorical typing by proof}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Preparations, discards, POVMs and Kraus lists give UCP maps exactly as in the
+parabolic case.  The completed trace supplies the correct density dual, and
+the unique traced expectations supply assembly and split.  Classical wiring
+types every history relation and is parameter independent.  The free typed
+category may therefore be quotiented by the proved congruence, and its
+generator realization descends to a monoidal UCP functor.  The restriction
+to rank-one parabolic projections identifies all formulas term by term.
+\end{proof}

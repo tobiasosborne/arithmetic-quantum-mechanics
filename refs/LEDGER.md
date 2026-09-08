@@ -716,3 +716,49 @@ literature-novelty claim is made. The finite-field source proves a flag
 context sector; it does not identify this with the full Weyl Hilbert space.
 The partial-flag corner category is explicitly constructed over a localized
 coefficient ring; no unspecified generic-category existence is assumed.
+
+## Operational categorical limit — sources retrieved 2026-09-07
+
+Primary PDFs and text navigation copies are local under `refs/f1/<key>/`.
+Titles were checked against the PDF front pages. Each directory includes
+`retrieval.json`; source bodies remain ignored and are not redistributed.
+
+**1008.3739** — Alexei Davydov and Alexander Molev, *A categorical approach
+to classical and quantum Schur–Weyl duality*.
+Route: https://arxiv.org/pdf/1008.3739. Local `refs/f1/1008.3739/paper.pdf`;
+SHA256 `414b0e84b16eb40b89b6bfa4fe36ceab37a3f1f554b0f5dc594a82efc972f28e`.
+Section 2.1, pp. 5–7 and equation (2.1): multiplicative sequences, their
+graded categories, and induction/Day tensor on right modules. Theorem 2.4:
+presentations. Theorem 3.2 and Proposition 3.3, p. 12: universal symmetric
+category. Proposition 3.4, p. 13: Schur–Weyl functor. Theorem 4.5 and
+Proposition 4.6, p. 15: Hecke category and algebraic braiding. Proposition
+4.7: quantum Schur–Weyl. The source's generator has eigenvalues v,-v^-1;
+our convention is q=v^2 and T=v t. Algebraic braiding does not assert
+unitarity for the project's positive real star structure.
+
+**0707.2248** — Joel Kamnitzer and Peter Tingley, *The crystal commutor and
+Drinfeld's unitarized R-matrix*.
+Route: https://arxiv.org/pdf/0707.2248. Local `refs/f1/0707.2248/paper.pdf`;
+SHA256 `a7af29cf268a9d2101b950712317f6fe0065144beac3959499e956f5043c5f48`.
+The quantum-group commutor and coboundary comparison provide a lead for
+physical exchange coherence; applying them to the abstract traced Hecke
+tower requires a separate proof and matching conventions.
+
+**math-0406478** — André Henriques and Joel Kamnitzer, *Crystals and
+coboundary categories*.
+Route: https://arxiv.org/pdf/math/0406478. Local
+`refs/f1/math-0406478/paper.pdf`;
+SHA256 `d90f2277709c09f697daf6ce4f71817cca5659752c1c31fca1ebe605b53833eb`.
+Section 3: coboundary categories, commutors and cactus-group coherence.
+The source concerns its specified crystal/representation settings; a
+Hecke C*-category application must be derived explicitly.
+
+**1310.3878** — Daniele Rosso, *The mirabolic Hecke algebra*.
+Route: https://arxiv.org/pdf/1310.3878. Local `refs/f1/1310.3878/paper.pdf`;
+SHA256 `82cf0f2287bc74b51a03b049174d29c520174191c8845fa894a04d1c8a02a6ea`.
+Section 3, p. 5, equation (6): convolution on two flags and a vector;
+Definition 3.2: polynomial-parameter algebra; Remarks 3.3–3.4: Hecke
+subalgebra and anti-involution. Section 3.1, pp. 5–6: affine-group double
+cosets. Section 4.3: cyclotomic quotient and presentation; Section 5:
+comparison with q-rook algebras. Abstract semisimple algebra isomorphism
+does not by itself identify the physical trace, star, or assembly maps.

@@ -648,3 +648,1043 @@ Put `Omega_Q(x)=J_ap^* x J_ap` for `x in Cxt(L)`. Its range is to be
 identified with the regular image of `C[S_n]`. Independence of the chosen
 basis, complete positivity, trace compatibility and limits of multiplicative
 or refinement compatibility are claim `F1-OP-APART`.
+
+
+<!-- Operational categorical limit, admitted after capped review, 2026-09-08. -->
+
+## D1201 (normalized regular Hecke frame)
+
+For D1101 and `q>0`, put
+
+    b_w(q)=q^(-ell(w)/2)T_w(q),       w in S_n.
+
+Use `b_w(q)` as the orthonormal basis of `L^2(H_n(q),tau_(n,q))`, identify
+that Hilbert space with the fixed `K_n=ell^2(S_n)`, and write `B_w(q)` for
+left multiplication by `b_w(q)` on `K_n`.  This is a choice of continuous
+regular frame, not a claim that the generators are independent of `q`.
+
+## D1202 (continuous positive Hecke section algebra)
+
+For a compact interval `I subset (0,infinity)`, define
+
+    H_n^cts(I)
+      ={q |-> sum_(w in S_n) f_w(q)B_w(q): f_w in C(I)}
+      subset C(I,End(K_n)).
+
+It has pointwise operations and the supremum operator norm.  Define the
+`C(I)`-valued coefficient trace by
+`tau_n^cts(x)(q)=tau_(n,q)(x(q))`.  Closedness, the C*-property, faithful
+fibre positivity, and surjectivity of evaluation are claim `F1-LIM-CTS`.
+
+## D1203 (continuous parabolic corner category)
+
+For D1141 and D1202, `Gamma_I^cts` has compositions as objects and
+
+    Hom(alpha,beta)=e_beta H_n^cts(I)e_alpha
+
+when `|alpha|=|beta|=n`, with zero Hom spaces between different totals.
+Identity, composition, and adjoint are `e_alpha`, pointwise multiplication,
+and pointwise star.  Ordered tensor is composition concatenation on objects.
+On section algebras its domain is the `C(I)`-balanced tensor product
+
+    H_m^cts(I) tensor_(C(I)) H_n^cts(I),
+
+equivalently the section algebra of the pointwise fibre tensor products, and
+its map is D1102's contiguous-block map.  Its normalized trace is
+
+    tau_alpha,q=P_alpha(q)tau_(n,q)
+
+on the endomorphism corner.  Write `A_alpha(I)` for that continuous
+endomorphism algebra and `A_alpha(q)` for its fibre.
+
+## D1204 (the positive Hecke corner germ at one)
+
+Let `I_epsilon=[1-epsilon,1+epsilon]`, `0<epsilon<1`.  Define
+`Gamma_1^germ` as the filtered germ category of the `Gamma_Iepsilon^cts`:
+two section morphisms are equal when their restrictions agree on a smaller
+endpoint interval.  Operations descend by restriction.  A positive germ is
+one having a positive representative on one interval.  Only evaluation at
+one is canonical on this germ category.  It is an ordered monoidal
+star-category locally represented by C*-categories; no canonical C*-norm on
+the germ Hom spaces is stipulated.
+
+## D1205 (corner atoms and separated register words)
+
+For each nonempty composition `alpha`, let `[alpha]` be the quantum atom with
+observable algebra `A_alpha(q)` and reference trace `tau_alpha,q`.  A register
+word is a finite ordered word `[alpha_1]...[alpha_r]`, with observable algebra
+the spatial tensor product of the atom algebras and reference trace their
+product.  The empty word has algebra `C`.
+
+For a nonempty finite set `O`, the classical wire `underline(O)` has algebra
+`C^O` and uniform reference trace
+`tau_O(f)=|O|^(-1)sum_o f(o)`.  Empty deterministic outcome wires are
+excluded.  Operational object words may contain quantum atoms and classical
+wires in any displayed order; their algebra and reference trace are the
+ordered spatial tensor products.  The separated word `[alpha][beta]` and
+collective atom `[alpha concat beta]` are distinct types.
+
+## D1206 (finite Heisenberg UCP category)
+
+`HCPU_fd` has finite-dimensional unital C*-algebras as objects.  An arrow
+`A->B` is a UCP map `B->A`.  Composition is composition in this Heisenberg
+order; ordered tensor is the spatial tensor product.  For chosen faithful
+reference traces, the Schrödinger density dual `Phi_*` is specified by
+
+    tau_B(Phi_*(rho)a)=tau_A(rho Phi(a)).
+
+Trace preservation of `Phi_*` follows from unitality of `Phi`.
+
+## D1207 (preparations, discards, measurements, and corner instruments)
+
+For any D1205 register word `X`, a preparation label is a density
+`h>=0`, `tau_X(h)=1`, realizing `omega_h(a)=tau_X(ha):A_X->C`.  Discard is
+the unit map `C->A_X`.  A POVM label is a finite nonempty family
+`(e_o)_(o in O)`, `e_o>=0`, `sum_o e_o=1_X`, realizing
+
+    C^O -> A_X,       f |->sum_o f(o)e_o.
+
+An effect is one member of the two-outcome POVM `(e,1-e)`.
+
+For equal-total compositions `alpha,beta`, a corner-Kraus instrument is a
+finite family
+
+    K_(o,i) in e_beta H_n(q)e_alpha,
+    sum_(o,i)K_(o,i)^*K_(o,i)=e_alpha.
+
+Its Heisenberg realization is
+
+    Phi_K((a_o)_o)=sum_(o,i)K_(o,i)^*a_oK_(o,i).
+
+It is a typed arrow
+
+    K:[alpha] -> [beta] underline(O),
+
+so its quantum output is retained.  At a fixed fibre, two lists are equal
+when their normalized-basis coefficient Grams agree within each outcome;
+equivalently, after zero padding, they differ by a scalar-unitary Kraus mixing
+within each fixed outcome.  This is a sufficient process class; arbitrary CP
+maps without such retained data are not included by this clause.
+
+## D1208 (assembly and split processes)
+
+For D1203 define
+
+    asm_(alpha,beta):[alpha][beta]->[alpha concat beta]
+
+to have Heisenberg realization the restricted trace-preserving conditional
+expectation
+
+    E_(alpha,beta):A_(alpha concat beta)->A_alpha tensor A_beta.
+
+Define
+
+    spl_(alpha,beta):[alpha concat beta]->[alpha][beta]
+
+to have realization the corner inclusion `j_(alpha,beta)`.  The defining
+relations include associative three-block assembly/split and
+
+    spl_(alpha,beta) o asm_(alpha,beta)=id_([alpha][beta]).
+
+The reverse composite is the collective coarse graining `jE` and is not set
+equal to the identity.
+
+## D1209 (retained collective context and ordered parallel process)
+
+For a D1207 corner-Kraus family
+`K:[alpha]->[beta]underline(O)` and a right context `gamma`,
+retain the actual corner list
+
+    K triangleleft gamma:
+      [alpha concat gamma]->[beta concat gamma]underline(O),
+
+    K triangleleft gamma
+      =(iota_(n,k)(K_(o,i) tensor e_gamma))_(o,i).
+
+For lists `K,L` on two ordered contiguous blocks with outcome sets `O,P`,
+retain the typed direct collective instrument
+
+    K boxtimes_c L:
+      [alpha concat alpha']->[beta concat beta']underline(O times P),
+
+    K boxtimes_c L
+      =(iota(K_(o,i) tensor L_(p,j)))_((o,p),(i,j)).
+
+These direct collective processes are distinct in type from the tensor of
+the corresponding separated-register processes.  Their sequential and
+parallel identities use D1218's explicit classical routing and history
+bijections.  Context nesting and the routed identities are proved in
+`theory/sidequests/f1-limit/operational-category.md` and `theory/sidequests/f1-limit/classical-wiring.md`.  No quantum block
+exchange is included for `q!=1`.
+
+## D1210 (typed operational circuit category)
+
+`Op_q` is the strict ordered monoidal category presented by D1205 objects and
+the generator boxes D1207--D1209 and D1218.  A raw morphism is a finite typed
+planar circuit.  Equality is the congruence generated by planar graph isomorphism,
+the strict category/monoidal axioms, literal equality of state and POVM
+labels, fibre coefficient-Gram equality of Kraus labels, D1218's typed
+classical wiring and routed instrument identities, retained-context
+identities, and D1208's proved assembly relations.
+
+`Op_I^cts` uses continuous positive normalized section labels over `I`.
+Two continuous Kraus labels are equal when their coefficient Grams agree
+pointwise on `I`; no continuous choice of environmental unitary is required.
+`Op_1^germ` uses germs of such finite labelled circuits, and Kraus labels are
+equal when their Grams agree on a common smaller interval.  Other presentation
+relations likewise hold on a common smaller interval.  Equality is not
+defined as equality of one isolated CP shadow.
+
+## D1211 (operational realization and evaluation)
+
+`Real_q:Op_q->HCPU_fd` sends every object to its D1205 algebra and every
+generator to its D1207--D1209 UCP map.  It is allowed to be nonfaithful.
+For `q in I`, `Ev_q:Op_I^cts->Op_q` evaluates every label.  Endpoint
+evaluation `Ev_1:Op_1^germ->Op_1` is defined on germs.  No evaluation at a
+fixed `q!=1` is defined on an arbitrary endpoint germ without first choosing
+a representative whose interval contains `q`.
+
+## D1212 (finite operational protocol and postselection)
+
+A finite protocol is a finite rooted instrument tree whose root carries a
+normalized state section, whose vertices carry typed finite-outcome circuits
+and may depend on the finite preceding outcome history, and whose leaves
+carry effects.  A branch weight is obtained by composing the outcome CP maps
+and applying the final Born pairing.  An event weight is a finite sum of
+branch weights.  A conditioned probability `N(q)/D(q)` is asserted near one
+only when `D(1)>0`.
+
+## D1213 (raw local corner lift)
+
+For `a_0 in e_beta(q_0)H_n(q_0)e_alpha(q_0)`, a raw lift is obtained by
+expanding `a_0` in D1201's normalized basis with constant coefficients and
+compressing pointwise by `e_beta(q),e_alpha(q)`.  Tensor-register raw lifts
+are finite sums in the `C(I)`-balanced tensor product of such sections.  This
+lift is local data and is not declared canonical.
+
+## D1214 (normalized local operational lifts)
+
+For raw Kraus lifts `Khat_r(q)`, put
+
+    S(q)=sum_r Khat_r(q)^*Khat_r(q),
+    Ktilde_r(q)=Khat_r(q)S(q)^(-1/2)
+
+on a neighborhood where `S` is invertible in the source corner.  For a state
+density, lift its square root `c`, set `H=c^*c`, and divide by its positive
+trace.  For a POVM, lift each square root, put `A_o=c_o^*c_o`,
+`S=sum_o A_o`, and set `e_o=S^(-1/2)A_oS^(-1/2)`.  These are germ
+normalizations and do not assert a global choice.
+
+## D1215 (local contextual recovery class)
+
+For the complete object `x^n`, express a retained list in the normalized
+basis and store its coefficient Gram.  Let `d in S_(2n-1)` be the involution
+that fixes one local point and swaps the other `n-1` local points with the
+complement.  Embed each local regular-basis element explicitly by
+
+    Btilde_h(q)=iota_(n,n-1)(B_h(q) tensor 1)
+      in H_(2n-1)(q).
+
+The recovery map sends a Gram `J` to
+
+    sum_(h,k)J(k,h)Btilde_h(q)^*B_d(q)Btilde_k(q).
+
+The selected minor indexed at `q=1` by the distinct permutations
+`h^(-1)dk` defines the endpoint neighborhood on which contextual recovery is
+claimed.  No all-`q>0` sharp context bound is part of this definition.
+
+## D1216 (arithmetic evaluation and apartment comparison)
+
+An arithmetic fibre is evaluation of D1202--D1211 and D1218 at the positive real
+parameter `q=Q=p^r`, followed where desired by D1104/D1141's flag
+realization.  Endpoint specialization is evaluation at `q=1`.  D1144's
+`Omega_Q:H_n(Q)->C[S_n]` is a separate UCP compression inside one fixed
+arithmetic fibre; it is not an evaluation map.
+
+## D1217 (the three-constituent refinement protocol)
+
+In `H_3(q)`, put `alpha=(1,2)`, `e_alpha=e_2=(T_2+1)/(q+1)`, and prepare the
+normalized corner density `rho_alpha=e_2`.  Refine with the isometry
+`v=e_2:alpha->(1,1,1)`.  In the standard `M_2` block let
+`P_2=z_std e_2`.  Apply the two-outcome **Lüders instrument**
+
+    K_s=P_2,                 K_f=1-P_2,
+    [x^3]->[x^3]underline({s,f}),
+
+and postselect its successful branch, retaining the quantum output.  On that
+branch apply the retained right-context extension of `u_1=2e_1-1` from the
+first two constituents, then measure `P_2` again.  The exact weights are
+claims, not clauses of this definition.
+
+## D1218 (classical wiring and routed instrument operations)
+
+Let `*` be a fixed singleton.  For every bijection `r:O->P`, the classical
+relabeling
+
+    rel_r:underline(O)->underline(P)
+
+has Heisenberg realization `r^*:C^P->C^O`, `r^*(f)=f after r`.  Classical
+product and unit are the star-isomorphisms
+
+    mul_(O,P):underline(O)underline(P)->underline(O times P),
+    unit_cl:underline(*)->1,
+
+induced by `delta_(o,p) |->delta_o tensor delta_p` and `C~=C^{*}`.  Their
+inverses are included.  Relabelings compose as their set bijections; the
+Cartesian associator and singleton unitors are the corresponding relabelings.
+
+For every classical wire and every operational object word `X`, include the
+classical routing isomorphism
+
+    route_(O,X):underline(O)X -> X underline(O),
+
+whose Heisenberg realization is the spatial flip
+`A_X tensor C^O -> C^O tensor A_X`.  Its inverse, unit, nesting, and
+naturality relations are the canonical spatial-flip relations.  This moves a
+classical wire; it is not an exchange between two quantum blocks.
+
+If `K:[alpha]->[beta]underline(O)` and
+`L:[beta]->[gamma]underline(P)` are instruments, their routed sequential
+instrument is
+
+    Seq(L,K)
+      =(id_[gamma] tensor mul_(O,P))
+       o(id_[gamma] tensor route_(P,underline(O)))
+       o(L tensor id_underline(O)) o K
+      :[alpha]->[gamma]underline(O times P),
+
+and has list `(L_(p,j)K_(o,i))_((o,p),(j,i))`.  If additionally
+`K':[alpha']->[beta']underline(P)`, routed parallel composition is
+
+    Par(K,K')
+      =(id_[beta][beta'] tensor mul_(O,P))
+       o(id_[beta] tensor route_(O,[beta']) tensor id_underline(P))
+       o(K tensor K')
+      :[alpha][alpha']->[beta][beta']underline(O times P),
+
+with list `(K_(o,i) tensor K'_(p,j))_((o,p),(i,j))`.  The same formulas type
+direct collective lists after replacing separated output atoms by their
+stated collective atoms.
+
+Sequential associativity is stated after the relabeling
+`((o,p),r)<->(o,(p,r))`.  Parallel/sequential interchange is stated after
+the history bijection
+
+    ((o,p),(o',p')) <-> ((o,o'),(p,p')).
+
+One-outcome instruments use the singleton classical unitor. The single
+Kraus list `(e_alpha)`, followed by that unitor, is identified with the
+identity process on `[alpha]`. All these
+relations are equations of typed arrows, and their UCP realizations are the
+canonical set relabelings and spatial flips followed by the displayed branch
+maps.
+
+## D1221 (multiplicative-sequence skeleton and variance convention)
+
+A multiplicative sequence over `C` is a family of unital algebras
+`A_*=(A_n)_(n>=0)`, with `A_0=C`, and unital maps
+
+    mu_(m,n):A_m tensor A_n -> A_(m+n)
+
+whose two composites from `A_l tensor A_m tensor A_n` to `A_(l+m+n)`
+agree, and whose unit maps satisfy `mu_(0,n)(lambda tensor a)=lambda a`
+and `mu_(n,0)(a tensor lambda)=lambda a`. Its skeleton `C[A_*]` has
+objects `[n]`, zero Hom spaces between
+unequal degrees, `End([n])=A_n`, composition equal to algebra
+multiplication (`a after b=ab`), and tensor induced by `mu`.
+
+A presheaf means a complex-linear functor `C[A_*]^op -> Vect_C`.  At
+degree `n` it is a **right** `A_n`-module with action
+`m dot a=F(a)(m)`.  The representable `h_[n]=Hom(-,[n])` is the right
+regular module: precomposition sends `x` to `x a`.  This fixes all
+opposite/covariance conventions.
+
+## D1222 (finite Schur--Weyl or Day completion)
+
+For a D1221 sequence with every `A_n` finite-dimensional over `C`,
+the finite Schur--Weyl category `SW_fin(A_*)` is the algebraic direct sum
+
+    direct-sum_(n>=0) mod_fd-A_n,
+
+so each object has finite degree support and finite-dimensional right-module
+components.  For a right `A_m`-module `M` and right `A_n`-module `N`, put
+
+    M star N := (M tensor_C N)
+                  tensor_(A_m tensor A_n) A_(m+n),
+
+where `A_(m+n)` is a left `A_m tensor A_n`-module through `mu_(m,n)`
+and a right module by multiplication.  The unit is `C=A_0`.  The
+associator is the canonical balanced-tensor-product isomorphism, not an
+identification of underlying vector spaces.  This is the finite part of
+Day convolution on presheaves.
+
+## D1223 (finite projective composition category)
+
+Let `Proj(A_*)` be the additive Karoubi completion of `C[A_*]`.  Concretely,
+its degree-`n` objects are pairs `(r,e)` with `r>=0` and an idempotent
+`e in M_r(A_n)`; the represented right module is `e A_n^r`.  A morphism
+
+    (r,e) -> (s,f)
+
+is an element of `f M_(s,r)(A_n)e`, composition is matrix multiplication,
+and unequal degrees have zero Hom space.  Tensor uses the matrix-amplified
+map `mu_(m,n)` and the idempotent `mu(e tensor f)`.  If the `A_n` are
+finite-dimensional C*-algebras and every structural map `mu` is a
+star-homomorphism, the C*-version uses self-adjoint projections and matrix
+star as its dagger. Equivalence to bare algebraic right modules forgets
+this dagger; no inner product is inferred from bare module data.
+
+## D1224 (universal positive Hecke composition category)
+
+Let `R` be D1141's localized generic coefficient ring and put
+
+    U_R := Kar_*(Add(C[H_*(R)])),
+
+where `Kar_*` splits self-adjoint idempotents for the involution fixing the
+coefficient parameter and sending `T_w` to `T_(w^-1)`.
+
+Its evaluation functor at `q>0` is defined on every object and arrow presented
+over `R`.  Put
+
+    U_q := Proj_*(H_*(q))
+
+for the self-adjoint-projection C*-version of the positive multiplicative
+sequence in D1101--D1102. Base change gives
+a functor `U_R->U_q`; it is not stipulated to contain every projection built
+separately by functional calculus in the fibre.  Let `x=[1]`; then
+`End_Uq(x^tensor n)=H_n(q)`.  The coefficient trace on a projection
+corner is normalized only after division by its corner weight, as in
+D1141. `U_q` is an amplitude category. Normalized states and effects are
+taken on its nonzero finite C*-endomorphism algebras. Its full operational
+envelope is the explicit finite-trace construction D1261--D1266; the fusion-only hypothesis of D1121 is not
+imposed on `U_q`. No amplitude maps from the degree-zero unit are inferred.
+
+## D1225 (partial-flag embedding and completion)
+
+Let `Gamma_q` be D1141.  The typed object `alpha` of total `n` is sent to
+the projective right module
+
+    Y_q(alpha)=e_alpha H_n(q),
+
+and `z in e_beta H_n(q)e_alpha` is sent to left multiplication
+`L_z:e_alpha H_n(q)->e_beta H_n(q)`. In the self-adjoint projection model
+this is a fully faithful monoidal star-functor; its bare-module realization
+forgets the dagger. Its extension gives an equivalence
+
+    Kar(Add(Gamma_q)) ~= U_q,
+
+because the complete-flag object `(1,...,1)` has `e=1` in every degree.
+
+## D1226 (Davydov--Molev parameter and generator translation)
+
+Put `v=sqrt(q)>0`.  Davydov--Molev's Hecke generator `t_i`, satisfying
+
+    (t_i-v)(t_i+v^(-1))=0,
+
+corresponds to D1101's generator by
+
+    T_i=v t_i,                 q=v^2.
+
+Thus their multiplicative sequence and ours are isomorphic after this
+base and generator change.  Their algebraic Hecke braiding is the image of
+the positive braid word in the `t_i`.  The comparison does not declare that
+braiding unitary for the coefficient-trace C*-structure.
+
+## D1227 (finite abelian comparison)
+
+For `q>0`, define `DM_fin(v)` to be the finite-support,
+finite-dimensional right-module subcategory of Davydov--Molev's
+Schur--Weyl category `C(H_*(v))`.  The parameter change D1226 and the
+realization `(r,e) |-> eH_n(q)^r` define a strong monoidal equivalence
+
+    U_q ~= DM_fin(sqrt(q)).
+
+This is an algebraic strong monoidal equivalence: the bare right-module
+target has no specified dagger. Its tensor is the induced module of D1222,
+not the objectwise tensor of representations of unrelated `H_m` and `H_n`.
+
+## D1228 (spectral physical adjacent exchange)
+
+In `H_n(q)` define
+
+    u_i=(2T_i+1-q)/(q+1)=2(T_i+1)/(q+1)-1.
+
+It is the self-adjoint unitary which is `+1` on the `q`-eigenspace of
+`T_i` and `-1` on its `-1`-eigenspace.  For adjacent indices its exact
+braid defect is
+
+    u_i u_(i+1) u_i-u_(i+1) u_i u_(i+1)
+      =-((q-1)^2/(q+1)^2)(u_i-u_(i+1)).
+
+## D1229 (longest-element polar reversal)
+
+Let `w_0^(n)` be the longest permutation and `D_n=T_(w_0^(n))`.  In the
+finite C*-algebra `H_n(q)` set
+
+    J_n=D_n |D_n|^(-1),        |D_n|=(D_n^2)^(1/2),
+
+with `J_0=J_1=1`.  For an interval `I` of consecutive tensor positions,
+`J_I` denotes the shifted copy of `J_|I|`.  These positive square roots
+are the unique C*-functional-calculus roots at the evaluated `q>0` fibre.
+
+## D1230 (unitary Hecke coboundary commutor)
+
+For `m,n>=0`, define on tensor powers
+
+    sigma_(m,n)=J_(m+n) mu_(m,n)(J_m tensor J_n).
+
+For projection-completed objects, restrict this operator to the source and
+target corners; for direct sums, also apply the canonical matrix-index
+flip.  The family `sigma` is the unitary coboundary commutor of claim F1-LIM-COB.  Its
+coherence consists of naturality, `sigma_(n,m)sigma_(m,n)=1`, the unit
+axioms, and the cactus square of Henriques--Kamnitzer Definition 3 /
+Kamnitzer--Tingley Definition 4.4.
+
+## D1231 (analytic scope of physical exchange)
+
+The D1230 commutor is extra canonical structure on every positive real
+C*-fibre and varies continuously on `q>0`.  It is the polar unitary of the
+corresponding block braid.  It need not have coefficients in the localized
+generic ring of D1141, and it is not a braiding when `q!=1`.  At `q=1` it
+is the ordinary unitary block permutation and hence the symmetric
+commutor.
+
+## D1232 (classical Schur--Weyl quotient)
+
+For `d>=1`, put `V_d=C^d` and let `P_sigma` permute tensor positions in
+`V_d^tensor n` with the convention
+
+    P_sigma(v_1 tensor ... tensor v_n)
+      =v_(sigma^(-1)(1)) tensor ... tensor v_(sigma^(-1)(n)).
+
+The map
+
+    rho_(d,n):C[S_n] -> End_(U(d))(V_d^tensor n),
+    sigma |-> P_sigma,
+
+is the classical Schur--Weyl homomorphism.  Its kernel is the sum of
+Wedderburn blocks indexed by partitions of `n` having more than `d` rows,
+equivalently, when `n>=d+1`, the ideal generated by the embedded
+`(d+1)`-strand antisymmetrizer.  It is faithful exactly when `d>=n`.
+
+## D1233 (assembly of Schur--Weyl quotients)
+
+Under `V_d^tensor(m+n) ~= V_d^tensor m tensor V_d^tensor n`, define
+
+    nu_(m,n)(rho_(d,m)(a) tensor rho_(d,n)(b))
+      =rho_(d,m+n)(mu_(m,n)(a tensor b)).
+
+The kernel statement in D1232 makes this well-defined.  These maps are
+associative unital algebra maps.  On right modules the strong monoidal
+Schur--Weyl functor is
+
+    M |-> M tensor_(C[S_n]) V_d^tensor n,
+
+where the left symmetric-group action on the tensor power is `rho_(d,n)`.
+
+## D1234 (tensor trace and physical conditional expectation)
+
+Let
+
+    tr_(d,n)(a)=d^(-n)Tr(rho_(d,n)(a)).
+
+Then `tr_(d,n)(sigma)=d^(cyc(sigma)-n)`.  For `d>=n`, this is faithful on
+`C[S_n]`.  For a subgroup `K=S_m times S_(n-m)`, its trace-preserving
+conditional expectation `E_(d,K)` is characterized by
+
+    tr_(d,n)(k^* E_(d,K)(x))=tr_(d,n)(k^*x), k in K.
+
+In the group basis its coefficients solve the Gram system
+
+    G_d(k,h)=d^(cyc(k^(-1)h)-n),
+    G_d c=(d^(cyc(k^(-1)sigma)-n))_(k in K).
+
+## D1235 (fixed-degree stable trace comparison)
+
+Let `tau_n` be the coefficient trace and `E_(infty,K)` the coefficient
+deletion expectation.  For fixed `n` and `x=sum a_sigma sigma`,
+
+    |tr_(d,n)(x)-tau_n(x)|
+      <= d^(-1) sum_(sigma!=1)|a_sigma|.
+
+For `N=|K|`, `d>=n` and `d>N-1`, if `sigma notin K`, every group-basis coefficient
+of `E_(d,K)(sigma)` has modulus at most `1/(d-(N-1))`; if `sigma in K`,
+the expectation is exactly `sigma`.  Thus `E_(d,K)->E_(infty,K)`
+coefficientwise at fixed `n`.  This is a large-`d` comparison, not a claim
+that a fixed finite `d` trace or expectation equals the coefficient one.
+
+## D1236 (rigid extension datum)
+
+A rigid comparison datum consists of an additive idempotent-complete
+monoidal category `R`, a named strong monoidal functor `i:U_q->R`, and
+a named left and right dual `y^vee` of `y=i(x)`, with four maps
+
+    coev_R:1->y tensor y^vee, ev_R:y^vee tensor y->1,
+    coev_L:1->y^vee tensor y, ev_L:y tensor y^vee->1
+
+satisfying the four zigzags with the stated associators. The target is
+generated from `y,y^vee` by tensor, finite sums and retracts. The functor is
+a comparison and may have a kernel; a fully faithful extension is claimed
+only when full faithfulness is separately required and proved. In the
+positive dagger version, `R` is a C*-category, `i` preserves star, and the
+duality, dagger and positive spherical structure are explicitly compatible.
+Duals of sums and retracts are formed in this additive Karoubi closure.
+
+## D1237 (fusion quotient datum)
+
+A fusion quotient datum consists of a monoidal ideal `I` in a chosen rigid
+extension, a compatible dagger on the quotient, a positive pivotal trace,
+and the instruction to quotient and then take additive Karoubi completion.
+It qualifies as a fusion category only if the result is semisimple with
+simple unit, finite-dimensional Homs, duals, and finitely many simple
+isomorphism classes.  A trace radical or negligible ideal must be named;
+it is not inferred from an algebra quotient alone.
+
+## D1238 (Temperley--Lieb branch datum)
+
+Put `f_i=(q-T_i)/(q+1)` and
+`delta=sqrt(q)+1/sqrt(q)`.  A Temperley--Lieb branch adds the tensor ideal
+relations
+
+    f_i f_(i+1) f_i=delta^(-2)f_i,
+    f_(i+1) f_i f_(i+1)=delta^(-2)f_(i+1),
+
+equivalently kills the three-strand excluded Hecke summand, and supplies
+the diagrammatic cups, caps, dagger, and Jones--Markov trace.  The faithful
+coefficient/flag trace of D1101 is not declared to descend through this
+nonzero ideal.
+
+## D1239 (Fibonacci root branch datum)
+
+The unitary Fibonacci branch is the even part of the level-three
+`SU(2)`/Jones fusion quotient: it additionally chooses the order-five
+root parameter giving `delta=2cos(pi/5)`, quotients the Jones trace radical,
+and retains the even labels `{0,2}`, with `2 tensor 2=0 direct-sum 2`.
+It is not the `q=1` specialization of the positive real Hecke/flag family,
+where `delta=2` and the spin tower is untruncated.
+
+Precisely, name `q_H=exp(2 pi i/5)`, `v=exp(pi i/5)` with `v^2=q_H`,
+and the ILZ17 parameter `q_ILZ=-v`. Then
+`delta=-(q_ILZ+q_ILZ^(-1))=v+v^(-1)`; the ILZ17 loop generator is
+`U_i=delta f_i`, where `f_i` denotes our idempotent. The order of
+`q_ILZ^2=q_H` is five. This fixes the source sign and generator scaling.
+
+## D1241 (arithmetic affine-vector context algebra)
+
+For `k=F_Q`, a finite-dimensional `k`-vector space `L`, `G=GL(L)` and
+`X=Fl(L)`, let `Aff(L)=G semidirect L` act on `Y_L=X times L` by
+
+`(g,a)(F,x)=(gF,a+gx)`.
+
+The arithmetic affine-vector context algebra is
+
+`R_X(L)=End_(Aff(L))(C[Y_L])`
+
+with Hilbert adjoint and normalized operator trace
+`tau_Q=Tr/(|X||L|)`.  Its invariant-kernel convention is
+`K_f((F,x),(F',x'))=f(F,F',x'-x)`.
+
+## D1242 (controlled translation-constraint algebra)
+
+For a complete flag `F=(U_i(F))`, with `U_0=0` and `U_n=L`, define for
+`0<=i<=n`
+
+`C_i^X=sum_F |F><F| tensor P^X_(U_i(F))`,
+`C_i^Z=sum_F |F><F| tensor P^Z_(U_i(F))`.
+
+Here D1142 fixes both Weyl projector conventions, with the named phase when
+identifying linear duals and additive characters. Thus `C_0^Z=I tensor
+|0><0|` and `C_n^Z=I`. The same definitions apply on the dual space.
+
+Let `Ctx_X(L)` be the star algebra generated on
+`C[Fl(L)] tensor C[L]` by the relative-position flag operators
+`A_w tensor I` and all `C_i^X`, including the endpoint constraints.  The
+distinguished mirabolic projection is
+`e=C_1^X` for `n>=1`; its unnormalized adjacency generator is `T_0=Qe-I`.
+
+## D1243 (Fourier dual flag reversal)
+
+For a named nontrivial additive character `psi:k->U(1)`, put
+
+`F_(L,psi)e_x=|L|^(-1/2)sum_(lambda in L^vee)psi(-lambda(x))e_lambda`.
+
+For `F=(U_i)` define `D_L(F)_j=U_(n-j)^perp`.  The Fourier dual flag unitary is
+`W_(L,psi)=D_L tensor F_(L,psi)`. Under the canonical evaluation
+identification `L=(L^vee)^vee`, its square across the dual pair is
+
+`W_(L^vee,psi) W_(L,psi)e_(F,x)=e_(F,-x)`.
+
+This formula includes characteristic two, where vector negation is the
+identity. It fixes the negative Fourier-kernel and phase convention.
+
+## D1244 (phase-polarized mirabolic comparison groupoid)
+
+`PMir_(k,psi)` has finite-dimensional `k`-vector spaces as objects and linear
+isomorphisms as arrows.  An object carries the pair
+
+`R_X(L)`, `R_Z(L^vee)=W_(L,psi)R_X(L)W_(L,psi)^*`,
+
+their Hecke inclusions, controlled constraint families, and the named unitary
+`W_(L,psi)`.  A same-register realization additionally names a linear
+self-duality `sigma:L->L^vee`.  Morphisms act on flags, vectors and duals by
+the induced permutation unitaries.
+
+## D1245 (mirabolic orbit poset and orbit basis)
+
+For `w in S_n`, define `i prec_w j` by
+`i<j` and `w^(-1)(i)<w^(-1)(j)`.  For an antichain `A`, let
+
+`down_w(A)={i:i=a or i prec_w a for some a in A}`.
+
+The orbit label `(w,A)` denotes the affine orbital whose relative flag
+position is `w` and whose vector has maximal-support antichain `A`.  Write its
+adjacency basis element as `T_(w,A)`; `A=empty` is the zero-vector Hecke basis.
+
+## D1246 (based mirabolic trace family)
+
+On Rosso's polynomial orbit-basis algebra, the conjugate-linear orbit star
+is induced by `(F,F',v) |-> (F',F,-v)`: conjugate scalar coefficients
+and send each orbit indicator to the indicator of the swapped orbit. In
+D1245's standard-pair coordinates `(F_0,wF_0)` this is
+
+`T_(w,A)^*=T_(w^(-1),w^(-1)(A))`.
+
+The permutation `w^(-1)` identifies the two orbit posets; vector negation
+preserves their support antichains. Define the coefficient trace by
+
+`tau_q(T_(w,A))=[w=e and A=empty]`.
+
+The marked parameter domain for this star-trace family is
+real `q>1`; `q=1` is retained as a positive semidefinite boundary.  Positivity
+is a claim, not part of this definition.
+
+## D1247 (Hecke inclusion and vector expectation)
+
+Let `i_q:H_n(q)->R_n(q)` be `T_w |-> T_(w,empty)`.  Define coefficient
+deletion
+
+`E_q(T_(w,A))=[A=empty]T_w`.
+
+Its conditional-expectation and endpoint-quotient properties are claims.
+
+## D1248 (algebraic and trace-supported mirabolic endpoints)
+
+The algebraic endpoint is the full based specialization `R_n(1)`.  Its
+reference trace is the specialization `tau_1` of D1246.  The trace-supported
+endpoint is the GNS quotient
+
+`R_n(1)/N_(tau_1)`,
+`N_(tau_1)={x:tau_1(x^*x)=0}`.
+
+These two endpoints are not identified by definition.
+
+## D1249 (regular one-sided coefficients and admissible densities)
+
+For `J_epsilon=[1,1+epsilon]`, `epsilon>0`, a regular mirabolic section is
+`h(q)=sum_(w,A) h_(w,A)(q) T_(w,A)(q)` with every coefficient continuous
+on J_epsilon. The section algebra has pointwise polynomial multiplication,
+D1246's star and continuous coefficient trace. No C*-norm on this boundary
+section algebra is stipulated. Hecke sections use D1202, restricted to J;
+finite separated register words use continuous coefficients in the product
+bases, including the coordinate basis of any classical factor.
+
+A regular density label additionally satisfies `h(q)>=0` and `tau_q(h(q))=1`
+for **every real** `1<q<=1+epsilon`, using the positive fibres of MIR-POS.
+A regular effect satisfies `0<=e(q)<=1` throughout that punctured interval.
+A regular POVM has finitely many such positive sections summing to the unit.
+Positivity only at prime powers is insufficient for any of these labels.
+Coefficient continuity forces the trace normalization at one; positivity of
+the GNS-quotient density is proved in MIR-REG, not inferred from arithmetic
+samples. Density families with coefficient poles, such as
+`q/(q-1)(1-e)`, are not regular labels and require separate boundary data.
+
+## D1250 (arithmetic type-C context algebra)
+
+For a `2n`-dimensional symplectic `k`-space `V`, let `X_C(V)` be its complete
+isotropic flags and put
+
+`A_C(V)=End_(Sp(V))(C[X_C(V)])`
+
+with Hilbert adjoint and normalized operator trace.  At a prime power this is
+the finite type-`C_n` flag Hecke commutant.
+
+## D1251 (decomposable isotropic flag and shuffle isometry)
+
+For symplectic spaces of ranks `m,n`, a flag in `V orthogonal-sum W` is
+decomposable when every step is `U_a direct-sum Z_b` for steps in component
+isotropic flags.  `Sh(m,n)` is the set of two-letter lattice-path shuffles.
+The shuffle isometry is the basis bijection
+
+`J_(V,W):K_V tensor K_W tensor l2(Sh(m,n))->K_dec`.
+
+Let `p_(V,W)=J_(V,W)J_(V,W)^*`.
+
+## D1252 (type-C local-symmetry composition arena)
+
+Put `H_(V,W)=Sp(V) times Sp(W)` and
+
+`D_(V,W)=End_(H_(V,W))(K_(V orthogonal-sum W))`.
+
+The product-shuffle arena is the corner
+`p_(V,W)D_(V,W)p_(V,W)`, typed with corner unit `p_(V,W)` and normalized
+operator trace on its range.
+
+## D1253 (type-C restriction and preparation channels)
+
+Let `G=Sp(V orthogonal-sum W)`, let `E_G` be conjugation averaging on the full
+matrix algebra, and put `r_(V,W)=rank(p)/dim(K)`.  Define
+
+`Phi_(V,W)(a)=pap`,
+`Psi_(V,W)(x)=r_(V,W)^(-1)E_G(x)`
+
+for `a in A_C(V orthogonal-sum W)` and `x` in the product-shuffle corner,
+extended by zero on the orthogonal complement.
+
+## D1254 (ternary shuffle coherence)
+
+`Sh(l,m,n)` is the set of three-letter words with the named multiplicities.
+The two canonical binary-expansion bijections from nested shuffle sets to
+`Sh(l,m,n)` are the coherence maps.  All iterated decomposable-flag isometries,
+restriction channels and trace-adjoint preparations are compared using these
+fixed bijections and the ordinary Hilbert associator.
+
+## D1255 (thin type-C block comparison)
+
+At `q=1`, use the signed permutation groups `B_n`, the block inclusion
+`B_m times B_n<=B_(m+n)`, and the unique factorization into a block signed
+permutation and a fixed-convention unsigned `(m,n)` shuffle.  The induced
+group-algebra star inclusion is the thin block assembly.  No generic Hecke
+lift is included in this definition.
+
+## D1256 (arithmetic affine decomposable composition arena)
+
+For vector spaces `L,M`, let `p^aff_(L,M)` project onto basis pairs consisting
+of a decomposable flag in `Fl(L direct-sum M)` and an arbitrary vector in
+`L direct-sum M`.  The local symmetry is
+
+`(GL(L) semidirect L) times (GL(M) semidirect M)`.
+
+The affine product-shuffle arena, restriction and preparation maps are defined
+by the same corner-compression and scaled full-group averaging formulas as
+D1252--D1253.
+
+## D1257 (regular separated operational mirabolic category)
+
+For each real q>1, use quantum register atoms `[H_n]` and `[R_n]`, n>=1,
+with their faithful normalized coefficient traces, together with nonempty
+finite classical wires of D1205. The empty word has algebra C. Ordered
+register tensor is the actual spatial tensor product; `[R_m][R_n]` is not
+identified with `[R_(m+n)]`. The regular interval version uses D1249's
+continuous product-basis sections on J_epsilon.
+
+Generators are all regular normalized preparations, discards and finite
+POVMs on register words; all retained same-register instruments with finite
+regular coefficient lists `K_(o,i)` satisfying
+`sum_(o,i)K_(o,i)(q)^*K_(o,i)(q)=1` for every real q>1 in J; and the arrows
+
+`up_n:[H_n]->[R_n]`, Heisenberg map `E_q:R_n(q)->H_n(q)`,
+`down_n:[R_n]->[H_n]`, Heisenberg map `i_q:H_n(q)->R_n(q)`.
+
+The instrument output type is `X->X underline(O)`. Its list is retained when
+tensored onto any separated context or included factorwise through i_q.
+The list realizes `(a_o)_o |-> sum_(o,i) K_(o,i)^* a_o K_(o,i)`.
+The full output density for the uniform classical trace has o-block
+`|O| sum_i K_(o,i)hK_(o,i)^*`.
+
+**Classical wiring hypothesis W.** Supply the repaired core's explicit
+classical product/unit/relabeling and classical-wire routing maps, with their
+correct types and parameter-independent UCP realizations. Any finite
+classical control is a typed blockwise family of admitted labels. Its stated
+relations must be satisfied by these maps, and a singleton-outcome identity
+Kraus box must be the identity process. Here W is instantiated by D1218/CWIR-1--3; no quantum block exchange is
+inferred from classical routing.
+
+Under W, `RegOp_J` is the free finite typed ordered monoidal circuit category
+on these boxes, modulo category/monoidal and W relations, literal state/POVM
+label equality, and pointwise equality of coefficient Kraus Grams separately
+inside each fixed outcome. Include correctly typed list-composition/tensor
+identities and `down_n o up_n=id_[H_n]`; the reverse composite realizes iE
+and is not set to the identity. Gram equality here is pointwise on J's
+punctured interval; it does not demand a continuous choice of mixing matrices.
+Relations are closed under insertion into any larger typed circuit.
+No additional isolated-CP equality quotient is used.
+
+Germs `RegOp_(1+)` identify labelled circuits when these presentation
+relations hold on some common smaller one-sided interval. They have no
+asserted C*-norm. No cross-rank mirabolic assembly is present: D1256 remains
+a separately named arithmetic shuffle correspondence.
+
+## D1258 (regular operational boundary functor)
+
+Let `Pi_n:R_n(1)->H_n(1)` be D1248's GNS quotient with the fixed empty-orbit
+basis identification, so `Pi_n=E_1`. For a register word X let Q_X be the
+tensor of Pi on its mirabolic factors and identity on its Hecke and classical
+factors. Replace every mirabolic atom by its Hecke atom to obtain bar(X).
+The endpoint category `Op_H,1^sep` has these Hecke/classical words, the same
+W wiring, all normalized preparations/POVMs/retained same-register Kraus
+instruments, and their finite typed circuits, with the same endpoint label
+relations. It has a UCP Heisenberg realization.
+
+The functor `Ev_(1+):RegOp_(1+)->Op_H,1^sep` evaluates continuous
+coefficients at one and applies Q_X to every density, effect and Kraus entry.
+It sends up_n and down_n to identity. Its well-definedness, positivity,
+normalization, compatibility with all generator relations and finite Born
+limits are F1-MIR-REG. On a chosen interval, ordinary evaluations at q>1
+also exist. An arbitrary boundary germ has no evaluation at a fixed q>1
+without a representative containing that q.
+
+Arbitrary UCP families with merely regular superoperator coefficients are
+not admitted by D1257: the rank-one singular-sector state has constant values
+on the orbit basis yet fails to annihilate the endpoint null ideal. The
+regular density/Kraus generator restrictions are part of the functor's domain.
+
+## D1259 (vector/polarization bridge package)
+
+The package in rank n retains D1241–D1248, the Fourier data D1243–D1244,
+and the regular operational boundary construction D1249/D1257–D1258 under W.
+When composition is requested, it additionally names an arithmetic D1253 or
+D1256 correspondence with D1254 shuffle coherence. Only the vector Fourier
+factor is tensor-preserving under direct sums; the full flag/Fourier bridge
+uses the decomposable shuffle isometry and its reversed-word identification.
+An isomorphism of packages preserves the based Hecke inclusion, conjugate-linear
+star, reference trace, both controlled families for `0<=i<=n`, the named
+phase and the exact square
+
+`W_(L^vee,psi) W_(L,psi)e_(F,x)=e_(F,-x)`
+
+under canonical double duality, and every named UCP map. It also respects the
+regular label class and the quotient boundary functor. Abstract algebra
+isomorphism alone is not an isomorphism of bridge packages.
+
+## D1261 (continuous finite graded self-adjoint completion)
+
+For a nonempty compact interval `I subset (0,infinity)`, put
+`A_n(I)=H_n^cts(I)` as in D1202. Write
+
+    U_I^cts = Kar_dagger(Add(C[A_*(I)])).
+
+Concretely an object `X` is a finite-support family
+`(r_n,p_(X,n))_(n>=0)`, with nonnegative integers `r_n` and self-adjoint
+projections `p_(X,n) in M_(r_n)(A_n(I))`; omitted components are zero.
+For `Y=(s_n,p_(Y,n))`, put
+
+    Hom(X,Y)=direct-sum_n p_(Y,n) M_(s_n,r_n)(A_n(I)) p_(X,n).
+
+Composition is matrix multiplication degree by degree, dagger is matrix
+adjoint with the Hecke star, and identity is `(p_(X,n))_n`.
+The norm is the maximum of the component supremum C*-norms. A direct sum
+uses a single block-diagonal projection in `M_(r_n+s_n)(A_n(I))` in each
+degree. Its endomorphism corner includes the off-diagonal rectangular
+corners between the summands of that same degree. It is not the direct sum
+of their endomorphism algebras. Different degrees have zero Homs.
+At a fibre `q`, denote this self-adjoint completion by `U_q^dagger`.
+It is the positive dagger model of D1224's `U_q`.
+
+## D1262 (balanced ordered tensor in the completion)
+
+The section-algebra block map has domain
+
+    A_m(I) tensor_(C(I)) A_n(I) -> A_(m+n)(I),
+
+where the balanced C*-tensor product is the section algebra of the
+pointwise spatial fibre tensor products. It is not the ordinary tensor
+product over `C` with two independently varying parameters.
+
+For D1261 objects `X,Y`, the degree-k matrix multiplicity of `X tensor Y`
+is `t_k=sum_(m+n=k) r_m s_n`. Its projection is the block diagonal of
+`iota_(m,n)^(r_m,s_n)(p_(X,m) tensor p_(Y,n))`, indexed by the pairs
+`(m,n)` and lexicographic matrix indices. Morphism tensor is the analogous
+block-diagonal amplified inclusion. The whole degree-k endomorphism
+algebra is the full corner in `M_(t_k)(A_k)`, including off-diagonal blocks
+between different pairs `(m,n)` with the same sum.
+The unit is the degree-zero object `(1,1)`. Associators are the named
+permutation matrices that identify the two finite indexings by triples
+`(l,m,n;i,j,k)`. They do not exchange ordered Hecke blocks.
+
+## D1263 (finite graded trace and normalized systems)
+
+For an endomorphism `a` of `X`, put pointwise
+
+    theta_X(a)=sum_n (Tr_(r_n) tensor tau_n)(a_n),
+    w_X=theta_X(1_X),
+    tau_X=theta_X/w_X.
+
+`Tr_r` is ordinary, unnormalized matrix trace; `tau_n` is D1101's
+normalized coefficient trace. The operational systems are the nonzero
+objects on connected intervals, or nonzero fibre objects. Positivity of
+`w_X` in every fibre of such an interval is a theorem, not an extra
+assumption. The trace is not asserted to arise from categorical duality.
+A normalized density is `rho>=0`, `tau_X(rho)=1`. Product register words
+have spatial tensor observable algebras and product normalized traces.
+
+## D1264 (traced assembly in the completion)
+
+For nonzero X,Y, put `B_X=End(X)` and let
+
+    j_(X,Y):B_X tensor B_Y -> B_(X tensor Y)
+
+be morphism tensor. On intervals its tensor domain is C(I)-balanced.
+Let `E_(X,Y):B_(X tensor Y)->B_X tensor B_Y` be characterized by
+
+    (tau_X tensor tau_Y)(b^* E_(X,Y)(a))
+       =tau_(X tensor Y)(j_(X,Y)(b)^* a).
+
+Existence, uniqueness, continuity and complete positivity are claims.
+The expectation onto the included algebra is `j E`; `E j=id`.
+Ordered assembly is the process `[X][Y]->[X tensor Y]` realized in
+Heisenberg orientation by E. Split has the reverse type and realization j.
+The separated word and the collective atom remain distinct process types.
+
+## D1265 (local completion germs and evaluation)
+
+Use intervals `I_epsilon=[1-epsilon,1+epsilon]`, `0<epsilon<1`.
+Objects of `U_1^germ` are germs of D1261 finite projection presentations,
+with fixed matrix multiplicities under restriction; morphisms are the
+corresponding germs of matrix-corner sections. Equality means literal
+agreement on a common smaller interval, before passing to categorical
+isomorphism. Operations and associators descend by restriction.
+Evaluation at one is canonical; evaluation away from one requires a
+representative interval. No C*-norm is assigned to these germ Hom spaces.
+A local lift is a representative on some interval, not a canonical or
+global section of evaluation. Isomorphic projection presentations are
+compared by explicit morphisms, not silently made equal.
+
+## D1266 (controlled operational completion without fusion hypotheses)
+
+Use nonzero D1261/D1263 objects as quantum atoms, separated ordered words
+of them, and finite nonempty classical wires with the uniform trace of
+D1205. Include every normalized preparation, discard and finite POVM on a
+register algebra. Include instruments specified by finite families
+
+    K_(o,i) in Hom_U(X,Y),
+    sum_(o,i) K_(o,i)^* K_(o,i)=1_X,
+
+with Heisenberg map `(a_o)_o |-> sum_(o,i) K_(o,i)^* a_o K_(o,i)`
+from `B_Y tensor C^O` to `B_X`. Retain the lists for collective extension
+`K tensor 1_Z` and for ordered parallel composition. Include D1264 assembly
+and split and finite typed circuits. Arbitrary CP maps need not admit this
+retained presentation.
+
+**Classical presentation hypothesis W.** To assert a presented operational
+category, use an explicitly typed classical wiring presentation: it provides
+classical product/unit/relabeling maps and any classical-wire routing needed
+by multi-outcome composition, and its stated relations are satisfied by their
+parameter-independent UCP realizations. Any included finite classical control
+is a typed blockwise family of the already admitted generator/circuit labels;
+it carries no additional arbitrary CP-map data. All instrument equations are written
+with these maps, respecting their actual source/target words. A one-outcome
+identity Kraus box is the identity process. The remaining relations are
+category/monoidal axioms, literal label equality, scalar-unitary list
+relations, correctly typed list/context/parallel identities, and the traced
+assembly/split relations proved here. These are closed as a congruence.
+
+Under W call the categories `Op^U_q`, `Op^U_I`, and `Op^U_1,germ`.
+For interval labels use pointwise coefficient-Gram equality within each
+outcome, as in repaired D1210; for germs use eventual such equality on a
+common smaller interval. In the fixed ambient matrix-Hecke coordinates
+this is equivalent to stable scalar-unitary mixing in each individual fibre.
+No continuous family of the mixing unitaries is required or inferred.
+CWIR-3 proves the resulting fibrewise congruence for products and contexts.
+No faithfulness of the entire circuit realization is stipulated. The
+explicit wiring D1218/CWIR-1--3 instantiates W; the general construction
+may also be read conditionally for another sound wiring presentation.

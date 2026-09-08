@@ -84,3 +84,41 @@
 | `U^ann, P_U^X, P_U^Z, K_ctx(L), C_i, R(g)` | Weyl annihilator, constraint projections, context register, controlled tests and Levi action | D1142 |
 | `z, Z_*, X_num, Y_anti, P_Bell, h_Bell` | standard S3 block and collective two-qubit operators/density | D1143 |
 | `J_ap, Omega_Q` | coordinate-apartment isometry and its UCP context comparison | D1144 |
+
+<!-- Operational categorical limit. Existing Hecke and Weyl symbols retain their definitions above. -->
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `b_w(q), B_w(q), K_n` | normalized Hecke basis, its regular matrix, and fixed regular Hilbert space | D1201 |
+| `H_n^cts(I), tau_n^cts` | continuous positive section algebra and C(I)-valued trace | D1202 |
+| `Gamma_I^cts, A_alpha(I), A_alpha(q)` | continuous parabolic category and its section/fibre endomorphism corners | D1203 |
+| `Gamma_1^germ, I_epsilon` | endpoint corner germ category and a representative interval | D1204 |
+| `[alpha], underline(O), tau_O` | quantum atom, nonempty classical outcome wire, uniform classical trace | D1205 |
+| `HCPU_fd, Phi_*` | category of quantum processes in Heisenberg orientation and normalized-trace density dual | D1206 |
+| `K_(o,i), prep_h, disc_X, M_e` | retained instrument list, preparation, discard and POVM maps | D1207 |
+| `asm, spl` | typed collective assembly and split, realized by expectation and inclusion | D1208 |
+| `triangleleft, boxtimes_c` | retained right context and ordered collective parallel process | D1209 |
+| `Op_q, Op_I^cts, Op_1^germ, Real_q, Ev_q` | presented circuit categories, operational realization and evaluation | D1210,D1211 |
+| `N(q), D(q)` | event numerator and conditioning-event probability in a specified finite protocol | D1212 |
+| `Khat, S, Ktilde, Btilde_h` | raw lift, completeness operator, normalized lift and explicitly embedded recovery basis | D1213–D1215 |
+| `P_2, gamma(q), u_1` | named level-three Lüders effect, standard-block trace coefficient and retained local unitary | D1217 |
+| `rel_r, mul_(O,P), unit_cl, route_(O,X), Seq, Par, chi` | explicit classical relabeling/product/unit/routing, routed instruments and history interchange | D1218 |
+| `C[A_*], SW_fin(A_*), Proj_*(A_*)` | multiplicative-sequence skeleton, finite right-module Day category and positive projection completion | D1221–D1223 |
+| `U_R, U_q, Y_q, DM_fin(v)` | generic self-adjoint envelope, positive Hecke completion, parabolic embedding and algebraic DM comparison | D1224–D1227 |
+| `v, t_i, u_i` | positive square-root parameter, DM generator and physical spectral-sign exchange | D1226,D1228 |
+| `D_n, J_n, sigma_(m,n)` | longest Hecke element, its polar reversal and the unitary coboundary commutor | D1229,D1230 |
+| `rho_(d,n), P_sigma, nu_(m,n), tr_(d,n), E_(d,K)` | Schur–Weyl map, tensor permutation, quotient assembly, physical trace and expectation | D1232–D1235 |
+| `i:U_q->R, R_d, I, Neg, tr_J` | named rigid comparison, concrete target, tensor/negligible ideals and Jones trace | D1236,D1237 |
+| `f_i, delta, q_H, q_ILZ, U_i^(ILZ)` | TL idempotent, loop parameter and explicitly translated Hecke/ILZ root conventions | D1238,D1239 |
+| `Aff(L), Y_L, R_X(L), R_n(q)` | affine group, flag-vector set, arithmetic commutant and based mirabolic algebra | D1241,D1246 |
+| `C_i^X, C_i^Z, Ctx_X(L), T_0` | controlled X/Z constraints, their generated algebra and mirabolic boundary generator | D1242 |
+| `F_(L,psi), D_L, W_(L,psi), PMir_(k,psi)` | vector Fourier map, dual-flag reversal, joint unitary and named comparison groupoid | D1243,D1244 |
+| `prec_w, down_w(A), T_(w,A)` | permutation poset, antichain downset and mirabolic orbital basis | D1245 |
+| `i_q, E_q, Pi_n, N_(tau_1)` | Hecke inclusion, vector expectation, endpoint quotient and trace-null ideal | D1247,D1248 |
+| `J_epsilon, RegOp_J, RegOp_(1+), Q_X, Ev_(1+)` | one-sided regular interval, operational categories, product quotient and boundary functor | D1249,D1257,D1258 |
+| `X_C(V), A_C(V), Sh, J_(V,W), p_(V,W)` | isotropic flags, type-C commutant, shuffles, decomposable isometry and projection | D1250,D1251 |
+| `H_(V,W), D_(V,W), r_(V,W), Phi_(V,W), Psi_(V,W)` | local symmetry, its composition arena, corner fraction and trace-adjoint UCP correspondence | D1252,D1253 |
+| `p^aff_(L,M)` | projection onto decomposable flags with every vector label retained | D1256 |
+| `U_I^cts, U_q^dagger, p_(X,n), r_n, U_1^germ` | full finite graded continuous/fibre/germ projection completions and their presentations | D1261,D1262,D1265 |
+| `theta_X, w_X` | full graded trace and its positive weight on the identity; w_X is distinct from fusion dimension d_X | D1263 |
+| `B_X, j_(X,Y), E_(X,Y), Op^U_q, Op^U_I, Op^U_1,germ` | completed endomorphism systems, traced assembly/retraction and their operational categories | D1264,D1266 |

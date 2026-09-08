@@ -1,0 +1,408 @@
+\clearpage
+\section{Schur--Weyl quotients and the boundary of fusion}
+\label{sec:f1-limit-schur}
+
+At the symmetric endpoint, the Hecke tower becomes the symmetric-group
+tower.  Its action on tensor powers of $\mathbb C^d$ gives a concrete
+monoidal quotient, but it changes the physical trace: a permutation is
+weighted by its number of cycles rather than only by whether it is the
+identity.  The difference disappears at fixed tensor degree as $d$ grows,
+and the associated conditional expectations converge with an explicit
+finite-$d$ bound.
+
+Rigidity and fusion require further data.  The nonnegative grading of the
+universal amplitude category rules out evaluation and coevaluation maps
+inside that category.  A rigid comparison must name a target, a monoidal
+functor, dual objects, cups and caps, dagger and trace compatibility.  A
+Temperley--Lieb or Fibonacci branch adds quotient ideals and a different
+trace; neither is an automatic consequence of the positive-real endpoint.
+
+\subsection{The tensor-power quotient}
+
+\begin{definition}[The symmetric endpoint amplitude category]
+For real $q>0$, let $H_n(q)$ be the positive type-$A$ Hecke algebra with
+self-adjoint generators $T_i$, relations
+\[
+ (T_i-q)(T_i+1)=0,\qquad
+ T_iT_{i+1}T_i=T_{i+1}T_iT_{i+1},\qquad
+ T_iT_j=T_jT_i\quad(|i-j|>1),
+\]
+and coefficient trace $\tau_n(T_w)=\delta_{w,1}$.  Ordered block inclusion
+maps $T_u\otimes T_v$ to $T_{u\times v}$.  The finite positive composition
+category $\mathcal U_q$ consists of finite sums and self-adjoint projection
+retracts of the graded regular objects; unequal degrees have zero Homs.  At
+$q=1$, $H_n(1)=\mathbb C[S_n]$ and the generator $x=[1]$ satisfies
+$\operatorname{End}(x^{\otimes n})=\mathbb C[S_n]$.
+\end{definition}
+\begin{scope}
+This is an amplitude category with finite $C^*$-endomorphism algebras.  Its
+nonnegative grading is retained, and no internal dual for $x$ is assumed.
+\end{scope}
+\provenance{D1101,D1102,D1224}{theory/sidequests/f1-limit/universal.md}{theory/checks/f1\_operational\_check.py (H13, finite corner samples)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Classical Schur--Weyl quotient]
+Fix $d\geq1$, put $V_d=\mathbb C^d$, and let
+\[
+ P_\sigma(v_1\otimes\cdots\otimes v_n)
+ =v_{\sigma^{-1}(1)}\otimes\cdots\otimes v_{\sigma^{-1}(n)}.
+\]
+Define
+\[
+ \rho_{d,n}:\mathbb C[S_n]\longrightarrow
+ \operatorname{End}_{U(d)}(V_d^{\otimes n}),
+ \qquad \rho_{d,n}(\sigma)=P_\sigma.
+\]
+Its kernel is the sum of Wedderburn blocks indexed by partitions of $n$ with
+more than $d$ rows.  Equivalently, for $n\geq d+1$, it is the ideal generated
+by the antisymmetrizer on the first $d+1$ positions.  The map is faithful
+exactly when $d\geq n$.
+\end{definition}
+\begin{scope}
+The target is the full $U(d)$-commutant on one tensor power.  For $d<n$ the
+map is a quotient, and no faithful embedding is claimed.
+\end{scope}
+\provenance{D1232}{theory/sidequests/f1-limit/schur-weyl.md}{theory/checks/f1\_limit\_check.py (L8, n and d at most 4)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Quotient assembly]
+Under the standard associator
+$V_d^{\otimes(m+n)}\cong V_d^{\otimes m}\otimes V_d^{\otimes n}$, define
+\[
+ \nu_{m,n}\bigl(\rho_{d,m}(a)\otimes\rho_{d,n}(b)\bigr)
+ =\rho_{d,m+n}\bigl(\iota_{m,n}(a\otimes b)\bigr).
+\]
+These are associative unital algebra maps.  On right modules, the associated
+Schur--Weyl functor is
+\[
+ M\longmapsto M\otimes_{\mathbb C[S_n]}V_d^{\otimes n},
+\]
+where the tensor power has its left permutation action.
+\end{definition}
+\begin{scope}
+Well-definedness uses compatibility of the kernels with block inclusion.
+The source tensor on modules is balanced induction, not an objectwise
+$S_{m+n}$-action on $M\otimes N$.
+\end{scope}
+\provenance{D1233}{theory/sidequests/f1-limit/schur-weyl.md}{theory/checks/f1\_limit\_check.py (L8, finite rank/trace samples; assembly by proof)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Coherent finite-rank Schur--Weyl quotient]
+{\normalfont\statusProved}\quad For every $d\geq1$ and $n\geq0$,
+$\rho_{d,n}$ is a surjective star-homomorphism onto the tensor-power
+$U(d)$-commutant.  Its kernel is exactly the sum of partition blocks with
+more than $d$ rows, equivalently the antisymmetrizer-generated ideal, and it
+is faithful exactly for $d\geq n$.  The maps $\nu_{m,n}$ form a
+multiplicative sequence and induce a strong monoidal functor from finite
+right modules with induction tensor.
+\end{theorem}
+\begin{scope}
+The theorem is at the symmetric endpoint.  It permits a quotient kernel and
+does not identify induction with the bare vector-space tensor product of
+modules over different symmetric groups.
+\end{scope}
+\provenance{F1-LIM-SW,D1232,D1233}{theory/sidequests/f1-limit/schur-weyl.md}{theory/checks/f1\_limit\_check.py (L8, n,d at most 4; general kernel by proof)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+The permutation convention gives $P_\sigma P_\pi=P_{\sigma\pi}$ and
+$P_\sigma^*=P_{\sigma^{-1}}$.  Position permutations commute with the
+diagonal $U(d)$ action.  Conversely, the complex span of the Lie algebra of
+$U(d)$ is $\mathfrak{gl}_d(\mathbb C)$, so the unitary and classical
+general-linear commutants agree; classical Schur--Weyl duality makes the map
+surjective.
+
+If $d\geq n$, apply a putative linear relation among the $P_\sigma$ to
+$e_1\otimes\cdots\otimes e_n$; the resulting $n!$ words are distinct.  If
+$d<n$, the $(d+1)$-strand antisymmetrizer acts through
+$\bigwedge^{d+1}V_d=0$.  In the decomposition
+\[
+ V_d^{\otimes n}\cong
+ \bigoplus_{\substack{\lambda\vdash n\\\operatorname{rows}(\lambda)\leq d}}
+ L_d(\lambda)\otimes S^\lambda,
+\]
+the block $\operatorname{End}(S^\lambda)$ survives exactly for partitions
+with at most $d$ rows.  The branching rule says precisely those excluded
+blocks contain the sign representation of the embedded $S_{d+1}$, proving
+the ideal description.
+
+On elementary tensors, block permutation gives
+\[
+ \rho_{d,m+n}(\iota(\sigma\otimes\pi))
+ =\rho_{d,m}(\sigma)\otimes\rho_{d,n}(\pi).
+\]
+This proves kernel compatibility and associativity.  Cancelling consecutive
+extension and restriction of scalars identifies the image of
+$(M\star N)$ with
+$(M\otimes_{\mathbb C[S_m]}V_d^{\otimes m})\otimes
+ (N\otimes_{\mathbb C[S_n]}V_d^{\otimes n})$, giving the strong monoidal
+structure.
+\end{proof}
+
+\subsection{Which trace does the quotient see?}
+
+\begin{definition}[Tensor trace and physical subgroup expectation]
+Define the normalized tensor trace
+\[
+ \operatorname{tr}_{d,n}(a)=d^{-n}\operatorname{Tr}(\rho_{d,n}(a)).
+\]
+For a permutation $\sigma$, this is
+\[
+ \operatorname{tr}_{d,n}(\sigma)=d^{\operatorname{cyc}(\sigma)-n}.
+\]
+When $d\geq n$ and $K=S_m\times S_{n-m}$, the physical trace-preserving
+expectation $E_{d,K}:\mathbb C[S_n]\to\mathbb C[K]$ is characterized by
+\[
+ \operatorname{tr}_{d,n}(k^*E_{d,K}(x))
+ =\operatorname{tr}_{d,n}(k^*x),\qquad k\in K.
+\]
+In the group basis its coefficients solve $G_dc=b$, where
+\[
+ G_d(k,h)=d^{\operatorname{cyc}(k^{-1}h)-n},\qquad
+ b_k=d^{\operatorname{cyc}(k^{-1}\sigma)-n}.
+\]
+\end{definition}
+\begin{scope}
+Faithfulness on the full group algebra, and therefore this Gram inversion
+there, requires $d\geq n$.  On the quotient image the tensor trace remains
+faithful for all $d$.
+\end{scope}
+\provenance{D1234}{theory/sidequests/f1-limit/schur-weyl.md}{theory/checks/f1\_limit\_check.py (L8,L9, declared finite ranks)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Fixed-degree stable trace comparison]
+Let $\tau_n$ be coefficient trace and let $E_{\infty,K}$ delete group-basis
+coefficients outside $K$.  For fixed $n$ and
+$x=\sum_\sigma a_\sigma\sigma$,
+\[
+ \left|\operatorname{tr}_{d,n}(x)-\tau_n(x)\right|
+ \leq \frac1d\sum_{\sigma\ne1}|a_\sigma|.
+\]
+Put $N=|K|$.  If both $d\geq n$ and $d>N-1$, then for
+$\sigma\notin K$ every coefficient of $E_{d,K}(\sigma)$ has modulus at most
+\[
+ \frac{1}{d-(N-1)},
+\]
+whereas $E_{d,K}(\sigma)=\sigma$ for $\sigma\in K$.  Thus the physical
+expectation converges coefficientwise to coefficient deletion at fixed
+degree.
+\end{definition}
+\begin{scope}
+Both inequalities on $d$ are required: one for faithfulness and one for the
+Neumann-series bound.  No equality between the two traces or expectations
+is claimed at fixed finite $d$.
+\end{scope}
+\provenance{D1235}{theory/sidequests/f1-limit/schur-weyl.md}{theory/checks/f1\_limit\_check.py (L8,L9; general bound analytic)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[Stable physical trace and expectation]
+{\normalfont\statusProved}\quad At fixed $n$, the normalized tensor trace
+converges coefficientwise to $\tau_n$.  If $K=S_m\times S_{n-m}$,
+$d\geq n$, and $d>|K|-1$, then $E_{d,K}$ converges coefficientwise to
+$E_{\infty,K}$ with the bound above.  For fixed $h\geq0$,
+$\tau_n(h)=1$, and $0\leq e\leq1$, put
+\[
+ \Delta_d(y)=\frac1d\sum_{\sigma\ne1}|y_\sigma|.
+\]
+Whenever $\Delta_d(h)<1$, the normalized quotient density has Born
+probability $\operatorname{tr}_{d,n}(he)/\operatorname{tr}_{d,n}(h)$ and
+\[
+ \left|\frac{\operatorname{tr}_{d,n}(he)}{\operatorname{tr}_{d,n}(h)}
+       -\tau_n(he)\right|
+ \leq\frac{\Delta_d(he)+\Delta_d(h)}{1-\Delta_d(h)}.
+\]
+\end{theorem}
+\begin{scope}
+All convergence is at fixed tensor degree and for fixed coefficient data.
+There is no uniform claim when the degree, coefficient norms, subgroup, or
+experiment varies with $d$.
+\end{scope}
+\provenance{F1-LIM-SWTRACE,D1234,D1235}{theory/sidequests/f1-limit/schur-weyl.md}{theory/checks/f1\_limit\_check.py (L8 for n,d at most 4; L9 finite S2-in-S3 sentinel)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+A tensor-basis word is fixed by $P_\sigma$ exactly when it is constant on
+each cycle, so there are $d^{\operatorname{cyc}(\sigma)}$ fixed words.  A
+nonidentity permutation has at most $n-1$ cycles, proving the trace bound.
+Moreover
+\[
+ \operatorname{tr}_{d,n}(x^*x)
+ =d^{-n}\operatorname{Tr}(\rho_{d,n}(x)^*\rho_{d,n}(x)),
+\]
+so its radical is exactly the Schur--Weyl kernel.
+
+The conditional expectation is orthogonal projection for this trace.  Its
+Gram matrix is $G_d=I+R$, with
+$\lVert R\rVert_\infty\leq(N-1)/d$.  Under the two displayed hypotheses,
+\[
+ \lVert G_d^{-1}\rVert_\infty
+ \leq\frac{1}{1-(N-1)/d}.
+\]
+For $\sigma\notin K$, the right-hand Gram vector has norm at most $1/d$,
+which proves the coefficient bound.  The finite-rank difference is real: for
+$n=3$, $K=\langle(12)\rangle$, one obtains
+$E_{d,K}((23))=d^{-1}1$, while coefficient deletion gives zero.
+
+Finally the trace estimate applied to $h$ makes its physical normalization
+at least $1-\Delta_d(h)$.  Apply the same estimate to $he$ and divide by
+this lower bound to obtain the stated Born inequality.
+\end{proof}
+
+\subsection{Rigid and fusion targets require additional data}
+
+\begin{definition}[Rigid target datum]
+A rigid comparison consists of an additive idempotent-complete monoidal
+category $\mathcal R$, a named strong monoidal functor
+$i:\mathcal U_q\to\mathcal R$, and a named left and right dual $y^\vee$ of
+$y=i(x)$.  It includes
+\[
+ \operatorname{coev}_R:\mathbf1\to y\otimes y^\vee,
+ \quad \operatorname{ev}_R:y^\vee\otimes y\to\mathbf1,
+\]
+\[
+ \operatorname{coev}_L:\mathbf1\to y^\vee\otimes y,
+ \quad \operatorname{ev}_L:y\otimes y^\vee\to\mathbf1,
+\]
+satisfying the four zigzags with the stated associators.  The target is
+generated from $y,y^\vee$ by tensor, finite sums and retracts.  The functor
+may have a kernel.  A positive dagger version additionally requires a
+$C^*$-category, a star-preserving $i$, compatible dagger/pivotal data, and a
+positive spherical structure.  Duals of sums and retracts are formed in the
+additive Karoubi closure.
+\end{definition}
+\begin{scope}
+Full faithfulness is additional and is never inferred from the existence of
+cups and caps.  The target closure is part of the datum.
+\end{scope}
+\provenance{D1236}{theory/sidequests/f1-limit/fusion.md}{theory/checks/f1\_limit\_check.py (L8, finite quotient witness only)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Fusion quotient datum]
+A fusion quotient consists of a monoidal ideal $\mathcal I$ in a chosen
+rigid extension, a compatible dagger on the quotient, a positive pivotal
+trace, and the instruction to quotient and then take additive Karoubi
+completion.  Any trace radical or negligible ideal is named explicitly.
+The result is called fusion only after proving semisimplicity, simple unit,
+finite-dimensional Hom spaces, duals, and finitely many simple isomorphism
+classes.
+\end{definition}
+\begin{scope}
+A family of degreewise algebra ideals is insufficient unless it is closed
+under tensor, composition, dagger, and the chosen duality operations.
+\end{scope}
+\provenance{D1237}{theory/sidequests/f1-limit/fusion.md}{structural proof; no finite sample proves fusion}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Temperley--Lieb branch]
+For $q>0$, set
+\[
+ f_i=\frac{q-T_i}{q+1},\qquad
+ \delta=\sqrt q+\frac1{\sqrt q}.
+\]
+A Temperley--Lieb branch imposes the tensor-ideal relations
+\[
+ f_if_{i+1}f_i=\delta^{-2}f_i,\qquad
+ f_{i+1}f_if_{i+1}=\delta^{-2}f_{i+1},
+\]
+equivalently killing the excluded three-strand Hecke summand.  It also
+supplies diagrammatic cups and caps, dagger, and the Jones--Markov trace.
+The faithful coefficient trace is not declared to descend through this
+nonzero ideal.
+\end{definition}
+\begin{scope}
+This is a named quotient branch with new rigid and trace data.  It is not a
+property of the full positive flag/Hecke category.
+\end{scope}
+\provenance{D1238}{theory/sidequests/f1-limit/fusion.md}{theory/checks/f1\_operational\_check.py (H10, finite trace obstruction)}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{definition}[Fibonacci root branch]
+The unitary Fibonacci branch is the even part of the level-three
+$SU(2)$/Jones fusion quotient.  Choose
+\[
+ q_H=e^{2\pi i/5},\qquad v=e^{\pi i/5},\qquad v^2=q_H,
+ \qquad q_{\mathrm{ILZ}}=-v,
+\]
+and distinguish the loop generator from the projection by
+\[
+ U_i^{\mathrm{ILZ}}=\delta f_i,\qquad
+ \delta=-(q_{\mathrm{ILZ}}+q_{\mathrm{ILZ}}^{-1})
+       =v+v^{-1}=2\cos(\pi/5).
+\]
+Quotient by the Jones trace radical, take additive Karoubi completion, and
+retain the even labels $\{0,2\}$, with
+\[
+ 2\otimes2\cong0\oplus2.
+\]
+\end{definition}
+\begin{scope}
+The square parameter has order five.  This root-of-unity construction is
+not the $q=1$ specialization of the positive-real branch, where $\delta=2$
+and the spin tower is untruncated.
+\end{scope}
+\provenance{D1239}{theory/sidequests/f1-limit/fusion.md}{primary-source parameter derivation; no cyclotomic checker}{theory/verdicts/f1-limit-adjudication.md}
+
+\begin{theorem}[A positive rigid target at the symmetric endpoint]
+{\normalfont\statusProved}\quad The category $\mathcal U_q$ is not rigid:
+its degree-one generator has no left or right dual.  A positive rigid
+comparison requires the complete datum above.  At $q=1$, for every $d\geq1$,
+the full replete $C^*$-tensor subcategory of $\operatorname{Rep}(U(d))$
+generated by $V_d,V_d^*$, finite sums and subobjects is a concrete positive
+rigid target of the Schur--Weyl quotient image.  The named functor
+$i_d:\mathcal U_1\to\mathcal R_d$ may have a kernel.
+\end{theorem}
+\begin{scope}
+The comparison is not asserted fully faithful in degrees $n>d$.  The target
+has infinitely many simple objects as degrees vary and is not thereby a
+fusion category.
+\end{scope}
+\provenance{F1-LIM-RIGID,D1236,D1237}{theory/sidequests/f1-limit/fusion.md}{theory/checks/f1\_limit\_check.py (L8, finite Schur--Weyl kernel samples)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+Every summand of $x\otimes y$ has degree at least one for any object $y$ of
+the nonnegatively graded category, while the unit has degree zero.  Thus an
+evaluation $x\otimes y\to\mathbf1$ must vanish and cannot satisfy a zigzag.
+
+At the endpoint, send $x$ to $V_d$, symmetric-group arrows to their tensor
+permutations, and a projection retract to the range of its image projection.
+This is a named strong monoidal star-functor, with precisely the
+Schur--Weyl kernel.  The usual pairing and copairing
+\[
+ \operatorname{ev}(\varphi\otimes v)=\varphi(v),\qquad
+ \operatorname{coev}(1)=\sum_i e_i\otimes e_i^*
+\]
+satisfy the zigzags by basis contraction.  The Hilbert dagger and
+$V_d\cong V_d^{\vee\vee}$ give positive dimension $d$ and ordinary matrix trace.
+Closing under sums and retracts supplies duals for the whole generated
+target.
+\end{proof}
+
+\begin{theorem}[Temperley--Lieb and Fibonacci are separate quotient branches]
+{\normalfont\statusProved}\quad The Temperley--Lieb branch requires its
+named tensor ideal, cups, caps, dagger, and Jones--Markov trace.  The faithful
+coefficient trace cannot descend through the nonzero quotient ideal.  At
+$q=1$ and $d=2$, coefficient-trace weights $(1/2,1/2)$ on the symmetric and
+alternating projections become physical weights $(3/4,1/4)$.  The Fibonacci
+branch further requires the displayed order-five parameter, Jones trace
+radical quotient, additive Karoubi completion, and even subcategory.
+\end{theorem}
+\begin{scope}
+Neither the $d=2$ spin tower nor Fibonacci is identified with the full
+positive-real endpoint.  Fibonacci is not obtained from any real $q>0$ in
+the displayed loop normalization.
+\end{scope}
+\provenance{F1-LIM-TL,D1237,D1238,D1239}{theory/sidequests/f1-limit/fusion.md}{theory/checks/f1\_operational\_check.py (H10, finite TL/trace sample; no root-of-unity gate)}{theory/verdicts/f1-limit-adjudication.md}
+\begin{proof}
+The element $f_i$ is the spectral projection for the $(-1)$-eigenvalue of
+$T_i$.  The quotient relation gives
+\[
+ f_if_{i+1}f_i=\frac{q}{(q+1)^2}f_i=\delta^{-2}f_i.
+\]
+Yet
+\[
+ \tau_n(f_i)=\frac{q}{q+1},
+ \qquad \operatorname{tr}_J(f_i)=\delta^{-2}
+   =\frac{q}{(q+1)^2}.
+\]
+If the faithful coefficient trace descended through a nonzero quotient
+kernel, a nonzero $z$ in that kernel would satisfy both
+$\tau_n(z^*z)>0$ and $\tau_n(z^*z)=0$, a contradiction.  At $q=1$, the
+two projections $(1\pm(12))/2$ have coefficient weights $1/2,1/2$, whereas
+their ranks on $(\mathbb C^2)^{\otimes2}$ are $3$ and $1$.
+
+On the positive-real branch,
+$\delta=\sqrt q+q^{-1/2}\geq2$.  The Fibonacci value
+$2\cos(\pi/5)=(1+\sqrt5)/2$ is smaller than two, so it requires the complex
+root and sign convention in the definition.  At that root, the raw
+Temperley--Lieb algebra is semisimplified by its Jones trace radical; the
+even surviving labels give the stated Fibonacci fusion rule.  The three
+traces---coefficient, finite tensor, and Jones---therefore belong to three
+different comparison maps and cannot be silently identified.
+\end{proof}
