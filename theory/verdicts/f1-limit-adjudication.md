@@ -118,3 +118,17 @@ windup: their definitions, proofs and verdict are preserved under
 was checked at 05:04 UTC, and only final integration/verification/commit
 continued. No further proof or admission work is authorized by this session's
 completed time window.
+
+## Final verification
+
+The integrated labbook builds to **114 pages**. The complete session-close
+script passed **17 standalone green runs and 122 distinct advertised red-mode
+runs**, counted from its actual successful nonzero-exit records. The final
+lockstep gate passed after the last LaTeX transcription corrections. Four
+new source hashes, all fifteen admitted proof-shard bounds, and staged
+whitespace were checked. The protocol and boundary pages were inspected.
+No general theorem is inferred from these finite execution results.
+
+The initial chat count of 121 mutations was provisional and is superseded
+by the actual 122-run log count. Research is stopped; the main package is
+commit `d639c5d`, followed only by this verification record.

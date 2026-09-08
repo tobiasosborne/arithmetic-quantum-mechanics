@@ -71,6 +71,17 @@ were interrupted at windup and no further delegation is intended.
 
 ## Latest result — a positive operational F1 subsystem family
 
+Final categorical-limit verification (2026-09-08): the integrated PDF builds
+to **114 pages**. `scripts/session-close.sh` passed all **17 standalone green
+runs and 122 distinct advertised red-mode runs**; every red reached the
+required nonzero exit. The final lockstep gate passed after the last LaTeX
+transcription corrections. Four new primary-source hashes and all fifteen
+proof-shard size bounds were verified; whitespace checks passed. The protocol
+and boundary pages were visually inspected. The provisional chat tally of
+121 mutations was corrected by counting the actual unique log records.
+The main work is committed as `d639c5d`; this record is the final closing edit.
+All research and agent work is stopped.
+
 The user's request to chase subsystem-first QM now has a concrete candidate:
 A(S)=C[Sym(S)], with coefficient-trace densities, Born effects, CP dynamics,
 subgroup expectations, and proper disjoint-assembly inclusions. The source
