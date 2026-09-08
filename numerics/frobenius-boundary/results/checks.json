@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-08",
+  "status": "finite evidence; claims SKETCH",
+  "checker_sha256": "28fa82490450b4a7ae7522e828438c6c5f07374133fbf1da58424d436ba6c548",
+  "runs": [
+    {
+      "mode": "green",
+      "exit_code": 0,
+      "expected": true,
+      "output": "B1 PASS: word census, F4/F16 field orbits and fixed powers\nB2 PASS: Jordan derivatives, positive rational weights, all conditional moments\nB3 PASS: exact state/effect witness and noncommutative cycle blocks\nB4 PASS: coherent CRT reblocking, ternary transport and dephasing sentinel\nB5 PASS: conditional inclusion weights, tower success and four retained tensor branches\nB6 PASS: multiplication counts, overlap filtration and mixed-gate scope sentinels\nPASS: B1--B6. Finite evidence only; general claims remain SKETCH pending review.\n"
+    },
+    {
+      "mode": "--red-count",
+      "exit_code": 1,
+      "expected": true,
+      "output": "FAIL B1: (2, 2, 2)\n"
+    },
+    {
+      "mode": "--red-weight",
+      "exit_code": 1,
+      "expected": true,
+      "output": "B1 PASS: word census, F4/F16 field orbits and fixed powers\nFAIL B2: (2, Fraction(1, 1), [Fraction(2, 1)])\n"
+    },
+    {
+      "mode": "--red-frobenius",
+      "exit_code": 1,
+      "expected": true,
+      "output": "B1 PASS: word census, F4/F16 field orbits and fixed powers\nB2 PASS: Jordan derivatives, positive rational weights, all conditional moments\nFAIL B3: Born distinction\n"
+    },
+    {
+      "mode": "--red-coherence",
+      "exit_code": 1,
+      "expected": true,
+      "output": "B1 PASS: word census, F4/F16 field orbits and fixed powers\nB2 PASS: Jordan derivatives, positive rational weights, all conditional moments\nB3 PASS: exact state/effect witness and noncommutative cycle blocks\nFAIL B4: coherent reblocking must retain cross-orbit matrix units\n"
+    },
+    {
+      "mode": "--red-decoder",
+      "exit_code": 1,
+      "expected": true,
+      "output": "B1 PASS: word census, F4/F16 field orbits and fixed powers\nB2 PASS: Jordan derivatives, positive rational weights, all conditional moments\nB3 PASS: exact state/effect witness and noncommutative cycle blocks\nB4 PASS: coherent CRT reblocking, ternary transport and dephasing sentinel\nFAIL B5: decoder Kraus completeness\n"
+    },
+    {
+      "mode": "--red-overlap",
+      "exit_code": 1,
+      "expected": true,
+      "output": "B1 PASS: word census, F4/F16 field orbits and fixed powers\nB2 PASS: Jordan derivatives, positive rational weights, all conditional moments\nB3 PASS: exact state/effect witness and noncommutative cycle blocks\nB4 PASS: coherent CRT reblocking, ternary transport and dephasing sentinel\nB5 PASS: conditional inclusion weights, tower success and four retained tensor branches\nFAIL B6: overlap uses union\n"
+    }
+  ]
+}

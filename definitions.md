@@ -1968,3 +1968,95 @@ of E, write x=sum_l x_l beta_l and define the coordinate circuit
 This circuit retains B as its construction label. No basis-independent
 identification of these two source objects is imposed. Its unitarity and
 its interpreted trace-dual Weyl factorization are part of FRP-CAT.
+
+## D1331 (marked Frobenius orbit algebra)
+
+Fix r>=1 and a real variable t>=1, distinct from a field characteristic.
+Let mu be the integer Moebius function (zero on numbers divisible by a
+prime square, otherwise (-1) to the number of prime factors), and let
+phi(d) count the integers 1<=a<=d coprime to d. Set
+
+    c_d(t)=sum_(e|d) mu(d/e)t^e,
+    O_r=direct-sum_(d|r) M_d(C),
+    S_d|j>=|j+1 mod d>,  u_r=direct-sum_(d|r) S_d.
+
+At an arithmetic comparison t=p, choose E=F_(p^r). In every orbit O of
+sigma_E choose an origin b_O and label its vectors by sigma_E^j(b_O),
+0<=j<|O|. Define R_(p,r):O_r->End(H_E) by acting with the same matrix a_d
+on every marked orbit of length d. The comparison carries these origin
+choices. For a tower of standard subfields in one finite field, use the
+same origin on an orbit wherever that orbit occurs. No compatible origins
+for every named embedding or field automorphism are stipulated.
+
+## D1332 (conditional orbit boundary and reference state)
+
+For D1331 and r>=2 put e_r=direct-sum_(d|r,d>1) I_d, with zero d=1 block,
+and O_r^+=e_r O_r e_r. Its identity is e_r and its Frobenius is
+u_r^+=e_r u_r e_r. With tr_d=Tr/d the normalized ordinary matrix trace,
+define the ambient reference functional and its active weight by
+
+    theta_(r,t)(a)=sum_(d|r) c_d(t)t^(-r) tr_d(a_d),
+    w_r(t)=1-t^(1-r).
+
+For t>1 define omega_(r,t)(a)=theta_(r,t)(a)/w_r(t) on O_r^+.
+At t=1 stipulate
+
+    omega_(r,1)(a)=sum_(d|r,d>1) phi(d)/(r-1) tr_d(a_d).
+
+The ordinary block-trace density of this functional is
+sigma_(r,t)=direct-sum_d lambda_(r,d)(t) I_d/d, where
+lambda_(r,d)(t)=c_d(t)/(t^r-t) for t>1 and phi(d)/(r-1) for t=1.
+At t=p its physical conditioning projection is
+P_r^mov=sum_(x in E, x^p!=x) |x><x|. This removes fixed basis labels;
+it is not the orthogonal complement of all Frobenius-invariant vectors.
+
+## D1333 (orbit processes, independent composition and retained inclusion)
+
+Objects are finite ordered words R=(r_1,...,r_n), r_j>=2, and finite
+nonempty tagged families of these words. The empty word has algebra C.
+For a word set O_R^+=tensor_j O_(r_j)^+ and take the product reference
+functional omega_(R,t)=tensor_j omega_(r_j,t). A tagged family has the
+direct sum algebra. A process is a complex-linear CPTP map between these
+algebras in the Schroedinger orientation, using the sum of ordinary matrix
+traces on all simple blocks. Equality is equality of linear maps;
+composition is composition, tensor is the matrix tensor with paired tags.
+The distinguished Frobenius channel is conjugation by tensor_j u_(r_j)^+.
+
+For 2<=r|s define e_(r,s) in O_s^+ to be identity on blocks d|r, d>1,
+and zero on the other blocks. Let j_(r,s):O_r^+->O_s^+ insert zero blocks.
+It is the specified encoding on ordinary-trace densities. Its retained
+decoder has output tags success and failure, with algebras O_r^+, O_s^+,
+and maps rho to
+
+    ((rho_d)_(d|r,d>1), (1-e_(r,s))rho(1-e_(r,s))).
+
+The reference probability of its success is denoted h_(r,s)(t):
+(t^r-t)/(t^s-t) for t>1 and (r-1)/(s-1) at t=1.
+The unnormalized ambient word weight is W_R(t)=product_j w_(r_j)(t).
+The word length records its order of vanishing; it is not a Clifford level.
+This CP envelope is not stipulated to be an image of every arithmetic
+process in D1325. The arithmetic comparison is only the marked observable
+representations of D1331 and the specified gates and block instruments.
+
+For d,e>=1 set g=gcd(d,e), l=lcm(d,e), and define the reblocking unitary
+
+    B_(d,e): C^g tensor C^l -> C^d tensor C^e,
+    |a,k> -> |k mod d, a+k mod e>, 0<=a<g, 0<=k<l.
+
+Its multiplicity factor C^g is quantum. Iterated reblockings are compared
+through the same ordered Cartesian basis, not by identifying internal labels.
+
+## D1334 (multiplication active cuts and overlapping controls)
+
+For D1301 and D1308 put Q=|E|, d>=1, and
+
+    P_(E,d)^nz=(I-|0><0|)^tensor d tensor I,
+    tau_(E,d)=Tr/Q^(d+1),
+    v_(E,d)=P_(E,d)^nz M_E^(d) P_(E,d)^nz.
+
+The normalized corner trace is tau_(E,d)^nz(a)=
+tau_(E,d)(a)/tau_(E,d)(P_(E,d)^nz). On a specified word of n registers
+and a subset A of its indices, P_A^nz tests nonzero labels precisely on A.
+For comparison with Fourier use P_r^dual=F_E P_r^mov F_E^* on one field
+register. These are separate cuts: nonzero controls, nonfixed Frobenius
+labels, and Fourier-transported nonfixed labels are not identified.

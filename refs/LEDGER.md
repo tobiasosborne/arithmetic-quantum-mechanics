@@ -830,3 +830,25 @@ Sections 5.2--5.3: Frobenius orbit subspaces and unitary transformations.
 The author's framework assumes odd p. The current all-characteristic
 reference-Weyl formulas and field-transfer statements are proved internally;
 this source is a comparison, not their characteristic-two justification.
+
+## Frobenius orbit boundary — retrieved 2026-09-08
+
+**1811.08601v2 (HY21)** — Trevor Hyde, *Cyclotomic factors of necklace
+polynomials*. Title and author verified on the arXiv abstract page and PDF.
+Route: https://arxiv.org/pdf/1811.08601v2 (revised 18 January 2021).
+Local `refs/frobenius-boundary/1811.08601/paper.pdf`, with text extraction;
+SHA256 `b2ab01f64b5261e9251f64d460f9a4c6de7c2e1a8b66ad7431552036fa5a66b1`.
+Introduction, printed p. 1: necklace polynomial formula and its count of
+degree-d monic irreducibles over a finite field. Our c_d is d times this
+polynomial. The positive trace continuation and matrix-algebra construction
+are local derivations, not results attributed to Hyde.
+
+**YOSHIDA14** — Tomoyuki Yoshida, *The Burnside ring and the universal zeta
+function of finite dynamical systems*. Title/author verified on PDF p. 1;
+RIMS Kokyuroku 1872 (2014), pp. 122--131 (talk dated 9 January 2013).
+Route: https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1872-13.pdf.
+Local `refs/frobenius-boundary/yoshida-2014/paper.pdf`, with text extraction;
+SHA256 `068e646e9fdedf5355278baaee775075be9b2deb0bf6ba2b0cae83fa0c6a7150`.
+Section 2.2, printed p. 127: cycle-set multiplication by gcd/lcm in the
+necklace algebra. Only that formula is used as comparison; the coherent
+quantum multiplicity algebra and conditional trace are derived locally.

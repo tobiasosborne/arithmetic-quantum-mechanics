@@ -3,6 +3,17 @@
 STATUS: a concrete next-stage proposal, not an admitted specialization claim.
 Native lane convention: inherited Codex runtime, no model override.
 
+Update, 2026-09-08: a different, explicitly conditional starting point is
+now constructed in `theory/sidequests/frobenius-hierarchy/orbit-boundary.md`
+and `orbit-composition.md` (FRL-ORBIT/POS/COMP/ACTIVE, all SKETCH pending
+independent review). Its real parameter t continues p at fixed extension
+degree; its nonfixed-label trace is normalized before taking t=1. It keeps
+positive cyclic matrix blocks, coherent independent tensor and standard
+subfield inclusions. It neither fixes a phase level N nor constructs the
+coupled context algebra proposed below. The next useful comparison is the
+mixed orbit/Fourier/multiplication instrument algebra, including the
+second-order overlap and sector leakage calculated in that companion work.
+
 ## What the current result supplies
 
 The admitted FRP-CAT/CP/DESCENT results supply a positive arithmetic fibre for every

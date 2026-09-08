@@ -146,3 +146,12 @@
 | `Proc_I, k_(b,a,j), h_(a,l)` | source-certified process category, Kraus amplitudes, residual certificate amplitudes | D1325 |
 | `B_X, Tr_X, R` (arithmetic process context) | block matrix algebra, sum of ordinary traces, CP interpretation | D1326 |
 | `p_s,q_s,D_s,d_s,a^[i],a_B` | range/complement projections, retained decoder, success arrow, code lift, named coordinate circuit | D1327 |
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `t, mu, phi, c_d(t)` (orbit context) | real continued characteristic parameter; integer Moebius and Euler functions; exact-period point-count polynomial | D1331 |
+| `O_r, S_d, u_r, R_(p,r), b_O` (orbit context) | common matrix blocks by orbit length; cyclic shift; Frobenius; marked physical representation; chosen orbit origin | D1331 |
+| `e_r, O_r^+, u_r^+, theta_(r,t), w_r(t), omega_(r,t)` | nonfixed-label corner, its algebra and unitary, ambient reference functional, weight and conditional functional | D1332 |
+| `lambda_(r,d), sigma_(r,t), P_r^mov` | conditional block weight, ordinary-trace reference density, physical nonfixed-label projection | D1332 |
+| `O_R^+, omega_(R,t), W_R, e_(r,s), j_(r,s), h_(r,s), B_(d,e)` | word algebra/reference/ambient weight; inclusion cut/encoding/success weight; coherent cycle-pair reblocking | D1333 |
+| `P_(E,d)^nz, tau_(E,d), v_(E,d), tau_(E,d)^nz, P_A^nz, P_r^dual` | nonzero-control cut, whole-word trace, restricted multiplication, corner trace, subset cut, Fourier-dual moving-label cut | D1334 |

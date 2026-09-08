@@ -4,13 +4,125 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-08, filtered-boundary discussion recorded after publication
-of the Frobenius/hierarchy package in commit `622c49c`.
+Updated: 2026-09-08, positive conditional Frobenius orbit prototype added
+after the filtered-boundary discussion and arithmetic package `622c49c`.
 The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
 
-## Latest steering — higher hierarchy levels and vanishing boundary sectors
+## Current continuation — a positive conditional orbit prototype
+
+The user asked to become familiar with the project and continue the F1,
+composition and Frobenius work, especially whether Frobenius survives p->1.
+The concrete continuation is now in labbook Section 23 (starts p. 128),
+`theory/sidequests/frobenius-hierarchy/orbit-boundary.md` and
+`orbit-composition.md`. Work order: `briefs/frobenius-boundary-target.md`.
+
+**Status:** four new SKETCH claims FRL-ORBIT/POS/COMP/ACTIVE and four
+definitions D1331--D1334. Structured derivations and exact falsifiers are
+written; no independent capped review was run and no PROVED promotion is
+claimed. The register now has 121 claims: 96 PROVED, 23 SKETCH, one
+CONJECTURE, one REFUTED; 129 definitions. The prior package is unchanged.
+
+### The positive construction and what survives
+
+For extension degree r, the number of exact-period-d Frobenius labels is
+c_d(p)=sum_(e|d) mu(d/e)p^e, d|r. Choose an origin in every orbit and
+retain the same full M_d(C) action on every orbit of length d. This gives
+a faithful marked observable representation of O_r=direct-sum_(d|r) M_d
+in End(ell^2(F_(p^r))), with Frobenius direct-sum S_d and physical trace
+sum_d c_d(p)p^(-r) tr_d. It is a selected subalgebra, not the full algebra
+and not Frobenius's commutant. Origin changes give explicit unitary
+comparisons; selected embedded tests need not stay literally unchanged.
+
+Continue p by t>1 at fixed r. For d>1,
+
+    c_d(exp h)=sum_(k>=1) h^k/k! d^k product_(ell|d prime)(1-ell^(-k))
+
+has positive terms for h>0, and c_d'(1)=phi(d). Therefore conditioning
+on nonfixed *basis labels* produces the fixed positive algebra
+
+    O_r^+=direct-sum_(d|r,d>1) M_d(C),
+    omega_(r,1)=sum_(d|r,d>1) phi(d)/(r-1) tr_d,
+    omega_(r,1)(u^k)=(gcd(r,k)-1)/(r-1).
+
+All retained blocks have positive weights. Frobenius has an exact
+state/effect distinction: |0><0| on a cycle block has return probability
+one initially and zero after S_d. At r=2 the family is a conditional qubit
+with a flip, physically the orbit (alpha,alpha^2) in F4 at p=2. At r=4
+it is M2 direct-sum M4, with weights changing from (1/7,6/7) at t=2 to
+(1/3,2/3) at one. The ordinary unconditioned trace quotient still deletes
+all d>1 blocks. This is a different, explicitly normalized boundary rule.
+
+### Composition and inclusion that are actually included
+
+Independent word tensor has product conditional reference states and a
+positive complex CPTP envelope with ordinary sum-of-block traces. A pair
+of cycles reblocks as C^gcd(d,e) tensor C^lcm(d,e); simultaneous Frobenius
+acts as identity tensor cyclic shift. Keep the multiplicity factor quantum:
+for d=e=2, replacing M4 by M2 direct-sum M2 halves the return probability
+of a cross-orbit superposition. Associators compare through the common
+Cartesian basis and telescope, so no literal internal-label equality is used.
+
+For standard subfields with coherent origins, r|s gives a divisor-block
+encoding, retained decoder and Frobenius diagram. Conditional reference
+success is (t^r-t)/(t^s-t), tending to (r-1)/(s-1). For 2|4 this is 1/3;
+two independent decoders keep all four probabilities 1/9,2/9,2/9,4/9.
+Success maps compose in towers. Full instruments retain their histories.
+No functor realizing *every* CP-envelope map in the full arithmetic source
+has been constructed. Arbitrary named embeddings need additional origin
+transport; the present comparison uses standard inclusions only.
+The prime-field degree r=1 has no moving-label conditional atom. At p=2,
+the active inclusion 2|4 compares F4 subset F16. The F2 subset F4 map
+requires retaining additional ambient fixed-label data.
+
+### Filtration and the mixed problem that remains
+
+The earlier nonzero-control multiplication formulas below now have a
+structured derivation and checker. Their sector weight is ((Q-1)/Q)^d,
+their conditional gate trace zero, and their conditional squared L2
+distance from the corner identity two. Frobenius and J preserve these cuts.
+Overlapping control cuts use union cardinality, not summed cardinality.
+Independent moving-orbit word weights vanish to order the word length.
+These are separate filtrations; neither classifies arbitrary hierarchy levels.
+
+The orbit prototype does not yet solve the full mixed arithmetic limit.
+In F4, M^(2)(alpha,alpha,alpha^2)=(alpha,alpha,0), leaving the tensor of
+moving-label sectors. The existing nonzero-cut V counterexample remains.
+For the moving cut and its actual Fourier transport the exact mixed trace is
+
+    Tr(P^mov F P^mov F*)/p^r=(1-p^(1-r))^2.
+
+This is a second-order overlap, not a commuting intersection dimension.
+Next work should construct a positive mixed section algebra retaining the
+orbit and Fourier charts, actual multiplication transitions, all instrument
+outcomes and the admitted transfer/Fourier diagrams. The independent-phase
+incidence proposal is still a distinct route; the present construction does
+not prove it or identify the two routes. Review the four sketches before
+promotion, concentrating on marked choices and the scope of comparisons.
+
+### Evidence and artifacts
+
+`theory/checks/frobenius_boundary_check.py` checks exact cyclic-word and
+F4/F16 orbit counts, rational boundary weights, Jordan derivative identities,
+Born witnesses, coherent cycle reblocking, actual inclusion/decoder Kraus
+matrices, multiplication counts and mixed scope examples. B1--B6 pass;
+each of six named mutations fails its intended gate. Frozen outputs are
+`numerics/frobenius-boundary/results/checks.json`. Finite tests do not prove
+the general analytic or categorical statements. The labbook has a new
+self-contained five-page section. Source snapshots for Hyde's necklace
+polynomials and Yoshida's gcd/lcm cycle product are registered in refs/LEDGER.md;
+the matrix boundary and positivity argument are derived locally.
+
+Final validation: the full session-close gate passed all 19 green checkers
+and 149 advertised mutation modes, plus lockstep and the real PDF build.
+The inventory is frozen in numerics/frobenius-boundary/results/SESSION-CLOSE.json.
+
+## Earlier steering — higher hierarchy levels and vanishing boundary sectors
+
+Historical discussion before the continuation above. Its active-sector
+calculations now have the FRL-ACTIVE sketch and permanent falsifier; the
+remaining mixed positive-boundary target is still open.
 
 After the completed arithmetic campaign, the user asked whether this approach
 is likely to give something nontrivial as p->1. They endorsed the analysis

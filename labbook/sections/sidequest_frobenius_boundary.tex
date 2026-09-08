@@ -1,0 +1,330 @@
+\section{A conditional Frobenius boundary with quantum composition}
+\label{sec:frobenius-boundary}
+
+There is a concrete way for arithmetic Frobenius to survive at one:
+retain the quantum systems carried by its moving orbits, together with
+their conditional reference states. The smallest example is a qubit on
+which Frobenius exchanges two distinguishable states. Its weight in the
+original register vanishes, but its normalized internal physics does not.
+The construction below includes independent composition and standard
+subfield inclusion. It is a selected observable family; extending it to
+the full arithmetic multiplication and Fourier processes remains open.
+The new statements carry sketch status pending independent review.
+The ``orbit checker'' cited below is
+\path{theory/checks/frobenius_boundary_check.py}.
+
+\subsection{The arithmetic comparison and its positive continuation}
+
+For a prime $p$ and an integer $r\geq1$, let $E=\mathbb F_{p^r}$,
+$H_E=\ell^2(E)$ with orthonormal basis $|x\rangle$, and
+$U_E|x\rangle=|x^p\rangle$. The ordinary physical reference trace is
+$\operatorname{Tr}/p^r$. We continue the prime parameter by a real variable
+$t\geq1$, with $r$ fixed. This defines an algebra family; it does not posit
+finite fields of noninteger cardinality.
+\provenance{D1301, D1302}{the preceding arithmetic sections}
+{the arithmetic Frobenius checker}{the arithmetic adjudication}
+
+\begin{definition}[Marked Frobenius orbit algebra]
+Fix $r\geq1$ and a real variable $t\geq1$, distinct from a field
+characteristic. Let $\mu(n)$ be zero when a prime square divides $n$ and
+otherwise $(-1)$ to the number of its prime factors. Let $\varphi(d)$ count
+the integers $1\leq a\leq d$ coprime to $d$. Set
+\[
+ c_d(t)=\sum_{e\mid d}\mu(d/e)t^e,\qquad
+ \mathcal O_r=\bigoplus_{d\mid r}M_d(\mathbb C),\qquad
+ S_d|j\rangle=|j+1\bmod d\rangle,\qquad
+ u_r=\bigoplus_{d\mid r}S_d.
+\]
+At $t=p$, choose $E=\mathbb F_{p^r}$ and an origin $b_O$ in each
+Frobenius orbit $O$. Label that orbit by $\sigma_E^j(b_O)$,
+$0\leq j<|O|$. The representation $R_{p,r}$ acts with the same matrix
+$a_d$ on every marked orbit of length $d$. For a tower of standard
+subfields in one finite field, use the same origin wherever an orbit occurs.
+\end{definition}
+\begin{scope}
+The comparison includes the origin choices. Compatible origins for all
+named embeddings or field automorphisms are not stipulated.
+\end{scope}
+\provenance{D1331}{definitions.md}{orbit checker B1}{not yet independently reviewed}
+
+\begin{proposition}[Arithmetic orbit counts and matrix comparison]
+\statusSketch\quad
+For every prime $p$, every $r\geq1$, and each $d\mid r$, exactly $c_d(p)$
+field labels have Frobenius period $d$. The marked representation is
+faithful, unital and preserves adjoints, and
+\[
+ R_{p,r}(u_r)=U_E,\qquad
+ \frac{\operatorname{Tr}(R_{p,r}(a))}{p^r}
+   =\sum_{d\mid r}\frac{c_d(p)}{p^r}\operatorname{tr}_d(a_d),
+ \qquad \operatorname{tr}_d=\frac{\operatorname{Tr}}d.
+\]
+Changing the origins gives an orbitwise unitary conjugation commuting with
+$U_E$.
+\end{proposition}
+\begin{scope}
+Marked rank-one observables can change with the origins. This representation
+retains common matrices on equal-length orbits, not the full field matrix
+algebra and not the commutant of Frobenius.
+\end{scope}
+\provenance{FRL-ORBIT}{orbit-boundary.md, Sections 1--2}
+{orbit checker B1--B2}{not yet independently reviewed}
+
+For $d\mid r$, the polynomial $X^{p^d}-X$ divides $X^{p^r}-X$ and has
+derivative $-1$, so it has exactly $p^d$ roots in $E$. Decomposing these
+fixed labels by their least period and applying divisor inversion gives
+$c_d(p)$. Each matrix $a_d$ occurs $c_d(p)/d$ times, giving the trace
+formula. This is the usual necklace polynomial multiplied by $d$; see
+Trevor Hyde, \emph{Cyclotomic factors of necklace polynomials}, introduction,
+p.~1. The matrix and trace continuation is the construction here.
+It uses actual coordinate tests: summing $|b_O\rangle\langle b_O|$ over
+length-$d$ orbit origins, then multiplying on the left and right by
+$U_E^i$ and $U_E^{-j}$, produces the represented matrix unit
+$|i\rangle\langle j|_d$. Frobenius and the marked origin tests therefore
+generate the selected matrix algebra.
+
+\begin{definition}[Conditional orbit boundary and reference state]
+For $r\geq2$ let $e_r$ be identity on the blocks $d>1$ and zero on the
+$d=1$ block, and put
+\[
+ \mathcal O_r^+=e_r\mathcal O_re_r,\qquad u_r^+=e_ru_re_r,
+ \qquad \theta_{r,t}(a)=\sum_{d\mid r}\frac{c_d(t)}{t^r}
+                     \operatorname{tr}_d(a_d),\qquad
+ w_r(t)=1-t^{1-r}.
+\]
+The identity of $\mathcal O_r^+$ is $e_r$. For $t>1$ define
+$\omega_{r,t}(a)=\theta_{r,t}(a)/w_r(t)$ on this corner. At one define
+\[
+ \omega_{r,1}(a)=\sum_{\substack{d\mid r\\d>1}}
+               \frac{\varphi(d)}{r-1}\operatorname{tr}_d(a_d).
+\]
+Write $\lambda_{r,d}(t)=c_d(t)/(t^r-t)$ for $t>1$ and
+$\lambda_{r,d}(1)=\varphi(d)/(r-1)$. The ordinary block-trace density is
+$\sigma_{r,t}=\bigoplus_{d\mid r,d>1}\lambda_{r,d}(t)I_d/d$.
+At $t=p$ the physical conditioning projection is
+$P_r^{\rm mov}=\sum_{x^p\ne x}|x\rangle\langle x|$.
+\end{definition}
+\begin{scope}
+This removes fixed basis labels. It does not remove every invariant vector:
+a moving orbit still contains an invariant uniform superposition.
+\end{scope}
+\provenance{D1332}{definitions.md}{orbit checker B2--B3}{not yet independently reviewed}
+
+\begin{proposition}[A faithful positive conditional endpoint]
+\statusSketch\quad
+For every $r\geq2$, $\theta_{r,t}$ is a faithful normalized positive
+trace for $t>1$, and $\omega_{r,t}$ extends continuously to the displayed
+faithful normalized positive trace on $\mathcal O_r^+$ at $t=1$.
+For every integer $k$, with $\gcd(r,0)=r$,
+\[
+ \omega_{r,t}((u_r^+)^k)=\frac{t^{\gcd(r,k)}-t}{t^r-t}\quad(t>1),
+ \qquad
+ \omega_{r,1}((u_r^+)^k)=\frac{\gcd(r,k)-1}{r-1}.
+\]
+For any block $d>1$, the state and effect $|0\rangle\langle0|$ have
+Born probability one before Frobenius and zero afterwards.
+\end{proposition}
+\begin{scope}
+This is a positive family of selected marked orbit observables. It does
+not specialize all arithmetic amplitudes. The unconditioned trace at one
+has a different quotient, retaining only the scalar block.
+\end{scope}
+\provenance{FRL-POS}{orbit-boundary.md, Sections 2--4}
+{orbit checker B2--B3}{not yet independently reviewed}
+
+Positivity holds throughout the real interval, not just at arithmetic
+points. Put $t=e^h$ with $h>0$. For $d>1$,
+\[
+ c_d(e^h)=\sum_{k\geq1}\frac{h^k}{k!}
+ d^k\prod_{\substack{\ell\mid d\\\ell\text{ prime}}}(1-\ell^{-k}).
+\]
+This convergent series has positive terms. Its first coefficient is
+$\varphi(d)$, so $c_d'(1)=\varphi(d)$. Since
+$\sum_{d\mid r,d>1}c_d(t)=t^r-t$, division and cancellation at one give
+the stated weights, which are positive and sum to one. A cyclic shift has
+trace zero unless its power fixes every index, yielding the moment formula.
+Thus $C([1,T],\mathcal O_r^+)$, for any finite $T>1$, is an explicit
+continuous section algebra with these reference states.
+
+For $r=2$, the entire conditional family is $M_2(\mathbb C)$ with trace
+$\operatorname{tr}_2$ and Frobenius $S_2$. At $p=2$ its physical orbit is
+$(\alpha,\alpha^2)$ in $\mathbb F_4$, where $\alpha^2=\alpha+1$.
+The ambient probability of this qubit sector is $(t-1)/t$; the normalized
+qubit remains after division by that vanishing weight. For $r=4$ the
+conditional algebra is $M_2\oplus M_4$:
+\[
+ (\lambda_{4,2}(t),\lambda_{4,4}(t))
+   =\left(\frac1{t^2+t+1},\frac{t(t+1)}{t^2+t+1}\right).
+\]
+Its weights change from $(1/7,6/7)$ at $t=2$ to $(1/3,2/3)$ at one.
+Frobenius remains measurable on both blocks.
+
+\subsection{Composition and retained subfield information}
+
+\begin{definition}[Orbit processes and coherent independent composition]
+Objects are finite ordered words $R=(r_1,\ldots,r_n)$, $r_j\geq2$, and
+finite nonempty tagged families of such words. A word has algebra
+$\mathcal O_R^+=\bigotimes_j\mathcal O_{r_j}^+$, product reference
+$\omega_{R,t}=\bigotimes_j\omega_{r_j,t}$, and ambient weight
+$W_R(t)=\prod_j w_{r_j}(t)$. The empty word has algebra $\mathbb C$;
+tagged families have direct sum algebras. Processes are complex-linear
+CPTP maps in the Schr\"odinger orientation, with ordinary sum-of-blocks
+trace. Equality is equality of linear maps; composition is composition
+and independent tensor pairs tags. Frobenius is conjugation by
+$\bigotimes_j u_{r_j}^+$.
+
+For $2\leq r\mid s$, let $e_{r,s}$ be identity on the blocks $d\mid r$,
+$d>1$, in $\mathcal O_s^+$ and zero elsewhere. The encoding $j_{r,s}$
+inserts zero blocks. The retained decoder sends $\rho$ to
+\[
+ \left((\rho_d)_{d\mid r,d>1},\ (1-e_{r,s})\rho(1-e_{r,s})\right)
+ \quad\text{in }\mathcal O_r^+\oplus\mathcal O_s^+,
+\]
+with success and failure tags, respectively. Denote its reference success
+probability by $h_{r,s}(t)=(t^r-t)/(t^s-t)$ for $t>1$, and by
+$h_{r,s}(1)=(r-1)/(s-1)$ at one.
+
+For $d,e\geq1$, set $g=\gcd(d,e)$ and $l=\operatorname{lcm}(d,e)$.
+The reblocking is
+\[
+ B_{d,e}:\mathbb C^g\otimes\mathbb C^l\longrightarrow
+                  \mathbb C^d\otimes\mathbb C^e,
+ \qquad |a,k\rangle\longmapsto|k\bmod d,a+k\bmod e\rangle,
+ \quad 0\leq a<g,\quad0\leq k<l.
+\]
+Its multiplicity factor is quantum. Iterated reblockings are compared
+through the same ordered Cartesian basis. The word length records order
+of ambient vanishing and is not a Clifford level.
+\end{definition}
+\begin{scope}
+The CP envelope is not asserted to be the image of all arithmetic source
+processes. Arithmetic comparison covers the marked observables and the
+specified gates and block instruments.
+\end{scope}
+\provenance{D1333}{definitions.md}{orbit checker B4--B5}{not yet independently reviewed}
+
+\begin{proposition}[Positive composition and conditional descent]
+\statusSketch\quad
+The word and tagged algebras above form symmetric monoidal CPTP categories
+with continuous product reference states for every $t\geq1$. Continuous
+CPTP matrix families evaluate functorially at one. Standard subfield
+inclusions with coherent orbit origins give the stated block encodings
+and retained decoders, commute with Frobenius, and compose on success
+along towers. Their reference success probability is $h_{r,s}(t)$.
+The reblocking is unitary and satisfies
+\[
+ B_{d,e}^*(S_d\otimes S_e)B_{d,e}=I_g\otimes S_l,
+ \qquad M_d\otimes M_e\simeq M_g\otimes M_l.
+\]
+Iterated reblockings have coherent unitary connectors through the common
+Cartesian basis.
+\end{proposition}
+\begin{scope}
+Independent tensor retains coherence between simultaneous Frobenius
+orbits. It is not identified with a field compositum or with a classical
+sum over those orbits. Arbitrary named embeddings require their own
+orbit-coordinate transport. Full decoder histories keep their tags.
+The prime-field register has no moving sector and is not a conditional atom.
+\end{scope}
+\provenance{FRL-COMP}{orbit-composition.md, Sections 1--3}
+{orbit checker B4--B5}{not yet independently reviewed}
+
+The cycle-pair formula follows by solving two congruences for $k$, with
+$a$ the residue of the difference of the two output labels modulo $g$.
+Its set-level counterpart is the gcd/lcm product in the necklace algebra
+(Yoshida, Section~2.2, p.~127). For two degree-two cycles, the quantum
+algebra is $M_4$, and Frobenius becomes $I_2\otimes S_2$ after reblocking.
+Replacing it by $M_2\oplus M_2$ dephases the two orbits
+$\{00,11\}$ and $\{01,10\}$. On the state
+$(|00\rangle+|01\rangle)/\sqrt2$, that dephasing reduces the return
+probability from one to $1/2$.
+
+Inclusion is equally concrete: a label belongs to $\mathbb F_{p^r}$ inside
+$\mathbb F_{p^s}$ exactly when its period divides $r$. The matching
+divisor blocks give the decoder. At the conditional boundary, the
+degree-two inclusion into degree four succeeds on the reference state
+with probability $1/3$. Two independent decoders retain all four
+probabilities $1/9,2/9,2/9,4/9$.
+
+\subsection{Higher interactions and the remaining mixed construction}
+
+\begin{definition}[Multiplication cuts and Fourier-transported sectors]
+Let $E$ be a finite field of size $Q$, and let $d\geq1$ separate controls
+and a separate target carry the gate
+\[
+ M_E^{(d)}|x_1,\ldots,x_d,z\rangle
+ =|x_1,\ldots,x_d,z+\textstyle\prod_j x_j\rangle.
+\]
+Put $P_{E,d}^{\rm nz}=(I-|0\rangle\langle0|)^{\otimes d}\otimes I$,
+$\tau_{E,d}=\operatorname{Tr}/Q^{d+1}$, and
+$v_{E,d}=P_{E,d}^{\rm nz}M_E^{(d)}P_{E,d}^{\rm nz}$.
+The corner trace is
+$\tau_{E,d}^{\rm nz}(a)=\tau_{E,d}(a)/\tau_{E,d}(P_{E,d}^{\rm nz})$.
+On a specified word, $P_A^{\rm nz}$ tests nonzero labels precisely on
+the register subset $A$.
+For $E=\mathbb F_{p^r}$, let
+$F_E|x\rangle=Q^{-1/2}\sum_y\exp(-2\pi i\operatorname{Tr}_{E/\mathbb F_p}(xy)/p)|y\rangle$
+and put $P_r^{\rm dual}=F_EP_r^{\rm mov}F_E^*$.
+\end{definition}
+\begin{scope}
+Nonzero controls, moving Frobenius labels and their Fourier-transported
+cuts are distinct tests.
+\end{scope}
+\provenance{D1306, D1308, D1334}{definitions.md}{orbit checker B6}
+{arithmetic definitions admitted; new cuts not yet independently reviewed}
+
+\begin{proposition}[Active weights and interaction order]
+\statusSketch\quad
+For every finite field $E$, every $d\geq1$, and the traces just specified,
+write $w=((Q-1)/Q)^d$. Then
+\[
+ \tau_{E,d}(P_{E,d}^{\rm nz})=w,\quad
+ \tau_{E,d}(M_E^{(d)})=1-w,\quad
+ \tau_{E,d}((M_E^{(d)}-I)^*(M_E^{(d)}-I))=2w.
+\]
+The corner gate is unitary, with trace zero and conditional squared
+difference from its corner identity equal to two. Frobenius and field
+inclusions preserve these nonzero-control cuts. On one word,
+$P_A^{\rm nz}P_B^{\rm nz}=P_{A\cup B}^{\rm nz}$, with reference weight
+$((Q-1)/Q)^{|A\cup B|}$. Independently conditioned moving-orbit words obey
+\[
+ W_R(t)=\left(\prod_{j=1}^n(r_j-1)\right)(t-1)^n
+         +O((t-1)^{n+1}).
+\]
+\end{proposition}
+\begin{scope}
+These are trace and counting identities, not operator-norm convergence.
+The multiplication family's order $d$ matches its interaction arity and
+exact Clifford level $d+1$; no general equivalence is asserted.
+\end{scope}
+\provenance{FRL-ACTIVE}{orbit-composition.md, Sections 4--5}
+{orbit checker B6}{not yet independently reviewed}
+
+There are $(Q-1)^d$ active control tuples. Each gives a nonzero translation
+of the target, with no fixed labels; all other tuples give the identity.
+This proves the traces by counting permutation fixed points. Overlapping
+controls are counted once, which explains why their vanishing orders need
+not add. Independent moving factors do multiply, and must retain that
+order information even after their individual normalizations.
+
+The extension to mixed arithmetic processes needs more structure. In three
+$\mathbb F_4$ registers, multiplication sends
+$(\alpha,\alpha,\alpha^2)$ to $(\alpha,\alpha,0)$, leaving the tensor
+of moving-label sectors. Also, for the normalized trace-fibre inclusion
+$V|a\rangle=|\ker\operatorname{Tr}_{E/K}|^{-1/2}
+\sum_{\operatorname{Tr}_{E/K}(x)=a}|x\rangle$, the map
+$\mathbb F_2\subset\mathbb F_4$ has
+$V|0\rangle=(|0\rangle+|1\rangle)/\sqrt2$; its nonzero cut does not
+intertwine with $V$. Finally the Fourier matrix has constant squared
+entry modulus $1/Q$, giving
+\[
+ \frac{\operatorname{Tr}(P_r^{\rm mov}P_r^{\rm dual})}{p^r}
+ =(1-p^{1-r})^2.
+\]
+This is an overlap of possibly noncommuting projections, not an intersection
+dimension. It supplies a definite second-order mixed datum. The next
+construction must retain the two charts, their measured transitions and
+the arithmetic multiplication and transfer relations in one positive
+section algebra. The present Frobenius orbit family supplies a concrete
+positive starting point for that task.
+\provenance{D1304, FRL-ACTIVE}{orbit-composition.md, Section 5}
+{orbit checker B6}{supporting scope calculations; no additional promotion}
