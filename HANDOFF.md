@@ -4,13 +4,106 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-08, field-extension and Frobenius research handoff. The
-user's latest direction is recorded immediately below and takes priority
-over the older next-step lists. This turn records the discussion only;
-no new proof campaign or claim promotion is running. The mainline FCR-2
-state remains the interrupted 2026-09-01 state.
+Updated: 2026-09-08, Frobenius/hierarchy package reviewed and integrated.
+The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## Latest completed research — Frobenius, codes and higher Clifford levels
+
+The user approved adjusting the input category to symplectic spaces,
+isotropic/Lagrangian flags and arithmetic descent data, with Frobenius
+morphisms, a CP realization and enough retained arithmetic structure for a
+nontrivial p-to-one endpoint. They emphasized higher Clifford *levels*, not
+higher categorical groups, and explicitly requested planning/orchestration.
+
+The staged work order is `briefs/frobenius-hierarchy-target.md`. The first
+arithmetic stage is now integrated: ten new PROVED claims, seventeen numbered
+definitions, five structured proof shards, one standalone exact checker,
+and two self-contained labbook sections. Full register: **117 claims,
+96 PROVED, 19 SKETCH, one CONJECTURE, one REFUTED; 125 definitions**.
+No earlier claim status changed. The marked-module drafts remain separate.
+
+The admitted results are:
+
+- FRB-TRACE/FROB: all-p trace symplectic geometry, exact Frobenius/Weyl
+  covariance and order, and atomic tensor factorization with a named
+  position basis and trace-dual momentum basis.
+- FRB-CODE/TRANSFER: the subfield support code stabilized by
+  Z_E(ker Tr_E/K), logical momentum through the relative-trace quotient,
+  and inclusion/normalized trace-fibre isometries with exact Fourier and
+  field-tower coherence.
+- FRB-HIERARCHY/NATURAL: M_E^(d) has exact prime-field Clifford level d+1
+  for every p and every d>=1, commutes with simultaneous Frobenius and
+  intertwines subfield encodings; its logical action has that same exact
+  level. Separate registers prevent small-characteristic degree collapse.
+- FRB-EXAMPLE: in F2[a]/(a²+a+1) subset K[b]/(b²+b+a), Frobenius is
+  (u,v)->(u²+av²,v²), with square (u+v,v) and order four. The support code
+  has dimension four; the square's invariant-vector space has dimension ten.
+- FRP-CAT/CP/DESCENT: a small typed arithmetic amplitude presentation,
+  source-certified CP instruments, explicit preparations/discards and
+  retained decoders. Success returns the smaller register; failure retains
+  the ambient register. Tower histories and independent partial successes
+  are typed explicitly, and the full Fourier decoder square holds.
+
+For d=2 the Fourier-conjugated multiplication gate on the uniform product
+state has return probability (2Q-1)^2/Q^4; at Q=2 it is 9/16. This is a
+specified coherent experiment, not a claimed positive q-to-one family.
+
+The amplitude coefficient field is Q(zeta_p,sqrt(p)); at p=2 this is a real
+arithmetic fragment, not the full Clifford category. Its Hilbert and CP
+interpretations are not claimed faithful or complete for arbitrary complex
+states/CP maps. Higher hierarchy levels label generators and are not assumed
+composition-closed. General isotropic contexts attach to the objects, but
+not every context has an admitted process generator. Preserve these scopes.
+
+Two blind native critics returned PASS with no FATAL/MAJOR. Four minor fixes
+were made in one repair wave: one dependency edge, a fixed countable name
+universe, normalized endpoint trace language, and removal of a tautological
+A5 subcheck. Root verified the fixes mechanically. Adjudication:
+`theory/verdicts/frobenius-hierarchy-adjudication.md`; both detailed verdicts
+are adjacent. Native agents inherited their runtime models; exact model
+metadata was unavailable and this is stated on the records.
+
+The final new checker has **263857 exact green assertions and twenty
+independent named red mutations** (plain --red is an alias). The final
+source hash is 946ca4584424329e85b92107664d24c89942f194de42dd0737ddc372d77d8c12.
+A disabled-gate copy correctly produces mutated PASS/exit0, proving that the
+red option does not force nonzero status independently of the mathematical
+check. Frozen results, version boundaries and independent reviewer outputs
+are in `numerics/frobenius-hierarchy/results/`.
+
+Final verification: the integrated PDF builds to **128 pages**.
+`scripts/session-close.sh` passed all **18 standalone green runs and 143
+advertised red-mode runs**; every red reached a nonzero exit. The five new
+proof-shard size bounds, five primary-source hashes, claim-DAG acyclicity
+and register counts were checked; representative hierarchy and process pages
+were visually inspected. `numerics/frobenius-hierarchy/results/SESSION-CLOSE.json`
+records the exact checker/mode list and hashes. All research/review lanes
+are complete. This record is included in the session-close publication commit;
+use the containing git commit for its identifier.
+
+## Next primary target — a coupled positive incidence/phase comparison
+
+`docs/research-plans/frobenius-coupled-limit.md` gives the next bounded
+proposal and six witness tests. It separates incidence q from a retained
+cyclotomic phase level N, with arithmetic comparisons q=p^r,N=p for
+extension-linear contexts and q=p at the larger restriction-of-scalars rank.
+It proposes coupled isotropic constraint operators, actual Frobenius and
+multiplication tables, code/trace transfers and the type-C decomposable
+correspondence. The positive mixed section algebra and relation-preserving
+comparison functor are **not constructed or admitted** by this package.
+
+Start with F2 subset F4, one marked code isotropic, Frobenius, multiplication,
+and a binary type-C composition correspondence. Require a surviving measured
+arithmetic distinction, genuine noncommutativity, a named positive reference
+trace, all transfer/Fourier diagrams and composition coherence. Formal labels,
+a freely adjoined matrix factor, or separately lifted endpoint gates do not
+meet this target. The physical normalized trace p^(1-r) would force a
+trace-one endpoint unitary to be identity; the statement requires tau(1)=1.
+The fixed-N proposal retains substantial arithmetic data initially and must
+be assessed as that specific comparison, not advertised as the full p->1
+limit of every Weyl system. The existing positive Hecke family is the benchmark.
 
 ## Latest steering — field extensions, Frobenius and operational descent
 
@@ -260,10 +353,11 @@ Existing mirabolic regular-versus-singular boundary distinctions are relevant.
   and Comfort 2304.10584 (Lagrangian/coisotropic stabilizer relations with
   their stated scalar/normalization scopes). See `refs/LEDGER.md`.
 
-The two new arXiv papers were read from PDFs, with temporary extracts at
-`/tmp/aqm-field-extension-reading/{shintani,vourdas}.{pdf,txt}`. These paths
-are not durable source registration. Fetch into refs/, verify title/hash
-and register precise locators before a formal admission relying on them.
+The two arXiv papers initially had temporary extracts under
+`/tmp/aqm-field-extension-reading/`. The 2026-09-08 hierarchy campaign has
+now fetched and registered durable local snapshots under
+`refs/frobenius-hierarchy/1303.5141/` and `quant-ph-0605054/`; precise
+locators and hashes are in refs/LEDGER.md.
 
 Exact one-off scratch computations (not a new committed checker or a general
 proof) verified F4 Frobenius=SWAP, trace 2/fixed-vector dimension 3, the

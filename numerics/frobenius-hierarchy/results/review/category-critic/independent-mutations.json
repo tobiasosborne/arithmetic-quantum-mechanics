@@ -1,0 +1,96 @@
+{
+  "bad_born_reference": {
+    "sha256": "5a127f1a8ab2d1ef73b88baac1b29153a7e41aea031447e4e8a09b61d1b14b0d",
+    "exit": 1,
+    "counts": {
+      "A1-Weyl": 158528,
+      "A1-symplectic": 76618,
+      "A2-code": 63,
+      "A2-logical": 1159,
+      "A3-Fourier": 820,
+      "A3-normalization": 6,
+      "A3-transfer": 373,
+      "A4-embedding": 537,
+      "A4-multiplication": 19499,
+      "A5-interference": 3,
+      "A5-strict": 22,
+      "A5-upper": 3322,
+      "A6-tower": 50,
+      "A7-CP": 10,
+      "A7-PREP": 478,
+      "A7-types": 1
+    },
+    "diagnostic": "J: basis/coherent/mixed success sentinels {'mixed': '1/2', 'code': '1', 'complement': '0', 'coherent': '1/2'}",
+    "failed_gate": "A7-CP",
+    "mutation": null,
+    "status": "FAIL"
+  },
+  "erase_named_type_check": {
+    "sha256": "b5b066a7faad45a980e697e22e796e83ac85135938f530f3cfc01d09757d834e",
+    "exit": 1,
+    "counts": {
+      "A1-Weyl": 158528,
+      "A1-symplectic": 76618,
+      "A2-code": 63,
+      "A2-logical": 1159,
+      "A3-Fourier": 820,
+      "A3-normalization": 6,
+      "A3-transfer": 373,
+      "A4-embedding": 537,
+      "A4-multiplication": 19499,
+      "A5-interference": 3,
+      "A5-strict": 22,
+      "A5-upper": 3322,
+      "A6-tower": 50,
+      "A7-CP": 10,
+      "A7-PREP": 478,
+      "A7-tower": 514,
+      "A7-types": 3
+    },
+    "diagnostic": "J: illegal compositing was accepted",
+    "failed_gate": "A7-types",
+    "mutation": null,
+    "status": "FAIL"
+  },
+  "exit_status_sentinel": {
+    "exit": 0,
+    "status": "PASS",
+    "counts": {
+      "A7-CP": 20,
+      "A7-Fourier": 2,
+      "A7-PREP": 478,
+      "A7-boundary": 1,
+      "A7-parallel": 2078,
+      "A7-tower": 1028,
+      "A7-types": 6
+    }
+  },
+  "reverse_tensor_slots": {
+    "exit": 1,
+    "sha256": "7902369e6c4a86792536a7288b44c60df44418ed714fc93f09fe78f3db2e5e43",
+    "counts": {
+      "A1-Weyl": 158528,
+      "A1-symplectic": 76618,
+      "A2-code": 63,
+      "A2-logical": 1159,
+      "A3-Fourier": 820,
+      "A3-normalization": 6,
+      "A3-transfer": 373,
+      "A4-embedding": 537,
+      "A4-multiplication": 19499,
+      "A5-interference": 3,
+      "A5-strict": 22,
+      "A5-upper": 3322,
+      "A6-tower": 50,
+      "A7-CP": 10,
+      "A7-PREP": 478,
+      "A7-parallel": 262,
+      "A7-tower": 514,
+      "A7-types": 3
+    },
+    "diagnostic": "J: tensor branch ('s', 'f') type/effect",
+    "failed_gate": "A7-parallel",
+    "mutation": null,
+    "status": "FAIL"
+  }
+}

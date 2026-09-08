@@ -1,0 +1,608 @@
+{
+  "date": "2026-09-08",
+  "suite": "scripts/session-close.sh",
+  "exit_code": 0,
+  "green_count": 18,
+  "green_checkers": [
+    "f1_check.py",
+    "f1_limit_bridge_check.py",
+    "f1_limit_check.py",
+    "f1_limit_karoubi_check.py",
+    "f1_limit_mirabolic_check.py",
+    "f1_limit_module_check.py",
+    "f1_limit_wiring_check.py",
+    "f1_operational_check.py",
+    "fcr2_beta_check.py",
+    "fcr_local_check.py",
+    "frobenius_hierarchy_check.py",
+    "small_rings_catalogue_check.py",
+    "beta_census.py",
+    "fp_symmetry.py",
+    "frame_mu.py",
+    "funct_sections.py",
+    "split24.py",
+    "wh_kappa_check.py"
+  ],
+  "red_run_count": 143,
+  "red_runs": [
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-basis"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-ccr"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-cocycle"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-crowd"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-fourier"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-frame"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-fusion"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-hall"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-kernel"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-normal"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-order"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-pairing"
+    },
+    {
+      "checker": "f1_check.py",
+      "mode": "--red-tensor"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "mode": "--red-dual-reversal"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "mode": "--red-fourier"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "mode": "--red-shuffle"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "mode": "--red-thin-block"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "mode": "--red-typec-scale"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-ancilla"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-braid"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-collective-identity"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-context"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-corner-ratio"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-cycle"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-density"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-descent"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-null-weight"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-outcome"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-polar"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-postselection"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-reference-trace"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "mode": "--red-valency"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "mode": "--red-classical"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "mode": "--red-cutoff"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "mode": "--red-density-ratio"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "mode": "--red-grading"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "mode": "--red-gram"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "mode": "--red-normalization"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "mode": "--red-affine-dec"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "mode": "--red-mir-expect"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "mode": "--red-mir-kernel"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "mode": "--red-mir-line"
+    },
+    {
+      "checker": "f1_limit_module_check.py",
+      "mode": "--red-module-expect"
+    },
+    {
+      "checker": "f1_limit_module_check.py",
+      "mode": "--red-module-marker"
+    },
+    {
+      "checker": "f1_limit_module_check.py",
+      "mode": "--red-module-shift"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "mode": "--red-backaction"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "mode": "--red-classical-trace"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "mode": "--red-history"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "mode": "--red-parallel-route"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "mode": "--red-sequential-route"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-amplified"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-apartment"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-bell-sign"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-context-lower"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-context-size"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-corner-trace"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-density-norm"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-expectation"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-flag"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-incidence"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-injection"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-kraus"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-kraus-mix"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-local-collapse"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-overlap"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-partial-comp"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-partial-dagger"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-partial-lax"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-partial-zero"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-positive-domain"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-product"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-refinement"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-tl-trace"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-trace"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "mode": "--red-unitary-braid"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-collapse"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-fake-epsilon"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-field"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-frobenius-blind"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-halfweyl"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-model-sign"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-profile"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-square"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "mode": "--red-transpose"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-dim"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-free-only"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-frobenius-blind"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-g6-arena-confusion"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-halfweyl-drop"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-nongenerating"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-profile-drop-identity"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-torsor"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "mode": "--red-transpose"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-code-phase-subfield"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-discard-omit-bra"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-embedding-coefficient-swap"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-fourier-failure-original-code"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-fourier-positive-kernel"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-frob-one-label"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-frobenius-no-shear"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-hierarchy-delete-factor"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-hierarchy-extra-register-term"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-instrument-double-success"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-interference-erase-phase"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-logical-momentum-inclusion"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-multiplication-as-addition"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-parallel-collapse-outcomes"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-process-wrong-target"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-relative-trace-projection"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-reset-global-as-local"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-sequential-reverse"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-trace-fibre-unnormalized"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "mode": "--red-weyl-positive-sign"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-catalogue"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-class-count"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-drop-nonfree"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-gram"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-middle-images"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-order-profile"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-ring-soc"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "mode": "--red-transpose-cocycle"
+    },
+    {
+      "checker": "beta_census.py",
+      "mode": "--red-arf-blind"
+    },
+    {
+      "checker": "beta_census.py",
+      "mode": "--red-iso"
+    },
+    {
+      "checker": "beta_census.py",
+      "mode": "--red-oddp-split"
+    },
+    {
+      "checker": "fp_symmetry.py",
+      "mode": "--red-kappa-linear"
+    },
+    {
+      "checker": "fp_symmetry.py",
+      "mode": "--red-sp-formula"
+    },
+    {
+      "checker": "frame_mu.py",
+      "mode": "--red-drop-linear"
+    },
+    {
+      "checker": "frame_mu.py",
+      "mode": "--red-mu2-always"
+    },
+    {
+      "checker": "funct_sections.py",
+      "mode": "--red-restrict"
+    },
+    {
+      "checker": "funct_sections.py",
+      "mode": "--red-section-exists"
+    },
+    {
+      "checker": "split24.py",
+      "mode": "--red-fibre"
+    },
+    {
+      "checker": "split24.py",
+      "mode": "--red-mu2split"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-beta-rigid"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-cocycle"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-dim"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-halfweyl"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-naive-order"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-nonisotropic"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-psi-polarization"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-symmetric"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "mode": "--red-trivial-char"
+    }
+  ],
+  "new_checker_assertions": 263857,
+  "new_checker_distinct_mutations": 20,
+  "new_checker_sha256": "946ca4584424329e85b92107664d24c89942f194de42dd0737ddc372d77d8c12",
+  "labbook_pages": 128,
+  "labbook_sha256": "1324d2f20486511c4e77f9a9a8920d3c3e5f7bafad3e5410c4c748d17b0537ef",
+  "full_log_sha256": "dfa7d7f316fa549d95795e9c4957b3884c4cad522b4e66d99d8b42d92513cd51",
+  "notes": "Plain --red aliases a named mutation; the full-suite count includes every separately advertised checker/mode. Mathematical status rests on reviewed structured proofs."
+}

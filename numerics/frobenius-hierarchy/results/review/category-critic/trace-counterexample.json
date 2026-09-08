@@ -1,0 +1,11 @@
+{
+  "unitary_diagonal": [
+    1,
+    1,
+    -1
+  ],
+  "ordinary_trace_of_identity": 3,
+  "ordinary_trace_of_U": 1,
+  "ordinary_trace_of_U_minus_I_star_U_minus_I": 4,
+  "normalized_trace_of_U": "1/3"
+}

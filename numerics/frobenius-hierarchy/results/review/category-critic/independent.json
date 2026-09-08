@@ -1,0 +1,50 @@
+[
+  {
+    "field_size": 4,
+    "Weyl_products": 256,
+    "dual_basis": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "tensor_J_probabilities": [
+      "1/2",
+      "0",
+      "0",
+      "1/2"
+    ],
+    "F_E_J=V_F_p": true,
+    "retained_Fourier_square_both_branches": true,
+    "coordinate_trace_dual_factorization": true,
+    "prep_discard": true
+  },
+  {
+    "field_size": 9,
+    "Weyl_products": 6561,
+    "dual_basis": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "tensor_J_probabilities": [
+      "1/2",
+      "0",
+      "0",
+      "1/2"
+    ],
+    "F_E_J=V_F_p": true,
+    "retained_Fourier_square_both_branches": true,
+    "coordinate_trace_dual_factorization": true,
+    "prep_discard": true
+  }
+]

@@ -1,0 +1,1318 @@
+{
+  "sha256": "85636a872152f896163c2cb42cf301400f591d21d97951ab8c391fc0c7971756",
+  "runs": [
+    {
+      "label": "frob-one-label",
+      "args": [
+        "--red-frob-one-label"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A1-Weyl": 229,
+          "A1-symplectic": 150
+        },
+        "diagnostic": "F4: labels (0, 2, 2, 0) give 1->0",
+        "failed_gate": "A1-symplectic",
+        "mutation": "frob-one-label",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "weyl-positive-sign",
+      "args": [
+        "--red-weyl-positive-sign"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A1-Weyl": 124,
+          "A1-symplectic": 103
+        },
+        "diagnostic": "F3: reference cocycle labels (1, 0, 0, 1, 0) phase 0 != 2",
+        "failed_gate": "A1-Weyl",
+        "mutation": "weyl-positive-sign",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "code-phase-subfield",
+      "args": [
+        "--red-code-phase-subfield"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A2-code": 7,
+          "A2-logical": 36
+        },
+        "diagnostic": "F2->F8: stabilizers=[0, 1], true=[0, 2, 4, 6]; support=[0, 2, 4, 6], expected=[0, 1]",
+        "failed_gate": "A2-code",
+        "mutation": "code-phase-subfield",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "logical-momentum-inclusion",
+      "args": [
+        "--red-logical-momentum-inclusion"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A2-code": 6,
+          "A2-logical": 20
+        },
+        "diagnostic": "F2->F4: logical 1, lift 1, input 1, phase 0 != 1",
+        "failed_gate": "A2-logical",
+        "mutation": "logical-momentum-inclusion",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "relative-trace-projection",
+      "args": [
+        "--red-relative-trace-projection"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A3-transfer": 11
+        },
+        "diagnostic": "F2->F4: trace pairing (1, 1) gives 0!=1",
+        "failed_gate": "A3-transfer",
+        "mutation": "relative-trace-projection",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "fourier-positive-kernel",
+      "args": [
+        "--red-fourier-positive-kernel"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A3-Fourier": 397,
+          "A3-normalization": 4,
+          "A3-transfer": 216
+        },
+        "diagnostic": "F3->F9: Fourier entry (1, 1) phase 2!=1; squared normalizations 9,9",
+        "failed_gate": "A3-Fourier",
+        "mutation": "fourier-positive-kernel",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "trace-fibre-unnormalized",
+      "args": [
+        "--red-trace-fibre-unnormalized"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A3-normalization": 1,
+          "A3-transfer": 21
+        },
+        "diagnostic": "F2->F4: fibre denominator square 1, size 2",
+        "failed_gate": "A3-normalization",
+        "mutation": "trace-fibre-unnormalized",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "multiplication-as-addition",
+      "args": [
+        "--red-multiplication-as-addition"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A4-multiplication": 21
+        },
+        "diagnostic": "F2, d=2: input (0, 1, 0), increment 1, product 0",
+        "failed_gate": "A4-multiplication",
+        "mutation": "multiplication-as-addition",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "embedding-coefficient-swap",
+      "args": [
+        "--red-embedding-coefficient-swap"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A4-embedding": 203,
+          "A4-multiplication": 19499
+        },
+        "diagnostic": "F4->F16, d=1, state=(0, 1): (0, 4)!=(0, 1)",
+        "failed_gate": "A4-embedding",
+        "mutation": "embedding-coefficient-swap",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "hierarchy-extra-register-term",
+      "args": [
+        "--red-hierarchy-extra-register-term"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A5-interference": 1,
+          "A5-strict": 2,
+          "A5-upper": 39
+        },
+        "diagnostic": "F2 d=2: claimed C_3 has nonzero order-4 difference space; dimensions=[15, 11, 5, 1]",
+        "failed_gate": "A5-upper",
+        "mutation": "hierarchy-extra-register-term",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "hierarchy-delete-factor",
+      "args": [
+        "--red-hierarchy-delete-factor"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A5-strict": 1,
+          "A5-upper": 14
+        },
+        "diagnostic": "F2 d=1: observed d-fold separate-control difference is constant [0]; cannot exclude C_1",
+        "failed_gate": "A5-strict",
+        "mutation": "hierarchy-delete-factor",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "interference-erase-phase",
+      "args": [
+        "--red-interference-erase-phase"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A5-interference": 1,
+          "A5-strict": 2,
+          "A5-upper": 30
+        },
+        "diagnostic": "F2: coherent return amplitude (Fraction(1, 1),) != 3/4",
+        "failed_gate": "A5-interference",
+        "mutation": "interference-erase-phase",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "frobenius-no-shear",
+      "args": [
+        "--red-frobenius-no-shear"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A6-tower": 13
+        },
+        "diagnostic": "F16 element (a0,b0)=(0,1): formula=4, square=6",
+        "failed_gate": "A6-tower",
+        "mutation": "frobenius-no-shear",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "process-wrong-target",
+      "args": [
+        "--red-process-wrong-target"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A7-types": 1
+        },
+        "diagnostic": "J: decoder success target does not match its rectangular Kraus shape",
+        "failed_gate": "A7-types",
+        "mutation": "process-wrong-target",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "instrument-double-success",
+      "args": [
+        "--red-instrument-double-success"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A7-CP": 1,
+          "A7-types": 1
+        },
+        "diagnostic": "J: retained success/failure effects do not sum to identity",
+        "failed_gate": "A7-CP",
+        "mutation": "instrument-double-success",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "sequential-reverse",
+      "args": [
+        "--red-sequential-reverse"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A7-CP": 10,
+          "A7-tower": 1,
+          "A7-types": 1
+        },
+        "diagnostic": "J: reversed decoders cannot compose E->L->K",
+        "failed_gate": "A7-tower",
+        "mutation": "sequential-reverse",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "parallel-collapse-outcomes",
+      "args": [
+        "--red-parallel-collapse-outcomes"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A7-CP": 10,
+          "A7-parallel": 1,
+          "A7-tower": 514,
+          "A7-types": 3
+        },
+        "diagnostic": "J: independent ordered outcome pair was collapsed: [('s', 's'), ('s', 'f'), ('f', 'f')]",
+        "failed_gate": "A7-parallel",
+        "mutation": "parallel-collapse-outcomes",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "reset-global-as-local",
+      "args": [
+        "--red-reset-global-as-local"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A7-CP": 20,
+          "A7-Fourier": 2,
+          "A7-boundary": 1,
+          "A7-parallel": 2078,
+          "A7-tower": 1028,
+          "A7-types": 6
+        },
+        "diagnostic": "global reset erases the second successful output; it differs from independent local reset",
+        "failed_gate": "A7-boundary",
+        "mutation": "reset-global-as-local",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "fourier-failure-original-code",
+      "args": [
+        "--red-fourier-failure-original-code"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A7-CP": 20,
+          "A7-Fourier": 2,
+          "A7-parallel": 2078,
+          "A7-tower": 1028,
+          "A7-types": 6
+        },
+        "diagnostic": "Fourier-dual failure branch Q_V F_E differs from F_E Q_J",
+        "failed_gate": "A7-Fourier",
+        "mutation": "fourier-failure-original-code",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "default-red",
+      "args": [
+        "--red"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A1-Weyl": 229,
+          "A1-symplectic": 150
+        },
+        "diagnostic": "F4: labels (0, 2, 2, 0) give 1->0",
+        "failed_gate": "A1-symplectic",
+        "mutation": "frob-one-label",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "green",
+      "args": [],
+      "exit_code": 0,
+      "result": {
+        "counts": {
+          "A1-Weyl": 158528,
+          "A1-symplectic": 76618,
+          "A2-code": 63,
+          "A2-logical": 1159,
+          "A3-Fourier": 820,
+          "A3-normalization": 6,
+          "A3-transfer": 373,
+          "A4-embedding": 537,
+          "A4-multiplication": 19499,
+          "A5-interference": 3,
+          "A5-strict": 22,
+          "A5-upper": 3322,
+          "A6-tower": 50,
+          "A7-CP": 20,
+          "A7-Fourier": 2,
+          "A7-boundary": 1,
+          "A7-parallel": 2078,
+          "A7-tower": 1028,
+          "A7-types": 6
+        },
+        "mutation": null,
+        "records": {
+          "A1-F16": {
+            "frobenius": [
+              0,
+              1,
+              3,
+              2,
+              6,
+              7,
+              5,
+              4,
+              13,
+              12,
+              14,
+              15,
+              11,
+              10,
+              8,
+              9
+            ],
+            "nondegenerate": true,
+            "q": 16,
+            "trace": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "A1-F2": {
+            "frobenius": [
+              0,
+              1
+            ],
+            "nondegenerate": true,
+            "q": 2,
+            "trace": [
+              0,
+              1
+            ]
+          },
+          "A1-F3": {
+            "frobenius": [
+              0,
+              1,
+              2
+            ],
+            "nondegenerate": true,
+            "q": 3,
+            "trace": [
+              0,
+              1,
+              2
+            ]
+          },
+          "A1-F4": {
+            "frobenius": [
+              0,
+              1,
+              3,
+              2
+            ],
+            "nondegenerate": true,
+            "q": 4,
+            "trace": [
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          "A1-F8": {
+            "frobenius": [
+              0,
+              1,
+              4,
+              5,
+              6,
+              7,
+              2,
+              3
+            ],
+            "nondegenerate": true,
+            "q": 8,
+            "trace": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          "A1-F9": {
+            "frobenius": [
+              0,
+              1,
+              2,
+              6,
+              7,
+              8,
+              3,
+              4,
+              5
+            ],
+            "nondegenerate": true,
+            "q": 9,
+            "trace": [
+              0,
+              2,
+              1,
+              0,
+              2,
+              1,
+              0,
+              2,
+              1
+            ]
+          },
+          "A2-F2->F16": {
+            "phase_stabilizers": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "support": [
+              0,
+              1
+            ],
+            "trace_fibres": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ]
+            ]
+          },
+          "A2-F2->F4": {
+            "phase_stabilizers": [
+              0,
+              1
+            ],
+            "support": [
+              0,
+              1
+            ],
+            "trace_fibres": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ]
+          },
+          "A2-F2->F8": {
+            "phase_stabilizers": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "support": [
+              0,
+              1
+            ],
+            "trace_fibres": [
+              [
+                0,
+                2,
+                4,
+                6
+              ],
+              [
+                1,
+                3,
+                5,
+                7
+              ]
+            ]
+          },
+          "A2-F3->F9": {
+            "phase_stabilizers": [
+              0,
+              3,
+              6
+            ],
+            "support": [
+              0,
+              1,
+              2
+            ],
+            "trace_fibres": [
+              [
+                0,
+                3,
+                6
+              ],
+              [
+                2,
+                5,
+                8
+              ],
+              [
+                1,
+                4,
+                7
+              ]
+            ]
+          },
+          "A2-F4->F16": {
+            "phase_stabilizers": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "support": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "trace_fibres": [
+              [
+                0,
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                8,
+                9,
+                10,
+                11
+              ],
+              [
+                12,
+                13,
+                14,
+                15
+              ]
+            ]
+          },
+          "A3-tower": {
+            "F4_frobenius_orbits": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "absolute_trace_F16": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "character_restriction_F4_F2": [
+              0,
+              0
+            ],
+            "fibre_denominator_squares": [
+              2,
+              4,
+              8
+            ],
+            "relative_trace_F16_F4": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              2,
+              2,
+              2,
+              2,
+              3,
+              3,
+              3,
+              3
+            ]
+          },
+          "A4-F4->F16": {
+            "a_times_a_in_F4": 3,
+            "embedded_a_times_a_in_F16": 3,
+            "embedding": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "tested_control_counts": [
+              1,
+              2,
+              3
+            ]
+          },
+          "A5-F2-coherent": {
+            "amplitude": "3/4",
+            "return_probability": "9/16"
+          },
+          "A5-F2-d1": {
+            "all_translation_count": 4,
+            "certified_sample_level": 2,
+            "difference_space_dimensions": [
+              3,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 1,
+            "hilbert_dimension": 4,
+            "strict_control_difference_values": [
+              0,
+              1
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F2-d2": {
+            "all_translation_count": 8,
+            "certified_sample_level": 3,
+            "difference_space_dimensions": [
+              7,
+              4,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 1,
+            "hilbert_dimension": 8,
+            "strict_control_difference_values": [
+              0,
+              1
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F2-d3": {
+            "all_translation_count": 16,
+            "certified_sample_level": 4,
+            "difference_space_dimensions": [
+              15,
+              11,
+              5,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 1,
+            "hilbert_dimension": 16,
+            "strict_control_difference_values": [
+              0,
+              1
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F2-d4": {
+            "all_translation_count": 32,
+            "certified_sample_level": 5,
+            "difference_space_dimensions": [
+              31,
+              26,
+              16,
+              6,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 1,
+            "hilbert_dimension": 32,
+            "strict_control_difference_values": [
+              0,
+              1
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F3-coherent": {
+            "amplitude": "5/9",
+            "return_probability": "25/81"
+          },
+          "A5-F3-d1": {
+            "all_translation_count": 9,
+            "certified_sample_level": 2,
+            "difference_space_dimensions": [
+              3,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 2,
+            "hilbert_dimension": 9,
+            "strict_control_difference_values": [
+              0,
+              1,
+              2
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F3-d2": {
+            "all_translation_count": 27,
+            "certified_sample_level": 3,
+            "difference_space_dimensions": [
+              7,
+              4,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 2,
+            "hilbert_dimension": 27,
+            "strict_control_difference_values": [
+              0,
+              1,
+              2
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F3-d3": {
+            "all_translation_count": 81,
+            "certified_sample_level": 4,
+            "difference_space_dimensions": [
+              15,
+              11,
+              5,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 2,
+            "hilbert_dimension": 81,
+            "strict_control_difference_values": [
+              0,
+              1,
+              2
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F3-d4": {
+            "all_translation_count": 243,
+            "certified_sample_level": 5,
+            "difference_space_dimensions": [
+              31,
+              26,
+              16,
+              6,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 2,
+            "hilbert_dimension": 243,
+            "strict_control_difference_values": [
+              0,
+              1,
+              2
+            ],
+            "trace_dual_step": 1
+          },
+          "A5-F4-coherent": {
+            "amplitude": "7/16",
+            "return_probability": "49/256"
+          },
+          "A5-F4-d1": {
+            "all_translation_count": 16,
+            "certified_sample_level": 2,
+            "difference_space_dimensions": [
+              5,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 1,
+            "hilbert_dimension": 16,
+            "strict_control_difference_values": [
+              0,
+              1
+            ],
+            "trace_dual_step": 2
+          },
+          "A5-F4-d2": {
+            "all_translation_count": 64,
+            "certified_sample_level": 3,
+            "difference_space_dimensions": [
+              13,
+              7,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 1,
+            "hilbert_dimension": 64,
+            "strict_control_difference_values": [
+              0,
+              1
+            ],
+            "trace_dual_step": 2
+          },
+          "A5-F4-d3": {
+            "all_translation_count": 256,
+            "certified_sample_level": 4,
+            "difference_space_dimensions": [
+              29,
+              21,
+              9,
+              1,
+              0
+            ],
+            "final_scalar_exponent": 1,
+            "hilbert_dimension": 256,
+            "strict_control_difference_values": [
+              0,
+              1
+            ],
+            "trace_dual_step": 2
+          },
+          "A6-explicit": {
+            "b_squared": 6,
+            "fixed_basis_labels": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "order": 4,
+            "sigma": [
+              0,
+              1,
+              3,
+              2,
+              6,
+              7,
+              5,
+              4,
+              13,
+              12,
+              14,
+              15,
+              11,
+              10,
+              8,
+              9
+            ],
+            "sigma_squared": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              4,
+              7,
+              6,
+              10,
+              11,
+              8,
+              9,
+              15,
+              14,
+              13,
+              12
+            ],
+            "sigma_squared_orbits": [
+              [
+                0
+              ],
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                6,
+                7
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                14
+              ]
+            ]
+          },
+          "A7-Fourier-instrument": {
+            "success_and_failure_branch_equalities": true,
+            "success_denominator_square": 2,
+            "target_dimensions": [
+              2,
+              4
+            ]
+          },
+          "A7-J-decoder": {
+            "choi_positive_gram": true,
+            "outcome_types": {
+              "f": 4,
+              "s": 2
+            },
+            "success_probabilities": {
+              "code": "1",
+              "coherent": "1/2",
+              "complement": "0",
+              "mixed": "1/2"
+            }
+          },
+          "A7-J-parallel": {
+            "entangled_probabilities": {
+              "ff": "1/2",
+              "fs": "0",
+              "sf": "0",
+              "ss": "1/2"
+            },
+            "outcome_target_dimensions": {
+              "ff": 16,
+              "fs": 8,
+              "sf": 8,
+              "ss": 4
+            }
+          },
+          "A7-J-tower": {
+            "history_target_dimensions": {
+              "both_success": 2,
+              "first_fail": 16,
+              "first_success_second_fail": 4
+            },
+            "matrix_units_tested": 256
+          },
+          "A7-V-decoder": {
+            "choi_positive_gram": true,
+            "outcome_types": {
+              "f": 4,
+              "s": 2
+            },
+            "success_probabilities": {
+              "code": "1",
+              "coherent": "1/2",
+              "complement": "0",
+              "mixed": "1/2"
+            }
+          },
+          "A7-V-parallel": {
+            "entangled_probabilities": {
+              "ff": "1/4",
+              "fs": "1/4",
+              "sf": "1/4",
+              "ss": "1/4"
+            },
+            "outcome_target_dimensions": {
+              "ff": 16,
+              "fs": 8,
+              "sf": 8,
+              "ss": 4
+            }
+          },
+          "A7-V-tower": {
+            "history_target_dimensions": {
+              "both_success": 2,
+              "first_fail": 16,
+              "first_success_second_fail": 4
+            },
+            "matrix_units_tested": 256
+          },
+          "A7-reset-boundary": {
+            "global_diagonal": [
+              "1/4",
+              "1/4",
+              "1/4",
+              "1/4"
+            ],
+            "local_diagonal": [
+              "1/2",
+              "0",
+              "1/2",
+              "0"
+            ]
+          }
+        },
+        "status": "PASS"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "independent-expectation-data-mutation",
+      "args": [
+        "--red-critic-a5-data"
+      ],
+      "exit_code": 1,
+      "result": {
+        "counts": {
+          "A5-interference": 1,
+          "A5-strict": 2,
+          "A5-upper": 30
+        },
+        "diagnostic": "F2: coherent return amplitude (Fraction(3, 4),) != 1",
+        "failed_gate": "A5-interference",
+        "mutation": "critic-a5-data",
+        "status": "FAIL"
+      },
+      "stderr": ""
+    },
+    {
+      "label": "independent-surviving-red-exit",
+      "args": [
+        "--red-frob-one-label"
+      ],
+      "exit_code": 0,
+      "result": {
+        "counts": {
+          "A1-Weyl": 158528,
+          "A1-symplectic": 76618
+        },
+        "mutation": "frob-one-label",
+        "records": {
+          "A1-F16": {
+            "frobenius": [
+              0,
+              1,
+              3,
+              2,
+              6,
+              7,
+              5,
+              4,
+              13,
+              12,
+              14,
+              15,
+              11,
+              10,
+              8,
+              9
+            ],
+            "nondegenerate": true,
+            "q": 16,
+            "trace": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "A1-F2": {
+            "frobenius": [
+              0,
+              1
+            ],
+            "nondegenerate": true,
+            "q": 2,
+            "trace": [
+              0,
+              1
+            ]
+          },
+          "A1-F3": {
+            "frobenius": [
+              0,
+              1,
+              2
+            ],
+            "nondegenerate": true,
+            "q": 3,
+            "trace": [
+              0,
+              1,
+              2
+            ]
+          },
+          "A1-F4": {
+            "frobenius": [
+              0,
+              1,
+              3,
+              2
+            ],
+            "nondegenerate": true,
+            "q": 4,
+            "trace": [
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          "A1-F8": {
+            "frobenius": [
+              0,
+              1,
+              4,
+              5,
+              6,
+              7,
+              2,
+              3
+            ],
+            "nondegenerate": true,
+            "q": 8,
+            "trace": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          "A1-F9": {
+            "frobenius": [
+              0,
+              1,
+              2,
+              6,
+              7,
+              8,
+              3,
+              4,
+              5
+            ],
+            "nondegenerate": true,
+            "q": 9,
+            "trace": [
+              0,
+              2,
+              1,
+              0,
+              2,
+              1,
+              0,
+              2,
+              1
+            ]
+          }
+        },
+        "status": "PASS"
+      },
+      "stderr": ""
+    }
+  ]
+}

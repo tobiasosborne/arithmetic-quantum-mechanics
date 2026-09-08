@@ -1688,3 +1688,283 @@ CWIR-3 proves the resulting fibrewise congruence for products and contexts.
 No faithfulness of the entire circuit realization is stipulated. The
 explicit wiring D1218/CWIR-1--3 instantiates W; the general construction
 may also be read conditionally for another sound wiring presentation.
+
+## D1301 (trace-framed arithmetic register)
+
+Fix a prime `p` and a named primitive complex `p`-th root `zeta_p`.
+For a finite field `E/F_p` of cardinality `p^r`, the trace-framed arithmetic
+register retains the field `E`, its Hilbert space `H_E=l2(E)` with orthonormal
+basis `|x>` indexed by `x in E`, and the D3 trace character
+`psi_E(x)=zeta_p^(Tr_(E/F_p)(x))`.
+Its prime-field phase space is `S_E=E direct-sum E` with form
+`Omega_E((a,b),(a',b'))=Tr_(E/F_p)(ab'-a'b)`.
+The reference operators are the D8 operators
+`X_E(a)|x>=|x+a>`, `Z_E(b)|x>=psi_E(bx)|x>`,
+`W_E(a,b)=Z_E(-b)X_E(a)`.
+An ordered list of registers has the tensor-product Hilbert space and
+direct-sum prime-field phase space. The empty list has Hilbert space `C`.
+The field structures and ordered factors are retained data.
+
+## D1302 (arithmetic Frobenius operator)
+
+For a D1301 register, put `sigma_E(x)=x^p` and
+`U_E|x>=|sigma_E(x)>`. For a list, Frobenius means the tensor product of
+these operators. All uses retain D1301's named `p` and `zeta_p`.
+
+## D1303 (named embedding and transported relative trace)
+
+For D1301 registers over the same named `p,zeta_p`, a named field embedding
+`i:K->E`, `|K|=p^s`, and `r=ds`, define
+`T_i(x)=i^(-1)(sum_(j=0)^(d-1) x^(p^(sj)))` and `kappa_i=|ker T_i|`.
+Here `i^(-1)` is restricted to `i(K)`.
+For `j:L->K` the composite trace is denoted `T_(i j):E->L`.
+
+## D1304 (inclusion and normalized trace-fibre transfers)
+
+For a D1303 embedding, define linear maps `J_i,V_i:H_K->H_E` by
+`J_i|a>=|i(a)>` and
+`V_i|a>=kappa_i^(-1/2) sum_(T_i(x)=a)|x>`, using the positive real square
+root. Their reverse arrows are their Hilbert adjoints `J_i^*,V_i^*`.
+
+## D1305 (subfield support code and logical phase quotient)
+
+For a D1303 embedding, put `C_i=span_C{|i(a)>:a in K}`,
+`P_i=J_i J_i^*`, `N_i={0} direct-sum ker T_i`, and
+`G_i={Z_E(b):b in ker T_i}`.
+The proposed logical phase space is `N_i^perp/N_i`, where perpendicularity
+uses `Omega_E` of D1301. The logical coordinate map is
+`[(i(a),b)] |-> (a,T_i(b))` whenever `N_i^perp=i(K) direct-sum E`.
+Its well-definedness and symplectic property are claims, not stipulations.
+
+## D1306 (negative-kernel arithmetic Fourier transform)
+
+For a D1301 register define
+`F_E|x>=|E|^(-1/2) sum_(y in E) psi_E(-xy)|y>`, with positive real square
+root. A subscript on a tensor factor means that this operator acts there
+and the identity acts on every other factor.
+
+## D1307 (prime-field Pauli group and Clifford hierarchy)
+
+For an ordered D1301 list `A=(E_1,...,E_n)`, let
+`P_A={lambda tensor_j W_(E_j)(a_j,b_j):lambda in U(1)}`.
+Set `C_1(A)=P_A` and, recursively for `k>=1`,
+`C_(k+1)(A)={U unitary: U P U^* in C_k(A) for every P in P_A}`.
+The exact level of `U` is the least positive `k` with `U in C_k(A)`, if
+such a `k` exists. All scalar phases are included, in particular at `p=2`.
+These sets are not stipulated to be groups beyond the second level.
+
+## D1308 (reversible multiplication gates)
+
+For a D1301 register and integer `d>=1`, define the linear operator
+`M_E^(d)|x_1,...,x_d,z>=|x_1,...,x_d,z+product_(j=1)^d x_j>`
+on `H_E^(tensor(d+1))`. Each argument occupies a distinct register.
+
+## D1309 (phase polynomials and additive differences)
+
+For a D1301 list with configuration space `A=product_j E_j` and a function
+`f:A->F_p`, put `D_f|t>=zeta_p^(f(t))|t>` and
+`delta_h f(t)=f(t)-f(t-h)` for `h in A`.
+A polynomial of total degree at most `m` means a polynomial expression in
+the coordinates of named `F_p`-bases, representing `f`, with that degree
+bound. The condition concerns existence of such an expression; no unique
+polynomial representative is stipulated.
+
+## D1310 (the degree-four binary tower)
+
+Put `K=F_2[a]/(a^2+a+1)` and `E=K[b]/(b^2+b+a)`.
+The named embeddings are the constant embeddings `F_2->K->E`.
+Write an element of `E` as `(u,v)=u+vb`, with `u,v in K`, and use
+`zeta_2=-1`. Irreducibility and the resulting field orders are claims.
+
+## D1321 (named arithmetic register datum)
+
+Fix D1301's prime p and named root zeta_p. Choose a finite nonempty set F of
+explicit finite fields of characteristic p and a finite category I whose
+objects are these fields and whose arrows are named injective field maps,
+including identities and composites. Equality of field arrows means equality
+of their functions on the named finite sets. Polynomial presentations,
+element names and embeddings are retained choices. Put R_p=Q(zeta_p,sqrt(p)),
+with its given complex embedding, positive sqrt(p), and complex conjugation.
+At p=2 this coefficient field is real: the source is the specified arithmetic
+gate fragment, not the full Clifford category, which also has gates needing i.
+
+Quantum atoms are Q_E for E in F and C_i for each arrow i:K->E in I. A
+quantum word X is a finite ordered sequence of these atoms, including the
+empty word 1. Its tensor product is concatenation. Attach the prime-field
+symplectic space E direct-sum E, with D1301's trace form, to Q_E, and the
+D1305 quotient N_i^perp/N_i to C_i. Attach the orthogonal direct sum to a
+word. An isotropic context is a flag of F_p-isotropic subspaces of this
+attached space. Contexts are retained geometric data, not a quotient by a
+symmetry group and not the sole objects. There is no generator for every
+context in this definition. The atom C_i retains its ambient field,
+embedding and isotropic reduction label even when its Hilbert space is
+isomorphic to that of Q_K. No identification of Q_E tensor Q_L with one
+extension-field atom is imposed.
+
+## D1322 (arithmetic amplitude syntax)
+
+The pure source A_I has the words of D1321 as objects. Its terms are finite
+R_p-linear combinations of well-typed circuits generated by identities,
+symmetry swaps, tensor, composition, dagger, and the following arrows:
+
+| generator | source -> target | labels |
+|---|---|---|
+| w_E(a,b) | Q_E -> Q_E | a,b in E |
+| f_E, u_E | Q_E -> Q_E | negative Fourier; prime Frobenius |
+| m_(E,d) | Q_E^(d+1) -> Q_E^(d+1) | integer d>=1 |
+| j_i, v_i | Q_K -> Q_E | i:K->E in I |
+| e_E | 1 -> Q_E | zero preparation |
+| t_i | Q_K -> C_i | named logical identification |
+| c_i | C_i -> Q_E | code encoding |
+
+Dagger reverses the source and target and conjugates coefficients. Coefficient
+scalars are elements of R_p acting centrally on each Hom. General endomorphisms
+of the empty word may also contain closed circuit diagrams; they are not
+asserted to equal coefficient scalars. Equality is the least
+typed congruence generated by the R_p-linear dagger strict symmetric monoidal
+axioms and precisely D1323's relations. In particular, equality is not
+equality of Hilbert matrices, equality up to nonzero scalar, or equality of
+CP maps. A scalar is not discarded. Infinite sums are absent.
+
+## D1323 (arithmetic presentation relations)
+
+Use the notation of D1322, with r=[E:F_p], tensor powers in the given order,
+and composable i:K->L, j:L->E. Impose the following equations and their
+daggers, and no other arithmetic equations by default:
+
+1. `w_E(0,0)=1` and
+   `w_E(a,b)w_E(a',b')=psi_E(ab')w_E(a+a',b+b')`.
+   Each w_E(a,b) is unitary.
+2. f_E, u_E and m_(E,d) are unitary; `f_E^4=1`, `u_E^r=1`,
+   `m_(E,d)^p=1`, and `f_E u_E=u_E f_E`.
+3. `u_E w_E(a,b)=w_E(a^p,b^p)u_E` and
+   `u_E^(tensor(d+1)) m_(E,d)=m_(E,d) u_E^(tensor(d+1))`.
+4. `j_i^dagger j_i=v_i^dagger v_i=1`; `j_id=v_id=1`;
+   `j_j j_i=j_(ji)` and `v_j v_i=v_(ji)`.
+5. `u_E j_i=j_i u_K`, `u_E v_i=v_i u_K`, and
+   `f_E j_i=v_i f_K`.
+6. For i:K->E, a in K and b in E,
+   `w_E(i(a),b)j_i=j_i w_K(a,T_i(b))`, and
+   `m_(E,d)j_i^(tensor(d+1))=j_i^(tensor(d+1))m_(K,d)`.
+7. `e_E^dagger e_E=1`; `t_i^dagger t_i=1`, `t_i t_i^dagger=1`,
+   and `c_i t_i=j_i`.
+8. Put `b_(E,a)=w_E(a,0)e_E`. Impose
+   `b_(E,a)^dagger b_(E,a')=delta_(a,a')` and
+   `sum_(a in E) b_(E,a)b_(E,a)^dagger=1_QE`.
+
+In the fourth relation, v_(ji) uses the transported composite trace, whose
+transitivity is the algebra lane's transfer claim. All equalities are
+typed before they can be used. The d+1 hierarchy label on m_(E,d) refers to
+D1307's prime-field Pauli hierarchy; it is a generator label, not a
+composition-closed class of arrows.
+
+## D1324 (arithmetic Hilbert interpretation)
+
+Assign H(Q_E)=ell^2(E), H(C_i)=C_i=range(J_i) inside ell^2(E), and tensor
+products in the word order, with H(1)=C. The code has the orthonormal basis
+`|i(a)>`, indexed by a in K. Send the generators w,f,u,m,j,v to the
+D1301--D1308 operators W,F,U,M,J,V respectively. Send e_E to |0>, t_i to
+the unitary `|a> -> |i(a)>` with codomain the code space, and c_i to its
+inclusion into ell^2(E). Send swaps to ordinary Hilbert tensor swaps,
+dagger to adjoint and R_p scalars through the named embedding. Denote this
+candidate interpretation by H; well-definedness is FRP-CAT.
+
+## D1325 (source-certified arithmetic processes)
+
+Fix a countable naming universe containing the field-element labels of D1321
+and closed under finite ordered tuples. Every external tag set and hidden
+index set below is a finite subset of this universe; products use ordered
+tuples in the same universe. This naming convention is presentation data.
+
+A process object is a finite nonempty tagged family X=(X_a)_(a in A) of
+quantum words. Tags are elements of named finite sets; distinct tags are
+retained even when their quantum words agree. An arrow k:X->Y is a family
+of finite hidden index sets J_(b,a) and amplitude classes
+`k_(b,a,j):X_a->Y_b` in A_I, subject to the following source certificate for
+each a: there exist finitely many amplitude arrows h_(a,l):X_a->Z_(a,l),
+to arbitrary quantum words, with
+
+    1_Xa - sum_(b,j) k_(b,a,j)^dagger k_(b,a,j)
+      = sum_l h_(a,l)^dagger h_(a,l).
+
+The equation is equality in D1322, with a finite derivation in its
+congruence; the chosen certificate is evidence, not additional arrow data.
+An arrow is normalized if `sum_(b,j) k^dagger k=1` in the source.
+Hidden sets may be empty. Arrow equality is bijection of each hidden
+index set carrying amplitudes to equal source arrows. No general Kraus
+mixing, zero deletion, external-tag relabeling or CP-equality quotient is
+imposed. In particular labels of external outcomes are never hidden by
+this equality. A coefficient-scalar process is a singleton coefficient
+amplitude on the empty word satisfying the same certificate, not a projective
+class. General endomorphisms of the singleton empty-word process object may
+have other closed-diagram amplitudes and more than one hidden index.
+
+The identity has the single amplitude 1 on each diagonal external block
+and an empty list elsewhere. For k:X->Y and l:Y->Z, composition has hidden
+index triples (b,j,t) on block (c,a), and amplitude
+`l_(c,b,t) k_(b,a,j)`. The tensor object has tag set A times B and word
+X_a tensor Y_b. Tensor arrows have the Cartesian product hidden indices
+and amplitudes k tensor l, with the indicated factor order. Associators,
+unitors and swaps use the canonical finite-tag bijections and quantum
+word swaps. A deterministic tag map g:A->B, with the same quantum word on
+each routed block, has identity amplitude on block (g(a),a); this includes
+discarding a classical tag. It cannot change the quantum type.
+
+## D1326 (ordinary-trace completely positive realization)
+
+The target has objects finite direct sums
+`B_X=direct-sum_a End_C(H(X_a))` and arrows completely positive maps that
+do not increase the sum of the ordinary matrix traces. The trace is
+`Tr_X(rho)=sum_a Tr(rho_a)`; a density has Tr_X(rho)=1. The target tensor
+is the ordinary finite-dimensional tensor product, distributed over the
+tag blocks. The candidate process functor R sends D1325's arrow to
+
+    R(k)(rho)_b=sum_(a,j) H(k_(b,a,j)) rho_a H(k_(b,a,j))^*.
+
+Born weight of output tag b is its ordinary matrix trace. Conditioning
+divides by that weight only when it is positive, and is not itself a
+linear arrow. Retaining a history means making it part of the external
+tag. Ordinary process composition sums over its intermediate input tag;
+if that outcome must remain available, use an output tag carrying it.
+This convention is distinct from D1205's uniform classical trace and
+from the coefficient traces on the Hecke families.
+
+## D1327 (retained arithmetic decoding and register circuits)
+
+For an isometry s:X->Y in A_I, write p_s=s s^dagger and q_s=1-p_s.
+The retained decoder D_s has source the singleton family (Y) and target
+`(success:X, failure:Y)`, with one amplitude s^dagger on success and one
+amplitude q_s on failure. The success arrow d_s:(Y)->(X) has amplitude
+s^dagger and residual certificate q_s. The encoding arrow has amplitude s.
+These constructions apply to j_i, v_i, c_i, their composites and their
+independent tensor products. They do not stipulate a reset completion.
+
+For an endomorphism a of Q_K^n, its code lift is
+`a^[i]=t_i^tensor n a (t_i^dagger)^tensor n` on C_i^n. In particular take
+a=u_K, w_K(a_0,b_0), or m_(K,d). These are explicit abbreviations for
+source circuits. The Fourier comparison of retained decoders keeps both
+tags: on the success block apply f_K, and on the failure block apply f_E.
+Together these blocks form a tag-controlled normalized process.
+
+The zero-state preparation on Q_E has the one amplitude e_E; basis
+preparation at a has amplitude b_(E,a)=w_E(a,0)e_E. Quantum discard Q_E->1
+has singleton external output and hidden amplitudes b_(E,a)^dagger over
+a in E. Code discard is this discard after t_i^dagger; word discard is
+their independent tensor. Discard of a tagged family sums all its input
+blocks into the singleton empty-word output. A normalized source-generated
+state followed by a retained decoder gives an actual preparation/test
+protocol. Arbitrary complex states and arbitrary CP maps are not stipulated
+as source generators. The R_p-span of the realized basis matrix units
+already gives all R_p-valued matrices; the arithmetic structure consists of
+the marked source data and relations, not a claim that this linear envelope
+alone reconstructs the field.
+
+If F_p is a named field in F and B=(beta_1,...,beta_r) is a named F_p-basis
+of E, write x=sum_l x_l beta_l and define the coordinate circuit
+
+    a_B=sum_(x in E) (tensor_l b_(Fp,x_l)) b_(E,x)^dagger
+         : Q_E -> Q_Fp^tensor r.
+
+This circuit retains B as its construction label. No basis-independent
+identification of these two source objects is imposed. Its unitarity and
+its interpreted trace-dual Weyl factorization are part of FRP-CAT.

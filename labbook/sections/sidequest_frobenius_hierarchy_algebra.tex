@@ -1,0 +1,508 @@
+\clearpage
+\section{Frobenius, subfield codes and higher multiplication gates}
+\label{sec:frobenius-hierarchy-algebra}
+
+A finite extension field supplies both a quantum register and arithmetic
+operations on it.  The trace pairing identifies its position and momentum
+labels over the prime field.  Relative trace then gives a logical momentum
+coordinate for subfield codes and a Fourier-dual transfer between registers.
+Multiplication in separate registers supplies reversible gates at every
+higher Clifford level.  These statements hold in characteristic two as well
+as at odd primes, with the choices of phase and computational basis explicit.
+
+\subsection{Trace geometry and arithmetic Frobenius}
+
+\begin{definition}[Trace-framed arithmetic register]
+Fix a prime $p$ and a named primitive complex $p$-th root $\zeta_p$.
+For a finite field $E/\mathbb F_p$ of cardinality $p^r$, the trace-framed
+arithmetic register retains the field $E$, its Hilbert space
+$\mathcal H_E=\ell^2(E)$ with orthonormal basis $|x\rangle$ indexed by
+$x\in E$, and the trace character
+\[
+ \operatorname{Tr}_{E/\mathbb F_p}(x)=\sum_{j=0}^{r-1}x^{p^j},
+ \qquad
+ \psi_E(x)=\zeta_p^{\operatorname{Tr}_{E/\mathbb F_p}(x)}.
+\]
+Its prime-field phase space is $S_E=E\oplus E$ with form
+\[
+ \Omega_E((a,b),(a',b'))=
+ \operatorname{Tr}_{E/\mathbb F_p}(ab'-a'b).
+\]
+The reference operators are
+\[
+ X_E(a)|x\rangle=|x+a\rangle,\qquad
+ Z_E(b)|x\rangle=\psi_E(bx)|x\rangle,\qquad
+ W_E(a,b)=Z_E(-b)X_E(a).
+\]
+An ordered list of registers has the tensor-product Hilbert space and
+direct-sum prime-field phase space.  The empty list has Hilbert space
+$\mathbb C$.  The field structures and ordered factors are retained data.
+\end{definition}
+\begin{scope}
+The root of unity and reference operator convention are named choices.
+No restriction beyond the stated finite-field hypotheses is imposed.
+\end{scope}
+\provenance{D3, D8, D1301}{theory/sidequests/frobenius-hierarchy/foundation.md}{theory/checks/frobenius\_hierarchy\_check.py (A1--A2)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{definition}[Arithmetic Frobenius operator]
+For a trace-framed arithmetic register with named $p,\zeta_p$, put
+\[
+ \sigma_E(x)=x^p,\qquad U_E|x\rangle=|\sigma_E(x)\rangle.
+\]
+For a list, Frobenius means the tensor product of these operators.
+\end{definition}
+\begin{scope}
+This is the Frobenius of the named field structure.  It has the same field
+as source and target.
+\end{scope}
+\provenance{D1302}{theory/sidequests/frobenius-hierarchy/foundation.md}{theory/checks/frobenius\_hierarchy\_check.py (A1)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{definition}[Named embedding and transported relative trace]
+For trace-framed arithmetic registers over the same named $p,\zeta_p$,
+a named field embedding $i:K\to E$, $|K|=p^s$, and $r=ds$, define
+\[
+ T_i(x)=i^{-1}\left(\sum_{j=0}^{d-1}x^{p^{sj}}\right),\qquad
+ \kappa_i=|\ker T_i|.
+\]
+Here $i^{-1}$ is restricted to $i(K)$.
+For $j:L\to K$ the composite trace is denoted $T_{ij}:E\to L$.
+\end{definition}
+\begin{scope}
+The trace formula taking values in $i(K)$ and its surjectivity are results
+below, including when $p$ divides the extension degree.
+\end{scope}
+\provenance{D1303}{theory/sidequests/frobenius-hierarchy/foundation.md}{theory/checks/frobenius\_hierarchy\_check.py (A3)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{theorem}[Relative trace and prime-field symplectic geometry]
+{\normalfont\statusProved}\quad
+For every named embedding $i:K\to E$ of finite fields over
+$\mathbb F_p$, the transported relative trace is well defined,
+surjective and $K$-linear, and
+\[
+ \kappa_i=\frac{|E|}{|K|},\qquad
+ \operatorname{Tr}_{E/\mathbb F_p}(i(a)x)
+ =\operatorname{Tr}_{K/\mathbb F_p}(aT_i(x)).
+\]
+For every tower $L\xrightarrow{j}K\xrightarrow{i}E$,
+$T_{ij}=T_jT_i$.  The absolute trace pairing on $E$ is nondegenerate,
+and $\Omega_E$ is alternating and nondegenerate over $\mathbb F_p$.
+\end{theorem}
+\begin{scope}
+There is no division by the extension degree.  All prime characteristics
+are included; no restriction beyond the stated hypotheses is imposed.
+\end{scope}
+\provenance{FRB-TRACE}{theory/sidequests/frobenius-hierarchy/foundation.md, section 1}{theory/checks/frobenius\_hierarchy\_check.py (A1--A3)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+Put $q=|K|$ and $S(x)=\sum_{j=0}^{d-1}x^{q^j}$.
+Since $x^{q^d}=x$, one has $S(x)^q=S(x)$; the $q$ roots of $t^q-t$
+in $E$ are precisely $i(K)$.  The polynomial $S$ has degree
+$q^{d-1}<q^d$ and nonzero leading coefficient, so it cannot vanish
+on every point of $E$.  It is $i(K)$-linear and therefore surjects onto
+$i(K)$.  Equal-size additive fibres give the kernel cardinality.
+In a tower, expanding the two trace sums lists every Frobenius exponent
+in the composite trace exactly once.  This proves transitivity and the
+pairing identity.  If $c\ne0$, choose $u$ with absolute trace one and
+put $x=c^{-1}u$; then $\operatorname{Tr}_{E/\mathbb F_p}(cx)=1$.
+Thus the trace pairing is nondegenerate.  Pairing a vector $(a,b)$ with
+$(0,x)$ and then $(x,0)$ proves nondegeneracy of $\Omega_E$;
+$\Omega_E(v,v)=0$ directly in every characteristic.
+\end{proof}
+
+\begin{theorem}[Exact Frobenius covariance and atomic factorization]
+{\normalfont\statusProved}\quad
+For every trace-framed register $E/\mathbb F_p$, Frobenius is a field
+automorphism, $U_E$ is unitary, both have order
+$r=[E:\mathbb F_p]$, and
+\[
+ \Omega_E(\sigma_E v,\sigma_E w)=\Omega_E(v,w),\qquad
+ U_EW_E(a,b)U_E^*=W_E(a^p,b^p).
+\]
+For a named $\mathbb F_p$-basis $(e_j)_{j=1}^r$ of $E$, there is a
+unique trace-dual basis $(e^j)_{j=1}^r$.  If
+$a=\sum_j a_je_j$ and $b=\sum_j b_je^j$, the coordinate unitary
+$|\sum_jx_je_j\rangle\mapsto\bigotimes_j|x_j\rangle$ sends
+$W_E(a,b)$ to $\bigotimes_jW_{\mathbb F_p}(a_j,b_j)$.
+\end{theorem}
+\begin{scope}
+Position and momentum use dual bases.  No self-dual basis is required,
+and no theorem about a lift of every symplectic map is asserted.
+\end{scope}
+\provenance{FRB-FROB}{theory/sidequests/frobenius-hierarchy/foundation.md, section 2}{theory/checks/frobenius\_hierarchy\_check.py (A1)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+The absolute trace is invariant under the cyclic shift of Frobenius powers.
+Consequently $U_EX_E(a)U_E^*=X_E(a^p)$ and
+$U_EZ_E(b)U_E^*=Z_E(b^p)$, as is checked on the computational basis.
+Multiplying in the reference order gives the exact Weyl formula.
+The same trace invariance proves preservation of $\Omega_E$.
+Frobenius has order $r$: its $r$-th power is the identity, while an
+identity $x^{p^k}=x$ for all $x\in E$ with $0<k<r$ would contradict
+the root bound for the polynomial $t^{p^k}-t$.
+Nondegeneracy of the trace matrix supplies its inverse and hence the
+dual basis.  Then
+$\operatorname{Tr}_{E/\mathbb F_p}(b(x+a))=\sum_jb_j(x_j+a_j)$,
+which factors the reference Weyl operator into the displayed tensor.
+\end{proof}
+
+\subsection{Subfield support and Fourier-dual transfers}
+
+\begin{definition}[Inclusion and normalized trace-fibre transfers]
+For a named embedding $i:K\to E$ of trace-framed registers, define
+linear maps $J_i,V_i:\mathcal H_K\to\mathcal H_E$ by
+\[
+ J_i|a\rangle=|i(a)\rangle,\qquad
+ V_i|a\rangle=\kappa_i^{-1/2}\sum_{T_i(x)=a}|x\rangle,
+\]
+using the positive real square root.  Their reverse arrows are their
+Hilbert adjoints $J_i^*,V_i^*$.
+\end{definition}
+\begin{scope}
+The source, target and positive normalization are fixed data; independent
+phases on the transfers are not introduced.
+\end{scope}
+\provenance{D1304}{theory/sidequests/frobenius-hierarchy/transfers-example.md}{theory/checks/frobenius\_hierarchy\_check.py (A3)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{definition}[Subfield support code and logical phase quotient]
+For a named embedding $i:K\to E$ of trace-framed registers, put
+\[
+ \mathcal C_i=\operatorname{span}_{\mathbb C}
+       \{|i(a)\rangle:a\in K\},\qquad P_i=J_iJ_i^*,\qquad
+ N_i=\{0\}\oplus\ker T_i,\qquad
+ G_i=\{Z_E(b):b\in\ker T_i\}.
+\]
+The proposed logical phase space is $N_i^\perp/N_i$, where
+perpendicularity uses $\Omega_E$.  The logical coordinate map is
+\[
+ [(i(a),b)]\longmapsto (a,T_i(b))
+ \quad\hbox{whenever }N_i^\perp=i(K)\oplus E.
+\]
+Its well-definedness and symplectic property are claims, not stipulations.
+\end{definition}
+\begin{scope}
+The code is defined by computational-basis support in the embedded field.
+It is not defined as the invariant-vector space of Frobenius.
+\end{scope}
+\provenance{D1305}{theory/sidequests/frobenius-hierarchy/foundation.md}{theory/checks/frobenius\_hierarchy\_check.py (A2)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{theorem}[Subfield stabilizers and logical Weyl system]
+{\normalfont\statusProved}\quad
+For every named embedding $i:K\to E$ of trace-framed finite fields,
+$\mathcal C_i$ is exactly the common $+1$ eigenspace of $G_i$, and
+\[
+ \dim\mathcal C_i=|K|,\qquad
+ P_i=\frac1{\kappa_i}\sum_{b\in\ker T_i}Z_E(b),\qquad
+ N_i^\perp=i(K)\oplus E.
+\]
+The logical coordinate map is a symplectic isomorphism
+$N_i^\perp/N_i\cong S_K$.  Exactly the Weyl operators whose position
+labels belong to $i(K)$ preserve the code, and
+\[
+ J_i^*W_E(i(a),b)J_i=W_K(a,T_i(b)).
+\]
+\end{theorem}
+\begin{scope}
+Logical momentum is a trace quotient.  The statement does not identify
+it with inclusion of momentum labels from $K$.
+\end{scope}
+\provenance{FRB-CODE}{theory/sidequests/frobenius-hierarchy/foundation.md, section 3}{theory/checks/frobenius\_hierarchy\_check.py (A2)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+The trace-pairing identity and nondegeneracy over $K$ show that the
+annihilator of $i(K)$ is $\ker T_i$.  Taking annihilators again gives
+$(\ker T_i)^\perp=i(K)$.  A basis vector is fixed by every phase
+stabilizer precisely when its label belongs to this latter annihilator.
+Character summation gives the displayed projector.  The same annihilator
+calculation yields $N_i^\perp=i(K)\oplus E$; the displayed coordinate
+map is surjective with kernel $N_i$ and preserves the form by trace
+transitivity.  Finally, the Weyl operator sends a support coset to its
+translate, and its phase on $|i(x)\rangle$ is
+$\psi_K(-T_i(b)(x+a))$.  This proves the restriction formula.
+\end{proof}
+
+For an extension of degree $d$, relative trace gives $T_i(i(a))=da$.
+Consequently $\psi_E(i(a))=\psi_K(a)^d$.  In particular, the included
+momentum labels can all act trivially on the code when $p\mid d$.
+The trace quotient remains valid because the full relative trace is
+surjective in this case as well.
+
+\begin{definition}[Negative-kernel arithmetic Fourier transform]
+For a trace-framed register define
+\[
+ F_E|x\rangle=|E|^{-1/2}\sum_{y\in E}\psi_E(-xy)|y\rangle,
+\]
+with positive real square root.  A subscript on a tensor factor means
+that this operator acts there and the identity acts on every other factor.
+\end{definition}
+\begin{scope}
+The negative sign and positive normalization fix the Fourier convention.
+No restriction beyond the finite-field hypotheses is imposed.
+\end{scope}
+\provenance{D1306}{theory/sidequests/frobenius-hierarchy/transfers-example.md}{theory/checks/frobenius\_hierarchy\_check.py (A3)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{theorem}[Coherent inclusion and Fourier-dual trace transfer]
+{\normalfont\statusProved}\quad
+For every named embedding $i:K\to E$ of trace-framed finite fields,
+$J_i,V_i$ are isometries, $F_E$ is unitary, and
+\[
+ F_EJ_i=V_iF_K,\qquad U_EJ_i=J_iU_K,\qquad U_EV_i=V_iU_K.
+\]
+For every tower $L\xrightarrow{j}K\xrightarrow{i}E$,
+\[
+ J_iJ_j=J_{ij},\qquad V_iV_j=V_{ij}.
+\]
+Identity embeddings give identity transfers.  Moreover,
+\[
+ F_EX_E(a)F_E^*=Z_E(-a),\qquad F_EZ_E(b)F_E^*=X_E(b).
+\]
+\end{theorem}
+\begin{scope}
+These are exact identities of maps with the displayed domains and
+positive fibre normalizations.  Their adjoints reverse the domains.
+\end{scope}
+\provenance{FRB-TRANSFER}{theory/sidequests/frobenius-hierarchy/transfers-example.md, section 1}{theory/checks/frobenius\_hierarchy\_check.py (A3)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+Different trace fibres are disjoint and each has $\kappa_i$ elements,
+which proves the isometry assertion.  Character orthogonality proves
+Fourier unitarity.  The coefficient of $|x\rangle$ on the two sides of
+$F_EJ_i=V_iF_K$ is, respectively,
+\[
+ |E|^{-1/2}\psi_E(-i(a)x),\qquad
+ (|K|\kappa_i)^{-1/2}\psi_K(-aT_i(x)).
+\]
+They agree by the trace-pairing identity and fibre cardinality.
+In a tower, each output point occurs once, through its unique intermediate
+trace label, and fibre cardinalities multiply.  Finally,
+$T_i(x^p)=T_i(x)^p$, so Frobenius permutes corresponding fibres with
+their normalization unchanged.  The two Fourier covariance formulas
+follow by translating the kernel summation index.
+\end{proof}
+
+\subsection{Multiplication at exact higher Clifford levels}
+
+\begin{definition}[Prime-field Pauli group and Clifford hierarchy]
+For an ordered list $A=(E_1,\ldots,E_n)$ of trace-framed arithmetic
+registers, let
+\[
+ \mathcal P_A=
+ \left\{\lambda\bigotimes_jW_{E_j}(a_j,b_j):\lambda\in U(1)\right\}.
+\]
+Set $\mathcal C_1(A)=\mathcal P_A$ and, recursively for $k\geq1$,
+\[
+ \mathcal C_{k+1}(A)=
+ \{U\text{ unitary}:UPU^*\in\mathcal C_k(A)
+                         \text{ for every }P\in\mathcal P_A\}.
+\]
+The exact level of $U$ is the least positive $k$ with
+$U\in\mathcal C_k(A)$, if such a $k$ exists.  All scalar phases are
+included, in particular at $p=2$.  These sets are not stipulated to be
+groups beyond the second level.
+\end{definition}
+\begin{scope}
+The Pauli frame is the prime-field frame on all constituent atomic factors.
+The finite group with phases restricted to $\mu_p$ is a different datum.
+\end{scope}
+\provenance{D1307}{theory/sidequests/frobenius-hierarchy/hierarchy.md}{theory/checks/frobenius\_hierarchy\_check.py (A5)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{definition}[Reversible multiplication gate]
+For a trace-framed register and integer $d\geq1$, define the linear
+operator on $\mathcal H_E^{\otimes(d+1)}$ by
+\[
+ M_E^{(d)}|x_1,\ldots,x_d,z\rangle
+ =\left|x_1,\ldots,x_d,z+\prod_{j=1}^dx_j\right\rangle.
+\]
+Each argument occupies a distinct register.
+\end{definition}
+\begin{scope}
+Repeated powers of a variable within a single register are outside this
+definition; the number of separate control registers is $d$.
+\end{scope}
+\provenance{D1308}{theory/sidequests/frobenius-hierarchy/hierarchy.md}{theory/checks/frobenius\_hierarchy\_check.py (A4--A5)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{definition}[Phase polynomials and additive differences]
+For an ordered list of trace-framed registers with configuration space
+$A=\prod_jE_j$ and a function $f:A\to\mathbb F_p$, put
+\[
+ D_f|t\rangle=\zeta_p^{f(t)}|t\rangle,\qquad
+ \delta_hf(t)=f(t)-f(t-h)\quad(h\in A).
+\]
+A polynomial of total degree at most $m$ means a polynomial expression
+in the coordinates of named $\mathbb F_p$-bases, representing $f$, with
+that degree bound.  The condition concerns existence of such an expression;
+no unique polynomial representative is stipulated.
+\end{definition}
+\begin{scope}
+The differences are operations on functions.  A polynomial expression can
+have a larger degree than another expression defining the same function.
+\end{scope}
+\provenance{D1309}{theory/sidequests/frobenius-hierarchy/hierarchy.md}{theory/checks/frobenius\_hierarchy\_check.py (A5)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{theorem}[Exact hierarchy level of reversible multiplication]
+{\normalfont\statusProved}\quad
+For every finite field $E/\mathbb F_p$ with named primitive phase and
+every integer $d\geq1$, the reversible multiplication gate is unitary and
+\[
+ M_E^{(d)}\in\mathcal C_{d+1}(E,\ldots,E)
+                   \setminus\mathcal C_d(E,\ldots,E).
+\]
+Thus its exact prime-field Clifford level is $d+1$.
+\end{theorem}
+\begin{scope}
+Every characteristic and every positive $d$ is included.  The theorem
+uses distinct registers and does not infer exact level from ordinary
+polynomial degree alone.
+\end{scope}
+\provenance{FRB-HIERARCHY}{theory/sidequests/frobenius-hierarchy/hierarchy.md, sections 1--3}{theory/checks/frobenius\_hierarchy\_check.py (A5)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+Subtracting the product gives the inverse permutation.  Fourier transform
+on the target gives
+\[
+ F_{\mathrm{target}}M_E^{(d)}F_{\mathrm{target}}^*=D_f,
+ \qquad f(x_1,\ldots,x_d,y)
+       =-\operatorname{Tr}_{E/\mathbb F_p}\left(y\prod_jx_j\right).
+\]
+Fourier is Clifford, and Clifford conjugation preserves each hierarchy
+level.  Multiplication on either side by a Pauli also preserves each
+level; both facts follow inductively from the defining recursion.
+The exact commutator identity is
+\[
+ D_fX(h)D_f^*X(h)^*=D_{\delta_hf}.
+\]
+A difference lowers the degree of a coordinate polynomial by at least
+one.  Affine phases are Paulis by trace duality, so induction gives
+$D_f\in\mathcal C_{d+1}$, since $f$ is multilinear in $d+1$ separate
+arguments.  Conversely, a diagonal phase in $\mathcal C_k$ has every
+$k$-fold additive difference constant: absorb the Pauli in the displayed
+identity and induct down to a diagonal Pauli.
+
+Now translate each of the $d$ distinct control registers by $1_E$.
+The resulting $d$-fold difference is
+$-\operatorname{Tr}_{E/\mathbb F_p}(y)$, which is nonconstant because
+absolute trace is surjective.  Thus $D_f\notin\mathcal C_d$.
+No factorial occurs in these separate-register differences, including
+when $p\leq d$.  Fourier conjugation transfers both conclusions to
+$M_E^{(d)}$.
+\end{proof}
+
+\begin{theorem}[Arithmetic covariance and encoded multiplication]
+{\normalfont\statusProved}\quad
+For every named embedding $i:K\to E$ of trace-framed finite fields
+and every $d\geq1$, multiplication commutes with simultaneous Frobenius
+and satisfies
+\[
+ U_E^{\otimes(d+1)}M_E^{(d)}
+ =M_E^{(d)}U_E^{\otimes(d+1)},\qquad
+ M_E^{(d)}J_i^{\otimes(d+1)}
+ =J_i^{\otimes(d+1)}M_K^{(d)}.
+\]
+The latter identity also holds for inverse gates.  Multiplication
+preserves $\mathcal C_i^{\otimes(d+1)}$; its encoded logical action
+is $M_K^{(d)}$ and has exact level $d+1$ for the logical prime-field
+Pauli frame supplied by the trace quotient.
+\end{theorem}
+\begin{scope}
+The intertwining uses the support encoding $J_i$.  No corresponding
+multiplicative intertwining is asserted for trace-fibre encoding $V_i$.
+\end{scope}
+\provenance{FRB-NATURAL}{theory/sidequests/frobenius-hierarchy/hierarchy.md, section 4}{theory/checks/frobenius\_hierarchy\_check.py (A4)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+Frobenius and field embeddings preserve sums and products, so the two
+orders of each composition agree on every computational basis point.
+Compressing by the tensor encoding's adjoint gives the logical gate.
+The trace quotient identifies its Pauli frame with that over $K$, to
+which the exact-level theorem applies.
+\end{proof}
+
+\begin{proposition}[Coherent multiplication return probability]
+{\normalfont\statusProved}\quad
+For a trace-framed finite field $E$, put $Q=|E|$ and
+\[
+ |+_E\rangle=Q^{-1/2}\sum_x|x\rangle,\qquad
+ D=F_{\mathrm{target}}M_E^{(2)}F_{\mathrm{target}}^*.
+\]
+The return amplitude of $D$ on $|+_E\rangle^{\otimes3}$ is
+$(2Q-1)/Q^2$, and its return probability is $(2Q-1)^2/Q^4$.
+\end{proposition}
+\begin{scope}
+The input, unitary and return effect are fixed as stated.  The rational
+formula alone does not supply a specialization functor or reference trace.
+\end{scope}
+\provenance{FRB-NATURAL}{theory/sidequests/frobenius-hierarchy/hierarchy.md, section 5}{theory/checks/frobenius\_hierarchy\_check.py (A5-interference)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+The amplitude is
+\[
+ \frac1{Q^3}\sum_{x,y,t\in E}\psi_E(-txy)
+ =\frac{2Q-1}{Q^2},
+\]
+because summing over $t$ gives $Q$ exactly when $xy=0$ and zero
+otherwise.  There are $2Q-1$ pairs with $xy=0$.  The return probability
+is $(2Q-1)^2/Q^4$, giving $9/16$ at $Q=2$, whereas identity evolution
+gives one.  The rational function takes the value one at $Q=1$; that
+calculation does not supply a specialization functor or its reference trace.
+\end{proof}
+
+\subsection{The binary degree-four tower}
+
+\begin{definition}[Binary degree-four field tower]
+Put
+\[
+ K=\mathbb F_2[a]/(a^2+a+1),\qquad
+ E=K[b]/(b^2+b+a).
+\]
+The named embeddings are the constant embeddings
+$\mathbb F_2\to K\to E$.  Write an element of $E$ as
+$(u,v)=u+vb$, with $u,v\in K$, and use $\zeta_2=-1$.
+Irreducibility and the resulting field orders are claims.
+\end{definition}
+\begin{scope}
+The polynomial models and embeddings fix concrete coordinates for the
+example.  No basis-independent coordinate decomposition is asserted.
+\end{scope}
+\provenance{D1310}{theory/sidequests/frobenius-hierarchy/transfers-example.md}{theory/checks/frobenius\_hierarchy\_check.py (A6)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+
+\begin{theorem}[Frobenius, code and transfer in the binary quartic field]
+{\normalfont\statusProved}\quad
+For the displayed binary tower, $K$ and $E$ are fields of cardinalities
+four and sixteen.  For $u,v\in K$,
+\[
+ \sigma_E(u,v)=(u^2+av^2,v^2),\qquad
+ \sigma_E^2(u,v)=(u+v,v),\qquad
+ \sigma_E^4=\mathrm{id},\qquad \operatorname{ord}(\sigma_E)=4.
+\]
+For $i:K\to E$, the relative and absolute traces are
+\[
+ T_i(u,v)=v,\qquad
+ \operatorname{Tr}_{E/\mathbb F_2}(u,v)=v+v^2.
+\]
+The subfield code has basis $|u,0\rangle$, dimension four, and transfers
+\[
+ J_i|u\rangle=|u,0\rangle,\qquad
+ V_i|v\rangle=\frac12\sum_{u\in K}|u,v\rangle.
+\]
+The full trace transfer from $\mathbb F_2$ has coefficient $1/\sqrt8$
+on each absolute-trace fibre.  The fixed-vector space of $U_E^2$ has
+dimension ten, whereas the support code has dimension four.
+\end{theorem}
+\begin{scope}
+The two different invariant spaces are computed in these named
+coordinates; this does not identify Hilbert-space fixed vectors with
+arithmetic fixed field elements in general.
+\end{scope}
+\provenance{FRB-EXAMPLE}{theory/sidequests/frobenius-hierarchy/transfers-example.md, section 3}{theory/checks/frobenius\_hierarchy\_check.py (A6)}{theory/verdicts/frobenius-hierarchy-algebra-r1.md}
+\begin{proof}
+The first quadratic has no root in $\mathbb F_2$.
+In $K$, the values of $x^2+x$ are $0,0,1,1$ at
+$0,1,a,a+1$, so the second quadratic has no root either.
+Using $b^2=b+a$ gives the first Frobenius formula.  Squaring again
+and using $a^2+a=1$ gives the second, which is nonidentity and squares
+to the identity.  The relative trace $x+x^4$ is therefore $(v,0)$,
+giving the trace and fibre formulas.  Logical position $k$ may be
+represented by $(k,0)$ and logical momentum $m$ by $(0,m)$; the
+momentums $(m,0)$ are phase stabilizers.  Finally $U_E^2$ has four
+singleton basis orbits and six orbits of length two.  A fixed vector
+has constant coefficients on each orbit, so its fixed space has
+dimension ten.
+\end{proof}
+
+The tower also supports the two-control multiplication gate over $K$
+inside that over $E$: both physical and logical gates have exact level
+three, and the displayed Frobenius commutes with them on their respective
+registers.  The field multiplication, Frobenius permutation, support code
+and trace fibres remain explicitly available to the process construction.

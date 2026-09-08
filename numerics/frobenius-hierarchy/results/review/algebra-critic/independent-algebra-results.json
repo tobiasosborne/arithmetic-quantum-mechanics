@@ -1,0 +1,522 @@
+{
+  "extensions": {
+    "F4-F16": {
+      "embedding": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "relative_trace": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "stabilizers": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "support": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "fibre_size": 4
+    },
+    "F4-F16-twisted": {
+      "embedding": [
+        0,
+        1,
+        7,
+        6
+      ],
+      "relative_trace": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2
+      ],
+      "stabilizers": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "support": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "fibre_size": 4
+    },
+    "F2-F4": {
+      "embedding": [
+        0,
+        1
+      ],
+      "relative_trace": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "stabilizers": [
+        0,
+        1
+      ],
+      "support": [
+        0,
+        1
+      ],
+      "fibre_size": 2
+    },
+    "F2-F16": {
+      "embedding": [
+        0,
+        1
+      ],
+      "relative_trace": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "stabilizers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "support": [
+        0,
+        1
+      ],
+      "fibre_size": 8
+    },
+    "F3-F9": {
+      "embedding": [
+        0,
+        1,
+        2
+      ],
+      "relative_trace": [
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1
+      ],
+      "stabilizers": [
+        0,
+        3,
+        6
+      ],
+      "support": [
+        0,
+        1,
+        2
+      ],
+      "fibre_size": 3
+    },
+    "F4-automorphism": {
+      "embedding": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "relative_trace": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "stabilizers": [
+        0
+      ],
+      "support": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fibre_size": 1
+    }
+  },
+  "F16": {
+    "flat_to_tower_labels": [
+      0,
+      1,
+      6,
+      7,
+      2,
+      3,
+      4,
+      5,
+      12,
+      13,
+      10,
+      11,
+      14,
+      15,
+      8,
+      9
+    ],
+    "sigma": [
+      0,
+      1,
+      3,
+      2,
+      6,
+      7,
+      5,
+      4,
+      13,
+      12,
+      14,
+      15,
+      11,
+      10,
+      8,
+      9
+    ],
+    "sigma_squared": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      4,
+      7,
+      6,
+      10,
+      11,
+      8,
+      9,
+      15,
+      14,
+      13,
+      12
+    ],
+    "squared_orbits": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        12,
+        15
+      ],
+      [
+        13,
+        14
+      ]
+    ],
+    "matrix_absolute_trace_in_tower_order": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "hierarchy": {
+    "F2": [
+      {
+        "d": 1,
+        "states": 4,
+        "nonzero_reduced_monomial_degrees": {
+          "2": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 2,
+        "states": 8,
+        "nonzero_reduced_monomial_degrees": {
+          "3": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ],
+        "return_probability": "9/16"
+      },
+      {
+        "d": 3,
+        "states": 16,
+        "nonzero_reduced_monomial_degrees": {
+          "4": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 4,
+        "states": 32,
+        "nonzero_reduced_monomial_degrees": {
+          "5": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 5,
+        "states": 64,
+        "nonzero_reduced_monomial_degrees": {
+          "6": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 6,
+        "states": 128,
+        "nonzero_reduced_monomial_degrees": {
+          "7": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 7,
+        "states": 256,
+        "nonzero_reduced_monomial_degrees": {
+          "8": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 8,
+        "states": 512,
+        "nonzero_reduced_monomial_degrees": {
+          "9": 1
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      }
+    ],
+    "F3": [
+      {
+        "d": 1,
+        "states": 9,
+        "nonzero_reduced_monomial_degrees": {
+          "2": 1
+        },
+        "strict_difference_values": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "d": 2,
+        "states": 27,
+        "nonzero_reduced_monomial_degrees": {
+          "3": 1
+        },
+        "strict_difference_values": [
+          0,
+          1,
+          2
+        ],
+        "return_probability": "25/81"
+      },
+      {
+        "d": 3,
+        "states": 81,
+        "nonzero_reduced_monomial_degrees": {
+          "4": 1
+        },
+        "strict_difference_values": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "d": 4,
+        "states": 243,
+        "nonzero_reduced_monomial_degrees": {
+          "5": 1
+        },
+        "strict_difference_values": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "d": 5,
+        "states": 729,
+        "nonzero_reduced_monomial_degrees": {
+          "6": 1
+        },
+        "strict_difference_values": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "d": 6,
+        "states": 2187,
+        "nonzero_reduced_monomial_degrees": {
+          "7": 1
+        },
+        "strict_difference_values": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "F4": [
+      {
+        "d": 1,
+        "states": 16,
+        "nonzero_reduced_monomial_degrees": {
+          "2": 3
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 2,
+        "states": 64,
+        "nonzero_reduced_monomial_degrees": {
+          "3": 6
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ],
+        "return_probability": "49/256"
+      },
+      {
+        "d": 3,
+        "states": 256,
+        "nonzero_reduced_monomial_degrees": {
+          "4": 11
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      },
+      {
+        "d": 4,
+        "states": 1024,
+        "nonzero_reduced_monomial_degrees": {
+          "5": 21
+        },
+        "strict_difference_values": [
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}

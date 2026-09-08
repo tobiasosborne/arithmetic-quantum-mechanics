@@ -762,3 +762,71 @@ subalgebra and anti-involution. Section 3.1, pp. 5–6: affine-group double
 cosets. Section 4.3: cyclotomic quotient and presentation; Section 5:
 comparison with q-rook algebras. Abstract semisimple algebra isomorphism
 does not by itself identify the physical trace, star, or assembly maps.
+
+## Frobenius and arithmetic hierarchy — retrieved 2026-09-08
+
+The following source bodies are local under `refs/frobenius-hierarchy/` and
+remain ignored. Titles/authors were checked against arXiv metadata and PDF
+front pages, or the Stacks section heading. Each source has `retrieval.json`.
+
+**1608.06596 (CGK17)** — Shawn X. Cui, Daniel Gottesman and Anirudh Krishna,
+*Diagonal gates in the Clifford hierarchy*, Phys. Rev. A 95, 012329 (2017).
+Route: https://arxiv.org/pdf/1608.06596, v1.
+Local `refs/frobenius-hierarchy/1608.06596/paper.pdf`;
+SHA256 `54cf35d7073a613c0a543bc58c2920b1abf447d32e0218f83fc5fa617e6a911a`.
+Section II, printed p. 2, equations (3)--(7): Pauli group and hierarchy
+conventions, and conjugation of translations by diagonal gates. Theorem 1
+on p. 2: diagonal elements at a fixed hierarchy level form a group, while
+the full higher levels are not groups. Section IV, Theorem 3 on p. 6:
+multiqudit diagonal classification with weight `(p-1)(m-1)+sum a_i`.
+The source includes p=2; its phase precision must not be suppressed when
+using its classification. The arithmetic multilinear trace-phase and
+multiplication-accumulator family is derived internally in this campaign.
+
+**2212.05398 (AND24)** — Jonas T. Anderson,
+*On Groups in the Qubit Clifford Hierarchy*, Quantum 8, 1370 (2024).
+Route: https://arxiv.org/pdf/2212.05398, v2, 7 June 2024.
+Local `refs/frobenius-hierarchy/2212.05398/paper.pdf`;
+SHA256 `ddb7c55c3d208812926a20b3562d968711fedf43717bc240b2ca6234f1f6d122`.
+Section 1, pp. 1--3: hierarchy and group-closure distinctions. This is a
+qubit source. Its classification concerns the stated semi-Clifford and
+generalized semi-Clifford scope, not all gates or all prime characteristics.
+It motivates recording levels on generators rather than claiming that a
+fixed higher hierarchy level supplies a composition-closed morphism class.
+
+**Stacks 0BIE (ST-TRACE)** — The Stacks Project Authors,
+*Fields*, Section 9.20, "Trace and norm".
+Route: https://stacks.math.columbia.edu/tag/0BIE.
+Local `refs/frobenius-hierarchy/stacks-0BIE/source.html`;
+SHA256 `1fe21ce54aba4cebd3afe798c443a0544a3734e761a6dc4dce3f6322a0931213`.
+Definition 9.20.1 (0BIF): trace/norm as trace/determinant of multiplication.
+Lemma 9.20.5 (0BIJ): transitivity along finite field towers.
+Definition 9.20.6 (0BIK): trace pairing.
+Lemma 9.20.7 (0BIL): finite separability is equivalent to nonzero trace and
+to nondegeneracy of the trace pairing; the proof explicitly notes that a
+nonzero field-linear trace is surjective. Applied to finite fields, this
+does not require the extension degree to be invertible in the base field.
+
+**1303.5141 (HW13)** — Guy Henniart and Chun-Hui Wang,
+*Weil representations over finite fields and Shintani lift*.
+Route: https://arxiv.org/pdf/1303.5141, v1.
+Local `refs/frobenius-hierarchy/1303.5141/paper.pdf`;
+SHA256 `fb19867e189f9fa96ade5811a440af50a68ab440ee16efb0d203dc6fcdc63055`.
+Theorem 4.1, p. 3: extension to the Galois semidirect product and the
+Frobenius-twisted character identity using the stated Shintani/Gyoja norm.
+Proposition 6.1, p. 5: compatibility with orthogonal symplectic decomposition.
+The source assumes odd field cardinality. Its norm is a construction on
+twisted conjugacy classes; it is not an arbitrary raw nonabelian product,
+nor does the theorem supply a CP channel or a characteristic-two extension.
+
+**quant-ph/0605054 (VOU06)** — A. Vourdas,
+*The Frobenius formalism in Galois quantum systems*.
+Route: https://arxiv.org/pdf/quant-ph/0605054, v1.
+Local `refs/frobenius-hierarchy/quant-ph-0605054/paper.pdf`;
+SHA256 `74346977ddf2e99fd882735955d95e036fcc9ee2b04646c9e14a0151cdd8dbcb`.
+Section 4.1, pp. 8--9, equations (39)--(44): tensor coordinates, trace
+Fourier kernel, and the distinct dual coordinates for momentum.
+Sections 5.2--5.3: Frobenius orbit subspaces and unitary transformations.
+The author's framework assumes odd p. The current all-characteristic
+reference-Weyl formulas and field-transfer statements are proved internally;
+this source is a comparison, not their characteristic-two justification.

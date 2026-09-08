@@ -122,3 +122,27 @@
 | `U_I^cts, U_q^dagger, p_(X,n), r_n, U_1^germ` | full finite graded continuous/fibre/germ projection completions and their presentations | D1261,D1262,D1265 |
 | `theta_X, w_X` | full graded trace and its positive weight on the identity; w_X is distinct from fusion dimension d_X | D1263 |
 | `B_X, j_(X,Y), E_(X,Y), Op^U_q, Op^U_I, Op^U_1,germ` | completed endomorphism systems, traced assembly/retraction and their operational categories | D1264,D1266 |
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `H_E, psi_E, S_E, Omega_E` | trace-framed field register and its prime-field symplectic space | D1301 |
+| `X_E(a), Z_E(b), W_E(a,b)` | reference translations, phases and D8 Weyl operators on the named register | D1301 |
+| `sigma_E, U_E` | field Frobenius and its computational-basis permutation | D1302 |
+| `T_i, kappa_i` | transported relative trace of a named embedding and its kernel cardinality | D1303 |
+| `J_i, V_i` | inclusion and normalized trace-fibre transfers | D1304 |
+| `C_i, P_i, N_i, G_i` | subfield support code, projector, isotropic phase labels and phase stabilizers; embedding subscript distinguishes these from flag indices | D1305 |
+| `F_E` | negative-kernel Fourier transform on the named field register | D1306 |
+| `P_A, C_k(A)` | full-scalar prime-field Pauli group and hierarchy on an ordered list | D1307 |
+| `M_E^(d)` | multiplication into a separate target register, with d separate controls | D1308 |
+| `D_f, delta_h f` | diagonal phase and backward additive difference | D1309 |
+| `(u,v)=u+vb` | coordinates in the named binary degree-four tower | D1310 |
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `I, F, R_p` (arithmetic-process context) | finite named field diagram, its field set, scalar field Q(zeta_p,sqrt(p)) | D1321 |
+| `Q_E, C_i, X` (arithmetic register context) | field atom, ambient-labeled code atom, ordered quantum word | D1321 |
+| `A_I; w_E,f_E,u_E,m_(E,d),j_i,v_i,e_E,t_i,c_i` | amplitude presentation and its typed generators | D1322,D1323 |
+| `H` (arithmetic interpretation) | amplitude interpretation in finite Hilbert spaces | D1324 |
+| `Proc_I, k_(b,a,j), h_(a,l)` | source-certified process category, Kraus amplitudes, residual certificate amplitudes | D1325 |
+| `B_X, Tr_X, R` (arithmetic process context) | block matrix algebra, sum of ordinary traces, CP interpretation | D1326 |
+| `p_s,q_s,D_s,d_s,a^[i],a_B` | range/complement projections, retained decoder, success arrow, code lift, named coordinate circuit | D1327 |
