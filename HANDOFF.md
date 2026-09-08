@@ -4,10 +4,184 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-08, Frobenius/hierarchy package reviewed and integrated.
+Updated: 2026-09-08, filtered-boundary discussion recorded after publication
+of the Frobenius/hierarchy package in commit `622c49c`.
 The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## Latest steering — higher hierarchy levels and vanishing boundary sectors
+
+After the completed arithmetic campaign, the user asked whether this approach
+is likely to give something nontrivial as p->1. They endorsed the analysis
+below and explicitly requested that all these learnings be recorded for the
+next agent, then committed and pushed. This update records a discussion and
+a next research target; it does not launch another proof/review campaign.
+
+**Status boundary:** the active-sector formulas below were derived in chat
+by elementary counting, with the exact finite scratch checks listed below.
+They are not new registered definitions or PROVED claim rows and have not
+passed the capped review. The admitted register remains 117 claims and 125
+definitions. Keep the existing arithmetic theorems, these new calculations,
+and the proposed filtered/renormalized endpoint distinct.
+
+### Assessment of the p-to-one programme
+
+A nontrivial quantum endpoint is already possible in the admitted Hecke
+sector: H_3(1)=C direct-sum C direct-sum M_2(C). The new question is whether
+Frobenius, arithmetic multiplication, code transfers and their composition
+can survive together, with positive quantum probabilities.
+
+The ordinary normalized physical trace would collapse the new multiplication
+gates under its formal continuation to one. A promising alternative is that
+the hierarchy organizes successive orders of degeneration, so the useful
+endpoint is filtered and retains normalized information from vanishing
+sectors. This is a reasoned research hypothesis, not an existence theorem.
+Confidence is stronger in some nontrivial positive boundary than in a
+canonical boundary retaining exactly the desired arithmetic composition.
+
+The fixed-phase-level plan below remains a useful controlled experiment.
+Its success would establish an incidence deformation with retained quantum
+phases. It would not by itself establish that all the retained field tables
+or phase data are necessary, or that the resulting nontriviality comes from
+the coupled arithmetic/context structure. Require actual mixed relations and
+observed distinctions, then determine which retained data can be discarded.
+
+### Active sector of a multiplication gate
+
+Use the admitted D1308 gate on d separate control registers and one target:
+
+    M_E^(d)|x_1,...,x_d,z> = |x_1,...,x_d,z + product_j x_j>,
+    Q=|E|=p^r, d>=1.
+
+For this discussion only, let P_(E,d) be the computational-basis projection
+onto the sector where every control x_j is nonzero, with the target arbitrary:
+
+    P_(E,d) = (1-|0><0|)^(tensor d) tensor 1.
+
+Use the normalized ordinary matrix trace on this *whole* register word,
+tau_(E,d)(a)=Tr(a)/Q^(d+1), not a Hecke coefficient trace. Then
+
+    w_d(Q) := tau_(E,d)(P_(E,d)) = ((Q-1)/Q)^d,
+    tau_(E,d)(M_E^(d)) = 1-w_d(Q),
+    tau_(E,d)((M_E^(d)-1)^*(M_E^(d)-1)) = 2 w_d(Q).
+
+Derivation: there are (Q-1)^d active control tuples and Q target labels per
+tuple. A multiplication-basis label is fixed exactly when product_j x_j=0.
+Outside the active sector the gate is the identity; inside it, the target
+undergoes a nonzero translation, which fixes no basis label. A permutation's
+ordinary trace counts fixed basis labels. Finally expand
+(M-1)^*(M-1)=2-M-M^*; its normalized trace is 2-2 tau(M), since the counted
+trace is real. The expression is a trace/L2 diagnostic, not an assertion of
+operator-norm convergence or a complete operational limit theorem.
+If a specialization preserves this limiting normalized trace and sends M
+to a unitary in an endpoint algebra with faithful positive trace, that
+unitary must be the identity. Without those hypotheses the counting
+diagnostic is not a universal collapse theorem.
+
+The rational count w_d(Q) has a zero of exactly order d at Q=1. Writing
+Q=1+epsilon gives w_d=epsilon^d/(1+epsilon)^d. Thus, **for this particular
+multiplication family**, a gate of admitted exact Clifford level d+1
+disappears from this diagnostic at order d. Do not generalize this to an
+equivalence between Clifford level and vanishing order for arbitrary gates.
+For fixed extension degree r, formally Q=p^r also gives order d in p-1,
+with leading coefficient r^d. This is formal parameter algebra: no sequence
+of prime powers tends to one and no new noninteger-Q quantum fibre exists
+merely because the counting function can be evaluated there.
+
+The previously discussed physical Frobenius diagnostic is
+tau(U_r)=p^(1-r). With tau(1)=1 it gives
+tau((U_r-1)^*(U_r-1))=2(1-p^(1-r)), first order in p-1 for r>1.
+This makes Frobenius and the first two multiplication levels a useful small
+test of different degeneration orders. Their reference spaces/traces must
+still be specified before comparing these quantities.
+
+### Conditional information survives at each arithmetic fibre
+
+P_(E,d) commutes with M_E^(d), because the controls do not change. In the
+corner P End(H_E^(tensor(d+1))) P, whose identity is P, the restricted gate
+u_d=P M_E^(d) P is unitary. Its normalized corner trace is
+
+    tau_P(a) = tau_(E,d)(a)/w_d(Q),
+    tau_P(u_d)=0,
+    tau_P((u_d-P)^*(u_d-P))=2.
+
+These identities hold at every arithmetic field fibre, where w_d(Q)>0.
+For this diagnostic the disappearing factor lies in the sector's reference
+weight; the conditional gate has a nontrivial trace signature. This does
+not construct a positive limit of the corner algebras or their representations
+as Q->1. A zero-weight sector is discarded by the ordinary reference-trace
+quotient, so retaining it requires a separately specified normalization rule.
+
+Frobenius preserves nonzero labels and therefore preserves P_(E,d).
+For a named field embedding i:K->E, injectivity gives
+
+    P_(E,d) J_i^(tensor(d+1)) = J_i^(tensor(d+1)) P_(K,d).
+
+These are immediate basis-level compatibility identities to formalize in the
+next campaign. They do not assert compatibility with V_i or Fourier without
+further work. In particular, separate conditioning can erase information
+about how sectors sit in an ambient system and how they compose. Retain
+those embeddings and instruments rather than identifying isolated corners
+solely because their conditional gate traces agree.
+
+### Finite evidence and a transfer scope check
+
+One-off exact scratch enumeration used prime fields Q=2,3,5 and d=1,2,3,4.
+It counted all basis fixed points and active points, verified the displayed
+whole-space traces, and found zero active fixed points in every sample.
+For example, at Q=2 the weights are 1/2,1/4,1/8,1/16, the gate traces are
+1/2,3/4,7/8,15/16, and the squared L2 diagnostics are 1,1/2,1/4,1/8.
+No permanent new checker or formal all-field proof was admitted by this
+discussion; the counting argument supplies the candidate general formula.
+
+When preparing this handoff, the already admitted F2->F4 transfer example
+also gives an immediate guard against a false next-step diagram. On one
+control let P_E^nz=1-|0><0| and P_K^nz=1-|0><0|. Since
+V|0>=(|0>+|1>)/sqrt(2),
+
+    P_E^nz V|0> = |1>/sqrt(2),   V P_K^nz|0> = 0.
+
+Thus the naive nonzero-sector intertwining valid for J fails for V. A
+forward construction must track mixed sector outcomes or transported/Fourier
+dual cuts, rather than impose that false equality. This supporting scope
+calculation is recorded here without a new claim-status promotion.
+
+### Next primary experiment — a filtered positive boundary
+
+Study active-sector normalization alongside the existing coupled-incidence,
+fixed-phase proposal in `docs/research-plans/frobenius-coupled-limit.md`.
+The two proposals are not yet proved equivalent. A bounded first campaign:
+
+1. Formalize P_(E,d), its corner, trace weight, restricted gate and the
+   counting/vanishing formulas for d=1,2, with the precise all-field scope.
+   Prove Frobenius and inclusion compatibility and preserve the V counterexample.
+2. Start with F2 subset F4; retain Frobenius and M^(1), M^(2), hence the
+   first- and second-order active sectors. Keep the actual field operations,
+   code embeddings, positive trace conventions and measurement instruments.
+3. Specify what a filtered or renormalized endpoint means: its objects,
+   arrows, equality, sector weights, normalizations and comparison maps.
+   An associated-graded construction is a candidate, not an established
+   positive quantum category. Compare with the admitted mirabolic distinction
+   between regular and singular boundary states without importing its theorem
+   for this new family.
+4. Test mixed products, overlapping control sets, independent tensor,
+   inclusion/trace/Fourier transfers and full success/failure instruments.
+   Independent reference weights multiply, but overlapping sectors can have
+   different intersection weights; do not infer general filtered composition
+   from the separate d-fold formulas or from the hierarchy's generator labels.
+5. Require a positive CP-compatible construction with a surviving measured
+   distinction on a genuinely noncommutative sector, together with the mixed
+   composition diagrams. Neither a nonzero formal coefficient nor a
+   conditional trace alone establishes that target.
+
+The user regards the higher hierarchy as potentially central. The concrete
+new reason is the matched interaction arity and vanishing order in this
+family, not an assertion that fixed higher levels form groups/categories.
+Admit any new result through the repository's normal proof/check/review
+procedure and update the labbook in lockstep. This handoff-only turn changes
+no mathematical registry or labbook status and leaves research for the next
+agent.
 
 ## Latest completed research — Frobenius, codes and higher Clifford levels
 
@@ -80,10 +254,10 @@ proof-shard size bounds, five primary-source hashes, claim-DAG acyclicity
 and register counts were checked; representative hierarchy and process pages
 were visually inspected. `numerics/frobenius-hierarchy/results/SESSION-CLOSE.json`
 records the exact checker/mode list and hashes. All research/review lanes
-are complete. This record is included in the session-close publication commit;
-use the containing git commit for its identifier.
+are complete. The package and its verification were committed and pushed as
+`622c49c`; subsequent handoff discussions do not change that evidence.
 
-## Next primary target — a coupled positive incidence/phase comparison
+## Companion next-stage proposal — a coupled positive incidence/phase comparison
 
 `docs/research-plans/frobenius-coupled-limit.md` gives the next bounded
 proposal and six witness tests. It separates incidence q from a retained
@@ -105,7 +279,7 @@ The fixed-N proposal retains substantial arithmetic data initially and must
 be assessed as that specific comparison, not advertised as the full p->1
 limit of every Weyl system. The existing positive Hecke family is the benchmark.
 
-## Latest steering — field extensions, Frobenius and operational descent
+## Earlier discussion — field extensions, Frobenius and operational descent
 
 The user wants to study the category of arithmetic quantum systems over a
 fixed prime p, regard one F_(p^r) Weyl system as a composite of r atomic
@@ -114,7 +288,9 @@ field extensions/Frobenius survive the flag construction and its p→1
 specialization as a natural noncommutative Frobenius structure. They approved
 the following analysis and asked that it be preserved for the next agent.
 
-**Evidence/status boundary:** the formulas and examples below were derived
+**Historical evidence/status boundary:** this subsection preserves the
+discussion before the completed hierarchy campaign. Consult the completed
+research summary above for subsequent admissions. The formulas below were derived
 and discussed in chat, with the finite computations explicitly described
 below. They are not new admitted definitions or PROVED claim rows. No
 definitions, claim statuses or labbook sections changed in this discussion.
