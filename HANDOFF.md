@@ -4,12 +4,292 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-08, categorical-limit windup. The mainline FCR-2 state
-remains the interrupted 2026-09-01 state: prover finished, critic not run.
-The new Hecke/mirabolic categorical-limit package is admitted separately.
-Research has stopped; the user must steer any continuation.
+Updated: 2026-09-08, field-extension and Frobenius research handoff. The
+user's latest direction is recorded immediately below and takes priority
+over the older next-step lists. This turn records the discussion only;
+no new proof campaign or claim promotion is running. The mainline FCR-2
+state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## Latest steering — field extensions, Frobenius and operational descent
+
+The user wants to study the category of arithmetic quantum systems over a
+fixed prime p, regard one F_(p^r) Weyl system as a composite of r atomic
+p-systems, understand quantum maps to smaller fields, and determine whether
+field extensions/Frobenius survive the flag construction and its p→1
+specialization as a natural noncommutative Frobenius structure. They approved
+the following analysis and asked that it be preserved for the next agent.
+
+**Evidence/status boundary:** the formulas and examples below were derived
+and discussed in chat, with the finite computations explicitly described
+below. They are not new admitted definitions or PROVED claim rows. No
+definitions, claim statuses or labbook sections changed in this discussion.
+Separate existing results, elementary candidate constructions, literature
+theorems and open compatibility problems when resuming. The preceding
+categorical-limit package remains at 107 claims/108 definitions.
+
+### 1. Extension-field Weyl systems and atomic tensor factors
+
+Fix a primitive p-th root zeta_p and let L=F_(p^r). Use
+
+    psi_L(x)=zeta_p^(Tr_(L/F_p)(x)),
+    H_L=l2(L).
+
+An F_p-basis e_1,...,e_r identifies H_L with (C^p)^tensor r. This is an
+actual Weyl-system factorization, not merely equal Hilbert dimensions:
+use the trace-dual basis e^1,...,e^r for momentum, with
+Tr(e_i e^j)=delta_ij. If x=sum x_i e_i, a=sum a_i e_i and b=sum b_i e^i,
+the reference convention W(a,b)=Z(-b)X(a) gives
+
+    W_L(a,b) = tensor_i W_(F_p)(a_i,b_i).
+
+The basis-free prime-field phase space is L direct-sum L with alternating
+form Tr_(L/F_p)(ab'-a'b), of dimension 2r over F_p. This is consistent with
+the existing WH-SYMM result: the Weyl algebra/frame sees the underlying
+prime-field symplectic structure; the L-scalar action is additional data.
+Retain that scalar action if "one extension-field system" is to be
+distinguished from unstructured r-qudit kinematics. Factorization into named
+atomic sites is basis-dependent. Do not silently assume a self-dual basis;
+position and momentum use dual bases. Common phase centres must be matched,
+as in the existing cyclotomic central-product composition.
+
+### 2. Frobenius is reversible; fixed points and descent are different
+
+The field Frobenius sigma(x)=x^p gives
+
+    U_r|x> = |x^p>,
+    U_r W(a,b) U_r^* = W(a^p,b^p).
+
+Trace invariance of psi_L proves the covariance in the reference convention,
+including characteristic two. In a normal basis
+alpha,alpha^p,...,alpha^(p^(r-1)), U_r is a cyclic permutation of the r
+prime-field tensor factors. Thus Ad(U_r) is already a distinguished
+automorphism of the noncommutative algebra M_(p^r)(C) at fixed p.
+
+For s dividing r, K=F_(p^s) is the fixed field of sigma^s, but Frobenius
+itself is an automorphism L→L. Degree-reducing arrows involve trace, norm,
+fixed-point constructions or quantum transfers; they are not smaller-field
+Frobenius homomorphisms. In particular,
+
+    l2(Fix(sigma^s)) is generally not Fix(U_r^s),
+    Tr(U_r^s)=p^gcd(r,s).
+
+The trace equality counts fixed computational-basis labels. It does not
+identify the fixed-vector Hilbert space with the smaller-field system.
+Exact F4/F2 example: take F4=F2[alpha], alpha^2=alpha+1, normal basis
+(alpha,alpha^2). Frobenius is SWAP, with Hilbert trace 2 and a
+three-dimensional invariant vector space, whereas l2(F2) has dimension 2.
+In normal-basis bit coordinates, the smaller-field basis subspace is
+span{|00>,|11>}. Galois twirling is therefore not the desired degree reduction.
+
+### 3. Inclusion, trace, Fourier duality and quantum reduction
+
+For a named inclusion i:K→L, s|r and d=r/s, put T=Tr_(L/K). The two
+canonical isometries from H_K to H_L are
+
+    J_i |a> = |i(a)>,
+    V_T |a> = |ker T|^(-1/2) sum_(T(x)=a) |x>.
+
+The relative trace is surjective for every finite-field extension, even
+when p divides d; |ker T|=p^(r-s). With the negative Fourier kernels used
+in the project, the exact identity is
+
+    F_L J_i = V_T F_K.
+
+It follows from Tr_(L/F_p)(i(a)x)=Tr_(K/F_p)(a T(x)) and the displayed
+normalizations. Inclusions and the normalized trace-fibre isometries compose
+along towers; the latter use trace transitivity and multiplication of fibre
+cardinalities. Both are Frobenius-equivariant. This supplies quantum
+transfers without requiring character restriction compatibility.
+
+**Do not repeat the existing phase error:** psi_L=psi_K composed with T,
+whereas psi_L restricted to K equals psi_K^d. The latter can be trivial when
+p divides d. This is exactly the previously proved obstruction in
+`theory/wh-kappa-choice.md` §10 and
+`labbook/sections/07_functoriality.tex`; it does not obstruct the trace-dual
+construction above. No global choice compatible with all field embeddings
+has been obtained by this discussion.
+
+For either isometry V, the outcome rho→V^*rho V is CP and trace-nonincreasing.
+These outcomes compose along towers and tensor under independent isometries.
+Keep the success effect VV^* and its probability. Here rho denotes an
+ordinary density matrix with Tr(rho)=1, not a coefficient-trace density h.
+
+A specific deterministic completion is
+
+    D_V(rho)=V^*rho V + Tr((1-VV^*)rho) I_K/|K|.
+
+It resets the unsuccessful component to the smaller maximally mixed state.
+Its Heisenberg map is a→VaV^*+tau_K(a)(1-VV^*), which is UCP and preserves
+normalized matrix traces. If V:H_K→H_L and W:H_M→H_K, direct substitution
+gives D_W composed with D_V = D_(VW). Equivariance of V gives Frobenius
+covariance of D_V. Thus this is a concrete tower-compatible CPTP reduction.
+
+Its tensor scope is narrower: generally D_(V tensor W) is not
+D_V tensor D_W. The first resets both outputs if either component fails;
+the second preserves the successful output. For a simple counterexample,
+take two inclusions C^2→C^4, a state outside the first code and a pure state
+inside the second. The outputs are respectively I_4/4 and
+(I_2/2) tensor |0><0|. Preserve instrument/ancilla data when asking for
+monoidal compatibility; do not promote tower coherence to a monoidal theorem.
+
+### 4. Two distinct natural flag comparisons
+
+**Base extension at fixed field-linear dimension n.** For K⊂L, inclusion
+Fl_n(K)→Fl_n(L) is an isometry on flag-basis Hilbert spaces. Relative
+positions are unchanged, so compression gives the based map
+
+    H_n(p^r) → H_n(p^s),     T_w → T_w.
+
+At these arithmetic fibres it is a surjective, trace-preserving UCP map
+(a linear bijection), generally not an algebra homomorphism. The maps
+compose along field towers. This is an observable-map direction; in
+Heisenberg convention its trace-dual state process has the reverse direction.
+Do not confuse it with D_V's large-to-small Schrödinger reduction. Nor does
+arithmetic CP alone prove CP of an interpolated map at every real parameter.
+
+**Restriction of scalars.** An L-linear full flag in L^n has prime-field
+dimensions r,2r,...,nr. It lies in the F_p partial-flag space of type
+(r,...,r), with the L-scalar action retained. Compression to the
+L-stable flags gives the arithmetic UCP comparison
+
+    e_(r^n) H_(nr)(p) e_(r^n) → H_n(p^r).
+
+Use the actual geometric partial-flag adjacency basis and normalized corner
+trace when proving its properties. Source field flags are the subspaces
+stable under L multiplication, not all prime-field subspaces. This
+comparison does not identify the two algebras or their full context sets.
+
+Exact example: underlying F2^4 has 35 two-dimensional subspaces, but F4^2
+has only five F4-lines. Enumerating stability under multiplication by alpha
+selects exactly those five. Compressing the disjoint-plane adjacency to
+them gives the off-diagonal adjacency of K5. Its squared diagonal is 16
+before compression and 4 after squaring the compressed operator, explicitly
+showing nonmultiplicativity.
+
+Already n=1 distinguishes the constructions:
+
+    H_1(p^r)=C, while H_r(p) can be noncommutative.
+
+Allowing all prime-field flags adds contexts that the extension-field-linear
+flag construction omitted. The claim that an extension atom equals r atoms
+must therefore specify the context structure, not only the Weyl Hilbert space.
+
+### 5. The present commutants erase Frobenius
+
+Frobenius preserves flag relative positions, hence
+
+    U_Frob A_w U_Frob^(-1)=A_w.
+
+Its induced automorphism of the current Hecke invariant-transition algebra
+is trivial. After restriction to F_p, Frobenius is an F_p-linear symmetry,
+so this also follows from the GL-commutant construction. The same concern
+applies to invariant mirabolic orbit data: adding invariant vector kernels
+does not by itself retain a nontrivial Frobenius symmetry action.
+
+The proposed remedy is to retain the flag representation with its
+semilinear/Frobenius action, or equivalent equivariant/bimodule data, before
+passing to invariant observables. **Do not identify the left symmetry action
+on flags with a right Hecke transition merely because both become permutation
+matrices in an apartment.** The existing endpoint permutation gates do not
+by themselves prove specialization of the arithmetic Frobenius operator.
+
+### 6. What can survive at p=1, and the representation/trace test
+
+At fixed n, H_n(p^r) specializes algebraically to C[S_n], losing r from
+that isolated algebra. Restriction-of-scalars rank, the partial-flag object
+(r^n), and cyclic/Galois descent data can still record the extension degree.
+
+A concrete endpoint candidate for the degree-expansion operation is
+
+    Rcal_d:C[S_n]→C[S_(dn)],
+    w→((i,a)↦(w(i),a)),      a in {1,...,d}.
+
+This is a unital trace-preserving star embedding, since it comes from an
+injective group homomorphism. It composes as Rcal_d Rcal_e isomorphic to
+Rcal_(de) under the canonical regrouping of labelled factors. In the free
+symmetric composition category it sends x to x^tensor d. It is a candidate
+for the restriction-of-scalars/extension-degree operation, distinct from
+the degree-preserving Frobenius unitary. Its identification with arithmetic
+extension/descent and its full operational compatibility remain targets.
+It is not an assertion that an unknown state can be copied nonlinearly.
+
+The quantum representation and its reference trace cannot be carried over
+by mere substitution of a real dimension p. The ordinary normalized tensor
+trace of the three-factor antisymmetrizer has formal continuation
+
+    dim(wedge^3 C^p)/p^3 = (p-1)(p-2)/(6p^2),
+
+negative for 1<p<2 (at p=3/2 it is -1/54). This cannot be a Born probability.
+The positive Hecke coefficient-trace family is a different interpolation.
+Use the admitted Schur-Weyl/trace comparison in
+`theory/sidequests/f1-limit/schur-weyl.md`: at fixed n its coefficient trace
+is the large-physical-dimension limit, not the physical-dimension-one fibre.
+
+There is a second exact diagnostic. For the cyclic shift U_r, the normalized
+Schrödinger trace is p^(1-r), with formal value 1 at p=1. In a faithful
+positive tracial endpoint, a unitary with tau(U)=1 satisfies
+
+    tau((U-1)^*(U-1))=0,
+
+and therefore U=1. A nontrivial endpoint Frobenius consequently requires
+retained categorical/descent data, a different representation/reference
+trace, or a separately specified singular-sector boundary rule. This is a
+conditional constraint, not a universal no-go theorem for all F1 theories.
+Existing mirabolic regular-versus-singular boundary distinctions are relevant.
+
+### 7. Literature leads and concrete next work
+
+- A. Vourdas, *The Frobenius formalism in Galois quantum systems*,
+  https://arxiv.org/abs/quant-ph/0605054. Its tensor/dual-basis and Frobenius
+  discussion is directly relevant; its chosen framework assumes odd p.
+- Guy Henniart and Chun-Hui Wang, *Weil representations over finite fields
+  and Shintani lift*, https://arxiv.org/abs/1303.5141. Theorem 4.1 extends
+  the Heisenberg-Weil representation to the Galois semidirect product and
+  relates Frobenius-twisted characters to smaller-field characters by
+  Shintani/Gyoja norms. The basic form is
+  Tr(tilde_rho_L(sigma,g))=Tr(rho_K(N_sigma(sigma,g))). The theorem assumes
+  odd cardinality; it is not a characteristic-two or CP-channel theorem.
+  The norm is on twisted conjugacy classes; an uncorrected product
+  g sigma(g)... need not itself be a smaller-field element in a nonabelian
+  group. Section 6 treats orthogonal direct-sum compatibility.
+- Stacks Project, trace and norm, https://stacks.math.columbia.edu/tag/0BIE.
+- Already registered: Gurevich-Hadani 0705.4556 (monoidal quantization and
+  isotropic reduction, odd characteristic), Comfort-Kissinger 2105.06244
+  and Comfort 2304.10584 (Lagrangian/coisotropic stabilizer relations with
+  their stated scalar/normalization scopes). See `refs/LEDGER.md`.
+
+The two new arXiv papers were read from PDFs, with temporary extracts at
+`/tmp/aqm-field-extension-reading/{shintani,vourdas}.{pdf,txt}`. These paths
+are not durable source registration. Fetch into refs/, verify title/hash
+and register precise locators before a formal admission relying on them.
+
+Exact one-off scratch computations (not a new committed checker or a general
+proof) verified F4 Frobenius=SWAP, trace 2/fixed-vector dimension 3, the
+unnormalized integer Fourier inclusion/trace identity, the 35-versus-five
+subspace comparison and 16-versus-four squared diagonal, and a rational
+8→4→2 example of D_W D_V=D_(VW). The general formulas above require their
+own structured proofs and falsifiers before promotion. The working tree
+was unchanged by that exploratory discussion.
+
+**Next primary target on resumption:** a Frobenius-equivariant extension
+theory, starting with F2⊂F4⊂F16. Retain the scalar action, Frobenius
+unitary, inclusion/trace transfers, both flag comparisons and every reference
+trace. Prove tower composition and distinguish it from independent-system
+assembly; explicitly compare Fourier-dual transfers. Determine the enriched
+flag representation data needed for nontrivial Frobenius and test the
+candidate p=1 degree-expansion functor against it. Do not impose commutative
+diagrams that identify distinct context sets, traces or failure instruments.
+
+For a domain closed under independent arithmetic composition, finite étale
+F_p-algebras (products of finite fields) are a useful candidate to examine;
+their product gives a canonical tensor decomposition of the configuration
+Hilbert space. This is a suggested domain to formulate, not an admitted
+functor or a replacement for the detailed tower/transfer checks above.
+The five reviewed-but-unadmitted marked-Hecke-module claims below remain a
+separate integration opportunity. The field-extension/Frobenius direction
+is now the user's specific research priority.
 
 ## Categorical-limit package — windup 2026-09-08
 
