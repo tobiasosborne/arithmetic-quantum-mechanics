@@ -10,12 +10,13 @@ LATEXMK       := latexmk
 LATEXMK_FLAGS := -pdf -interaction=nonstopmode -halt-on-error
 
 TEX_SOURCES := $(MAIN).tex $(wildcard sections/*.tex)
+FIGURE_SOURCES := $(wildcard figures/*.pdf figures/*.png)
 
 .PHONY: all clean distclean
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(TEX_SOURCES)
+$(MAIN).pdf: $(TEX_SOURCES) $(FIGURE_SOURCES)
 	$(LATEXMK) $(LATEXMK_FLAGS) $(MAIN).tex
 
 # Remove latexmk's intermediate byproducts (.aux/.log/.fls/.fdb_latexmk/...).

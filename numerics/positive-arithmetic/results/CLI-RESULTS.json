@@ -1,0 +1,892 @@
+{
+  "checker_sha256": "272148e1bf157e15d682408b92fe8eeaf43d4849b027ab64b70eaea6c5e03718",
+  "expectations_sha256": "b7e83db405a546a6d06b10c8691ef14bf7cf1653e116eff13d3c5a013665053a",
+  "help": "usage: positive_arithmetic_check.py [-h]\n                                    [--red-mass | --red-jordan | --red-moment | --red-embedding | --red-fourier-invariance | --red-tracial-complement | --red-compression | --red-coherence | --red-fourier-phase | --red-profile | --red-total-first-order | --red-discard-later-rare | --red-multiplication-entry | --red-arity | --red-erase-characteristic | --red-normalizer]\n                                    [--only {P1,P2,P3,P4,P5,P6,P7}]\n\nExact bounded P1--P7 falsifiers; passing never proves the universal claims.\n\noptions:\n  -h, --help            show this help message and exit\n  --red-mass            mutate mathematical data at P1\n  --red-jordan          mutate mathematical data at P1\n  --red-moment          mutate mathematical data at P1\n  --red-embedding       mutate mathematical data at P2\n  --red-fourier-invariance\n                        mutate mathematical data at P2\n  --red-tracial-complement\n                        mutate mathematical data at P3\n  --red-compression     mutate mathematical data at P4\n  --red-coherence       mutate mathematical data at P4\n  --red-fourier-phase   mutate mathematical data at P4\n  --red-profile         mutate mathematical data at P5\n  --red-total-first-order\n                        mutate mathematical data at P5\n  --red-discard-later-rare\n                        mutate mathematical data at P5\n  --red-multiplication-entry\n                        mutate mathematical data at P6\n  --red-arity           mutate mathematical data at P6\n  --red-erase-characteristic\n                        mutate mathematical data at P7\n  --red-normalizer      mutate mathematical data at P5\n  --only {P1,P2,P3,P4,P5,P6,P7}\n                        run one positive gate group\n",
+  "runs": {
+    "mass": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-mass"
+      ],
+      "exit": 1,
+      "seconds": 0.284,
+      "result": {
+        "status": "FAIL",
+        "mutation": "mass",
+        "failed_gate": "P1",
+        "detail": "state normalization and positivity",
+        "counts": {
+          "P1": 2
+        }
+      },
+      "stderr": ""
+    },
+    "jordan": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-jordan"
+      ],
+      "exit": 1,
+      "seconds": 0.256,
+      "result": {
+        "status": "FAIL",
+        "mutation": "jordan",
+        "failed_gate": "P1",
+        "detail": "independent exponential derivative versus Jordan coefficient",
+        "counts": {
+          "P1": 27
+        }
+      },
+      "stderr": ""
+    },
+    "moment": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-moment"
+      ],
+      "exit": 1,
+      "seconds": 0.32,
+      "result": {
+        "status": "FAIL",
+        "mutation": "moment",
+        "failed_gate": "P1",
+        "detail": "all Frobenius power moments",
+        "counts": {
+          "P1": 58
+        }
+      },
+      "stderr": ""
+    },
+    "embedding": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-embedding"
+      ],
+      "exit": 1,
+      "seconds": 0.237,
+      "result": {
+        "status": "FAIL",
+        "mutation": "embedding",
+        "failed_gate": "P2",
+        "detail": "named inclusion density restriction",
+        "counts": {
+          "P2": 1
+        }
+      },
+      "stderr": ""
+    },
+    "fourier-invariance": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-fourier-invariance"
+      ],
+      "exit": 1,
+      "seconds": 0.301,
+      "result": {
+        "status": "FAIL",
+        "mutation": "fourier-invariance",
+        "failed_gate": "P2",
+        "detail": "Fourier transported code reference",
+        "counts": {
+          "P2": 16
+        }
+      },
+      "stderr": ""
+    },
+    "tracial-complement": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-tracial-complement"
+      ],
+      "exit": 1,
+      "seconds": 0.328,
+      "result": {
+        "status": "FAIL",
+        "mutation": "tracial-complement",
+        "failed_gate": "P3",
+        "detail": "new reference is positive on the actual complement",
+        "counts": {
+          "P3": 2
+        }
+      },
+      "stderr": ""
+    },
+    "compression": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-compression"
+      ],
+      "exit": 1,
+      "seconds": 0.803,
+      "result": {
+        "status": "FAIL",
+        "mutation": "compression",
+        "failed_gate": "P4",
+        "detail": "full multiplication return retains intermediate sector leakage",
+        "counts": {
+          "P4": 102
+        }
+      },
+      "stderr": ""
+    },
+    "coherence": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-coherence"
+      ],
+      "exit": 1,
+      "seconds": 0.362,
+      "result": {
+        "status": "FAIL",
+        "mutation": "coherence",
+        "failed_gate": "P4",
+        "detail": "coherent trace-fibre target increases decoder success",
+        "counts": {
+          "P4": 5
+        }
+      },
+      "stderr": ""
+    },
+    "fourier-phase": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-fourier-phase"
+      ],
+      "exit": 1,
+      "seconds": 0.347,
+      "result": {
+        "status": "FAIL",
+        "mutation": "fourier-phase",
+        "failed_gate": "P4",
+        "detail": "full mixed protocol detects relative Frobenius multiplication and Fourier",
+        "counts": {
+          "P4": 46
+        }
+      },
+      "stderr": ""
+    },
+    "profile": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-profile"
+      ],
+      "exit": 1,
+      "seconds": 0.354,
+      "result": {
+        "status": "FAIL",
+        "mutation": "profile",
+        "failed_gate": "P5",
+        "detail": "finite profile first nonzero matrix coefficient",
+        "counts": {
+          "P5": 5
+        }
+      },
+      "stderr": ""
+    },
+    "total-first-order": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-total-first-order"
+      ],
+      "exit": 1,
+      "seconds": 0.368,
+      "result": {
+        "status": "FAIL",
+        "mutation": "total-first-order",
+        "failed_gate": "P5",
+        "detail": "finite profile first nonzero matrix coefficient",
+        "counts": {
+          "P5": 15
+        }
+      },
+      "stderr": ""
+    },
+    "discard-later-rare": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-discard-later-rare"
+      ],
+      "exit": 1,
+      "seconds": 1.585,
+      "result": {
+        "status": "FAIL",
+        "mutation": "discard-later-rare",
+        "failed_gate": "P5",
+        "detail": "later rare branch survives full finite profile",
+        "counts": {
+          "P5": 35
+        }
+      },
+      "stderr": ""
+    },
+    "multiplication-entry": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-multiplication-entry"
+      ],
+      "exit": 1,
+      "seconds": 0.806,
+      "result": {
+        "status": "FAIL",
+        "mutation": "multiplication-entry",
+        "failed_gate": "P6",
+        "detail": "actual multiplication-table entry is observable",
+        "counts": {
+          "P6": 61
+        }
+      },
+      "stderr": ""
+    },
+    "arity": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-arity"
+      ],
+      "exit": 1,
+      "seconds": 0.222,
+      "result": {
+        "status": "FAIL",
+        "mutation": "arity",
+        "failed_gate": "P6",
+        "detail": "actual active control mass and arity",
+        "counts": {
+          "P6": 6
+        }
+      },
+      "stderr": ""
+    },
+    "erase-characteristic": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-erase-characteristic"
+      ],
+      "exit": 1,
+      "seconds": 0.308,
+      "result": {
+        "status": "FAIL",
+        "mutation": "erase-characteristic",
+        "failed_gate": "P7",
+        "detail": "Fourier-zero Born observable retains characteristic",
+        "counts": {
+          "P7": 3
+        }
+      },
+      "stderr": ""
+    },
+    "normalizer": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+        "--red-normalizer"
+      ],
+      "exit": 1,
+      "seconds": 1.495,
+      "result": {
+        "status": "FAIL",
+        "mutation": "normalizer",
+        "failed_gate": "P5",
+        "detail": "positive process normalizers multiply coefficientwise",
+        "counts": {
+          "P5": 47
+        }
+      },
+      "stderr": ""
+    },
+    "green": {
+      "command": [
+        "/usr/bin/python3",
+        "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py"
+      ],
+      "exit": 0,
+      "seconds": 7.227,
+      "result": {
+        "status": "PASS",
+        "mutation": null,
+        "counts": {
+          "P1": 779,
+          "P2": 112,
+          "P3": 11,
+          "P4": 104,
+          "P5": 52,
+          "P6": 64,
+          "P7": 5
+        },
+        "records": {
+          "P1": [
+            {
+              "p": 2,
+              "r": 1,
+              "Q": 2,
+              "period_counts": {
+                "1": 1
+              },
+              "B_nonzero_trace": "1"
+            },
+            {
+              "p": 2,
+              "r": 2,
+              "Q": 4,
+              "period_counts": {
+                "1": 1,
+                "2": 2
+              },
+              "B_nonzero_trace": "2"
+            },
+            {
+              "p": 2,
+              "r": 3,
+              "Q": 8,
+              "period_counts": {
+                "1": 1,
+                "3": 6
+              },
+              "B_nonzero_trace": "3"
+            },
+            {
+              "p": 2,
+              "r": 4,
+              "Q": 16,
+              "period_counts": {
+                "1": 1,
+                "4": 12,
+                "2": 2
+              },
+              "B_nonzero_trace": "4"
+            },
+            {
+              "p": 3,
+              "r": 1,
+              "Q": 3,
+              "period_counts": {
+                "1": 2
+              },
+              "B_nonzero_trace": "1"
+            },
+            {
+              "p": 3,
+              "r": 2,
+              "Q": 9,
+              "period_counts": {
+                "1": 2,
+                "2": 6
+              },
+              "B_nonzero_trace": "2"
+            },
+            {
+              "p": 3,
+              "r": 3,
+              "Q": 27,
+              "period_counts": {
+                "1": 2,
+                "3": 24
+              },
+              "B_nonzero_trace": "3"
+            },
+            {
+              "p": 3,
+              "r": 4,
+              "Q": 81,
+              "period_counts": {
+                "1": 2,
+                "4": 72,
+                "2": 6
+              },
+              "B_nonzero_trace": "4"
+            },
+            {
+              "p": 5,
+              "r": 1,
+              "Q": 5,
+              "period_counts": {
+                "1": 4
+              },
+              "B_nonzero_trace": "1"
+            },
+            {
+              "p": 5,
+              "r": 2,
+              "Q": 25,
+              "period_counts": {
+                "1": 4,
+                "2": 20
+              },
+              "B_nonzero_trace": "2"
+            },
+            {
+              "p": 5,
+              "r": 3,
+              "Q": 125,
+              "period_counts": {
+                "1": 4,
+                "3": 120
+              },
+              "B_nonzero_trace": "3"
+            },
+            {
+              "p": 5,
+              "r": 4,
+              "Q": 625,
+              "period_counts": {
+                "1": 4,
+                "4": 600,
+                "2": 20
+              },
+              "B_nonzero_trace": "4"
+            }
+          ],
+          "P2": [
+            {
+              "p": 2,
+              "s": 1,
+              "r": 2,
+              "twisted": false,
+              "degree": 2,
+              "kappa": 2
+            },
+            {
+              "p": 2,
+              "s": 1,
+              "r": 3,
+              "twisted": false,
+              "degree": 3,
+              "kappa": 4
+            },
+            {
+              "p": 2,
+              "s": 2,
+              "r": 4,
+              "twisted": false,
+              "degree": 2,
+              "kappa": 4
+            },
+            {
+              "p": 2,
+              "s": 2,
+              "r": 4,
+              "twisted": true,
+              "degree": 2,
+              "kappa": 4
+            },
+            {
+              "p": 3,
+              "s": 1,
+              "r": 2,
+              "twisted": false,
+              "degree": 2,
+              "kappa": 3
+            },
+            {
+              "p": 3,
+              "s": 1,
+              "r": 3,
+              "twisted": false,
+              "degree": 3,
+              "kappa": 9
+            }
+          ],
+          "P3": [
+            {
+              "t": "1",
+              "state_complement": "0",
+              "old_tracial_complement": "-1"
+            },
+            {
+              "t": "6/5",
+              "state_complement": "11/54",
+              "old_tracial_complement": "-7/18"
+            },
+            {
+              "t": "3/2",
+              "state_complement": "10/27",
+              "old_tracial_complement": "1/9"
+            },
+            {
+              "t": "2",
+              "state_complement": "1/2",
+              "old_tracial_complement": "1/2"
+            }
+          ],
+          "P4": {
+            "protocols": [
+              {
+                "p": 2,
+                "q": 2,
+                "Q": 4,
+                "a": 2,
+                "b": 3,
+                "trace_ab": 0,
+                "trace_frobenius_ab": 1,
+                "rare_order": 2,
+                "rare_leading": "1/4",
+                "full_success": "1",
+                "dephased_success": "1/2",
+                "omitted": {
+                  "frobenius": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "multiplication": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "fourier": {
+                    "success": "0",
+                    "failure": "1"
+                  }
+                }
+              },
+              {
+                "p": 2,
+                "q": 2,
+                "Q": 8,
+                "a": 2,
+                "b": 2,
+                "trace_ab": 0,
+                "trace_frobenius_ab": 1,
+                "rare_order": 2,
+                "rare_leading": "1/9",
+                "full_success": "1",
+                "dephased_success": "1/4",
+                "omitted": {
+                  "frobenius": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "multiplication": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "fourier": {
+                    "success": "1/4",
+                    "failure": "3/4"
+                  }
+                }
+              },
+              {
+                "p": 2,
+                "q": 4,
+                "Q": 16,
+                "a": 2,
+                "b": 3,
+                "trace_ab": 0,
+                "trace_frobenius_ab": 1,
+                "rare_order": 2,
+                "rare_leading": "1/36",
+                "full_success": "1",
+                "dephased_success": "1/4",
+                "omitted": {
+                  "frobenius": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "multiplication": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "fourier": {
+                    "success": "0",
+                    "failure": "1"
+                  }
+                }
+              },
+              {
+                "p": 3,
+                "q": 3,
+                "Q": 9,
+                "a": 4,
+                "b": 4,
+                "trace_ab": 0,
+                "trace_frobenius_ab": 1,
+                "rare_order": 2,
+                "rare_leading": "1/36",
+                "full_success": "1",
+                "dephased_success": "1/3",
+                "omitted": {
+                  "frobenius": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "multiplication": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "fourier": {
+                    "success": "1/3",
+                    "failure": "2/3"
+                  }
+                }
+              },
+              {
+                "p": 3,
+                "q": 3,
+                "Q": 27,
+                "a": 3,
+                "b": 9,
+                "trace_ab": 0,
+                "trace_frobenius_ab": 1,
+                "rare_order": 2,
+                "rare_leading": "1/144",
+                "full_success": "1",
+                "dephased_success": "1/9",
+                "omitted": {
+                  "frobenius": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "multiplication": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "fourier": {
+                    "success": "0",
+                    "failure": "1"
+                  }
+                }
+              },
+              {
+                "p": 5,
+                "q": 5,
+                "Q": 25,
+                "a": 6,
+                "b": 14,
+                "trace_ab": 0,
+                "trace_frobenius_ab": 1,
+                "rare_order": 2,
+                "rare_leading": "1/400",
+                "full_success": "1",
+                "dephased_success": "1/5",
+                "omitted": {
+                  "frobenius": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "multiplication": {
+                    "success": "1",
+                    "failure": "0"
+                  },
+                  "fourier": {
+                    "success": "1/5",
+                    "failure": "4/5"
+                  }
+                }
+              }
+            ],
+            "coherent_control_return": "1",
+            "dephased_output_return": "1/2",
+            "full_leakage_return": "1",
+            "compressed_return": "0",
+            "retained_failure_return": "1",
+            "phase_shifted_Born_return": "0"
+          },
+          "P5": {
+            "branches": [
+              {
+                "registers": 1,
+                "event_order": 0,
+                "leading_probability": "5/9"
+              },
+              {
+                "registers": 1,
+                "event_order": 1,
+                "leading_probability": "5/18"
+              },
+              {
+                "registers": 2,
+                "event_order": 0,
+                "leading_probability": "5/9"
+              },
+              {
+                "registers": 2,
+                "event_order": 1,
+                "leading_probability": "5/18"
+              },
+              {
+                "registers": 2,
+                "event_order": 2,
+                "leading_probability": "5/36"
+              },
+              {
+                "registers": 3,
+                "event_order": 0,
+                "leading_probability": "5/9"
+              },
+              {
+                "registers": 3,
+                "event_order": 1,
+                "leading_probability": "5/18"
+              },
+              {
+                "registers": 3,
+                "event_order": 2,
+                "leading_probability": "5/36"
+              },
+              {
+                "registers": 3,
+                "event_order": 3,
+                "leading_probability": "5/72"
+              }
+            ],
+            "entangled_event_order": 2,
+            "later_event_coefficient": "1/4",
+            "independent_nonzero_diagonal_order": 2,
+            "copied_nonzero_diagonal_order": 1,
+            "independent_nonzero_diagonal_leading": "3/2",
+            "copied_nonzero_diagonal_leading": "2",
+            "t_6_5_diagonal_probability": "43/1296",
+            "naive_point_count_probability": "275/1296"
+          },
+          "P6": {
+            "arity_samples": [
+              {
+                "p": 2,
+                "r": 1,
+                "arity": 1,
+                "order": 1,
+                "leading": "1",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 2,
+                "r": 1,
+                "arity": 2,
+                "order": 2,
+                "leading": "1",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 2,
+                "r": 1,
+                "arity": 3,
+                "order": 3,
+                "leading": "1",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 3,
+                "r": 1,
+                "arity": 1,
+                "order": 1,
+                "leading": "1",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 3,
+                "r": 1,
+                "arity": 2,
+                "order": 2,
+                "leading": "1",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 3,
+                "r": 1,
+                "arity": 3,
+                "order": 3,
+                "leading": "1",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 2,
+                "r": 2,
+                "arity": 1,
+                "order": 1,
+                "leading": "2",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 2,
+                "r": 2,
+                "arity": 2,
+                "order": 2,
+                "leading": "4",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 2,
+                "r": 2,
+                "arity": 3,
+                "order": 3,
+                "leading": "8",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 3,
+                "r": 2,
+                "arity": 1,
+                "order": 1,
+                "leading": "2",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 3,
+                "r": 2,
+                "arity": 2,
+                "order": 2,
+                "leading": "4",
+                "conditional_squared_difference": "2"
+              },
+              {
+                "p": 3,
+                "r": 2,
+                "arity": 3,
+                "order": 3,
+                "leading": "8",
+                "conditional_squared_difference": "2"
+              }
+            ],
+            "outside_joint_Born_return": "1/9",
+            "outside_joint_order": 1,
+            "outside_joint_leading": "1/2",
+            "hierarchy_scope": "Order d is an arity diagnostic; exact hierarchy level d+1 is an admitted input, not re-proved by this count."
+          },
+          "P7": {
+            "comparison": [
+              {
+                "p": 2,
+                "degree": 2,
+                "dimension": 4,
+                "rho_0": "zero ket",
+                "nonzero_conditional_fixed_label_weight": "1/2",
+                "nonzero_conditional_moving_label_weight": "1/4",
+                "conditional_purity": "3/8",
+                "period_mass_fixed": "1/2",
+                "period_mass_moving": "1/2",
+                "Fourier_zero_return": "1/4"
+              },
+              {
+                "p": 3,
+                "degree": 2,
+                "dimension": 9,
+                "rho_0": "zero ket",
+                "nonzero_conditional_fixed_label_weight": "1/4",
+                "nonzero_conditional_moving_label_weight": "1/12",
+                "conditional_purity": "1/6",
+                "period_mass_fixed": "1/2",
+                "period_mass_moving": "1/2",
+                "Fourier_zero_return": "1/9"
+              }
+            ],
+            "scope": "Common degree moments do not identify full endpoints or erase p-dependent arithmetic tables."
+          }
+        },
+        "scope": "Exact bounded samples only; no universal theorem inferred."
+      },
+      "stderr": ""
+    }
+  }
+}

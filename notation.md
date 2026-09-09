@@ -182,3 +182,15 @@
 | `mathcal T_path`, `C_(c_l,...,c_1)`, `c_*,h_*`, `v_r` | Iterated frame and direct-to-path connector | D1425 |
 | `K_b(t)`, `D_S` | Continuous Kraus amplitudes and retained decoder | D1426 |
 | `C_a(t)`, `a_r,A`, `\|one_r>` | Weighted endpoint connector, weights and excitation basis | D1427 |
+
+
+| symbol | meaning | definition |
+|---|---|---|
+| `h,t=exp(h), b_d(t), P_(E,0), P_(E,d)^times` | interpolation variable, nonzero period count, zero and period projections | D1501 |
+| `D_E,rho_E,D_word,rho_word,R` | unnormalized density, reference state and ordered products, total absolute degree | D1501 |
+| `J_k(d),A_(E,k),B_E,sigma_(E,k),A_(word,k),sigma_(word,k)` | positive Jordan coefficient, reference coefficient, first coefficient and normalized coefficient states | D1502 |
+| `L_E,L_word,lambda_word,P_S,B_S` | finite reference profile, normalized preparation and nonzero support masks | D1503 |
+| `(Phi,Z),z_k,Phi_k` | positive-series process representative, normalizer and CP coefficients | D1504 |
+| `Phi_*A,(X,A)` | coefficientwise arithmetic action and profile experiment | D1505 |
+| `v(A),M(A),w(A),eta(A)` | leading order, matrix, probability coefficient and conditional state | D1506 |
+| `w_x` (positive mixed protocol) | diagonal weight of B_E at a nonzero label x, equal to phi(period(x))/b_(period(x))(p) | POS-MIXED |

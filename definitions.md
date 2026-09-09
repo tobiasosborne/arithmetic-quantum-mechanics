@@ -2294,3 +2294,122 @@ For odd d set `A_d^sgn=0`, `B_1^sgn=t-1`, and `B_d^sgn=c_d(t)`
 when d>1. Put `J_2(m)=m^2 product_(ell|m prime)(1-ell^(-2))`, with
 empty product one. These definitions apply only to odd characteristic;
 the negation action is identity at p=2.
+
+
+## D1501 (period-uniform arithmetic reference)
+
+Fix the actual prime p, the named primitive root zeta_p, and a finite
+diagram of D1301--D1304 arithmetic fields and embeddings. The real
+parameter is h>=0, with t=exp(h); p remains part of the arithmetic data.
+For E=F_(p^r), put P_(E,0)=|0><0| and let P_(E,d)^times project onto
+nonzero labels with exact absolute Frobenius period d, d|r. Define
+b_1(t)=t−1 and b_d(t)=sum_(e|d)mu(d/e)t^e for d>1, where mu is the
+integer Moebius function of D1331. Set
+
+    D_E(h)=P_(E,0)+sum_(d|r) b_d(exp h)/b_d(p) P_(E,d)^times,
+    rho_E(h)=exp(−r h)D_E(h).
+
+A period-uniform density means a matrix in the real span of these
+orthogonal projections, with no off-diagonal blocks. Its prescribed masses
+are exp(−rh) at zero and exp(−rh)b_d(exp h) on each nonzero period block.
+For an ordered word E_1,...,E_m use tensor products D_word,rho_word and
+R=sum_j r_j. The empty word has D=rho=1 and R=0. The reference is additional
+state data, not a replacement for the constant maximally mixed preparation.
+
+## D1502 (positive reference coefficients and coefficient states)
+
+For D1501 put A_(E,0)=P_(E,0). For integers k>=1 define
+
+    J_k(d)=sum_(e|d)mu(d/e)e^k
+          =d^k product_(ell|d prime)(1−ell^(−k)),
+    A_(E,k)=sum_(d|r) J_k(d)/(k! b_d(p)) P_(E,d)^times.
+
+The empty product makes J_k(1)=1. Put B_E=A_(E,1),
+sigma_(E,0)=P_(E,0) and sigma_(E,k)=k! A_(E,k)/r^k for k>=1.
+Word coefficients are the Cauchy tensor coefficients
+A_(word,k)=sum_(k_1+...+k_m=k) tensor_j A_(E_j,k_j).
+For nonempty words put sigma_(word,k)=k! A_(word,k)/R^k for k>=1
+and sigma_(word,0)=tensor_j P_(E_j,0).
+
+## D1503 (finite positive boundary profile)
+
+For D1502 define L_E(h)=P_(E,0)+h B_E and
+L_word(h)=tensor_j L_(E_j)(h). A positive operator polynomial on a
+finite-dimensional block matrix algebra B is a finite sum
+A(h)=sum_(k=0)^m h^k A_k with every A_k positive in B.
+Its coefficients, including zero coefficients, are retained data.
+Let P_(E,+)=I−P_(E,0). For a subset S of word positions set
+
+    P_S=tensor_j [P_(E_j,+) if j in S, otherwise P_(E_j,0)],
+    B_S=tensor_j [B_(E_j) if j in S, otherwise P_(E_j,0)].
+
+Thus L_word=sum_S h^|S| B_S. Its normalized finite-profile preparation
+is lambda_word(h)=L_word(h)/Tr(L_word(h)); for one field its denominator
+is 1+r h. D_word and L_word are different families.
+
+## D1504 (positive-series process category)
+
+Objects are the D1326 finite tagged block matrix algebras with their sum
+of ordinary matrix traces. A positive scalar normalizer is a series
+Z(h)=sum_(k>=0)z_k h^k with z_k>=0, z_0>0 and Z(h)<infinity for every
+real h>=0. A process representative X->Y is a pair (Phi,Z), where
+Phi(h)=sum_(k>=0)h^k Phi_k, every Phi_k:B_X->B_Y is completely positive,
+and for every positive a and every k,
+
+    Tr_Y(Phi_k(a)) <= z_k Tr_X(a).
+
+It is normalized when equality holds for every k,a. Tagged instruments
+are the same definition with their output tags retained. Two representatives
+are equal precisely when Z' Phi=Z Phi' coefficientwise as linear maps,
+with identical external tags. Composition uses (Psi Phi,W Z), tensor uses
+(Phi tensor Psi,Z W), and identities use (id,1). Products use Cauchy
+coefficients. Evaluation is Phi(h)/Z(h), a usual ordinary-trace CP map.
+This is a semantic CP category; it does not assert faithfulness of the
+source's distinct Kraus presentations or identify amplitude equations
+beyond their actual CP interpretation.
+
+## D1505 (arithmetic profile action and finite reference protocols)
+
+On the objects of D1504 retain every actual constant D1326 arithmetic
+process map. Its action on a D1503 polynomial is coefficientwise:
+Phi_*A=sum_k h^k Phi(A_k). A profile experiment object is a pair (X,A)
+with A such a polynomial; an arrow (X,A)->(Y,C) is a constant arithmetic
+CP map Phi satisfying C=Phi_*A. Equality is equality of those typed CP
+maps; identity, composition and tensor use their usual actual operations.
+Zero profiles are allowed but have no conditional state. One may equally
+use all finite-dimensional constant CP maps as an explicitly larger envelope.
+Independent profiles tensor by the Cauchy product.
+A finite reference protocol is a finite circuit using actual constant
+arithmetic CP maps and either exact rho_E preparations or finite-profile
+lambda_E preparations, with finitely many reference registers and every
+specified measurement placement and retained history named. It can be
+evaluated in D1504. At the amplitude level all actual arithmetic gates,
+adjoints and coherent compositions retain their original matrices; a CP
+map is applied only where the protocol prescribes an instrument/channel.
+
+## D1506 (leading operational boundary record)
+
+For a nonzero positive series or polynomial A(h)=sum_k h^k A_k,
+let v(A)=min{k:A_k!=0}, M(A)=A_(v(A)), w(A)=Tr M(A), and
+eta(A)=M(A)/w(A). The boundary record is (v,M), equivalently (v,w,eta).
+For a branch of an experiment normalized by a scalar with constant term
+one, w is its leading event-probability coefficient, v its vanishing order,
+and eta its limiting conditional density. For a normalizer with constant
+term z_0, the event coefficient is w/z_0.
+Conditioning on a positive-probability branch divides by its actual trace.
+Leading normalization alone is not an arrow or a stipulated functor;
+the full profile is retained before any later continuation or conditioning.
+
+## D1507 (relative-Frobenius multiplication protocol)
+
+For a named proper embedding i:K->E, q=|K|=p^s, |E|=p^r, choose named
+a,b in E with T_i(ab)=0 and T_i(a^q b)=1. Their existence is a claim.
+Prepare the independent reference word E,E,K and retain the outcome
+postselecting its computational labels to a,b,0. Encode the target by V_i,
+apply U_E^s to the first control, apply the actual M_E^(2) to both controls
+and target, then apply F_E to the target. Apply the retained J_i decoder
+to the target, and on success apply F_K^* and measure the target label.
+All failure tags remain available. The optional coherence test dephases
+the target in its E computational basis immediately after V_i.
+The reference preparation may be either rho_word or lambda_word; comparison
+of their boundary records uses D1506, not equality at finite h.

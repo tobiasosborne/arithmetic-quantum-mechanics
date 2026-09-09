@@ -4,12 +4,127 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-09, general Galois and mixed arithmetic limit round completed.
+Updated: 2026-09-09, positive arithmetic counting goal completed in its declared scope.
 The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
 
-## Current round — general Galois structure and arithmetic tower limits
+## Completed goal — a positive arithmetic counting theory
+
+The user requested an explicit goal to land a rigorous arithmetic theory
+with a nontrivial useful p-to-one limit, then clarified that the minimum is
+that something nontrivial remains and determining what remains is part of
+the project. The completed construction is a retained-characteristic counting
+specialization and finite graded operational boundary. It does not claim an
+intrinsic characteristic-one field or promote the stronger MIX-ALL conjecture.
+
+Result/acceptance record: `docs/research-plans/positive-counting-result.md`.
+Work order: `briefs/positive-arithmetic-goal.md`. Six new POS claims and
+D1501--D1507 are integrated, with two structured shards in
+`theory/sidequests/positive-arithmetic/` and labbook Section 27, pp.146--153.
+The register is now 135 claims: 112 PROVED, 19 SKETCH, three CONJECTURE,
+one REFUTED; 150 definitions. No older conjecture or unrelated campaign was
+silently promoted or resumed.
+
+### The common positive theory
+
+Fix an actual finite field E=F_(p^r) and retain its characteristic, field
+tables, phase, register and all actual arithmetic operators. For h>=0 and
+t=exp(h), the exact reference uses zero and nonzero Frobenius-period classes:
+
+    D_E(h)=P0+sum_(d|r) b_d(exp h)/b_d(p) P_d,
+    rho_E(h)=exp(-r h)D_E(h),
+    b_1(t)=t-1; b_d(t)=c_d(t) for d>1.
+
+The unique class-uniform reference is positive, faithful for h>0, and
+rho_E(log p)=I/p^r. It is generally NOT TRACIAL. Positive ordinary Taylor
+coefficients belong to D_E, while rho_E is the normalized Poisson mixture.
+The coefficient A_Ek has trace r^k/k!; B_E=A_E1 is faithful on nonzero labels.
+
+All named finite-field embeddings, including degrees divisible by p,
+satisfy J_i^*D_EJ_i=D_K and J_i^*L_EJ_i=L_K. Reference code restriction,
+all towers and both Fourier-transported decoder branches are coherent.
+Fourier transports a reference to its actual conjugate, not to a reset
+canonical reference. The exact code-success probability is exp((s-r)h).
+
+The positive-series CP category retains the FULL actual arithmetic source,
+with ordinary trace used for channel normalization. Actual amplitudes compose
+coherently before any prescribed CP measurement. Coefficientwise Cauchy
+composition/tensor and positive scalar normalizers supply a common positive
+rule for mixed experiments; no intermediate sector compression is inserted.
+
+### Finite sufficient boundary and the mixed protocol
+
+For m independently prepared field references, retain
+
+    L_word(h)=tensor_j(P_(E_j,0)+h B_(E_j)).
+
+For EVERY nonzero fixed finite-dimensional CP branch, its output under
+D_word and L_word has the same first nonzero matrix coefficient and order,
+at most m. The conclusion survives every later fixed CP continuation,
+independent tensor and entangling operation. Finite generated reference
+protocols can preallocate their references; the bound counts those allocated
+registers. Leading normalized state alone is insufficient for later rare
+postselection, so the full finite profile is retained.
+
+Every proper finite-field extension admits a,b with T(ab)=0 and
+T(a^q b)=1. The actual protocol postselects E,E,K references to a,b,0,
+uses target V, relative Frobenius on the first control, multiplication,
+target Fourier, retained J decoding and successful inverse base Fourier.
+Its rare preparation has order 2 and positive coefficient; decoder success
+is 1 and target is 1. Removing Frobenius or multiplication gives target 0.
+Removing Fourier gives success 1/kappa in regular degrees and 0 in singular
+degrees; dephasing the coherent target gives success 1/kappa. This is a
+uniform all-extension result, not a theorem inferred from a few examples.
+
+Universal surviving data include the first nonzero-sector relative moments
+Tr(sigma_(E,1) U_E^(s j))=gcd(n,j)/n for r=sn, the earlier phi(d)/(r-1)
+moving-orbit blocks, code-failure leading coefficient r-s, and order d for
+d independent nonzero multiplication controls. The relative moment formula
+is extracted by coefficient one from the reviewed Frobenius moment; its
+short derivation and mechanical finite checks are recorded.
+
+### Scope that must stay explicit
+
+The actual p, field multiplication tables, cyclotomic phases and register
+dimensions survive as labels. Some individual probabilities and endpoint
+purities distinguish p=2 and p=3. This is a counting/reference limit, not a
+varying-characteristic operator category. The ordinary zero reference
+endpoint is P0; the finite graded profile retains the rare conditional data.
+
+The new rule does not continue every coupled point count by substituting
+t for p. Independently prepared x=y!=0 has order 2, while an actual copied
+single reference gives order 1. Coordinate unitaries transport field references
+rather than resetting them to independent prime-field references. Exact
+finite-h probabilities and arbitrary parameter-dependent angle/cancellation
+families are outside the finite-profile adequacy claim. MIX-ALL and the
+older changing-angle comparison remain open; LIM-SIGNED remains conjectural.
+The new positive theory does not depend on those unresolved claims.
+
+### Review, evidence and publication
+
+One prover pass and one target-blind hostile review returned PASS, with one
+MINOR wording fix distinguishing positive coefficients of D from those of
+rho. Root applied and verified the fix; no new hostile round. All six scoped
+POS statements are PROVED. Review context reuse and same-family limitations
+are explicit in `theory/verdicts/positive-arithmetic-r1.md`; adjudication is
+`positive-arithmetic-adjudication.md` beside it.
+
+The new independent checker has 16 actual mathematical red modes. It tests
+p=2,3,5, all seven gate groups, full mixed protocols on six extensions,
+coherent inputs, later rare conditioning, and explicit residual p dependence.
+Additional hostile probes include F64, a twisted embedding, and p=7.
+The full repository verification passed 22 green checkers and 190 advertised
+mutation runs; final PDF/lockstep checks follow the prose/figure integration.
+Frozen inventories and exact outputs are in `numerics/positive-arithmetic/results/`.
+The figure source is `scripts/plot-positive-arithmetic.py`; the Makefile now
+tracks figure assets so changing a figure causes the PDF to rebuild.
+
+The goal's clarified minimum is met by this complete positive counting
+construction with its nontrivial graded operational content. Stronger
+intrinsic or angle-compatible specializations remain separate research goals.
+
+## Previous completed round — general Galois structure and arithmetic tower limits
 
 The user requested informed conjectures followed by the standard prover,
 verifier and hostile workflow, and insisted on general statements for arbitrary

@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-09",
+  "rows": [
+    {
+      "p": 2,
+      "r": 1,
+      "normalized_zero_derivative": "-1",
+      "normalized_derivative_trace": "0",
+      "unnormalized_first_coefficient_positive": true
+    },
+    {
+      "p": 2,
+      "r": 2,
+      "normalized_zero_derivative": "-2",
+      "normalized_derivative_trace": "0",
+      "unnormalized_first_coefficient_positive": true
+    },
+    {
+      "p": 2,
+      "r": 3,
+      "normalized_zero_derivative": "-3",
+      "normalized_derivative_trace": "0",
+      "unnormalized_first_coefficient_positive": true
+    },
+    {
+      "p": 3,
+      "r": 1,
+      "normalized_zero_derivative": "-1",
+      "normalized_derivative_trace": "0",
+      "unnormalized_first_coefficient_positive": true
+    },
+    {
+      "p": 3,
+      "r": 2,
+      "normalized_zero_derivative": "-2",
+      "normalized_derivative_trace": "0",
+      "unnormalized_first_coefficient_positive": true
+    },
+    {
+      "p": 5,
+      "r": 2,
+      "normalized_zero_derivative": "-2",
+      "normalized_derivative_trace": "0",
+      "unnormalized_first_coefficient_positive": true
+    }
+  ]
+}

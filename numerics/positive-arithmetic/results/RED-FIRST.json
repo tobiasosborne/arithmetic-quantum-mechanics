@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python3",
+    "theory/lanes/positive-arithmetic/check/positive_arithmetic_check.py",
+    "--red-mass"
+  ],
+  "exit": 1,
+  "result": {
+    "status": "FAIL",
+    "mutation": "mass",
+    "failed_gate": "P1",
+    "detail": "state normalization and positivity",
+    "counts": {
+      "P1": 2
+    }
+  },
+  "sha256": "92c546a8bc68f7cd886214fc9bb4d358394aa02071bb6f9471476d9cd08c67f7",
+  "observation": "Observed before any green run; initial implemented gate only."
+}
