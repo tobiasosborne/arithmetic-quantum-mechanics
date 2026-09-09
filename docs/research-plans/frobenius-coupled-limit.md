@@ -3,6 +3,16 @@
 STATUS: a concrete next-stage proposal, not an admitted specialization claim.
 Native lane convention: inherited Codex runtime, no model override.
 
+Update, 2026-09-09: the FRL orbit package below is now PROVED after capped
+review. The new GAL-FUNCTOR/DESCENT/IMAGE results give a general separable
+Galois component over arbitrary base fields. MIX-GRAM/CHART/TOWER give
+all-characteristic finite-field Gram sectors, positive conditioned Fourier
+charts, and coherent refinement through every invertible-degree tower.
+The full mixed arithmetic limit remains MIX-ALL, a CONJECTURE with explicit
+requirements in `theory/sidequests/frobenius-hierarchy/coherent-towers.md`.
+The chart continuation retains its logical arithmetic factor; it does not
+establish the full coupled incidence/phase family proposed in this document.
+
 Update, 2026-09-08: a different, explicitly conditional starting point is
 now constructed in `theory/sidequests/frobenius-hierarchy/orbit-boundary.md`
 and `orbit-composition.md` (FRL-ORBIT/POS/COMP/ACTIVE, all SKETCH pending

@@ -1,0 +1,333 @@
+\section{Galois embedding registers over an arbitrary field}
+\label{sec:galois-embedding-registers}
+
+A finite separable extension carries a finite set of embeddings into a
+separable closure, even when the ground field is infinite. This set gives
+a finite quantum register with a natural Galois action. Its dimension is
+the extension degree. Over a finite field it realizes a single primitive
+Frobenius orbit. The construction below includes every finite separable
+field tower and the finite \'etale algebras required by independent tensor.
+The three results have passed the capped independent review.
+
+\begin{definition}[Finite \'etale embedding datum]
+Fix a field $K$ and a named separable closure $\Omega=K^{\mathrm{sep}}$.
+Put $G_K=\operatorname{Aut}_K(\Omega)$ with its Krull topology. Let
+$\mathrm{Et}_K^+$ have as objects nonzero finite \'etale commutative unital
+$K$-algebras and as arrows unital $K$-algebra homomorphisms $f:A\to B$
+for which $B$ is finite locally free over $A$ of one constant positive
+rank $r_f$. Equivalently, $B$ is isomorphic to $A^{r_f}$ as an $A$-module;
+no such module isomorphism is chosen. The tensor is $\otimes_K$ and its
+unit is $K$. Set
+\[
+ X_A=\operatorname{Hom}_{K\text{-alg}}(A,\Omega),\qquad
+ n_A=\dim_K A,\qquad H_A^{\mathrm{emb}}=\ell^2(X_A),
+\]
+\[
+ \mathcal B_A^{\mathrm{emb}}=\operatorname{End}_{\mathbb C}
+       (H_A^{\mathrm{emb}}),\qquad
+ U_A^{\mathrm{emb}}(g)|\tau\rangle=|g\circ\tau\rangle,\qquad
+ \rho_A^{\mathrm{mix}}=I/n_A.
+\]
+The basis of $\ell^2(X_A)$ is orthonormal for counting measure. The
+observable algebra is the full matrix algebra, including coherent matrix
+entries between distinct $G_K$-orbits. The reference trace is ordinary
+matrix trace, and the named reference density is $\rho_A^{\mathrm{mix}}$.
+\end{definition}
+\begin{scope}
+Constant rank is a condition on every component of $A$. It includes every
+finite separable field extension, with no restriction on characteristic or
+on whether $K$ is perfect. The superscript distinguishes this register
+from the register with all field elements as basis labels.
+\end{scope}
+\provenance{D1401}{theory/sidequests/arithmetic-limits/embedding-functor.md,
+section 1}{theory/checks/arithmetic\_limits\_check.py, G1--G3}{galois-embedding-adjudication.md}
+
+\begin{definition}[Embedding-fibre transfers and comparison maps]
+For a finite \'etale embedding datum and $f:A\to B$, define
+\[
+ R_f:X_B\longrightarrow X_A,\quad R_f(\tau)=\tau\circ f,
+ \qquad
+ s_f|\sigma\rangle=\frac{1}{\sqrt{r_f}}
+       \sum_{R_f(\tau)=\sigma}|\tau\rangle.
+\]
+The square root is the positive real square root. For objects $A,C$, let
+\[
+ \mu_{A,C}:H_A^{\mathrm{emb}}\otimes H_C^{\mathrm{emb}}
+       \longrightarrow H_{A\otimes_K C}^{\mathrm{emb}}
+\]
+send $|\sigma\rangle\otimes|\tau\rangle$ to the basis vector of the
+homomorphism $a\otimes c\mapsto\sigma(a)\tau(c)$. The unit comparison
+sends $1\in\mathbb C$ to the unique $K$-embedding of $K$ into $\Omega$.
+For a named $K$-isomorphism of separable closures
+$\eta:\Omega\to\Omega'$, define
+\[
+ W_{\eta,A}|\tau\rangle=|\eta\circ\tau\rangle,
+ \qquad c_\eta(g)=\eta g\eta^{-1}.
+\]
+\end{definition}
+\begin{scope}
+No basis of $A$ over $K$ is chosen. A separable closure and any comparison
+between two such closures are named data. A single normalization for
+nonuniform embedding fibres is outside this definition.
+\end{scope}
+\provenance{D1402}{theory/sidequests/arithmetic-limits/embedding-functor.md,
+sections 1--2}{theory/checks/arithmetic\_limits\_check.py, G1--G3}{galois-embedding-adjudication.md}
+
+\begin{theorem}[Coherent quantization of finite \'etale towers]
+\statusProved\quad
+For every field $K$ and named separable closure $\Omega$, the category
+$\mathrm{Et}_K^+$ is symmetric monoidal. Each restriction map $R_f$ is
+surjective with every fibre of cardinality $r_f$. The assignments
+$A\mapsto(H_A^{\mathrm{emb}},U_A^{\mathrm{emb}})$ and $f\mapsto s_f$,
+with the displayed tensor and unit comparisons, give a faithful strong
+symmetric monoidal functor to finite continuous unitary
+$G_K$-representations and equivariant isometries. In particular,
+\[
+ s_f^*s_f=I,\qquad s_{h\circ f}=s_hs_f,\qquad
+ U_B^{\mathrm{emb}}(g)s_f=s_fU_A^{\mathrm{emb}}(g),
+\]
+\[
+ s_{f\otimes k}\mu_{A,C}=\mu_{B,D}(s_f\otimes s_k)
+       \quad(f:A\to B,\ k:C\to D).
+\]
+Every named change $\eta$ of separable closure gives a natural monoidal
+unitary comparison, transports the Galois action through $c_\eta$, and
+satisfies $W_{\theta\eta,A}=W_{\theta,A}W_{\eta,A}$.
+\end{theorem}
+\begin{scope}
+The result includes all finite separable field towers over every $K$ and
+all allowed \'etale towers. Faithfulness concerns the specified algebra
+maps; it does not assert fullness among equivariant isometries. A different
+closure comparison $\eta'$ changes $W_\eta$ by
+$U^{\mathrm{emb}}(\eta'\eta^{-1})$ on the target.
+\end{scope}
+\provenance{GAL-FUNCTOR}{theory/sidequests/arithmetic-limits/embedding-functor.md,
+sections 1--2}{theory/checks/arithmetic\_limits\_check.py, G1--G3}{galois-embedding-adjudication.md}
+
+\begin{proof}
+Splitting over $\Omega$ identifies $A\otimes_K\Omega$ with
+$\prod_{\sigma\in X_A}\Omega$. The coordinate idempotent at $\sigma$
+cuts $B\otimes_K\Omega$ down to one coordinate for each extension of
+$\sigma$ to $B$. Constant rank makes this dimension $r_f$.
+Consequently the normalized columns of $s_f$ have disjoint support and
+unit norm. A label in the top field of a tower has one uniquely determined
+intermediate restriction, so the composite sum has coefficient
+$(r_fr_h)^{-1/2}$ exactly once on every surviving label. This proves tower
+composition.
+
+An embedding of $A\otimes_K C$ is uniquely the product of one embedding
+of each factor. All tensor comparisons therefore act on the same ordered
+tuples. Reassociation and swap commute on these tuples, and fibre sizes
+multiply. Galois postcomposition and closure changes biject every
+restriction fibre and preserve its normalization. Finally, the support
+of $s_f$ recovers $R_f$, and the embedding-set equivalence recovers $f$.
+The source input is Milne, \emph{Fields and Galois Theory}, version 5.10,
+Propositions 8.6, 8.9 and 8.20, Corollary 8.7 and Theorems 6.10 and 8.21;
+the same equivalence is Stacks Lemma 58.2.2.
+\end{proof}
+
+\begin{definition}[Retained embedding decoding]
+For a finite \'etale embedding datum and its embedding-fibre transfers,
+put $P_f=s_fs_f^*$ and $Q_f=I-P_f$, and use the retained-isometry decoder
+schema in the full complex matrix algebras. Its encoding, success map
+and retained decoder are
+\[
+ \mathcal E_f(\rho)=s_f\rho s_f^*,\qquad
+ d_f(\rho)=s_f^*\rho s_f,
+\]
+\[
+ \mathcal D_f(\rho)=\bigl(d_f(\rho),Q_f\rho Q_f\bigr):
+ \mathcal B_B^{\mathrm{emb}}\longrightarrow
+ \mathcal B_A^{\mathrm{emb}}\oplus\mathcal B_B^{\mathrm{emb}}.
+\]
+The output tags are success:$A$ and failure:$B$; trace on a tagged algebra
+is the sum of ordinary matrix traces. A completely positive map is a
+linear map whose identity-matrix amplifications preserve positive matrices;
+it is trace preserving if it preserves this specified trace. Independent
+decoders pair every output tag. A stopped tower decoder applies the next
+decoder only on the preceding success output and retains every failure
+at the object where it first occurs. Full instruments are compared with
+these histories, without identifying them with the binary decoder of a
+composite isometry.
+\end{definition}
+\begin{scope}
+Failure retains its quantum output. This is an instantiation of the
+retained decoder for an isometry, with ordinary trace on each tag.
+\end{scope}
+\provenance{D1403,D1327}{theory/sidequests/arithmetic-limits/embedding-functor.md,
+section 3}{theory/checks/arithmetic\_limits\_check.py, G1--G3}{galois-embedding-adjudication.md}
+
+\begin{theorem}[Positive decoding with all independent outcomes]
+\statusProved\quad
+For every arrow $f$ of a finite \'etale embedding datum, $\mathcal E_f$
+and $\mathcal D_f$ are $G_K$-equivariant completely positive
+trace-preserving maps, and $d_f$ is completely positive and trace
+nonincreasing. They satisfy
+\[
+ \mathcal D_f(\mathcal E_f(\rho))=(\rho,0),\qquad
+ \operatorname{Tr}d_f(\rho_B^{\mathrm{mix}})=\frac1{r_f},\qquad
+ d_f d_h=d_{h\circ f}.
+\]
+Conditioned reference success gives $\rho_A^{\mathrm{mix}}$.
+Stopped tower instruments and independent products of decoders are
+completely positive and trace preserving with every indicated history or
+paired output. For two independent maximally mixed inputs their four
+probabilities are
+\[
+ (r_f^{-1},1-r_f^{-1})\otimes(r_k^{-1},1-r_k^{-1}).
+\]
+Closure changes and Cartesian tensor comparisons transport all these branches.
+\end{theorem}
+\begin{scope}
+Complete positivity holds on entangled inputs as well. Only the stated
+independent reference inputs force product probabilities. Full instruments
+retain their histories; no equality with the binary decoder of a composite
+or tensor isometry is asserted.
+\end{scope}
+\provenance{GAL-DESCENT}{theory/sidequests/arithmetic-limits/embedding-functor.md,
+section 3}{theory/checks/arithmetic\_limits\_check.py, G1--G3}{galois-embedding-adjudication.md}
+
+\begin{proof}
+The decoder has amplitudes $s_f^*$ and $Q_f$, whose squared sum is
+$P_f+Q_f^2=I$. Their matrix amplifications are positive by the same
+conjugation formula, and the squared-sum identity gives trace preservation.
+Two independent decoders have all four tensor products of these amplitudes,
+with squared sum $(P_f+Q_f)\otimes(P_k+Q_k)=I$.
+In a tower $A\xrightarrow{f}B\xrightarrow{h}C$, the stopped history has
+amplitudes $s_f^*s_h^*$, $Q_fs_h^*$ and $Q_h$, with output registers
+$A,B,C$ respectively. Their squared sum is
+$s_h(P_f+Q_f)s_h^*+Q_h=I$. Replacing any success by one more complete
+decoder preserves this identity, proving arbitrary finite towers.
+
+The difference between histories and a binary decoder is measurable.
+Write $R=s_hQ_fs_h^*$, so $Q_{h\circ f}=R+Q_h$ with orthogonal summands.
+Re-encoding and merging the two failure histories gives
+$R\rho R+Q_h\rho Q_h$; the binary decoder gives
+$(R+Q_h)\rho(R+Q_h)$. When both summands are nonzero, a superposition
+between their ranges distinguishes these outputs by its off-diagonal terms.
+Retaining the actual history is therefore part of the process specification.
+\end{proof}
+
+\begin{definition}[Embedding stabilizer and normal closure]
+For a finite \'etale embedding datum with $A$ a field and a named
+$\tau_0\in X_A$, put
+\[
+ H_{A,\tau_0}=\{g\in G_K:g\circ\tau_0=\tau_0\},\qquad
+ C_A=\bigcap_{g\in G_K}gH_{A,\tau_0}g^{-1},
+\]
+\[
+ N_A=K\left(\bigcup_{\tau\in X_A}\tau(A)\right)\subset\Omega.
+\]
+Thus $N_A$ is the compositum of all embedded conjugates. Its definition
+does not use $\tau_0$. The notation $C_A$ anticipates the proved independence
+of its defining expression from the choice of $\tau_0$.
+\end{definition}
+\begin{scope}
+The extension $A/K$ is finite separable and need not be normal. The
+stabilizer itself depends on the chosen embedding.
+\end{scope}
+\provenance{D1404}{theory/sidequests/arithmetic-limits/galois-image-orbits.md,
+section 1}{theory/checks/arithmetic\_limits\_check.py, G1}{galois-embedding-adjudication.md}
+
+\begin{definition}[Primitive finite-field orbit comparison]
+For a finite \'etale embedding datum with $K=\mathbb F_p$, let
+$\operatorname{Frob}_p:\Omega\to\Omega$ be $x\mapsto x^p$. Let $A$
+be a degree-$d$ field extension of $\mathbb F_p$, choose $a\in A$ with
+$A=\mathbb F_p(a)$, and choose $\tau_0\in X_A$. Put $b=\tau_0(a)$ and
+$O_b=\{b,b^p,\ldots,b^{p^{d-1}}\}$. For a positive multiple $r$ of $d$,
+let $E=\mathbb F_{p^r}$ be the unique such subfield of $\Omega$ and define
+\[
+ T_a:H_A^{\mathrm{emb}}\longrightarrow\ell^2(O_b)\subset\ell^2(E),
+ \qquad T_a|\tau\rangle=|\tau(a)\rangle.
+\]
+The orbit coordinate unitary $L_{\tau_0}:\mathbb C^d\to H_A^{\mathrm{emb}}$
+sends $|j\rangle$ to $|\operatorname{Frob}_p^j\circ\tau_0\rangle$ for
+$0\leq j<d$. In these coordinates write $S_d|j\rangle=|j+1\bmod d\rangle$.
+The word primitive here means degree exactly $d$ over $\mathbb F_p$, and
+does not require a generator of $A$'s multiplicative group.
+\end{definition}
+\begin{scope}
+The comparison names a primitive element and cyclic origin. It compares
+one orbit subspace; the full field-label register has dimension $p^r$.
+\end{scope}
+\provenance{D1405}{theory/sidequests/arithmetic-limits/galois-image-orbits.md,
+section 3}{theory/checks/arithmetic\_limits\_check.py, G3}{galois-embedding-adjudication.md}
+
+\begin{theorem}[Normal-closure symmetry and primitive Frobenius atoms]
+\statusProved\quad
+For every finite separable field extension $A/K$ and named separable
+closure, $N_A/K$ is the finite Galois normal closure and
+\[
+ \ker U_A^{\mathrm{emb}}=C_A,\qquad
+ \operatorname{Im}U_A^{\mathrm{emb}}\simeq\operatorname{Gal}(N_A/K).
+\]
+The isomorphism sends $U_A^{\mathrm{emb}}(g)$ to $g|_{N_A}$. It is
+independent of the choice of $\tau_0$. Every finite separable tower
+$A\to B$ gives $N_A\subset N_B$ and the corresponding restriction
+quotient of these images. Over all finite Galois subfields $E$ of $\Omega$,
+\[
+ G_K\simeq\varprojlim_E\operatorname{Im}U_E^{\mathrm{emb}}
+\]
+as profinite groups, with the stated restriction transitions.
+For $K=\mathbb F_p$, a degree-$d$ extension and the primitive orbit
+comparison above satisfy
+\[
+ L_{\tau_0}^*U_A^{\mathrm{emb}}(\operatorname{Frob}_p)L_{\tau_0}=S_d.
+\]
+The map $T_a$ is a Frobenius-equivariant unitary onto the primitive
+length-$d$ orbit subspace. Its full observable algebra and maximally mixed
+state identify with the cycle block $M_d(\mathbb C)$ and $I/d$.
+For $d>1$ this is a nonfixed-label orbit block.
+\end{theorem}
+\begin{scope}
+Nonabelian images are included. The inverse limit retains the finite
+Galois actions and their restriction maps; bare matrix algebras alone do
+not reconstruct them. The finite-field comparison specifies the orbit
+block and normalized block trace, with no assertion about orbit
+multiplicities, boundary mixture weights, field-label code transfers,
+Fourier transforms or multiplication processes.
+\end{scope}
+\provenance{GAL-IMAGE,D1331,D1332}{theory/sidequests/arithmetic-limits/galois-image-orbits.md,
+sections 1--3}{theory/checks/arithmetic\_limits\_check.py, G1--G3}{galois-embedding-adjudication.md}
+
+\begin{proof}
+Every embedding extends to a Galois automorphism of the separable closure,
+so $X_A\simeq G_K/H_{A,\tau_0}$. An element fixes every coset precisely
+when it lies in every conjugate stabilizer. Fixing those embeddings is
+equivalent to fixing their image compositum pointwise. The Galois
+correspondence therefore identifies this kernel with
+$\operatorname{Gal}(\Omega/N_A)$ and its quotient with
+$\operatorname{Gal}(N_A/K)$. This is the normal-core description of the
+normal closure in Milne, Remark 3.18. Stacks Lemmas 9.22.2--9.22.3 and
+Theorem 9.22.4 give the restriction quotients and the profinite inverse limit.
+
+Over $\mathbb F_p$, the embeddings are
+$\tau_j=\operatorname{Frob}_p^j\tau_0$, $0\leq j<d$, by Milne,
+Propositions 4.19--4.23. Evaluation at a primitive element makes their
+images distinct, so it identifies their basis with one length-$d$ orbit.
+Changing $\tau_0$ shifts the cyclic coordinates; changing the primitive
+element gives the explicit comparison $T_{a'}T_a^*$ between the named
+orbit spaces. Both comparisons intertwine Frobenius.
+\end{proof}
+
+For standard subfields $\mathbb F_{p^d}\subset\mathbb F_{p^e}$ with
+$d\mid e$, the cyclic coordinates give
+\[
+ s_f|j\rangle=\sqrt{\frac de}
+       \sum_{k=0}^{e/d-1}|j+kd\rangle.
+\]
+Thus this transfer pulls back a quotient of cycles. For example its
+dimensions for $\mathbb F_2\subset\mathbb F_4$ are $1\to2$, whereas
+the field-label inclusion has dimensions $2\to4$. The independent tensor
+of degree-$d$ and degree-$e$ atoms has $\gcd(d,e)$ simultaneous-Frobenius
+orbits of length $\operatorname{lcm}(d,e)$, but retains the full
+$M_{de}(\mathbb C)$, including coherence between different orbits.
+
+Separability is essential to the stated formula. If a finite extension
+$L/K$ is not separable, a $K$-embedding into $K^{\mathrm{sep}}$ would make
+every element of $L$ separable, a contradiction. Its embedding set here
+is empty. Using an algebraic closure instead counts separable degree and
+still loses inseparable multiplicity. The positive construction above
+therefore supplies the Galois part of the arithmetic problem uniformly
+over all base fields, while additional arithmetic data remain necessary
+for a construction that also retains Fourier and multiplication diagrams.

@@ -170,11 +170,22 @@ def b4(args):
                 check(table[a, b, (k + 1) % lcm(d, e, h)] == shifted, "B4", "transported ternary action")
     v = np.array([1, 1, 0, 0], dtype=object)  # |00>+|01>, different diagonal orbits.
     rho = np.outer(v, v)
-    labels = [0, 1, 1, 0]
-    dephased = np.array([[rho[i, j] if labels[i] == labels[j] else 0 for j in range(4)] for i in range(4)], dtype=object)
-    out = dephased if args.red_coherence else rho
-    check(np.array_equal(out, rho), "B4", "coherent reblocking must retain cross-orbit matrix units")
-    check(F(int(v @ dephased @ v), 4) == F(1, 2), "B4", "classicalization loses half the return probability")
+    reblock = np.zeros((4, 4), dtype=object)
+    for (a, k), (i, j) in pair_map(2, 2).items():
+        reblock[2 * i + j, 2 * a + k] = 1
+
+    def transport(x, dephase=False):
+        inside = reblock.T @ x @ reblock
+        if dephase:
+            inside = np.array([[inside[i, j] if i // 2 == j // 2 else 0
+                                for j in range(4)] for i in range(4)], dtype=object)
+        return reblock @ inside @ reblock.T
+
+    out = transport(rho, args.red_coherence)
+    check(F(int(v @ out @ v), 4) == 1, "B4", "actual reblocking Born return must equal one")
+    for i, j in product(range(4), repeat=2):
+        check(np.array_equal(transport(unit(4, i, j)), unit(4, i, j)), "B4", "actual matrix-unit transport")
+    check(F(int(v @ transport(rho, True) @ v), 4) == F(1, 2), "B4", "classicalization loses half the return probability")
     print("B4 PASS: coherent CRT reblocking, ternary transport and dephasing sentinel")
 
 
@@ -283,7 +294,7 @@ def main():
     except AssertionError as error:
         print("FAIL", error)
         return 1
-    print("PASS: B1--B6. Finite evidence only; general claims remain SKETCH pending review.")
+    print("PASS: B1--B6. Finite evidence only; general statements rely on the reviewed written proofs.")
     return 0
 
 

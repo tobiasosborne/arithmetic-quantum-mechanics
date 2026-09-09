@@ -1,0 +1,90 @@
+\section{A conjectural refinement forced by Fourier symmetry}
+\label{sec:signed-orbit-conjecture}
+
+The relation $F_E^2|x\rangle=|-x\rangle$ means that retaining arithmetic
+Fourier also retains negation. Negation commutes with Frobenius, but in
+odd characteristic it does not fix $1$ and is not a field automorphism.
+This is a closure of arithmetic operators, distinct from the normal
+closure of a field extension. It suggests a concrete test of how much
+additional information a filtered boundary must carry.
+
+\begin{definition}[Signed Frobenius orbit candidates]
+Let $p$ be odd and $r\geq1$. The generators of
+$\Gamma_r^{\rm sgn}=C_r\times C_2$ act on
+$\mathbb F_{p^r}^{\times}$ by $x\mapsto x^p$ and $x\mapsto-x$.
+A point of exact Frobenius period $d$ is internal when its negative lies
+in its Frobenius orbit, and external otherwise. Let $t$ be a real
+variable. The integer M\"obius function $\mu$ is zero on integers divisible
+by a prime square and otherwise $(-1)$ to the number of prime factors.
+Write $\varphi(d)=|\{1\leq a\leq d:\gcd(a,d)=1\}|$ and
+$c_d(t)=\sum_{e\mid d}\mu(d/e)t^e$.
+For $d=2^k m$ even, with $k\geq1$ and $m$ odd, define
+\[
+ A_d^{\rm sgn}(t)=\sum_{e\mid m}\mu(m/e)(t^{2^{k-1}e}-1),\qquad
+ B_d^{\rm sgn}(t)=\sum_{e\mid m}\mu(m/e)(t^{2^{k-1}e}-1)^2.
+\]
+For odd $d$ set $A_d^{\rm sgn}=0$, $B_1^{\rm sgn}=t-1$, and
+$B_d^{\rm sgn}=c_d(t)$ for $d>1$. Finally put
+\[
+ J_2(m)=m^2\prod_{\substack{\ell\mid m\\\ell\text{ prime}}}
+                      (1-\ell^{-2}),
+\]
+with empty product one.
+\end{definition}
+\begin{scope}
+These are candidate count polynomials. Characteristic two is excluded:
+there negation is identity and the group action changes.
+\end{scope}
+\provenance{D1331, D1441}{definitions.md}
+{theory/checks/arithmetic\_signed\_check.py}{conjectural increment}
+
+\begin{conjecture}[First- and second-order signed orbit sectors]
+\statusConjecture\quad
+For every odd prime $p$, every $r\geq1$, and every $d\mid r$,
+$A_d^{\rm sgn}(p)$ and $B_d^{\rm sgn}(p)$ count the internal and
+external nonzero labels of exact Frobenius period $d$, respectively.
+Internal signed orbits occur only for even $d$ and have size $d$;
+external signed orbits have size $2d$. Every nonzero candidate polynomial
+is positive for all $t>1$. For even $d=2^k m$,
+\begin{align*}
+ A_d^{\rm sgn}(t)&=\varphi(d)(t-1)+O((t-1)^2),\\
+ B_d^{\rm sgn}(t)&=2^{2k-2}J_2(m)(t-1)^2+O((t-1)^3).
+\end{align*}
+For odd $d$, including $d=1$, the first coefficient of
+$B_d^{\rm sgn}(t)$ is $\varphi(d)$.
+\end{conjecture}
+\begin{scope}
+The quantifiers range over all degrees and all odd primes. The finite
+census supports this conjecture and does not prove it. No full Fourier,
+multiplication or mixed-process limit follows from the proposed counts.
+\end{scope}
+\provenance{LIM-SIGNED}{docs/research-plans/signed-orbit-filtration.md}
+{theory/checks/arithmetic\_signed\_check.py, S1--S2}
+{not submitted for theorem admission in this round}
+
+For a degree-two extension, the formula predicts the following three
+types of nonzero labels.
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Type & Point count & Signed orbit size & Vanishing order\\
+\midrule
+Prime-field labels & $p-1$ & $2$ & $1$\\
+Internal period-two labels & $p-1$ & $2$ & $1$\\
+External period-two labels & $(p-1)^2$ & $4$ & $2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The two first-order types suggest two matrix blocks $M_2$: on the first,
+Frobenius is identity and negation exchanges the points; on the second,
+both exchange them. The second-order type suggests $M_4$ with the regular
+$C_2\times C_2$ action. This is a specific proposed mechanism by which
+closing the arithmetic symmetries retains additional orders of degeneration.
+It does not identify those orders with arbitrary Clifford levels.
+
+The exact checker enumerates quotient fields of orders $3,9,27,81,5,25$,
+obtains periods by iteration, and determines internality by orbit membership
+of the actual negative. It separately expands the sparse polynomials about
+one through degree $48$. Both the incorrect-negation and incorrect-order
+mutations fail. The conjecture's general proof and its integration with
+Fourier remain future work.

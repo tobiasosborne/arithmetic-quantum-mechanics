@@ -20,8 +20,12 @@ or category existence. Every mutation must fail the named mathematical gate.
 * B4: the CRT cycle-pair bijection is bijective and intertwines simultaneous
   shift for d,e=1--8; triple associativity is checked after transporting both
   routes to the same Cartesian basis, d,e,f=1--4. A cross-orbit superposition
-  in two degree-two cycles is destroyed by classical orbit dephasing.
-  `--red-coherence` inserts that dephasing in the purported reblocking.
+  in two degree-two cycles is transported through the actual B matrix and
+  compared to the fixed Born return value one. All matrix units undergo
+  the same computed transport. Classical orbit dephasing is applied inside
+  the multiplicity coordinates and reduces the return to 1/2.
+  `--red-coherence` inserts that dephasing. The independent data mutation
+  replacing the pure input by its diagonal must also fail the Born test.
 * B5: inclusion-sector weights, tower products and normalized success/failure
   channels on all matrix units for degrees 2|4|8. Four independent outcomes
   are checked on the tensor matrix-unit basis, including off-diagonal inputs.

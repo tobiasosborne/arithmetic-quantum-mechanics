@@ -852,3 +852,41 @@ SHA256 `068e646e9fdedf5355278baaee775075be9b2deb0bf6ba2b0cae83fa0c6a7150`.
 Section 2.2, printed p. 127: cycle-set multiplication by gcd/lcm in the
 necklace algebra. Only that formula is used as comparison; the coherent
 quantum multiplicity algebra and conditional trace are derived locally.
+
+## General Galois and mixed-limit round — retrieved 2026-09-09
+
+**STACKS-04JI** — The Stacks Project, *Schemes etale over a point*,
+Section 58.2, title checked on the source page.
+Route: https://stacks.math.columbia.edu/tag/04JI.
+Local `refs/arithmetic-limits/stacks-04JI/source.html`;
+SHA256 `1432489ebf2eb3912c170502f1fca4a63e00e6b9e95d2b37162cf8bff9508507`.
+Lemma 58.2.2 (03QR): etale K-schemes and continuous absolute-Galois sets;
+its explicit construction by embedding sets restricts to the finite objects.
+Variance is contravariant when expressed in terms of K-algebras.
+
+**STACKS-0BMI** — The Stacks Project, *Infinite Galois theory*, Section 9.22,
+title checked on the source page.
+Route: https://stacks.math.columbia.edu/tag/0BMI.
+Local `refs/arithmetic-limits/stacks-0BMI/source.html`;
+SHA256 `c52b47023edefc748584719222b70b537778eb6115c49ca1fd7351def9260b50`.
+Lemma 9.22.1 (0BMJ): profiniteness. Lemma 9.22.2 (0BMK): surjective
+restriction in Galois towers. Lemma 9.22.3: inverse limit over finite
+Galois subextensions. Theorem 9.22.4 (0BML): closed/open/normal subgroup
+correspondence, including arbitrary infinite Galois extensions.
+
+**MILNE-FT-5.10** — J. S. Milne, *Fields and Galois Theory*, version 5.10,
+September 2022. Title, author and version verified on PDF cover.
+Route: https://jmilne.org/math/CourseNotes/FT.pdf.
+Local `refs/arithmetic-limits/milne-FT/FT.pdf` and `FT.txt`;
+SHA256 `5c43ea0bf4ec190b819727fe720414a80e09f9e762533d08bad5b8a0b6de7273`.
+Theorem 8.21, printed p. 111: contravariant equivalence of finite etale
+algebras with finite continuous Galois sets. The quantum fibre normalization,
+CP instruments and conditional-limit statements are local derivations,
+not assertions attributed to this source.
+Additional exact locators used by the general Galois proof: Theorem 6.10
+(existence/comparison of separable closures); Proposition 8.6, Corollary 8.7,
+Proposition 8.9 and Corollary 8.10 (splitting, tensor and compositum facts);
+Proposition 8.20 (full faithfulness of embedding sets); Remark 3.18,
+printed p. 40 (normal core/normal closure); Propositions 4.19--4.20,
+Corollary 4.21 and Proposition 4.23, printed pp. 53--54 (primitive
+elements, finite fields, Frobenius and their subfields).

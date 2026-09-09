@@ -3,6 +3,12 @@
 Status: finite evidence for FRL-ORBIT, FRL-POS, FRL-COMP and FRL-ACTIVE,
 all registered as SKETCH pending independent capped review.
 
+Update, 2026-09-09: the four claims are now PROVED after the capped review
+in `theory/verdicts/frobenius-boundary-adjudication.md`. The old frozen
+outputs below describe the pre-review checker. Its B4 coherence acceptance
+was repaired; current repair evidence is in
+`numerics/arithmetic-limits/results/orbit-repair.json`.
+
 Run `python3 theory/checks/frobenius_boundary_check.py`. Preregistered
 scope and mutations are in `theory/checks/frobenius_boundary_EXPECTATIONS.md`.
 `checks.json` records the actual stdout, exit code and SHA256 of the checker.

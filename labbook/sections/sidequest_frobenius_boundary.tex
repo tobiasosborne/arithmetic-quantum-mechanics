@@ -9,7 +9,7 @@ original register vanishes, but its normalized internal physics does not.
 The construction below includes independent composition and standard
 subfield inclusion. It is a selected observable family; extending it to
 the full arithmetic multiplication and Fourier processes remains open.
-The new statements carry sketch status pending independent review.
+The statements below have passed the capped review.
 The ``orbit checker'' cited below is
 \path{theory/checks/frobenius_boundary_check.py}.
 
@@ -45,10 +45,10 @@ subfields in one finite field, use the same origin wherever an orbit occurs.
 The comparison includes the origin choices. Compatible origins for all
 named embeddings or field automorphisms are not stipulated.
 \end{scope}
-\provenance{D1331}{definitions.md}{orbit checker B1}{not yet independently reviewed}
+\provenance{D1331}{definitions.md}{orbit checker B1}{frobenius-boundary-adjudication.md}
 
 \begin{proposition}[Arithmetic orbit counts and matrix comparison]
-\statusSketch\quad
+\statusProved\quad
 For every prime $p$, every $r\geq1$, and each $d\mid r$, exactly $c_d(p)$
 field labels have Frobenius period $d$. The marked representation is
 faithful, unital and preserves adjoints, and
@@ -67,7 +67,7 @@ retains common matrices on equal-length orbits, not the full field matrix
 algebra and not the commutant of Frobenius.
 \end{scope}
 \provenance{FRL-ORBIT}{orbit-boundary.md, Sections 1--2}
-{orbit checker B1--B2}{not yet independently reviewed}
+{orbit checker B1--B2}{frobenius-boundary-adjudication.md}
 
 For $d\mid r$, the polynomial $X^{p^d}-X$ divides $X^{p^r}-X$ and has
 derivative $-1$, so it has exactly $p^d$ roots in $E$. Decomposing these
@@ -107,10 +107,10 @@ $P_r^{\rm mov}=\sum_{x^p\ne x}|x\rangle\langle x|$.
 This removes fixed basis labels. It does not remove every invariant vector:
 a moving orbit still contains an invariant uniform superposition.
 \end{scope}
-\provenance{D1332}{definitions.md}{orbit checker B2--B3}{not yet independently reviewed}
+\provenance{D1332}{definitions.md}{orbit checker B2--B3}{frobenius-boundary-adjudication.md}
 
 \begin{proposition}[A faithful positive conditional endpoint]
-\statusSketch\quad
+\statusProved\quad
 For every $r\geq2$, $\theta_{r,t}$ is a faithful normalized positive
 trace for $t>1$, and $\omega_{r,t}$ extends continuously to the displayed
 faithful normalized positive trace on $\mathcal O_r^+$ at $t=1$.
@@ -129,7 +129,7 @@ not specialize all arithmetic amplitudes. The unconditioned trace at one
 has a different quotient, retaining only the scalar block.
 \end{scope}
 \provenance{FRL-POS}{orbit-boundary.md, Sections 2--4}
-{orbit checker B2--B3}{not yet independently reviewed}
+{orbit checker B2--B3}{frobenius-boundary-adjudication.md}
 
 Positivity holds throughout the real interval, not just at arithmetic
 points. Put $t=e^h$ with $h>0$. For $d>1$,
@@ -200,10 +200,10 @@ The CP envelope is not asserted to be the image of all arithmetic source
 processes. Arithmetic comparison covers the marked observables and the
 specified gates and block instruments.
 \end{scope}
-\provenance{D1333}{definitions.md}{orbit checker B4--B5}{not yet independently reviewed}
+\provenance{D1333}{definitions.md}{orbit checker B4--B5}{frobenius-boundary-adjudication.md}
 
 \begin{proposition}[Positive composition and conditional descent]
-\statusSketch\quad
+\statusProved\quad
 The word and tagged algebras above form symmetric monoidal CPTP categories
 with continuous product reference states for every $t\geq1$. Continuous
 CPTP matrix families evaluate functorially at one. Standard subfield
@@ -226,7 +226,7 @@ orbit-coordinate transport. Full decoder histories keep their tags.
 The prime-field register has no moving sector and is not a conditional atom.
 \end{scope}
 \provenance{FRL-COMP}{orbit-composition.md, Sections 1--3}
-{orbit checker B4--B5}{not yet independently reviewed}
+{orbit checker B4--B5}{frobenius-boundary-adjudication.md}
 
 The cycle-pair formula follows by solving two congruences for $k$, with
 $a$ the residue of the difference of the two output labels modulo $g$.
@@ -261,8 +261,8 @@ The corner trace is
 $\tau_{E,d}^{\rm nz}(a)=\tau_{E,d}(a)/\tau_{E,d}(P_{E,d}^{\rm nz})$.
 On a specified word, $P_A^{\rm nz}$ tests nonzero labels precisely on
 the register subset $A$.
-For $E=\mathbb F_{p^r}$, let
-$F_E|x\rangle=Q^{-1/2}\sum_y\exp(-2\pi i\operatorname{Tr}_{E/\mathbb F_p}(xy)/p)|y\rangle$
+For $E=\mathbb F_{p^r}$ with its named primitive root $\zeta_p$, let
+$F_E|x\rangle=Q^{-1/2}\sum_y\zeta_p^{-\operatorname{Tr}_{E/\mathbb F_p}(xy)}|y\rangle$
 and put $P_r^{\rm dual}=F_EP_r^{\rm mov}F_E^*$.
 \end{definition}
 \begin{scope}
@@ -270,10 +270,10 @@ Nonzero controls, moving Frobenius labels and their Fourier-transported
 cuts are distinct tests.
 \end{scope}
 \provenance{D1306, D1308, D1334}{definitions.md}{orbit checker B6}
-{arithmetic definitions admitted; new cuts not yet independently reviewed}
+{frobenius-boundary-adjudication.md}
 
 \begin{proposition}[Active weights and interaction order]
-\statusSketch\quad
+\statusProved\quad
 For every finite field $E$, every $d\geq1$, and the traces just specified,
 write $w=((Q-1)/Q)^d$. Then
 \[
@@ -297,7 +297,7 @@ The multiplication family's order $d$ matches its interaction arity and
 exact Clifford level $d+1$; no general equivalence is asserted.
 \end{scope}
 \provenance{FRL-ACTIVE}{orbit-composition.md, Sections 4--5}
-{orbit checker B6}{not yet independently reviewed}
+{orbit checker B6}{frobenius-boundary-adjudication.md}
 
 There are $(Q-1)^d$ active control tuples. Each gives a nonzero translation
 of the target, with no fixed labels; all other tuples give the identity.

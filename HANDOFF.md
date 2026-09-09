@@ -4,13 +4,132 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-08, positive conditional Frobenius orbit prototype added
-after the filtered-boundary discussion and arithmetic package `622c49c`.
+Updated: 2026-09-09, general Galois and mixed arithmetic limit round completed.
 The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
 
-## Current continuation — a positive conditional orbit prototype
+## Current round — general Galois structure and arithmetic tower limits
+
+The user requested informed conjectures followed by the standard prover,
+verifier and hostile workflow, and insisted on general statements for arbitrary
+extensions/towers. The completed work order is `briefs/arithmetic-limits-target.md`.
+The new statements are in labbook Sections 24--26; Section 23 was reviewed
+and its four prior sketches admitted after one checker/phase repair.
+
+**Register:** 129 claims: 106 PROVED, 19 SKETCH, three CONJECTURE, one
+REFUTED; 143 definitions. Six new positive claims were admitted in this
+round and four earlier orbit claims were promoted. Two new conjectures remain.
+The mainline FCR-2 and unrelated marked-module work were not resumed.
+
+### General extension and Galois results
+
+GAL-FUNCTOR/DESCENT/IMAGE, D1401--D1405, apply to every base field K and
+all its finite separable extensions. Nonzero finite etale K-algebras close
+independent tensor; their admitted maps have constant positive finite rank.
+The register is ell^2(Hom_K(A,K^sep)), of dimension dim_K A. Uniform
+embedding-fibre pullback is an isometry and a faithful strong symmetric
+monoidal functor, with exact tower composition, G_K-equivariance, explicit
+separable-closure comparisons and retained CPTP decoders. All histories and
+independent outcomes are typed. The image on a field extension is the Galois
+group of its normal closure, via the normal core of an embedding stabilizer;
+all finite Galois levels recover G_K as a profinite inverse limit. Finite-field
+primitive degree-d atoms give d-cycles and the full tower gives Z-hat.
+
+This degree register is not the cardinality-|A| arithmetic register. Its
+primitive-orbit comparison does not identify its transfers with physical
+field-label J/V or the earlier divisor-block inclusion. Inseparable extensions
+are outside the admitted construction: Hom_K(A,K^sep) is empty when A/K is
+nonseparable, while embeddings into an algebraic closure count separable
+degree. General-field Fourier/Haar data have not been supplied. A possible
+inseparable follow-up was asked asynchronously; no additional such work was
+assumed in this round.
+
+### Uniform Gram sectors and the positive tower boundary
+
+MIX-GRAM/CHART/TOWER, D1421--D1428, are admitted with explicit strata.
+For every finite-field embedding of degree n>=2 and kappa=|E|/|K|,
+
+    sqrt(kappa)(J*V)_(x,a)=delta_(a,nx).
+
+If p does not divide n, every singular-value square is 1/kappa. If p divides
+n, one square is |K|/kappa and all others zero. The code ranges intersect
+in one line exactly for quadratic characteristic two. The projection algebra,
+physical weights, actual Fourier/logical reflection and Frobenius restriction
+are derived for every branch. On the joint support U_E factors through U_K;
+for |K|=p^s, U_E^s=I there. Larger ambient Galois action requires other sectors.
+
+The unconditioned regular support trace 2/kappa has a complementary
+projection of proposed weight 1-2/kappa, negative near kappa=1. The positive
+replacement conditions on the chart first. Its M2 trace is Tr/2. As the
+angle c tends to one, the chart projections coalesce but their normalized
+difference tends to X, while the chart Fourier factor tends to Z. The full
+regular Fourier operator is Z tensor B_i, with B_i=D_n^-1 F_K retained;
+logical field data have not vanished. The singular degree>2 plane and the
+quadratic characteristic-two residual chart are treated separately.
+
+For any finite tower with all extension degrees invertible in p, corrected
+trace maps L=V D_n compose exactly. Direct-to-path chart connectors are
+coherent under all consecutive-block refinements and intertwine actual
+Fourier and Frobenius. With kappa_j=t^a_j, a_j>0, the endpoint sends
+
+    |0> -> |0...0>,
+    |1> -> sum_j sqrt(a_j/sum_i a_i) |one excitation at edge j>.
+
+At arithmetic points a_j are the increments of prime-field extension degree.
+Independent tensor keeps the full path space and its higher excitation
+sectors. Retained decoder success composes; stopped histories are not the
+binary composite decoder. The chart parameter varies with the logical field
+factor retained: this is not a full varying arithmetic process category.
+
+### Two precise conjectures and the next research target
+
+MIX-ALL requires a common positive filtered realization for every finite
+mixed extension diagram, including p-dividing degrees, Galois comparisons,
+Fourier-transfer relations, multiplication transitions, and specified
+measurement placements with all outcomes. Objects, arrows, reference weights,
+mixed-moment continuation and comparison maps must actually be constructed.
+Separate constant matrix envelopes do not settle it. The next test must glue
+singular and regular tower diagrams and compare actual mixed circuits.
+
+LIM-SIGNED, D1441, tests the arithmetic closure forced by F_E^2=negation.
+Negation is not a field automorphism at odd p. For every odd p and all r,
+the conjecture gives exact internal/external orbit counts for the commuting
+Frobenius/negation action on nonzero labels. Even-period external sectors are
+predicted to vanish at second order, while internal sectors vanish at first
+order. In degree two the proposed counts are p-1,p-1,(p-1)^2, with signed
+orbit sizes 2,2,4. Exact finite censuses and polynomial leading-coefficient
+checks support the conjecture; no all-degree proof was admitted. The
+characteristic-two action is different and explicitly excluded from this row.
+Research rationale: `docs/research-plans/signed-orbit-filtration.md`.
+
+### Review and verification
+
+Three one-pass target-blind reviews were completed, each followed by at most
+one repair wave. The orbit checker now applies the actual coherent channel
+and rejects an independently corrupted input; the Fourier phase uses its
+named root. The Galois review demanded no repair. Mixed review required the
+explicit full endpoint Z tensor B_i wording. Each adjudication is in
+`theory/verdicts/`; no open FATAL/MAJOR remains on admitted statements.
+Runtime thread limits required reuse of unrelated reviewer contexts, without
+sharing target prover reasoning; the limitation is explicit in both new
+verdicts. No cross-family independence is claimed.
+
+The independent verifier supplies exact Galois, Gram, Fourier, tangent,
+all-length connector and mixed-circuit falsifiers, including an actual F81
+Fourier tower, characteristic-five and twisted-embedding critic checks.
+The signed conjecture has a separate bounded exact checker. Final verification
+covers 21 green checkers and 174 meaningful advertised mutation runs (including
+a documented alias). A wrapped help token was removed from the new CLI;
+its final advertised modes were rerun and required to fail mathematical gates
+with exit one, excluding parser errors. The PDF/lockstep build is checked
+again after final claim promotion. Frozen evidence and current source hashes
+are in `numerics/arithmetic-limits/results/`.
+
+## Previous continuation — a positive conditional orbit prototype
+
+The historical account below describes the 2026-09-08 draft. Its four
+SKETCH statuses were promoted on 2026-09-09 as recorded above.
 
 The user asked to become familiar with the project and continue the F1,
 composition and Frobenius work, especially whether Frobenius survives p->1.

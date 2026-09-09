@@ -1,8 +1,7 @@
 # A positive conditional boundary for marked Frobenius orbits
 
-Status: SKETCH for FRL-ORBIT and FRL-POS. These are structured derivations
-with exact finite falsifiers, awaiting independent capped review. No PROVED
-promotion is made in this session. Definitions: D1331--D1332. Existing inputs:
+Status: PROVED for FRL-ORBIT and FRL-POS within the stated hypotheses.
+Capped review and mechanical repair: ../../verdicts/frobenius-boundary-adjudication.md. Definitions: D1331--D1332. Existing inputs:
 D1301--D1302, FRB-TRACE and FRB-FROB. Author: root Codex runtime.
 
 This is a selected observable family with named orbit origins. It is not a

@@ -155,3 +155,30 @@
 | `lambda_(r,d), sigma_(r,t), P_r^mov` | conditional block weight, ordinary-trace reference density, physical nonfixed-label projection | D1332 |
 | `O_R^+, omega_(R,t), W_R, e_(r,s), j_(r,s), h_(r,s), B_(d,e)` | word algebra/reference/ambient weight; inclusion cut/encoding/success weight; coherent cycle-pair reblocking | D1333 |
 | `P_(E,d)^nz, tau_(E,d), v_(E,d), tau_(E,d)^nz, P_A^nz, P_r^dual` | nonzero-control cut, whole-word trace, restricted multiplication, corner trace, subset cut, Fourier-dual moving-label cut | D1334 |
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `Gamma_r^sgn, A_d^sgn, B_d^sgn, J_2(m)` | Frobenius/negation action on nonzero labels; candidate internal/external point counts; second Jordan totient | D1441 |
+
+
+| symbol | meaning | first fixed in |
+|---|---|---|
+| `Omega=K^sep, G_K, Et_K^+, r_f` | named separable closure, absolute Galois group, constant-positive-rank finite etale category, arrow rank | D1401 |
+| `X_A,n_A,H_A^emb,B_A^emb,U_A^emb,rho_A^mix` | embedding set, K-dimension, counting Hilbert space, full observable algebra, Galois unitary, maximally mixed density | D1401 |
+| `R_f,s_f,mu_(A,C),W_(eta,A),c_eta` | restriction of embeddings, normalized fibre isometry, tensor comparison, closure-change unitary and conjugation | D1402 |
+| `P_f,Q_f,E_f,d_f,D_f` (embedding context) | range/complement projections, encoding, success map, retained embedding decoder | D1403 |
+| `H_(A,tau_0),C_A,N_A` | embedding stabilizer, its normal core, compositum normal closure | D1404 |
+| `Frob_p,O_b,T_a,L_(tau_0)` | arithmetic Frobenius on the closure, primitive orbit, evaluation comparison, named cyclic coordinates | D1405 |
+
+
+| Symbol | Meaning | Owner |
+|---|---|---|
+| `Gamma_i`, `Ptilde_i`, `S_i`, `E_i` | Gram map, trace-code projection, joint range, joint-support projection | D1421 |
+| `tau_E` (joint-code context) | Normalized physical matrix trace; q,Q keep their field-cardinality meanings | D1421 |
+| `\|+_K>`, `R_K` | Uniform vector, additive reflection | D1421 |
+| `D_a^K`, `L_i`, `c_i,h_i`, `W_i`, `mathcal T_i`, `B_i` | Scalar dilation, corrected trace map, angle data, orthogonal second column, frame, logical Fourier factor | D1422 |
+| `alpha_i,beta_i,d_i,e_i`, `A_K`, `mathcal T_i^ang,mathcal T_i^res` | Singular-degree sectors and frames | D1423 |
+| `p_c,q_c,f_c,d_c`, `tr_2` | Conditioned chart projections, Fourier, tangent and trace | D1424 |
+| `mathcal T_path`, `C_(c_l,...,c_1)`, `c_*,h_*`, `v_r` | Iterated frame and direct-to-path connector | D1425 |
+| `K_b(t)`, `D_S` | Continuous Kraus amplitudes and retained decoder | D1426 |
+| `C_a(t)`, `a_r,A`, `\|one_r>` | Weighted endpoint connector, weights and excitation basis | D1427 |

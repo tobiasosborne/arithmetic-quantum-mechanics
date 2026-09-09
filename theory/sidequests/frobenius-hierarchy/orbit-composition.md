@@ -1,7 +1,7 @@
 # Composition, inclusion and the remaining arithmetic coupling
 
-Status: SKETCH for FRL-COMP and FRL-ACTIVE, pending independent capped
-review. Author: root Codex runtime. Definitions D1331--D1334 are in the
+Status: PROVED for FRL-COMP and FRL-ACTIVE within the stated hypotheses.
+Capped review and mechanical repair: ../../verdicts/frobenius-boundary-adjudication.md. Author: root Codex runtime. Definitions D1331--D1334 are in the
 single source. Positive orbit-family input: FRL-ORBIT and FRL-POS in
 orbit-boundary.md. Arithmetic inputs: FRB-TRANSFER and FRB-NATURAL.
 
