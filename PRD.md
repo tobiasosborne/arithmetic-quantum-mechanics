@@ -4,6 +4,35 @@
 
 # PRD — what this campaign is and how it runs
 
+## Active quest — TJO directive, 2026-09-09
+
+**The Hunting of the Symplectic Phantasm** supersedes the previous active
+composite-boundary work order. The SOP is sober, accretive, and careful.
+`docs/research-plans/fundamentals-two-categories.md` is the initial guidance
+note, not mathematical evidence or a package of approved conclusions.
+
+Proceed in this order: (1) download primary ground truth, preferring TeX,
+verify titles and exact scope, and register literature and definition
+origins; (2) carefully construct the proposed definitions with all choices,
+types, characteristic restrictions and coherence obligations exposed;
+(3) maintain a concrete plan for the required lemmas in an argument DAG
+with executable contract checks; (4) build it in dependency order using the
+capped rk-light loop. The first three steps prepare that research, rather
+than authorize claiming its theorems already proved.
+
+The canonical claim statements remain in `claims/CLAIMS.md`; the quest DAG
+records contracts, evidence and scheduling in Markdown. A small local
+checker is explicitly authorized by this directive; no CI service or formal
+proof infrastructure is required. Passing it validates the recorded
+contracts, not the truth of the mathematics. Existing status discipline,
+local provenance, mutation checks and labbook lockstep remain in force.
+
+The global arithmetic construction, reference state and any spectral link
+to the Riemann hypothesis must be earned by definitions and lemmas. They
+are not consequences of the pivot. Preserve prior admitted results; paused
+programmes resume only when they supply a named dependency or TJO redirects.
+The detailed work order is `docs/research-plans/symplectic-phantasm.md`.
+
 ## Product
 
 One result and one artifact.

@@ -4,6 +4,65 @@
 
 # HANDOFF — live state
 
+## Active pivot — The Hunting of the Symplectic Phantasm (2026-09-09)
+
+TJO explicitly changed direction and named this quest. Its SOP is **sober,
+accretive, and careful**. The initial guidance note is
+`docs/research-plans/fundamentals-two-categories.md`; its assistant assessment
+is provisional and must be checked against primary sources.
+
+The ordered work is: download and register ground truth (TeX preferred),
+register and carefully construct definitions, then plan and build all needed
+lemmas through a contract-checked argument DAG under rk-light. See
+`docs/research-plans/symplectic-phantasm.md`. This directive supersedes the
+older current-direction language below. Composite boundaries and FCR-2 are
+paused; admitted results remain available as explicitly cited dependencies.
+
+The source/definition/planning bootstrap is registered:
+
+- `refs/LEDGER.md`: 25 locally verified primary sources, 19 TeX and six
+  PDFs, with raw and readable-body hashes. Five historical leads remain
+  explicit GAPs and support no lemma. The Kapranov–Smirnov preprint gap was
+  resolved using the original linked HTTP route and visual page inspection.
+  Joyal’s species paper was also recovered from a researcher-hosted primary
+  article copy; its Definition 1 is registered for the classical completion.
+- `docs/research-plans/symplectic-phantasm-sources.md`: guidance scope audit
+  and complete definition inventory, including the choices still unmade.
+- `definitions.md`: D1701–D1713; `notation.md` updated. These are explicit
+  stipulations, not promoted properties.
+- `claims/CLAIMS.md`: fourteen new SP rows, all SKETCH. The register now
+  has 158 claims: 121 PROVED, 33 SKETCH, three CONJECTURE, one REFUTED;
+  there are 173 definitions. No prior mathematical status changed.
+- `claims/PHANTASM-DAG.md`: fourteen lemma contracts with hypotheses,
+  choices, dependencies, construction outlines and proposed falsifiers;
+  seven OPEN research decision gates extend the graph. Contract checks do
+  not prove the mathematical types or claims.
+- `theory/checks/phantasm_contract_check.py`: schema, reference resolution,
+  acyclicity, source hashes, promotion-record requirements, plan/decision
+  agreement, and exact definition/claim/scope/status labbook restatements.
+  The first observed run was a red cycle failure. Expectations are adjacent.
+- Labbook Section 31 records the definitions and unpromoted propositions;
+  the overview and root LaTeX inputs are updated.
+
+**Next bounded task:** SP-WEYL, then SP-EGOROV and SP-TENSOR. Start from
+the locally registered primary sources and the rank-one definition
+conventions, not by extrapolating a rank-one theorem to arbitrary rank.
+Write exact falsifier expectations before the proof lands. No mathematical
+falsifier for these new lemmas has yet been implemented or run. Normalized
+relation lifts, coherent classical completion, characteristic two and the
+global arithmetic construction remain explicit downstream decisions.
+
+Verification: the full repository session-close run passed **26 green
+suites and 253 advertised red runs**. The final quest contract check passed
+green and all **15** deliberate mutations failed at their intended gates;
+a separate mutation of a canonical claim in a real temporary file copy
+failed at the exact-restatement gate. The final PDF is **173 pages**, with
+Section 31 on pp.166–173; the real build and final lockstep gate passed.
+Frozen records are under `numerics/symplectic-phantasm/results/`. The
+contract suite was rerun after the last historical source gap was resolved.
+
+## Historical state before the pivot
+
 Updated: 2026-09-09 (later session), fundamentals steering recorded; earlier the same day: composite boundary, degree completion and joined limit admitted.
 The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 

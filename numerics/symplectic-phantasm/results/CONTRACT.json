@@ -1,0 +1,206 @@
+{
+  "time": "2026-09-09T21:17:00.352176+00:00",
+  "scope": "Recorded contracts only; no mathematical proof or new lemma falsifier is certified",
+  "first_observed_run": {
+    "command": "python3 theory/checks/phantasm_contract_check.py --red-cycle",
+    "exit_code": 1,
+    "failed_gate": "G3"
+  },
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py"
+      ],
+      "exit_code": 0,
+      "expected_gate": null,
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 14 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 PASS: 13 exact definitions and 14 exact claim restatements\nReady for proof work: SP-WEYL, SP-LREL, SP-SCALAR, SP-CP, SP-FOCK, SP-PRIME, SP-BC-CONTROL\nPASS: recorded contracts only; no mathematical claim promoted\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-duplicate-node"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G1",
+      "stdout": "G1 FAIL: duplicate DAG node SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-empty-scope"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G1",
+      "stdout": "G1 FAIL: empty field SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-missing-node"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G2",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 FAIL: unresolved dependency SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-missing-definition"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G2",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 FAIL: unresolved definition SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-status"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G2",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 FAIL: status drift SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-orphan-claim"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G2",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 FAIL: canonical SP rows and contracts are not in bijection\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-decision-input"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G2",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 FAIL: unresolved decision prerequisite DG-GLOBAL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-cycle"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G3",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 FAIL: dependency cycle at SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-decision-cycle"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G3",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 FAIL: dependency cycle at DG-MODULAR\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-refuted"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G4",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 14 lemmas and 7 decision gates form a DAG\nG4 FAIL: refuted dependency of SP-EGOROV\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-promote"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G4",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 14 lemmas and 7 decision gates form a DAG\nG4 FAIL: promotion has no admitted proof/review/checks SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-source-hash"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G5",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 14 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 FAIL: source hash mismatch: SP-GH07 / readable\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-source-gap"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G5",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 14 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 FAIL: GAP source used as evidence: SP-TITS57\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-labbook"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G6",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 14 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 FAIL: claim statement/status/scope drift SP-WEYL\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "theory/checks/phantasm_contract_check.py",
+        "--red-definition-drift"
+      ],
+      "exit_code": 1,
+      "expected_gate": "G6",
+      "stdout": "G1 PASS: 14 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 14 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 FAIL: exact definition/scope drift D1701\n",
+      "stderr": ""
+    }
+  ],
+  "sha256": {
+    "AGENTS.md": "f55932b77c3f94989f8b95307282c70a096ac185e091ebb3ec8c229836bb411b",
+    "CLAUDE.md": "a90f136dc0940b36696d6e44bdbeb1861b1790d73dc80357f8bfdc6b429e6fb6",
+    "PRD.md": "851d90292645b25cb5b3e349f27bb5dbc7f783054e4650b3cc5d9a015c4ae41d",
+    "HANDOFF.md": "efe679e7868753b1ddc1ff4e170e93a52a1ca918bde9bc14c2bb150688424e4e",
+    "claims/CLAIMS.md": "b593af6959d07fcde4c850e6d19966c3b0600cdcefe40a1e7bc7b539e8bd9504",
+    "claims/PHANTASM-DAG.md": "697a1b64ab19e395eb121d9ca2ca83f43c9e0a1cd1f4bbaecfdee51bbbda83b0",
+    "definitions.md": "80a40dff9a4ecae4f476c813228ba79cb3ab2ae7c1fa2239c0e919693bcfeda9",
+    "notation.md": "6eec85d74876a5decfb0571636f19ad48eb946d5547ffe31caf28358536684ec",
+    "refs/LEDGER.md": "c1276f1baa74535f6f1ca117410552b9fbf0bc92a11bf2711eba810e62f1e007",
+    "docs/research-plans/symplectic-phantasm.md": "c5c453b0ba9b9c2f895eab3cbddf225dc01c39cce7806dfd54c62e8c236f7189",
+    "docs/research-plans/symplectic-phantasm-sources.md": "164da4125e9f8e7acea9662599be351de0741de5d445128d9f8d19e8a310bc0f",
+    "scripts/fetch-phantasm-sources.py": "b1d3da2d8c457f3ad3f88567b9b570b3e49e41f077186e8df189b7062b6aa181",
+    "theory/checks/phantasm_contract_check.py": "600d99b06f0f5ed75f2aec4710fd6553428f36cf85e0556bdc04a19ed894c848",
+    "theory/checks/phantasm_contract_EXPECTATIONS.md": "a7263b05bb5e4aeecb10b5bb37ab33da8c4b7759d6f7b11611f84d57ab5ab959",
+    "labbook/main.tex": "9ea3b58088002c7218345400a09aa0de9e784025907816ea1333b9fb283a1dc3",
+    "labbook/main.pdf": "6210730b4dc38e12361ad834f3f0d5cd0b17edbb4259df95aba4dd22efd3176c",
+    "labbook/sections/symplectic_phantasm.tex": "b3055bc9b06b6ea6325faaf1dd5f5de078eb6796d0d719900bacacd641f0b35e",
+    "labbook/sections/symplectic_phantasm_contracts.tex": "212ecc99b5876190ef47b4245a3c46125244a5156a6271bfafc9548a4ac1adbc"
+  }
+}

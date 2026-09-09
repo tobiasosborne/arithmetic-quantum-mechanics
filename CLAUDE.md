@@ -3,6 +3,15 @@
 
 # CLAUDE.md — arithmetic-quantum-mechanics
 
+**Active direction, TJO directive 2026-09-09:** The Hunting of the Symplectic
+Phantasm. Its SOP is sober, accretive, and careful. Start from
+`docs/research-plans/fundamentals-two-categories.md` as provisional guidance;
+retrieve and register primary sources (TeX preferred), register explicit
+definitions, then build the lemmas through a contract-checked argument DAG.
+The durable work order is `docs/research-plans/symplectic-phantasm.md`.
+Earlier composite-boundary and FCR-2 work orders are paused. The general
+campaign description below supplies background, not a competing priority.
+
 Campaign: build a general definition and workflow assigning **canonical quantum
 systems to arbitrary arithmetic schemes** — Hilbert space, observable algebra,
 and where possible dynamics as automorphisms or projective unitary

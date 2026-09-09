@@ -1,5 +1,13 @@
 # Fundamentals: the two categories, the Fock functor, and which limit to take
 
+**Adopted as initial guidance, 2026-09-09:** TJO named the new quest
+**The Hunting of the Symplectic Phantasm** and directed a source-first,
+sober, accretive, careful construction. This adopts the note as a starting
+point, not the correctness of the assessment below. The original discussion
+is retained intact. Its source audit, definitions and proof obligations are
+tracked in `docs/research-plans/symplectic-phantasm.md` and
+`docs/research-plans/symplectic-phantasm-sources.md`.
+
 STATUS: steering discussion, recorded 2026-09-09. Not evidence. Nothing here
 carries a claim status; every literature name below is a pointer that must be
 registered in `refs/LEDGER.md` before it is cited (L3). TJO's framing is

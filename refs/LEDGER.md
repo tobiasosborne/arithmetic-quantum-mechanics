@@ -907,3 +907,377 @@ sum phi(n)n^(-z)=zeta(z-1)/zeta(z) for Re z>2. Used as corroboration
 for the independently derived real-domain identity at z=beta+1 in
 CMP-MELLIN; the c0 quantum completion, its Frobenius automorphism and
 the selection of the degree weights/regulator are not attributed to DLMF.
+
+## Symplectic Phantasm — source-first bootstrap, 2026-09-09
+
+The active quest is **The Hunting of the Symplectic Phantasm**. All bodies
+below were fetched afresh from primary-source repositories, author sites,
+or the named researcher-hosted preprint copy, not copied from `v0.1/`.
+The retrieval script is `scripts/fetch-phantasm-sources.py`; local retrieval
+JSON records preserve attempted and final URLs, time, format and file lists.
+Raw hashes pin the actual retrieved bytes; source revisions require a new
+inspection and ledger update. Third-party bodies remain git-ignored.
+
+The source audit and full inventory of guidance-note leads are in
+`docs/research-plans/symplectic-phantasm-sources.md`. LOCALLY VERIFIED means
+the title and stated locators were inspected, not that all arguments in the
+source were independently proved. GAP sources cannot support a DAG node.
+
+<!-- PHANTASM-SOURCES-BEGIN -->
+| source-id | availability | body | sha256 | readable-body | readable-sha256 |
+|---|---|---|---|---|---|
+| SP-GH07 | LOCAL | refs/symplectic-phantasm/SP-GH07/raw | 944cb30bde457137ca9604afc6ad44891ec3ac6cfe7994f45899754624a10f6d | refs/symplectic-phantasm/SP-GH07/source.tex | 68f135ec90d5c99347379a47d3ebdbc509ba434c68e214a08091647fd2c91362 |
+| SP-GH09 | LOCAL | refs/symplectic-phantasm/SP-GH09/raw | 361310f8499da0bf1645b152ac8dfa432f52adc5d90d76abea9a21d5d693e1d6 | refs/symplectic-phantasm/SP-GH09/gurevich_hadani_4.tex | 96ee6a2de181d467cb5b04fe82f6207d9baa385d048011f163a44bfe4a4dd1eb |
+| SP-W09 | LOCAL | refs/symplectic-phantasm/SP-W09/raw | ba2577e7f535a5c2fda42172e6a7f1334e1c2e6284dc79c6d7d2fa0f40f7f7a0 | refs/symplectic-phantasm/SP-W09/source.tex | 32231205137c1ea8f689d9b94a496c71ed8e0c903c392bb2a384406c11d268ef |
+| SP-LW14 | LOCAL | refs/symplectic-phantasm/SP-LW14/raw | 7938ee52af059c4e8fb3e5840a29c75351814b1ab07c42aca67bc5b96875fb5d | refs/symplectic-phantasm/SP-LW14/sigma14-100.tex | eaea7876cbbc716728605b76deb654037eb4c08e7316e6f9c81276fa8c9e3d62 |
+| SP-GROSS06 | LOCAL | refs/symplectic-phantasm/SP-GROSS06/raw | 1c5371144c5b8b58fb6a8272546fdee54de0045e7dad3c9135a507d987ca9dfe | refs/symplectic-phantasm/SP-GROSS06/poswig.tex | 31684a5e30c3f1f2d35ad23a31afef1712a9af4b2d5f96b0691d98788b7465a9 |
+| SP-CK21 | LOCAL | refs/symplectic-phantasm/SP-CK21/raw | b519f4d757d1ddd002f815c9b4ac250b015571203cb8b2dbcebb32ad70a83a61 | refs/symplectic-phantasm/SP-CK21/lagrel.tex | 9a6c3cf2d21d105dda496bde29bfb71fda92b256f4aee3701ed1c392abba7b9a |
+| SP-BC24 | LOCAL | refs/symplectic-phantasm/SP-BC24/raw | ae976f4a981047502cc339da064b9f4f715f4173a52910cb50bcae851cc35041 | refs/symplectic-phantasm/SP-BC24/main.tex | 1d463ecb073cf69a0c7337c7fbf8eed834ed9c21b4a5dac23eee0b4a136fda4b |
+| SP-CGK17 | LOCAL | refs/symplectic-phantasm/SP-CGK17/raw | 37fb2f9497d056790e1ee92b25cd53dd85e2a566fd4d60d830aca9790a79c947 | refs/symplectic-phantasm/SP-CGK17/diagonalCliffordGates5.tex | 5f9c0df276e9a65a376470dc175db60c3dd5b8666ee66d59b0546e271bdcff4e |
+| SP-SOULE04 | LOCAL | refs/symplectic-phantasm/SP-SOULE04/raw | f5c8ab62f082e45e2c06429dc4cb2cf4e554d7b2f240ff7a87410371195c75ab | refs/symplectic-phantasm/SP-SOULE04/source.tex | c3be252917902fbfa7447ec8ea5a64cfcf26248f8b37ff4d4a54d54c3e1b67c3 |
+| SP-DEITMAR05 | LOCAL | refs/symplectic-phantasm/SP-DEITMAR05/raw | b61f5a5c88f224fa3d8c56120bcfcd7ba02eec58bec1da5e857f47b83b96ae09 | refs/symplectic-phantasm/SP-DEITMAR05/paper.txt | c3aaaa5e05ba552b5a3c073947b9d7636e14e43619f6a53d800a6bf4eae0c464 |
+| SP-CC09 | LOCAL | refs/symplectic-phantasm/SP-CC09/raw | f09e4f8a917de991a84b508023598259e9d79694425ce5bd1ddd33d7c729e53f | refs/symplectic-phantasm/SP-CC09/announc3.tex | 8254a72d27b082e0a3550e6be9398bae1c7e267303dc2b86a904703f58569fd4 |
+| SP-CC10 | LOCAL | refs/symplectic-phantasm/SP-CC10/raw | 873e37d692da714fff8ba0dea8a6ad2f0de4e1c48b9fbb686b45a2696d90d970 | refs/symplectic-phantasm/SP-CC10/Jamifine.tex | 4ba6cfeb554fd9954204a6e205e3230c6a5124713bbd0e71bd9d9fa44db01acd |
+| SP-PRASAD09 | LOCAL | refs/symplectic-phantasm/SP-PRASAD09/raw | acea15774d71e3697f1828fcea0d4aabe3bdf51dac07700af50e3099359068e3 | refs/symplectic-phantasm/SP-PRASAD09/source.tex | e1950f55045d67961243a3d490de07ee929b241c6436da2e40160ab28c844418 |
+| SP-GH08 | LOCAL | refs/symplectic-phantasm/SP-GH08/raw | 50fe23420c57f444349d521d53be3315416642f4760373b1f67410ca08bf1b84 | refs/symplectic-phantasm/SP-GH08/source.tex | 4b5b7ff9fb9a90fb17c02d4cc6fdfccedea36129042e1ba2e291d51df3117b23 |
+| SP-BCL22 | LOCAL | refs/symplectic-phantasm/SP-BCL22/raw | 119a4db85def25894a36e34f8b7ad20701558c77a00f9274d5a77febe8b39e18 | refs/symplectic-phantasm/SP-BCL22/source.tex | d2fc4a2bc61fe27f433e174dd0e19114edd16f6ebfce162207e1cc083559b18c |
+| SP-DER06 | LOCAL | refs/symplectic-phantasm/SP-DER06/raw | 739bee04644cdd516bb56b011803e845ebce4a7064c6ae6bbb90d7618d6e7c29 | refs/symplectic-phantasm/SP-DER06/derezinski.tex | eed86b49de5f88e89fde1d936c78d61e0ecd3f6d0bfd5ab5e19ce5eda9185f4b |
+| SP-CCM07 | LOCAL | refs/symplectic-phantasm/SP-CCM07/raw | 564594d05e3a44203e073a80587965b2524bd0bac7489205ba3e883b36fe9b5d | refs/symplectic-phantasm/SP-CCM07/ncgandmotivesMarch8.tex | 6259952d5aac11f0c9d10eb254c96d18748818b73cd25838ea890d43f49bc9f3 |
+| SP-CM04 | LOCAL | refs/symplectic-phantasm/SP-CM04/raw | 94dc934d5f7b11932f5d3486be2f11481f8f13d7e93df37eaeb9d2541db16a9b | refs/symplectic-phantasm/SP-CM04/houcheschapter1final7.tex | ce87e34046d5dee45d8ca604276c8d70b5bdf4b571767f0ff84a4801ec089038 |
+| SP-BC95 | LOCAL | refs/symplectic-phantasm/SP-BC95/raw | 376e00d06bef1be27769f0f1c186010a6e6ad354608c3a273b0b3ae6479c1815 | refs/symplectic-phantasm/SP-BC95/paper.pdf | 376e00d06bef1be27769f0f1c186010a6e6ad354608c3a273b0b3ae6479c1815 |
+| SP-CM08 | LOCAL | refs/symplectic-phantasm/SP-CM08/raw | 4154ad00fad638e06746f11cd476adb00d186d30cee11e9f531fd21c45aa71f7 | refs/symplectic-phantasm/SP-CM08/paper.txt | b2059a822f31afcf848cea369da3f3f4b1b7c3175495954adbea2ee7c5cc3db1 |
+| SP-WAT18 | LOCAL | refs/symplectic-phantasm/SP-WAT18/raw | c8f30116586435fc265273b09ca2d63f4912a5d4b8901db1ada84b03373c6325 | refs/symplectic-phantasm/SP-WAT18/paper.txt | c0a99af6eafd2dd4e3acc9556560d2c9b6680e0ceb509cd1b7a92942fb3cb10e |
+| SP-STFIELD | LOCAL | refs/symplectic-phantasm/SP-STFIELD/raw | 87e07f0373dc60cfc284e2f19078bc9bc7ab0b89c40eef83941f6c38c765c549 | refs/symplectic-phantasm/SP-STFIELD/source.tex | 87e07f0373dc60cfc284e2f19078bc9bc7ab0b89c40eef83941f6c38c765c549 |
+| SP-SPECTOR98 | LOCAL | refs/symplectic-phantasm/SP-SPECTOR98/raw | d1ad2c8753b637f7fbe03b233511d7ec4aeb766d6d26a75b89c1833c2f068ab7 | refs/symplectic-phantasm/SP-SPECTOR98/source.tex | 6eb5f5b456b4c4deee3385e9dc343ad3304782671d652e9f34c56207598e58d2 |
+| SP-KS95 | LOCAL | refs/symplectic-phantasm/SP-KS95/raw | 213f2e3b274dad06416d077e68de162ee71135cbb46ed8188debcde30754145b | refs/symplectic-phantasm/SP-KS95/paper.pdf | 213f2e3b274dad06416d077e68de162ee71135cbb46ed8188debcde30754145b |
+| SP-JOY81 | LOCAL | refs/symplectic-phantasm/SP-JOY81/raw | f4dc51a9b1d0befce4621eee0876cb045bde2d7cb2f2b6c8f108cb779d6fdb3a | refs/symplectic-phantasm/SP-JOY81/paper.txt | fa291a88feb142965a57731e51f8dc6147f3d38af18c87141af465a12b86dd3b |
+<!-- PHANTASM-SOURCES-END -->
+
+### SP-GH07
+
+**Shamgar Gurevich and Ronny Hadani**, *Quantization of symplectic vector spaces over finite fields*.
+
+Route: https://arxiv.org/e-print/0705.4556 (TeX); final URL: https://arxiv.org/src/0705.4556.
+
+Local readable body: `refs/symplectic-phantasm/SP-GH07/source.tex`.
+
+Verified locators: title/authors lines 50–59; §0.1; Proposition labelled functor_prop at lines 961–966; §2.4, reduction_prop at 1098.
+
+Scope: Odd characteristic; the canonical Hilbert/vector functor uses a fixed character and oriented models. Its convention is contravariant. Monoidality and oriented isotropic reduction do not themselves state a probability-preserving functor on all relations.
+
+### SP-GH09
+
+**Shamgar Gurevich and Ronny Hadani**, *Notes on Canonical Quantization of Symplectic Vector Spaces over Finite Fields*.
+
+Route: https://arxiv.org/e-print/0708.0669 (TeX archive); final URL: https://arxiv.org/src/0708.0669.
+
+Local readable body: `refs/symplectic-phantasm/SP-GH09/gurevich_hadani_4.tex`.
+
+Verified locators: title/authors lines 38–42; §1.1 and §§2–3.
+
+Scope: Companion exposition; the downloaded TeX title includes Canonical, unlike the arXiv abstract-page title. Keep orientation, character and variance conventions explicit.
+
+### SP-W09
+
+**Alan Weinstein**, *Symplectic categories*.
+
+Route: https://arxiv.org/e-print/0911.4133 (TeX); final URL: https://arxiv.org/src/0911.4133.
+
+Local readable body: `refs/symplectic-phantasm/SP-W09/source.tex`.
+
+Verified locators: title/authors lines 108–113; §2, Relations and their composition; §2.1, The linear case, lines 421–470.
+
+Scope: Definitions and reduction factorization for canonical relations. The smooth transversality issue is distinct from finite linear relational composition. Does not supply a finite-field probability normalization.
+
+### SP-LW14
+
+**David Li-Bland and Alan Weinstein**, *Selective Categories and Linear Canonical Relations*.
+
+Route: https://arxiv.org/e-print/1401.7302 (TeX archive); final URL: https://arxiv.org/src/1401.7302.
+
+Local readable body: `refs/symplectic-phantasm/SP-LW14/sigma14-100.tex`.
+
+Verified locators: title/authors lines 79–88; §§2,4,7.
+
+Scope: Indexed linear relations retain an excess integer. Source for keeping composition data visible, not a theorem identifying all quantum channels with Lagrangian relations.
+
+### SP-GROSS06
+
+**D. Gross**, *Hudson’s Theorem for finite-dimensional quantum systems*.
+
+Route: https://arxiv.org/e-print/quant-ph/0602001 (TeX archive); final URL: https://arxiv.org/src/quant-ph/0602001.
+
+Local readable body: `refs/symplectic-phantasm/SP-GROSS06/poswig.tex`.
+
+Verified locators: title/authors lines 60–62; abstract lines 78–90; theorems labelled thMain and thCliffordStructure.
+
+Scope: Odd-dimensional Wigner/stabilizer statements with a specified phase-space representation. This does not classify every possible quantization of nonlinear maps. Refetched from the primary route; hash matches the original campaign record.
+
+### SP-CK21
+
+**Cole Comfort and Aleks Kissinger**, *A Graphical Calculus for Lagrangian Relations*.
+
+Route: https://arxiv.org/e-print/2105.06244 (TeX archive); final URL: https://arxiv.org/src/2105.06244.
+
+Local readable body: `refs/symplectic-phantasm/SP-CK21/lagrel.tex`.
+
+Verified locators: title/authors lines 276–279; §4, theorem:spekkens at lines 3705ff; scalar scope at lines 382–385.
+
+Scope: The affine-Lagrangian/stabilizer prop comparison is for odd prime dimensions and modulo invertible scalars. It is a structural control, not normalized instrument semantics; extension fields require a separate comparison.
+
+### SP-BC24
+
+**Robert I. Booth, Titouan Carette and Cole Comfort**, *Graphical Symplectic Algebra*.
+
+Route: https://arxiv.org/e-print/2401.07914 (TeX archive); final URL: https://arxiv.org/src/2401.07914.
+
+Local readable body: `refs/symplectic-phantasm/SP-BC24/main.tex`.
+
+Verified locators: title/authors lines 29–34; abstract and the affine Lagrangian/coisotropic presentations.
+
+Scope: Primary follow-up for presentation and mixed-process questions. Do not infer an arbitrary Gaussian-channel classification from the title.
+
+### SP-CGK17
+
+**Shawn X. Cui, Daniel Gottesman and Anirudh Krishna**, *Diagonal gates in the Clifford hierarchy*.
+
+Route: https://arxiv.org/e-print/1608.06596 (TeX archive); final URL: https://arxiv.org/src/1608.06596.
+
+Local readable body: `refs/symplectic-phantasm/SP-CGK17/diagonalCliffordGates5.tex`.
+
+Verified locators: title/authors lines 96–109; §II and §IV, Theorem 3.
+
+Scope: Diagonal hierarchy classification depends on phase precision as well as polynomial exponents. D1307 and D1309 already register the campaign hierarchy and additive-difference conventions. Arbitrary nonlinear Lagrangians and the full hierarchy are not identified here.
+
+### SP-SOULE04
+
+**Christophe Soulé**, *Les variétés sur le corps à un élément*.
+
+Route: https://arxiv.org/e-print/math/0304444 (TeX); final URL: https://arxiv.org/src/math/0304444.
+
+Local readable body: `refs/symplectic-phantasm/SP-SOULE04/source.tex`.
+
+Verified locators: title/authors lines 7–8; §6, condition (Z), zeta definition and associated lemma.
+
+Scope: Polynomial-counting zeta comparison within its stated hypotheses. Do not generalize the rational-factor formula to every proposed F1 geometry.
+
+### SP-DEITMAR05
+
+**Anton Deitmar**, *Schemes over F1*.
+
+Route: https://arxiv.org/pdf/math/0404185 (PDF); final URL: https://arxiv.org/pdf/math/0404185.
+
+Local readable body: `refs/symplectic-phantasm/SP-DEITMAR05/paper.txt`.
+
+Verified locators: PDF front page; §§1–3.
+
+Scope: Monoid-scheme definitions and zeta discussion. TeX retrieval failed; the primary arXiv PDF identifies v7, 26 July 2006. This is a particular definition of F1 geometry, not a limit functor on our quantum systems.
+
+### SP-CC09
+
+**Alain Connes and Caterina Consani**, *Schemes over F1 and zeta functions*.
+
+Route: https://arxiv.org/e-print/0903.2024 (TeX archive); final URL: https://arxiv.org/src/0903.2024.
+
+Local readable body: `refs/symplectic-phantasm/SP-CC09/announc3.tex`.
+
+Verified locators: title/authors lines 222–226; §2, integral and distrsubsect; §4, dthmfonesch.
+
+Scope: Explicitly distinguishes polynomial counting from generalized counting functions/distributions; §2 corrects a sign misprint in the older zeta-limit convention. The guidance note’s blanket exclusion of nontrivial zeros from all F1 approaches is too broad.
+
+### SP-CC10
+
+**Alain Connes and Caterina Consani**, *Characteristic 1, entropy and the absolute point*.
+
+Route: https://arxiv.org/e-print/0911.3537 (TeX archive); final URL: https://arxiv.org/src/0911.3537.
+
+Local readable body: `refs/symplectic-phantasm/SP-CC10/Jamifine.tex`.
+
+Verified locators: title/authors lines 232–236; sections on characteristic one, Witt construction and zeta functions.
+
+Scope: Primary treatment of characteristic-one semirings and extensions of F1-scheme/zeta constructions. This does not define the sought symplectic arithmetic quantum system.
+
+### SP-PRASAD09
+
+**Amritanshu Prasad**, *An Easy Proof of the Stone-von Neumann-Mackey Theorem*.
+
+Route: https://arxiv.org/e-print/0912.0574 (TeX); final URL: https://arxiv.org/src/0912.0574.
+
+Local readable body: `refs/symplectic-phantasm/SP-PRASAD09/source.tex`.
+
+Verified locators: title/authors lines 67–68; theorem at lines 181–191; compact-open-subgroup proof from line 193.
+
+Scope: Finite LCA Schrödinger irreducibility and uniqueness, including characteristic two at the abelian-group level. General rank must be matched to the campaign cocycle and Hilbert normalization.
+
+### SP-GH08
+
+**Shamgar Gurevich and Ronny Hadani**, *The Weil representation in characteristic two*.
+
+Route: https://arxiv.org/e-print/0808.1664 (TeX); final URL: https://arxiv.org/src/0808.1664.
+
+Local readable body: `refs/symplectic-phantasm/SP-GH08/source.tex`.
+
+Verified locators: title/authors lines 49–54; §§1–2, S-vN_thm and Weilrep_thm.
+
+Scope: Characteristic-two construction uses additional affine/metaplectic and characteristic-four data. It does not justify applying the odd-characteristic half-form formula at p=2.
+
+### SP-BCL22
+
+**Cedric Beny, Jason Crann, Hun Hee Lee, Sang-Jun Park and Sang-Gyun Youn**, *Gaussian quantum information over general quantum kinematical systems I: Gaussian states*.
+
+Route: https://arxiv.org/e-print/2204.08162 (TeX); final URL: https://arxiv.org/src/2204.08162.
+
+Local readable body: `refs/symplectic-phantasm/SP-BCL22/source.tex`.
+
+Verified locators: title/authors lines 237–262; §2, Heisenberg multipliers and Gaussian-state definitions.
+
+Scope: A source for an explicit meaning of Gaussian in LCA systems. The subtitle is Gaussian states; a theorem about all channels or stochastic closure cannot be attributed to it without a separate locator.
+
+### SP-DER06
+
+**Jan Dereziński**, *Introduction to Representations of the Canonical Commutation and Anticommutation Relations*.
+
+Route: https://arxiv.org/e-print/math-ph/0511030 (TeX archive); final URL: https://arxiv.org/src/math-ph/0511030.
+
+Local readable body: `refs/symplectic-phantasm/SP-DER06/derezinski.tex`.
+
+Verified locators: title/authors lines 433–437; §5, especially symmetric Fock spaces lines 1911–1964 and exponential law tensor.1 at 2051–2090.
+
+Scope: Completed Fock Hilbert spaces, second quantization and tensor-product normalization. Algebraic symmetric algebra, Hilbert completion and a free commutative monoid in an unspecified category are distinct.
+
+### SP-CCM07
+
+**Alain Connes, Caterina Consani and Matilde Marcolli**, *Noncommutative geometry and motives: the thermodynamics of endomotives*.
+
+Route: https://arxiv.org/e-print/math/0512138 (TeX archive); final URL: https://arxiv.org/src/math/0512138.
+
+Local readable body: `refs/symplectic-phantasm/SP-CCM07/ncgandmotivesMarch8.tex`.
+
+Verified locators: title/authors lines 156–161; §3 Endomotives; §4 Scaling as Frobenius in characteristic zero.
+
+Scope: Explicit endomotive framework for the Frobenius/scaling comparison. The relevant construction includes more than choosing a reference state on an arbitrary tensor product.
+
+### SP-CM04
+
+**Alain Connes and Matilde Marcolli**, *From Physics to Number theory via Noncommutative Geometry*.
+
+Route: https://arxiv.org/e-print/math/0404128 (TeX archive); final URL: https://arxiv.org/src/math/0404128.
+
+Local readable body: `refs/symplectic-phantasm/SP-CM04/houcheschapter1final7.tex`.
+
+Verified locators: title/authors lines 365–367; discussion of the BC system around lines 1750–1850.
+
+Scope: Fetched TeX has the shorter overall title; the arXiv record carries the Part I / Q-lattices subtitle. Primary comparison for arithmetic semigroup maps and KMS analysis, not an assertion of novelty for the proposed quest.
+
+### SP-BC95
+
+**J.-B. Bost and A. Connes**, *Hecke Algebras, Type III Factors and Phase Transitions with Spontaneous Symmetry Breaking in Number Theory*.
+
+Route: https://alainconnes.org/wp-content/uploads/bostconnesscan.pdf (PDF); final URL: https://alainconnes.org/wp-content/uploads/bostconnesscan.pdf.
+
+Local readable body: `refs/symplectic-phantasm/SP-BC95/paper.pdf`.
+
+Verified locators: printed p.411 / PDF p.1: title, authors, introduction and §1 (visually inspected).
+
+Scope: Original Selecta Mathematica 1 (1995), 411–457, author-hosted scan. Text extraction is empty; inspect images for further citations. Its title is English, unlike a later French transcription. Use SP-CM08 for searchable detailed formulas.
+
+### SP-CM08
+
+**Alain Connes and Matilde Marcolli**, *Noncommutative Geometry, Quantum Fields and Motives*.
+
+Route: https://www.math.fsu.edu/~marcolli/coll-55.pdf (PDF); final URL: https://www.math.fsu.edu/~marcolli/coll-55.pdf.
+
+Local readable body: `refs/symplectic-phantasm/SP-CM08/paper.txt`.
+
+Verified locators: PDF title page; Chapter 3 §§4.1–4.4, printed pp.458ff; Chapter 4 §4.1, printed pp.616–619, Definition 4.46.
+
+Scope: Author-hosted book. BC algebra, time evolution, representations and modular theory have explicit hypotheses. GNS cyclicity alone is not enough to silently assume a separating vector or a prescribed factor type.
+
+### SP-WAT18
+
+**John Watrous**, *The Theory of Quantum Information*.
+
+Route: https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf (PDF); final URL: https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf.
+
+Local readable body: `refs/symplectic-phantasm/SP-WAT18/paper.txt`.
+
+Verified locators: PDF title page; Chapter 2, Theorems 2.22 and 2.26, and §2.3 Instruments.
+
+Scope: Author-hosted 2018 draft; source for CP/Kraus/trace-preservation and instrument contracts. Personal-use source body remains ignored and is not redistributed.
+
+### SP-STFIELD
+
+**The Stacks Project Authors**, *Fields*.
+
+Route: https://raw.githubusercontent.com/stacks/stacks-project/master/fields.tex (TeX); final URL: https://raw.githubusercontent.com/stacks/stacks-project/master/fields.tex.
+
+Local readable body: `refs/symplectic-phantasm/SP-STFIELD/source.tex`.
+
+Verified locators: title at line 7; Trace and norm, section-trace-pairing; lemma-trace-and-norm-tower; lemma-separable-trace-pairing.
+
+Scope: Official TeX source; finite separable trace pairing and transitivity. Restriction of scalars is not the same operation as embedding a subfield with the uncorrected trace form.
+
+### SP-SPECTOR98
+
+**Donald Spector**, *Duality, Partial Supersymmetry, and Arithmetic Number Theory*.
+
+Route: https://arxiv.org/e-print/hep-th/9710002 (TeX); final URL: https://arxiv.org/src/hep-th/9710002.
+
+Local readable body: `refs/symplectic-phantasm/SP-SPECTOR98/source.tex`.
+
+Verified locators: title/authors lines 7–15; §1 and bosonic/fermionic partition-function construction.
+
+Scope: Author’s accessible primary follow-up on arithmetic gases; the earlier Spector 1990 and Julia/Bakas–Bowick references are pointers, not locally verified substitutes for those missing bodies.
+
+### Historical guidance leads — GAP registry (2026-09-09)
+
+These are bibliographic leads, not verified theorem sources. No bootstrap
+DAG node may rely on them. Titles below have the verification boundary
+shown explicitly; a source from another author is not a replacement body.
+
+| source-id | availability | bibliographic lead and attempted primary route | next action |
+|---|---|---|---|
+| SP-TITS57 | GAP | J. Tits, Sur les analogues algébriques des groupes semi-simples complexes (1957), 261–289; title/author verified from ULB metadata https://difusion.ulb.ac.be/vufind/Record/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/173612/Details ; no full text linked | Retrieve original; do not promote the informal symplectic F1 analogy |
+| SP-JULIA90 | GAP | B. Julia, Statistical Theory of Numbers, Number Theory and Physics (1990), DOI 10.1007/978-3-642-75405-0_30; https://cds.cern.ch/record/203834 ; retrieval returned browser challenge | Find accessible original; SP-SPECTOR98 is separate evidence |
+| SP-BB91 | GAP | I. Bakas and M. J. Bowick, Curiosities of arithmetic gases, J. Math. Phys. 32 (1991), 1881–1884; https://cds.cern.ch/record/212591 ; retrieval returned browser challenge | Retrieve original preprint or permitted publisher copy |
+| SP-SPECTOR90 | GAP | D. Spector, Supersymmetry and the Möbius inversion function, Commun. Math. Phys. 127 (1990), 239–252; bibliography corroborated by SP-SPECTOR98 lines 47–56; attempted Euclid cmp/1104180217 PDF route returned HTML | Resolve the original primary record; the guessed retrieval identifier is not verified metadata |
+| SP-POWERS67 | GAP | R. T. Powers, Representations of uniformly hyperfinite algebras and their associated von Neumann rings, Annals 86 (1967), 138–171; https://annals.math.princeton.edu/1967/86-1/p06 metadata verified, DOI 10.2307/1970364 | Retrieve original if factor classification becomes load-bearing |
+
+### SP-KS95 — gap resolved during the bootstrap
+
+**M. Kapranov and A. Smirnov**, *Cohomology determinants and reciprocity
+laws: number field case*. The title and authors were visually verified on
+PDF p.1; PDF p.4, §1.4 was also visually inspected. The preprint date 1995
+is bibliographic metadata from the author profile, not printed on the
+inspected title page.
+
+Route: http://www.neverendingbooks.org/DATA/KapranovSmirnov.pdf (researcher-
+hosted primary preprint scan). The HTTPS route refused connection, but the
+linked HTTP route supplied the actual PDF. Local readable body:
+`refs/symplectic-phantasm/SP-KS95/paper.pdf`. The text extraction is empty;
+further citations require image inspection.
+
+Verified scope: §1.4 defines pointed sets with a free action of roots of
+unity away from zero, equivariant maps, bases, and direct/smash/tensor
+operations. This is a specific model for extension-field analogies, not a
+constructed symplectic quantization or an identification of Frobenius with
+modular flow. No claim promotion follows from resolving the retrieval gap.
+
+### SP-JOY81 — gap resolved during the bootstrap
+
+**André Joyal**, *Une théorie combinatoire des séries formelles*, Advances
+in Mathematics 42 (1981), 1–82. Title and author verified on the fetched
+PDF p.1; §1.1, Definition 1 on PDF p.3 defines a finitary species as an
+endofunctor of the groupoid of finite sets and bijections. Section 2 treats
+combinatorial operations.
+
+Route: https://mahalex.net/teaching/seminars/semag/joyal.pdf (primary article
+copy linked by Alexander Luzgarev's research seminar page). The publisher
+route returned 403; this independently accessible academic copy resolves
+the body gap. Local readable body:
+`refs/symplectic-phantasm/SP-JOY81/paper.txt`, with the original PDF beside it.
+
+Scope: source for the species comparison at DG-RIG. No equivalence between
+this combinatorial category and completed bosonic Fock Hilbert spaces is
+attributed to Definition 1. The latter uses the separately registered
+SP-DER06 normalization and analytic domain.

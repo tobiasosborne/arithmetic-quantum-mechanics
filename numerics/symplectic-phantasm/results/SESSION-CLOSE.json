@@ -1,0 +1,14 @@
+{
+  "command": "bash scripts/session-close.sh",
+  "exit_code": 0,
+  "green_suites": 26,
+  "red_runs": 253,
+  "scope": "Full repository suite; final quest rerun after source registration is in CONTRACT.json",
+  "final_pdf_sha256": "6210730b4dc38e12361ad834f3f0d5cd0b17edbb4259df95aba4dd22efd3176c",
+  "LOCKSTEP.txt_sha256": "b7f9b3ad509566ce2f6884ec4dd3c8b1aed10bf1ccb2c78a3e547197e3b44703",
+  "SESSION-CLOSE_raw_sha256": "b98023a50e28e2e8fe516f4bcff377057cb9bb363c39cbc3fc28cbcf9b628b32",
+  "SESSION-CLOSE.txt.gz_sha256": "cbac0293f3188e130a05ae3d298ec7fde6ed75518869730a8015a6b03ad8cd96",
+  "BUILD_raw_sha256": "a018c9c8ec2638f2f3ef4e54826a7c13d5f64696229bfe5076d4f0ff3bfd1f12",
+  "BUILD.txt.gz_sha256": "38f204a2466478c1174cc54bd3fd6d5841a7141364ae20e2481182dc3acfe1ac",
+  "log_format": "Lossless gzip archives; decompressed bytes are the unmodified tool transcripts"
+}

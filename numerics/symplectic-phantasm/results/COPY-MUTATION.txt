@@ -1,0 +1,6 @@
+G1 PASS: 14 unique contracts with explicit input/output/scope fields
+G2 PASS: contract, definition, dependency and source references resolve
+G3 PASS: 14 lemmas and 7 decision gates form a DAG
+G4 PASS: no refuted dependencies or unsupported promotions
+G5 PASS: 24 local sources pinned; 6 GAP leads unused
+G6 FAIL: claim statement/status/scope drift SP-WEYL
