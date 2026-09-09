@@ -4,10 +4,42 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-09, composite boundary, degree completion and joined limit admitted.
+Updated: 2026-09-09 (later session), fundamentals steering recorded; earlier the same day: composite boundary, degree completion and joined limit admitted.
 The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## Steering 2026-09-09 — fundamentals of the two categories
+
+TJO restated the programme from scratch and Claude assessed it. The full
+record, with TJO's framing and the assessment kept separate, is
+`docs/research-plans/fundamentals-two-categories.md`. No claim or definition
+changed; no literature named there is yet registered in `refs/LEDGER.md`.
+
+Decisions and positions recorded there, in one line each:
+
+- C_p goldilocks candidate: symplectic F_q-spaces with Lagrangian
+  correspondences (Weinstein category); Weyl quantisation becomes a functor
+  whose image is the Gaussian operations. Nonlinear point maps do not
+  quantise (Gross); higher Cliffords are nonlinear Lagrangians / the degree
+  filtration on the function ring of L.
+- Direct sum in Q_p needs disjoint union in C_p: C_p must be a rig category
+  of symplectic finite sets, and Fock is its free commutative monoid.
+- Field extensions add no quantum objects, only distinguished morphisms;
+  Frobenius is already a Clifford permutation. Partial trace is dual to
+  symplectic inclusion; the channel category is the stochastic closure.
+- The single-prime p -> 1 limit yields Soule-type zetas 1/(s-k), never
+  nontrivial zeros. The object with zeta(s) as spectral data is
+  Bost-Connes, which realises TJO's powering-as-CP-map, direct-sum-as-
+  particle-number and noncommutative-Frobenius-as-modular-flow intuitions.
+- Proposed reframing, not yet adopted as a work order: keep Q_p per prime,
+  take the restricted tensor product over all p, choose a reference state,
+  study the modular flow; use the F_1 skeleton to glue primes, do not take
+  p -> 1. The candidate novelty is a "symplectic Bost-Connes system".
+
+TJO has not yet decided whether this reframing replaces the composite
+p-to-one boundary programme below or runs beside it. Until that decision,
+the section below remains the active goal.
 
 ## Current direction — composites before the p-to-one boundary
 
