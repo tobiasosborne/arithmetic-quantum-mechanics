@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-boundary/critic/independent_probe.py", line 213, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-boundary/critic/independent_probe.py", line 209, in main
+    results=[case(*entry,red=args.red) for entry in fibres]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-boundary/critic/independent_probe.py", line 161, in case
+    assert [x/w for x in branches]==[expected_full,F(0),F(1,n)], 'full/identity/dephased probability data'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: full/identity/dephased probability data

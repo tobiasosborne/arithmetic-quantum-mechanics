@@ -1,0 +1,458 @@
+\section{Relative Frobenius in a composite quantum boundary}
+\label{sec:composite-relative-boundary}
+
+Arithmetic composition can retain quantum information that separate
+invariant reductions discard. The construction in this section assembles
+three actual field registers: two labels and their product. Simultaneous
+Frobenius is then removed by invariant projection, while Frobenius on one
+factor, transported through multiplication, acts on a relative coordinate.
+The relative coordinate is a quantum register of dimension equal to the
+extension degree. A specified preparation vanishes at the ordinary
+counting endpoint, but its first nonzero grade retains that register and
+an experiment detecting both Frobenius and coherence.
+
+The six statements below passed the capped review with a repaired
+degree-one scope clause in the spectral addendum. They
+concern a conditional quantum boundary of already assembled arithmetic
+systems. They impose neither a characteristic-one arithmetic category nor
+tensor and direct-sum operations on the resulting collection of boundaries.
+
+\subsection{Arithmetic composition before specialization}
+
+For a named field $E=\mathbb F_{p^r}$, the Hilbert register is
+$H_E=\ell^2(E)$ with orthonormal basis $|x\rangle$. Fix a primitive
+$p$th root $\zeta_p$ and the additive character
+$\psi_E(x)=\zeta_p^{\operatorname{Tr}_{E/\mathbb F_p}(x)}$.
+The arithmetic amplitudes include zero preparations, shifts, phases,
+Frobenius, the Fourier transform, multiplication into a separate target,
+and the named field inclusion and trace-fibre isometries:
+\begin{align*}
+ X_E(a)|x\rangle&=|x+a\rangle,&
+ Z_E(b)|x\rangle&=\psi_E(bx)|x\rangle,\\
+ U_E|x\rangle&=|x^p\rangle,&
+ F_E|x\rangle&=|E|^{-1/2}\sum_y\psi_E(-xy)|y\rangle,\\
+ M_E^{(d)}|x_1,\ldots,x_d,z\rangle
+ &=|x_1,\ldots,x_d,z+\prod_jx_j\rangle.
+\end{align*}
+For a named embedding $i:K\to E$, let
+$T_i(y)=i^{-1}(\operatorname{Tr}_{E/i(K)}y)$ and
+$\kappa_i=|E|/|K|$. Then
+\[
+ J_i|a\rangle=|i(a)\rangle,\qquad
+ V_i|a\rangle=\kappa_i^{-1/2}\sum_{T_i(y)=a}|y\rangle.
+\]
+These maps act on ordered independent register words. All square roots
+are positive, and the Weyl ordering is $W(a,b)=Z(-b)X(a)$.
+\provenance{D8, D1301--D1304, D1306, D1308, FRB-FROB, FRB-TRANSFER}
+{foundation.md; transfers-example.md}{arithmetic Frobenius checkers}
+{frobenius-hierarchy-adjudication.md}
+
+\begin{definition}[Completed concrete arithmetic processes]
+Fix a finite named field diagram in characteristic $p$. Take the actual
+matrix image of its arithmetic amplitudes, with scalars in
+$\mathbb Q(\zeta_p,\sqrt p)$ and equality of typed actual matrices.
+Its finite additive completion has finite lists of objects and rectangular
+matrices of arrows. Its self-adjoint projection completion has objects
+$(X,e)$ with $e=e^*=e^2$ an actual endomorphism, represented on
+$\operatorname{ran}e$, and arrows $f:(X,e)\to(Y,g)$ satisfying $f=gfe$.
+Independent tensor uses the tensor of words, projections and arrows.
+
+Retained processes are finite Kraus lists of these arrows with
+$\sum_jK_j^*K_j\leq I$; normalized lists have equality. Classical output
+tags use block algebras and the sum of ordinary matrix traces. Coherent
+additive sums retain the source's rectangular Hom blocks. Additional
+reference states are the period references and finite profiles specified
+below, together with fixed zero preparations. Collective assembly means
+a specified actual isometry, arithmetic circuit and projection.
+\end{definition}
+\begin{scope}
+No surjectivity onto all complex CP maps or new faithfulness theorem for
+the older syntactic source is asserted. Coherent sums and classical tags
+are different constructions.
+\end{scope}
+\provenance{D1601}{definitions.md}{composite boundary checker C1, C6}
+{composite-boundary-adjudication.md}
+
+\begin{proposition}[Positive processes on completed arithmetic systems]
+\statusProved\quad
+The completed concrete arithmetic source has finite coherent sums,
+independent tensor and self-adjoint retracts. Its Kraus lists realize
+completely positive, trace-nonincreasing maps; normalized lists realize
+CPTP maps. Their compositions and independent tensors retain these
+properties, with every classical outcome kept when specified.
+\end{proposition}
+\begin{scope}
+These are prelimit constructions. Their total descent to the selected
+boundary objects is not required or inferred.
+\end{scope}
+\provenance{CMP-SOURCE}{relational-construction.md, Section 1}
+{composite boundary checker C1, C6}{composite-boundary-adjudication.md}
+
+\subsection{A relative coordinate inside a multiplication graph}
+
+\begin{definition}[Relative multiplication-graph register]
+Fix a named extension $E/K$ with $|K|=q=p^s$, $|E|=q^n=p^r$ and $r=sn$.
+Put $\sigma(x)=x^q$ and $U|x\rangle=|\sigma(x)\rangle$. For every
+$\sigma$-orbit $O$ of length $d\mid n$ and $k\in\mathbb Z/d$, put
+\[
+ v_{O,k}=\frac1{\sqrt d}\sum_{x\in O}
+       |x,\sigma^k(x),x\sigma^k(x)\rangle.
+\]
+Let $G_{d,k}$ be the diagonal projector onto precisely the tuples in these
+sums as $O$ varies over length-$d$ orbits. Define
+\[
+ G=\sum_{d\mid n}\sum_{k=0}^{d-1}G_{d,k},\qquad
+ \Delta=U\otimes U\otimes U,\qquad
+ T=\frac1n\sum_{j=0}^{n-1}\Delta^j,
+\]
+and set
+\[
+ P=TG,\qquad P_d=T\sum_kG_{d,k},\qquad Q_{d,k}=TG_{d,k}.
+\]
+The relational register is $H_{E/K}^{\rm rel}=\operatorname{ran}P$ with
+its inherited inner product. For every $n\geq1$ define the copied graph map
+$C:H_E\to H_E^{\otimes3}$ by $C|x\rangle=|x,x,x^2\rangle$.
+\end{definition}
+\begin{scope}
+No orbit origin is chosen. The averages use rational complex scalars;
+they never invert $n$ in the finite field. Projector and range properties
+are established by the next proposition.
+\end{scope}
+\provenance{D1602}{definitions.md}{composite boundary checker C2, C3}
+{composite-boundary-adjudication.md}
+
+\begin{definition}[Relative Frobenius and common observables]
+For the preceding named extension use $M=M_E^{(2)}$ and define
+\[
+ R=M(I\otimes U\otimes I)M^*,\qquad
+ E_{d;a,b}=Q_{d,a}R^{a-b}Q_{d,b}.
+\]
+Let the common observable algebra be the complex star algebra on
+$\operatorname{ran}P$ generated by $R$ and the $Q_{d,k}$. Its proposed
+abstract comparison is
+\[
+ B_n=\bigoplus_{d\mid n}M_d(\mathbb C),\qquad
+ e_{d;a,b}\longmapsto E_{d;a,b}.
+\]
+Write $S_d|k\rangle=|k+1\pmod d\rangle$ and
+$u_n^{\rm rel}=\bigoplus_{d\mid n}S_d$. The primitive relative component
+is $d=n$; its common algebra is $M_n(\mathbb C)$.
+\end{definition}
+\begin{scope}
+The common algebra does not include arbitrary operators on or between
+distinct orbit multiplicities. The arithmetic realization still retains
+those multiplicity spaces.
+\end{scope}
+\provenance{D1603}{definitions.md}{composite boundary checker C2, C3}
+{composite-boundary-adjudication.md}
+
+\begin{proposition}[An arithmetic matrix algebra after collective descent]
+\statusProved\quad
+For every named finite extension $E/K$, the vectors $v_{O,k}$ form an
+orthonormal basis of $H_{E/K}^{\rm rel}$. The operators $P_d,Q_{d,k}$
+are orthogonal projections. Simultaneous Frobenius fixes this register,
+while actual relative Frobenius satisfies
+\[
+ \Delta v_{O,k}=v_{O,k},\qquad Rv_{O,k}=v_{O,k+1}.
+\]
+The displayed comparison identifies the common observable algebra with
+$B_n$, represented with $c_d(q)/d$ copies of $M_d(\mathbb C)$, where
+$c_d(q)=\sum_{a\mid d}\mu(d/a)q^a$ counts exact-period labels.
+On every $d>1$ block, $\operatorname{Ad}R$ is a nonidentity CPTP
+automorphism and the observables are noncommutative.
+\end{proposition}
+\begin{scope}
+Relative Frobenius is Frobenius on one factor transported through actual
+multiplication. It is different from the simultaneous Frobenius removed
+by invariant projection.
+\end{scope}
+\provenance{CMP-REL}{relational-construction.md, Sections 2--3}
+{composite boundary checker C2, C3}{composite-boundary-adjudication.md}
+
+\begin{proof}[Arithmetic calculation]
+On a tuple, multiplication and its inverse give
+\[
+ R(x,y,z)=(x,\sigma(y),z-xy+x\sigma(y)).
+\]
+Thus the multiplication graph is preserved and its relative index advances.
+Simultaneous Frobenius permutes the summands of each orbit sum. Its
+average is the rank-one projector onto that sum, since the $d$ distinct
+tuples repeat $n/d$ times in the average. The graph tests select a relative
+index; conjugating them by $R$ supplies every common matrix unit.
+In particular $[R,Q_{d,0}]v_{O,0}=v_{O,1}\ne0$ when $d>1$.
+\end{proof}
+
+For one orbit, the separately fixed subspace is the line spanned by
+$f_O=d^{-1/2}\sum_{x\in O}|x\rangle$. Multiplying two separately fixed
+copies into a zero target produces only
+\[
+ \frac1d\sum_{x,y\in O}|x,y,xy\rangle
+       =\frac1{\sqrt d}\sum_kv_{O,k}.
+\]
+This is one vector in the $d$-dimensional jointly descended register.
+The comparison concerns orbitwise invariant reduction, not a claim that
+the full single-field observable algebra becomes scalar.
+
+\subsection{A vanishing preparation with a surviving quantum experiment}
+
+For the reference used here, let $h\geq0$, $t=e^h$, and let
+$P_{E,a}^{\times}$ project onto nonzero labels of exact absolute Frobenius
+period $a\mid r$. Put
+\[
+ b_1(t)=t-1,\qquad b_a(t)=\sum_{e\mid a}\mu(a/e)t^e\quad(a>1),
+ \qquad
+ D_E(h)=|0\rangle\langle0|+
+      \sum_{a\mid r}\frac{b_a(e^h)}{b_a(p)}P_{E,a}^{\times}.
+\]
+Then $\rho_E(h)=e^{-rh}D_E(h)$ is the period reference, with
+$\rho_E(\log p)=I/|E|$. Its finite profile is
+\[
+ L_E(h)=|0\rangle\langle0|+hB_E,\qquad
+ B_E=\sum_{a\mid r}\frac{\varphi(a)}{b_a(p)}P_{E,a}^{\times},
+ \qquad \lambda_E(h)=\frac{L_E(h)}{1+rh}.
+\]
+For a nonzero positive output series $A(h)=\sum_k h^kA_k$, retain its
+first nonzero order $v$, coefficient $M=A_v$, trace $w=\operatorname{Tr}M$
+and conditional state $M/w$. For normalizers with constant term one, $w$
+is the leading event-probability coefficient. Full profiles are retained
+before later conditioning.
+\provenance{D1501--D1503, D1506, POS-STATE, POS-FINITE}
+{reference-and-protocol.md; finite-operational-boundary.md}
+{positive arithmetic checker}{positive-arithmetic-adjudication.md}
+
+\begin{definition}[Copied reference instrument]
+For $E/K$ of relative degree $n>1$, let $\Pi_n$ project onto labels of
+exact relative Frobenius period $n$. Prepare one $\rho_E(h)$ or
+$\lambda_E(h)$ and two fixed zero ancillas. Define the arithmetic isometry
+$C|x\rangle=|x,x,x^2\rangle$ by controlled addition and multiplication.
+The three preparation amplitudes are
+\[
+ K_{\rm cut}=I-\Pi_n,\qquad
+ K_{\rm fail}=(I-T)C\Pi_n,\qquad K_{\rm ok}=TC\Pi_n.
+\]
+Their tags are primitive-cut failure in $H_E$, averaging failure in
+$H_E^{\otimes3}$, and success in that same three-register word.
+After success apply $R$ and measure $Q_{n,1}$ with its complement retained.
+In the identity comparison replace $R$ by $I$. In the dephased comparison
+insert computational dephasing of all three slots immediately before $R$.
+\end{definition}
+\begin{scope}
+The two fixed zero ancillas are not independently prepared period
+references. The final effect includes the invariant projection; a diagonal
+graph test alone would not detect the stated coherence.
+\end{scope}
+\provenance{D1604}{definitions.md}{composite boundary checker C4--C6}
+{composite-boundary-adjudication.md}
+
+\begin{definition}[Primitive relative quantum boundary]
+Retain the leading event record of the copied reference instrument and
+its conditional state on the common $M_n(\mathbb C)$ algebra. The proposed
+boundary realization has state $|0\rangle\langle0|$, relative-index
+projections, the common matrix units and the channel $\operatorname{Ad}S_n$,
+where $S_n$ is the single $n$-cycle. Its arithmetic processes are those
+induced by these displayed matrices and specified instruments. A larger
+category containing all CP maps is an optional envelope. Physical
+multiplicity states at different characteristics are not identified.
+\end{definition}
+\begin{scope}
+No tensor or direct-sum operation between boundary objects is stipulated.
+The full physical profile remains necessary for arbitrary later retained
+arithmetic continuations.
+\end{scope}
+\provenance{D1605}{definitions.md}{composite boundary checker C3--C6}
+{composite-boundary-adjudication.md}
+
+\begin{theorem}[A quantum Frobenius witness in the first nonzero grade]
+\statusProved\quad
+For every finite $E/K$ with $|K|=p^s$ and relative degree $n>1$, in every
+characteristic, the copied reference instrument is CPTP with its stated
+histories. Its successful preparation has probability
+\[
+ w_{s,n}(h)=\frac{c_n(t^s)}{n t^{sn}},\qquad t=e^h,
+ \qquad w_{s,n}(h)=\frac{s\varphi(n)}n h+O(h^2).
+\]
+For $h>0$, its conditional state on the common $M_n$ block is
+$|0\rangle\langle0|$. The final test has conditional probabilities
+\[
+ \begin{array}{c|ccc}
+ \text{circuit}&\text{relative Frobenius}&\text{identity}&\text{dephased}\\\hline
+ \text{probability}&1&0&1/n
+ \end{array}
+\]
+The finite-profile preparation has success
+$h s\varphi(n)/(n(1+snh))$ and the same leading event records.
+\end{theorem}
+\begin{scope}
+The primitive branch is zero at the ordinary endpoint. The theorem
+concerns its specified graded conditional remnant. It preserves the
+arithmetic realization and its histories without identifying every
+physical state or CP map across characteristics.
+\end{scope}
+\provenance{CMP-BOUNDARY}{boundary-and-spectrum.md, Sections 1--2}
+{composite boundary checker C4--C6}{composite-boundary-adjudication.md}
+
+\begin{proof}[Derivation]
+The unnormalized reference mass on the fixed field of $\sigma^d$ is
+$t^{sd}$ by reference restriction. Divisor inversion therefore makes
+the primitive relative mass $c_n(t^s)$. For $x$ in a primitive orbit,
+$TC|x\rangle=v_{O,0}/\sqrt n$, so the diagonal input succeeds with
+probability $1/n$ times that mass divided by $t^{sn}$.
+Differentiation at zero gives $s\varphi(n)/n$.
+
+Relative Frobenius takes each prepared vector to $v_{O,1}$, while identity
+leaves it orthogonal to the final effect. Dephasing replaces each orbit
+sum by its uniform computational mixture. Each of its $n$ tuples has
+squared overlap $1/n$ with the final invariant vector. The result persists
+under the physical mixture over orbits.
+\end{proof}
+
+The primitive-cut failure probability is $1-c_n(t^s)/t^{sn}$; averaging
+failure has probability $(1-1/n)c_n(t^s)/t^{sn}$. The final test splits
+only the success history. Thus every omitted success is accounted for by
+a named physical output. The scalar $1/n$ concerns the diagonal reference:
+on coherent inputs $K_{\rm ok}^*K_{\rm ok}$ is an orbitwise fixed-vector
+projector, not $\Pi_n/n$.
+
+\subsection{The binary quadratic example}
+
+Take $E=\mathbb F_2[\alpha]/(\alpha^2+\alpha+1)$ over $K=\mathbb F_2$.
+Its primitive orbit is $\{\alpha,\alpha^2\}$, and the two graph vectors are
+\begin{align*}
+ v_0&=\frac{|\alpha,\alpha,\alpha^2\rangle+
+                  |\alpha^2,\alpha^2,\alpha\rangle}{\sqrt2},\\
+ v_1&=\frac{|\alpha,\alpha^2,1\rangle+
+                  |\alpha^2,\alpha,1\rangle}{\sqrt2}.
+\end{align*}
+Their common algebra is a qubit algebra. Actual multiplication-conjugated
+relative Frobenius swaps them. The preparation probability is
+$w(h)=(1-e^{-h})/2$, hence has coefficient $1/2$ at first order.
+At the arithmetic point $t=2$, preparation succeeds with probability
+$1/4$. The full final joint success is $1/4$, becomes zero when Frobenius
+is removed, and becomes $1/8$ when the orbit coherence is dephased.
+These distinctions are generated inside the three arithmetic registers.
+\provenance{CMP-REL, CMP-BOUNDARY}{relational-construction.md; boundary-and-spectrum.md}
+{composite boundary checker C2--C6}{composite-boundary-adjudication.md}
+
+\subsection{Embedding comparisons and an actual Fourier return}
+
+\begin{definition}[Relational transfers and retained Fourier return]
+For a named embedding $i:E\to F$ over the same fixed $K$, restrict
+$J_i^{\otimes3}$ to the all-period relational code and call it
+$J_i^{\rm rel}$. Its decoder has success amplitude $(J_i^{\rm rel})^*$
+and failure amplitude $I-J_i^{\rm rel}(J_i^{\rm rel})^*$, with different
+target tags. Towers retain every stopped history and length-$d$ components
+remain length $d$ in the upper ambient field.
+
+On a primitive code of degree $n>1$, put $F_{\rm first}=F_E\otimes I\otimes I$.
+The return and failure amplitudes are its restrictions followed by $P_n$
+and $I-P_n$, respectively; the failure retains the ambient word.
+\end{definition}
+\begin{scope}
+The embedding comparison fixes the base field $K$. No claim about changing
+the relative base or Fourier transforms on other slots is included.
+\end{scope}
+\provenance{D1606}{definitions.md}{composite boundary checker C7, C8}
+{composite-boundary-adjudication.md}
+
+\begin{proposition}[Coherent transfers without orbit origins]
+\statusProved\quad
+Every such named embedding gives an isometry satisfying
+$J_i^{\otimes3}v_{O,k}=v_{i(O),k}$. These isometries compose in every
+fixed-base tower and intertwine relative Frobenius and the component tests.
+Their retained decoders are CPTP, and success maps compose with every
+stopped failure history kept distinct.
+\end{proposition}
+\begin{scope}
+A lower primitive component is not replaced by the upper field's
+primitive component. No compatible orbit origins are needed, including
+for twisted field embeddings.
+\end{scope}
+\provenance{CMP-NATURAL}{relational-construction.md, Section 4}
+{composite boundary checker C7}{composite-boundary-adjudication.md}
+
+\begin{proposition}[First-register Fourier compression]
+\statusProved\quad
+For every primitive graph code of relative degree $n>1$,
+\[
+ P_nF_{\rm first}P_n=|E|^{-1/2}D_{\rm phase}P_n,\qquad
+ D_{\rm phase}v_{O,k}=\psi_E(-x^2)v_{O,k}\quad(x\in O).
+\]
+The phase is independent of the selected $x$ in $O$. Retained return has
+probability $1/|E|$ for every code state and conditional return is identity
+on the common $M_n$ observables.
+\end{proposition}
+\begin{scope}
+The physical multiplicity phases and the unconditioned return probability
+retain arithmetic data. The ambient failure branch is not discarded.
+\end{scope}
+\provenance{CMP-FOURIER}{boundary-and-spectrum.md, Section 3}
+{composite boundary checker C8}{composite-boundary-adjudication.md}
+
+\begin{proof}[Kernel calculation]
+Fourier in the first slot fixes the other two coordinates $y,z$. On the
+primitive graph $y\ne0$ and $z=xy$ forces $x=z/y$. Only the diagonal
+Fourier kernel survives compression, namely $|E|^{-1/2}\psi_E(-x^2)$.
+Absolute trace is invariant along the relative Frobenius orbit. The
+compressed amplitude consequently has squared modulus $1/|E|$ on the
+entire code. Complementary projection supplies the other outcome.
+\end{proof}
+
+\subsection{Which spectrum and which trace survive}
+
+\begin{definition}[Finite relational spectral data]
+Use ordinary Hilbert trace and $\det(I-zR)$ on the all-period relational
+code, with actual orbit multiplicities. Keep separately the normalized
+trace $\operatorname{tr}_d$ on each common $M_d$ and the linear-map trace
+on its channel. To obtain a reference trace on the common blocks, apply
+the copied reference and invariant projection, retain success, then
+uniformly randomize over $R^j$, $0\leq j<n$, explicitly discarding the
+randomization label. The channel can use $n$ copies of $R^j/n$ for each
+$j$, so it needs no additional square root in the arithmetic scalar field.
+The copied map is defined for every $n\geq1$; moving-sector conditioning
+requires $n>1$. This preparation differs from the unrandomized witness.
+\end{definition}
+\begin{scope}
+These definitions concern finite systems. They posit no infinite trace,
+regularized determinant, or identification with a Riemann spectral operator.
+\end{scope}
+\provenance{D1607}{definitions.md}{composite boundary checker C9}
+{composite-boundary-adjudication.md}
+
+\begin{proposition}[Finite spectral and reference identities]
+\statusProved\quad
+For every finite $E/K$ and integer $j$, with $\gcd(n,0)=n$,
+\[
+ \operatorname{Tr}(R^j)=q^{\gcd(n,j)},\qquad
+ \det(I-zR)=\prod_{d\mid n}(1-z^d)^{c_d(q)/d}.
+\]
+On the full code algebra the channel's linear-map trace is instead
+$|\operatorname{Tr}(R^j)|^2$. The primitive implementer has the $n$th
+roots of unity as eigenvalues, each once on its common block; its channel
+has their ratios, each root with multiplicity $n$.
+
+The randomized copied reference has unnormalized common-block functional
+\[
+ t^{-sn}\sum_{d\mid n}\frac{c_d(t^s)}d\operatorname{tr}_d(a_d).
+\]
+For $n>1$, conditioning its moving blocks $d>1$ before taking the first
+nonzero grade gives positive normalized weights proportional to $\varphi(d)/d$.
+For $n=1$ the moving sector is zero and has no conditional state.
+\end{proposition}
+\begin{scope}
+Ordinary spectral trace and normalized reference expectation are distinct.
+The finite determinant identity supplies an arithmetic comparison for
+subsequent spectral work; no infinite completion is assumed here.
+\end{scope}
+\provenance{CMP-TRACE}{boundary-and-spectrum.md, Section 4}
+{composite boundary checker C9}{composite-boundary-adjudication.md}
+
+The finite trace identity follows by counting fixed vectors in each
+relative cycle. In particular, for $|z|<1$,
+\[
+ \det(I-zR)^{-1}
+ =\exp\!\left(\sum_{j\geq1}\frac{z^j}{j}\operatorname{Tr}(R^j)\right).
+\]
+The positive quantum remnant and this arithmetic spectral identity are
+already properties of an assembled system. Any later tower completion,
+rescaling of Frobenius iterates, or new boundary composition must be
+specified and justified independently.

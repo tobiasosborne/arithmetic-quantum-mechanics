@@ -194,3 +194,28 @@
 | `Phi_*A,(X,A)` | coefficientwise arithmetic action and profile experiment | D1505 |
 | `v(A),M(A),w(A),eta(A)` | leading order, matrix, probability coefficient and conditional state | D1506 |
 | `w_x` (positive mixed protocol) | diagonal weight of B_E at a nonzero label x, equal to phi(period(x))/b_(period(x))(p) | POS-MIXED |
+
+| symbol | meaning | definition |
+|---|---|---|
+| `A_I^mat`, `(X,e)` | concrete arithmetic matrix image and its finite additive/self-adjoint projection completion | D1601 |
+| `sigma`, `U`, `O`, `v_(O,k)` (relational context) | relative q-Frobenius, its field permutation, an orbit, and its normalized multiplication-graph vector | D1602 |
+| `G_(d,k)`, `G`, `Delta`, `T` (relational context) | diagonal orbit-graph tests, their sum, simultaneous Frobenius and its complex invariant average | D1602 |
+| `P`, `P_d`, `Q_(d,k)`, `H_(E/K)^rel` (relational context) | full relational projection, period and relative-index projections, and their Hilbert register | D1602 |
+| `C` (copied graph context) | arithmetic isometry mapping x to the tuple (x,x,x^2), defined for every relative degree n>=1 | D1602 |
+| `R`, `E_(d;a,b)`, `B_(E/K)^rel`, `B_n`, `u_n^rel` | multiplication-conjugated relative Frobenius, common matrix units, generated/common algebras and all-period cycle implementer | D1603 |
+| `Pi_n`, `K_cut`, `K_fail`, `K_ok` (relational context) | primitive relative-period test and the three retained preparation amplitudes | D1604 |
+| `w_(s,n)(h)` | copied-reference primitive success c_n(exp(s h))/(n exp(sn h)) for n>1 | CMP-BOUNDARY |
+| `J_i^rel`, `F_first`, `D_phase` | fixed-base relational inclusion, actual first-register Fourier and its compressed orbit phase | D1606, CMP-FOURIER |
+
+| symbol | meaning | definition |
+|---|---|---|
+| `A_N`, `j_(N,M)`, `eta_d`, `theta_N` (degree completion) | finite moving divisor-block algebra, zero-extension corner, weight phi(d)/d and its trace | D1611 |
+| `H_deg`, `A_deg`, `B_deg`, `theta` | Hilbert sum of primitive degree registers, c0 block algebra, minimal unitization and extended positive trace on A_deg | D1611 |
+| `U_deg`, `alpha` (degree completion) | direct sum of actual relative cycles and its quantum automorphism | D1612 |
+| `beta`, `Z_deg(beta)`, `D_beta`, `rho_beta`, `omega_beta`, `M_beta(j)` (degree regularization) | real exponent >1, moving-degree normalizer, central regulator, trace-class density, state and implementing-operator moment | D1612 |
+
+| symbol | meaning | definition |
+|---|---|---|
+| `L_D(beta)`, `L_infty(beta)`, `pi_d` | finite/infinite degree-prior normalizers and the finite classical degree probabilities | D1621 |
+| `w_d(t)`, `v_d(t)`, `Z_D(beta,t)`, `Z_infty(beta,t)` | exact primitive success, its rescaling by s(t-1), and common successful mixture normalizers | D1621 |
+| `rho_(D,t)`, `rho_(infty,t)`, `W_D(beta,t)` | finite/completed common conditional densities and total physical mixture success | D1621, CMP-JOINT-LIMIT |

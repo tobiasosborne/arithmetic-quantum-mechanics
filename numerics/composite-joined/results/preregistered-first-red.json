@@ -1,0 +1,15 @@
+{
+  "source_sha256": "bcaacf83d852e91ccbfa12efd5d0eec8bdaa2a8ac47aec73e53f039a180b912f",
+  "exit": 1,
+  "output": {
+    "mutation": "drop-divisor",
+    "exact": true,
+    "finite_scope_only": true,
+    "status": "FAIL",
+    "gate": "J2",
+    "detail": "actual copied F4 success requires the 1/d averaging factor",
+    "checks": {
+      "J2": 1
+    }
+  }
+}

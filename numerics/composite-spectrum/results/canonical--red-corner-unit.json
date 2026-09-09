@@ -1,0 +1,101 @@
+{
+  "mutation": "corner-unit",
+  "exact": true,
+  "first_average_weight": "1/2",
+  "derived_weights": [
+    {
+      "absolute_degree": 2,
+      "base_degree": 1,
+      "modulus_binary": "0b111",
+      "period_counts": {
+        "1": 2,
+        "2": 2
+      },
+      "derived_weights": {
+        "2": "1/2"
+      }
+    },
+    {
+      "absolute_degree": 3,
+      "base_degree": 1,
+      "modulus_binary": "0b1011",
+      "period_counts": {
+        "1": 2,
+        "3": 6
+      },
+      "derived_weights": {
+        "3": "2/3"
+      }
+    },
+    {
+      "absolute_degree": 4,
+      "base_degree": 1,
+      "modulus_binary": "0b10011",
+      "period_counts": {
+        "1": 2,
+        "4": 12,
+        "2": 2
+      },
+      "derived_weights": {
+        "2": "1/2",
+        "4": "1/2"
+      }
+    },
+    {
+      "absolute_degree": 6,
+      "base_degree": 1,
+      "modulus_binary": "0b1000011",
+      "period_counts": {
+        "1": 2,
+        "6": 54,
+        "3": 6,
+        "2": 2
+      },
+      "derived_weights": {
+        "2": "1/2",
+        "3": "2/3",
+        "6": "1/3"
+      }
+    },
+    {
+      "absolute_degree": 12,
+      "base_degree": 1,
+      "modulus_binary": "0b1000000001001",
+      "period_counts": {
+        "1": 2,
+        "12": 4020,
+        "4": 12,
+        "6": 54,
+        "2": 2,
+        "3": 6
+      },
+      "derived_weights": {
+        "2": "1/2",
+        "3": "2/3",
+        "4": "1/2",
+        "6": "1/3",
+        "12": "1/3"
+      }
+    },
+    {
+      "absolute_degree": 4,
+      "base_degree": 2,
+      "modulus_binary": "0b10011",
+      "period_counts": {
+        "1": 2,
+        "4": 12,
+        "2": 2
+      },
+      "derived_weights": {
+        "2": "1/2"
+      }
+    }
+  ],
+  "status": "FAIL",
+  "gate": "S1",
+  "detail": "nonunital corner inclusion is linear at zero",
+  "checks": {
+    "S1": 31,
+    "S2": 50
+  }
+}

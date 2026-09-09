@@ -1,0 +1,11 @@
+{
+  "red": "collective",
+  "exact": true,
+  "floating_point_tolerance": null,
+  "status": "FAIL",
+  "gate": "C1",
+  "detail": "collective M2 matrix block versus local diagonal image",
+  "checks": {
+    "C1": 14055
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "red": "reset-reference",
+  "exact": true,
+  "floating_point_tolerance": null,
+  "control": {
+    "dimensions_n1_to_n4": [
+      1,
+      2,
+      6,
+      24
+    ],
+    "standard_return": "1/4",
+    "coherent_return": "1",
+    "tagged_return": "1/2"
+  },
+  "fibres": [],
+  "status": "FAIL",
+  "gate": "C4",
+  "detail": "copied one-reference preparation norm",
+  "checks": {
+    "C1": 14057,
+    "C2": 137,
+    "C3": 40,
+    "C4": 9,
+    "C6": 4
+  }
+}

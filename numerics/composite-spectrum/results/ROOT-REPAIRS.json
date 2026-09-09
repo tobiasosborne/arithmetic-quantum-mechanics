@@ -1,0 +1,100 @@
+{
+  "source_sha256": "05fed6be6df3469d9a9e0615d5fe1e3ec99cf892b671b18ee572b294fbb0ccd6",
+  "green_checks": 41216,
+  "advertised_flags": 15,
+  "distinct_mutations": 13,
+  "real_cutoff_counterexample_confirmed": true,
+  "cutoff_scope": "integer D>=1",
+  "runs": [
+    {
+      "flag": "--red",
+      "exit": 1,
+      "gate": "S2",
+      "detail": "actual copied F4 average requires phi(2)/2"
+    },
+    {
+      "flag": "--red-central-dynamics",
+      "exit": 1,
+      "gate": "S3",
+      "detail": "actual Frobenius displaces rank-one test by operator norm one"
+    },
+    {
+      "flag": "--red-channel-trace",
+      "exit": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized"
+    },
+    {
+      "flag": "--red-coprimality",
+      "exit": 1,
+      "gate": "S5",
+      "detail": "Dirichlet convolution coefficient from literal coprime counts"
+    },
+    {
+      "flag": "--red-corner-unit",
+      "exit": 1,
+      "gate": "S1",
+      "detail": "nonunital corner inclusion is linear at zero"
+    },
+    {
+      "flag": "--red-d1-subtraction",
+      "exit": 1,
+      "gate": "S5",
+      "detail": "moving convolution removes exactly the d=1 coefficient"
+    },
+    {
+      "flag": "--red-density-factor",
+      "exit": 1,
+      "gate": "S4",
+      "detail": "finite beta density normalized in ordinary Hilbert trace"
+    },
+    {
+      "flag": "--red-drop-divisor-weight",
+      "exit": 1,
+      "gate": "S2",
+      "detail": "actual copied F4 average requires phi(2)/2"
+    },
+    {
+      "flag": "--red-identity",
+      "exit": 1,
+      "gate": "S3",
+      "detail": "actual Frobenius displaces rank-one test by operator norm one"
+    },
+    {
+      "flag": "--red-negative-density",
+      "exit": 1,
+      "gate": "S4",
+      "detail": "finite ordinary density has strictly positive eigenvalues"
+    },
+    {
+      "flag": "--red-negative-power",
+      "exit": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized"
+    },
+    {
+      "flag": "--red-reset-corner",
+      "exit": 1,
+      "gate": "S2",
+      "detail": "normalized upper reference conditions with theta_N/theta_M"
+    },
+    {
+      "flag": "--red-tail-exponent",
+      "exit": 1,
+      "gate": "S4",
+      "detail": "finite tail fragment respects stated degree cutoff bound"
+    },
+    {
+      "flag": "--red-tensor-cycle",
+      "exit": 1,
+      "gate": "S7",
+      "detail": "actual tensor of two 2-cycles is two cycles, not one 4-cycle"
+    },
+    {
+      "flag": "--red-zero-moment",
+      "exit": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized"
+    }
+  ]
+}

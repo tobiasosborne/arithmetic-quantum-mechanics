@@ -1,0 +1,904 @@
+{
+  "phase": "finite CMP package",
+  "green_count": 23,
+  "advertised_red_count": 210,
+  "green": [
+    "arithmetic_limits_check.py",
+    "arithmetic_signed_check.py",
+    "composite_boundary_check.py",
+    "f1_check.py",
+    "f1_limit_bridge_check.py",
+    "f1_limit_check.py",
+    "f1_limit_karoubi_check.py",
+    "f1_limit_mirabolic_check.py",
+    "f1_limit_module_check.py",
+    "f1_limit_wiring_check.py",
+    "f1_operational_check.py",
+    "fcr2_beta_check.py",
+    "fcr_local_check.py",
+    "frobenius_boundary_check.py",
+    "frobenius_hierarchy_check.py",
+    "positive_arithmetic_check.py",
+    "small_rings_catalogue_check.py",
+    "beta_census.py",
+    "fp_symmetry.py",
+    "frame_mu.py",
+    "funct_sections.py",
+    "split24.py",
+    "wh_kappa_check.py"
+  ],
+  "red_runs": [
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-admit-nonuniform"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-collapse-tangent-algebra"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-compress-mixed-transition"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-coset-label"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-cyclic-only-image"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-erase-orbit-coherence"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-fourier-scaling"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-fourier-sign"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-incomplete-tangent-instrument"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-merge-tower-histories"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-omit-degree-scaling"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-omit-normalization"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-omit-tangent-normalization"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-omit-tensor-outcome"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-physical-support-rank"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-residual-fourier-reflection"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-tangent-fourier"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-tower-connector-coefficient"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-tower-degree-scaling"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-trace-fibre-label"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-wrong-failure-projector"
+    },
+    {
+      "checker": "arithmetic_limits_check.py",
+      "flag": "--red-wrong-gram-branch"
+    },
+    {
+      "checker": "arithmetic_signed_check.py",
+      "flag": "--red-order"
+    },
+    {
+      "checker": "arithmetic_signed_check.py",
+      "flag": "--red-sign"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-channel-spectrum"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-collective"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-dephase"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-diagonal-action"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-diagonal-relative"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-drop-grade"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-embedding"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-fourier-outcome"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-fourier-phase"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-identity"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-multiplicity"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-normalizer"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-off-diagonal"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-omit-invariant"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-omit-outcome"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-product"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-reset-reference"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-separate-descent"
+    },
+    {
+      "checker": "composite_boundary_check.py",
+      "flag": "--red-wrong-sector"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-basis"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-ccr"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-cocycle"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-crowd"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-fourier"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-frame"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-fusion"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-hall"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-kernel"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-normal"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-order"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-pairing"
+    },
+    {
+      "checker": "f1_check.py",
+      "flag": "--red-tensor"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "flag": "--red-dual-reversal"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "flag": "--red-fourier"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "flag": "--red-shuffle"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "flag": "--red-thin-block"
+    },
+    {
+      "checker": "f1_limit_bridge_check.py",
+      "flag": "--red-typec-scale"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-ancilla"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-braid"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-collective-identity"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-context"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-corner-ratio"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-cycle"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-density"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-descent"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-null-weight"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-outcome"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-polar"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-postselection"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-reference-trace"
+    },
+    {
+      "checker": "f1_limit_check.py",
+      "flag": "--red-valency"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "flag": "--red-classical"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "flag": "--red-cutoff"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "flag": "--red-density-ratio"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "flag": "--red-grading"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "flag": "--red-gram"
+    },
+    {
+      "checker": "f1_limit_karoubi_check.py",
+      "flag": "--red-normalization"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "flag": "--red-affine-dec"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "flag": "--red-mir-expect"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "flag": "--red-mir-kernel"
+    },
+    {
+      "checker": "f1_limit_mirabolic_check.py",
+      "flag": "--red-mir-line"
+    },
+    {
+      "checker": "f1_limit_module_check.py",
+      "flag": "--red-module-expect"
+    },
+    {
+      "checker": "f1_limit_module_check.py",
+      "flag": "--red-module-marker"
+    },
+    {
+      "checker": "f1_limit_module_check.py",
+      "flag": "--red-module-shift"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "flag": "--red-backaction"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "flag": "--red-classical-trace"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "flag": "--red-history"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "flag": "--red-parallel-route"
+    },
+    {
+      "checker": "f1_limit_wiring_check.py",
+      "flag": "--red-sequential-route"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-amplified"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-apartment"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-bell-sign"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-context-lower"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-context-size"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-corner-trace"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-density-norm"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-expectation"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-flag"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-incidence"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-injection"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-kraus"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-kraus-mix"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-local-collapse"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-overlap"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-partial-comp"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-partial-dagger"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-partial-lax"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-partial-zero"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-positive-domain"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-product"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-refinement"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-tl-trace"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-trace"
+    },
+    {
+      "checker": "f1_operational_check.py",
+      "flag": "--red-unitary-braid"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-collapse"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-fake-epsilon"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-field"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-frobenius-blind"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-halfweyl"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-model-sign"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-profile"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-square"
+    },
+    {
+      "checker": "fcr2_beta_check.py",
+      "flag": "--red-transpose"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-dim"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-free-only"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-frobenius-blind"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-g6-arena-confusion"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-halfweyl-drop"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-nongenerating"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-profile-drop-identity"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-torsor"
+    },
+    {
+      "checker": "fcr_local_check.py",
+      "flag": "--red-transpose"
+    },
+    {
+      "checker": "frobenius_boundary_check.py",
+      "flag": "--red-coherence"
+    },
+    {
+      "checker": "frobenius_boundary_check.py",
+      "flag": "--red-count"
+    },
+    {
+      "checker": "frobenius_boundary_check.py",
+      "flag": "--red-decoder"
+    },
+    {
+      "checker": "frobenius_boundary_check.py",
+      "flag": "--red-frobenius"
+    },
+    {
+      "checker": "frobenius_boundary_check.py",
+      "flag": "--red-overlap"
+    },
+    {
+      "checker": "frobenius_boundary_check.py",
+      "flag": "--red-weight"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-code-phase-subfield"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-discard-omit-bra"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-embedding-coefficient-swap"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-fourier-failure-original-code"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-fourier-positive-kernel"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-frob-one-label"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-frobenius-no-shear"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-hierarchy-delete-factor"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-hierarchy-extra-register-term"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-instrument-double-success"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-interference-erase-phase"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-logical-momentum-inclusion"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-multiplication-as-addition"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-parallel-collapse-outcomes"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-process-wrong-target"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-relative-trace-projection"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-reset-global-as-local"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-sequential-reverse"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-trace-fibre-unnormalized"
+    },
+    {
+      "checker": "frobenius_hierarchy_check.py",
+      "flag": "--red-weyl-positive-sign"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-arity"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-coherence"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-compression"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-discard-later-rare"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-embedding"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-erase-characteristic"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-fourier-invariance"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-fourier-phase"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-jordan"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-mass"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-moment"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-multiplication-entry"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-normalizer"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-profile"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-total-first-order"
+    },
+    {
+      "checker": "positive_arithmetic_check.py",
+      "flag": "--red-tracial-complement"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-catalogue"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-class-count"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-drop-nonfree"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-gram"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-middle-images"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-order-profile"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-ring-soc"
+    },
+    {
+      "checker": "small_rings_catalogue_check.py",
+      "flag": "--red-transpose-cocycle"
+    },
+    {
+      "checker": "beta_census.py",
+      "flag": "--red-arf-blind"
+    },
+    {
+      "checker": "beta_census.py",
+      "flag": "--red-iso"
+    },
+    {
+      "checker": "beta_census.py",
+      "flag": "--red-oddp-split"
+    },
+    {
+      "checker": "fp_symmetry.py",
+      "flag": "--red-kappa-linear"
+    },
+    {
+      "checker": "fp_symmetry.py",
+      "flag": "--red-sp-formula"
+    },
+    {
+      "checker": "frame_mu.py",
+      "flag": "--red-drop-linear"
+    },
+    {
+      "checker": "frame_mu.py",
+      "flag": "--red-mu2-always"
+    },
+    {
+      "checker": "funct_sections.py",
+      "flag": "--red-restrict"
+    },
+    {
+      "checker": "funct_sections.py",
+      "flag": "--red-section-exists"
+    },
+    {
+      "checker": "split24.py",
+      "flag": "--red-fibre"
+    },
+    {
+      "checker": "split24.py",
+      "flag": "--red-mu2split"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-beta-rigid"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-cocycle"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-dim"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-halfweyl"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-naive-order"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-nonisotropic"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-psi-polarization"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-symmetric"
+    },
+    {
+      "checker": "wh_kappa_check.py",
+      "flag": "--red-trivial-char"
+    }
+  ],
+  "sha256": {
+    "theory/checks/arithmetic_limits_check.py": "c94c4a1735c59bf6eedddd7f80c3cd41ca1e8c4788d128c443aaf34732edf1d1",
+    "theory/checks/arithmetic_signed_check.py": "83d1966b193d4e0247e8c2f57957cfcc893bc0db06ff7ef11900ccfa9b2c9840",
+    "theory/checks/composite_boundary_check.py": "5816197b901d74012112d2957c5df45ad7b634b426e6c64bb46c16ed0f3df3d1",
+    "theory/checks/f1_check.py": "44bd0a30cb54fcd372dd541aa8036efa252c2e3e9decea2cc1d7929c5ef411d2",
+    "theory/checks/f1_limit_bridge_check.py": "563aea82ec23fe48d615d0050f50824bbf27c98f648797db4706ac0d17e44e24",
+    "theory/checks/f1_limit_check.py": "fbd38c4d80819902432203b6f93aa0b862d35dc86df830197f6439f5cd7159d1",
+    "theory/checks/f1_limit_karoubi_check.py": "af5f7b4c2e1dcce18c6e660462306acf8ec606795022316363d48649cf8a7d3e",
+    "theory/checks/f1_limit_mirabolic_check.py": "f702693b47addb8f24c0b2657bbc2cd6e8d1f215a8afda7efaf777c8abd665ae",
+    "theory/checks/f1_limit_module_check.py": "7fa4d4a17c0dcc7b7c7db93b51d18bc4417149f47abff5863a285da68b9dd795",
+    "theory/checks/f1_limit_wiring_check.py": "cffbb95b332d0cb6fbbf811ce1f160a54c8648ecf80cb4c66f7566eb8b065d1b",
+    "theory/checks/f1_operational_check.py": "a4ecbcd4ab9b2feed5383c6e523f50c12c2b2dce688482bfc3dca646ce7313f3",
+    "theory/checks/fcr2_beta_check.py": "629db908049a2a2d729b099f055663a25c387443a4edc17893c4d02aeca025c8",
+    "theory/checks/fcr_local_check.py": "9ee2cb5fce5079a3eba807ac40029fff3c4ef839a171ce0da06c7f2299ced5d4",
+    "theory/checks/frobenius_boundary_check.py": "25c49478e07e925878fe1ba10b897a27da07eab55318a7ec090dc03aa268df33",
+    "theory/checks/frobenius_hierarchy_check.py": "946ca4584424329e85b92107664d24c89942f194de42dd0737ddc372d77d8c12",
+    "theory/checks/positive_arithmetic_check.py": "272148e1bf157e15d682408b92fe8eeaf43d4849b027ab64b70eaea6c5e03718",
+    "theory/checks/small_rings_catalogue_check.py": "45926a4c33fb6f1b58c1f35cdc3e5d8d8346c4ea78a08d83ddc17c7089721c03",
+    "theory/checks/wh_kappa/beta_census.py": "61d1ca781436f60556d970729e6ffceed9b7bc4225f7577ca0267772230e08f4",
+    "theory/checks/wh_kappa/fp_symmetry.py": "887da9c97655dd1e4bfc0291b0af861fde26db31374fe5c27cb8fe401fac08d1",
+    "theory/checks/wh_kappa/frame_mu.py": "cc53f0a92762f6ffd17b2bf90e36901b9d1cd3b001a9fcb206c46d5035f2686e",
+    "theory/checks/wh_kappa/funct_sections.py": "8333b0d73577634e153e8492b93b80de70a7dddf7c6e19617a856010ac5c1901",
+    "theory/checks/wh_kappa/split24.py": "46c7dd9412c5c76bbd456bb0e801a1de393de8450e49d620add7363cb5efa735",
+    "theory/checks/wh_kappa_check.py": "4cad037cd7d82e8101af72def4a4abf748f671f68fda93806b24a74ed83892fa",
+    "labbook/main.pdf": "79917f1bcf34a83414e748a768f75eb9c01d49179df1ac78e84407655c103cd0",
+    "definitions.md": "42eb21823792d4f857bd151cab91ea2d05967993d39f409316b2ec3a8bdf98fd",
+    "claims/CLAIMS.md": "6727036308b69e4f8e6d0bad11bdc15048546e16a30718ef90fd46238090c51a",
+    "theory/sidequests/composite-boundary/relational-construction.md": "1b3d00ebd59042984b394cd27a952515ccc5de064a20cd8e5fc16e863fad6308",
+    "theory/sidequests/composite-boundary/boundary-and-spectrum.md": "ee2b230cb1b01e65dd26cccdf3846563d8c8622fbce9c404c1042cc7f0c4db9e"
+  },
+  "pdf_pages": 160,
+  "result": "ALL GATES PASSED"
+}

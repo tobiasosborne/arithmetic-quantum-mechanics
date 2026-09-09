@@ -1,0 +1,11 @@
+{
+  "mutation": "drop-divisor",
+  "exact": true,
+  "finite_scope_only": true,
+  "status": "FAIL",
+  "gate": "J2",
+  "detail": "actual copied F4 success requires the 1/d averaging factor",
+  "checks": {
+    "J2": 1
+  }
+}

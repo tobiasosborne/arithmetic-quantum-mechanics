@@ -1,0 +1,130 @@
+{
+  "finite_scope_only": true,
+  "all_arithmetic_exact": true,
+  "standalone_checker": "composite_joined_check.py",
+  "python_version": "3.12.3",
+  "discovered_flags": [
+    "--red",
+    "--red-condition-zero",
+    "--red-drop-divisor",
+    "--red-drop-grade",
+    "--red-drop-randomizer",
+    "--red-lost-history",
+    "--red-omit-gap",
+    "--red-operator-norm",
+    "--red-reset-copy",
+    "--red-vanishing-bound",
+    "--red-wrong-normalizer",
+    "--red-wrong-prior"
+  ],
+  "runs": [
+    {
+      "flag": "--red",
+      "mutation": "drop-divisor",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "actual copied F4 success requires the 1/d averaging factor",
+      "output_sha256": "87a630c654a0ee879e9ef80bc7095f658b0f38d17c484170256af6273c225fc8"
+    },
+    {
+      "flag": "--red-condition-zero",
+      "mutation": "condition-zero",
+      "exit": 1,
+      "gate": "J1",
+      "detail": "v(t) agrees with exact polynomial division, including retained endpoint grade",
+      "output_sha256": "f1971881e37a7f9452f33212279073f0c4411fb21d4bba6b53ccc1884a3a16d0"
+    },
+    {
+      "flag": "--red-drop-divisor",
+      "mutation": "drop-divisor",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "actual copied F4 success requires the 1/d averaging factor",
+      "output_sha256": "87a630c654a0ee879e9ef80bc7095f658b0f38d17c484170256af6273c225fc8"
+    },
+    {
+      "flag": "--red-drop-grade",
+      "mutation": "drop-grade",
+      "exit": 1,
+      "gate": "J5",
+      "detail": "actual copied POS first grade survives with rate s Z_D(beta,1)/L_D",
+      "output_sha256": "dd0513b213219a4671ac093d0dd7de611932348f8db702827033faae19d57647"
+    },
+    {
+      "flag": "--red-drop-randomizer",
+      "mutation": "drop-randomizer",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "all randomizer outcomes retain the actual prepared trace",
+      "output_sha256": "f423d3cfc75c41388a818c684ee92e6494986ef3a022f418475be2305a1c85e8"
+    },
+    {
+      "flag": "--red-lost-history",
+      "mutation": "lost-history",
+      "exit": 1,
+      "gate": "J3",
+      "detail": "all physical degree tags and stopped/randomizer histories sum to one",
+      "output_sha256": "850b0522ed8b9d95632f8a5b42a781d57fd6b890e9c5f0c83d4405ab71035be1"
+    },
+    {
+      "flag": "--red-omit-gap",
+      "mutation": "omit-gap",
+      "exit": 1,
+      "gate": "J1",
+      "detail": "v(t) agrees with exact polynomial division, including retained endpoint grade",
+      "output_sha256": "facc7afff88104a619b33e7c643fe846f08f14162f2b394cb49d4ffc6f48d409"
+    },
+    {
+      "flag": "--red-operator-norm",
+      "mutation": "operator-norm",
+      "exit": 1,
+      "gate": "J4",
+      "detail": "actual ordinary trace norm equals twice normalized finite tail mass",
+      "output_sha256": "5fd3c61057f66d91533239f94d19ad92477a877f77d489afbb3c6aae1bec1b4d"
+    },
+    {
+      "flag": "--red-reset-copy",
+      "mutation": "reset-copy",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "actual copied-reference probability versus c_d(t^s)/(d t^(sd))",
+      "output_sha256": "8720efda6b7097a262d1e1f7a1d97841d9351d8b0b6803ccc51ce4ae0c3fa522"
+    },
+    {
+      "flag": "--red-vanishing-bound",
+      "mutation": "vanishing-bound",
+      "exit": 1,
+      "gate": "J4",
+      "detail": "finite truncation comparison obeys the t-uniform cutoff estimate",
+      "output_sha256": "6140b1e7a80ace446951f5426fe95642d975d6daae8b2af2e1a617a06a0fe755"
+    },
+    {
+      "flag": "--red-wrong-normalizer",
+      "mutation": "wrong-normalizer",
+      "exit": 1,
+      "gate": "J3",
+      "detail": "successful common mixture uses its actual Z_D normalizer in ordinary trace",
+      "output_sha256": "8230474e16b15ef2b7a4da8968dee2618f7d6e3b14ad9bdf5fb7042c4d9a0efc"
+    },
+    {
+      "flag": "--red-wrong-prior",
+      "mutation": "wrong-prior",
+      "exit": 1,
+      "gate": "J3",
+      "detail": "degree prior has the declared relative d^(-beta) probabilities",
+      "output_sha256": "7262ed656f91c8c7804d3ce0438b6fb215153071c9a118a5ca8056bb47330a82"
+    },
+    {
+      "flag": null,
+      "mutation": null,
+      "exit": 0,
+      "gate": null,
+      "detail": null,
+      "output_sha256": "2eb91a894097cfd663b698055989cf44cc961e4af87417b1971d14e4f266e265"
+    }
+  ],
+  "source_sha256": {
+    "composite_joined_check.py": "d945e902a081db587ef8cf0f0c5344c5fa42dcdfaf06ba4d97fdeecfbff8c51f",
+    "freeze_results.py": "abcf0bd2ecdbe119488b0b41f11596a7efc496a61dea9467acfdb2cb18705bdf"
+  }
+}

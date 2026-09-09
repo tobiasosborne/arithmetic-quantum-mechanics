@@ -1,0 +1,80 @@
+{
+  "source_sha256": "d945e902a081db587ef8cf0f0c5344c5fa42dcdfaf06ba4d97fdeecfbff8c51f",
+  "exact_reference_selection_verified": true,
+  "green_checks": 9272,
+  "advertised_flags": 12,
+  "runs": [
+    {
+      "flag": "--red",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "actual copied F4 success requires the 1/d averaging factor"
+    },
+    {
+      "flag": "--red-condition-zero",
+      "exit": 1,
+      "gate": "J1",
+      "detail": "v(t) agrees with exact polynomial division, including retained endpoint grade"
+    },
+    {
+      "flag": "--red-drop-divisor",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "actual copied F4 success requires the 1/d averaging factor"
+    },
+    {
+      "flag": "--red-drop-grade",
+      "exit": 1,
+      "gate": "J5",
+      "detail": "actual copied POS first grade survives with rate s Z_D(beta,1)/L_D"
+    },
+    {
+      "flag": "--red-drop-randomizer",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "all randomizer outcomes retain the actual prepared trace"
+    },
+    {
+      "flag": "--red-lost-history",
+      "exit": 1,
+      "gate": "J3",
+      "detail": "all physical degree tags and stopped/randomizer histories sum to one"
+    },
+    {
+      "flag": "--red-omit-gap",
+      "exit": 1,
+      "gate": "J1",
+      "detail": "v(t) agrees with exact polynomial division, including retained endpoint grade"
+    },
+    {
+      "flag": "--red-operator-norm",
+      "exit": 1,
+      "gate": "J4",
+      "detail": "actual ordinary trace norm equals twice normalized finite tail mass"
+    },
+    {
+      "flag": "--red-reset-copy",
+      "exit": 1,
+      "gate": "J2",
+      "detail": "actual copied-reference probability versus c_d(t^s)/(d t^(sd))"
+    },
+    {
+      "flag": "--red-vanishing-bound",
+      "exit": 1,
+      "gate": "J4",
+      "detail": "finite truncation comparison obeys the t-uniform cutoff estimate"
+    },
+    {
+      "flag": "--red-wrong-normalizer",
+      "exit": 1,
+      "gate": "J3",
+      "detail": "successful common mixture uses its actual Z_D normalizer in ordinary trace"
+    },
+    {
+      "flag": "--red-wrong-prior",
+      "exit": 1,
+      "gate": "J3",
+      "detail": "degree prior has the declared relative d^(-beta) probabilities"
+    }
+  ]
+}

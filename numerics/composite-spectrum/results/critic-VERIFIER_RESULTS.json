@@ -1,0 +1,199 @@
+{
+  "sha256": "44b68befc4627f7bbd62e17d75e25837e2dfbc30b16dbe83758e7b2d2a3b926c",
+  "runs": [
+    {
+      "flag": null,
+      "exit_code": 0,
+      "gate": null,
+      "detail": null,
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1989,
+        "S5": 600,
+        "S6": 2418,
+        "S7": 3
+      }
+    },
+    {
+      "flag": "--red",
+      "exit_code": 1,
+      "gate": "S2",
+      "detail": "actual copied F4 average requires phi(2)/2",
+      "checks": {
+        "S2": 1
+      }
+    },
+    {
+      "flag": "--red-central-dynamics",
+      "exit_code": 1,
+      "gate": "S3",
+      "detail": "actual Frobenius displaces rank-one test by operator norm one",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 1
+      }
+    },
+    {
+      "flag": "--red-channel-trace",
+      "exit_code": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1947,
+        "S5": 600,
+        "S6": 2
+      }
+    },
+    {
+      "flag": "--red-coprimality",
+      "exit_code": 1,
+      "gate": "S5",
+      "detail": "Dirichlet convolution coefficient from literal coprime counts",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1944,
+        "S5": 26
+      }
+    },
+    {
+      "flag": "--red-corner-unit",
+      "exit_code": 1,
+      "gate": "S1",
+      "detail": "nonunital corner inclusion is linear at zero",
+      "checks": {
+        "S1": 31,
+        "S2": 50
+      }
+    },
+    {
+      "flag": "--red-d1-subtraction",
+      "exit_code": 1,
+      "gate": "S5",
+      "detail": "moving convolution removes exactly the d=1 coefficient",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1944,
+        "S5": 2
+      }
+    },
+    {
+      "flag": "--red-density-factor",
+      "exit_code": 1,
+      "gate": "S4",
+      "detail": "finite beta density normalized in ordinary Hilbert trace",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 2
+      }
+    },
+    {
+      "flag": "--red-drop-divisor-weight",
+      "exit_code": 1,
+      "gate": "S2",
+      "detail": "actual copied F4 average requires phi(2)/2",
+      "checks": {
+        "S2": 1
+      }
+    },
+    {
+      "flag": "--red-identity",
+      "exit_code": 1,
+      "gate": "S3",
+      "detail": "actual Frobenius displaces rank-one test by operator norm one",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 1
+      }
+    },
+    {
+      "flag": "--red-negative-density",
+      "exit_code": 1,
+      "gate": "S4",
+      "detail": "finite ordinary density has strictly positive eigenvalues",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1
+      }
+    },
+    {
+      "flag": "--red-negative-power",
+      "exit_code": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1947,
+        "S5": 600,
+        "S6": 8
+      }
+    },
+    {
+      "flag": "--red-reset-corner",
+      "exit_code": 1,
+      "gate": "S2",
+      "detail": "normalized upper reference conditions with theta_N/theta_M",
+      "checks": {
+        "S1": 50,
+        "S2": 51
+      }
+    },
+    {
+      "flag": "--red-tail-exponent",
+      "exit_code": 1,
+      "gate": "S4",
+      "detail": "finite tail fragment respects stated degree cutoff bound",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 140
+      }
+    },
+    {
+      "flag": "--red-tensor-cycle",
+      "exit_code": 1,
+      "gate": "S7",
+      "detail": "actual tensor of two 2-cycles is two cycles, not one 4-cycle",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1989,
+        "S5": 600,
+        "S6": 2418,
+        "S7": 1
+      }
+    },
+    {
+      "flag": "--red-zero-moment",
+      "exit_code": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized",
+      "checks": {
+        "S1": 30059,
+        "S2": 137,
+        "S3": 6010,
+        "S4": 1947,
+        "S5": 600,
+        "S6": 14
+      }
+    }
+  ]
+}

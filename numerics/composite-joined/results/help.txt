@@ -1,0 +1,26 @@
+usage: composite_joined_check.py [-h] [--red [NAME]] [--red-condition-zero]
+                                 [--red-drop-divisor] [--red-drop-grade]
+                                 [--red-drop-randomizer] [--red-lost-history]
+                                 [--red-omit-gap] [--red-operator-norm]
+                                 [--red-reset-copy] [--red-vanishing-bound]
+                                 [--red-wrong-normalizer] [--red-wrong-prior]
+
+Exact finite joined-limit falsifiers; no finite pass proves an infinite limit.
+
+options:
+  -h, --help            show this help message and exit
+  --red [NAME]
+  --red-condition-zero  run the condition-zero mutation at J1
+  --red-drop-divisor    run the drop-divisor mutation at J2
+  --red-drop-grade      run the drop-grade mutation at J5
+  --red-drop-randomizer
+                        run the drop-randomizer mutation at J2
+  --red-lost-history    run the lost-history mutation at J3
+  --red-omit-gap        run the omit-gap mutation at J1
+  --red-operator-norm   run the operator-norm mutation at J4
+  --red-reset-copy      run the reset-copy mutation at J2
+  --red-vanishing-bound
+                        run the vanishing-bound mutation at J4
+  --red-wrong-normalizer
+                        run the wrong-normalizer mutation at J3
+  --red-wrong-prior     run the wrong-prior mutation at J3

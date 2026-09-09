@@ -2413,3 +2413,202 @@ All failure tags remain available. The optional coherence test dephases
 the target in its E computational basis immediately after V_i.
 The reference preparation may be either rho_word or lambda_word; comparison
 of their boundary records uses D1506, not equality at finite h.
+
+## D1601 (completed concrete arithmetic source)
+
+For a finite named field diagram I in characteristic p, let A_I^mat be
+the image of the D1324 arithmetic amplitude interpretation, with equality
+of typed actual matrices and scalars in R_p=Q(zeta_p,sqrt(p)). Its finite
+additive completion has finite lists of objects and rectangular matrices
+of its arrows. Its self-adjoint projection completion has objects (X,e)
+with e=e^*=e^2 an actual endomorphism in that completion, and arrows
+f:(X,e)->(Y,g) given by actual matrices f=gfe. Hilbert realization is ran e.
+Independent tensor is the actual tensor of words, projections and arrows.
+
+Use finite retained Kraus lists of these arrows whose actual squared
+amplitudes sum to at most the source identity; normalized lists have sum
+equal to that identity. Classical tags use block output algebras and sum
+of ordinary traces. States include the D1501 and D1503 additional reference
+preparations and the prescribed fixed zero preparations. Coherent sums
+retain source Hom blocks; they are not classical tags. No surjectivity
+onto all complex CP maps is stipulated. Collective assembly is specified
+by actual isometries, arithmetic circuits and projections in this source.
+
+## D1602 (relative multiplication-graph register)
+
+Fix a named extension E/K with |K|=q=p^s, |E|=q^n=p^r, r=sn and n>=1.
+Let sigma(x)=x^q and let U|x>=|sigma(x)> on the D1301 field register.
+For each sigma-orbit O of length d|n and k in Z/d, put
+
+    v_(O,k)=d^(-1/2) sum_(x in O)|x,sigma^k(x),x sigma^k(x)>.
+
+Let G_(d,k) be the diagonal projector on precisely the computational
+tuples appearing in this sum as O varies over length-d orbits. Put
+G=sum_(d|n)sum_(k=0)^(d-1)G_(d,k), Delta=U tensor U tensor U, and
+T=(1/n)sum_(j=0)^(n-1)Delta^j. Define P=TG and
+P_d=T sum_k G_(d,k), Q_(d,k)=T G_(d,k). That these are self-adjoint
+projections and have the advertised ranges is a claim. The Hilbert
+register H_(E/K)^rel is ran P, with its inherited inner product.
+For every n>=1 define the copied multiplication graph map
+C:H_E->H_E^tensor3 by C|x>=|x,x,x^2>. Its arithmetic isometry
+realization is established in CMP-REL.
+No origin in an orbit is chosen. The square roots in the displayed
+normalized vectors are positive real normalizations for analysis, not
+additional coefficients required of their ambient projector matrices.
+
+## D1603 (relative Frobenius and common observables)
+
+For D1602 use the actual multiplication M=M_E^(2) of D1308 and set
+
+    R=M (I tensor U tensor I) M^*,
+    E_(d;a,b)=Q_(d,a) R^(a-b) Q_(d,b).
+
+Let B_(E/K)^rel be the complex star algebra generated on ran P by R|ran P
+and all Q_(d,k). Let B_n=direct-sum_(d|n)M_d(C), with matrix units e_(d;a,b),
+and let u_n^rel=direct-sum_(d|n)S_d, S_d|k>=|k+1 mod d>.
+The proposed comparison sends e_(d;a,b) to E_(d;a,b).
+For n>1 the primitive relative component means the d=n component;
+its abstract algebra is M_n(C). These common observables do not include
+arbitrary operations on or between different orbit multiplicities.
+
+## D1604 (copied reference preparation and retained histories)
+
+For D1602 with n>1, let Pi_n project in H_E onto labels of sigma-period n.
+Use C of D1602, realized by two zero ancillas,
+controlled addition into the second slot, and M_E^(2) into the third.
+For one input rho_E(h) of D1501, or lambda_E(h) of D1503, use the
+three preparation Kraus amplitudes
+
+    K_cut=I-Pi_n : H_E -> H_E,
+    K_fail=(I-T)C Pi_n : H_E -> H_E^tensor3,
+    K_ok=T C Pi_n : H_E -> H_E^tensor3.
+
+Their output tags are primitive-cut failure, averaging failure, and success.
+On success apply R, then measure the projection Q_(n,1), retaining its
+complement. The other histories stop at their stated objects. In the
+dephased comparison, the computational dephasing channel on all three
+slots is inserted immediately before R. In the identity comparison R is
+replaced by I. All comparisons use the same final projection, including T.
+The two zero ancillas are fixed states, not additional POS references.
+
+## D1605 (primitive relative quantum boundary)
+
+For D1604 retain the D1506 order, leading probability coefficient and
+conditional state on the common M_n observable algebra. The candidate
+boundary realization has algebra M_n(C), state |0><0|, projections |k><k|,
+the matrix units generated in D1603, and the channel Ad(S_n) on that block,
+where S_n is the single n-cycle and u_n^rel is the all-period implementer.
+Use the full graded physical preparation before any later continuation;
+this definition does not identify physical multiplicity states across p.
+
+The quantum boundary's arithmetic processes are those induced by the
+displayed common matrices and specified instruments. A larger category of
+all CP maps is an explicitly optional envelope. No tensor or sum operation
+between boundary objects, and no conventional C_1, is stipulated.
+
+## D1606 (fixed-base relational transfers and Fourier return)
+
+For a named K-embedding i:E->F between finite extensions of the same
+named K, let J_i be the D1304 label inclusion. Its candidate relational
+isometry is J_i^rel=(J_i tensor J_i tensor J_i)|ran P_(E/K).
+Its retained decoder has successful amplitude (J_i^rel)^* and failure
+amplitude I-J_i^rel(J_i^rel)^*, with distinct target tags. Towers retain
+every stopped history. Comparisons use all period components, with a
+length-d component remaining length d in the larger ambient extension.
+
+For D1602 with n>1 let F_first=F_E tensor I tensor I and retain, on the
+primitive code, the return amplitude P_n F_first|ran P_n and the ambient
+failure amplitude (I-P_n)F_first|ran P_n. Both outcomes are retained.
+No invariance under Fourier on other slots is stipulated.
+
+## D1607 (finite relational spectral data)
+
+For D1602--D1603 use ordinary Hilbert trace on H_(E/K)^rel and the
+characteristic polynomial det(I-zR|H_(E/K)^rel), including actual orbit
+multiplicities. Also keep the separate normalized trace tr_d on a common
+M_d block and the linear-map trace on its channel Ad(S_d).
+For n>=1 let c_d(q) be D1331's exact-period polynomial evaluated at q.
+The copied-reference spectral mixture is formed by applying C and T with
+the success outcome retained, then uniformly randomizing over R^j,
+0<=j<n, and explicitly discarding that classical randomization label.
+For all n>=1 its copied map is C of D1602. The uniform channel can be
+implemented using n copies of the amplitude R^j/n for every j, so no
+additional square root is needed in the source scalar field. It is a
+different preparation from the unrandomized witness of D1604. Moving-sector
+conditioning of this mixture is defined only for n>1.
+
+## D1611 (divisor corners and their concrete completion)
+
+For N>=2 put A_N=direct-sum_(d|N,d>1) M_d(C), with operator norm the
+maximum of its block norms. For N|M define j_(N,M) by extending block
+coordinates by zero. Put eta_d=phi(d)/d and
+theta_N(a)=sum_(d|N,d>1)eta_d tr_d(a_d), with tr_d=Tr/d.
+
+Let H_deg=Hilbert-direct-sum_(d>=2) C^d, and define A_deg to be the
+block-diagonal operator algebra of sequences a=(a_d) with ||a_d||->0,
+in the supremum operator norm. Let B_deg=A_deg+C I_H be its concrete
+minimal unitization. For positive a in A_deg define the extended-valued
+functional theta(a)=sum_(d>=2)eta_d tr_d(a_d). The symbol H_deg denotes
+the Hilbert space, not a Hamiltonian.
+
+These are proposed concrete objects; norm completion, trace properties,
+and comparison with the arithmetic corner embeddings are claims. No
+endpoint tensor or coherent direct-sum operation on the distinguished
+primitive systems is stipulated by this choice of completion.
+
+## D1612 (completed Frobenius and positive degree regularization)
+
+On D1611's Hilbert space define U_deg=direct-sum_(d>=2) S_d, with S_d
+the actual relative-cycle matrix from D1603. Put
+alpha(a)_d=S_d a_d S_d^*, fixing the scalar unit in B_deg.
+For a real beta>1 define
+
+    Z_deg(beta)=sum_(d>=2)phi(d)/d^(beta+1),
+    D_beta=direct-sum_(d>=2)d^(-beta)I_d,
+    rho_beta=direct-sum_(d>=2)[phi(d)/(Z_deg(beta)d^(beta+2))]I_d,
+    omega_beta(a)=Tr_(H_deg)(rho_beta a).
+
+Define zeta(x)=sum_(m>=1)m^(-x) for real x>1. For an integer j define
+the implementing-operator moment
+M_beta(j)=Tr_(H_deg)(rho_beta U_deg^j). This expression uses the named
+Hilbert implementation: U_deg need not belong to B_deg itself.
+
+The regulator D_beta is additional central degree-weight data for this
+completion, not an arithmetic amplitude, a Frobenius generator, or a
+claim that degree energy has been uniquely selected by the quantum theory.
+No analytic continuation or infinite unregularized trace is stipulated.
+
+## D1621 (degree-mixture preparation and normalized success profiles)
+
+Fix an integer base degree s>=1, a real beta>1, and for each integer
+d>=2 a named extension E_d/K with |K|=p^s and [E_d:K]=d. For an
+integer cutoff D>=2 let L_D(beta)=sum_(d=2)^D d^(-beta). Prepare the
+classical degree tag with probabilities d^(-beta)/L_D(beta), then prepare
+the EXACT D1501 reference rho_(E_d)(log t) in that degree and apply the
+three D1604 copied-reference preparation amplitudes. On its
+success apply D1607's uniform relative randomization and explicitly
+discard the randomization label. Keep every failed degree and its
+primitive/averaging history. This degree prior is declared additional
+classical preparation data, not an assertion that all such real weights
+are coefficients of the original arithmetic amplitude source.
+
+For t>1 set
+
+    w_d(t)=c_d(t^s)/(d t^(sd)),
+    v_d(t)=w_d(t)/(s(t-1)),
+    Z_D(beta,t)=sum_(d=2)^D d^(-beta)v_d(t).
+
+Set v_d(1)=phi(d)/d and use that value in Z_D(beta,1). On the named
+Hilbert degree sum of D1611, define rho_(D,t) to have d-block
+[d^(-beta)v_d(t)/(d Z_D(beta,t))]I_d for 2<=d<=D and zero elsewhere.
+At t=1 this designates the retained first-grade conditional record,
+not normalization of an actually successful zero-probability event.
+
+Define L_infty(beta)=sum_(d>=2)d^(-beta),
+Z_infty(beta,t)=sum_(d>=2)d^(-beta)v_d(t), and the corresponding
+rho_(infty,t) by the same block formula when the sums converge. The
+rho_beta of D1612 is the proposed t=1 value. The stated outputs are
+restrictions to common quantum observables, not identifications of
+physical arithmetic multiplicity states. Uniform randomization makes
+this reference stationary under relative Frobenius; the unrandomized
+D1604 experiment remains the separate coherence-sensitive witness.

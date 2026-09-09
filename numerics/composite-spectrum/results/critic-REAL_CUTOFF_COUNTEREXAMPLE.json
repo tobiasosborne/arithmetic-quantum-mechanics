@@ -1,0 +1,8 @@
+{
+  "D": "29/10",
+  "beta": 10,
+  "first_tail_term": "2/177147",
+  "claimed_bound": "1000000000/130564313782821",
+  "ratio": "14507145975869/9841500000000",
+  "comparison": "first_tail_term > claimed_bound"
+}

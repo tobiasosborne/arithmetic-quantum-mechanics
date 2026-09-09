@@ -1,0 +1,157 @@
+{
+  "finite_scope_only": true,
+  "all_arithmetic_exact": true,
+  "python_version": "3.12.3",
+  "standalone_checker": "composite_spectrum_check.py",
+  "discovered_flags": [
+    "--red",
+    "--red-central-dynamics",
+    "--red-channel-trace",
+    "--red-coprimality",
+    "--red-corner-unit",
+    "--red-d1-subtraction",
+    "--red-density-factor",
+    "--red-drop-divisor-weight",
+    "--red-identity",
+    "--red-negative-density",
+    "--red-negative-power",
+    "--red-reset-corner",
+    "--red-tail-exponent",
+    "--red-tensor-cycle",
+    "--red-zero-moment"
+  ],
+  "runs": [
+    {
+      "flag": "--red",
+      "mutation": "drop-divisor-weight",
+      "exit": 1,
+      "gate": "S2",
+      "detail": "actual copied F4 average requires phi(2)/2",
+      "output_sha256": "534ed526dc17c93d7dceec2305253ea71de69b32d05ad39ce0a938481b8c9b4d"
+    },
+    {
+      "flag": "--red-central-dynamics",
+      "mutation": "central-dynamics",
+      "exit": 1,
+      "gate": "S3",
+      "detail": "actual Frobenius displaces rank-one test by operator norm one",
+      "output_sha256": "438aa14da6928f338948665ef0ece5e8e056703f6e0f034daadcf9366b8a10a8"
+    },
+    {
+      "flag": "--red-channel-trace",
+      "mutation": "channel-trace",
+      "exit": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized",
+      "output_sha256": "2ec53ab9c50eca8115caedc2da76ba7fb0c4a57b35ca8b4fcaa3c9bf8ab186d2"
+    },
+    {
+      "flag": "--red-coprimality",
+      "mutation": "coprimality",
+      "exit": 1,
+      "gate": "S5",
+      "detail": "Dirichlet convolution coefficient from literal coprime counts",
+      "output_sha256": "fcc864bd0bba0fd5a8e8cf1a33378f2eaa807545b23248d05cbbd7a56c689c46"
+    },
+    {
+      "flag": "--red-corner-unit",
+      "mutation": "corner-unit",
+      "exit": 1,
+      "gate": "S1",
+      "detail": "nonunital corner inclusion is linear at zero",
+      "output_sha256": "e77cb7dade41c476e76d882bebd76b9752b3e154e918d31fbe05cb5966e52ff1"
+    },
+    {
+      "flag": "--red-d1-subtraction",
+      "mutation": "d1-subtraction",
+      "exit": 1,
+      "gate": "S5",
+      "detail": "moving convolution removes exactly the d=1 coefficient",
+      "output_sha256": "98fb1bde42e9110e354b8aa4f7c162d758cd1a70e7526f3fc5dd30a91799309f"
+    },
+    {
+      "flag": "--red-density-factor",
+      "mutation": "density-factor",
+      "exit": 1,
+      "gate": "S4",
+      "detail": "finite beta density normalized in ordinary Hilbert trace",
+      "output_sha256": "651186c1b46c8fa19214354596fa69c09eb1013fac6053c06206d2d423351b55"
+    },
+    {
+      "flag": "--red-drop-divisor-weight",
+      "mutation": "drop-divisor-weight",
+      "exit": 1,
+      "gate": "S2",
+      "detail": "actual copied F4 average requires phi(2)/2",
+      "output_sha256": "534ed526dc17c93d7dceec2305253ea71de69b32d05ad39ce0a938481b8c9b4d"
+    },
+    {
+      "flag": "--red-identity",
+      "mutation": "identity",
+      "exit": 1,
+      "gate": "S3",
+      "detail": "actual Frobenius displaces rank-one test by operator norm one",
+      "output_sha256": "e9d5744cbf855e0cf2b7a0eb5316270fa46930275066d9f854971541da8eab6e"
+    },
+    {
+      "flag": "--red-negative-density",
+      "mutation": "negative-density",
+      "exit": 1,
+      "gate": "S4",
+      "detail": "finite ordinary density has strictly positive eigenvalues",
+      "output_sha256": "f09290c6cb18dcd6da814b641399f6cafcdb1a135b780a6cecd0fd91baf6cbc7"
+    },
+    {
+      "flag": "--red-negative-power",
+      "mutation": "negative-power",
+      "exit": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized",
+      "output_sha256": "c10bd1c39728d9c699d13bb5f224953e01814b0d2b1b1905037c00bbec8a4572"
+    },
+    {
+      "flag": "--red-reset-corner",
+      "mutation": "reset-corner",
+      "exit": 1,
+      "gate": "S2",
+      "detail": "normalized upper reference conditions with theta_N/theta_M",
+      "output_sha256": "f2c8be9cd0e9b1b044ac88c17140e099dd2fa1e1230f4180e677e2173e309218"
+    },
+    {
+      "flag": "--red-tail-exponent",
+      "mutation": "tail-exponent",
+      "exit": 1,
+      "gate": "S4",
+      "detail": "finite tail fragment respects stated degree cutoff bound",
+      "output_sha256": "1f6f6e4c505c7cf048c91562c21a9fd66f923e850316aa63dfe2e125eb8697c3"
+    },
+    {
+      "flag": "--red-tensor-cycle",
+      "mutation": "tensor-cycle",
+      "exit": 1,
+      "gate": "S7",
+      "detail": "actual tensor of two 2-cycles is two cycles, not one 4-cycle",
+      "output_sha256": "fb1a4b48e9753fe51b16056f6432ff3806f131d49adb283a1d000665c8114dcd"
+    },
+    {
+      "flag": "--red-zero-moment",
+      "mutation": "zero-moment",
+      "exit": 1,
+      "gate": "S6",
+      "detail": "explicit regulated implementer moment, with j=0 separately normalized",
+      "output_sha256": "96528d42fe1e4ea5e0e122ccc711410c4ba81abc5aa036813182c282b962e3b3"
+    },
+    {
+      "flag": null,
+      "mutation": null,
+      "exit": 0,
+      "gate": null,
+      "detail": null,
+      "output_sha256": "bb1b996d64edebe6d685d9ea152b6b83e82553af5ceab39c45e66feab51f19cf"
+    }
+  ],
+  "source_sha256": {
+    "composite_spectrum_check.py": "44b68befc4627f7bbd62e17d75e25837e2dfbc30b16dbe83758e7b2d2a3b926c",
+    "freeze_results.py": "fb248efb52fb35cedcf8447419bdd7a6fcaebaecef0095cfb2a544ca920adbd8"
+  }
+}

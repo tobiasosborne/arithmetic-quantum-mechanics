@@ -1,0 +1,25 @@
+{
+  "red": "product",
+  "exact": true,
+  "floating_point_tolerance": null,
+  "control": {
+    "dimensions_n1_to_n4": [
+      1,
+      2,
+      6,
+      24
+    ],
+    "standard_return": "1/4",
+    "coherent_return": "1",
+    "tagged_return": "1/2"
+  },
+  "fibres": [],
+  "status": "FAIL",
+  "gate": "C2",
+  "detail": "one actual multiplication-table entry",
+  "checks": {
+    "C1": 14057,
+    "C2": 85,
+    "C6": 2
+  }
+}

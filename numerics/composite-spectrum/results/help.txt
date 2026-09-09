@@ -1,0 +1,34 @@
+usage: composite_spectrum_check.py [-h] [--red [NAME]]
+                                   [--red-central-dynamics]
+                                   [--red-channel-trace] [--red-coprimality]
+                                   [--red-corner-unit] [--red-d1-subtraction]
+                                   [--red-density-factor]
+                                   [--red-drop-divisor-weight]
+                                   [--red-identity] [--red-negative-density]
+                                   [--red-negative-power] [--red-reset-corner]
+                                   [--red-tail-exponent] [--red-tensor-cycle]
+                                   [--red-zero-moment]
+
+Exact finite spectral-completion falsifiers; finite passes prove no infinite
+claim.
+
+options:
+  -h, --help            show this help message and exit
+  --red [NAME]
+  --red-central-dynamics
+                        mutate the S3 comparison
+  --red-channel-trace   mutate the S6 comparison
+  --red-coprimality     mutate the S5 comparison
+  --red-corner-unit     mutate the S1 comparison
+  --red-d1-subtraction  mutate the S5 comparison
+  --red-density-factor  mutate the S4 comparison
+  --red-drop-divisor-weight
+                        mutate the S2 comparison
+  --red-identity        mutate the S3 comparison
+  --red-negative-density
+                        mutate the S4 comparison
+  --red-negative-power  mutate the S6 comparison
+  --red-reset-corner    mutate the S2 comparison
+  --red-tail-exponent   mutate the S4 comparison
+  --red-tensor-cycle    mutate the S7 comparison
+  --red-zero-moment     mutate the S6 comparison

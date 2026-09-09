@@ -1,0 +1,53 @@
+{
+  "sha256": "7790c3e23e73e971c948f6871f19a532b848e12abf822cc2ea6c7ecaacbffa85",
+  "runs": [
+    {
+      "mode": null,
+      "exit_code": 0,
+      "stdout": "P1_ARITHMETIC_CORNER [(2, 2, 4, {1: 2, 2: 1, 4: 3}), (2, 2, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (2, 3, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (3, 2, 4, {1: 3, 2: 3, 4: 18}), (4, 2, 4, {1: 4, 2: 6, 4: 60})]\nP2_FIRST_GRADE exact d=2..64, s=1,2,3; four divisor corners\nP3_SHIFT_WITNESS d=2..64; powers -12..12; exact norm-one projections\nP4_DENSITY_MOMENTS beta=2,3,4; 63 blocks; integer powers -12..12\nP5_CONVOLUTION_TAIL 128 exact convolution coefficients; 12 rational tail comparisons\nPASS: finite falsifiers only; no infinite theorem certified\n",
+      "stderr": ""
+    },
+    {
+      "mode": "corner_image",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 236, in <module>\n    main()\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 231, in main\n    probe(args.red)\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 113, in arithmetic_corners\n    demand((len(orbit) in divs(n)) == (orbit in included), gate,\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 16, in demand\n    raise AssertionError(f\"{gate}: {detail}\")\nAssertionError: P1_ARITHMETIC_CORNER: one degree block is not saturated by the embedded field\n"
+    },
+    {
+      "mode": "coefficient",
+      "exit_code": 1,
+      "stdout": "P1_ARITHMETIC_CORNER [(2, 2, 4, {1: 2, 2: 1, 4: 3}), (2, 2, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (2, 3, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (3, 2, 4, {1: 3, 2: 3, 4: 18}), (4, 2, 4, {1: 4, 2: 6, 4: 60})]\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 236, in <module>\n    main()\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 231, in main\n    probe(args.red)\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 142, in coefficients\n    demand(actual == eta_data, gate, f\"d={d}, s={s}: copied coefficient\")\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 16, in demand\n    raise AssertionError(f\"{gate}: {detail}\")\nAssertionError: P2_FIRST_GRADE: d=2, s=1: copied coefficient\n"
+    },
+    {
+      "mode": "shift",
+      "exit_code": 1,
+      "stdout": "P1_ARITHMETIC_CORNER [(2, 2, 4, {1: 2, 2: 1, 4: 3}), (2, 2, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (2, 3, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (3, 2, 4, {1: 3, 2: 3, 4: 18}), (4, 2, 4, {1: 4, 2: 6, 4: 60})]\nP2_FIRST_GRADE exact d=2..64, s=1,2,3; four divisor corners\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 236, in <module>\n    main()\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 231, in main\n    probe(args.red)\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 163, in shifts\n    demand(max(map(abs, diagonal)) == 1, gate, \"outerness witness lost\")\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 16, in demand\n    raise AssertionError(f\"{gate}: {detail}\")\nAssertionError: P3_SHIFT_WITNESS: outerness witness lost\n"
+    },
+    {
+      "mode": "density",
+      "exit_code": 1,
+      "stdout": "P1_ARITHMETIC_CORNER [(2, 2, 4, {1: 2, 2: 1, 4: 3}), (2, 2, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (2, 3, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (3, 2, 4, {1: 3, 2: 3, 4: 18}), (4, 2, 4, {1: 4, 2: 6, 4: 60})]\nP2_FIRST_GRADE exact d=2..64, s=1,2,3; four divisor corners\nP3_SHIFT_WITNESS d=2..64; powers -12..12; exact norm-one projections\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 236, in <module>\n    main()\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 231, in main\n    probe(args.red)\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 186, in density_moments\n    demand(total == 1, gate, \"ordinary Hilbert trace of density is not one\")\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 16, in demand\n    raise AssertionError(f\"{gate}: {detail}\")\nAssertionError: P4_DENSITY_MOMENTS: ordinary Hilbert trace of density is not one\n"
+    },
+    {
+      "mode": "zero_moment",
+      "exit_code": 1,
+      "stdout": "P1_ARITHMETIC_CORNER [(2, 2, 4, {1: 2, 2: 1, 4: 3}), (2, 2, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (2, 3, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (3, 2, 4, {1: 3, 2: 3, 4: 18}), (4, 2, 4, {1: 4, 2: 6, 4: 60})]\nP2_FIRST_GRADE exact d=2..64, s=1,2,3; four divisor corners\nP3_SHIFT_WITNESS d=2..64; powers -12..12; exact norm-one projections\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 236, in <module>\n    main()\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 231, in main\n    probe(args.red)\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 195, in density_moments\n    demand(literal == predicted, gate, f\"j={j}: wrong moment scope\")\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 16, in demand\n    raise AssertionError(f\"{gate}: {detail}\")\nAssertionError: P4_DENSITY_MOMENTS: j=0: wrong moment scope\n"
+    },
+    {
+      "mode": "dirichlet_data",
+      "exit_code": 1,
+      "stdout": "P1_ARITHMETIC_CORNER [(2, 2, 4, {1: 2, 2: 1, 4: 3}), (2, 2, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (2, 3, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (3, 2, 4, {1: 3, 2: 3, 4: 18}), (4, 2, 4, {1: 4, 2: 6, 4: 60})]\nP2_FIRST_GRADE exact d=2..64, s=1,2,3; four divisor corners\nP3_SHIFT_WITNESS d=2..64; powers -12..12; exact norm-one projections\nP4_DENSITY_MOMENTS beta=2,3,4; 63 blocks; integer powers -12..12\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 236, in <module>\n    main()\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 231, in main\n    probe(args.red)\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 210, in convolution_tail\n    demand(sum(coefficients_data.values()) == k, gate,\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 16, in demand\n    raise AssertionError(f\"{gate}: {detail}\")\nAssertionError: P5_CONVOLUTION_TAIL: k=1: independent Dirichlet coefficient mismatch\n"
+    },
+    {
+      "mode": "tail_bound",
+      "exit_code": 1,
+      "stdout": "P1_ARITHMETIC_CORNER [(2, 2, 4, {1: 2, 2: 1, 4: 3}), (2, 2, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (2, 3, 6, {1: 2, 2: 1, 3: 2, 6: 9}), (3, 2, 4, {1: 3, 2: 3, 4: 18}), (4, 2, 4, {1: 4, 2: 6, 4: 60})]\nP2_FIRST_GRADE exact d=2..64, s=1,2,3; four divisor corners\nP3_SHIFT_WITNESS d=2..64; powers -12..12; exact norm-one projections\nP4_DENSITY_MOMENTS beta=2,3,4; 63 blocks; integer powers -12..12\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 236, in <module>\n    main()\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 231, in main\n    probe(args.red)\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 219, in convolution_tail\n    demand(0 < finite_tail <= bound, gate, \"finite tail violates integral bound\")\n  File \"/home/tobias/Projects/arithmetic-quantum-mechanics/theory/lanes/composite-spectrum/critic/probes/exact_completion_probe.py\", line 16, in demand\n    raise AssertionError(f\"{gate}: {detail}\")\nAssertionError: P5_CONVOLUTION_TAIL: finite tail violates integral bound\n"
+    }
+  ]
+}

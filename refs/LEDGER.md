@@ -890,3 +890,20 @@ Proposition 8.20 (full faithfulness of embedding sets); Remark 3.18,
 printed p. 40 (normal core/normal closure); Propositions 4.19--4.20,
 Corollary 4.21 and Proposition 4.23, printed pp. 53--54 (primitive
 elements, finite fields, Frobenius and their subfields).
+
+## Composite degree spectrum — 2026-09-09
+
+**DLMF-27.4-E6** — NIST Digital Library of Mathematical Functions,
+Section 27.4, *Euler Products and Dirichlet Series*, equation 27.4.6.
+Section title, equation and version 1.2.7 (2026-06-15) verified from the
+retrieved official page. Routes: https://dlmf.nist.gov/27.4 and
+https://dlmf.nist.gov/27.4.E6.tex. Local bodies:
+`refs/composite-spectrum/dlmf-27-4/source.html`, SHA256
+`f89c9c55ae27caf5de5ac04c1725a021f537ef2763ad532bafc109fcb66c3ed0`,
+and `27.4.E6.tex`, SHA256
+`db6ca88fa941b66a791e30f85c1fe2a81dd0e6463488eb1fa4ad763556504f50`.
+The equation states the classical totient Dirichlet series
+sum phi(n)n^(-z)=zeta(z-1)/zeta(z) for Re z>2. Used as corroboration
+for the independently derived real-domain identity at z=beta+1 in
+CMP-MELLIN; the c0 quantum completion, its Frobenius automorphism and
+the selection of the degree weights/regulator are not attributed to DLMF.

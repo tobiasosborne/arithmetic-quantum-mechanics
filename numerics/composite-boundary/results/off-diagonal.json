@@ -1,0 +1,12 @@
+{
+  "red": "off-diagonal",
+  "exact": true,
+  "floating_point_tolerance": null,
+  "status": "FAIL",
+  "gate": "C6",
+  "detail": "coherent duplicate retains actual rectangular off-diagonal Hom maps",
+  "checks": {
+    "C1": 14057,
+    "C6": 1
+  }
+}

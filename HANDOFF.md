@@ -4,10 +4,154 @@
 
 # HANDOFF — live state
 
-Updated: 2026-09-09, positive arithmetic counting goal completed in its declared scope.
+Updated: 2026-09-09, composite boundary, degree completion and joined limit admitted.
 The mainline FCR-2 state remains the interrupted 2026-09-01 state.
 
 Read order gate: `CLAUDE.md` -> **`PRD.md` (constitution; it wins)** -> this.
+
+## Current direction — composites before the p-to-one boundary
+
+The user clarified the programme after reviewing the completed counting
+construction. Seek a sufficiently rich arithmetic symplectic/process C_p
+and quantum realization Q_p, with tensor-like and direct-sum-like
+constructions BEFORE specialization. Already assembled systems may retain
+quantum structure even when their isolated constituents become operationally
+trivial. The meaning of that triviality must be specified; a pure reference
+limit alone does not collapse the full observable algebra.
+
+The user's FINAL clarification is essential: BOTH tensor and direct-sum
+composition may disappear on Q_1. Neither their total endpoint descent nor
+the existence of a conventional C_1 is required. Study the represented
+composite first, then its boundary. Q_1 may initially name only surviving
+quantum systems and distinguished processes, with their arithmetic origins
+retained. Any additional categorical or monoidal structure is to be found,
+not imposed as an acceptance gate.
+
+A surviving actual Frobenius CP action on noncommutative quantum data is
+central. The discussion treats a Frobenius/scaling connection to arithmetic
+zeta spectra, ultimately the Riemann spectral picture, as a guiding research
+ambition; no such identification is proved. Preserve the distinction
+between a CP channel, its implementation, and its reference/spectral trace.
+The functor-of-points and matrix-valued quantum-probe perspectives are
+candidate ways to reconstruct the represented limit without C_1.
+
+Concrete plan: `docs/research-plans/composite-quantum-boundary.md`.
+First bounded work order: `briefs/composite-boundary-target.md`.
+Start with the admitted Hecke scalar/classical/matrix composition ladder as
+a control, then seek one actual arithmetic Frobenius boundary witness in
+F2->F4 and F3->F9, followed by relevant tower/singular-degree tests. Keep
+independent tensor, collective assembly, classical tags and coherent sums
+distinct. Full mixed arithmetic compatibility must be constructed, not
+inferred by juxtaposing existing endpoints.
+
+The user explicitly made this the active goal and authorized independent
+verifier and blind-critic agents. This direction takes priority over
+historical "next steps" below. FCR-2 and unrelated campaigns remain paused;
+no older conjecture or frozen marked-module draft has been promoted.
+
+### First milestone — an arithmetic composite quantum remnant
+
+Six new CMP claims and D1601--D1607 are admitted after the capped review.
+At that phase the register had 141 claims: 118 PROVED, 19 SKETCH, three
+CONJECTURE, one REFUTED; 157 definitions. The finite-phase PDF had 160
+pages. The completed package below brings the current PDF to 166 pages.
+
+For E/K, |K|=p^s and [E:K]=n, form three-register orbit sums
+v_(O,k)=|O|^(-1/2) sum_(x in O)|x,sigma^k(x),x sigma^k(x)>.
+They require no orbit origins. Simultaneous Frobenius fixes these graph
+vectors, while R=M(I tensor U tensor I)M* shifts the relative index k.
+Actual graph tests and this multiplication-conjugated Frobenius generate
+the common M_n block on primitive relative orbits.
+
+One copied POS reference and two fixed zero ancillas prepare that block
+with probability c_n(t^s)/(n t^(sn)), of order one and coefficient
+s phi(n)/n. Its common conditional state is |0><0|. The same final
+coherent test has conditional probabilities 1 after R, 0 after identity,
+and 1/n after computational dephasing. The ordinary primitive branch is
+zero at t=1; its first grade is the noncommutative quantum remnant.
+This is an orbitwise/composite descent result, not a theorem that every
+full single-field observable algebra becomes scalar.
+
+Fixed-base graph transfers compose without origin choices. Actual
+first-register Fourier has code-return probability 1/|E| and its retained
+orbit phase; the ambient failure is kept. The full finite implementing
+spectrum has Tr(R^j)=q^gcd(n,j) and determinant
+product_(d|n)(1-z^d)^(c_d(q)/d), with the channel spectrum kept distinct.
+Randomized copied-reference moving weights have first coefficients
+proportional to phi(d)/d, supplying the next degree-completion input.
+
+The hostile verdict was FAIL(CB-C1) with one MAJOR degree-one scope
+defect, no FATAL, and two minor notation/CLI repairs. Root closed all three
+mechanically in one repair wave. Moving-sector conditioning now explicitly
+requires n>1; the ordinary spectral formulas still allow n=1. Verdict and
+adjudication are `theory/verdicts/composite-boundary-{r1,adjudication}.md`.
+Canonical proofs are in `theory/sidequests/composite-boundary/`.
+
+Independent finite verification: 76,584 exact comparisons over six
+relative fibres, nineteen mathematical mutations and twenty CLI flags.
+The complete repository suite passed 23 green runs and 210 advertised red
+runs. `numerics/composite-boundary/results/SESSION-CLOSE-FINITE.json`
+records this phase's source/PDF hashes; other frozen evidence is adjacent.
+
+### Completed degree and joined-limit stages
+
+CMP-COMPLETE/MELLIN and D1611--D1612 are now admitted after their own
+capped review, followed by CMP-JOINT-LIMIT and D1621 after a separate
+review. There are nine new PROVED CMP rows altogether. The current root
+register is 144 claims: 121 PROVED, 19 SKETCH, three CONJECTURE, one
+REFUTED, with 160 definitions. Labbook Sections 28--30 occupy pp.154--166.
+
+Actual fixed-base arithmetic encoders induce the zero-extension corner
+maps between the moving divisor-block algebras. Their derived weights
+phi(d)/d are compatible. The norm completion is the c0 sum of M_d(C),
+d>=2, with a faithful lower-semicontinuous semifinite trace on that
+nonunital algebra. Relative Frobenius extends to an OUTER automorphism
+of its minimal unitization, spatially implemented by the direct sum of
+actual cyclic shifts. It is inner in the larger multiplier product;
+this completion-dependent meaning of outer is explicit.
+
+A declared central degree regulator for real beta>1 gives a faithful
+invariant trace-class reference with normalizer
+zeta(beta)/zeta(beta+1)-1. The implementing spectrum is the unit circle
+with root-of-unity point spectrum. The logarithmic degree regulator
+is central, not the Frobenius generator. No Riemann-zero spectral
+identification or unregularized infinite trace is claimed.
+
+The completed reference is also a TRACE-NORM limit of actual finite
+arithmetic experiments: choose degrees 2..D with prior proportional to
+d^(-beta), prepare the exact rho_(E_d)(log t), perform the copied primitive
+instrument, and randomize the relative index on success. Every degree
+and failed preparation history is retained. The rescaled success
+v_d(t)=c_d(t^s)/(s d (t-1)t^(sd)) lies in (0,1] and extends to phi(d)/d.
+This supplies a uniform summable bound and a positive normalizer floor.
+Both iterated limits and every joined path D->infinity,t->1 converge to
+the same rho_beta. The physical event remains rare with first-order rate
+s Z_deg(beta)/(zeta(beta)-1). The randomized reference is stationary;
+the earlier unrandomized |0> preparation remains the Frobenius witness.
+
+The two later reviews found only minor cutoff/alias and exact-reference
+clarifications, all mechanically closed in one wave per artifact. The
+three new independent checkers passed 76,584, 41,216 and 9,272 exact
+comparisons. Final executable coverage is 25 green checker runs and 237
+advertised mutation runs; aliases are counted as runs, not distinct data
+scenarios. The earlier full-suite snapshot's 23 checker hashes remain
+unchanged, and the two later canonical checkers have their own final runs.
+
+The goal's requirement/evidence audit is
+`docs/research-plans/composite-boundary-result.md`. Its consolidated
+verification is `numerics/composite-boundary/results/FINAL-VERIFICATION.json`.
+Canonical proofs are the four files under
+`theory/sidequests/composite-boundary/`. Historical submitted drafts remain
+under `docs/research-drafts/` with READMEs pointing to the repaired versions.
+
+The scoped exploration has supplied its finite quantum remnant, a concrete
+positive completion, an arithmetic trace connection and a uniform bridge
+from finite prelimit assemblies. Stronger questions remain separate:
+uniqueness of the source/completion/prior; larger mixed arithmetic processes
+and changing-base comparisons; global spectral structures beyond cyclic
+Frobenius. C_1 and total endpoint tensor/sum operations were not required.
+FCR-2, MIX-ALL, LIM-SIGNED and the frozen marked-module drafts remain at
+their previous statuses and should not be resumed automatically.
 
 ## Completed goal — a positive arithmetic counting theory
 

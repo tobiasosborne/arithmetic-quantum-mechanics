@@ -1,0 +1,142 @@
+{
+  "red": "fourier-phase",
+  "exact": true,
+  "floating_point_tolerance": null,
+  "control": {
+    "dimensions_n1_to_n4": [
+      1,
+      2,
+      6,
+      24
+    ],
+    "standard_return": "1/4",
+    "coherent_return": "1",
+    "tagged_return": "1/2"
+  },
+  "fibres": [
+    {
+      "p": 2,
+      "r": 2,
+      "s": 1,
+      "n": 2,
+      "cube_tuples": 64,
+      "orbit_counts": {
+        "1": 2,
+        "2": 1
+      },
+      "code_dimension": 4,
+      "common_algebra_dimension": 5,
+      "preparation": {
+        "events": [
+          {
+            "t": "1",
+            "preparation": "0",
+            "final_full_identity_dephased": [
+              "0",
+              "0",
+              "0"
+            ],
+            "full_histories": [
+              "1",
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "t": "6/5",
+            "preparation": "1/12",
+            "final_full_identity_dephased": [
+              "1/12",
+              "0",
+              "1/24"
+            ],
+            "full_histories": [
+              "5/6",
+              "1/12",
+              "1/12",
+              "0"
+            ]
+          },
+          {
+            "t": "3/2",
+            "preparation": "1/6",
+            "final_full_identity_dephased": [
+              "1/6",
+              "0",
+              "1/12"
+            ],
+            "full_histories": [
+              "2/3",
+              "1/6",
+              "1/6",
+              "0"
+            ]
+          },
+          {
+            "t": "2",
+            "preparation": "1/4",
+            "final_full_identity_dephased": [
+              "1/4",
+              "0",
+              "1/8"
+            ],
+            "full_histories": [
+              "1/2",
+              "1/4",
+              "1/4",
+              "0"
+            ]
+          }
+        ],
+        "leading": "1/2",
+        "dephased_leading": "1/4"
+      },
+      "fourier": {
+        "compressed_phase_exponents": [
+          1
+        ],
+        "return": "1/4"
+      },
+      "spectral": {
+        "trace_powers_0_through_n": [
+          4,
+          2,
+          4
+        ],
+        "common_block_traces": [
+          2,
+          0,
+          2
+        ],
+        "prepared_pure_expectations": [
+          1,
+          0,
+          1
+        ],
+        "determinant_coefficients": [
+          "1",
+          "-2",
+          "0",
+          "2",
+          "-1"
+        ],
+        "implementer_root_multiplicity": 1,
+        "channel_root_multiplicity": 2
+      }
+    }
+  ],
+  "status": "FAIL",
+  "gate": "C8",
+  "detail": "exact field Fourier compression phase",
+  "checks": {
+    "C1": 14057,
+    "C2": 1613,
+    "C3": 178,
+    "C4": 66,
+    "C5": 6,
+    "C6": 18,
+    "C8": 10,
+    "C9": 11
+  }
+}

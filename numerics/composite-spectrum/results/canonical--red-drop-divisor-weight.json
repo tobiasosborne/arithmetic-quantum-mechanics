@@ -1,0 +1,10 @@
+{
+  "mutation": "drop-divisor-weight",
+  "exact": true,
+  "status": "FAIL",
+  "gate": "S2",
+  "detail": "actual copied F4 average requires phi(2)/2",
+  "checks": {
+    "S2": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "source_sha256": "53242871006702eb8d2229494df03f2b6984d59439a5c8e8bc9a7900c23273d0",
+  "exit": 1,
+  "output": {
+    "mutation": "drop-divisor-weight",
+    "exact": true,
+    "status": "FAIL",
+    "gate": "S2",
+    "detail": "actual copied F4 average requires phi(2)/2",
+    "checks": {
+      "S2": 1
+    }
+  }
+}

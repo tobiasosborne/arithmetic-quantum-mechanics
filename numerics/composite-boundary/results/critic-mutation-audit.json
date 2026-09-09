@@ -1,0 +1,340 @@
+{
+  "status": "PASS",
+  "native_python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+  "runs": [
+    {
+      "name": "channel-spectrum",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C9",
+      "detail": "channel has n copies of each root while implementer has one",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 25,
+        "C5": 3,
+        "C6": 10,
+        "C8": 8,
+        "C9": 10
+      }
+    },
+    {
+      "name": "collective",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C1",
+      "detail": "collective M2 matrix block versus local diagonal image",
+      "reached_checks": {
+        "C1": 14055
+      }
+    },
+    {
+      "name": "dephase",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 9,
+        "C5": 1,
+        "C6": 4
+      }
+    },
+    {
+      "name": "diagonal-action",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C2",
+      "detail": "diagonal graph predicate commutes with simultaneous Frobenius",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 88,
+        "C6": 2
+      }
+    },
+    {
+      "name": "diagonal-relative",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C3",
+      "detail": "actual relative graph shift",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 16,
+        "C6": 2
+      }
+    },
+    {
+      "name": "drop-grade",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C4",
+      "detail": "actual POS grade-one coefficient",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 18,
+        "C5": 3,
+        "C6": 10
+      }
+    },
+    {
+      "name": "embedding",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C7",
+      "detail": "lower-period graph embeds into same upper period, including twists",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 58577,
+        "C3": 2208,
+        "C4": 354,
+        "C5": 18,
+        "C6": 50,
+        "C7": 2,
+        "C8": 248,
+        "C9": 126
+      }
+    },
+    {
+      "name": "fourier-outcome",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C8",
+      "detail": "Fourier return and actual ambient failure complete the instrument",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 25,
+        "C5": 3,
+        "C6": 10,
+        "C8": 4
+      }
+    },
+    {
+      "name": "fourier-phase",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C8",
+      "detail": "exact field Fourier compression phase",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 1613,
+        "C3": 178,
+        "C4": 66,
+        "C5": 6,
+        "C6": 18,
+        "C8": 10,
+        "C9": 11
+      }
+    },
+    {
+      "name": "identity",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C3",
+      "detail": "actual relative graph shift",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 16,
+        "C6": 2
+      }
+    },
+    {
+      "name": "multiplicity",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C9",
+      "detail": "ordinary implementer trace with orbit multiplicity",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 25,
+        "C5": 3,
+        "C6": 10,
+        "C8": 8,
+        "C9": 1
+      }
+    },
+    {
+      "name": "normalizer",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 9,
+        "C5": 1,
+        "C6": 4
+      }
+    },
+    {
+      "name": "off-diagonal",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C6",
+      "detail": "coherent duplicate retains actual rectangular off-diagonal Hom maps",
+      "reached_checks": {
+        "C1": 14057,
+        "C6": 1
+      }
+    },
+    {
+      "name": "omit-invariant",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 9,
+        "C5": 1,
+        "C6": 4
+      }
+    },
+    {
+      "name": "omit-outcome",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C6",
+      "detail": "all primitive, averaging and final failure histories",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 5,
+        "C6": 3
+      }
+    },
+    {
+      "name": "product",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C2",
+      "detail": "one actual multiplication-table entry",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 85,
+        "C6": 2
+      }
+    },
+    {
+      "name": "reset-reference",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C4",
+      "detail": "copied one-reference preparation norm",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 9,
+        "C6": 4
+      }
+    },
+    {
+      "name": "separate-descent",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C3",
+      "detail": "collectively descended relative graph retains d independent quantum states",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 39,
+        "C6": 2
+      }
+    },
+    {
+      "name": "wrong-sector",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C7",
+      "detail": "lower-period graph embeds into same upper period, including twists",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 58577,
+        "C3": 2208,
+        "C4": 354,
+        "C5": 18,
+        "C6": 50,
+        "C7": 136,
+        "C8": 248,
+        "C9": 126
+      }
+    },
+    {
+      "name": "green",
+      "exit": 0,
+      "status": "PASS",
+      "gate": null,
+      "detail": null,
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 58577,
+        "C3": 2208,
+        "C4": 354,
+        "C5": 18,
+        "C6": 50,
+        "C7": 946,
+        "C8": 248,
+        "C9": 126
+      }
+    },
+    {
+      "name": "hostile-probability-data",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 137,
+        "C3": 40,
+        "C4": 9,
+        "C5": 1,
+        "C6": 4
+      }
+    },
+    {
+      "name": "hostile-phase-data",
+      "exit": 1,
+      "status": "FAIL",
+      "gate": "C8",
+      "detail": "actual absolute-trace phase is orbit independent",
+      "reached_checks": {
+        "C1": 14057,
+        "C2": 1613,
+        "C3": 178,
+        "C4": 66,
+        "C5": 6,
+        "C6": 18,
+        "C8": 9,
+        "C9": 11
+      }
+    }
+  ],
+  "frozen_sources": {
+    "graph_gates.py": "c93f36b76781decb1f11e1f95f1d567e9b414ad5546c4c2c434e91cf62a8b03a",
+    "freeze_results.py": "4f1253e1bef22ec32e7cb9beb6eac663ceb237cf68b5efe7efedfe90870dfaaa",
+    "comparison_gates.py": "0f0d75e627fa3528cdc4911f9a0cc527a4fa0291708fcb788e32e71b6ffe3dc5",
+    "standalone_composite_boundary_check.py": "7360fc53b3de6a84b01eff0d1f88e31d33690c902a84abfd7d6411d5de96543e",
+    "finite_support.py": "10ea55f36a63f5765e7b1dc558b0feebeb2eb8039e90b3b30e7297b54655e6fb",
+    "composite_boundary_check.py": "2f148f0dbb6c7d7b5908be9bc8daf8e3502078b5d5a7deb3f4c5233bb8120fef",
+    "build_standalone.py": "78fc792ca1b5fa88b4a5a0ebf3b07684aa62853350cb808219c21f94c3cd86a5"
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "independent_implementation": true,
+  "all_arithmetic_exact": true,
+  "python": "3.12.3",
+  "runs": [
+    {
+      "mode": "channel-spectrum",
+      "flag": "--red-channel-spectrum",
+      "mutation": "channel-spectrum",
+      "exit": 1,
+      "gate": "C9",
+      "detail": "channel has n copies of each root while implementer has one",
+      "output_sha256": "d38fa0a5d342ad1fca25aa6d335962e647808567f8a6c620f338e3658d7f18b1"
+    },
+    {
+      "mode": "collective",
+      "flag": "--red-collective",
+      "mutation": "collective",
+      "exit": 1,
+      "gate": "C1",
+      "detail": "collective M2 matrix block versus local diagonal image",
+      "output_sha256": "ce4669bb5c04d36b208e3404e1b877b2091b167fa12dc0abc7ba67e548d84aeb"
+    },
+    {
+      "mode": "dephase",
+      "flag": "--red-dephase",
+      "mutation": "dephase",
+      "exit": 1,
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities",
+      "output_sha256": "0bdf34488dc13362162b2f0c21c6f0230b963ce14197d0ec92cb2d0f4091b4ff"
+    },
+    {
+      "mode": "diagonal-action",
+      "flag": "--red-diagonal-action",
+      "mutation": "diagonal-action",
+      "exit": 1,
+      "gate": "C2",
+      "detail": "diagonal graph predicate commutes with simultaneous Frobenius",
+      "output_sha256": "8d0654fd66eb640fc9eec745392f1d2f11e79fba9aaf13f7b6094ab0ad904e55"
+    },
+    {
+      "mode": "diagonal-relative",
+      "flag": "--red-diagonal-relative",
+      "mutation": "diagonal-relative",
+      "exit": 1,
+      "gate": "C3",
+      "detail": "actual relative graph shift",
+      "output_sha256": "7a14dc6fcd38b0b24b8d08575e611d16f54292c22f2b7f228343d0b46cbe2e52"
+    },
+    {
+      "mode": "drop-grade",
+      "flag": "--red-drop-grade",
+      "mutation": "drop-grade",
+      "exit": 1,
+      "gate": "C4",
+      "detail": "actual POS grade-one coefficient",
+      "output_sha256": "93a6c70f489a68c1d8a0d6098b47a5cbc0c5a3a3d67fbfb36ae93926abfe92a9"
+    },
+    {
+      "mode": "embedding",
+      "flag": "--red-embedding",
+      "mutation": "embedding",
+      "exit": 1,
+      "gate": "C7",
+      "detail": "lower-period graph embeds into same upper period, including twists",
+      "output_sha256": "4cfed469c2b0d2890c4a37ffdc5e06aee7edef589e0c0849db608d768d1413d5"
+    },
+    {
+      "mode": "fourier-outcome",
+      "flag": "--red-fourier-outcome",
+      "mutation": "fourier-outcome",
+      "exit": 1,
+      "gate": "C8",
+      "detail": "Fourier return and actual ambient failure complete the instrument",
+      "output_sha256": "390bed8dd1f6f70b9794c93d08fa66b623b03fba0dd7df86eda65b0e6486197c"
+    },
+    {
+      "mode": "fourier-phase",
+      "flag": "--red-fourier-phase",
+      "mutation": "fourier-phase",
+      "exit": 1,
+      "gate": "C8",
+      "detail": "exact field Fourier compression phase",
+      "output_sha256": "d908378f84f7953b946d2c8ad7e87a6ab26e25acdcaa5da3124c9c59ce347847"
+    },
+    {
+      "mode": "identity",
+      "flag": "--red-identity",
+      "mutation": "identity",
+      "exit": 1,
+      "gate": "C3",
+      "detail": "actual relative graph shift",
+      "output_sha256": "b15100a59bb897168121da2577f0c8ce8757e1d890d3441a689f2a4f10526027"
+    },
+    {
+      "mode": "multiplicity",
+      "flag": "--red-multiplicity",
+      "mutation": "multiplicity",
+      "exit": 1,
+      "gate": "C9",
+      "detail": "ordinary implementer trace with orbit multiplicity",
+      "output_sha256": "44bf1442ff9b7c158e1c7a734c6fc72a342d6f4e92cbfc365b59eda52b0348a4"
+    },
+    {
+      "mode": "normalizer",
+      "flag": "--red-normalizer",
+      "mutation": "normalizer",
+      "exit": 1,
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities",
+      "output_sha256": "3bd92c5eed8b6ec66df321af2490aaec112c0fdd452938f4a752bdd8d87fb925"
+    },
+    {
+      "mode": "off-diagonal",
+      "flag": "--red-off-diagonal",
+      "mutation": "off-diagonal",
+      "exit": 1,
+      "gate": "C6",
+      "detail": "coherent duplicate retains actual rectangular off-diagonal Hom maps",
+      "output_sha256": "70cf4ac4cbab0a4f98a2e201d5a243427c9fcf55dd72c9d42fd83cefd36d177f"
+    },
+    {
+      "mode": "omit-invariant",
+      "flag": "--red-omit-invariant",
+      "mutation": "omit-invariant",
+      "exit": 1,
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities",
+      "output_sha256": "94c5e15ff0a5123d8f4971ff5752f62d803ada45a2a9c21c7e7a1ec03a48f537"
+    },
+    {
+      "mode": "omit-outcome",
+      "flag": "--red-omit-outcome",
+      "mutation": "omit-outcome",
+      "exit": 1,
+      "gate": "C6",
+      "detail": "all primitive, averaging and final failure histories",
+      "output_sha256": "0e4211e21609b721f2d1ba63d9d4d398aaccfd6a66064a2ecac745d3740fea54"
+    },
+    {
+      "mode": "product",
+      "flag": "--red-product",
+      "mutation": "product",
+      "exit": 1,
+      "gate": "C2",
+      "detail": "one actual multiplication-table entry",
+      "output_sha256": "336641bea290c7bc2d0b13aecc8a33df96e1dc8fe512ad143fc1a592290eda1f"
+    },
+    {
+      "mode": "reset-reference",
+      "flag": "--red-reset-reference",
+      "mutation": "reset-reference",
+      "exit": 1,
+      "gate": "C4",
+      "detail": "copied one-reference preparation norm",
+      "output_sha256": "78d4c2afbd2abde3f23a847b149d6789ac93288c9833bc4e806ada3fde6ee1bf"
+    },
+    {
+      "mode": "separate-descent",
+      "flag": "--red-separate-descent",
+      "mutation": "separate-descent",
+      "exit": 1,
+      "gate": "C3",
+      "detail": "collectively descended relative graph retains d independent quantum states",
+      "output_sha256": "68c242995a1c47e5f158ad608654073793b1921b3f165d37bf60efb3c8ba4222"
+    },
+    {
+      "mode": "wrong-sector",
+      "flag": "--red-wrong-sector",
+      "mutation": "wrong-sector",
+      "exit": 1,
+      "gate": "C7",
+      "detail": "lower-period graph embeds into same upper period, including twists",
+      "output_sha256": "112e2dfab0594375ba0b29fb68d996f9895c3ab8a53292f97188be671de22043"
+    },
+    {
+      "mode": "plain-red",
+      "flag": "--red",
+      "mutation": "collective",
+      "exit": 1,
+      "gate": "C1",
+      "detail": "collective M2 matrix block versus local diagonal image",
+      "output_sha256": "ce4669bb5c04d36b208e3404e1b877b2091b167fa12dc0abc7ba67e548d84aeb"
+    },
+    {
+      "mode": null,
+      "flag": null,
+      "mutation": null,
+      "exit": 0,
+      "gate": null,
+      "detail": null,
+      "output_sha256": "fa585f8e010871cc78890648a569606239a01b2e9d2c6fc433620cb5aeae5901"
+    }
+  ],
+  "source_sha256": {
+    "build_standalone.py": "78fc792ca1b5fa88b4a5a0ebf3b07684aa62853350cb808219c21f94c3cd86a5",
+    "comparison_gates.py": "0f0d75e627fa3528cdc4911f9a0cc527a4fa0291708fcb788e32e71b6ffe3dc5",
+    "composite_boundary_check.py": "8bb1bb39e6856a18d9ff87424cfe9247df8f863e1c7568094615652218581620",
+    "finite_support.py": "10ea55f36a63f5765e7b1dc558b0feebeb2eb8039e90b3b30e7297b54655e6fb",
+    "freeze_results.py": "9923e57ed8a326ea902379b3997aae8992c284ee43111df626a7959c79fb7d19",
+    "graph_gates.py": "c93f36b76781decb1f11e1f95f1d567e9b414ad5546c4c2c434e91cf62a8b03a",
+    "standalone_composite_boundary_check.py": "5816197b901d74012112d2957c5df45ad7b634b426e6c64bb46c16ed0f3df3d1"
+  }
+}

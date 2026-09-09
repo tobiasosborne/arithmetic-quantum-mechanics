@@ -1,0 +1,228 @@
+\section{Completing the arithmetic degree boundary}
+\label{sec:composite-degree-completion}
+
+The relative quantum registers admit a concrete completion across extension
+degrees. Their finite comparison maps come from arithmetic field embeddings,
+and their unnormalized traces come from the first nonzero copied-reference
+coefficients. These two pieces of data determine the completion studied
+here. Its Frobenius action remains a legitimate quantum automorphism and
+becomes outer in the chosen minimal unitization. A separate positive degree
+regularization supplies normalized states and an explicit zeta quotient.
+The two statements in this section passed independent capped review;
+the tail cutoff is explicitly restricted to integers.
+
+\subsection{Divisor corners and their arithmetic provenance}
+
+For an extension of relative degree $N$, the moving common observable
+algebra consists of one matrix block $M_d(\mathbb C)$ for each divisor
+$d>1$ of $N$. Its relative Frobenius is the cyclic shift
+$S_d|k\rangle=|k+1\pmod d\rangle$ in each block. The randomized copied
+reference has first coefficient $s\varphi(d)/d$ on that block, where
+$s$ is the absolute degree of the base field. Dividing by this common
+positive factor leaves the weights used below.
+\provenance{D1602, D1603, D1607, CMP-REL, CMP-NATURAL, CMP-TRACE}
+{relational-construction.md; boundary-and-spectrum.md}
+{composite boundary checker}{composite-boundary-adjudication.md}
+
+\begin{definition}[Divisor corners and a concrete degree completion]
+For $N\geq2$ put
+\[
+ A_N=\bigoplus_{\substack{d\mid N\\d>1}}M_d(\mathbb C),\qquad
+ \eta_d=\frac{\varphi(d)}d,\qquad
+ \theta_N(a)=\sum_{\substack{d\mid N\\d>1}}\eta_d\operatorname{tr}_d(a_d),
+ \quad \operatorname{tr}_d=\frac1d\operatorname{Tr}.
+\]
+Use the maximum of the block operator norms. For $N\mid M$, let
+$j_{N,M}:A_N\to A_M$ extend block coordinates by zero.
+On the Hilbert space
+\[
+ \mathcal H_{\rm deg}=\bigoplus_{d\geq2}^{\ell^2}\mathbb C^d,
+\]
+let $A_{\rm deg}$ be the block-diagonal algebra of sequences $(a_d)$ with
+$\|a_d\|\to0$, in the supremum norm, and let
+$B_{\rm deg}=A_{\rm deg}+\mathbb C I$ be its concrete minimal unitization.
+For $a\geq0$ in $A_{\rm deg}$ define the extended-valued functional
+\[
+ \theta(a)=\sum_{d\geq2}\eta_d\operatorname{tr}_d(a_d).
+\]
+\end{definition}
+\begin{scope}
+The inclusions are nonunital corners. This is a specified completion of
+the common arithmetic blocks; no total tensor or coherent direct-sum rule
+on the distinguished primitive systems is stipulated. The Hilbert-space
+symbol is not a Hamiltonian.
+\end{scope}
+\provenance{D1611}{definitions.md}{composite spectrum checker}
+{composite-spectrum-adjudication.md}
+
+The corner inclusion has an arithmetic interpretation. Fix a base
+$K=\mathbb F_q$ and $N\mid M$. Every Frobenius orbit of length $d\mid N$
+in $\mathbb F_{q^M}$ is already contained in $\mathbb F_{q^N}$: its labels
+are fixed by the $N$th Frobenius power. Thus the relational encoder carries
+the entire smaller period block to the entire same-period block upstairs.
+Conjugation by that encoder, extending by zero off its image, realizes
+$j_{N,M}$. In particular,
+\[
+ \theta_M\circ j_{N,M}=\theta_N.
+\]
+After normalizing the finite traces, restriction instead has success
+$\theta_N(1)/\theta_M(1)$, with the smaller normalized reference as its
+conditional state.
+
+\subsection{Frobenius dynamics and positive degree states}
+
+\begin{definition}[Completed Frobenius and degree regularization]
+On $\mathcal H_{\rm deg}$ put
+\[
+ U_{\rm deg}=\bigoplus_{d\geq2}S_d,\qquad
+ \alpha(a)_d=S_d a_d S_d^*,
+\]
+and let $\alpha$ fix the scalar unit of $B_{\rm deg}$.
+For a real $\beta>1$, define
+\begin{align*}
+ Z_{\rm deg}(\beta)&=\sum_{d\geq2}\frac{\varphi(d)}{d^{\beta+1}},&
+ D_\beta&=\bigoplus_{d\geq2}d^{-\beta}I_d,\\
+ \rho_\beta&=\bigoplus_{d\geq2}
+       \frac{\varphi(d)}{Z_{\rm deg}(\beta)d^{\beta+2}}I_d,&
+ \omega_\beta(a)&=\operatorname{Tr}_{\mathcal H_{\rm deg}}(\rho_\beta a).
+\end{align*}
+Define $\zeta(x)=\sum_{m\geq1}m^{-x}$ for real $x>1$, and for an integer
+$j$ define the implementing-operator moment
+\[
+ M_\beta(j)=\operatorname{Tr}_{\mathcal H_{\rm deg}}
+                   (\rho_\beta U_{\rm deg}^{\,j}).
+\]
+\end{definition}
+\begin{scope}
+The regulator is additional central degree-weight data, not an arithmetic
+amplitude or a Frobenius generator. The moment uses the named Hilbert
+implementation; $U_{\rm deg}$ need not belong to $B_{\rm deg}$. No
+analytic continuation or unregularized infinite trace is stipulated.
+\end{scope}
+\provenance{D1612}{definitions.md}{composite spectrum checker}
+{composite-spectrum-adjudication.md}
+
+\begin{theorem}[An arithmetic degree completion with outer Frobenius]
+\statusProved\quad
+The moving common algebras $A_N$ with the fixed-base arithmetic corner
+maps form a directed system whose norm completion is $A_{\rm deg}$.
+The compatible finite traces extend to the faithful, lower-semicontinuous
+semifinite trace $\theta$ on $A_{\rm deg}$.
+
+Relative Frobenius extends to the unital CP automorphism $\alpha$ of
+$B_{\rm deg}$. This automorphism is outer in $B_{\rm deg}$ and is spatially
+implemented by $U_{\rm deg}$ on $\mathcal H_{\rm deg}$. The implementing
+unitary has all roots of unity as point spectrum, each with infinite
+multiplicity, and the whole unit circle as its spectrum.
+\end{theorem}
+\begin{scope}
+Outerness refers specifically to the minimal unitization. The same action
+is inner in the larger product multiplier algebra. The trace is densely
+defined on the nonunital algebra, not asserted densely defined on its
+unitization. This is a discrete cycle dynamics, with no Riemann-zero
+identification or rescaled continuous-time generator asserted.
+\end{scope}
+\provenance{CMP-COMPLETE}{degree-completion.md, Sections 1--2}
+{composite spectrum checker}{composite-spectrum-adjudication.md}
+
+\begin{proof}[Construction and the source of outerness]
+Every finite collection of degrees lies among the divisors of a common
+multiple. The algebraic union is therefore all finitely supported matrix
+blocks, whose supremum-norm completion is precisely the sequence algebra
+with vanishing tails. Conjugating each block by its arithmetic cyclic
+shift preserves this norm and positivity at every matrix level.
+
+If a unitary $w=\lambda I+a$ in the minimal unitization implemented
+$\alpha$, then $\|a_d\|\to0$ and $|\lambda|=1$. For a rank-one block
+projection $e_d=|0\rangle\langle0|$,
+\[
+ \|w_d e_d w_d^*-e_d\|\leq2\|w_d-\lambda I_d\|\longrightarrow0.
+\]
+But cyclic Frobenius sends $e_d$ to the orthogonal projection
+$|1\rangle\langle1|$, whose difference from $e_d$ has norm one for
+every $d\geq2$. This contradicts inner implementation in the unitization.
+
+The positive trace is the supremum of its finite block sums. Finite
+central cutoffs approximate positive elements in norm and in increasing
+trace, proving the stated semifiniteness and lower semicontinuity.
+Finally, finite cycle eigenvectors form an orthonormal basis of the Hilbert
+sum. Roots of unity are dense on the circle; off it the block resolvents
+have a uniform bound. This gives the stated spectrum.
+\end{proof}
+
+The regularized state is stationary, but the action is observable on
+other preparations. In each inherited finite block, a relative-index
+state at zero is carried to the orthogonal state at one. The coherent
+three-register arithmetic test from the preceding section remains its
+finite realization. No unrelated quantum block has been appended to
+produce this action.
+
+\begin{theorem}[A positive degree reference and its convergent zeta identity]
+\statusProved\quad
+For every real $\beta>1$, the operator $\rho_\beta$ is positive and trace
+class with ordinary trace one. Its state on $B_{\rm deg}$ is faithful
+and $\alpha$-invariant. For every integer cutoff $D\geq1$, the normalizer satisfies
+\[
+ Z_{\rm deg}(\beta)=\frac{\zeta(\beta)}{\zeta(\beta+1)}-1,
+ \qquad
+ \sum_{d>D}\frac{\varphi(d)}{d^{\beta+1}}
+       \leq\frac{D^{1-\beta}}{\beta-1}\quad(D\geq1).
+\]
+For a nonzero integer $j$,
+\[
+ M_\beta(j)=\frac1{Z_{\rm deg}(\beta)}
+       \sum_{\substack{d\mid |j|\\d\geq2}}
+              \frac{\varphi(d)}{d^{\beta+1}},
+ \qquad M_\beta(0)=1.
+\]
+\end{theorem}
+\begin{scope}
+The zeta identity is established in its convergent real domain. The
+degree regulator is specified rather than claimed unique. The moment is
+an implementing-operator trace paired with a trace-class state, not the
+trace of a conjugation channel or an unregularized infinite Frobenius trace.
+\end{scope}
+\provenance{CMP-MELLIN}{degree-completion.md, Section 3}
+{composite spectrum checker}{composite-spectrum-adjudication.md}
+
+\begin{proof}[Positive coefficients and divisor convolution]
+The bound $\varphi(d)\leq d$ compares the normalizer to the convergent
+series $\sum d^{-\beta}$ and gives the integral tail estimate. Each
+$d$-dimensional block contributes $\varphi(d)/(Z_{\rm deg}d^{\beta+1})$
+to the ordinary trace of $\rho_\beta$, so these contributions sum to one.
+Every eigenvalue is positive and each block is scalar, giving faithfulness
+and Frobenius invariance.
+
+Counting integers by their greatest common divisor with $k$ gives
+$\sum_{d\mid k}\varphi(d)=k$. Absolute convergence then permits grouping
+the product of positive series:
+\[
+ \left(\sum_{d\geq1}\frac{\varphi(d)}{d^{\beta+1}}\right)
+ \zeta(\beta+1)
+ =\sum_{k\geq1}\frac{\sum_{d\mid k}\varphi(d)}{k^{\beta+1}}
+ =\zeta(\beta).
+\]
+Removing the $d=1$ term gives the claimed subtraction. The underlying
+classical totient Dirichlet identity is also recorded in
+\href{https://dlmf.nist.gov/27.4.E6}{NIST DLMF, equation 27.4.6}. The moment formula
+uses $\operatorname{Tr}(S_d^j)=d$ when $d\mid j$, and zero otherwise.
+The case $j=0$ uses trace-one normalization separately.
+\end{proof}
+
+The infinite unregularized trace does not follow by dropping the regulator:
+the identity has infinite $\theta$-mass, so the unitary powers are not
+$\theta$-integrable. Also, if logarithmic degree weights are written as
+an operator with value $\log d$ on the $d$th block, that operator is central.
+Its conjugation flow fixes the block algebra and must not be identified
+with the nontrivial relative Frobenius action.
+
+This completion gives one explicit positive quantum realization of the
+surviving degree data. It preserves the arithmetic cyclic action while
+leaving the fate of other composition laws open. For example, two
+independent $2$-cycles have two $2$-cycles under simultaneous action;
+they are not a single $4$-cycle. The corresponding matrix algebras can
+have the same dimension while their distinguished Frobenius actions differ.
+The existing greatest-common-divisor/least-common-multiple reblocking keeps
+that multiplicity information when such independent composites are retained.
+\provenance{FRL-COMP}{orbit-composition.md}{Frobenius boundary checker}
+{frobenius-boundary-adjudication.md}

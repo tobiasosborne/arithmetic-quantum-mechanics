@@ -1,0 +1,187 @@
+{
+  "source_sha256": "d945e902a081db587ef8cf0f0c5344c5fa42dcdfaf06ba4d97fdeecfbff8c51f",
+  "all_executions_matched_expectations": true,
+  "results": [
+    {
+      "name": "green",
+      "returncode": 0,
+      "status": "PASS",
+      "gate": null,
+      "detail": null,
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 1740,
+        "J4": 1501,
+        "J5": 1026
+      }
+    },
+    {
+      "name": "plain-red",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J2",
+      "detail": "actual copied F4 success requires the 1/d averaging factor",
+      "counts": {
+        "J2": 1
+      }
+    },
+    {
+      "name": "--red-condition-zero",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J1",
+      "detail": "v(t) agrees with exact polynomial division, including retained endpoint grade",
+      "counts": {
+        "J1": 2,
+        "J2": 1
+      }
+    },
+    {
+      "name": "--red-drop-divisor",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J2",
+      "detail": "actual copied F4 success requires the 1/d averaging factor",
+      "counts": {
+        "J2": 1
+      }
+    },
+    {
+      "name": "--red-drop-grade",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J5",
+      "detail": "actual copied POS first grade survives with rate s Z_D(beta,1)/L_D",
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 5,
+        "J5": 1
+      }
+    },
+    {
+      "name": "--red-drop-randomizer",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J2",
+      "detail": "all randomizer outcomes retain the actual prepared trace",
+      "counts": {
+        "J1": 3420,
+        "J2": 3
+      }
+    },
+    {
+      "name": "--red-lost-history",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J3",
+      "detail": "all physical degree tags and stopped/randomizer histories sum to one",
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 4
+      }
+    },
+    {
+      "name": "--red-omit-gap",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J1",
+      "detail": "v(t) agrees with exact polynomial division, including retained endpoint grade",
+      "counts": {
+        "J1": 4,
+        "J2": 1
+      }
+    },
+    {
+      "name": "--red-operator-norm",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J4",
+      "detail": "actual ordinary trace norm equals twice normalized finite tail mass",
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 1740,
+        "J4": 2,
+        "J5": 1026
+      }
+    },
+    {
+      "name": "--red-reset-copy",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J2",
+      "detail": "actual copied-reference probability versus c_d(t^s)/(d t^(sd))",
+      "counts": {
+        "J1": 3420,
+        "J2": 19
+      }
+    },
+    {
+      "name": "--red-vanishing-bound",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J4",
+      "detail": "finite truncation comparison obeys the t-uniform cutoff estimate",
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 1740,
+        "J4": 3,
+        "J5": 1026
+      }
+    },
+    {
+      "name": "--red-wrong-normalizer",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J3",
+      "detail": "successful common mixture uses its actual Z_D normalizer in ordinary trace",
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 3
+      }
+    },
+    {
+      "name": "--red-wrong-prior",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J3",
+      "detail": "degree prior has the declared relative d^(-beta) probabilities",
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 64,
+        "J5": 27
+      }
+    },
+    {
+      "name": "independent-field-data",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J2",
+      "detail": "actual finite-field POS preparation is a normalized state",
+      "counts": {
+        "J1": 3420,
+        "J2": 8
+      }
+    },
+    {
+      "name": "independent-effect-data",
+      "returncode": 1,
+      "status": "FAIL",
+      "gate": "J4",
+      "detail": "named fixed non-diagonal effect is an actual orthogonal projection",
+      "counts": {
+        "J1": 3420,
+        "J2": 1585,
+        "J3": 1740,
+        "J4": 1,
+        "J5": 1026
+      }
+    }
+  ]
+}

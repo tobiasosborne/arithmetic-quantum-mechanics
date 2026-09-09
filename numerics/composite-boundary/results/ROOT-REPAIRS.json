@@ -1,0 +1,154 @@
+{
+  "n1_repair": [
+    {
+      "p": 2,
+      "absolute_degree": 1,
+      "relative_degree": 1,
+      "code_dimension": 2,
+      "relative_is_identity": true,
+      "moving_weight": 0,
+      "conditional_moving_state": "undefined"
+    },
+    {
+      "p": 3,
+      "absolute_degree": 1,
+      "relative_degree": 1,
+      "code_dimension": 3,
+      "relative_is_identity": true,
+      "moving_weight": 0,
+      "conditional_moving_state": "undefined"
+    },
+    {
+      "p": 2,
+      "absolute_degree": 2,
+      "relative_degree": 1,
+      "code_dimension": 4,
+      "relative_is_identity": true,
+      "moving_weight": 0,
+      "conditional_moving_state": "undefined"
+    }
+  ],
+  "cli_repair": [
+    {
+      "flag": "--red",
+      "exit": 1,
+      "gate": "C1",
+      "detail": "collective M2 matrix block versus local diagonal image"
+    },
+    {
+      "flag": "--red-channel-spectrum",
+      "exit": 1,
+      "gate": "C9",
+      "detail": "channel has n copies of each root while implementer has one"
+    },
+    {
+      "flag": "--red-collective",
+      "exit": 1,
+      "gate": "C1",
+      "detail": "collective M2 matrix block versus local diagonal image"
+    },
+    {
+      "flag": "--red-dephase",
+      "exit": 1,
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities"
+    },
+    {
+      "flag": "--red-diagonal-action",
+      "exit": 1,
+      "gate": "C2",
+      "detail": "diagonal graph predicate commutes with simultaneous Frobenius"
+    },
+    {
+      "flag": "--red-diagonal-relative",
+      "exit": 1,
+      "gate": "C3",
+      "detail": "actual relative graph shift"
+    },
+    {
+      "flag": "--red-drop-grade",
+      "exit": 1,
+      "gate": "C4",
+      "detail": "actual POS grade-one coefficient"
+    },
+    {
+      "flag": "--red-embedding",
+      "exit": 1,
+      "gate": "C7",
+      "detail": "lower-period graph embeds into same upper period, including twists"
+    },
+    {
+      "flag": "--red-fourier-outcome",
+      "exit": 1,
+      "gate": "C8",
+      "detail": "Fourier return and actual ambient failure complete the instrument"
+    },
+    {
+      "flag": "--red-fourier-phase",
+      "exit": 1,
+      "gate": "C8",
+      "detail": "exact field Fourier compression phase"
+    },
+    {
+      "flag": "--red-identity",
+      "exit": 1,
+      "gate": "C3",
+      "detail": "actual relative graph shift"
+    },
+    {
+      "flag": "--red-multiplicity",
+      "exit": 1,
+      "gate": "C9",
+      "detail": "ordinary implementer trace with orbit multiplicity"
+    },
+    {
+      "flag": "--red-normalizer",
+      "exit": 1,
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities"
+    },
+    {
+      "flag": "--red-off-diagonal",
+      "exit": 1,
+      "gate": "C6",
+      "detail": "coherent duplicate retains actual rectangular off-diagonal Hom maps"
+    },
+    {
+      "flag": "--red-omit-invariant",
+      "exit": 1,
+      "gate": "C5",
+      "detail": "full / identity / computational-dephased conditional probabilities"
+    },
+    {
+      "flag": "--red-omit-outcome",
+      "exit": 1,
+      "gate": "C6",
+      "detail": "all primitive, averaging and final failure histories"
+    },
+    {
+      "flag": "--red-product",
+      "exit": 1,
+      "gate": "C2",
+      "detail": "one actual multiplication-table entry"
+    },
+    {
+      "flag": "--red-reset-reference",
+      "exit": 1,
+      "gate": "C4",
+      "detail": "copied one-reference preparation norm"
+    },
+    {
+      "flag": "--red-separate-descent",
+      "exit": 1,
+      "gate": "C3",
+      "detail": "collectively descended relative graph retains d independent quantum states"
+    },
+    {
+      "flag": "--red-wrong-sector",
+      "exit": 1,
+      "gate": "C7",
+      "detail": "lower-period graph embeds into same upper period, including twists"
+    }
+  ],
+  "source_sha256": "5816197b901d74012112d2957c5df45ad7b634b426e6c64bb46c16ed0f3df3d1"
+}

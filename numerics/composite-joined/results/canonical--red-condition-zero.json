@@ -1,0 +1,13 @@
+{
+  "mutation": "condition-zero",
+  "exact": true,
+  "finite_scope_only": true,
+  "first_actual_F4_success": "1/6",
+  "status": "FAIL",
+  "gate": "J1",
+  "detail": "v(t) agrees with exact polynomial division, including retained endpoint grade",
+  "checks": {
+    "J1": 2,
+    "J2": 1
+  }
+}

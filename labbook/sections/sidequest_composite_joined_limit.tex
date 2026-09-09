@@ -1,0 +1,156 @@
+\section{A uniform limit of finite arithmetic assemblies}
+\label{sec:composite-joined-limit}
+
+The completed reference can itself be obtained from finite assembled
+experiments. Choose finitely many extension degrees, prepare the corresponding
+tagged arithmetic systems, and run the copied primitive protocol in each
+degree. Uniform relative randomization supplies a tracial common block on
+success. The counting boundary and the degree completion then converge
+together in trace norm. This theorem passed its own capped review, with the exact input reference
+made explicit in the definition.
+
+\begin{definition}[Finite degree mixture and success profiles]
+Fix an integer base degree $s\geq1$, a real $\beta>1$, and named extensions
+$E_d/K$ with $|K|=p^s$ and $[E_d:K]=d$ for $d\geq2$. For an integer
+cutoff $D\geq2$ put
+\[
+ L_D(\beta)=\sum_{d=2}^D d^{-\beta},\qquad
+ \pi_d=\frac{d^{-\beta}}{L_D(\beta)}.
+\]
+Prepare the classical degree tag with these probabilities. In the selected
+degree prepare the exact period reference $\rho_{E_d}(\log t)$, then apply
+the three copied-reference preparation amplitudes. On success,
+uniformly randomize the relative index and explicitly discard that
+randomizer label. Every failed degree and stopped primitive/averaging
+history remains available.
+
+For $t>1$ define
+\[
+ w_d(t)=\frac{c_d(t^s)}{dt^{sd}},\qquad
+ v_d(t)=\frac{w_d(t)}{s(t-1)},\qquad
+ Z_D(\beta,t)=\sum_{d=2}^D d^{-\beta}v_d(t),
+\]
+where $c_d(x)=\sum_{a\mid d}\mu(d/a)x^a$. Set
+$v_d(1)=\varphi(d)/d$ and use that value in $Z_D(\beta,1)$.
+On the named Hilbert degree sum, let the common successful density have
+blocks
+\[
+ \rho_{D,t}\big|_{\mathbb C^d}
+  =\frac{d^{-\beta}v_d(t)}{dZ_D(\beta,t)}I_d
+       \quad(2\leq d\leq D),
+\]
+and zero elsewhere. Define $L_\infty$, $Z_\infty$ and $\rho_{\infty,t}$
+by the corresponding infinite sums when they converge.
+\end{definition}
+\begin{scope}
+The degree prior is additional classical preparation data. These are
+common-observable outputs, not identifications of the physical field
+multiplicity states. At $t=1$, $\rho_{D,1}$ designates the retained first
+grade; it is not normalization of a successful zero-probability event.
+Randomization makes this reference stationary. The unrandomized finite
+protocol remains the separate Frobenius/coherence witness.
+\end{scope}
+\provenance{D1621}{definitions.md}{composite joined-limit checker}
+{composite-joined-adjudication.md}
+
+The reference instrument used in each degree prepares one period-uniform
+field state and two fixed zero ancillas, maps $|x\rangle$ to
+$|x,x,x^2\rangle$, and projects onto simultaneous relative-Frobenius
+invariants after the primitive-period cut. Its common successful state is
+$|0\rangle\langle0|$ and its success probability is $w_d(t)$. Relative
+randomization averages its $d$ cyclic translates to $I_d/d$.
+For $a_d(t)=c_d(t^s)/t^{sd}$, the three preparation histories within
+that degree have probabilities
+\[
+ 1-a_d(t),\qquad (1-1/d)a_d(t),\qquad a_d(t)/d.
+\]
+They sum to one before multiplication by $\pi_d$. The finite mixture
+therefore has total success
+\[
+ W_D(\beta,t)=\frac{s(t-1)Z_D(\beta,t)}{L_D(\beta)}.
+\]
+\provenance{D1604, D1607, CMP-BOUNDARY, CMP-TRACE}
+{boundary-and-spectrum.md}{composite boundary checker}
+{composite-boundary-adjudication.md}
+
+\begin{theorem}[A joined counting and degree limit of assembled quantum states]
+\statusProved\quad
+For every integer $s\geq1$ and real $\beta>1$, the finite degree-mixture
+protocol is normalized with its stated histories. Its rescaled success
+factors satisfy $0<v_d(t)\leq1$ for all $d\geq2,t>1$ and extend
+continuously to $v_d(1)=\varphi(d)/d$.
+
+For every fixed $T>1$, the infinite normalizer converges uniformly on
+$1\leq t\leq T$. Its density satisfies
+\[
+ \rho_{\infty,t}\longrightarrow\rho_\beta
+       \quad\text{in trace norm as }t\downarrow1,
+\]
+where
+\[
+ \rho_\beta\big|_{\mathbb C^d}
+ =\frac{\varphi(d)}{Z_{\rm deg}(\beta)d^{\beta+2}}I_d,\qquad
+ Z_{\rm deg}(\beta)=\frac{\zeta(\beta)}{\zeta(\beta+1)}-1.
+\]
+For every integer $D\geq2$ and $1\leq t\leq T$,
+\[
+ \|\rho_{D,t}-\rho_{\infty,t}\|_1
+ \leq \frac{2^{\beta+2}T^s}{\beta-1}\,D^{1-\beta}.
+\]
+Consequently both iterated limits and every path $D\to\infty$, $t\downarrow1$
+give the same $\rho_\beta$. With $h=\log t$, their first-order success rate
+tends to
+\[
+ \frac{sZ_{\rm deg}(\beta)}{\zeta(\beta)-1}.
+\]
+Probabilities for each fixed bounded common effect converge as well,
+including after any fixed number of relative Frobenius iterations.
+\end{theorem}
+\begin{scope}
+The degree prior and common-observable comparison are specified choices.
+The statement includes no arbitrary characteristic-dependent physical
+continuation and requires no total endpoint tensor or direct-sum operation.
+The raw event at $t=1$ still has probability zero. The cutoff bound is a
+uniform estimate and need not be sharp or smaller than the trivial bound two.
+\end{scope}
+\provenance{CMP-JOINT-LIMIT}{joined-limit.md, Sections 1--4}
+{composite joined-limit checker}{composite-joined-adjudication.md}
+
+\begin{proof}[The uniform estimate]
+The positive period polynomials satisfy
+$c_d(x)\leq x^d-1$ for $d>1,x\geq1$, since their divisor sum is $x^d$
+and the degree-one term is $x$. Also
+\[
+ 1-t^{-sd}=(t-1)\sum_{j=1}^{sd}t^{-j}\leq sd(t-1).
+\]
+Together these give $v_d(t)\leq1$. Dividing the polynomial $c_d(t^s)$
+by $t-1$ gives its continuous endpoint value $\varphi(d)/d$.
+Thus the summands of $Z_\infty$ are dominated uniformly by $d^{-\beta}$.
+
+The degree-two block bounds every normalizer away from zero on the compact
+interval:
+\[
+ v_2(t)=\frac1{2s}\sum_{j=1}^s t^{-j}\geq\frac12T^{-s},\qquad
+ Z_\infty(\beta,t)\geq2^{-\beta-1}T^{-s}.
+\]
+Trace norm between these scalar-block densities is the sum of the absolute
+differences of their block probabilities. Removing and renormalizing the
+tail gives exactly
+\[
+ \|\rho_{D,t}-\rho_{\infty,t}\|_1
+ =2\frac{Z_\infty(\beta,t)-Z_D(\beta,t)}{Z_\infty(\beta,t)}.
+\]
+The integer-cutoff bound for $\sum_{d>D}d^{-\beta}$ proves the displayed
+uniform estimate. A finite head is continuous at $t=1$, and the tail is
+uniformly small, giving the remaining trace-norm limit. Finally,
+$(t-1)/\log t\to1$ gives the retained success rate. Unitary Frobenius
+preserves trace norm, so fixed-effect convergence follows.
+\end{proof}
+
+This construction gives the completed state as the limit of actual finite
+assemblies performed before specialization. Its common randomized state
+is stationary under Frobenius, while the quantum automorphism remains
+nontrivial on the available finite-block preparations and observables.
+The representation has supplied an infinite quantum system without
+requiring a field structure or a conventional arithmetic composition law
+at characteristic one.

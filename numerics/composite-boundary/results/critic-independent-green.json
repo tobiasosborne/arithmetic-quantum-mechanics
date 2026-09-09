@@ -1,0 +1,599 @@
+{
+  "status": "PASS",
+  "arithmetic": "integer and rational; exact cyclotomic coefficient counts",
+  "tolerance": null,
+  "fibres": [
+    {
+      "p": 2,
+      "absolute_degree": 2,
+      "base_degree": 1,
+      "relative_degree": 2,
+      "orbit_multiplicities": {
+        "1": 2,
+        "2": 1
+      },
+      "integer_graph_dimension": 4,
+      "grade_one": "1/2",
+      "full_identity_dephased": [
+        "1",
+        "0",
+        "1/2"
+      ],
+      "events": [
+        {
+          "t": "1",
+          "w": "0",
+          "finals": [
+            "0",
+            "0",
+            "0"
+          ],
+          "histories": [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "t": "6/5",
+          "w": "1/12",
+          "finals": [
+            "1/12",
+            "0",
+            "1/24"
+          ],
+          "histories": [
+            "5/6",
+            "1/12",
+            "1/12",
+            "0"
+          ]
+        },
+        {
+          "t": "3/2",
+          "w": "1/6",
+          "finals": [
+            "1/6",
+            "0",
+            "1/12"
+          ],
+          "histories": [
+            "2/3",
+            "1/6",
+            "1/6",
+            "0"
+          ]
+        },
+        {
+          "t": "2",
+          "w": "1/4",
+          "finals": [
+            "1/4",
+            "0",
+            "1/8"
+          ],
+          "histories": [
+            "1/2",
+            "1/4",
+            "1/4",
+            "0"
+          ]
+        }
+      ],
+      "fourier_phase_exponents": [
+        1
+      ],
+      "fourier_probability": "1/4",
+      "implementer_traces": [
+        4,
+        2,
+        4
+      ],
+      "full_channel_traces": [
+        16,
+        4,
+        16
+      ],
+      "moving_boundary_weights": {
+        "2": "1"
+      }
+    },
+    {
+      "p": 3,
+      "absolute_degree": 2,
+      "base_degree": 1,
+      "relative_degree": 2,
+      "orbit_multiplicities": {
+        "1": 3,
+        "2": 3
+      },
+      "integer_graph_dimension": 9,
+      "grade_one": "1/2",
+      "full_identity_dephased": [
+        "1",
+        "0",
+        "1/2"
+      ],
+      "events": [
+        {
+          "t": "1",
+          "w": "0",
+          "finals": [
+            "0",
+            "0",
+            "0"
+          ],
+          "histories": [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "t": "6/5",
+          "w": "1/12",
+          "finals": [
+            "1/12",
+            "0",
+            "1/24"
+          ],
+          "histories": [
+            "5/6",
+            "1/12",
+            "1/12",
+            "0"
+          ]
+        },
+        {
+          "t": "3/2",
+          "w": "1/6",
+          "finals": [
+            "1/6",
+            "0",
+            "1/12"
+          ],
+          "histories": [
+            "2/3",
+            "1/6",
+            "1/6",
+            "0"
+          ]
+        },
+        {
+          "t": "3",
+          "w": "1/3",
+          "finals": [
+            "1/3",
+            "0",
+            "1/6"
+          ],
+          "histories": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        }
+      ],
+      "fourier_phase_exponents": [
+        0,
+        2
+      ],
+      "fourier_probability": "1/9",
+      "implementer_traces": [
+        9,
+        3,
+        9
+      ],
+      "full_channel_traces": [
+        81,
+        9,
+        81
+      ],
+      "moving_boundary_weights": {
+        "2": "1"
+      }
+    },
+    {
+      "p": 2,
+      "absolute_degree": 4,
+      "base_degree": 1,
+      "relative_degree": 4,
+      "orbit_multiplicities": {
+        "1": 2,
+        "4": 3,
+        "2": 1
+      },
+      "integer_graph_dimension": 16,
+      "grade_one": "1/2",
+      "full_identity_dephased": [
+        "1",
+        "0",
+        "1/4"
+      ],
+      "events": [
+        {
+          "t": "1",
+          "w": "0",
+          "finals": [
+            "0",
+            "0",
+            "0"
+          ],
+          "histories": [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "t": "6/5",
+          "w": "11/144",
+          "finals": [
+            "11/144",
+            "0",
+            "11/576"
+          ],
+          "histories": [
+            "25/36",
+            "11/48",
+            "11/144",
+            "0"
+          ]
+        },
+        {
+          "t": "3/2",
+          "w": "5/36",
+          "finals": [
+            "5/36",
+            "0",
+            "5/144"
+          ],
+          "histories": [
+            "4/9",
+            "5/12",
+            "5/36",
+            "0"
+          ]
+        },
+        {
+          "t": "2",
+          "w": "3/16",
+          "finals": [
+            "3/16",
+            "0",
+            "3/64"
+          ],
+          "histories": [
+            "1/4",
+            "9/16",
+            "3/16",
+            "0"
+          ]
+        }
+      ],
+      "fourier_phase_exponents": [
+        0,
+        1
+      ],
+      "fourier_probability": "1/16",
+      "implementer_traces": [
+        16,
+        2,
+        4,
+        2,
+        16
+      ],
+      "full_channel_traces": [
+        256,
+        4,
+        16,
+        4,
+        256
+      ],
+      "moving_boundary_weights": {
+        "4": "1/2",
+        "2": "1/2"
+      }
+    },
+    {
+      "p": 2,
+      "absolute_degree": 4,
+      "base_degree": 2,
+      "relative_degree": 2,
+      "orbit_multiplicities": {
+        "1": 4,
+        "2": 6
+      },
+      "integer_graph_dimension": 16,
+      "grade_one": "1",
+      "full_identity_dephased": [
+        "1",
+        "0",
+        "1/2"
+      ],
+      "events": [
+        {
+          "t": "1",
+          "w": "0",
+          "finals": [
+            "0",
+            "0",
+            "0"
+          ],
+          "histories": [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "t": "6/5",
+          "w": "11/72",
+          "finals": [
+            "11/72",
+            "0",
+            "11/144"
+          ],
+          "histories": [
+            "25/36",
+            "11/72",
+            "11/72",
+            "0"
+          ]
+        },
+        {
+          "t": "3/2",
+          "w": "5/18",
+          "finals": [
+            "5/18",
+            "0",
+            "5/36"
+          ],
+          "histories": [
+            "4/9",
+            "5/18",
+            "5/18",
+            "0"
+          ]
+        },
+        {
+          "t": "2",
+          "w": "3/8",
+          "finals": [
+            "3/8",
+            "0",
+            "3/16"
+          ],
+          "histories": [
+            "1/4",
+            "3/8",
+            "3/8",
+            "0"
+          ]
+        }
+      ],
+      "fourier_phase_exponents": [
+        0,
+        1
+      ],
+      "fourier_probability": "1/16",
+      "implementer_traces": [
+        16,
+        4,
+        16
+      ],
+      "full_channel_traces": [
+        256,
+        16,
+        256
+      ],
+      "moving_boundary_weights": {
+        "2": "1"
+      }
+    },
+    {
+      "p": 2,
+      "absolute_degree": 3,
+      "base_degree": 1,
+      "relative_degree": 3,
+      "orbit_multiplicities": {
+        "1": 2,
+        "3": 2
+      },
+      "integer_graph_dimension": 8,
+      "grade_one": "2/3",
+      "full_identity_dephased": [
+        "1",
+        "0",
+        "1/3"
+      ],
+      "events": [
+        {
+          "t": "1",
+          "w": "0",
+          "finals": [
+            "0",
+            "0",
+            "0"
+          ],
+          "histories": [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "t": "6/5",
+          "w": "11/108",
+          "finals": [
+            "11/108",
+            "0",
+            "11/324"
+          ],
+          "histories": [
+            "25/36",
+            "11/54",
+            "11/108",
+            "0"
+          ]
+        },
+        {
+          "t": "3/2",
+          "w": "5/27",
+          "finals": [
+            "5/27",
+            "0",
+            "5/81"
+          ],
+          "histories": [
+            "4/9",
+            "10/27",
+            "5/27",
+            "0"
+          ]
+        },
+        {
+          "t": "2",
+          "w": "1/4",
+          "finals": [
+            "1/4",
+            "0",
+            "1/12"
+          ],
+          "histories": [
+            "1/4",
+            "1/2",
+            "1/4",
+            "0"
+          ]
+        }
+      ],
+      "fourier_phase_exponents": [
+        0,
+        1
+      ],
+      "fourier_probability": "1/8",
+      "implementer_traces": [
+        8,
+        2,
+        2,
+        8
+      ],
+      "full_channel_traces": [
+        64,
+        4,
+        4,
+        64
+      ],
+      "moving_boundary_weights": {
+        "3": "1"
+      }
+    },
+    {
+      "p": 3,
+      "absolute_degree": 3,
+      "base_degree": 1,
+      "relative_degree": 3,
+      "orbit_multiplicities": {
+        "1": 3,
+        "3": 8
+      },
+      "integer_graph_dimension": 27,
+      "grade_one": "2/3",
+      "full_identity_dephased": [
+        "1",
+        "0",
+        "1/3"
+      ],
+      "events": [
+        {
+          "t": "1",
+          "w": "0",
+          "finals": [
+            "0",
+            "0",
+            "0"
+          ],
+          "histories": [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "t": "6/5",
+          "w": "11/108",
+          "finals": [
+            "11/108",
+            "0",
+            "11/324"
+          ],
+          "histories": [
+            "25/36",
+            "11/54",
+            "11/108",
+            "0"
+          ]
+        },
+        {
+          "t": "3/2",
+          "w": "5/27",
+          "finals": [
+            "5/27",
+            "0",
+            "5/81"
+          ],
+          "histories": [
+            "4/9",
+            "10/27",
+            "5/27",
+            "0"
+          ]
+        },
+        {
+          "t": "3",
+          "w": "8/27",
+          "finals": [
+            "8/27",
+            "0",
+            "8/81"
+          ],
+          "histories": [
+            "1/9",
+            "16/27",
+            "8/27",
+            "0"
+          ]
+        }
+      ],
+      "fourier_phase_exponents": [
+        0,
+        1,
+        2
+      ],
+      "fourier_probability": "1/27",
+      "implementer_traces": [
+        27,
+        3,
+        3,
+        27
+      ],
+      "full_channel_traces": [
+        729,
+        9,
+        9,
+        729
+      ],
+      "moving_boundary_weights": {
+        "3": "1"
+      }
+    }
+  ]
+}
