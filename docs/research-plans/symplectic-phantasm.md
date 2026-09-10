@@ -44,10 +44,26 @@ investigating its ideas; it does not endorse its mathematical assertions.
    real PDF build; record the next bounded task in `HANDOFF.md`.
 
 This is rk-light: Markdown is the argument record, with a small local
-contract checker. No theorem prover, CI service, repeated review campaign,
-or speculative taxonomy is required. Contract checks validate references,
+contract checker. No theorem prover, CI service or repeated review campaign
+is required. Contract checks validate references,
 types as declared, dependency order and evidence/status consistency. They
 cannot decide whether a proof is mathematically correct.
+
+## Tracking categorical structure — TJO steering, 2026-09-10
+
+Understand and track the structural properties the categories can carry,
+their interactions, and their transport through the comparison functors,
+so that the arithmetic construction can develop flexibly. The working
+record is `categorical-structure.md`. It starts with cups/caps and the
+state/process correspondence, then links scalar normalization, sums,
+duality and quantum-process structure to the existing research gates.
+
+For each adjective, specify the exact category and extra data, the laws,
+the evidence and what it enables. For each comparison, specify what is
+preserved or forgotten and in what sense. Definitions and claim statuses
+remain in their single sources. The record is an open research agenda,
+not an assertion that all desired structures coexist. It accompanies the
+bounded lemma clusters; SP-WEYL → SP-EGOROV → SP-TENSOR remains next.
 
 ## Construction order and acceptance gates
 

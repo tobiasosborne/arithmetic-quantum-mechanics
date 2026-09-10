@@ -1021,9 +1021,9 @@ Route: https://arxiv.org/e-print/2105.06244 (TeX archive); final URL: https://ar
 
 Local readable body: `refs/symplectic-phantasm/SP-CK21/lagrel.tex`.
 
-Verified locators: title/authors lines 276–279; §4, theorem:spekkens at lines 3705ff; scalar scope at lines 382–385.
+Verified locators: title/authors lines 276–279; §2, compact-closure and currying paragraph at line 1860 (inspected 2026-09-10); §4, theorem:spekkens at lines 3705ff; scalar scope at lines 382–385.
 
-Scope: The affine-Lagrangian/stabilizer prop comparison is for odd prime dimensions and modulo invertible scalars. It is a structural control, not normalized instrument semantics; extension fields require a separate comparison.
+Scope: The affine-Lagrangian/stabilizer prop comparison is for odd prime dimensions and modulo invertible scalars. It is a structural control, not normalized instrument semantics; extension fields require a separate comparison. The §2 compact-closure discussion concerns linear Lagrangian relations; matching the opposite-form dual, dagger and affine/empty conventions of D1702 remains an explicit local comparison task.
 
 ### SP-BC24
 
@@ -1201,9 +1201,9 @@ Route: https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf (PDF); final URL: https://cs
 
 Local readable body: `refs/symplectic-phantasm/SP-WAT18/paper.txt`.
 
-Verified locators: PDF title page; Chapter 2, Theorems 2.22 and 2.26, and §2.3 Instruments.
+Verified locators: PDF title page; Chapter 2, Theorems 2.22 and 2.26, and §2.3 Instruments; §2.2, Choi representation, equations (2.64)–(2.66), printed p.78 (inspected 2026-09-10).
 
-Scope: Author-hosted 2018 draft; source for CP/Kraus/trace-preservation and instrument contracts. Personal-use source body remains ignored and is not redistributed.
+Scope: Author-hosted 2018 draft; source for CP/Kraus/trace-preservation and instrument contracts. The Choi representation uses the displayed operator-vector convention and output/input tensor order, to be matched explicitly in a relation comparison. Personal-use source body remains ignored and is not redistributed.
 
 ### SP-STFIELD
 

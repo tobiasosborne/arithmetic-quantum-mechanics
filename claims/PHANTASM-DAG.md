@@ -8,6 +8,11 @@ is `docs/research-plans/symplectic-phantasm-sources.md`; the staged work order
 and unformulated global decision gates are in
 `docs/research-plans/symplectic-phantasm.md`.
 
+The continuing questions about categorical properties and their transport
+are in `docs/research-plans/categorical-structure.md`. Its compact-structure
+follow-up must receive an explicit claim before admission; it does not
+silently enlarge SP-LREL or change the current dependency order.
+
 Run `python3 theory/checks/phantasm_contract_check.py`. It checks the schema,
 reference resolution, dependency acyclicity, local source hashes, inherited-proof status, definition reuse, selected notation
 ownership and evidence requirements, and exact statement/definition restatements in the

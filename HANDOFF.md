@@ -4,6 +4,48 @@
 
 # HANDOFF — live state
 
+## Current steering — categorical structure and full campaign (2026-09-10)
+
+TJO asked to track the structural properties the categories can carry and
+their interactions, so that the arithmetic construction can develop
+flexibly. `docs/research-plans/categorical-structure.md` records the
+continuing questions, existing carriers and comparison tasks. Definitions
+and claim statuses retain their canonical homes. The first follow-up is
+the explicit compact structure, state/process correspondence and scalar
+transport for Lagrangian relations; this needs a new claim before admission
+and does not silently enlarge SP-LREL. The Phantasm labbook section now
+records that research direction. Relevant compact/Choi source locators
+were checked and added to the existing ledger entries.
+
+TJO then authorized continued orchestration toward landing the whole
+Phantasm campaign and understanding exactly whether, and where, a precise
+construction aimed at Riemann zeros fails. A persistent session goal is
+active. Its acceptance is rigorous construction and an exact spectral
+comparison or a precisely scoped failure with a forward strategy, not a
+promised Riemann-hypothesis result. Earlier paused programmes stay paused
+unless they provide a named dependency. No claim or definition changed in
+this steering increment.
+
+The bounded stage-1 work order is `briefs/phantasm-stage1-target.md`.
+The existing SP-WEYL corollary is in one blind critic pass; independent
+lanes are drafting SP-EGOROV/SP-TENSOR and their exact falsifiers under
+`theory/lanes/phantasm-stage1/`. Lane output is unadmitted until integrated
+and reviewed. The current register remains 158 claims (121 PROVED,
+33 SKETCH, three CONJECTURE, one REFUTED) and 173 definitions.
+
+Verification of this steering increment passed: the contract checker,
+labbook lockstep gate, real PDF build, all 27 green suites and all 270
+advertised red runs. The labbook builds at 175 pages; the new discussion
+on pp.166–167 has been visually inspected. The final provenance edit was
+rebuilt and the lockstep and contract gates passed again.
+
+Before the first promotion, repair the contract checker's false-promotion
+mutation: an in-memory already-admitted fixture showed that it currently
+changes nothing. Also keep inherited-status mutation reachability stable
+when inherited claims become dependencies of admitted SP claims. The
+current unpromoted repository passes; this is a required promotion guard
+repair, not a mathematical objection to the Weyl corollary.
+
 ## Current state — reuse and interface repair (2026-09-10)
 
 TJO asked to weave the already admitted results into the Phantasm plan and
