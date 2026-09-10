@@ -1,5 +1,14 @@
 # Symplectic Phantasm argument-contract expectations
 
+2026-09-10 relation-cluster extension: Proof may list comma-separated
+structured shards, as the path-resolution gate already permits. G4 must
+inspect every listed shard and reject an unstructured additional file.
+The new `--red-proof-shard` mutation appends an existing non-proof planning
+file to an admitted claim's proof paths and must fail at G4, not with an
+input/path exception. An in-memory two-valid-shard record exposed the old
+single-path assumption before repair. Help text must advertise only real
+standalone mutation flags, without a wildcard placeholder token.
+
 2026-09-10 promotion guard repair: `--red-promote` asserts PROVED while
 explicitly replacing admission evidence by `draft`, so it remains a defect
 after the target claim is admitted. The inherited-provenance part of G8
@@ -31,7 +40,7 @@ must run the retrieval script and verify its hashes before this passes.
 | G1 | Unique, nonempty node schema and fields; parseable claim/source/order rows | duplicate-node, empty-scope |
 | G2 | One contract per SP claim, matching status/dependencies/stage; definitions, source ids, decision prerequisites and evidence paths resolve; plan and decision graph agree | missing-node, missing-definition, status, orphan-claim, decision-input |
 | G3 | Acyclic lemma and decision dependency graph | cycle, decision-cycle |
-| G4 | No reliance on REFUTED nodes; a PROVED node has PROVED dependencies, admitted evidence, real structured proof, adjudication and checker paths | refuted, promote |
+| G4 | No reliance on REFUTED nodes; a PROVED node has PROVED dependencies, admitted evidence, every listed proof shard structured, adjudication and checker paths | refuted, promote, proof-shard |
 | G5 | Every cited source is LOCAL with readable body and correct raw/readable SHA256; GAP cannot serve as evidence | source-hash, source-gap |
 | G6 | Exact definition/claim restatement, scope and status in the owning labbook; all new definitions in notation and root LaTeX inputs | labbook, definition-drift |
 | G7 | Selected shared-name ownership, no retired aliases, reference-aligned symmetrized formula, and distinct relative character | notation-alias, notation-owner |

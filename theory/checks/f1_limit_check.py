@@ -2,7 +2,7 @@
 """Exact finite probes for the operational categorical limit.
 
 Rational arithmetic only; samples are falsifiers, never continuity proofs.
-Every --red-* changes mathematical data and must produce a named FAIL.
+Every mutation changes mathematical data and must produce a named FAIL.
 """
 import argparse
 from fractions import Fraction as F

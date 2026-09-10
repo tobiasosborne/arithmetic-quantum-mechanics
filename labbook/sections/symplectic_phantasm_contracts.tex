@@ -4,7 +4,7 @@ The first contract is a finite-abelian corollary with an explicit phase and
 central-quotient comparison. The underlying tensor theorem is already
 available. The statements below distinguish these inherited results from
 the remaining affine naturality, relation semantics and analytic work.
-The first three propositions are proved; the remaining eleven retain sketch status.
+The first six propositions are proved; the remaining nine retain sketch status.
 
 \begin{proposition}[Weyl realization]
 \statusProved{}
@@ -248,7 +248,7 @@ representatives.
 \end{proof}
 
 \begin{proposition}[Composition of affine Lagrangian relations]
-\statusSketch{}
+\statusProved{}
 For every finite field $k$, the affine Lagrangian relation prescription is closed
 under relational composition and product and forms a dagger symmetric monoidal
 category. Its unit is the zero symplectic space. Graphs of affine symplectic
@@ -258,19 +258,220 @@ groupoid.
 \begin{scope}
 This concerns finite linear/affine geometry, including empty relations. It does not assert a normalized quantization of those relations.
 \end{scope}
-\provenance{SP-LREL}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-LREL}{Reviewed structured relation proofs}{Exact F2/F3 relation and compact controls}{Single blind review, sole repair and relation-cluster adjudication}
 
-\begin{proposition}[The scalar-quotient stabilizer comparison]
-\statusSketch{}
-For an odd prime $p$, restrict the affine Lagrangian relation category to the
-standard spaces $\mathbb F_p^{2n}$, $n\geq0$. There is a dagger symmetric monoidal
-equivalence to $\mathsf{Stab}^{\mathrm{proj}}_p$ sending rank $n$ to $\ell^2(\mathbb
-F_p^n)$ and the empty relation to the zero map class.
+\begin{proof}
+For linear arrows $R\subseteq\overline V\oplus W$ and
+$S\subseteq\overline W\oplus Z$, put
+\[
+ X=\overline V\oplus W\oplus\overline W\oplus Z,
+ \quad L=R\oplus S,
+ \quad C=\overline V\oplus\Delta_W\oplus Z.
+\]
+Then $L$ is Lagrangian, $C$ is coisotropic, and
+\[
+ C^\perp=\{(0,w,w,0):w\in W\}.
+\]
+The reduced space $C/C^\perp$ is symplectically identified with
+$\overline V\oplus Z$ by
+$[(v,w,w,z)]\mapsto(v,z)$.  For completeness, if $K=C^\perp$,
+$\dim X=2N$ and $\dim K=r$, then
+\[
+ (L+K)^\perp=L\cap C,
+ \qquad
+ \dim(L\cap C)=N-r+\dim(L\cap K).
+\]
+It follows that the image of $L\cap C$ in $C/K$ is isotropic of dimension
+$N-r$, half the reduced dimension, hence is Lagrangian.  Under the displayed
+identification this image is exactly
+\[
+ \{(v,z):\exists w,\ (v,w)\in R,\ (w,z)\in S\}=S\circ R.
+\]
+For nonempty affine translates, intersection with $C$ is either empty or,
+after choosing one point $(v_0,w_0,w_0,z_0)$, is that point plus the
+intersection of the direction space with $C$.  Its outer projection is
+therefore $(v_0,z_0)$ plus the linear composite.  This proves affine and
+empty closure without a transversality assumption and without division, so
+it includes characteristic two.
+
+Associativity and the identity laws follow by expanding the existential
+middle variables.  Converse exchanges the two endpoint factors; this map
+negates the ambient form and hence preserves Lagrangian subspaces, including
+in characteristic two.  Direct sum preserves Lagrangian direction spaces,
+and the prescribed reorder is symplectic because
+\[
+ (-\omega_V+\omega_W)+(-\omega_{V'}+\omega_{W'})
+ =-(\omega_V+\omega_{V'})+(\omega_W+\omega_{W'}).
+\]
+The usual rebracketing, zero-space and exchange graphs give the coherence
+maps, whose diagrams reduce to equality of tuple maps.  Finally, for an
+affine symplectic isomorphism $f(v)=gv+t$, its graph is the translate of
+$\{(v,gv)\}$; the latter is isotropic of half dimension.  Graphs preserve
+identity, composition and direct sum and determine their functions, giving
+the faithful symmetric monoidal functor.
+\end{proof}
+
+\begin{proposition}[Dagger compact affine Lagrangian relations]
+\statusProved{}
+For every finite field $k$, the prescribed compact data make
+$\mathsf L_k^{\mathrm{aff}}$ a dagger compact category with dual $\overline V$.
+The diagonal cup and cap are affine Lagrangian relations and satisfy
+\[
+\begin{aligned}
+ \lambda_V\circ(\epsilon_V\oplus1_V)\circ a^{-1}_{V,\overline V,V}
+ \circ(1_V\oplus\eta_V)\circ\rho_V^{-1}&=1_V,\\
+ \rho_{\overline V}\circ(1_{\overline V}\oplus\epsilon_V)
+ \circ a_{\overline V,V,\overline V}\circ(\eta_V\oplus1_{\overline V})
+ \circ\lambda_{\overline V}^{-1}&=1_{\overline V}.
+\end{aligned}
+\]
+They obey $\eta_V^\dagger=\epsilon_V\circ\sigma_{\overline V,V}$.
+Name and unname are inverse bijections
+$\mathsf L_k^{\mathrm{aff}}(V,W)\cong
+\mathsf L_k^{\mathrm{aff}}(0,\overline V\oplus W)$ that retain the same
+ordered affine relation and preserve the empty relation.
+The endomorphisms of $0$ are exactly $\varnothing$ and $\Delta_0$.
+Composition and tensor transported by $\lambda_0$ have the same
+multiplication, with $\varnothing$ absorbing and $\Delta_0$ the identity.
+For every $V$, $\epsilon_V\circ\sigma_{\overline V,V}\circ\eta_V=\Delta_0$.
 \end{proposition}
 \begin{scope}
-The comparison is modulo all invertible complex scalars and is only formulated here for prime fields. It is not a probability-preserving instrument functor.
+Classical affine Lagrangian relations over every finite field, including characteristic two and empty relations. No quantum normalization, amplitude, probability, stabilizer equivalence or Choi theorem.
 \end{scope}
-\provenance{SP-STAB-REL}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-COMPACT}{Reviewed structured relation proofs}{Exact F2/F3 relation and compact controls}{Single blind review, sole repair and relation-cluster adjudication}
+
+\begin{proof}
+The diagonal in $\overline V\oplus V$ is isotropic because its form is
+$-\omega_V(v,w)+\omega_V(v,w)=0$ and is Lagrangian because its dimension is
+$\dim V$.  This types both $\eta_V$ and $\epsilon_V$ with their displayed
+factor orders.  Expanding the first snake, an input $x$ is related through
+the cup to $(x,(u,u))$, the inverse associator sends this to $((x,u),u)$,
+and the cap forces $x=u$; the final output is $x$.  Expanding the second
+snake similarly sends $x$ through $((u,u),x)$ and the cap forces $u=x$.
+Thus the two fully unital composites in the proposition are the relevant
+identity relations.  Converse turns the cup into the diagonal effect on
+$\overline V\oplus V$, which is
+$\epsilon_V\circ\sigma_{\overline V,V}$.
+
+For any $R:V\to W$, its name contains $(0,(v,w))$ exactly when
+$(v,w)\in R$.  Conversely, the unname of $Q$ relates $v$ to $w$ exactly
+when $(0,(v,w))\in Q$: the cap forces the copied input coordinate to equal
+the first coordinate of the state.  Hence the two maps are inverse and
+retain affine, nonfunctional and empty relations.
+
+A relation $0\to0$ is a subset of a singleton, so the only two allowed
+scalars are $\varnothing$ and $\Delta_0$.  Direct expansion shows that
+composition and
+$\lambda_0\circ(s\oplus t)\circ\lambda_0^{-1}$ have the two-element
+Boolean multiplication table.  In the closed cup--cap composite the zero
+vector is always a middle witness, so existential relation composition
+gives $\Delta_0$ for every $V$; no cardinality or amplitude is retained.
+\end{proof}
+
+\begin{proposition}[The scalar-quotient stabilizer comparison]
+\statusProved{}
+For an odd prime $p$, restrict the affine Lagrangian relation category to the standard spaces $V_n=\mathbb F_p^n\oplus\mathbb F_p^n$, $n\geq0$. For every nonempty arrow $R:V_m\to V_n$, $\mathcal E_p(R)$ is a one-dimensional subspace of $\operatorname{Hom}_{\mathbb C}(H_{\mathbb F_p,m},H_{\mathbb F_p,n})$ contained in $\mathsf{Stab}^{\mathrm{amp}}_p(H_{\mathbb F_p,m},H_{\mathbb F_p,n})$, while $\mathcal E_p(\varnothing)=\{0\}$. The assignments $V_n\mapsto H_{\mathbb F_p,n}$, $R\mapsto[T]$ for any nonzero $T\in\mathcal E_p(R)$, and $\varnothing\mapsto[0]$ define a dagger symmetric monoidal equivalence to $\mathsf{Stab}^{\mathrm{proj}}_p$.
+\end{proposition}
+\begin{scope}
+Standard-object props over odd prime fields, modulo all invertible complex scalars, retaining a separate zero. No norm, success probability, CP map or arithmetic-source exhaustion.
+\end{scope}
+\provenance{SP-STAB-REL}{Reviewed intertwiner-line, functor and equivalence proofs}{Exact stabilizer comparison controls}{Single blind review, sole repair and relation-cluster adjudication}
+
+\begin{proof}
+On the Hilbert--Schmidt space
+$\operatorname{Hom}_{\mathbb C}(H_{\mathbb F_p,m},H_{\mathbb F_p,n})$
+put
+\[
+ \rho(v,w)T=W^{\mathrm s}_{\mathbb F_p,n}(w)T
+ W^{\mathrm s}_{\mathbb F_p,m}(v)^*.
+\]
+The half-form Weyl law gives
+\[
+ \rho(x)\rho(y)=\psi_{\mathbb F_p}
+   (\Omega_{m,n}(x,y)/2)\rho(x+y),
+\]
+and the trace of $\rho(x)$ is zero unless $x=0$, when it is
+$p^{m+n}$.  If $R=r+L$ is nonempty, isotropy makes $\rho|_L$ an ordinary
+unitary representation and
+\[
+ P_R=\frac1{|L|}\sum_{\ell\in L}
+ \psi_{\mathbb F_p}(\Omega_{m,n}(r,\ell))\rho(\ell)
+\]
+is the orthogonal projector onto the displayed intertwiner space.  Changing
+$r$ by an element of $L$ leaves every coefficient unchanged.  Since
+$|L|=p^{m+n}$, Weyl trace orthogonality gives
+$\operatorname{Tr}(P_R)=1$.  Thus every nonempty relation gives one nonzero
+operator line, while the empty relation gives only zero.
+
+Composition also detects empty affine intersections.  For
+$R:V_m\to V_n$, let
+\[
+ A_R=\{a:(0,a)\in L_R\};
+\]
+the range of a nonzero $T\in\mathcal E_p(R)$ is exactly the simultaneous
+Weyl eigenspace for $A_R$ with character
+$a\mapsto\psi_{\mathbb F_p}(-\omega_n(r_n,a))$.  The analogous input
+eigenspace describes the initial support.  For composable nonempty $R,S$,
+the two middle support projectors have nonzero product exactly when their
+characters agree on the intersection of their isotropic label groups.  By
+symplectic annihilators, this is exactly the condition that the affine middle
+projections meet, hence exactly that $S\circ R$ is nonempty.  In that case,
+choosing a common middle origin cancels the two middle form terms and proves
+\[
+ \mathcal E_p(S)\mathcal E_p(R)=\mathcal E_p(S\circ R).
+\]
+When the middle projections do not meet, the projector product and every
+operator composite are zero.
+
+For bare relational converse the endpoint form changes sign.  Taking the
+Hilbert adjoint of the defining equation gives exactly
+\[
+ \mathcal E_p(R^\dagger)=\mathcal E_p(R)^*.
+\]
+The direct-sum form adds and the admitted grouped Weyl comparison gives
+$\mathcal E_p(R\oplus S)=\mathcal E_p(R)\otimes\mathcal E_p(S)$, including
+the zero and rank-zero cases.  The identity relation has the scalar line of
+the identity operator by the full-matrix Weyl commutant.
+
+For target membership, use the explicit symplectic identification
+$c_m:\overline V_m\to V_m$, $c_m(a,b)=(a,-b)$, and
+\[
+ \operatorname{vec}(T)=\sum_x\delta_x\otimes T\delta_x.
+\]
+Complex conjugation gives
+$\overline{W^{\mathrm s}(a,b)}=W^{\mathrm s}(a,-b)$, so vectorization sends
+$\mathcal E_p(R)$ to the stabilizer-state line of
+$(c_m\oplus1)(\ulcorner R\urcorner)$.  Every affine Lagrangian state is a
+Clifford image of $\delta_0^{\otimes(m+n)}$: extend a basis of its direction
+to a symplectic basis and use the admitted affine Egorov implementer.
+Unvectorization contracts with the stabilizer Bell effect, so every operator
+in the line is an actual stabilizer amplitude.
+For an empty arrow of type $V_m\to V_n$, let
+$e_j:\mathbb C\to H_{\mathbb F_p,j}$ be the tensor of $j$ computational
+zero preparations, with $e_0=1_{\mathbb C}$.  Its image is the typed actual
+zero map
+\[
+ e_n\circ(0:\mathbb C\to\mathbb C)\circ e_m^*:
+ H_{\mathbb F_p,m}\longrightarrow H_{\mathbb F_p,n},
+\]
+using only the preparation, scalar, tensor, adjoint and composition
+generators.
+
+Finally take an arbitrary $U\in C_2(A)$.  Conjugation has the unique form
+\[
+ U W(v)U^*=\gamma(v)W(gv).
+\]
+The Weyl product and commutator force $g$ to be linear symplectic and
+$\gamma$ to be an additive character.  Hence uniquely
+$\gamma(v)=\psi_{\mathbb F_p}(\omega(t,gv))$, so $U$ spans the line of the
+affine graph $(t,g)$.  This treats every second-level unitary.  Together with
+the computational preparation, its adjoint, and the scalar generators, it
+proves fullness.  The projective Weyl stabilizer of a nonzero line recovers
+its Lagrangian direction, and its eigencharacter recovers the affine coset,
+which proves faithfulness.  The object assignment is surjective, completing
+the stated dagger symmetric monoidal equivalence, using the relation and
+compact laws proved above.
+\end{proof}
 
 \begin{proposition}[Scalar normalization]
 \statusSketch{}

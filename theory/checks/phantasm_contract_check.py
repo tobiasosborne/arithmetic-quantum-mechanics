@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check the Phantasm Markdown contracts, not mathematical truth.
 
-Runs read-only against the repository (or --root). Every --red-* option
+Runs read-only against the repository (or --root). Every mutation option
 changes a copy of actual input data and must fail at its declared gate.
 Source bodies must first be retrieved using scripts/fetch-phantasm-sources.py.
 """
@@ -22,7 +22,7 @@ MUTATIONS = {
     'missing-node': 'G2', 'missing-definition': 'G2', 'status': 'G2',
     'orphan-claim': 'G2', 'decision-input': 'G2',
     'cycle': 'G3', 'decision-cycle': 'G3',
-    'refuted': 'G4', 'promote': 'G4',
+    'refuted': 'G4', 'promote': 'G4', 'proof-shard': 'G4',
     'source-hash': 'G5', 'source-gap': 'G5',
     'labbook': 'G6', 'definition-drift': 'G6',
     'notation-alias': 'G7', 'notation-owner': 'G7',
@@ -167,6 +167,8 @@ def mutate(data, mutation):
         d['nodes'][cid]['Status'] = d['claims'][cid]['status'] = 'PROVED'
         # Still a false promotion when this node is already admitted.
         d['nodes'][cid]['Evidence'] = 'draft'
+    elif mutation == 'proof-shard':
+        d['nodes'][cid]['Proof'] += ',docs/research-plans/categorical-structure.md'
     elif mutation == 'source-hash':
         d['sources']['SP-GH07']['readable_sha'] = '0' * 64
     elif mutation == 'source-gap':
@@ -271,10 +273,11 @@ def check(d, root):
             require(node['Evidence'] == 'admitted' and
                     all(node[k] != 'none' for k in ('Proof', 'Review', 'Checks')),
                     'G4', 'promotion has no admitted proof/review/checks ' + cid)
-            proof = (root / node['Proof']).read_text()
             review = (root / node['Review']).read_text()
-            require(all(s in proof for s in ('<1>', 'ASSUME', 'PROVE', 'QED')),
-                    'G4', 'missing structured proof markers ' + cid)
+            for proof_path in csv(node['Proof']):
+                proof = (root / proof_path).read_text()
+                require(all(s in proof for s in ('<1>', 'ASSUME', 'PROVE', 'QED')),
+                        'G4', 'missing structured proof markers ' + cid + ': ' + proof_path)
             require('Admitted: ' + cid in review, 'G4', 'missing explicit adjudication ' + cid)
     for key, decision in d['decisions'].items():
         require(all(x not in claims or claims[x]['status'] != 'REFUTED'

@@ -10,8 +10,8 @@ and unformulated global decision gates are in
 
 The continuing questions about categorical properties and their transport
 are in `docs/research-plans/categorical-structure.md`. Its compact-structure
-follow-up must receive an explicit claim before admission; it does not
-silently enlarge SP-LREL or change the current dependency order.
+follow-up is owned by the separate SP-COMPACT claim; it does not silently
+enlarge SP-LREL. Scalar and operational comparisons are the next work.
 
 Run `python3 theory/checks/phantasm_contract_check.py`. It checks the schema,
 reference resolution, dependency acyclicity, local source hashes, inherited-proof status, definition reuse, selected notation
@@ -42,16 +42,17 @@ records exist and agree. Human mathematical review remains indispensable.
 | SP-EGOROV | 1 | 2 |
 | SP-TENSOR | 1 | 3 |
 | SP-LREL | 2 | 4 |
-| SP-STAB-REL | 2 | 5 |
-| SP-SCALAR | 2 | 6 |
-| SP-CP | 2 | 7 |
-| SP-SUM | 3 | 8 |
-| SP-FOCK | 3 | 9 |
+| SP-COMPACT | 2 | 5 |
+| SP-STAB-REL | 2 | 6 |
+| SP-SCALAR | 2 | 7 |
+| SP-CP | 2 | 8 |
+| SP-SUM | 3 | 9 |
 | SP-TRACE | 4 | 10 |
 | SP-FROB | 4 | 11 |
 | SP-SUBSYS | 4 | 12 |
-| SP-PRIME | 5 | 13 |
-| SP-BC-CONTROL | 5 | 14 |
+| SP-FOCK | 3 | 13 |
+| SP-PRIME | 5 | 14 |
+| SP-BC-CONTROL | 5 | 15 |
 <!-- PHANTASM-ORDER-END -->
 
 ## Decision gates extending the graph
@@ -65,7 +66,7 @@ downstream mathematical assertion is admitted. Full work orders appear in
 | decision | dependencies | sources | required output | state |
 |---|---|---|---|---|
 | DG-CHAR2 | SP-WEYL,SP-EGOROV,F1-REAL,F1-RING,WH-WEIL-a,WH-WEIL-c,WH-WEIL-d | SP-GH08 | Reuse the admitted characteristic-two Weyl models; specify the extra symmetry-lift and phase data without assuming a full splitting | OPEN |
-| DG-REL-LIFT | SP-STAB-REL,SP-SCALAR,SP-CP,FRP-CAT,FRP-CP | SP-CK21,SP-BC24,SP-WAT18 | Scalar-retaining relation/circuit presentation, compared with the existing arithmetic source only on explicitly matched fragments | OPEN |
+| DG-REL-LIFT | SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP,FRP-CAT,FRP-CP | SP-CK21,SP-BC24,SP-WAT18 | Scalar-retaining relation/circuit presentation, compared with the existing arithmetic source only on explicitly matched fragments | OPEN |
 | DG-RIG | SP-TENSOR,SP-SUM,SP-FOCK | SP-CK21,SP-DER06,SP-JOY81 | Classical additive construction and both-product coherence contracts | OPEN |
 | DG-HIGHER | SP-EGOROV,SP-TRACE,FRB-HIERARCHY,FRB-NATURAL | SP-CGK17,SP-GROSS06 | Geometric interpretation of the admitted multiplication/phase families, starting with their existing cubic example | OPEN |
 | DG-GLOBAL | SP-PRIME,SP-BC-CONTROL,SP-FROB,SP-SUBSYS,DG-CHAR2,DG-REL-LIFT,DG-RIG | SP-CM04,SP-CCM07,SP-CM08 | Actual inter-prime arithmetic maps, their relations and a global algebra definition | OPEN |
@@ -153,52 +154,88 @@ downstream mathematical assertion is admitted. Full work orders appear in
 ## SP-LREL
 
 - Title: Composition of affine Lagrangian relations
-- Status: SKETCH
+- Status: PROVED
 - Stage: 2
 - Definitions: D1701,D1702
 - Dependencies: none
 - Inherited: none
 - Reuse: The existing flag-context correspondences are different morphisms; no admitted affine-Lagrangian category theorem is used.
-- Remaining: Derive closure by finite linear reduction and the affine empty-case law; then verify graph, dagger and tensor typing.
+- Remaining: None within the admitted statement. Finite coisotropic reduction, affine/empty closure, source and relation monoidal data, dagger and the graph functor have passed capped review.
 - Sources: SP-W09,SP-LW14,SP-CK21
 - Inputs: R:V->W and S:W->Z; symplectic spaces over one finite field
 - Output: S o R:V->Z in the same relation class; product and dagger laws
 - Choices: Minus sign on the source form and explicit coordinate reordering
 - Scope: This concerns finite linear/affine geometry, including empty relations. It does not assert a normalized quantization of those relations.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/lrel-reduction.md,theory/symplectic-phantasm/lrel-laws.md
+- Review: theory/verdicts/phantasm-relations-adjudication.md
+- Checks: theory/checks/phantasm_relations_check.py
+- Evidence: admitted
 
 **Construction outline.** Reduce the product relation along the diagonal in the middle space. Prove the dimension/isotropy statement by annihilators and kernel counting; translate the affine case to the linear case when nonempty. Use ordinary relation composition for associativity.
 
-**Falsifier scope.** Enumerate affine Lagrangians in F2^2 and F3^2 and small zero/one-register Hom-sets; compare image dimensions and existential composition by independent enumeration.
+**Falsifier scope.** Implemented: phantasm_relations_check.py G1--G5 enumerates the zero/one-register Hom-sets over F2/F3, compares all 144,806 composable pairs by sparse joins and independent affine-equation solving, all 290,794 F2 triples plus 4,096 F3 triples, and the declared tensor/graph cases. It does not prove the all-field or arbitrary-rank claim.
 
 **Required mutations.** Use the positive form on both source and target; discard empty composites; use a universal instead of existential middle-point condition.
+
+## SP-COMPACT
+
+- Title: Dagger compact affine Lagrangian relations
+- Status: PROVED
+- Stage: 2
+- Definitions: D1701,D1702,D1714
+- Dependencies: SP-LREL
+- Inherited: none
+- Reuse: SP-LREL supplies the category, dagger, symmetric monoidal product and coherence laws; D1714 adds only the compact data and typed state/process maps.
+- Remaining: None within the admitted statement. Both typed snakes, dagger compatibility, name/unname, empty preservation, the two scalars and closed-loop law have passed capped review. Quantum normalization remains separate.
+- Sources: SP-CK21,SP-LW14,SP-W09
+- Inputs: A finite field k; symplectic spaces V,W; D1714 cup, cap and coherence data
+- Output: Dagger compact structure, typed state/process bijection, and the exact endomorphism/closed-loop scalar result with tensor transported by the unit comparison
+- Choices: Opposite-form dual; displayed cup/cap factor orders; graph associator, unitors and swap; existential witness-forgetting relation convention
+- Scope: Classical affine Lagrangian relations over every finite field, including characteristic two and empty relations. No quantum normalization, amplitude, probability, stabilizer equivalence or Choi theorem.
+- Proof: theory/symplectic-phantasm/compact.md
+- Review: theory/verdicts/phantasm-relations-adjudication.md
+- Checks: theory/checks/phantasm_relations_check.py
+- Evidence: admitted
+
+**Construction outline.** Check the diagonal forms and half dimensions
+directly.  Expand both snake composites as existential relations with all
+coherence maps present.  Expand name and unname to show that each is the
+same ordered subset under a change of type.  Classify subrelations of the
+zero object and compute the loop using existence, not witness counting.
+
+**Falsifier scope.** Implemented: phantasm_relations_check.py G6--G7 checks
+both fully typed snakes and all 466 names/unnames on the zero/one-register
+F2/F3 Hom-sets, including empty and nonfunctional relations. Closed loops
+are checked as relations, separately from middle-witness counts.
+
+**Required mutations.** Omit the opposite sign; reverse exactly one cup
+factor; drop the swap in dagger compatibility; replace existential
+witness-forgetting by the multiplicity $|V|$; or send the empty name to the
+nonempty scalar.
 
 ## SP-STAB-REL
 
 - Title: The scalar-quotient stabilizer comparison
-- Status: SKETCH
+- Status: PROVED
 - Stage: 2
-- Definitions: D1701,D1702,D1703,D1704,D1705
-- Dependencies: SP-LREL,SP-WEYL,SP-EGOROV,SP-TENSOR
+- Definitions: D1301,D1307,D1701,D1702,D1703,D1704,D1705,D1715
+- Dependencies: SP-LREL,SP-COMPACT,SP-WEYL,SP-EGOROV,SP-TENSOR
 - Inherited: none
-- Reuse: The scalar-quotient equivalence is sourced externally; the earlier lifted-frame comparison remains a sketch and is not an admitted equivalence.
-- Remaining: Match the source presentation to D1704/D1705, with the zero map and C^times quotient explicit. This is not the normalized operational lift.
-- Sources: SP-CK21,SP-BC24
-- Inputs: Standard affine relation prop over F_p; p an odd prime
-- Output: Equivalence to the scalar-quotient stabilizer prop
-- Choices: Generator conventions, Fourier sign and the C^times quotient including a separate zero
-- Scope: The comparison is modulo all invertible complex scalars and is only formulated here for prime fields. It is not a probability-preserving instrument functor.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Reuse: The admitted SP-WEYL/SP-EGOROV/SP-TENSOR dependencies supply full-matrix Weyl models, affine graph implementers and tensor comparison. SP-LREL/SP-COMPACT supply the admitted relation and compact laws; no pre-quest proof is imported directly here.
+- Remaining: None within the admitted statement. The origin-independent line, actual stabilizer membership, composition, bare dagger, tensor, recovery and every second-level unitary are covered by the reviewed constructive proof. Operational normalization remains separate.
+- Sources: SP-CK21,SP-GROSS06,SP-BC24
+- Inputs: An odd prime p; standard source and target ranks m,n; an affine Lagrangian relation R with the fixed trace-framed character
+- Output: The constructive dagger symmetric monoidal equivalence defined by the intertwiner line, with zero separate
+- Choices: D1703 Weyl phase; D1702 source sign and bare converse; grouped tensor order; quotient by every invertible complex scalar
+- Scope: Standard-object props over odd prime fields, modulo all invertible complex scalars, retaining a separate zero. No norm, success probability, CP map or arithmetic-source exhaustion.
+- Proof: theory/symplectic-phantasm/stabilizer-intertwiner-line.md,theory/symplectic-phantasm/stabilizer-functor-laws.md,theory/symplectic-phantasm/stabilizer-equivalence.md
+- Review: theory/verdicts/phantasm-relations-adjudication.md
+- Checks: theory/checks/phantasm_stabilizer_check.py
+- Evidence: admitted
 
-**Construction outline.** Transcribe the source presentation and its generator map; match its Weyl/Clifford normalization to ours. Verify defining relations, fullness and faithfulness with the source theorem at its exact scalar scope.
+**Construction outline.** Construct the intertwiner space by a finite Weyl group-average projector, prove its rank-one and stabilizer properties, and verify composition, dagger, tensor and recovery at the stated scalar quotient. Check all Clifford unitaries and the opposite-space/vectorization conversion explicitly; the external symmetric-monoidal theorem alone does not provide our dagger clause.
 
-**Falsifier scope.** Check the source generators for p=3,5, with state/effect composites, including one zero composite and two distinct nonzero norms representing the same class.
+**Falsifier scope.** Implemented: phantasm_stabilizer_check.py S1--S5 constructs all 216 projective qutrit Cliffords and 12/30 F3/F5 state rays, checks all 389 F3 relation lines and all-origin equations, all 140,101 compositions and 389 daggers, 338 state/effect tensors and 144 mixed cases. Separate zero and unequal norms are retained; F3/F5 Bell controls check unnormalized scalars. These finite cases do not prove the arbitrary-rank equivalence.
 
 **Required mutations.** Identify zero with a nonzero scalar; compare normed representatives as if the quotient were phase-only.
 

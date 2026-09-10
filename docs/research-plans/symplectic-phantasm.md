@@ -63,8 +63,10 @@ the evidence and what it enables. For each comparison, specify what is
 preserved or forgotten and in what sense. Definitions and claim statuses
 remain in their single sources. The record is an open research agenda,
 not an assertion that all desired structures coexist. It accompanies the
-bounded lemma clusters. Stage 1 is now admitted; SP-LREL and its explicit
-compact-structure follow-up are next.
+bounded lemma clusters. The local Weyl/affine/tensor and relation/compact/
+stabilizer clusters are admitted. Scalar normalization and instruments are
+next, with the global arithmetic action and reference state as the major
+construction to earn after the local interfaces.
 
 ## Construction order and acceptance gates
 
@@ -72,7 +74,7 @@ compact-structure follow-up are next.
 |---|---|---|
 | 0. Ground truth | Primary-source ledger, scope corrections and complete inventory of the note's definition requests | Every named literature lead is either locally verified or an explicit GAP; all sources used in the first cluster are local |
 | 1. Local objects and symmetries | Arbitrary-rank finite symplectic spaces, odd-characteristic Weyl algebra, affine Egorov action and direct-sum/tensor comparison | Typed contracts and proofs for SP-WEYL, SP-EGOROV and SP-TENSOR, with rank-zero and rank-one regressions |
-| 2. Relations and quantum processes | Affine Lagrangian relations, scalar-quotient stabilizer comparison, actual amplitude and instrument semantics | SP-LREL, SP-STAB-REL, SP-SCALAR and SP-CP; scalar recovery and success probabilities explicitly distinguished |
+| 2. Relations and quantum processes | Affine Lagrangian relations, scalar-quotient stabilizer comparison, actual amplitude and instrument semantics | SP-LREL, SP-COMPACT, SP-STAB-REL, SP-SCALAR and SP-CP; scalar recovery and success probabilities explicitly distinguished |
 | 3. Two sums and particle sectors | Coherent Hilbert sums, classical tags, and bosonic Fock construction on a stated class of maps | SP-SUM and SP-FOCK; decide what additional classical completion is wanted before calling it a rig quantization |
 | 4. Arithmetic extensions | Restriction of scalars, named Frobenius and subsystem decoding | SP-TRACE, SP-FROB and SP-SUBSYS; extension-degree-divisible-by-characteristic examples included |
 | 5. Global control objects | A specified inductive tensor product with product reference, and a concrete Bost–Connes benchmark | SP-PRIME and SP-BC-CONTROL; distinguish the two algebras and their dynamics |
@@ -95,7 +97,7 @@ formulated bootstrap, not for an as-yet undefined global construction.
 | Gate | Prerequisites | Required decision and reviewable output |
 |---|---|---|
 | DG-CHAR2 | SP-WEYL, SP-EGOROV, F1-REAL, F1-RING, WH-WEIL-a, WH-WEIL-c, WH-WEIL-d; SP-GH08 source audit | Reuse the admitted characteristic-two models. Specify the additional symmetry-lift/phase data; the general splitting conjecture is not an established input |
-| DG-REL-LIFT | SP-STAB-REL, SP-SCALAR, SP-CP, FRP-CAT, FRP-CP | Compare the existing scalar-retaining arithmetic source on matched fragments, then choose the required relation enrichment; its higher gates and coefficient restrictions prevent identifying the entire source with pure stabilizer theory |
+| DG-REL-LIFT | SP-COMPACT, SP-STAB-REL, SP-SCALAR, SP-CP, FRP-CAT, FRP-CP | Compare the existing scalar-retaining arithmetic source on matched fragments, then choose the required relation enrichment; its higher gates and coefficient restrictions prevent identifying the entire source with pure stabilizer theory |
 | DG-RIG | SP-TENSOR, SP-SUM, SP-FOCK | Choose formal additive completion, disjoint unions, or another explicit classical construction; prove distributivity and the quantum comparison without assuming all coherent sums preserve the stabilizer fragment |
 | DG-HIGHER | SP-EGOROV, SP-TRACE, FRB-HIERARCHY, FRB-NATURAL; SP-CGK17 | Start from the admitted multiplication/phase families and their d=2 cubic example. The new work is their nonlinear geometric interpretation and any needed extension, with phase precision and composition explicit |
 | DG-GLOBAL | SP-PRIME, SP-BC-CONTROL, SP-FROB, SP-SUBSYS, DG-CHAR2, DG-REL-LIFT, DG-RIG | Give the actual inter-prime arithmetic maps and their composition laws; an uncoupled product alone does not define a symplectic Bost–Connes system |
@@ -126,7 +128,8 @@ Abelian implementation with the symmetrized wavefunction, and distinguish
 a general relative character from the fixed absolute-trace family.
 The new `theory/checks/phantasm_egorov_check.py` supplies exact affine and
 tensor naturality probes at its declared scope. Finite passes do not prove
-the arbitrary-rank statements. The other eleven SP rows remain SKETCH.
+the arbitrary-rank statements. The later relation-cluster admission is
+recorded below; the current remaining statuses are in the canonical DAG.
 D1703 explicitly extends D9's unitary models and projectivization while
 keeping the standard coordinate construction separate.
 
@@ -135,11 +138,32 @@ canonical reuse record. D1701–D1713 have Reuses and Delta fields; the
 notation review is summarized in `symplectic-phantasm-reuse.md`. No new
 claim or definition numbers were needed for this repair.
 
-## Next bounded work — relations and compact structure
+## Relation and compact comparison completed — 2026-09-10
 
-Use `briefs/phantasm-relations-target.md`: first discharge SP-LREL, then
-formulate the explicit compact structure and its state/process comparison
-as a separate claim. The next stabilizer comparison remains scoped to odd
-prime fields and invertible scalars. Track closed-diagram scalars and
-normalization as inputs to SP-SCALAR and DG-REL-LIFT; compact closure does
-not itself establish a normalized quantum realization.
+SP-LREL, SP-COMPACT and SP-STAB-REL are admitted in that dependency order
+through `theory/verdicts/phantasm-relations-adjudication.md`. D1701 now
+owns the source monoidal data, D1714 the explicit compact data, and D1715
+the stabilizer intertwiner line. The classical conclusions include every
+finite field; the constructive quantum equivalence is restricted to odd
+prime standard objects modulo all invertible complex scalars. Its zero
+class stays separate. The exact source convention comparison is in
+`stabilizer-source-comparison.md`.
+
+## Next bounded work — scalar normalization and finite instruments
+
+Use `briefs/phantasm-processes-target.md`: SP-SCALAR and SP-CP reuse the
+admitted ordinary-trace Kraus calculation. Make representative norms,
+retained outcomes and sequential/tensor normalization explicit. The compact
+and projective results do not supply a normalized relation quantization.
+After one bounded SP-SUM closure, prioritize SP-TRACE, SP-FROB and
+SP-SUBSYS before SP-FOCK. This 2026-09-10 scheduling decision advances the
+arithmetic action while preserving every mathematical dependency and every
+required global gate. The DAG priority table records this order.
+
+TJO asked which step would be most consequential after the category work.
+The target is one explicit global arithmetic action with a reference state:
+its algebra, arithmetic generators, action on local observables and
+composition laws must be specified. Calculate that model's dynamics before
+claiming any spectral content. The field-extension and subsystem comparisons
+reuse admitted local work; a Bost--Connes zeta partition function alone does
+not discharge the separate zero-comparison gate.

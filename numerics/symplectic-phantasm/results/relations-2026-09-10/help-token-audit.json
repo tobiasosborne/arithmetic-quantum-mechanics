@@ -1,0 +1,8 @@
+[
+  {
+    "checker": "theory/checks/f1_limit_check.py",
+    "extra_help_tokens": [
+      "--red-"
+    ]
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "mode": "source-sign",
+    "gate": "G1",
+    "exit": 1,
+    "stdout": "RED CAUGHT source-sign at G1: F3 diagonal identity is absent (source-form sign/order defect)\n",
+    "stderr": ""
+  },
+  {
+    "mode": "empty-loss",
+    "gate": "G1",
+    "exit": 1,
+    "stdout": "RED CAUGHT empty-loss at G1: F2 Hom census (1, 6, 6, 60), expected (2, 7, 7, 61)\n",
+    "stderr": ""
+  },
+  {
+    "mode": "middle-forall",
+    "gate": "G2",
+    "exit": 1,
+    "stdout": "RED CAUGHT middle-forall at G2: F2 nontransverse line composite lost existential witnesses\n",
+    "stderr": ""
+  },
+  {
+    "mode": "dagger-order",
+    "gate": "G3",
+    "exit": 1,
+    "stdout": "RED CAUGHT dagger-order at G3: F3 converse failed to swap graph coordinate blocks\n",
+    "stderr": ""
+  },
+  {
+    "mode": "tensor-order",
+    "gate": "G4",
+    "exit": 1,
+    "stdout": "RED CAUGHT tensor-order at G4: G4a Boolean-Kronecker coordinate oracle failed over F2\n",
+    "stderr": ""
+  },
+  {
+    "mode": "zero-unit",
+    "gate": "G4",
+    "exit": 1,
+    "stdout": "RED CAUGHT zero-unit at G4: F2 tensor unit is not the zero-space identity\n",
+    "stderr": ""
+  },
+  {
+    "mode": "graph-translation",
+    "gate": "G5",
+    "exit": 1,
+    "stdout": "RED CAUGHT graph-translation at G5: F2 affine graph data are not faithful (24 arrows, 6 graphs)\n",
+    "stderr": ""
+  },
+  {
+    "mode": "compact-dual",
+    "gate": "G6",
+    "exit": 1,
+    "stdout": "RED CAUGHT compact-dual at G6: G6a dual-isotropy failed over F3 at rank 1\n",
+    "stderr": ""
+  },
+  {
+    "mode": "cup-order",
+    "gate": "G6",
+    "exit": 1,
+    "stdout": "RED CAUGHT cup-order at G6: G6b cup-factor-order failed over F3 at rank 1\n",
+    "stderr": ""
+  },
+  {
+    "mode": "dagger-swap",
+    "gate": "G6",
+    "exit": 1,
+    "stdout": "RED CAUGHT dagger-swap at G6: G6c dagger-swap compatibility failed over F3 at rank 1\n",
+    "stderr": ""
+  },
+  {
+    "mode": "snake-wire",
+    "gate": "G6",
+    "exit": 1,
+    "stdout": "RED CAUGHT snake-wire at G6: G6d first-snake relation failed over F2 at rank 1\n",
+    "stderr": ""
+  },
+  {
+    "mode": "empty-name",
+    "gate": "G7",
+    "exit": 1,
+    "stdout": "RED CAUGHT empty-name at G7: F2 named state changed relation or dual-input/output order\n",
+    "stderr": ""
+  },
+  {
+    "mode": "loop-multiplicity",
+    "gate": "G7",
+    "exit": 1,
+    "stdout": "RED CAUGHT loop-multiplicity at G7: F2 closed cup/cap loop is not true\n",
+    "stderr": ""
+  },
+  {
+    "mode": "name-order",
+    "gate": "G7",
+    "exit": 1,
+    "stdout": "RED CAUGHT name-order at G7: F2 named state changed relation or dual-input/output order\n",
+    "stderr": ""
+  },
+  {
+    "mode": "green",
+    "exit": 0,
+    "stdout": "G1 PASS: F2/F3 censuses (2,7,7,61) and (2,13,13,361); states/effects and empties\nG2 PASS: 144,806 existential/oracle pairs; nontransverse fibers and empty composites\nG3 PASS: exhaustive identities/daggers; 290,794 F2 + 4,096 F3 associative triples\nG4 PASS: 5,929 F2 + 4,096 F3 tensor pairs; zero unit, swap, associativity, interchange\nG5 PASS: 24/216 faithful graphs; 47,232 compositions and 4,672 tensor comparisons\nG6 PASS: typed diagonal cups/caps, dagger order and both snakes for zero and one register\nG7 PASS: 466 exhaustive names/unnames; Boolean unit scalars and true closed loops\nGREEN PASS: exact finite checks only; no claim promotion\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,2120 @@
+{
+  "status": "PASS",
+  "green": 30,
+  "red": 310,
+  "green_suites": [
+    "arithmetic_limits_check.py",
+    "arithmetic_signed_check.py",
+    "composite_boundary_check.py",
+    "composite_joined_check.py",
+    "composite_spectrum_check.py",
+    "f1_check.py",
+    "f1_limit_bridge_check.py",
+    "f1_limit_check.py",
+    "f1_limit_karoubi_check.py",
+    "f1_limit_mirabolic_check.py",
+    "f1_limit_module_check.py",
+    "f1_limit_wiring_check.py",
+    "f1_operational_check.py",
+    "fcr2_beta_check.py",
+    "fcr_local_check.py",
+    "frobenius_boundary_check.py",
+    "frobenius_hierarchy_check.py",
+    "phantasm_contract_check.py",
+    "phantasm_egorov_check.py",
+    "phantasm_relations_check.py",
+    "phantasm_reuse_check.py",
+    "phantasm_stabilizer_check.py",
+    "positive_arithmetic_check.py",
+    "small_rings_catalogue_check.py",
+    "beta_census.py",
+    "fp_symmetry.py",
+    "frame_mu.py",
+    "funct_sections.py",
+    "split24.py",
+    "wh_kappa_check.py"
+  ],
+  "red_modes": [
+    [
+      "arithmetic_limits_check.py",
+      "--red"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-admit-nonuniform"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-collapse-tangent-algebra"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-compress-mixed-transition"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-coset-label"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-cyclic-only-image"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-erase-orbit-coherence"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-fourier-scaling"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-fourier-sign"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-incomplete-tangent-instrument"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-merge-tower-histories"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-omit-degree-scaling"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-omit-normalization"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-omit-tangent-normalization"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-omit-tensor-outcome"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-physical-support-rank"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-residual-fourier-reflection"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-tangent-fourier"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-tower-connector-coefficient"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-tower-degree-scaling"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-trace-fibre-label"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-wrong-failure-projector"
+    ],
+    [
+      "arithmetic_limits_check.py",
+      "--red-wrong-gram-branch"
+    ],
+    [
+      "arithmetic_signed_check.py",
+      "--red-order"
+    ],
+    [
+      "arithmetic_signed_check.py",
+      "--red-sign"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-channel-spectrum"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-collective"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-dephase"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-diagonal-action"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-diagonal-relative"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-drop-grade"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-embedding"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-fourier-outcome"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-fourier-phase"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-identity"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-multiplicity"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-normalizer"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-off-diagonal"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-omit-invariant"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-omit-outcome"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-product"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-reset-reference"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-separate-descent"
+    ],
+    [
+      "composite_boundary_check.py",
+      "--red-wrong-sector"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-condition-zero"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-drop-divisor"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-drop-grade"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-drop-randomizer"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-lost-history"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-omit-gap"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-operator-norm"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-reset-copy"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-vanishing-bound"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-wrong-normalizer"
+    ],
+    [
+      "composite_joined_check.py",
+      "--red-wrong-prior"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-central-dynamics"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-channel-trace"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-coprimality"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-corner-unit"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-d1-subtraction"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-density-factor"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-drop-divisor-weight"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-identity"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-negative-density"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-negative-power"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-reset-corner"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-tail-exponent"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-tensor-cycle"
+    ],
+    [
+      "composite_spectrum_check.py",
+      "--red-zero-moment"
+    ],
+    [
+      "f1_check.py",
+      "--red-basis"
+    ],
+    [
+      "f1_check.py",
+      "--red-ccr"
+    ],
+    [
+      "f1_check.py",
+      "--red-cocycle"
+    ],
+    [
+      "f1_check.py",
+      "--red-crowd"
+    ],
+    [
+      "f1_check.py",
+      "--red-fourier"
+    ],
+    [
+      "f1_check.py",
+      "--red-frame"
+    ],
+    [
+      "f1_check.py",
+      "--red-fusion"
+    ],
+    [
+      "f1_check.py",
+      "--red-hall"
+    ],
+    [
+      "f1_check.py",
+      "--red-kernel"
+    ],
+    [
+      "f1_check.py",
+      "--red-normal"
+    ],
+    [
+      "f1_check.py",
+      "--red-order"
+    ],
+    [
+      "f1_check.py",
+      "--red-pairing"
+    ],
+    [
+      "f1_check.py",
+      "--red-tensor"
+    ],
+    [
+      "f1_limit_bridge_check.py",
+      "--red-dual-reversal"
+    ],
+    [
+      "f1_limit_bridge_check.py",
+      "--red-fourier"
+    ],
+    [
+      "f1_limit_bridge_check.py",
+      "--red-shuffle"
+    ],
+    [
+      "f1_limit_bridge_check.py",
+      "--red-thin-block"
+    ],
+    [
+      "f1_limit_bridge_check.py",
+      "--red-typec-scale"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-ancilla"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-braid"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-collective-identity"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-context"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-corner-ratio"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-cycle"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-density"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-descent"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-null-weight"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-outcome"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-polar"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-postselection"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-reference-trace"
+    ],
+    [
+      "f1_limit_check.py",
+      "--red-valency"
+    ],
+    [
+      "f1_limit_karoubi_check.py",
+      "--red-classical"
+    ],
+    [
+      "f1_limit_karoubi_check.py",
+      "--red-cutoff"
+    ],
+    [
+      "f1_limit_karoubi_check.py",
+      "--red-density-ratio"
+    ],
+    [
+      "f1_limit_karoubi_check.py",
+      "--red-grading"
+    ],
+    [
+      "f1_limit_karoubi_check.py",
+      "--red-gram"
+    ],
+    [
+      "f1_limit_karoubi_check.py",
+      "--red-normalization"
+    ],
+    [
+      "f1_limit_mirabolic_check.py",
+      "--red-affine-dec"
+    ],
+    [
+      "f1_limit_mirabolic_check.py",
+      "--red-mir-expect"
+    ],
+    [
+      "f1_limit_mirabolic_check.py",
+      "--red-mir-kernel"
+    ],
+    [
+      "f1_limit_mirabolic_check.py",
+      "--red-mir-line"
+    ],
+    [
+      "f1_limit_module_check.py",
+      "--red-module-expect"
+    ],
+    [
+      "f1_limit_module_check.py",
+      "--red-module-marker"
+    ],
+    [
+      "f1_limit_module_check.py",
+      "--red-module-shift"
+    ],
+    [
+      "f1_limit_wiring_check.py",
+      "--red-backaction"
+    ],
+    [
+      "f1_limit_wiring_check.py",
+      "--red-classical-trace"
+    ],
+    [
+      "f1_limit_wiring_check.py",
+      "--red-history"
+    ],
+    [
+      "f1_limit_wiring_check.py",
+      "--red-parallel-route"
+    ],
+    [
+      "f1_limit_wiring_check.py",
+      "--red-sequential-route"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-amplified"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-apartment"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-bell-sign"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-context-lower"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-context-size"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-corner-trace"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-density-norm"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-expectation"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-flag"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-incidence"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-injection"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-kraus"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-kraus-mix"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-local-collapse"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-overlap"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-partial-comp"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-partial-dagger"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-partial-lax"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-partial-zero"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-positive-domain"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-product"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-refinement"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-tl-trace"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-trace"
+    ],
+    [
+      "f1_operational_check.py",
+      "--red-unitary-braid"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-collapse"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-fake-epsilon"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-field"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-frobenius-blind"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-halfweyl"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-model-sign"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-profile"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-square"
+    ],
+    [
+      "fcr2_beta_check.py",
+      "--red-transpose"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-dim"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-free-only"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-frobenius-blind"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-g6-arena-confusion"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-halfweyl-drop"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-nongenerating"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-profile-drop-identity"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-torsor"
+    ],
+    [
+      "fcr_local_check.py",
+      "--red-transpose"
+    ],
+    [
+      "frobenius_boundary_check.py",
+      "--red-coherence"
+    ],
+    [
+      "frobenius_boundary_check.py",
+      "--red-count"
+    ],
+    [
+      "frobenius_boundary_check.py",
+      "--red-decoder"
+    ],
+    [
+      "frobenius_boundary_check.py",
+      "--red-frobenius"
+    ],
+    [
+      "frobenius_boundary_check.py",
+      "--red-overlap"
+    ],
+    [
+      "frobenius_boundary_check.py",
+      "--red-weight"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-code-phase-subfield"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-discard-omit-bra"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-embedding-coefficient-swap"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-fourier-failure-original-code"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-fourier-positive-kernel"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-frob-one-label"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-frobenius-no-shear"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-hierarchy-delete-factor"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-hierarchy-extra-register-term"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-instrument-double-success"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-interference-erase-phase"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-logical-momentum-inclusion"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-multiplication-as-addition"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-parallel-collapse-outcomes"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-process-wrong-target"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-relative-trace-projection"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-reset-global-as-local"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-sequential-reverse"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-trace-fibre-unnormalized"
+    ],
+    [
+      "frobenius_hierarchy_check.py",
+      "--red-weyl-positive-sign"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-cycle"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-decision-cycle"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-decision-input"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-definition-cycle"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-definition-drift"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-definition-reuse"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-duplicate-node"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-empty-scope"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-inherited-status"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-labbook"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-missing-definition"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-missing-node"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-notation-alias"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-notation-owner"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-orphan-claim"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-promote"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-proof-shard"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-refuted"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-source-gap"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-source-hash"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-status"
+    ],
+    [
+      "phantasm_contract_check.py",
+      "--red-untracked-reuse"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-alpha-phase"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-f9-character"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-fourier-sign"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-semidir-order"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-shear-half"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-sp-enumeration"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-tensor-phase"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-translation-sign"
+    ],
+    [
+      "phantasm_egorov_check.py",
+      "--red-zero-qudit"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-compact-dual"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-cup-order"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-dagger-order"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-dagger-swap"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-empty-loss"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-empty-name"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-graph-translation"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-loop-multiplicity"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-middle-forall"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-name-order"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-snake-wire"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-source-sign"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-tensor-order"
+    ],
+    [
+      "phantasm_relations_check.py",
+      "--red-zero-unit"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-central-injective"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-character-conflation"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-cocycle"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-dual-sign"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-position-labels"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-relative-frobenius"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-rephase"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-tensor-phase"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-trace-normalization"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-trivial-character"
+    ],
+    [
+      "phantasm_reuse_check.py",
+      "--red-vacuum"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-average-sign"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-cup-singleton"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-dagger-transpose"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-drop-shear"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-empty-nonzero"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-f5-cap-weight"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-f5-state-loss"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-family-state-loss"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-fixed-seed"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-fourier-sign"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-origin-dependent"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-phase-only"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-product-order"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-projector-entry"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-tensor-order"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-weyl-sign"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-zero-collapse"
+    ],
+    [
+      "phantasm_stabilizer_check.py",
+      "--red-zero-product"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-arity"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-coherence"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-compression"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-discard-later-rare"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-embedding"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-erase-characteristic"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-fourier-invariance"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-fourier-phase"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-jordan"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-mass"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-moment"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-multiplication-entry"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-normalizer"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-profile"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-total-first-order"
+    ],
+    [
+      "positive_arithmetic_check.py",
+      "--red-tracial-complement"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-catalogue"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-class-count"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-drop-nonfree"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-gram"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-middle-images"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-order-profile"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-ring-soc"
+    ],
+    [
+      "small_rings_catalogue_check.py",
+      "--red-transpose-cocycle"
+    ],
+    [
+      "beta_census.py",
+      "--red-arf-blind"
+    ],
+    [
+      "beta_census.py",
+      "--red-iso"
+    ],
+    [
+      "beta_census.py",
+      "--red-oddp-split"
+    ],
+    [
+      "fp_symmetry.py",
+      "--red-kappa-linear"
+    ],
+    [
+      "fp_symmetry.py",
+      "--red-sp-formula"
+    ],
+    [
+      "frame_mu.py",
+      "--red-drop-linear"
+    ],
+    [
+      "frame_mu.py",
+      "--red-mu2-always"
+    ],
+    [
+      "funct_sections.py",
+      "--red-restrict"
+    ],
+    [
+      "funct_sections.py",
+      "--red-section-exists"
+    ],
+    [
+      "split24.py",
+      "--red-fibre"
+    ],
+    [
+      "split24.py",
+      "--red-mu2split"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-beta-rigid"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-cocycle"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-dim"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-halfweyl"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-naive-order"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-nonisotropic"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-psi-polarization"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-symmetric"
+    ],
+    [
+      "wh_kappa_check.py",
+      "--red-trivial-char"
+    ]
+  ],
+  "new_runs": [
+    {
+      "check": "fcr_local_check.py",
+      "mode": "--red-transpose",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_boundary_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "frobenius_boundary_check.py",
+      "mode": "--red-coherence",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_boundary_check.py",
+      "mode": "--red-count",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_boundary_check.py",
+      "mode": "--red-decoder",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_boundary_check.py",
+      "mode": "--red-frobenius",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_boundary_check.py",
+      "mode": "--red-overlap",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_boundary_check.py",
+      "mode": "--red-weight",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-code-phase-subfield",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-discard-omit-bra",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-embedding-coefficient-swap",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-fourier-failure-original-code",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-fourier-positive-kernel",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-frob-one-label",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-frobenius-no-shear",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-hierarchy-delete-factor",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-hierarchy-extra-register-term",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-instrument-double-success",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-interference-erase-phase",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-logical-momentum-inclusion",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-multiplication-as-addition",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-parallel-collapse-outcomes",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-process-wrong-target",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-relative-trace-projection",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-reset-global-as-local",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-sequential-reverse",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-trace-fibre-unnormalized",
+      "exit": 1
+    },
+    {
+      "check": "frobenius_hierarchy_check.py",
+      "mode": "--red-weyl-positive-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-cycle",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-decision-cycle",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-decision-input",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-definition-cycle",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-definition-drift",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-definition-reuse",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-duplicate-node",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-empty-scope",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-inherited-status",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-labbook",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-missing-definition",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-missing-node",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-notation-alias",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-notation-owner",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-orphan-claim",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-promote",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-proof-shard",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-refuted",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-source-gap",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-source-hash",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-status",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_contract_check.py",
+      "mode": "--red-untracked-reuse",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-alpha-phase",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-f9-character",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-fourier-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-semidir-order",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-shear-half",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-sp-enumeration",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-tensor-phase",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-translation-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_egorov_check.py",
+      "mode": "--red-zero-qudit",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-compact-dual",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-cup-order",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-dagger-order",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-dagger-swap",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-empty-loss",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-empty-name",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-graph-translation",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-loop-multiplicity",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-middle-forall",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-name-order",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-snake-wire",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-source-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-tensor-order",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_relations_check.py",
+      "mode": "--red-zero-unit",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-central-injective",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-character-conflation",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-cocycle",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-dual-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-position-labels",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-relative-frobenius",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-rephase",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-tensor-phase",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-trace-normalization",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-trivial-character",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_reuse_check.py",
+      "mode": "--red-vacuum",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-average-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-cup-singleton",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-dagger-transpose",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-drop-shear",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-empty-nonzero",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-f5-cap-weight",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-f5-state-loss",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-family-state-loss",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-fixed-seed",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-fourier-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-origin-dependent",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-phase-only",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-product-order",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-projector-entry",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-tensor-order",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-weyl-sign",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-zero-collapse",
+      "exit": 1
+    },
+    {
+      "check": "phantasm_stabilizer_check.py",
+      "mode": "--red-zero-product",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-arity",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-coherence",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-compression",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-discard-later-rare",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-embedding",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-erase-characteristic",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-fourier-invariance",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-fourier-phase",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-jordan",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-mass",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-moment",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-multiplication-entry",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-normalizer",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-profile",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-total-first-order",
+      "exit": 1
+    },
+    {
+      "check": "positive_arithmetic_check.py",
+      "mode": "--red-tracial-complement",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-catalogue",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-class-count",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-drop-nonfree",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-gram",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-middle-images",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-order-profile",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-ring-soc",
+      "exit": 1
+    },
+    {
+      "check": "small_rings_catalogue_check.py",
+      "mode": "--red-transpose-cocycle",
+      "exit": 1
+    },
+    {
+      "check": "beta_census.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "beta_census.py",
+      "mode": "--red-arf-blind",
+      "exit": 1
+    },
+    {
+      "check": "beta_census.py",
+      "mode": "--red-iso",
+      "exit": 1
+    },
+    {
+      "check": "beta_census.py",
+      "mode": "--red-oddp-split",
+      "exit": 1
+    },
+    {
+      "check": "fp_symmetry.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "fp_symmetry.py",
+      "mode": "--red-kappa-linear",
+      "exit": 1
+    },
+    {
+      "check": "fp_symmetry.py",
+      "mode": "--red-sp-formula",
+      "exit": 1
+    },
+    {
+      "check": "frame_mu.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "frame_mu.py",
+      "mode": "--red-drop-linear",
+      "exit": 1
+    },
+    {
+      "check": "frame_mu.py",
+      "mode": "--red-mu2-always",
+      "exit": 1
+    },
+    {
+      "check": "funct_sections.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "funct_sections.py",
+      "mode": "--red-restrict",
+      "exit": 1
+    },
+    {
+      "check": "funct_sections.py",
+      "mode": "--red-section-exists",
+      "exit": 1
+    },
+    {
+      "check": "split24.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "split24.py",
+      "mode": "--red-fibre",
+      "exit": 1
+    },
+    {
+      "check": "split24.py",
+      "mode": "--red-mu2split",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "green",
+      "exit": 0
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-beta-rigid",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-cocycle",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-dim",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-halfweyl",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-naive-order",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-nonisotropic",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-psi-polarization",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-symmetric",
+      "exit": 1
+    },
+    {
+      "check": "wh_kappa_check.py",
+      "mode": "--red-trivial-char",
+      "exit": 1
+    }
+  ],
+  "checker_sha256": {
+    "theory/checks/arithmetic_limits_check.py": "c94c4a1735c59bf6eedddd7f80c3cd41ca1e8c4788d128c443aaf34732edf1d1",
+    "theory/checks/arithmetic_signed_check.py": "83d1966b193d4e0247e8c2f57957cfcc893bc0db06ff7ef11900ccfa9b2c9840",
+    "theory/checks/composite_boundary_check.py": "5816197b901d74012112d2957c5df45ad7b634b426e6c64bb46c16ed0f3df3d1",
+    "theory/checks/composite_joined_check.py": "d945e902a081db587ef8cf0f0c5344c5fa42dcdfaf06ba4d97fdeecfbff8c51f",
+    "theory/checks/composite_spectrum_check.py": "05fed6be6df3469d9a9e0615d5fe1e3ec99cf892b671b18ee572b294fbb0ccd6",
+    "theory/checks/f1_check.py": "44bd0a30cb54fcd372dd541aa8036efa252c2e3e9decea2cc1d7929c5ef411d2",
+    "theory/checks/f1_limit_bridge_check.py": "563aea82ec23fe48d615d0050f50824bbf27c98f648797db4706ac0d17e44e24",
+    "theory/checks/f1_limit_check.py": "333abf1c80ac6c5f31618fce062e19b10a81661f8f3194f857180d485ba2ad5e",
+    "theory/checks/f1_limit_karoubi_check.py": "af5f7b4c2e1dcce18c6e660462306acf8ec606795022316363d48649cf8a7d3e",
+    "theory/checks/f1_limit_mirabolic_check.py": "f702693b47addb8f24c0b2657bbc2cd6e8d1f215a8afda7efaf777c8abd665ae",
+    "theory/checks/f1_limit_module_check.py": "7fa4d4a17c0dcc7b7c7db93b51d18bc4417149f47abff5863a285da68b9dd795",
+    "theory/checks/f1_limit_wiring_check.py": "cffbb95b332d0cb6fbbf811ce1f160a54c8648ecf80cb4c66f7566eb8b065d1b",
+    "theory/checks/f1_operational_check.py": "a4ecbcd4ab9b2feed5383c6e523f50c12c2b2dce688482bfc3dca646ce7313f3",
+    "theory/checks/fcr2_beta_check.py": "629db908049a2a2d729b099f055663a25c387443a4edc17893c4d02aeca025c8",
+    "theory/checks/fcr_local_check.py": "9ee2cb5fce5079a3eba807ac40029fff3c4ef839a171ce0da06c7f2299ced5d4",
+    "theory/checks/frobenius_boundary_check.py": "25c49478e07e925878fe1ba10b897a27da07eab55318a7ec090dc03aa268df33",
+    "theory/checks/frobenius_hierarchy_check.py": "946ca4584424329e85b92107664d24c89942f194de42dd0737ddc372d77d8c12",
+    "theory/checks/phantasm_contract_check.py": "6de8fd95ed33c4cfc4ff25426532edf7a2422e7082393035a554044b2f242a3e",
+    "theory/checks/phantasm_egorov_check.py": "2fbab5533afa672a734487ba8d9e7ac2ef60075ffddb34377932ad2bc057aa42",
+    "theory/checks/phantasm_relations_check.py": "bdfa9952f1b0ea496a8eb07e6c72794d173cf7aa5cd795038d6e3b800ee6cfe2",
+    "theory/checks/phantasm_reuse_check.py": "3e4197ab7e98dd26ae6bce0868b56f5270c5b1bf185d1d76dc253be89a333f43",
+    "theory/checks/phantasm_stabilizer_check.py": "ed940fece0058840c8960b4699d8173d4e014629a205e4f0e0c6e58dee069b32",
+    "theory/checks/positive_arithmetic_check.py": "272148e1bf157e15d682408b92fe8eeaf43d4849b027ab64b70eaea6c5e03718",
+    "theory/checks/small_rings_catalogue_check.py": "45926a4c33fb6f1b58c1f35cdc3e5d8d8346c4ea78a08d83ddc17c7089721c03",
+    "theory/checks/wh_kappa/beta_census.py": "61d1ca781436f60556d970729e6ffceed9b7bc4225f7577ca0267772230e08f4",
+    "theory/checks/wh_kappa/fp_symmetry.py": "887da9c97655dd1e4bfc0291b0af861fde26db31374fe5c27cb8fe401fac08d1",
+    "theory/checks/wh_kappa/frame_mu.py": "cc53f0a92762f6ffd17b2bf90e36901b9d1cd3b001a9fcb206c46d5035f2686e",
+    "theory/checks/wh_kappa/funct_sections.py": "8333b0d73577634e153e8492b93b80de70a7dddf7c6e19617a856010ac5c1901",
+    "theory/checks/wh_kappa/split24.py": "46c7dd9412c5c76bbd456bb0e801a1de393de8450e49d620add7363cb5efa735",
+    "theory/checks/wh_kappa_check.py": "4cad037cd7d82e8101af72def4a4abf748f671f68fda93806b24a74ed83892fa"
+  },
+  "seconds": 582.733,
+  "note": "Aggregate coverage: completed commands from canonical session-close before exit143 plus only unfinished commands resumed. Initial lockstep/PDF gates and final provenance rebuild/lockstep completed separately. Targeted new mutations additionally verified at their named gates."
+}

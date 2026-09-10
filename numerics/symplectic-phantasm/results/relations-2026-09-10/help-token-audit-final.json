@@ -1,0 +1,11 @@
+{
+  "findings": [],
+  "valid_optional_argument_aliases": [
+    "theory/checks/arithmetic_limits_check.py",
+    "theory/checks/composite_boundary_check.py",
+    "theory/checks/composite_joined_check.py",
+    "theory/checks/composite_spectrum_check.py",
+    "theory/checks/frobenius_hierarchy_check.py"
+  ],
+  "f1_limit_change": "help prose only; wildcard token removed"
+}

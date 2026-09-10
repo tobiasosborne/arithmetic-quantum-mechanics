@@ -1,0 +1,178 @@
+{
+  "help_flags": [
+    "--red-average-sign",
+    "--red-cup-singleton",
+    "--red-dagger-transpose",
+    "--red-drop-shear",
+    "--red-empty-nonzero",
+    "--red-f5-cap-weight",
+    "--red-f5-state-loss",
+    "--red-family-state-loss",
+    "--red-fixed-seed",
+    "--red-fourier-sign",
+    "--red-origin-dependent",
+    "--red-phase-only",
+    "--red-product-order",
+    "--red-projector-entry",
+    "--red-tensor-order",
+    "--red-weyl-sign",
+    "--red-zero-collapse",
+    "--red-zero-product"
+  ],
+  "runs": [
+    {
+      "args": [
+        "--red-weyl-sign"
+      ],
+      "exit": 1,
+      "seconds": 0.227,
+      "output": "RED CAUGHT weyl-sign at S1: F3 D1703 Weyl product failed at (1, 0),(0, 1)\n"
+    },
+    {
+      "args": [
+        "--red-fourier-sign"
+      ],
+      "exit": 1,
+      "seconds": 0.241,
+      "output": "RED CAUGHT fourier-sign at S1: F3 Fourier covariance sign failed at (0, 1)\n"
+    },
+    {
+      "args": [
+        "--red-drop-shear"
+      ],
+      "exit": 1,
+      "seconds": 0.406,
+      "output": "RED CAUGHT drop-shear at S1: qutrit projective Clifford census is 36, expected 216\n"
+    },
+    {
+      "args": [
+        "--red-phase-only"
+      ],
+      "exit": 1,
+      "seconds": 0.264,
+      "output": "RED CAUGHT phase-only at S2: D1705 failed to identify two distinct nonzero norms\n"
+    },
+    {
+      "args": [
+        "--red-zero-collapse"
+      ],
+      "exit": 1,
+      "seconds": 0.258,
+      "output": "RED CAUGHT zero-collapse at S2: D1705 collapsed zero with a nonzero map\n"
+    },
+    {
+      "args": [
+        "--red-average-sign"
+      ],
+      "exit": 1,
+      "seconds": 0.257,
+      "output": "RED CAUGHT average-sign at S3: S3b all-origin D1715 equations failed for actual F3 catalog relation in Hom(0, 1)\n"
+    },
+    {
+      "args": [
+        "--red-origin-dependent"
+      ],
+      "exit": 1,
+      "seconds": 0.283,
+      "output": "RED CAUGHT origin-dependent at S3: S3e origin-independence failed at (0, 1) in actual F3 Hom(0, 1)\n"
+    },
+    {
+      "args": [
+        "--red-fixed-seed"
+      ],
+      "exit": 1,
+      "seconds": 0.334,
+      "output": "RED CAUGHT fixed-seed at S3: S3a nonzero-image failed for actual F3 catalog relation in Hom(0, 1)\n"
+    },
+    {
+      "args": [
+        "--red-empty-nonzero"
+      ],
+      "exit": 1,
+      "seconds": 0.397,
+      "output": "RED CAUGHT empty-nonzero at S3: S3f empty-zero failed for actual F3 catalog relation in Hom(0, 0)\n"
+    },
+    {
+      "args": [
+        "--red-projector-entry"
+      ],
+      "exit": 1,
+      "seconds": 0.4,
+      "output": "RED CAUGHT projector-entry at S3: S3c projector-square P^2=|L|P failed for actual F3 data in Hom(0, 0)\n"
+    },
+    {
+      "args": [
+        "--red-family-state-loss"
+      ],
+      "exit": 1,
+      "seconds": 9.7,
+      "output": "RED CAUGHT family-state-loss at S3: S3h actual-family equality failed for F3 Hom(0, 1)\n"
+    },
+    {
+      "args": [
+        "--red-f5-state-loss"
+      ],
+      "exit": 1,
+      "seconds": 14.69,
+      "output": "RED CAUGHT f5-state-loss at S3: S3k F5-state equality failed against the actual Clifford orbit\n"
+    },
+    {
+      "args": [
+        "--red-product-order"
+      ],
+      "exit": 1,
+      "seconds": 1.449,
+      "output": "RED CAUGHT product-order at S4: S4a bulk functoriality failed in typed composition 1->1->1\n"
+    },
+    {
+      "args": [
+        "--red-dagger-transpose"
+      ],
+      "exit": 1,
+      "seconds": 18.108,
+      "output": "RED CAUGHT dagger-transpose at S4: S4c bulk dagger compatibility failed for an actual F3 relation\n"
+    },
+    {
+      "args": [
+        "--red-zero-product"
+      ],
+      "exit": 1,
+      "seconds": 0.284,
+      "output": "RED CAUGHT zero-product at S4: S4b bulk-zero composition failed for nonempty factors 0->1->0\n"
+    },
+    {
+      "args": [
+        "--red-tensor-order"
+      ],
+      "exit": 1,
+      "seconds": 0.21,
+      "output": "RED CAUGHT tensor-order at S5: S5a bulk F3 state tensor failed\n"
+    },
+    {
+      "args": [
+        "--red-cup-singleton"
+      ],
+      "exit": 1,
+      "seconds": 2.37,
+      "output": "RED CAUGHT cup-singleton at S5: S5d F3 operator vectorization does not give the Bell cup\n"
+    },
+    {
+      "args": [
+        "--red-f5-cap-weight"
+      ],
+      "exit": 1,
+      "seconds": 2.327,
+      "output": "RED CAUGHT f5-cap-weight at S5: S5e F5 unnormalized cup/cap scalar is not p\n"
+    },
+    {
+      "args": [],
+      "exit": 0,
+      "seconds": 30.551,
+      "output": "S1 PASS: exact F3/F5 generators; 216 qutrit Cliffords and 12/30 state rays\nS2 PASS: C^times quotient, zero separation; actual Hom nonzero counts 1,12,12,360\nS3 PASS: all 389 F3 relation lines/censuses and 31 F5 states; all-origin equations\nS4 PASS: all 140,101 F3 compositions, 389 daggers, zero and unequal nonzero scalars\nS5 PASS: 169 state + 169 effect + 144 mixed tensors; F3/F5 Bell cups and scalar p\nGREEN PASS: exact finite checks only; no claim promotion\n"
+    }
+  ],
+  "disabled_S5e": {
+    "exit": 0,
+    "output": "RED SURVIVED f5-cap-weight at S5: 169 state + 169 effect + 144 mixed tensors; F3/F5 Bell cups and scalar p\n"
+  }
+}

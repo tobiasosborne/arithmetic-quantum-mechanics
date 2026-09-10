@@ -5,9 +5,10 @@ Choi correspondence: understand and track the possible structural
 properties of the categories, and their interactions, so that the right
 structure can be found flexibly as the arithmetic construction develops.
 This is a continuing research direction within the Symplectic Phantasm.
-The SP-WEYL → SP-EGOROV → SP-TENSOR cluster is now admitted. The next
-bounded task is SP-LREL and the compact-structure follow-up below, under
-`../../briefs/phantasm-relations-target.md`.
+The local Weyl/affine/tensor and relation/compact/stabilizer clusters are
+now admitted at their canonical scopes. The next bounded task is scalar
+normalization and finite instruments, under
+`../../briefs/phantasm-processes-target.md`.
 
 ## What the record should answer
 
@@ -93,32 +94,41 @@ register.
 | SP-EGOROV, `../../theory/symplectic-phantasm/egorov.md` | Exact covariant affine algebra action and composition; unique projective unitary implementation and model transport | D1703 owns the arbitrary-rank extension of D9; no genuine phase section has been selected |
 | SP-TENSOR, `../../theory/symplectic-phantasm/tensor.md` | Natural trace-preserving direct-sum/tensor comparison with exact algebra associativity, units and symmetry; projective model coherence | Uses F1-FUNCT at its admitted scope; coherent additive completion and duality are separate next questions |
 
-## First concrete follow-up: cups, caps and scalar transport
+## Compact structure established; scalar transport next
 
-The discussion identifies a useful extension of the relation cluster.
-SP-CK21 explicitly discusses compact closure and currying in §2; the
-registered odd-prime stabilizer comparison in §4 is modulo invertible
-scalars. The following are proof tasks, not new admitted conclusions:
+The exact conclusions are SP-LREL, SP-COMPACT and SP-STAB-REL, with
+`../../theory/verdicts/phantasm-relations-adjudication.md` recording the
+capped reviews and repairs. D1714 owns the compact data; D1715 owns the
+operator intertwiner line. The source convention comparison is in
+`stabilizer-source-comparison.md`; the constructive proof establishes our
+bare-converse dagger without importing a differently defined involution.
 
-1. After the D1702 category laws, formulate the opposite-form dual and
-   diagonal cup/cap data, with factor orders, the zero-space unit, dagger
-   compatibility, both snake equations and affine/empty cases explicit.
-   The existing SP-LREL statement does not yet include this compact claim.
-2. Formulate the induced correspondence between an arrow and a state of
-   the combined dual-input/output object. Match operator vectorization and
-   the CP Choi construction separately; record the relevant dual or
-   conjugate Hilbert-space convention.
-3. Compute scalar endomorphisms of the unit and closed cup/cap diagrams in
-   the relation, actual-amplitude and scalar-quotient settings. Compare
-   both normalized and unnormalized Hilbert representatives, their snake
-   equations and their admissibility as physical branches.
-4. Use that comparison to specify what a scalar-retaining relation lift
-   must carry at DG-REL-LIFT, and what a proposed additive completion must
-   preserve at DG-RIG. Register any additional definitions and claims
-   before extending the DAG; do not silently enlarge an existing claim.
+| Comparison | Structure supplied by the existing claim | Choice or remaining boundary |
+|---|---|---|
+| SP-LREL | Dagger symmetric monoidal affine Lagrangian relations; faithful symmetric monoidal graph functor | Every finite field, including characteristic two; existential composition forgets middle witnesses |
+| SP-COMPACT | Opposite-form dual, diagonal cup/cap, both typed snakes and dagger compatibility; inverse name/unname maps; two-element scalar multiplication and nonempty closed loops | This state/process correspondence retains an affine relation, not one selected vector; no amplitude or probability is recovered |
+| SP-STAB-REL | Constructive dagger symmetric monoidal equivalence with the actual stabilizer category modulo every nonzero complex scalar; zero retained separately | Odd prime fields and standard objects with fixed character; no normalization, CP-map assignment or arithmetic-source exhaustion |
 
-The same method should accompany later lemma clusters: update the relevant
-questions when a result establishes a property or changes a comparison.
-Keep the human-readable account in the Phantasm labbook section. A small
-Markdown record suffices; an interactive explorer can follow once there
-are enough proved relationships to make its queries useful.
+The next questions are:
+
+1. Use SP-SCALAR and SP-CP to compare actual representatives, their norms,
+   successful branches, retained outcomes and ordinary-trace probabilities.
+   Compare operator vectorization with the CP Choi construction separately.
+2. Compute the normalized and unnormalized amplitude cup/cap diagrams and
+   their admissibility as physical branches. Track which compact equations
+   survive which normalization; compact closure alone does not settle this.
+3. Use those comparisons to specify what a scalar-retaining relation lift
+   must carry at DG-REL-LIFT, and what an additive completion must preserve
+   at DG-RIG. Register additional definitions and claims before admission.
+
+These local comparisons prepare the larger arithmetic question: define an
+actual action on the assembled systems and a reference state, then determine
+its dynamics and spectral content. Field extension, Frobenius and subsystem
+comparisons are named prerequisites. A partition function and a spectral
+correspondence with zeros remain separate tasks under DG-SPECTRUM.
+
+The same method accompanies later lemma clusters: update the questions when
+a result establishes a property or changes a comparison. Keep the readable
+account in the Phantasm labbook section. A small Markdown record suffices;
+an interactive explorer can follow when there are enough proved
+relationships to make its queries useful.

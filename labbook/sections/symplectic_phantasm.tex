@@ -16,11 +16,12 @@ underlying Hilbert tensor comparison. Field traces, Frobenius permutations
 and ordinary-trace arithmetic processes likewise have admitted foundations.
 \provenance{F1-DUAL,F1-WEYL,F1-REAL,F1-FUNCT,FRB-TRACE,FRB-FROB,FRP-CP}{Existing admitted proof shards}{Existing checkers; finite bridge probes below}{Original adjudications; no status change}
 
-The Weyl realization, affine covariance and tensor comparison below have
-passed their capped reviews. The remaining propositions retain sketch
-status. Their finite probes check the interfaces with admitted
+The Weyl realization, affine covariance, tensor comparison, relation
+composition, compact structure and odd-prime projective stabilizer
+comparison below have passed their capped reviews. The remaining nine
+propositions retain sketch status. Their finite probes check the interfaces with admitted
 constructions; the arbitrary-rank conclusions rest on the written proofs.
-\provenance{SP-WEYL,SP-EGOROV,SP-TENSOR}{Structured corollary and affine/tensor proof shards}{Exact finite bridge and affine probes}{Single blind reviews and stage-1 adjudication}
+\provenance{SP-WEYL,SP-EGOROV,SP-TENSOR,SP-LREL,SP-COMPACT,SP-STAB-REL}{Structured local and relation proof shards}{Exact finite bridge, affine, relation and stabilizer probes}{Stage-1 and relation-cluster adjudications}
 
 \subsection{Choosing categorical structure}
 
@@ -39,26 +40,28 @@ the source and target, variance, coherence maps and meaning of preservation
 must be stated. A property known for one category is not assigned to a
 subcategory, quotient or completion without its comparison argument.
 
-The question about cups and caps gives a concrete starting task. The
-compact-closure discussion for linear Lagrangian relations suggests
-examining opposite-form duals and diagonal cups and caps in the affine
-relation candidate below. The required comparison must include both snake
-equations, compatibility with relational converse, the empty relation
-and the zero-space unit. Operator vectorization and the Choi construction
-for completely positive maps should then be compared separately.
-\provenance{D1702}{SP-CK21, section 2, compact-closure and currying paragraph; SP-WAT18, section 2.2}{No new falsifier in this planning increment}{Research direction; no new theorem admitted}
+The question about cups and caps now has an explicit answer for affine
+Lagrangian relations. The opposite-form dual and diagonal cup and cap
+satisfy both snake equations and the stated compatibility with relational
+converse, including the empty relation and the zero-space unit. Naming an
+arrow retains its ordered affine relation as a state of the combined
+dual-input and output object. Over an odd prime field, the intertwiner
+construction below supplies the corresponding operator line and proves
+the dagger symmetric monoidal stabilizer equivalence modulo all nonzero
+complex scalars.
+\provenance{D1714,D1715,SP-LREL,SP-COMPACT,SP-STAB-REL}{Structured relation, compact and intertwiner proofs}{Exact F2/F3 relations and F3/F5 stabilizer controls}{Relation-cluster adjudication}
 
-Scalar endomorphisms of the unit and closed cup/cap diagrams provide the
-next comparison to compute in the relation, actual-amplitude and
-scalar-quotient settings. The calculation should track normalization and
-the admissibility of physical branches. It will inform the choice of
-additional relation data and the compatibility required of an additive
-completion. These questions accompany the existing lemma order. Following
-the completed Weyl, affine-symmetry and tensor comparisons, the next bounded
-work is relation composition and the explicit compact structure.
+The relational scalar calculation retains only the empty and nonempty
+scalar, and every closed cup--cap loop is the latter. The quantum
+comparison likewise identifies all nonzero scalar multiples. The next
+bounded work is to specify successful branches and instruments using
+actual amplitudes and ordinary traces, and to compare operator
+vectorization with the Choi construction for completely positive maps.
+That comparison will inform the additional relation data and the
+compatibility required of an additive completion.
 The structural record will grow with those results, without treating an
 uninvestigated property as false or a desired combination as established.
-\provenance{SP-LREL,SP-STAB-REL,SP-SCALAR,SP-CP,SP-SUM}{Existing contracts and the categorical-structure research plan}{No new mathematical check}{Existing sketch statuses retained}
+\provenance{SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP,SP-SUM}{Admitted compact and projective comparison; remaining process contracts}{Finite controls at their declared scope}{Compact/comparison admitted; scalar, CP and sum tasks remain sketches}
 
 \subsection{Shared register and hierarchy conventions}
 
@@ -104,6 +107,23 @@ form-preserving linear isomorphisms. The affine symmetry groupoid
 $\mathsf S_k^{\mathrm{aff}}$ has arrows $(t,g):V\to W$, where
 $g:V\to W$ is such an isomorphism and $t\in W$, acting by $v\mapsto gv+t$.
 Composition is $(s,h)\circ(t,g)=(s+ht,hg)$ and the identity is $(0,1_V)$.
+For affine arrows $(t,g):V\to W$ and $(t',g'):V'\to W'$, prescribe
+\[
+ (t,g)\oplus(t',g')=((t,t'),g\oplus g'):
+ V\oplus V'\longrightarrow W\oplus W'.
+\]
+The monoidal unit is the zero space with identity $(0,1_0)$.  For
+symplectic spaces $U,V,W$, prescribe the associator, left and right unitors,
+and symmetry to be the zero-translation affine arrows whose linear parts are
+\[
+\begin{aligned}
+ a_{U,V,W}&:(U\oplus V)\oplus W\longrightarrow U\oplus(V\oplus W),
+ &((u,v),w)&\longmapsto(u,(v,w)),\\
+ \lambda_V&:0\oplus V\longrightarrow V,&(0,v)&\longmapsto v,\\
+ \rho_V&:V\oplus0\longrightarrow V,&(v,0)&\longmapsto v,\\
+ \sigma_{V,W}&:V\oplus W\longrightarrow W\oplus V,&(v,w)&\longmapsto(w,v).
+\end{aligned}
+\]
 \end{definition}
 \begin{scope}
 All characteristics are included in this classical datum. Rank one means dimension two; no quantum realization is part of the definition.
@@ -411,3 +431,82 @@ prescription is $a\mapsto\Delta_\varphi^{iu}a\Delta_\varphi^{-iu}$.
 Analytic existence and comparison theorems must be cited or proved before use. No equality between modular flow, the specified physical flow, or Frobenius is a stipulation.
 \end{scope}
 \provenance{D1713}{Stipulation; SP-CM08, SP-CCM07}{See the scoped bridge checks}{Reuses: D1122,D1326; no promotion}
+
+\begin{definition}[compact data for affine Lagrangian relations]
+Fix a finite field $k$ and finite-dimensional symplectic $k$-spaces $U,V,W$.
+Use the affine Lagrangian relation prescription for arrows between these
+spaces. Prescribe the compact dual of $V$ to be the existing
+opposite-form object $\overline V$.  Prescribe the following coherence
+arrows to be the graphs of the displayed linear tuple maps:
+\[
+\begin{aligned}
+ a_{U,V,W}&:(U\oplus V)\oplus W\longrightarrow
+ U\oplus(V\oplus W),& ((u,v),w)&\longmapsto(u,(v,w)),\\
+ \lambda_V&:0\oplus V\longrightarrow V,&(0,v)&\longmapsto v,\\
+ \rho_V&:V\oplus0\longrightarrow V,&(v,0)&\longmapsto v,\\
+ \sigma_{V,W}&:V\oplus W\longrightarrow W\oplus V,&(v,w)&\longmapsto(w,v).
+\end{aligned}
+\]
+With the factors in exactly the displayed order, prescribe
+\[
+ \eta_V:0\longrightarrow\overline V\oplus V,
+ \qquad
+ \eta_V=\{(0,(v,v)):v\in V\},
+\]
+and
+\[
+ \epsilon_V:V\oplus\overline V\longrightarrow0,
+ \qquad
+ \epsilon_V=\{((v,v),0):v\in V\}.
+\]
+For $R:V\to W$, prescribe its name by
+\[
+ \ulcorner R\urcorner
+ =(1_{\overline V}\oplus R)\circ\eta_V:
+ 0\longrightarrow\overline V\oplus W.
+\]
+For $Q:0\to\overline V\oplus W$, prescribe its unname by
+\[
+ \llcorner Q\lrcorner
+ =\lambda_W\circ(\epsilon_V\oplus1_W)
+ \circ a^{-1}_{V,\overline V,W}\circ(1_V\oplus Q)
+ \circ\rho_V^{-1}:V\longrightarrow W.
+\]
+For scalars $s,t:0\to0$, prescribe their tensor as the transported
+endomorphism
+\[
+ \lambda_0\circ(s\oplus t)\circ\lambda_0^{-1}:0\longrightarrow0.
+\]
+Scalar calculations use ordinary existential relational composition, with
+no additional scalar weight or middle-witness multiplicity.
+\end{definition}
+\begin{scope}
+The prescribed data are classical and include all finite fields, characteristic two, affine translates and empty relations. Their Lagrangian typing, compact laws, state/process correspondence and scalar properties are proof obligations. No quantum normalization, amplitude, probability, stabilizer equivalence or Choi theorem is prescribed.
+\end{scope}
+\provenance{D1714}{Stipulation; SP-CK21, SP-LW14, SP-W09}{Exact relation controls}{Reuses: D1701,D1702; SP-COMPACT admitted separately}
+
+\begin{definition}[stabilizer intertwiner space]
+Fix an odd prime $p$ and, for integers $n\geq0$, use the existing trace-framed character
+$\psi_{\mathbb F_p}$, standard symplectic spaces
+\[
+ V_n=\mathbb F_p^n\oplus\mathbb F_p^n,
+ \qquad
+ \omega_n((a,b),(a',b'))=a\mathbin{\cdot}b'-a'\mathbin{\cdot}b,
+\]
+and the standard Hilbert models $H_{\mathbb F_p,n}$ with their symmetrized
+Weyl operators $W^{\mathrm s}_{\mathbb F_p,n}$.  Put
+$\Omega_{m,n}=-\omega_m\oplus\omega_n$.
+For integers $m,n\geq0$ and a nonempty affine Lagrangian relation
+$R:V_m\to V_n$, prescribe $\mathcal E_p(R)$ to consist of the complex
+linear maps $T:H_{\mathbb F_p,m}\to H_{\mathbb F_p,n}$ satisfying
+\[
+ W_{\mathbb F_p,n}^{\mathrm s}(w)T W_{\mathbb F_p,m}^{\mathrm s}(v)^*
+ =\psi_{\mathbb F_p}\!\left(-\Omega_{m,n}(r,(v,w))\right)T
+\]
+for every $r\in R$ and every $(v,w)\in R-R$.
+For the empty relation prescribe $\mathcal E_p(\varnothing)=\{0\}$.
+\end{definition}
+\begin{scope}
+Using a single origin in the equations, the line dimension, membership in the actual stabilizer-amplitude category, functoriality, dagger and tensor compatibility, and equivalence are proof obligations. The datum is restricted to standard spaces over an odd prime field and the fixed trace-framed character. It prescribes no representative normalization, success probability, CP map or arithmetic-source comparison.
+\end{scope}
+\provenance{D1715}{Stipulation; SP-CK21, SP-GROSS06, SP-BC24}{Exact stabilizer comparison}{Reuses: D1301,D1307,D1701,D1702,D1703,D1704,D1705; SP-STAB-REL admitted separately}

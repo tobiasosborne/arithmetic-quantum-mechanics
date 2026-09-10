@@ -231,7 +231,7 @@ base character. The following rows own only the additional names.
 | symbol | meaning | first fixed in |
 |---|---|---|
 | `omega_V`, `overline V`, `n` (symplectic rank) | form on an arbitrary-rank space, its sign reversal and half the phase-space dimension | D1701 |
-| `S_k`, `S_k^aff`, `(t,g)` | linear and affine symplectic groupoids; v maps to gv+t | D1701 |
+| `S_k`, `S_k^aff`, `(t,g)` | linear and affine symplectic groupoids; v maps to gv+t; the direct sum of affine arrows is prescribed in D1701 | D1701 |
 | `L_k^aff`, `Delta_V`, `R dagger` | affine Lagrangian relation candidate, including empty relations; diagonal and converse | D1702 |
 | `tau_V`, `beta_V` | coefficient trace and half-form cocycle in the existing Weyl algebra notation | D1703 |
 | `H_(k,n)`, `W^s_(k,n)(a,b)` | coordinate Hilbert tensor of n existing k-registers; symmetrized operator with the same position labels as D8, related by the positive half-dot phase; W^s_V denotes its coordinate transport | D1703; D1710 for abstract-space models |
@@ -248,3 +248,7 @@ base character. The following rows own only the additional names.
 | `b`, `u`, `sigma_u` (real dynamics) | inverse temperature, time and physical automorphism flow; these are bound real variables, not Weyl labels or field Frobenius | D1712,D1713 |
 | `N_varphi`, `H_varphi`, `pi_varphi`, `Omega_varphi`, `M_varphi`, `S_varphi`, `J_varphi`, `Delta_varphi` | GNS and modular data under the stated cyclic/separating hypothesis | D1713 |
 | `alpha_(t,g)` | affine Egorov star-isomorphism on the existing Weyl generators | SP-EGOROV |
+| `a_(U,V,W)`, `lambda_V`, `rho_V`, `sigma_(V,W)` (relation coherence) | zero-translation affine tuple coherence maps and their graph associator, left/right unitors and swap | D1701,D1714 |
+| `eta_V`, `epsilon_V`, `ulcorner R urcorner`, `llcorner Q lrcorner` (compact relations) | opposite-form diagonal cup/cap and fully typed name/unname prescriptions | D1714 |
+| `V_n`, `omega_n`, `Omega_(m,n)` (stabilizer relation coordinates) | bound names for the existing standard prime-field symplectic spaces/forms and signed source-target form | D1703,D1715 |
+| `E_p(R)` (stabilizer intertwiners) | origin-free complex space cut out by the Weyl intertwining equations; its line and functor properties belong to SP-STAB-REL | D1715 |

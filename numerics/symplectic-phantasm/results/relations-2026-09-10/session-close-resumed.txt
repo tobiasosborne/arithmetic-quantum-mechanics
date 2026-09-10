@@ -1,0 +1,1119 @@
+RED fcr_local_check.py --red-transpose
+GREEN frobenius_boundary_check.py
+B1 PASS: word census, F4/F16 field orbits and fixed powers
+B2 PASS: Jordan derivatives, positive rational weights, all conditional moments
+B3 PASS: exact state/effect witness and noncommutative cycle blocks
+B4 PASS: coherent CRT reblocking, ternary transport and dephasing sentinel
+B5 PASS: conditional inclusion weights, tower success and four retained tensor branches
+B6 PASS: multiplication counts, overlap filtration and mixed-gate scope sentinels
+PASS: B1--B6. Finite evidence only; general statements rely on the reviewed written proofs.
+RED frobenius_boundary_check.py --red-coherence
+RED frobenius_boundary_check.py --red-count
+RED frobenius_boundary_check.py --red-decoder
+RED frobenius_boundary_check.py --red-frobenius
+RED frobenius_boundary_check.py --red-overlap
+RED frobenius_boundary_check.py --red-weight
+GREEN frobenius_hierarchy_check.py
+{"counts": {"A1-Weyl": 158528, "A1-symplectic": 76618, "A2-code": 63, "A2-logical": 1159, "A3-Fourier": 820, "A3-normalization": 6, "A3-transfer": 373, "A4-embedding": 537, "A4-multiplication": 19499, "A5-interference": 3, "A5-strict": 22, "A5-upper": 2566, "A6-tower": 50, "A7-CP": 20, "A7-Fourier": 2, "A7-PREP": 478, "A7-boundary": 1, "A7-parallel": 2078, "A7-tower": 1028, "A7-types": 6}, "mutation": null, "records": {"A1-F16": {"frobenius": [0, 1, 3, 2, 6, 7, 5, 4, 13, 12, 14, 15, 11, 10, 8, 9], "nondegenerate": true, "q": 16, "trace": [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]}, "A1-F2": {"frobenius": [0, 1], "nondegenerate": true, "q": 2, "trace": [0, 1]}, "A1-F3": {"frobenius": [0, 1, 2], "nondegenerate": true, "q": 3, "trace": [0, 1, 2]}, "A1-F4": {"frobenius": [0, 1, 3, 2], "nondegenerate": true, "q": 4, "trace": [0, 0, 1, 1]}, "A1-F8": {"frobenius": [0, 1, 4, 5, 6, 7, 2, 3], "nondegenerate": true, "q": 8, "trace": [0, 1, 0, 1, 0, 1, 0, 1]}, "A1-F9": {"frobenius": [0, 1, 2, 6, 7, 8, 3, 4, 5], "nondegenerate": true, "q": 9, "trace": [0, 2, 1, 0, 2, 1, 0, 2, 1]}, "A2-F2->F16": {"phase_stabilizers": [0, 1, 2, 3, 4, 5, 6, 7], "support": [0, 1], "trace_fibres": [[0, 1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14, 15]]}, "A2-F2->F4": {"phase_stabilizers": [0, 1], "support": [0, 1], "trace_fibres": [[0, 1], [2, 3]]}, "A2-F2->F8": {"phase_stabilizers": [0, 2, 4, 6], "support": [0, 1], "trace_fibres": [[0, 2, 4, 6], [1, 3, 5, 7]]}, "A2-F3->F9": {"phase_stabilizers": [0, 3, 6], "support": [0, 1, 2], "trace_fibres": [[0, 3, 6], [2, 5, 8], [1, 4, 7]]}, "A2-F4->F16": {"phase_stabilizers": [0, 1, 2, 3], "support": [0, 1, 2, 3], "trace_fibres": [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]}, "A3-tower": {"F4_frobenius_orbits": [[0], [1], [2, 3]], "absolute_trace_F16": [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1], "character_restriction_F4_F2": [0, 0], "fibre_denominator_squares": [2, 4, 8], "relative_trace_F16_F4": [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3]}, "A4-F4->F16": {"a_times_a_in_F4": 3, "embedded_a_times_a_in_F16": 3, "embedding": [0, 1, 2, 3], "tested_control_counts": [1, 2, 3]}, "A5-F2-coherent": {"amplitude": "3/4", "return_probability": "9/16"}, "A5-F2-d1": {"all_translation_count": 4, "certified_sample_level": 2, "difference_space_dimensions": [3, 1, 0], "final_scalar_exponent": 1, "hilbert_dimension": 4, "strict_control_difference_values": [0, 1], "trace_dual_step": 1}, "A5-F2-d2": {"all_translation_count": 8, "certified_sample_level": 3, "difference_space_dimensions": [7, 4, 1, 0], "final_scalar_exponent": 1, "hilbert_dimension": 8, "strict_control_difference_values": [0, 1], "trace_dual_step": 1}, "A5-F2-d3": {"all_translation_count": 16, "certified_sample_level": 4, "difference_space_dimensions": [15, 11, 5, 1, 0], "final_scalar_exponent": 1, "hilbert_dimension": 16, "strict_control_difference_values": [0, 1], "trace_dual_step": 1}, "A5-F2-d4": {"all_translation_count": 32, "certified_sample_level": 5, "difference_space_dimensions": [31, 26, 16, 6, 1, 0], "final_scalar_exponent": 1, "hilbert_dimension": 32, "strict_control_difference_values": [0, 1], "trace_dual_step": 1}, "A5-F3-coherent": {"amplitude": "5/9", "return_probability": "25/81"}, "A5-F3-d1": {"all_translation_count": 9, "certified_sample_level": 2, "difference_space_dimensions": [3, 1, 0], "final_scalar_exponent": 2, "hilbert_dimension": 9, "strict_control_difference_values": [0, 1, 2], "trace_dual_step": 1}, "A5-F3-d2": {"all_translation_count": 27, "certified_sample_level": 3, "difference_space_dimensions": [7, 4, 1, 0], "final_scalar_exponent": 2, "hilbert_dimension": 27, "strict_control_difference_values": [0, 1, 2], "trace_dual_step": 1}, "A5-F3-d3": {"all_translation_count": 81, "certified_sample_level": 4, "difference_space_dimensions": [15, 11, 5, 1, 0], "final_scalar_exponent": 2, "hilbert_dimension": 81, "strict_control_difference_values": [0, 1, 2], "trace_dual_step": 1}, "A5-F3-d4": {"all_translation_count": 243, "certified_sample_level": 5, "difference_space_dimensions": [31, 26, 16, 6, 1, 0], "final_scalar_exponent": 2, "hilbert_dimension": 243, "strict_control_difference_values": [0, 1, 2], "trace_dual_step": 1}, "A5-F4-coherent": {"amplitude": "7/16", "return_probability": "49/256"}, "A5-F4-d1": {"all_translation_count": 16, "certified_sample_level": 2, "difference_space_dimensions": [5, 1, 0], "final_scalar_exponent": 1, "hilbert_dimension": 16, "strict_control_difference_values": [0, 1], "trace_dual_step": 2}, "A5-F4-d2": {"all_translation_count": 64, "certified_sample_level": 3, "difference_space_dimensions": [13, 7, 1, 0], "final_scalar_exponent": 1, "hilbert_dimension": 64, "strict_control_difference_values": [0, 1], "trace_dual_step": 2}, "A5-F4-d3": {"all_translation_count": 256, "certified_sample_level": 4, "difference_space_dimensions": [29, 21, 9, 1, 0], "final_scalar_exponent": 1, "hilbert_dimension": 256, "strict_control_difference_values": [0, 1], "trace_dual_step": 2}, "A6-explicit": {"b_squared": 6, "fixed_basis_labels": [0, 1, 2, 3], "order": 4, "sigma": [0, 1, 3, 2, 6, 7, 5, 4, 13, 12, 14, 15, 11, 10, 8, 9], "sigma_squared": [0, 1, 2, 3, 5, 4, 7, 6, 10, 11, 8, 9, 15, 14, 13, 12], "sigma_squared_orbits": [[0], [1], [2], [3], [4, 5], [6, 7], [8, 10], [9, 11], [12, 15], [13, 14]]}, "A7-F16-preparation-discard": {"discard_target_tensor_unit_dimension": 1, "hidden_discard_bras": 16, "normalized_basis_preparations": 16, "ordinary_trace_matrix_units_checked": 256}, "A7-F2-preparation-discard": {"discard_target_tensor_unit_dimension": 1, "hidden_discard_bras": 2, "normalized_basis_preparations": 2, "ordinary_trace_matrix_units_checked": 4}, "A7-F3-preparation-discard": {"discard_target_tensor_unit_dimension": 1, "hidden_discard_bras": 3, "normalized_basis_preparations": 3, "ordinary_trace_matrix_units_checked": 9}, "A7-F4-preparation-discard": {"discard_target_tensor_unit_dimension": 1, "hidden_discard_bras": 4, "normalized_basis_preparations": 4, "ordinary_trace_matrix_units_checked": 16}, "A7-F8-preparation-discard": {"discard_target_tensor_unit_dimension": 1, "hidden_discard_bras": 8, "normalized_basis_preparations": 8, "ordinary_trace_matrix_units_checked": 64}, "A7-F9-preparation-discard": {"discard_target_tensor_unit_dimension": 1, "hidden_discard_bras": 9, "normalized_basis_preparations": 9, "ordinary_trace_matrix_units_checked": 81}, "A7-Fourier-instrument": {"success_and_failure_branch_equalities": true, "success_denominator_square": 2, "target_dimensions": [2, 4]}, "A7-J-decoder": {"choi_positive_gram": true, "outcome_types": {"f": 4, "s": 2}, "success_probabilities": {"code": "1", "coherent": "1/2", "complement": "0", "mixed": "1/2"}}, "A7-J-parallel": {"entangled_probabilities": {"ff": "1/2", "fs": "0", "sf": "0", "ss": "1/2"}, "outcome_target_dimensions": {"ff": 16, "fs": 8, "sf": 8, "ss": 4}}, "A7-J-tower": {"history_target_dimensions": {"both_success": 2, "first_fail": 16, "first_success_second_fail": 4}, "matrix_units_tested": 256}, "A7-V-decoder": {"choi_positive_gram": true, "outcome_types": {"f": 4, "s": 2}, "success_probabilities": {"code": "1", "coherent": "1/2", "complement": "0", "mixed": "1/2"}}, "A7-V-parallel": {"entangled_probabilities": {"ff": "1/4", "fs": "1/4", "sf": "1/4", "ss": "1/4"}, "outcome_target_dimensions": {"ff": 16, "fs": 8, "sf": 8, "ss": 4}}, "A7-V-tower": {"history_target_dimensions": {"both_success": 2, "first_fail": 16, "first_success_second_fail": 4}, "matrix_units_tested": 256}, "A7-reset-boundary": {"global_diagonal": ["1/4", "1/4", "1/4", "1/4"], "local_diagonal": ["1/2", "0", "1/2", "0"]}}, "status": "PASS"}
+RED frobenius_hierarchy_check.py --red
+RED frobenius_hierarchy_check.py --red-code-phase-subfield
+RED frobenius_hierarchy_check.py --red-discard-omit-bra
+RED frobenius_hierarchy_check.py --red-embedding-coefficient-swap
+RED frobenius_hierarchy_check.py --red-fourier-failure-original-code
+RED frobenius_hierarchy_check.py --red-fourier-positive-kernel
+RED frobenius_hierarchy_check.py --red-frob-one-label
+RED frobenius_hierarchy_check.py --red-frobenius-no-shear
+RED frobenius_hierarchy_check.py --red-hierarchy-delete-factor
+RED frobenius_hierarchy_check.py --red-hierarchy-extra-register-term
+RED frobenius_hierarchy_check.py --red-instrument-double-success
+RED frobenius_hierarchy_check.py --red-interference-erase-phase
+RED frobenius_hierarchy_check.py --red-logical-momentum-inclusion
+RED frobenius_hierarchy_check.py --red-multiplication-as-addition
+RED frobenius_hierarchy_check.py --red-parallel-collapse-outcomes
+RED frobenius_hierarchy_check.py --red-process-wrong-target
+RED frobenius_hierarchy_check.py --red-relative-trace-projection
+RED frobenius_hierarchy_check.py --red-reset-global-as-local
+RED frobenius_hierarchy_check.py --red-sequential-reverse
+RED frobenius_hierarchy_check.py --red-trace-fibre-unnormalized
+RED frobenius_hierarchy_check.py --red-weyl-positive-sign
+GREEN phantasm_contract_check.py
+G1 PASS: 15 unique contracts with explicit input/output/scope fields
+G2 PASS: contract, definition, dependency and source references resolve
+G3 PASS: 15 lemmas and 7 decision gates form a DAG
+G4 PASS: no refuted dependencies or unsupported promotions
+G5 PASS: 25 local sources pinned; 5 GAP leads unused
+G6 PASS: 15 exact definitions and 15 exact claim restatements
+G7 PASS: selected shared-name ownership and convention guards
+G8 PASS: inherited proof status/paths and acyclic definition reuse
+Ready for proof work: SP-SCALAR, SP-CP, SP-TRACE, SP-FOCK, SP-PRIME, SP-BC-CONTROL
+PASS: recorded contracts only; no mathematical claim promoted
+RED phantasm_contract_check.py --red-cycle
+RED phantasm_contract_check.py --red-decision-cycle
+RED phantasm_contract_check.py --red-decision-input
+RED phantasm_contract_check.py --red-definition-cycle
+RED phantasm_contract_check.py --red-definition-drift
+RED phantasm_contract_check.py --red-definition-reuse
+RED phantasm_contract_check.py --red-duplicate-node
+RED phantasm_contract_check.py --red-empty-scope
+RED phantasm_contract_check.py --red-inherited-status
+RED phantasm_contract_check.py --red-labbook
+RED phantasm_contract_check.py --red-missing-definition
+RED phantasm_contract_check.py --red-missing-node
+RED phantasm_contract_check.py --red-notation-alias
+RED phantasm_contract_check.py --red-notation-owner
+RED phantasm_contract_check.py --red-orphan-claim
+RED phantasm_contract_check.py --red-promote
+RED phantasm_contract_check.py --red-proof-shard
+RED phantasm_contract_check.py --red-refuted
+RED phantasm_contract_check.py --red-source-gap
+RED phantasm_contract_check.py --red-source-hash
+RED phantasm_contract_check.py --red-status
+RED phantasm_contract_check.py --red-untracked-reuse
+GREEN phantasm_egorov_check.py
+phantasm_egorov_check mode=green
+exact arithmetic only; finite success does not prove or promote a claim
+E1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.011s]
+E2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 2.492s]
+E3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 2.684s]
+E4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.003s]
+E5 PASS: F*F=3I and 9 exact Fourier covariance equalities [10 checks; 0.002s]
+E6 PASS: 2 unitary and 18 exact shear covariance checks [20 checks; 0.001s]
+E7 PASS: enumerated rank-zero affine/Weyl object and both tensor units [26 checks; 0.000s]
+E8 PASS: psi_u table, 81 additivity, 6,561 Weyl products, 6,561 translations, 81 Fourier and 162 shear covariances [13453 checks; 0.489s]
+E9 PASS: 81 operator tensors, 81 swaps and 3,779,136 all-factor affine naturality cases [3779298 checks; 3.972s]
+PASS: SP-EGOROV / affine SP-TENSOR finite falsifier [9.654s total]
+RED phantasm_egorov_check.py --red-alpha-phase
+RED phantasm_egorov_check.py --red-f9-character
+RED phantasm_egorov_check.py --red-fourier-sign
+RED phantasm_egorov_check.py --red-semidir-order
+RED phantasm_egorov_check.py --red-shear-half
+RED phantasm_egorov_check.py --red-sp-enumeration
+RED phantasm_egorov_check.py --red-tensor-phase
+RED phantasm_egorov_check.py --red-translation-sign
+RED phantasm_egorov_check.py --red-zero-qudit
+GREEN phantasm_relations_check.py
+G1 PASS: F2/F3 censuses (2,7,7,61) and (2,13,13,361); states/effects and empties
+G2 PASS: 144,806 existential/oracle pairs; nontransverse fibers and empty composites
+G3 PASS: exhaustive identities/daggers; 290,794 F2 + 4,096 F3 associative triples
+G4 PASS: 5,929 F2 + 4,096 F3 tensor pairs; zero unit, swap, associativity, interchange
+G5 PASS: 24/216 faithful graphs; 47,232 compositions and 4,672 tensor comparisons
+G6 PASS: typed diagonal cups/caps, dagger order and both snakes for zero and one register
+G7 PASS: 466 exhaustive names/unnames; Boolean unit scalars and true closed loops
+GREEN PASS: exact finite checks only; no claim promotion
+RED phantasm_relations_check.py --red-compact-dual
+RED phantasm_relations_check.py --red-cup-order
+RED phantasm_relations_check.py --red-dagger-order
+RED phantasm_relations_check.py --red-dagger-swap
+RED phantasm_relations_check.py --red-empty-loss
+RED phantasm_relations_check.py --red-empty-name
+RED phantasm_relations_check.py --red-graph-translation
+RED phantasm_relations_check.py --red-loop-multiplicity
+RED phantasm_relations_check.py --red-middle-forall
+RED phantasm_relations_check.py --red-name-order
+RED phantasm_relations_check.py --red-snake-wire
+RED phantasm_relations_check.py --red-source-sign
+RED phantasm_relations_check.py --red-tensor-order
+RED phantasm_relations_check.py --red-zero-unit
+GREEN phantasm_reuse_check.py
+R1 PASS: 1002 exact comparisons
+R2 PASS: 942 exact comparisons
+R3 PASS: 69258 exact comparisons
+R4 PASS: 69258 exact comparisons
+R5 PASS: 99 exact comparisons
+R6 PASS: 1380 exact comparisons
+PASS: finite reuse interfaces only; no claim promotion
+RED phantasm_reuse_check.py --red-central-injective
+RED phantasm_reuse_check.py --red-character-conflation
+RED phantasm_reuse_check.py --red-cocycle
+RED phantasm_reuse_check.py --red-dual-sign
+RED phantasm_reuse_check.py --red-position-labels
+RED phantasm_reuse_check.py --red-relative-frobenius
+RED phantasm_reuse_check.py --red-rephase
+RED phantasm_reuse_check.py --red-tensor-phase
+RED phantasm_reuse_check.py --red-trace-normalization
+RED phantasm_reuse_check.py --red-trivial-character
+RED phantasm_reuse_check.py --red-vacuum
+GREEN phantasm_stabilizer_check.py
+S1 PASS: exact F3/F5 generators; 216 qutrit Cliffords and 12/30 state rays
+S2 PASS: C^times quotient, zero separation; actual Hom nonzero counts 1,12,12,360
+S3 PASS: all 389 F3 relation lines/censuses and 31 F5 states; all-origin equations
+S4 PASS: all 140,101 F3 compositions, 389 daggers, zero and unequal nonzero scalars
+S5 PASS: 169 state + 169 effect + 144 mixed tensors; F3/F5 Bell cups and scalar p
+GREEN PASS: exact finite checks only; no claim promotion
+RED phantasm_stabilizer_check.py --red-average-sign
+RED phantasm_stabilizer_check.py --red-cup-singleton
+RED phantasm_stabilizer_check.py --red-dagger-transpose
+RED phantasm_stabilizer_check.py --red-drop-shear
+RED phantasm_stabilizer_check.py --red-empty-nonzero
+RED phantasm_stabilizer_check.py --red-f5-cap-weight
+RED phantasm_stabilizer_check.py --red-f5-state-loss
+RED phantasm_stabilizer_check.py --red-family-state-loss
+RED phantasm_stabilizer_check.py --red-fixed-seed
+RED phantasm_stabilizer_check.py --red-fourier-sign
+RED phantasm_stabilizer_check.py --red-origin-dependent
+RED phantasm_stabilizer_check.py --red-phase-only
+RED phantasm_stabilizer_check.py --red-product-order
+RED phantasm_stabilizer_check.py --red-projector-entry
+RED phantasm_stabilizer_check.py --red-tensor-order
+RED phantasm_stabilizer_check.py --red-weyl-sign
+RED phantasm_stabilizer_check.py --red-zero-collapse
+RED phantasm_stabilizer_check.py --red-zero-product
+GREEN positive_arithmetic_check.py
+{
+  "status": "PASS",
+  "mutation": null,
+  "counts": {
+    "P1": 779,
+    "P2": 112,
+    "P3": 11,
+    "P4": 104,
+    "P5": 52,
+    "P6": 64,
+    "P7": 5
+  },
+  "records": {
+    "P1": [
+      {
+        "p": 2,
+        "r": 1,
+        "Q": 2,
+        "period_counts": {
+          "1": 1
+        },
+        "B_nonzero_trace": "1"
+      },
+      {
+        "p": 2,
+        "r": 2,
+        "Q": 4,
+        "period_counts": {
+          "1": 1,
+          "2": 2
+        },
+        "B_nonzero_trace": "2"
+      },
+      {
+        "p": 2,
+        "r": 3,
+        "Q": 8,
+        "period_counts": {
+          "1": 1,
+          "3": 6
+        },
+        "B_nonzero_trace": "3"
+      },
+      {
+        "p": 2,
+        "r": 4,
+        "Q": 16,
+        "period_counts": {
+          "1": 1,
+          "4": 12,
+          "2": 2
+        },
+        "B_nonzero_trace": "4"
+      },
+      {
+        "p": 3,
+        "r": 1,
+        "Q": 3,
+        "period_counts": {
+          "1": 2
+        },
+        "B_nonzero_trace": "1"
+      },
+      {
+        "p": 3,
+        "r": 2,
+        "Q": 9,
+        "period_counts": {
+          "1": 2,
+          "2": 6
+        },
+        "B_nonzero_trace": "2"
+      },
+      {
+        "p": 3,
+        "r": 3,
+        "Q": 27,
+        "period_counts": {
+          "1": 2,
+          "3": 24
+        },
+        "B_nonzero_trace": "3"
+      },
+      {
+        "p": 3,
+        "r": 4,
+        "Q": 81,
+        "period_counts": {
+          "1": 2,
+          "4": 72,
+          "2": 6
+        },
+        "B_nonzero_trace": "4"
+      },
+      {
+        "p": 5,
+        "r": 1,
+        "Q": 5,
+        "period_counts": {
+          "1": 4
+        },
+        "B_nonzero_trace": "1"
+      },
+      {
+        "p": 5,
+        "r": 2,
+        "Q": 25,
+        "period_counts": {
+          "1": 4,
+          "2": 20
+        },
+        "B_nonzero_trace": "2"
+      },
+      {
+        "p": 5,
+        "r": 3,
+        "Q": 125,
+        "period_counts": {
+          "1": 4,
+          "3": 120
+        },
+        "B_nonzero_trace": "3"
+      },
+      {
+        "p": 5,
+        "r": 4,
+        "Q": 625,
+        "period_counts": {
+          "1": 4,
+          "4": 600,
+          "2": 20
+        },
+        "B_nonzero_trace": "4"
+      }
+    ],
+    "P2": [
+      {
+        "p": 2,
+        "s": 1,
+        "r": 2,
+        "twisted": false,
+        "degree": 2,
+        "kappa": 2
+      },
+      {
+        "p": 2,
+        "s": 1,
+        "r": 3,
+        "twisted": false,
+        "degree": 3,
+        "kappa": 4
+      },
+      {
+        "p": 2,
+        "s": 2,
+        "r": 4,
+        "twisted": false,
+        "degree": 2,
+        "kappa": 4
+      },
+      {
+        "p": 2,
+        "s": 2,
+        "r": 4,
+        "twisted": true,
+        "degree": 2,
+        "kappa": 4
+      },
+      {
+        "p": 3,
+        "s": 1,
+        "r": 2,
+        "twisted": false,
+        "degree": 2,
+        "kappa": 3
+      },
+      {
+        "p": 3,
+        "s": 1,
+        "r": 3,
+        "twisted": false,
+        "degree": 3,
+        "kappa": 9
+      }
+    ],
+    "P3": [
+      {
+        "t": "1",
+        "state_complement": "0",
+        "old_tracial_complement": "-1"
+      },
+      {
+        "t": "6/5",
+        "state_complement": "11/54",
+        "old_tracial_complement": "-7/18"
+      },
+      {
+        "t": "3/2",
+        "state_complement": "10/27",
+        "old_tracial_complement": "1/9"
+      },
+      {
+        "t": "2",
+        "state_complement": "1/2",
+        "old_tracial_complement": "1/2"
+      }
+    ],
+    "P4": {
+      "protocols": [
+        {
+          "p": 2,
+          "q": 2,
+          "Q": 4,
+          "a": 2,
+          "b": 3,
+          "trace_ab": 0,
+          "trace_frobenius_ab": 1,
+          "rare_order": 2,
+          "rare_leading": "1/4",
+          "full_success": "1",
+          "dephased_success": "1/2",
+          "omitted": {
+            "frobenius": {
+              "success": "1",
+              "failure": "0"
+            },
+            "multiplication": {
+              "success": "1",
+              "failure": "0"
+            },
+            "fourier": {
+              "success": "0",
+              "failure": "1"
+            }
+          }
+        },
+        {
+          "p": 2,
+          "q": 2,
+          "Q": 8,
+          "a": 2,
+          "b": 2,
+          "trace_ab": 0,
+          "trace_frobenius_ab": 1,
+          "rare_order": 2,
+          "rare_leading": "1/9",
+          "full_success": "1",
+          "dephased_success": "1/4",
+          "omitted": {
+            "frobenius": {
+              "success": "1",
+              "failure": "0"
+            },
+            "multiplication": {
+              "success": "1",
+              "failure": "0"
+            },
+            "fourier": {
+              "success": "1/4",
+              "failure": "3/4"
+            }
+          }
+        },
+        {
+          "p": 2,
+          "q": 4,
+          "Q": 16,
+          "a": 2,
+          "b": 3,
+          "trace_ab": 0,
+          "trace_frobenius_ab": 1,
+          "rare_order": 2,
+          "rare_leading": "1/36",
+          "full_success": "1",
+          "dephased_success": "1/4",
+          "omitted": {
+            "frobenius": {
+              "success": "1",
+              "failure": "0"
+            },
+            "multiplication": {
+              "success": "1",
+              "failure": "0"
+            },
+            "fourier": {
+              "success": "0",
+              "failure": "1"
+            }
+          }
+        },
+        {
+          "p": 3,
+          "q": 3,
+          "Q": 9,
+          "a": 4,
+          "b": 4,
+          "trace_ab": 0,
+          "trace_frobenius_ab": 1,
+          "rare_order": 2,
+          "rare_leading": "1/36",
+          "full_success": "1",
+          "dephased_success": "1/3",
+          "omitted": {
+            "frobenius": {
+              "success": "1",
+              "failure": "0"
+            },
+            "multiplication": {
+              "success": "1",
+              "failure": "0"
+            },
+            "fourier": {
+              "success": "1/3",
+              "failure": "2/3"
+            }
+          }
+        },
+        {
+          "p": 3,
+          "q": 3,
+          "Q": 27,
+          "a": 3,
+          "b": 9,
+          "trace_ab": 0,
+          "trace_frobenius_ab": 1,
+          "rare_order": 2,
+          "rare_leading": "1/144",
+          "full_success": "1",
+          "dephased_success": "1/9",
+          "omitted": {
+            "frobenius": {
+              "success": "1",
+              "failure": "0"
+            },
+            "multiplication": {
+              "success": "1",
+              "failure": "0"
+            },
+            "fourier": {
+              "success": "0",
+              "failure": "1"
+            }
+          }
+        },
+        {
+          "p": 5,
+          "q": 5,
+          "Q": 25,
+          "a": 6,
+          "b": 14,
+          "trace_ab": 0,
+          "trace_frobenius_ab": 1,
+          "rare_order": 2,
+          "rare_leading": "1/400",
+          "full_success": "1",
+          "dephased_success": "1/5",
+          "omitted": {
+            "frobenius": {
+              "success": "1",
+              "failure": "0"
+            },
+            "multiplication": {
+              "success": "1",
+              "failure": "0"
+            },
+            "fourier": {
+              "success": "1/5",
+              "failure": "4/5"
+            }
+          }
+        }
+      ],
+      "coherent_control_return": "1",
+      "dephased_output_return": "1/2",
+      "full_leakage_return": "1",
+      "compressed_return": "0",
+      "retained_failure_return": "1",
+      "phase_shifted_Born_return": "0"
+    },
+    "P5": {
+      "branches": [
+        {
+          "registers": 1,
+          "event_order": 0,
+          "leading_probability": "5/9"
+        },
+        {
+          "registers": 1,
+          "event_order": 1,
+          "leading_probability": "5/18"
+        },
+        {
+          "registers": 2,
+          "event_order": 0,
+          "leading_probability": "5/9"
+        },
+        {
+          "registers": 2,
+          "event_order": 1,
+          "leading_probability": "5/18"
+        },
+        {
+          "registers": 2,
+          "event_order": 2,
+          "leading_probability": "5/36"
+        },
+        {
+          "registers": 3,
+          "event_order": 0,
+          "leading_probability": "5/9"
+        },
+        {
+          "registers": 3,
+          "event_order": 1,
+          "leading_probability": "5/18"
+        },
+        {
+          "registers": 3,
+          "event_order": 2,
+          "leading_probability": "5/36"
+        },
+        {
+          "registers": 3,
+          "event_order": 3,
+          "leading_probability": "5/72"
+        }
+      ],
+      "entangled_event_order": 2,
+      "later_event_coefficient": "1/4",
+      "independent_nonzero_diagonal_order": 2,
+      "copied_nonzero_diagonal_order": 1,
+      "independent_nonzero_diagonal_leading": "3/2",
+      "copied_nonzero_diagonal_leading": "2",
+      "t_6_5_diagonal_probability": "43/1296",
+      "naive_point_count_probability": "275/1296"
+    },
+    "P6": {
+      "arity_samples": [
+        {
+          "p": 2,
+          "r": 1,
+          "arity": 1,
+          "order": 1,
+          "leading": "1",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 2,
+          "r": 1,
+          "arity": 2,
+          "order": 2,
+          "leading": "1",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 2,
+          "r": 1,
+          "arity": 3,
+          "order": 3,
+          "leading": "1",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 3,
+          "r": 1,
+          "arity": 1,
+          "order": 1,
+          "leading": "1",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 3,
+          "r": 1,
+          "arity": 2,
+          "order": 2,
+          "leading": "1",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 3,
+          "r": 1,
+          "arity": 3,
+          "order": 3,
+          "leading": "1",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 2,
+          "r": 2,
+          "arity": 1,
+          "order": 1,
+          "leading": "2",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 2,
+          "r": 2,
+          "arity": 2,
+          "order": 2,
+          "leading": "4",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 2,
+          "r": 2,
+          "arity": 3,
+          "order": 3,
+          "leading": "8",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 3,
+          "r": 2,
+          "arity": 1,
+          "order": 1,
+          "leading": "2",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 3,
+          "r": 2,
+          "arity": 2,
+          "order": 2,
+          "leading": "4",
+          "conditional_squared_difference": "2"
+        },
+        {
+          "p": 3,
+          "r": 2,
+          "arity": 3,
+          "order": 3,
+          "leading": "8",
+          "conditional_squared_difference": "2"
+        }
+      ],
+      "outside_joint_Born_return": "1/9",
+      "outside_joint_order": 1,
+      "outside_joint_leading": "1/2",
+      "hierarchy_scope": "Order d is an arity diagnostic; exact hierarchy level d+1 is an admitted input, not re-proved by this count."
+    },
+    "P7": {
+      "comparison": [
+        {
+          "p": 2,
+          "degree": 2,
+          "dimension": 4,
+          "rho_0": "zero ket",
+          "nonzero_conditional_fixed_label_weight": "1/2",
+          "nonzero_conditional_moving_label_weight": "1/4",
+          "conditional_purity": "3/8",
+          "period_mass_fixed": "1/2",
+          "period_mass_moving": "1/2",
+          "Fourier_zero_return": "1/4"
+        },
+        {
+          "p": 3,
+          "degree": 2,
+          "dimension": 9,
+          "rho_0": "zero ket",
+          "nonzero_conditional_fixed_label_weight": "1/4",
+          "nonzero_conditional_moving_label_weight": "1/12",
+          "conditional_purity": "1/6",
+          "period_mass_fixed": "1/2",
+          "period_mass_moving": "1/2",
+          "Fourier_zero_return": "1/9"
+        }
+      ],
+      "scope": "Common degree moments do not identify full endpoints or erase p-dependent arithmetic tables."
+    }
+  },
+  "scope": "Exact bounded samples only; no universal theorem inferred."
+}
+RED positive_arithmetic_check.py --red-arity
+RED positive_arithmetic_check.py --red-coherence
+RED positive_arithmetic_check.py --red-compression
+RED positive_arithmetic_check.py --red-discard-later-rare
+RED positive_arithmetic_check.py --red-embedding
+RED positive_arithmetic_check.py --red-erase-characteristic
+RED positive_arithmetic_check.py --red-fourier-invariance
+RED positive_arithmetic_check.py --red-fourier-phase
+RED positive_arithmetic_check.py --red-jordan
+RED positive_arithmetic_check.py --red-mass
+RED positive_arithmetic_check.py --red-moment
+RED positive_arithmetic_check.py --red-multiplication-entry
+RED positive_arithmetic_check.py --red-normalizer
+RED positive_arithmetic_check.py --red-profile
+RED positive_arithmetic_check.py --red-total-first-order
+RED positive_arithmetic_check.py --red-tracial-complement
+GREEN small_rings_catalogue_check.py
+small_rings_catalogue_check mode=green
+exact arithmetic: finite tables + Z[zeta_d] vectors; no floats/tolerances
+ring=F2          A0 PASS Phi_2 exact; zeta_2 has exact order 2; 2x2 tables satisfy commutative local-ring axioms [decoration: table-integrity precondition]
+ring=F2          C1 PASS |soc|=2 |R^x|=1 |Gen|=1 (all 2 chars); |Adm|=8; antisym=0
+ring=F2          C2 PASS 2-cocycle on 64 triples; UT3 identity on 64 pairs; F3 transports=0
+ring=F2          C3 PASS |H|=8 centre={1: 1, 2: 1} exponent=4 profile={1: 1, 2: 5, 4: 2}; D4 witness=(3,1); beta profile types=[2, 6]
+ring=F2          C4 PASS [H,H]=R x 0; |H^ab|=4; classes=5=4+sum Ann(u)^2
+ring=F2          C5 PASS 1 generating characters: exact Gram=4 I_2 and commutant=1; span=M_2; Pauli image order 8 (D4)
+ring=F2          C6 PASS u=(0,): 4x1; u=(1,): 1x2; irreps=5=classes; sum dim^2=8
+ring=F2          C7 PASS N/A: field has no nonzero maximal-ideal stratum
+ring=F2          C8 PASS submodules=5 {1: 1, 2: 3, 4: 1}; Lagrangians=(3, 3, 0); 6 exact A_L characters/model labels
+ring=F3          A0 PASS Phi_3 exact; zeta_3 has exact order 3; 3x3 tables satisfy commutative local-ring axioms [decoration: table-integrity precondition]
+ring=F3          C1 PASS |soc|=3 |R^x|=2 |Gen|=2 (all 3 chars); |Adm|=27; antisym=1
+ring=F3          C2 PASS 2-cocycle on 729 triples; UT3 identity on 729 pairs; F3 transports=27
+ring=F3          C3 PASS |H|=27 centre={1: 1, 3: 2} exponent=3 profile={1: 1, 3: 26}; extraspecial 3^(1+2)_+ invariants
+ring=F3          C4 PASS [H,H]=R x 0; |H^ab|=9; classes=11=9+sum Ann(u)^2
+ring=F3          C5 PASS 2 generating characters: exact Gram=9 I_3 and commutant=1; span=M_3
+ring=F3          C6 PASS u=(0,): 9x1; u=(1,): 1x3; u=(2,): 1x3; irreps=11=classes; sum dim^2=27
+ring=F3          C7 PASS N/A: field has no nonzero maximal-ideal stratum
+ring=F3          C8 PASS submodules=6 {1: 1, 3: 4, 9: 1}; Lagrangians=(4, 4, 0); 12 exact A_L characters/model labels
+ring=F4          A0 PASS Phi_2 exact; zeta_2 has exact order 2; 4x4 tables satisfy commutative local-ring axioms [decoration: table-integrity precondition]
+ring=F4          C1 PASS |soc|=4 |R^x|=3 |Gen|=3 (all 4 chars); |Adm|=64; antisym=0
+ring=F4          C2 PASS 2-cocycle on 4096 triples; UT3 identity on 4096 pairs; F3 transports=0
+ring=F4          C3 PASS |H|=64 centre={1: 1, 2: 3} exponent=4 profile={1: 1, 2: 27, 4: 36}; beta profile types=[24, 40]
+ring=F4          C4 PASS [H,H]=R x 0; |H^ab|=16; classes=19=16+sum Ann(u)^2
+ring=F4          C5 PASS 3 generating characters: exact Gram=16 I_4 and commutant=1; span=M_4; two independent qubit shifts
+ring=F4          C6 PASS u=(0, 0): 16x1; u=(1, 0): 1x4; u=(0, 1): 1x4; u=(1, 1): 1x4; irreps=19=classes; sum dim^2=64
+ring=F4          C7 PASS N/A: field has no nonzero maximal-ideal stratum
+ring=F4          C8 PASS submodules=7 {1: 1, 4: 5, 16: 1}; Lagrangians=(5, 5, 0); 20 exact A_L characters/model labels
+ring=Z4          A0 PASS Phi_4 exact; zeta_4 has exact order 4; 4x4 tables satisfy commutative local-ring axioms [decoration: table-integrity precondition]
+ring=Z4          C1 PASS |soc|=2 |R^x|=2 |Gen|=2 (all 4 chars); |Adm|=64; antisym=0
+ring=Z4          C2 PASS 2-cocycle on 4096 triples; UT3 identity on 4096 pairs; F3 transports=0
+ring=Z4          C3 PASS |H|=64 centre={1: 1, 2: 1, 4: 2} exponent=8 profile={1: 1, 2: 7, 4: 40, 8: 16}; order 8 iff a,b odd (16 elements)
+ring=Z4          C4 PASS [H,H]=R x 0; |H^ab|=16; classes=22=16+sum Ann(u)^2
+ring=Z4          C5 PASS 2 generating characters: exact Gram=16 I_4 and commutant=1; span=M_4; ququart clock exponents=(0,1,2,3)
+ring=Z4          C6 PASS u=(0,): 16x1; u=(1,): 1x4; u=(2,): 4x2; u=(3,): 1x4; irreps=22=classes; sum dim^2=64
+ring=Z4          C7 PASS I=Ann(u), rad=I^2 size 4; Weyl images=8 (projective=8), H image=16; model=2+2, multiplicity 1 each, 2 of 4 inequivalent 2-d irreps
+ring=Z4          C8 PASS submodules=15 {1: 1, 2: 3, 4: 7, 8: 3, 16: 1}; Lagrangians=(7, 6, 1); 28 exact A_L characters/model labels
+ring=F2[e]/e2    A0 PASS Phi_2 exact; zeta_2 has exact order 2; 4x4 tables satisfy commutative local-ring axioms [decoration: table-integrity precondition]
+ring=F2[e]/e2    C1 PASS |soc|=2 |R^x|=2 |Gen|=2 (all 4 chars); |Adm|=64; antisym=0
+ring=F2[e]/e2    C2 PASS 2-cocycle on 4096 triples; UT3 identity on 4096 pairs; F3 transports=0
+ring=F2[e]/e2    C3 PASS |H|=64 centre={1: 1, 2: 3} exponent=4 profile={1: 1, 2: 31, 4: 32}; 2v=0 and no order 8
+ring=F2[e]/e2    C4 PASS [H,H]=R x 0; |H^ab|=16; classes=22=16+sum Ann(u)^2
+ring=F2[e]/e2    C5 PASS 2 generating characters: exact Gram=16 I_4 and commutant=1; span=M_4
+ring=F2[e]/e2    C6 PASS u=(0, 0): 16x1; u=(1, 0): 1x4; u=(0, 1): 4x2; u=(1, 1): 1x4; irreps=22=classes; sum dim^2=64
+ring=F2[e]/e2    C7 PASS I=Ann(u), rad=I^2 size 4; Weyl images=8 (projective=8), H image=16; model=2+2, multiplicity 1 each, 2 of 4 inequivalent 2-d irreps
+ring=F2[e]/e2    C8 PASS submodules=15 {1: 1, 2: 3, 4: 7, 8: 3, 16: 1}; Lagrangians=(7, 6, 1); 28 exact A_L characters/model labels
+---- summary ----
+GREEN: C1--C8 passed at all five rings; A0 is named decoration/precondition
+RED small_rings_catalogue_check.py --red-catalogue
+RED small_rings_catalogue_check.py --red-class-count
+RED small_rings_catalogue_check.py --red-drop-nonfree
+RED small_rings_catalogue_check.py --red-gram
+RED small_rings_catalogue_check.py --red-middle-images
+RED small_rings_catalogue_check.py --red-order-profile
+RED small_rings_catalogue_check.py --red-ring-soc
+RED small_rings_catalogue_check.py --red-transpose-cocycle
+GREEN beta_census.py
+beta_census  mode=green   exact integer arithmetic, no tolerance
+
+== kappa = F_2 (p=2, n=1), |V| = 4, |H| = 8 ==
+q=2  B1   PASS |Adm(omega)| = q^3 = 8, all admissible, all kappa-bilinear, all distinct
+q=2  B2   PASS no admissible cocycle is antisymmetric: the torsor has no distinguished point
+q=2  B3   profile {1: 1, 2: 5, 4: 2} : 6 of 8 cocycles  (contains D2's beta)
+q=2  B3   profile {1: 1, 2: 1, 4: 6} : 2 of 8 cocycles
+q=2  B5   PASS Arf(Q) in kappa/P(kappa) (|P(kappa)| = q/2) is SL_2-invariant (8 cocycles x 6 group elements) and takes exactly the 2 values [0, 1]
+q=2  B6   Arf=0  eps=+1  |O(Q) cap SL_2|=2 = 2(q-1)  #{Q=0}=3  profile {1: 1, 2: 5, 4: 2} : 6 cocycles  <- D2
+q=2  B6   Arf=1  eps=-1  |O(Q) cap SL_2|=6 = 2(q+1)  #{Q=0}=1  profile {1: 1, 2: 1, 4: 6} : 2 cocycles
+q=2  B7   PASS every cocycle with Arf = Arf(D2) is carried to D2's by an explicit isomorphism phi(t,v) = (t+f(v), gv), g in SL_2, verified on all pairs (6 cocycles)
+q=2  B8   PASS Tr kills P(kappa) and is onto F_2; Arf_{F_2}(psi o Q) (the Gauss sign) = Tr(Arf_kappa(Q)) for all 8 cocycles
+q=2  B9   PASS mu_p-frame equivalence with D2 (i.e. psi(Q'-Q) = 1 pointwise) holds for 2 of 8 cocycles
+q=2  B10  bi-additive (not nec. kappa-bilinear) cocycles: #{v : Q(v)=0} takes the 2 values [1, 3] over the 4 additive shifts of Q, so H_beta has 2 isomorphism classes here against exactly 2 among the kappa-bilinear cocycles; but sum_v psi(Q(v)) still takes only the two values [-2, 2], so psi o Q keeps exactly two F_2-Arf classes
+
+== kappa = F_3 (p=3, n=1), |V| = 9, |H| = 27 ==
+q=3  B1   PASS |Adm(omega)| = q^3 = 27, all admissible, all kappa-bilinear, all distinct
+q=3  B2   PASS exactly one antisymmetric admissible cocycle, and it is omega/2: a canonical representative
+q=3  B3   profile {1: 1, 3: 26} : 27 of 27 cocycles  (contains D2's beta)
+q=3  B4   PASS phi(t,v) = (t + s(v,v)/2, v) : H_beta0 -> H_beta' is a group isomorphism for all 27 cocycles, verified on all 81 pairs each
+
+== kappa = F_4 (p=2, n=2), |V| = 16, |H| = 64 ==
+q=4  B1   PASS |Adm(omega)| = q^3 = 64, all admissible, all kappa-bilinear, all distinct
+q=4  B2   PASS no admissible cocycle is antisymmetric: the torsor has no distinguished point
+q=4  B3   profile {1: 1, 2: 27, 4: 36} : 40 of 64 cocycles  (contains D2's beta)
+q=4  B3   profile {1: 1, 2: 3, 4: 60} : 24 of 64 cocycles
+q=4  B5   PASS Arf(Q) in kappa/P(kappa) (|P(kappa)| = q/2) is SL_2-invariant (64 cocycles x 60 group elements) and takes exactly the 2 values [0, 2]
+q=4  B6   Arf=0  eps=+1  |O(Q) cap SL_2|=6 = 2(q-1)  #{Q=0}=7  profile {1: 1, 2: 27, 4: 36} : 40 cocycles  <- D2
+q=4  B6   Arf=2  eps=-1  |O(Q) cap SL_2|=10 = 2(q+1)  #{Q=0}=1  profile {1: 1, 2: 3, 4: 60} : 24 cocycles
+q=4  B7   PASS every cocycle with Arf = Arf(D2) is carried to D2's by an explicit isomorphism phi(t,v) = (t+f(v), gv), g in SL_2, verified on all pairs (40 cocycles)
+q=4  B8   PASS Tr kills P(kappa) and is onto F_2; Arf_{F_2}(psi o Q) (the Gauss sign) = Tr(Arf_kappa(Q)) for all 64 cocycles
+q=4  B9   PASS mu_p-frame equivalence with D2 (i.e. psi(Q'-Q) = 1 pointwise) holds for 4 of 64 cocycles
+q=4  B10  bi-additive (not nec. kappa-bilinear) cocycles: #{v : Q(v)=0} takes the 4 values [1, 3, 5, 7] over the 256 additive shifts of Q, so H_beta has 4 isomorphism classes here against exactly 2 among the kappa-bilinear cocycles; but sum_v psi(Q(v)) still takes only the two values [-4, 4], so psi o Q keeps exactly two F_2-Arf classes
+
+== kappa = F_5 (p=5, n=1), |V| = 25, |H| = 125 ==
+q=5  B1   PASS |Adm(omega)| = q^3 = 125, all admissible, all kappa-bilinear, all distinct
+q=5  B2   PASS exactly one antisymmetric admissible cocycle, and it is omega/2: a canonical representative
+q=5  B3   profile {1: 1, 5: 124} : 125 of 125 cocycles  (contains D2's beta)
+q=5  B4   PASS phi(t,v) = (t + s(v,v)/2, v) : H_beta0 -> H_beta' is a group isomorphism for all 125 cocycles, verified on all 625 pairs each
+
+== kappa = F_8 (p=2, n=3), |V| = 64, |H| = 512 ==
+q=8  B1   PASS |Adm(omega)| = q^3 = 512, all admissible, all kappa-bilinear, all distinct
+q=8  B2   PASS no admissible cocycle is antisymmetric: the torsor has no distinguished point
+q=8  B3   profile {1: 1, 2: 119, 4: 392} : 288 of 512 cocycles  (contains D2's beta)
+q=8  B3   profile {1: 1, 2: 7, 4: 504} : 224 of 512 cocycles
+q=8  B5   PASS Arf(Q) in kappa/P(kappa) (|P(kappa)| = q/2) is SL_2-invariant (512 cocycles x 504 group elements) and takes exactly the 2 values [0, 1]
+q=8  B6   Arf=0  eps=+1  |O(Q) cap SL_2|=14 = 2(q-1)  #{Q=0}=15  profile {1: 1, 2: 119, 4: 392} : 288 cocycles  <- D2
+q=8  B6   Arf=1  eps=-1  |O(Q) cap SL_2|=18 = 2(q+1)  #{Q=0}=1  profile {1: 1, 2: 7, 4: 504} : 224 cocycles
+q=8  B7   PASS every cocycle with Arf = Arf(D2) is carried to D2's by an explicit isomorphism phi(t,v) = (t+f(v), gv), g in SL_2, verified on all pairs (288 cocycles)
+q=8  B8   PASS Tr kills P(kappa) and is onto F_2; Arf_{F_2}(psi o Q) (the Gauss sign) = Tr(Arf_kappa(Q)) for all 512 cocycles
+q=8  B9   PASS mu_p-frame equivalence with D2 (i.e. psi(Q'-Q) = 1 pointwise) holds for 8 of 512 cocycles
+q=8  B10  bi-additive (not nec. kappa-bilinear) cocycles: #{v : Q(v)=0} takes the 8 values [1, 3, 5, 7, 9, 11, 13, 15] over the 262144 additive shifts of Q, so H_beta has 8 isomorphism classes here against exactly 2 among the kappa-bilinear cocycles; but sum_v psi(Q(v)) still takes only the two values [-8, 8], so psi o Q keeps exactly two F_2-Arf classes
+
+== kappa = F_9 (p=3, n=2), |V| = 81, |H| = 729 ==
+q=9  B1   PASS |Adm(omega)| = q^3 = 729, all admissible, all kappa-bilinear, all distinct
+q=9  B2   PASS exactly one antisymmetric admissible cocycle, and it is omega/2: a canonical representative
+q=9  B3   profile {1: 1, 3: 728} : 729 of 729 cocycles  (contains D2's beta)
+q=9  B4   PASS phi(t,v) = (t + s(v,v)/2, v) : H_beta0 -> H_beta' is a group isomorphism for all 729 cocycles, verified on all 6561 pairs each
+
+---- summary (mode=green) ----
+GREEN: every check passed for q in [2, 3, 4, 5, 8, 9]
+RED beta_census.py --red-arf-blind
+RED beta_census.py --red-iso
+RED beta_census.py --red-oddp-split
+GREEN fp_symmetry.py
+fp_symmetry  mode=green   complete backtracking over F_p-linear maps
+
+== kappa = F_2 (p=2, m=1) ==
+q=2  S1  PASS { g F_p-linear : omega o g = omega } = SL_2(kappa) exactly: 6 maps, all kappa-linear, set-equal to the SL_2 enumeration  [OPEN-2 answered]
+q=2  S2  PASS { g F_p-linear : psi o omega o g = psi o omega } has 6 elements = |Sp_2(F_2)| = p^{m^2} prod (p^{2i}-1); index of SL_2(kappa) in it = 1
+q=2  S3  PASS |O(Q) cap SL_2(kappa)| = 2 (index 3);  |O(psi o Q) cap Sp_2(F_2)| = 2 (index 3) -- the same index, the phenomenon survives enlargement
+q=2  S4  omega-self-adjoint F_p-endomorphisms: 8, kappa-scalars: 2  -- self-adjointness does NOT characterise the scalars
+
+== kappa = F_3 (p=3, m=1) ==
+q=3  S1  PASS { g F_p-linear : omega o g = omega } = SL_2(kappa) exactly: 24 maps, all kappa-linear, set-equal to the SL_2 enumeration  [OPEN-2 answered]
+q=3  S2  PASS { g F_p-linear : psi o omega o g = psi o omega } has 24 elements = |Sp_2(F_3)| = p^{m^2} prod (p^{2i}-1); index of SL_2(kappa) in it = 1
+
+== kappa = F_4 (p=2, m=2) ==
+q=4  S1  PASS { g F_p-linear : omega o g = omega } = SL_2(kappa) exactly: 60 maps, all kappa-linear, set-equal to the SL_2 enumeration  [OPEN-2 answered]
+q=4  S2  PASS { g F_p-linear : psi o omega o g = psi o omega } has 720 elements = |Sp_4(F_2)| = p^{m^2} prod (p^{2i}-1); index of SL_2(kappa) in it = 12
+q=4  S3  PASS |O(Q) cap SL_2(kappa)| = 6 (index 10);  |O(psi o Q) cap Sp_4(F_2)| = 72 (index 10) -- the same index, the phenomenon survives enlargement
+q=4  S4  omega-self-adjoint F_p-endomorphisms: 64, kappa-scalars: 4  -- self-adjointness does NOT characterise the scalars
+
+== kappa = F_5 (p=5, m=1) ==
+q=5  S1  PASS { g F_p-linear : omega o g = omega } = SL_2(kappa) exactly: 120 maps, all kappa-linear, set-equal to the SL_2 enumeration  [OPEN-2 answered]
+q=5  S2  PASS { g F_p-linear : psi o omega o g = psi o omega } has 120 elements = |Sp_2(F_5)| = p^{m^2} prod (p^{2i}-1); index of SL_2(kappa) in it = 1
+
+== kappa = F_8 (p=2, m=3) ==
+q=8  S1  PASS { g F_p-linear : omega o g = omega } = SL_2(kappa) exactly: 504 maps, all kappa-linear, set-equal to the SL_2 enumeration  [OPEN-2 answered]
+q=8  S2  PASS { g F_p-linear : psi o omega o g = psi o omega } has 1451520 elements = |Sp_6(F_2)| = p^{m^2} prod (p^{2i}-1); index of SL_2(kappa) in it = 2880
+q=8  S3  PASS |O(Q) cap SL_2(kappa)| = 14 (index 36);  |O(psi o Q) cap Sp_6(F_2)| = 40320 (index 36) -- the same index, the phenomenon survives enlargement
+
+== kappa = F_9 (p=3, m=2) ==
+q=9  S1  PASS { g F_p-linear : omega o g = omega } = SL_2(kappa) exactly: 720 maps, all kappa-linear, set-equal to the SL_2 enumeration  [OPEN-2 answered]
+q=9  S2  PASS { g F_p-linear : psi o omega o g = psi o omega } has 51840 elements = |Sp_4(F_3)| = p^{m^2} prod (p^{2i}-1); index of SL_2(kappa) in it = 72
+
+---- summary (mode=green) ----
+GREEN: every check passed for q in [2, 3, 4, 5, 8, 9]
+RED fp_symmetry.py --red-kappa-linear
+RED fp_symmetry.py --red-sp-formula
+GREEN frame_mu.py
+frame_mu  mode=green   phases as exponents in Z/4 or Z/p; no floats
+
+== kappa = F_2 (p=2, n=1) ==
+q=2  M1  PASS exhaustive search over all 2^4 functions mu : V -> mu_2, for all 8 admissible beta': a solution exists for exactly the 2 with psi(s(v,v)) = 1 pointwise
+q=2  M2  PASS a mu_2 frame isomorphism exists for exactly the 2 of 8 admissible beta' with psi o s diagonal-free, and the explicit l is verified on all 16 pairs
+q=2  M3  PASS a mu_4 frame isomorphism exists for ALL 8 admissible beta' (verified on all 16 pairs each); it needs a phase of exact order 4 for exactly the 6 beta' with no mu_2 solution
+
+== kappa = F_3 (p=3, n=1) ==
+q=3  M4  PASS mu(v) = psi(s(v,v)/2) is a mu_p-valued frame isomorphism for all 27 admissible beta' (all 81 pairs each): at odd p nothing leaves mu_p
+
+== kappa = F_4 (p=2, n=2) ==
+q=4  M2  PASS a mu_2 frame isomorphism exists for exactly the 4 of 64 admissible beta' with psi o s diagonal-free, and the explicit l is verified on all 256 pairs
+q=4  M3  PASS a mu_4 frame isomorphism exists for ALL 64 admissible beta' (verified on all 256 pairs each); it needs a phase of exact order 4 for exactly the 60 beta' with no mu_2 solution
+
+== kappa = F_5 (p=5, n=1) ==
+q=5  M4  PASS mu(v) = psi(s(v,v)/2) is a mu_p-valued frame isomorphism for all 125 admissible beta' (all 625 pairs each): at odd p nothing leaves mu_p
+
+== kappa = F_8 (p=2, n=3) ==
+q=8  M2  PASS a mu_2 frame isomorphism exists for exactly the 8 of 512 admissible beta' with psi o s diagonal-free, and the explicit l is verified on all 4096 pairs
+q=8  M3  PASS a mu_4 frame isomorphism exists for ALL 512 admissible beta' (verified on all 4096 pairs each); it needs a phase of exact order 4 for exactly the 504 beta' with no mu_2 solution
+
+== kappa = F_9 (p=3, n=2) ==
+q=9  M4  PASS mu(v) = psi(s(v,v)/2) is a mu_p-valued frame isomorphism for all 729 admissible beta' (all 6561 pairs each): at odd p nothing leaves mu_p
+
+---- summary (mode=green) ----
+GREEN: every check passed for q in [2, 3, 4, 5, 8, 9]
+RED frame_mu.py --red-drop-linear
+RED frame_mu.py --red-mu2-always
+GREEN funct_sections.py
+funct_sections  mode=green   exact character exponents in Z/p
+
+-- F1: Tr_{kappa'/F_p}|_kappa = n Tr_{kappa/F_p} --
+   F_2^1 < F_2^2, n=2 : restriction of psi_zeta is psi_{zeta^0}, TRIVIAL (p|n is True)
+   F_2^1 < F_2^3, n=3 : restriction of psi_zeta is psi_{zeta^1}, nontrivial (p|n is False)
+   F_2^2 < F_2^4, n=2 : restriction of psi_zeta is psi_{zeta^0}, TRIVIAL (p|n is True)
+   F_3^1 < F_3^2, n=2 : restriction of psi_zeta is psi_{zeta^2}, nontrivial (p|n is False)
+   F_3^1 < F_3^3, n=3 : restriction of psi_zeta is psi_{zeta^0}, TRIVIAL (p|n is True)
+   F_2^1 < F_2^4, n=4 : restriction of psi_zeta is psi_{zeta^0}, TRIVIAL (p|n is True)
+   F_3^2 < F_3^4, n=2 : restriction of psi_zeta is psi_{zeta^2}, nontrivial (p|n is False)
+
+-- F2/F3: Frobenius-invariant characters, and the section obstruction --
+   F_2^2 (b = p): 2 Frobenius-invariant characters, 0 of them nontrivial on F_2  => NO SECTION over {finite fields, all embeddings}
+   F_2^3: 2 Frobenius-invariant characters, 1 nontrivial on F_2
+   F_2^4: 2 Frobenius-invariant characters, 0 nontrivial on F_2
+   F_3^2: 3 Frobenius-invariant characters, 2 nontrivial on F_3
+   F_3^3 (b = p): 3 Frobenius-invariant characters, 0 of them nontrivial on F_3  => NO SECTION over {finite fields, all embeddings}
+
+-- F4: sections over the inclusion poset of subfields --
+   F_2^4: 8 of 15 nontrivial characters restrict nontrivially to EVERY subfield, and they are exactly the 8 nontrivial on F_2
+   F_3^4: 54 of 80 nontrivial characters restrict nontrivially to EVERY subfield, and they are exactly the 54 nontrivial on F_3
+   F_2^6: 32 of 63 nontrivial characters restrict nontrivially to EVERY subfield, and they are exactly the 32 nontrivial on F_2
+
+-- F5: the functor on character-compatible embeddings --
+   F_2^1 -> F_2^2 : 2 character-compatible pairs, all 4^2 structure constants agree (unital, multiplicative, basis -> distinct basis => injective)
+   F_2^1 -> F_2^3 : 4 character-compatible pairs, all 4^2 structure constants agree (unital, multiplicative, basis -> distinct basis => injective)
+   F_2^2 -> F_2^4 : 4 character-compatible pairs, all 16^2 structure constants agree (unital, multiplicative, basis -> distinct basis => injective)
+   composition F_2 -> F_4 -> F_16 agrees with F_2 -> F_16 on the nose; identities are identities
+
+---- summary (mode=green) ----
+GREEN: every check passed
+RED funct_sections.py --red-restrict
+RED funct_sections.py --red-section-exists
+GREEN split24.py
+split24  mode=green   phase exponents in Z/4 (p=2) or Z/p; no complex numbers
+
+== kappa = F_2 (p=2), |SL_2| = 6, N = 4 ==
+q=2  X2  |Aut_F| = 24 = q^2 |SL_2| = 4 x 6; every fibre nonempty of size q^2 => the extension is exact and SPLITS ONTO SL_2 as a set
+q=2  X3  PASS closed, associative on the probe, identity present
+q=2  X4  PASS 4 distinct complements of V^ of order 6 (exhaustive over all generating pairs); every one of them uses a phase of exact order 4: True
+q=2  X6  the mu_2 part of Aut_F has 8 elements = q^2 * 2; |SL_2| = 6 does not divide it (confirmed), so no complement can avoid mu_4
+
+== kappa = F_3 (p=3), |SL_2| = 24, N = 3 ==
+q=3  X2  |Aut_F| = 216 = q^2 |SL_2| = 9 x 24; every fibre nonempty of size q^2 => the extension is exact and SPLITS ONTO SL_2 as a set
+q=3  X3  PASS closed, associative on the probe, identity present
+q=3  X4  PASS the odd-p splitting g -> psi(Q_g/2) is a subgroup of order 24 meeting V^ trivially: the extension splits with mu_p phases
+
+== kappa = F_4 (p=2), |SL_2| = 60, N = 4 ==
+q=4  X2  |Aut_F| = 960 = q^2 |SL_2| = 16 x 60; every fibre nonempty of size q^2 => the extension is exact and SPLITS ONTO SL_2 as a set
+q=4  X3  PASS closed, associative on the probe, identity present
+q=4  X5  PASS 64 lifts of the (2,3,5) generating pair satisfy all three relations and generate a complement of order 60 meeting V^ trivially; ALL of them use phases of exact order 4
+q=4  X6  the mu_2 part of Aut_F has 96 elements = q^2 * 6; |SL_2| = 60 does not divide it (confirmed), so no complement can avoid mu_4
+
+== kappa = F_5 (p=5), |SL_2| = 120, N = 5 ==
+q=5  X2  |Aut_F| = 3000 = q^2 |SL_2| = 25 x 120; every fibre nonempty of size q^2 => the extension is exact and SPLITS ONTO SL_2 as a set
+q=5  X3  PASS closed, associative on the probe, identity present
+q=5  X4  PASS the odd-p splitting g -> psi(Q_g/2) is a subgroup of order 120 meeting V^ trivially: the extension splits with mu_p phases
+
+---- summary (mode=green) ----
+GREEN: every check passed for q in [2, 3, 4, 5]
+RED split24.py --red-fibre
+RED split24.py --red-mu2split
+GREEN wh_kappa_check.py
+wh_kappa_check  mode=green
+  no mutation; every gate must pass and the run exits 0
+  exact: Z[zeta_p] as integer vectors mod Phi_p; no tolerance anywhere
+
+== kappa = F_2  (p=2, n=1, |V| = 4) ==
+A0.1 ring   Phi_2 verified: (x-1)Phi=x^2-1, no proper monic integer factor (bounded exhaustive search)
+A0.2 ring   zeta_2 has exact order 2; the 2 powers are distinct vectors in Z[zeta_2]
+A0.3 field  F_2 = F_2[t]/(01) verified: field axioms exhaustive, Tr additive onto F_2, Tr(1)=1, pairing Tr(cx) nondegenerate
+A0.4 model  all 4 operators monomial with root-of-unity entries; monomial x dense products agree on 3 x 4 pairs; W W* = I on the probe
+q=2  C1 PASS exhaustive on 16 ordered pairs
+q=2  C2 PASS alternating on all 4 vectors, nondegenerate, kappa-bilinear (additivity on 64 triples)
+q=2  C3 PASS exact on all 16 ordered pairs
+q=2  C4 PASS exact on all 16 ordered pairs
+q=2  C5 PASS 4 Weyl operators, exact span dimension 4 = claimed
+q=2  C6 PASS commutant is exactly the scalars (dimension 1)
+q=2  C7 PASS 3 isotropic kappa-lines = q+1; polarization is an isotropic splitting; census (total,kappa-iso,psi-iso) = (3, 3, 3) as pre-registered
+q=2  C8 PASS 1 nontrivial additive characters = q-1, simply transitive kappa^x action, all 2 characters accounted for; W(a,b) -> W'(a/c,b) is an algebra isomorphism for every c; zeta-pair test VACUOUS at p=2 (exactly one primitive square root of unity)
+q=2  C9 PASS 2 = 0 is not invertible (exhaustive), omega/2 has no value, guard armed and untripped by the run (half(1) raised: omega/2 has no value at p=2 (2 is not invertible))
+q=2  C10 PASS 8 admissible kappa-bilinear cocycles, all readmitted, fall into 2 isomorphism classes of H_beta' of sizes [6, 2], separated by Arf(Q) in kappa/P(kappa) = [0, 1]; D2's class has profile {1: 1, 2: 5, 4: 2}
+q=2  C11 PASS standard model d8: 0 violations of D4 in all 16 pairs; the naive ordering has 0 (E1: the two differ exactly at odd p; E3: they coincide at p=2)
+
+== kappa = F_3  (p=3, n=1, |V| = 9) ==
+A0.1 ring   Phi_3 verified: (x-1)Phi=x^3-1, no proper monic integer factor (bounded exhaustive search)
+A0.2 ring   zeta_3 has exact order 3; the 3 powers are distinct vectors in Z[zeta_3]
+A0.3 field  F_3 = F_3[t]/(01) verified: field axioms exhaustive, Tr additive onto F_3, Tr(1)=1, pairing Tr(cx) nondegenerate
+A0.4 model  all 9 operators monomial with root-of-unity entries; monomial x dense products agree on 3 x 9 pairs; W W* = I on the probe
+q=3  C1 PASS exhaustive on 81 ordered pairs
+q=3  C2 PASS alternating on all 9 vectors, nondegenerate, kappa-bilinear (additivity on 729 triples)
+q=3  C3 PASS exact on all 81 ordered pairs
+q=3  C4 PASS exact on all 81 ordered pairs
+q=3  C5 PASS 9 Weyl operators, exact span dimension 9 = claimed
+q=3  C6 PASS commutant is exactly the scalars (dimension 1)
+q=3  C7 PASS 4 isotropic kappa-lines = q+1; polarization is an isotropic splitting; census (total,kappa-iso,psi-iso) = (4, 4, 4) as pre-registered
+q=3  C8 PASS 2 nontrivial additive characters = q-1, simply transitive kappa^x action, all 3 characters accounted for; W(a,b) -> W'(a/c,b) is an algebra isomorphism for every c; all 2 ordered pairs of distinct primitive zeta separated
+q=3  C9 PASS p=3 odd: 2 is invertible (inverse 2, exhaustive), 2*half(y)=y for all y; the p=2 branch is not exercised
+q=3  C10 PASS 27 admissible kappa-bilinear cocycles, all readmitted, give a SINGLE isomorphism class of H_beta' with profile {1: 1, 3: 26}: at odd p the choice of beta is immaterial
+q=3  C11 PASS standard model d8: 0 violations of D4 in all 81 pairs; the naive ordering has 36 (E1: the two differ exactly at odd p; E3: they coincide at p=2)
+
+== kappa = F_4  (p=2, n=2, |V| = 16) ==
+A0.1 ring   Phi_2 verified: (x-1)Phi=x^2-1, no proper monic integer factor (bounded exhaustive search)
+A0.2 ring   zeta_2 has exact order 2; the 2 powers are distinct vectors in Z[zeta_2]
+A0.3 field  F_4 = F_2[t]/(111) verified: field axioms exhaustive, Tr additive onto F_2, Tr(1)=0, pairing Tr(cx) nondegenerate
+A0.4 model  all 16 operators monomial with root-of-unity entries; monomial x dense products agree on 3 x 16 pairs; W W* = I on the probe
+q=4  C1 PASS exhaustive on 256 ordered pairs
+q=4  C2 PASS alternating on all 16 vectors, nondegenerate, kappa-bilinear (additivity on 4096 triples)
+q=4  C3 PASS exact on all 256 ordered pairs
+q=4  C4 PASS exact on all 256 ordered pairs
+q=4  C5 PASS 16 Weyl operators, exact span dimension 16 = claimed
+q=4  C6 PASS commutant is exactly the scalars (dimension 1)
+q=4  C7 PASS 5 isotropic kappa-lines = q+1; polarization is an isotropic splitting; census (total,kappa-iso,psi-iso) = (35, 5, 15) as pre-registered
+q=4  C8 PASS 3 nontrivial additive characters = q-1, simply transitive kappa^x action, all 4 characters accounted for; W(a,b) -> W'(a/c,b) is an algebra isomorphism for every c; zeta-pair test VACUOUS at p=2 (exactly one primitive square root of unity)
+q=4  C9 PASS 2 = 0 is not invertible (exhaustive), omega/2 has no value, guard armed and untripped by the run (half(1) raised: omega/2 has no value at p=2 (2 is not invertible))
+q=4  C10 PASS 64 admissible kappa-bilinear cocycles, all readmitted, fall into 2 isomorphism classes of H_beta' of sizes [40, 24], separated by Arf(Q) in kappa/P(kappa) = [0, 2]; D2's class has profile {1: 1, 2: 27, 4: 36}
+q=4  C11 PASS standard model d8: 0 violations of D4 in all 256 pairs; the naive ordering has 0 (E1: the two differ exactly at odd p; E3: they coincide at p=2)
+
+== kappa = F_5  (p=5, n=1, |V| = 25) ==
+A0.1 ring   Phi_5 verified: (x-1)Phi=x^5-1, no proper monic integer factor (bounded exhaustive search)
+A0.2 ring   zeta_5 has exact order 5; the 5 powers are distinct vectors in Z[zeta_5]
+A0.3 field  F_5 = F_5[t]/(01) verified: field axioms exhaustive, Tr additive onto F_5, Tr(1)=1, pairing Tr(cx) nondegenerate
+A0.4 model  all 25 operators monomial with root-of-unity entries; monomial x dense products agree on 3 x 25 pairs; W W* = I on the probe
+q=5  C1 PASS exhaustive on 625 ordered pairs
+q=5  C2 PASS alternating on all 25 vectors, nondegenerate, kappa-bilinear (additivity on 15625 triples)
+q=5  C3 PASS exact on all 625 ordered pairs
+q=5  C4 PASS exact on all 625 ordered pairs
+q=5  C5 PASS 25 Weyl operators, exact span dimension 25 = claimed
+q=5  C6 PASS commutant is exactly the scalars (dimension 1)
+q=5  C7 PASS 6 isotropic kappa-lines = q+1; polarization is an isotropic splitting; census (total,kappa-iso,psi-iso) = (6, 6, 6) as pre-registered
+q=5  C8 PASS 4 nontrivial additive characters = q-1, simply transitive kappa^x action, all 5 characters accounted for; W(a,b) -> W'(a/c,b) is an algebra isomorphism for every c; all 12 ordered pairs of distinct primitive zeta separated
+q=5  C9 PASS p=5 odd: 2 is invertible (inverse 3, exhaustive), 2*half(y)=y for all y; the p=2 branch is not exercised
+q=5  C10 PASS 125 admissible kappa-bilinear cocycles, all readmitted, give a SINGLE isomorphism class of H_beta' with profile {1: 1, 5: 124}: at odd p the choice of beta is immaterial
+q=5  C11 PASS standard model d8: 0 violations of D4 in all 625 pairs; the naive ordering has 400 (E1: the two differ exactly at odd p; E3: they coincide at p=2)
+
+== kappa = F_8  (p=2, n=3, |V| = 64) ==
+A0.1 ring   Phi_2 verified: (x-1)Phi=x^2-1, no proper monic integer factor (bounded exhaustive search)
+A0.2 ring   zeta_2 has exact order 2; the 2 powers are distinct vectors in Z[zeta_2]
+A0.3 field  F_8 = F_2[t]/(1011) verified: field axioms exhaustive, Tr additive onto F_2, Tr(1)=1, pairing Tr(cx) nondegenerate
+A0.4 model  all 64 operators monomial with root-of-unity entries; monomial x dense products agree on 3 x 64 pairs; W W* = I on the probe
+q=8  C1 PASS exhaustive on 4096 ordered pairs
+q=8  C2 PASS alternating on all 64 vectors, nondegenerate, kappa-bilinear (additivity on 262144 triples)
+q=8  C3 PASS exact on all 4096 ordered pairs
+q=8  C4 PASS exact on all 4096 ordered pairs
+q=8  C5 PASS 64 Weyl operators, exact span dimension 64 = claimed
+q=8  C6 PASS commutant is exactly the scalars (dimension 1)
+q=8  C7 PASS 9 isotropic kappa-lines = q+1; polarization is an isotropic splitting; census (total,kappa-iso,psi-iso) = (1395, 9, 135) as pre-registered
+q=8  C8 PASS 7 nontrivial additive characters = q-1, simply transitive kappa^x action, all 8 characters accounted for; W(a,b) -> W'(a/c,b) is an algebra isomorphism for every c; zeta-pair test VACUOUS at p=2 (exactly one primitive square root of unity)
+q=8  C9 PASS 2 = 0 is not invertible (exhaustive), omega/2 has no value, guard armed and untripped by the run (half(1) raised: omega/2 has no value at p=2 (2 is not invertible))
+q=8  C10 PASS 512 admissible kappa-bilinear cocycles, all readmitted, fall into 2 isomorphism classes of H_beta' of sizes [288, 224], separated by Arf(Q) in kappa/P(kappa) = [0, 1]; D2's class has profile {1: 1, 2: 119, 4: 392}
+q=8  C11 PASS standard model d8: 0 violations of D4 in all 4096 pairs; the naive ordering has 0 (E1: the two differ exactly at odd p; E3: they coincide at p=2)
+
+== kappa = F_9  (p=3, n=2, |V| = 81) ==
+A0.1 ring   Phi_3 verified: (x-1)Phi=x^3-1, no proper monic integer factor (bounded exhaustive search)
+A0.2 ring   zeta_3 has exact order 3; the 3 powers are distinct vectors in Z[zeta_3]
+A0.3 field  F_9 = F_3[t]/(101) verified: field axioms exhaustive, Tr additive onto F_3, Tr(1)=2, pairing Tr(cx) nondegenerate
+A0.4 model  all 81 operators monomial with root-of-unity entries; monomial x dense products agree on 3 x 81 pairs; W W* = I on the probe
+q=9  C1 PASS exhaustive on 6561 ordered pairs
+q=9  C2 PASS alternating on all 81 vectors, nondegenerate, kappa-bilinear (additivity on 531441 triples)
+q=9  C3 PASS exact on all 6561 ordered pairs
+q=9  C4 PASS exact on all 6561 ordered pairs
+q=9  C5 PASS 81 Weyl operators, exact span dimension 81 = claimed
+q=9  C6 PASS commutant is exactly the scalars (dimension 1)
+q=9  C7 PASS 10 isotropic kappa-lines = q+1; polarization is an isotropic splitting; census (total,kappa-iso,psi-iso) = (130, 10, 40) as pre-registered
+q=9  C8 PASS 8 nontrivial additive characters = q-1, simply transitive kappa^x action, all 9 characters accounted for; W(a,b) -> W'(a/c,b) is an algebra isomorphism for every c; all 2 ordered pairs of distinct primitive zeta separated
+q=9  C9 PASS p=3 odd: 2 is invertible (inverse 2, exhaustive), 2*half(y)=y for all y; the p=2 branch is not exercised
+q=9  C10 PASS 729 admissible kappa-bilinear cocycles, all readmitted, give a SINGLE isomorphism class of H_beta' with profile {1: 1, 3: 728}: at odd p the choice of beta is immaterial
+q=9  C11 PASS standard model d8: 0 violations of D4 in all 6561 pairs; the naive ordering has 3888 (E1: the two differ exactly at odd p; E3: they coincide at p=2)
+
+---- summary (mode=green) ----
+GREEN: every gate passed for q in [2, 3, 4, 5, 8, 9]
+RED wh_kappa_check.py --red-beta-rigid
+RED wh_kappa_check.py --red-cocycle
+RED wh_kappa_check.py --red-dim
+RED wh_kappa_check.py --red-halfweyl
+RED wh_kappa_check.py --red-naive-order
+RED wh_kappa_check.py --red-nonisotropic
+RED wh_kappa_check.py --red-psi-polarization
+RED wh_kappa_check.py --red-symmetric
+RED wh_kappa_check.py --red-trivial-char
+ALL REMAINING CHECKS PASSED: 30 green suites and 310 advertised reds in aggregate.

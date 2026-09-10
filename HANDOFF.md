@@ -4,6 +4,79 @@
 
 # HANDOFF — live state
 
+## Current state — relation and compact cluster admitted (2026-09-10)
+
+SP-LREL, SP-COMPACT and SP-STAB-REL are PROVED in that dependency order.
+`theory/verdicts/phantasm-relations-adjudication.md` records the capped
+reviews, single repairs and mechanical dispositions. The classical FAIL
+and valid quantum PASS are preserved beside it. The first quantum reviewer
+crossed the literal blind-file boundary and was invalidated before verdict;
+that attempt supplies no proof evidence. Its subsequent checker-only audit
+is recorded separately. Do not repeat these hostile reviews.
+
+The classical proof covers every finite field, empty relations and
+nontransverse composites. D1701 now owns the affine-arrow monoidal data;
+D1714 owns the explicit compact dual, cups/caps and typed name/unname maps.
+SP-COMPACT proves both snakes, bare-converse dagger compatibility, the
+state/process bijection and the two relational scalars. A closed loop is
+the nonempty scalar; no witness count is retained.
+
+D1715 owns the all-origins Weyl intertwiner space. The constructive quantum
+proof identifies nonempty relations with one-dimensional actual stabilizer
+amplitude spaces and proves a dagger symmetric monoidal equivalence after
+quotienting by all nonzero complex scalars, with zero kept separate. Its
+scope is odd prime fields, standard objects, all ranks and the fixed
+character. It does not select representative norms, probabilities, CP maps
+or an arithmetic-source exhaustion. The external source conventions are
+compared in `docs/research-plans/stabilizer-source-comparison.md`.
+
+Canonical proofs are the three `lrel-reduction.md`, `lrel-laws.md`,
+`compact.md` shards and three `stabilizer-*.md` shards under
+`theory/symplectic-phantasm/`. The current register has **159 claims:
+127 PROVED, 28 SKETCH, three CONJECTURE and one REFUTED**, and **175
+definitions**. Six of the fifteen SP claims are proved; nine and all seven
+later design gates remain open. Earlier admissions and paused programmes
+are preserved.
+
+Targeted installed verification passed both new checkers, all fourteen
+classical and eighteen quantum intended red gates, and disabled-comparison
+controls for compact dagger and the F5 cap scalar. The contract checker now
+checks every shard in a comma-separated Proof list; all twenty-two intended
+red gates pass after promotion. Two older help docstrings advertised an
+unsupported wildcard prefix; only those descriptions changed. The final
+help audit distinguishes real optional-argument aliases from usage errors.
+Frozen runs, repair records and the independent quantum recomputation are
+in `numerics/symplectic-phantasm/results/relations-2026-09-10/`.
+
+The labbook builds at **182 pages**. The compact definitions and relation/
+stabilizer propositions and proofs on pp.172–173 and 176–180 have been
+visually inspected. Full validation is complete: **30 green suites and 310 advertised red
+runs** passed in aggregate. The canonical session-close process ended with
+SIGTERM (exit 143) after 15 greens and 164 reds, without a reported
+mathematical failure. The frozen resume script ran every unfinished command
+and verified unchanged checker hashes. Both transcripts and the complete
+coverage record are retained. The final provenance-only PDF rebuild,
+lockstep gate and green contract also passed. This is computational and
+record validation; admission rests on the reviewed structured proofs.
+
+**Next bounded task:** `briefs/phantasm-processes-target.md`: SP-SCALAR and
+SP-CP, reusing the admitted ordinary-trace Kraus calculations. The planning
+lane is frozen at `theory/lanes/phantasm-processes/planning/`; its brief is
+not a proof or promotion. It identifies a minimal D1706 ownership repair
+for outcome-pair order and the ambient trace adjoint. Register that repair
+before the next proof. After one bounded SP-SUM pass, the adopted priority
+is SP-TRACE, SP-FROB and SP-SUBSYS before SP-FOCK; the DAG priority table
+records this change without altering dependencies. The installed brief also
+fixes seventeen exact intended mutation paths and the exit-0 survival rule.
+
+TJO's latest steering asks which step matters most after the category work.
+The consequential construction is one explicit global arithmetic action
+with a reference state, whose generator laws and dynamics can be calculated.
+Local category properties prepare that test. A Bost–Connes partition
+function equal to zeta is distinct from a correspondence with its zeros.
+The persistent full-campaign goal remains active; this local landing does
+not complete it.
+
 ## Current state — stage 1 admitted (2026-09-10)
 
 SP-WEYL, SP-EGOROV and SP-TENSOR are now PROVED in dependency order,

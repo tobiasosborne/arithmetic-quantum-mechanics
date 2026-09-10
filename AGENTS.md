@@ -15,9 +15,10 @@ A passing contract check is not a mathematical proof.
 The contract command is `python3 theory/checks/phantasm_contract_check.py`.
 On a fresh checkout, first run `python3 scripts/fetch-phantasm-sources.py`;
 source bodies are deliberately ignored by Git, and the checker verifies
-their recorded hashes. SP-WEYL, SP-EGOROV and SP-TENSOR are now admitted
-through the stage-1 adjudication. Next is SP-LREL with the explicit compact
-structure follow-up in `briefs/phantasm-relations-target.md`. The
+their recorded hashes. The stage-1 Weyl/affine/tensor cluster and the
+SP-LREL/SP-COMPACT/SP-STAB-REL cluster are now admitted through their
+respective adjudications. Next is scalar normalization and finite instruments
+in `briefs/phantasm-processes-target.md`. The
 2026-09-10 reuse correction is binding: SP-WEYL is a corollary of the
 admitted finite-abelian F1-REAL, and SP-TENSOR reuses F1-FUNCT. Consult the
 DAG's Inherited/Reuse/Remaining fields and each definition's Reuses/Delta

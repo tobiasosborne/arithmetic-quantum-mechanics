@@ -2634,6 +2634,23 @@ form-preserving linear isomorphisms. The affine symmetry groupoid
 $\mathsf S_k^{\mathrm{aff}}$ has arrows $(t,g):V\to W$, where
 $g:V\to W$ is such an isomorphism and $t\in W$, acting by $v\mapsto gv+t$.
 Composition is $(s,h)\circ(t,g)=(s+ht,hg)$ and the identity is $(0,1_V)$.
+For affine arrows $(t,g):V\to W$ and $(t',g'):V'\to W'$, prescribe
+\[
+ (t,g)\oplus(t',g')=((t,t'),g\oplus g'):
+ V\oplus V'\longrightarrow W\oplus W'.
+\]
+The monoidal unit is the zero space with identity $(0,1_0)$.  For
+symplectic spaces $U,V,W$, prescribe the associator, left and right unitors,
+and symmetry to be the zero-translation affine arrows whose linear parts are
+\[
+\begin{aligned}
+ a_{U,V,W}&:(U\oplus V)\oplus W\longrightarrow U\oplus(V\oplus W),
+ &((u,v),w)&\longmapsto(u,(v,w)),\\
+ \lambda_V&:0\oplus V\longrightarrow V,&(0,v)&\longmapsto v,\\
+ \rho_V&:V\oplus0\longrightarrow V,&(v,0)&\longmapsto v,\\
+ \sigma_{V,W}&:V\oplus W\longrightarrow W\oplus V,&(v,w)&\longmapsto(w,v).
+\end{aligned}
+\]
 
 **Scope.** All characteristics are included in this classical datum. Rank one means dimension two; no quantum realization is part of the definition.
 
@@ -2643,7 +2660,7 @@ Composition is $(s,h)\circ(t,g)=(s+ht,hg)$ and the identity is $(0,1_V)$.
 
 **Reuses.** D1,D14.
 
-**Delta.** Arbitrary-rank finite symplectic objects and affine symmetry arrows; the rank-one field and local-ring forms retain their existing meanings.
+**Delta.** Arbitrary-rank finite symplectic objects and affine symmetry arrows, together with their direct-sum symmetric monoidal data; the rank-one field and local-ring forms retain their existing meanings.
 
 ## D1702 (affine Lagrangian relations)
 
@@ -3013,3 +3030,96 @@ prescription is $a\mapsto\Delta_\varphi^{iu}a\Delta_\varphi^{-iu}$.
 **Reuses.** D1122,D1326.
 
 **Delta.** Extend the state conventions to a general C*-algebra and specify GNS and modular hypotheses; no new finite Born normalization is introduced.
+
+## D1714 (compact data for affine Lagrangian relations)
+
+Fix a finite field $k$ and finite-dimensional symplectic $k$-spaces $U,V,W$.
+Use the affine Lagrangian relation prescription for arrows between these
+spaces. Prescribe the compact dual of $V$ to be the existing
+opposite-form object $\overline V$.  Prescribe the following coherence
+arrows to be the graphs of the displayed linear tuple maps:
+\[
+\begin{aligned}
+ a_{U,V,W}&:(U\oplus V)\oplus W\longrightarrow
+ U\oplus(V\oplus W),& ((u,v),w)&\longmapsto(u,(v,w)),\\
+ \lambda_V&:0\oplus V\longrightarrow V,&(0,v)&\longmapsto v,\\
+ \rho_V&:V\oplus0\longrightarrow V,&(v,0)&\longmapsto v,\\
+ \sigma_{V,W}&:V\oplus W\longrightarrow W\oplus V,&(v,w)&\longmapsto(w,v).
+\end{aligned}
+\]
+With the factors in exactly the displayed order, prescribe
+\[
+ \eta_V:0\longrightarrow\overline V\oplus V,
+ \qquad
+ \eta_V=\{(0,(v,v)):v\in V\},
+\]
+and
+\[
+ \epsilon_V:V\oplus\overline V\longrightarrow0,
+ \qquad
+ \epsilon_V=\{((v,v),0):v\in V\}.
+\]
+For $R:V\to W$, prescribe its name by
+\[
+ \ulcorner R\urcorner
+ =(1_{\overline V}\oplus R)\circ\eta_V:
+ 0\longrightarrow\overline V\oplus W.
+\]
+For $Q:0\to\overline V\oplus W$, prescribe its unname by
+\[
+ \llcorner Q\lrcorner
+ =\lambda_W\circ(\epsilon_V\oplus1_W)
+ \circ a^{-1}_{V,\overline V,W}\circ(1_V\oplus Q)
+ \circ\rho_V^{-1}:V\longrightarrow W.
+\]
+For scalars $s,t:0\to0$, prescribe their tensor as the transported
+endomorphism
+\[
+ \lambda_0\circ(s\oplus t)\circ\lambda_0^{-1}:0\longrightarrow0.
+\]
+Scalar calculations use ordinary existential relational composition, with
+no additional scalar weight or middle-witness multiplicity.
+
+**Scope.** The prescribed data are classical and include all finite fields, characteristic two, affine translates and empty relations. Their Lagrangian typing, compact laws, state/process correspondence and scalar properties are proof obligations. No quantum normalization, amplitude, probability, stabilizer equivalence or Choi theorem is prescribed.
+
+**Sources.** SP-CK21,SP-LW14,SP-W09.
+
+**Obligations.** SP-COMPACT.
+
+**Reuses.** D1701,D1702.
+
+**Delta.** The exact opposite-form dual, coherence graphs, cup/cap factor
+orders, name/unname maps and witness-forgetting relation convention; these
+data do not enlarge the preceding category-law claim.
+
+## D1715 (stabilizer intertwiner space)
+
+Fix an odd prime $p$ and, for integers $n\geq0$, use the existing trace-framed character
+$\psi_{\mathbb F_p}$, standard symplectic spaces
+\[
+ V_n=\mathbb F_p^n\oplus\mathbb F_p^n,
+ \qquad
+ \omega_n((a,b),(a',b'))=a\mathbin{\cdot}b'-a'\mathbin{\cdot}b,
+\]
+and the standard Hilbert models $H_{\mathbb F_p,n}$ with their symmetrized
+Weyl operators $W^{\mathrm s}_{\mathbb F_p,n}$.  Put
+$\Omega_{m,n}=-\omega_m\oplus\omega_n$.
+For integers $m,n\geq0$ and a nonempty affine Lagrangian relation
+$R:V_m\to V_n$, prescribe $\mathcal E_p(R)$ to consist of the complex
+linear maps $T:H_{\mathbb F_p,m}\to H_{\mathbb F_p,n}$ satisfying
+\[
+ W_{\mathbb F_p,n}^{\mathrm s}(w)T W_{\mathbb F_p,m}^{\mathrm s}(v)^*
+ =\psi_{\mathbb F_p}\!\left(-\Omega_{m,n}(r,(v,w))\right)T
+\]
+for every $r\in R$ and every $(v,w)\in R-R$.
+For the empty relation prescribe $\mathcal E_p(\varnothing)=\{0\}$.
+
+**Scope.** Using a single origin in the equations, the line dimension, membership in the actual stabilizer-amplitude category, functoriality, dagger and tensor compatibility, and equivalence are proof obligations. The datum is restricted to standard spaces over an odd prime field and the fixed trace-framed character. It prescribes no representative normalization, success probability, CP map or arithmetic-source comparison.
+
+**Sources.** SP-CK21,SP-GROSS06,SP-BC24.
+
+**Obligations.** SP-STAB-REL.
+
+**Reuses.** D1301,D1307,D1701,D1702,D1703,D1704,D1705.
+
+**Delta.** The choice-free Weyl-intertwiner-space candidate; no origin, nonzero representative or functor is retained as additional data.
