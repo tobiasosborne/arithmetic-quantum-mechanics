@@ -4,7 +4,7 @@ The first contract is a finite-abelian corollary with an explicit phase and
 central-quotient comparison. The underlying tensor theorem is already
 available. The statements below distinguish these inherited results from
 the remaining affine naturality, relation semantics and analytic work.
-The first six propositions are proved; the remaining nine retain sketch status.
+The first eight propositions are proved; the remaining seven retain sketch status.
 
 \begin{proposition}[Weyl realization]
 \statusProved{}
@@ -473,22 +473,58 @@ the stated dagger symmetric monoidal equivalence, using the relation and
 compact laws proved above.
 \end{proof}
 
+\pagebreak[3]
 \begin{proposition}[Scalar normalization]
-\statusSketch{}
+\statusProved{}
 For nonzero finite-dimensional Hilbert spaces $H,K$ and a linear map $T:H\to K$, the
 map $\Phi_T(\rho)=T\rho T^*$ is completely positive and is trace-nonincreasing
 exactly when $T^*T\leq1$. For every complex $c$, $\Phi_{cT}=\lvert c\rvert^2\Phi_T$.
-Consequently a scalar-quotient stabilizer arrow becomes a specified successful branch
-only after a representative with an admissible norm is chosen; a phase change alone
-does not change that branch.
+The scalar-quotient stabilizer prescription stipulates no actual successful branch or probability. A branch can be specified using an admissible representative or an admissible class-invariant normalization rule; a phase change alone does not change the branch. Compatibility of an added normalization rule with composition is a separate obligation.
 \end{proposition}
 \begin{scope}
 Zero outcomes are retained and never conditionally normalized. This describes the additional data for an operational lift, not a claimed canonical choice of that data.
 \end{scope}
-\provenance{SP-SCALAR}{Inherited: FRP-CP; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-SCALAR}{Inherited: FRP-CP; reviewed structured process proofs}{Exact finite process controls}{Single blind review, sole repair and process-cluster adjudication}
+
+\begin{proof}
+For every finite-dimensional auxiliary Hilbert space $E$ and $R\geq0$,
+\[
+ (1_E\otimes\Phi_T)(R)=(1_E\otimes T)R(1_E\otimes T)^*\geq0,
+\]
+including when $T=0$, so $\Phi_T$ is completely positive.  A direct
+rectangular matrix calculation gives
+\[
+ \operatorname{Tr}_K(T\rho T^*)=\operatorname{Tr}_H(T^*T\rho).
+\]
+If $T^*T\leq1$, positivity of $1-T^*T$ proves trace nonincrease.  Conversely,
+applying trace nonincrease to every $\rho=|x\rangle\langle x|$ gives
+$\langle x,(1-T^*T)x\rangle\geq0$, hence $T^*T\leq1$.
+
+For every $c\in\mathbb C$,
+\[
+ \Phi_{cT}(\rho)=c\overline c\,T\rho T^*
+ =|c|^2\Phi_T(\rho).
+\]
+Thus unit-modulus rescaling leaves the branch fixed.  If $T\ne0$ and
+$|c|\ne1$, it changes the actual CP map and every nonzero success weight;
+the zero operator remains the zero branch for every scalar.  The scalar
+quotient identifies all nonzero rescalings but prescribes no actual branch,
+probability, representative or normalization rule.  One may choose an
+admissible representative.  Alternatively, the class-invariant rule
+\[
+ \mathcal N_{[T]}(\rho)=\frac{T\rho T^*}{\lVert T\rVert^2}
+\]
+is independent of the representative because numerator and denominator both
+scale by $|c|^2$, and it is TNI because
+$T^*T/\lVert T\rVert^2\leq1$.  The zero class is handled separately by the
+zero branch.  Neither method is stipulated by the scalar quotient, and
+compatibility of an added rule with composition is a separate obligation;
+no functor or no-go theorem is asserted.  A zero-probability output is
+retained without conditional normalization.
+\end{proof}
 
 \begin{proposition}[Closure and normalization of finite instruments]
-\statusSketch{}
+\statusProved{}
 For finite quantum systems with ordinary block traces, the Kraus branch prescription
 is equivalent to complete positivity and trace nonincrease. Channels, branches and
 instruments compose and tensor with the stated normalizations. Instruments have a
@@ -501,7 +537,81 @@ unital adjoint.
 \begin{scope}
 This is an ambient process theorem. It makes no claim that arithmetic or stabilizer generators exhaust these maps.
 \end{scope}
-\provenance{SP-CP}{Inherited: FRP-CP; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-CP}{Inherited: FRP-CP; reviewed structured process proofs}{Exact finite process controls}{Single blind review, sole repair and process-cluster adjudication}
+
+\begin{proof}
+For a finite Kraus family $K_{ba,j}:H_a\to K_b$, every amplified output
+block is a finite sum
+\[
+ \sum_{a,j}(1\otimes K_{ba,j})R_a(1\otimes K_{ba,j})^*,
+\]
+and is positive.  Conversely, if
+$\Phi:\bigoplus_a\operatorname{End}(H_a)\to
+\bigoplus_b\operatorname{End}(K_b)$ is CP, every component
+$\pi_b\Phi\iota_a$ is CP.  Watrous's Theorem~2.22 supplies a finite Kraus
+list for each nonzero component; a zero component receives the empty list.
+Linearity reassembles these component lists into the displayed block map.
+
+Put $A_a=\sum_{b,j}K_{ba,j}^*K_{ba,j}$.  Ordinary rectangular trace gives
+\[
+ \operatorname{Tr}_Y\Phi(\rho)
+ =\sum_a\operatorname{Tr}_{H_a}(A_a\rho_a).
+\]
+Therefore trace nonincrease is equivalent to $A_a\leq1_{H_a}$ for every
+input block: necessity follows by supporting a rank-one positive input on
+one chosen block.  Trace preservation is similarly equivalent to
+$A_a=1_{H_a}$ for every $a$.  Kraus lists are presentations of an actual CP
+map; changing a list without changing that map does not change the ambient
+arrow, and does not identify the finer source-certified arithmetic arrows.
+
+For a second branch with Kraus maps $L_{cb,t}$, composition has Kraus paths
+$(b,j,t)$ and operators $L_{cb,t}K_{ba,j}$.  Its effect is bounded by the
+first effect because the second effects are bounded by the identity.  Tensor
+has operators $K_{ba,j}\otimes M_{b'a',u}$ on Cartesian block tags.  Its
+effect is $A_a\otimes D_{a'}\leq1$, and the matrix-unit spanning argument
+establishes the tensor formula on entangled as well as product inputs.
+
+For an instrument $(\Phi_o)_{o\in O}$, the retained channel has blocks
+$(o,b)$ and
+\[
+ \widehat\Phi(\rho)_{(o,b)}=\Phi_o(\rho)_b,
+ \qquad
+ \operatorname{Tr}(\widehat\Phi(\rho))
+ =\sum_o\operatorname{Tr}(\Phi_o(\rho))
+ =\operatorname{Tr}(\rho).
+\]
+No outcome-count factor occurs.  Sequential instruments have branches
+$\Psi_r\Phi_o$ indexed by the earlier/later pair $(o,r)$; summing over those
+pairs is the composite of the two channel sums.  Independent tensor outcomes
+are the listed-factor pairs $(o,s)$.
+
+For an arbitrary complex-linear block map, choose ordinary-trace-orthonormal
+matrix units $(E_p)_p$ and $(F_q)_q$ and write
+\[
+ \Phi(E_p)=\sum_q C_{q,p}F_q.
+\]
+The prescription
+\[
+ \Phi^{\operatorname{tr}*}(F_q)=\sum_p\overline{C_{q,p}}E_p
+\]
+extends linearly and satisfies
+$\langle\Phi^{\operatorname{tr}*}(y),x\rangle
+=\langle y,\Phi(x)\rangle$ on the matrix-unit bases and hence on every
+$x,y$.  If two maps satisfy this identity, their difference is orthogonal to
+every matrix unit and is zero, proving existence and uniqueness for every
+linear map.  For a CP map this general adjoint specializes to
+\[
+ (\Phi^{\operatorname{tr}*}(y))_a
+ =\sum_{b,j}K_{ba,j}^*y_bK_{ba,j}.
+\]
+It is CP and reverses direction.  Its value on the output identity is $A_a$,
+so branches have subunital adjoints and channels have unital adjoints.
+This does not make the adjoint a reverse branch: the adjoint of ordinary
+discard $\operatorname{Tr}:M_2\to\mathbb C$ sends
+$\lambda\mapsto\lambda I_2$ and increases the trace of $1$ from one to two.
+The theorem therefore supplies ambient trace adjoints, without an automatic
+CP dagger on the trace-nonincreasing branch category.
+\end{proof}
 
 \begin{proposition}[Coherent sums and tagged quantum systems]
 \statusSketch{}

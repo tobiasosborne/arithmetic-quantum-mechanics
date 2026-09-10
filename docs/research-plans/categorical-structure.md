@@ -6,9 +6,10 @@ properties of the categories, and their interactions, so that the right
 structure can be found flexibly as the arithmetic construction develops.
 This is a continuing research direction within the Symplectic Phantasm.
 The local Weyl/affine/tensor and relation/compact/stabilizer clusters are
-now admitted at their canonical scopes. The next bounded task is scalar
-normalization and finite instruments, under
-`../../briefs/phantasm-processes-target.md`.
+now admitted at their canonical scopes, together with scalar normalization
+and finite instruments. The next bounded task is coherent and tagged sums
+under `../../briefs/phantasm-sum-target.md`, followed by the arithmetic
+interfaces in `../../briefs/phantasm-arithmetic-target.md`.
 
 ## What the record should answer
 
@@ -94,7 +95,7 @@ register.
 | SP-EGOROV, `../../theory/symplectic-phantasm/egorov.md` | Exact covariant affine algebra action and composition; unique projective unitary implementation and model transport | D1703 owns the arbitrary-rank extension of D9; no genuine phase section has been selected |
 | SP-TENSOR, `../../theory/symplectic-phantasm/tensor.md` | Natural trace-preserving direct-sum/tensor comparison with exact algebra associativity, units and symmetry; projective model coherence | Uses F1-FUNCT at its admitted scope; coherent additive completion and duality are separate next questions |
 
-## Compact structure established; scalar transport next
+## Compact and process comparisons established
 
 The exact conclusions are SP-LREL, SP-COMPACT and SP-STAB-REL, with
 `../../theory/verdicts/phantasm-relations-adjudication.md` recording the
@@ -109,11 +110,21 @@ bare-converse dagger without importing a differently defined involution.
 | SP-COMPACT | Opposite-form dual, diagonal cup/cap, both typed snakes and dagger compatibility; inverse name/unname maps; two-element scalar multiplication and nonempty closed loops | This state/process correspondence retains an affine relation, not one selected vector; no amplitude or probability is recovered |
 | SP-STAB-REL | Constructive dagger symmetric monoidal equivalence with the actual stabilizer category modulo every nonzero complex scalar; zero retained separately | Odd prime fields and standard objects with fixed character; no normalization, CP-map assignment or arithmetic-source exhaustion |
 
+The scalar and process claims are admitted through
+`../../theory/verdicts/phantasm-processes-adjudication.md`. The original
+scalar necessity overstatement and its correction remain recorded there.
+
+| Comparison | Structure supplied by the existing claim | Choice or remaining boundary |
+|---|---|---|
+| SP-SCALAR | Complete positivity and the contraction iff-condition for actual one-Kraus maps; exact scalar modulus law; either an admissible representative or a class-invariant normalization rule can specify a branch | The quotient stipulates no actual branch or rule. Operator-norm normalization is representative-independent, as computed in scalar.md section 5; its compatibility with composition is a separate question |
+| SP-CP | Intrinsic finite-block Kraus criterion; composition, tensor and retained instruments with ordinary trace; general trace-adjoint construction and its CP specialization | Outcome order and actual-map equality are explicit. The trace adjoint of discard is not TNI, so ambient adjoints must be distinguished from reverse branches. No arithmetic-source exhaustion |
+
 The next questions are:
 
-1. Use SP-SCALAR and SP-CP to compare actual representatives, their norms,
-   successful branches, retained outcomes and ordinary-trace probabilities.
-   Compare operator vectorization with the CP Choi construction separately.
+1. Prove the coherent-sum/tagged-algebra comparison in SP-SUM. Continue to
+   distinguish actual-map addition from projective representatives, and
+   ordinary block trace from other reference functionals. Compare operator
+   vectorization with the CP Choi construction separately.
 2. Compute the normalized and unnormalized amplitude cup/cap diagrams and
    their admissibility as physical branches. Track which compact equations
    survive which normalization; compact closure alone does not settle this.

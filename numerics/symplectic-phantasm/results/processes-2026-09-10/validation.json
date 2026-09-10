@@ -1,0 +1,54 @@
+{
+  "date": "2026-09-10",
+  "admitted": [
+    "SP-SCALAR",
+    "SP-CP"
+  ],
+  "claims": {
+    "PROVED": 129,
+    "SKETCH": 26,
+    "CONJECTURE": 3,
+    "REFUTED": 1
+  },
+  "claim_total": 159,
+  "definitions": 175,
+  "sp_proved": 8,
+  "sp_sketch": 7,
+  "pdf_pages": 183,
+  "visual_definition_page": 170,
+  "visual_final_proof_pages": [
+    180,
+    181
+  ],
+  "green_suites": 31,
+  "advertised_red_modes": 329,
+  "process_intended_reds": 19,
+  "contract_intended_reds": 22,
+  "coverage_note": "Canonical existing-suite session-close passed all30 unchanged checker suites/310 red commands. Final new process checker adds one suite/19 reds. Post-promotion contract green/all22 intended reds and final PDF/lockstep also passed. This is aggregate current coverage, not one post-promotion runner invocation.",
+  "sha256": {
+    "AGENTS.md": "2469ba478b7eff010d5cadb69f8e955b516a70c01c4691a9cd8d1a3cda4d1710",
+    "HANDOFF.md": "514a3c69aa159341ce056d36063e212f2e241c38c047f80cfe61182c6250c727",
+    "briefs/phantasm-processes-target.md": "3d4bac35d310d2f94a151792c179b83577849d7416d2aa28d10f385c1c75fd06",
+    "briefs/phantasm-sum-target.md": "b2bc7db4e3b9b756d395e3ab90e351cb3ecd71062d26cba4adf5bd22ab3679b0",
+    "briefs/phantasm-arithmetic-target.md": "5e22f230b931da8dffa6afc75c320bff4ed061eb8fbe96fb21dacf364735aa3e",
+    "definitions.md": "effb15041035dfaa0077a73c744133ccfb1b1d07162b2b93e18c2056e817904c",
+    "notation.md": "2235997468163bf4d3359ff3d49c489c5e2ca45706d0ec8ceeb0c9c2f5db662e",
+    "claims/CLAIMS.md": "1d85b422966e5092ce317dec5f4787018538c00157fd813c375ebedebbfd9db1",
+    "claims/PHANTASM-DAG.md": "20c58d971f7ed6fb08493f76af512870aa580f5ea1f09a4364e4e4abaaa24ace",
+    "refs/LEDGER.md": "da9d9c00cc0f55422914027faa8418162feecfd5a404bdb5b51c62bf1c2ae136",
+    "docs/research-plans/categorical-structure.md": "495aa2e168b76ca17b350f563a022a03fad2208c975f1d267c4d89d81109ab73",
+    "docs/research-plans/symplectic-phantasm.md": "07e81896645c2e10345ba1efa14de5d528171a75b7c8975cc2f83b2f6daa9420",
+    "labbook/main.pdf": "70035e9555eb12bab3b99a0a168dc0996f90c0a01b6a396977361c5b0ec1f78b",
+    "labbook/sections/00_overview.tex": "42bf1f99a198e9c2d5d0590a8c9094562f0b77051361c3ad21fe9aa60b490d40",
+    "labbook/sections/symplectic_phantasm.tex": "600fc7bc91d64e091bf1a7a9e2c1d6e5f8e64736f53bf5ac26604ce7631c7dff",
+    "labbook/sections/symplectic_phantasm_contracts.tex": "93a1f4c618e4e7591581c4af10981b9e75a3aca7601291434dd65272468f7f47",
+    "theory/checks/phantasm_process_check.py": "21ab75d607ade15d3e61ad391f8631ab4a84de39e2b1c252c14695bdacb5a56d",
+    "theory/checks/phantasm_process_EXPECTATIONS.md": "f97d3b2f04447ccc40a213586f59f10f2f56d48ea5de71a46655278b104ca74b",
+    "theory/checks/phantasm_contract_check.py": "6de8fd95ed33c4cfc4ff25426532edf7a2422e7082393035a554044b2f242a3e",
+    "theory/symplectic-phantasm/scalar.md": "4479dbaaaf321ef776e5ba3e4ad19c05cc3a2e489656f0136bcb2af28c128f42",
+    "theory/symplectic-phantasm/process-kraus-blocks.md": "16a26d35757e76bf388325731e8947a0499df19a58cc4e26d758508fe94c068b",
+    "theory/symplectic-phantasm/process-instruments.md": "a964a5603e9f8d2d765adf82101af9a098c7b5b2ee6099f54c2736576a3d36f1",
+    "theory/verdicts/phantasm-processes-r1.md": "33d929210f0f280cc7c4dbf9494bfede92f27b0f8dd9983c7ec26934e5ae7039",
+    "theory/verdicts/phantasm-processes-adjudication.md": "e760a49930caef2a80bd60253034883e5c2b81543685ee7ecc346bd7f38019ab"
+  }
+}

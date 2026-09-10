@@ -18,10 +18,11 @@ and ordinary-trace arithmetic processes likewise have admitted foundations.
 
 The Weyl realization, affine covariance, tensor comparison, relation
 composition, compact structure and odd-prime projective stabilizer
-comparison below have passed their capped reviews. The remaining nine
-propositions retain sketch status. Their finite probes check the interfaces with admitted
+comparison, scalar normalization and finite instrument laws below have
+passed their capped reviews. The remaining seven propositions retain sketch
+status. Their finite probes check the interfaces with admitted
 constructions; the arbitrary-rank conclusions rest on the written proofs.
-\provenance{SP-WEYL,SP-EGOROV,SP-TENSOR,SP-LREL,SP-COMPACT,SP-STAB-REL}{Structured local and relation proof shards}{Exact finite bridge, affine, relation and stabilizer probes}{Stage-1 and relation-cluster adjudications}
+\provenance{SP-WEYL,SP-EGOROV,SP-TENSOR,SP-LREL,SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP}{Structured local, relation and process proofs}{Exact finite bridge, affine, relation, stabilizer and process probes}{Stage-1, relation and process adjudications}
 
 \subsection{Choosing categorical structure}
 
@@ -53,15 +54,19 @@ complex scalars.
 
 The relational scalar calculation retains only the empty and nonempty
 scalar, and every closed cup--cap loop is the latter. The quantum
-comparison likewise identifies all nonzero scalar multiples. The next
-bounded work is to specify successful branches and instruments using
-actual amplitudes and ordinary traces, and to compare operator
-vectorization with the Choi construction for completely positive maps.
-That comparison will inform the additional relation data and the
-compatibility required of an additive completion.
+comparison likewise identifies all nonzero scalar multiples. The scalar
+calculation below identifies the contraction condition for an actual
+successful branch. A class-invariant normalization rule can also specify a
+branch; the quotient itself selects no rule, and compatibility with
+composition is a separate obligation. The finite instrument theorem keeps
+ordinary traces and all named outcomes explicit. Its trace adjoint is an
+ambient reverse map and need not be a reverse branch. The next bounded work
+is the coherent-sum and classical-tag comparison, followed by the arithmetic
+trace, Frobenius and subsystem interfaces. Operator vectorization and the
+CP Choi construction still require their separate relation comparison.
 The structural record will grow with those results, without treating an
 uninvestigated property as false or a desired combination as established.
-\provenance{SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP,SP-SUM}{Admitted compact and projective comparison; remaining process contracts}{Finite controls at their declared scope}{Compact/comparison admitted; scalar, CP and sum tasks remain sketches}
+\provenance{SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP,SP-SUM}{Admitted compact, projective and process comparisons; sum task remains}{Finite controls at their declared scope}{Relation and process adjudications; sum remains a sketch}
 
 \subsection{Shared register and hierarchy conventions}
 
@@ -267,6 +272,30 @@ in every displayed inequality. An instrument has a finite nonempty outcome
 set $O$ and branches $\Phi_o:B_X\to B_Y$ with a common source and target,
 whose sum is a channel. Its retained version has codomain
 $\bigoplus_{o\in O}B_Y$ and sends $\rho$ to $(\Phi_o(\rho))_o$.
+Prescribe the outcome-first block identification
+\[
+ \bigoplus_{o\in O}B_Y
+ =\bigoplus_{(o,b)\in O\times B}\operatorname{End}(K_b),
+ \qquad (\rho_o)_o=(\rho_{o,b})_{(o,b)}.
+\]
+For another such family $Z=(L_c)_{c\in C}$ and instruments
+$(\Phi_o)_{o\in O}:B_X\to B_Y$ and
+$(\Psi_r)_{r\in R}:B_Y\to B_Z$, prescribe their sequential family to be
+\[
+ (\Psi_r\circ\Phi_o)_{(o,r)\in O\times R};
+\]
+the first component is the earlier outcome. For systems $X',Y'$ of the
+same kind and an independent instrument
+$(\Theta_s)_{s\in S}:B_{X'}\to B_{Y'}$, prescribe the tensor family
+$(\Phi_o\otimes\Theta_s)_{(o,s)\in O\times S}$ in listed-factor order.
+For every complex-linear map $\Phi:B_X\to B_Y$, prescribe its
+ordinary-trace adjoint $\Phi^{\operatorname{tr}*}:B_Y\to B_X$ by
+\[
+ \sum_b\operatorname{Tr}\!\left(y_b^*\Phi(x)_b\right)
+ =\sum_a\operatorname{Tr}\!\left(
+   \Phi^{\operatorname{tr}*}(y)_a^*x_a\right)
+ \quad(x\in B_X,\ y\in B_Y).
+\]
 Use the existing state and outcome convention: $\rho\geq0$,
 $\operatorname{Tr}_X\rho=1$, outcome probability
 $\operatorname{Tr}_Y\Phi_o(\rho)$, and conditional normalization only at
@@ -274,9 +303,9 @@ positive probability. Composition is composition of maps; tensor uses
 Cartesian products of tags and ordinary Hilbert tensor factors.
 \end{definition}
 \begin{scope}
-This is an ambient finite quantum process definition. It does not assert that every branch comes from the arithmetic or stabilizer generators. Traces are ordinary, not dimension-normalized.
+This is an ambient finite quantum process definition. It does not assert that every branch comes from the arithmetic or stabilizer generators. Traces are ordinary, not dimension-normalized. The ordinary-trace adjoint is an ambient reverse-direction map; even when it is completely positive, it is not required to be a trace-nonincreasing branch.
 \end{scope}
-\provenance{D1706}{Stipulation; SP-WAT18}{See the scoped bridge checks}{Reuses: D1325,D1326,D1327; no promotion}
+\provenance{D1706}{Stipulation; SP-WAT18}{Exact finite process controls}{Reuses: D1325,D1326,D1327; scalar and process properties admitted separately}
 
 \begin{definition}[coherent additive completion and classical tags]
 Fix an odd prime $p$ and its actual stabilizer amplitude category.

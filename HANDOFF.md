@@ -4,6 +4,66 @@
 
 # HANDOFF — live state
 
+## Current state — scalar and process cluster admitted (2026-09-10)
+
+SP-SCALAR and SP-CP are PROVED after one blind review, one repair wave per
+artifact, and mechanical adjudication. The record is
+`theory/verdicts/phantasm-processes-adjudication.md`; the original
+FAIL(OBJ-1), independent recomputation and checker records are preserved.
+Do not repeat the hostile review.
+
+The scalar statement was weakened because the quotient admits a branch
+specified by a class-invariant normalization rule, without choosing an
+actual representative. The proof explicitly gives
+`N_[T](rho)=T rho T^*/||T||^2` for nonzero classes. D1705 itself stipulates
+no actual branch or probability, and composition compatibility of an added
+rule remains separate. No general normalization no-go is asserted.
+
+D1706 now owns outcome-first retained blocks, earlier/later sequential
+outcomes, listed-factor tensor outcomes and the ambient ordinary-trace
+adjoint. The proof constructs the latter for every complex-linear block map
+before the CP specialization. The adjoint of ordinary discard is not TNI;
+no dagger closure of general branches is asserted. Intrinsic Kraus
+exhaustion belongs to the ambient target and does not change arithmetic
+source equality or prove source fullness.
+
+Canonical proofs are `scalar.md`, `process-kraus-blocks.md` and
+`process-instruments.md` under `theory/symplectic-phantasm/`. The register
+has **159 claims: 129 PROVED, 26 SKETCH, three CONJECTURE and one REFUTED**,
+and **175 definitions**. Eight of fifteen SP claims are proved; seven
+claims and all seven later decision gates remain open.
+
+The final process checker has nineteen real advertised mutations. Normal
+and optimized greens and every intended red path pass. The added P3a
+coefficient mutation and P3c completeness mutation reach distinct late
+comparisons; disabling P3c makes its red survive with exit 0. The original
+P2 disabled control is also frozen. Existing-suite session-close completed
+successfully in parallel (exit 0, 855.859 seconds), covering thirty
+unchanged checker files and 310 red commands. With the new checker, current
+coverage is **31 green suites and 329 red modes**. The post-promotion
+contract passed green and all twenty-two intended red gates. The final
+**183-page** PDF builds, its new definition and scalar/instrument pages were
+visually inspected, and the lockstep gate passed. Current coverage combines
+the unchanged existing suites with the final new checker; it is not claimed
+as one post-promotion runner invocation.
+Evidence is in `numerics/symplectic-phantasm/results/processes-2026-09-10/`.
+
+**Next bounded task:** `briefs/phantasm-sum-target.md`, one SP-SUM pass after
+its now-admitted SP-CP dependency. Register D1707's arrow block-action and
+block-dephasing data before proof integration. This establishes the coherent
+and tagged sum interface; it does not close DG-RIG. Then follow
+`briefs/phantasm-arithmetic-target.md` for SP-TRACE, SP-FROB and SP-SUBSYS
+before SP-FOCK. The planned SP-FROB D1706/SP-CP typing dependency must be
+registered before that proof uses it; it is not yet a canonical DAG edge.
+The two planning lanes are frozen and are not proofs.
+
+The preceding category landing was pushed as `19a71cf`. The full campaign
+goal remains active. The consequential construction ahead is still an
+explicit global arithmetic action and reference state, followed by its
+actual dynamics and a precise spectral comparison. A zeta partition
+function alone does not establish a zeros correspondence; no global,
+modular or spectral design gate has been completed here.
+
 ## Current state — relation and compact cluster admitted (2026-09-10)
 
 SP-LREL, SP-COMPACT and SP-STAB-REL are PROVED in that dependency order.

@@ -64,8 +64,8 @@ preserved or forgotten and in what sense. Definitions and claim statuses
 remain in their single sources. The record is an open research agenda,
 not an assertion that all desired structures coexist. It accompanies the
 bounded lemma clusters. The local Weyl/affine/tensor and relation/compact/
-stabilizer clusters are admitted. Scalar normalization and instruments are
-next, with the global arithmetic action and reference state as the major
+stabilizer clusters and the scalar/process comparison are admitted. Coherent
+and tagged sums are next, with the global arithmetic action and reference state as the major
 construction to earn after the local interfaces.
 
 ## Construction order and acceptance gates
@@ -149,16 +149,28 @@ prime standard objects modulo all invertible complex scalars. Its zero
 class stays separate. The exact source convention comparison is in
 `stabilizer-source-comparison.md`.
 
-## Next bounded work — scalar normalization and finite instruments
+## Scalar normalization and finite instruments completed — 2026-09-10
 
-Use `briefs/phantasm-processes-target.md`: SP-SCALAR and SP-CP reuse the
-admitted ordinary-trace Kraus calculation. Make representative norms,
-retained outcomes and sequential/tensor normalization explicit. The compact
-and projective results do not supply a normalized relation quantization.
-After one bounded SP-SUM closure, prioritize SP-TRACE, SP-FROB and
-SP-SUBSYS before SP-FOCK. This 2026-09-10 scheduling decision advances the
-arithmetic action while preserving every mathematical dependency and every
-required global gate. The DAG priority table records this order.
+SP-SCALAR and SP-CP are admitted through
+`theory/verdicts/phantasm-processes-adjudication.md`, reusing FRP-CP's
+ordinary-trace matrix calculations. D1706 now owns the outcome-pair order
+and ambient trace adjoint. The scalar consequence was corrected after
+review: an admissible class-invariant normalization rule can specify a
+branch without selecting a representative. The quotient itself stipulates
+no rule, and composition compatibility remains a separate obligation.
+The instrument theorem does not identify ambient CP equality with
+arithmetic-source equality or assert source exhaustion.
+
+## Next bounded work — coherent/tagged sums, then arithmetic interfaces
+
+Use `briefs/phantasm-sum-target.md` for one bounded SP-SUM pass. Register
+the stated D1707 arrow-realization and block-dephasing ownership before
+proof integration. Then use `briefs/phantasm-arithmetic-target.md` for
+SP-TRACE, SP-FROB and SP-SUBSYS before SP-FOCK. That work order registers
+its planned SP-FROB process-typing dependency before using it; the current
+canonical dependencies are not silently enlarged. This scheduling advances
+the arithmetic action while preserving the existing mathematical dependencies
+and every required global gate. The DAG priority table records this order.
 
 TJO asked which step would be most consequential after the category work.
 The target is one explicit global arithmetic action with a reference state:

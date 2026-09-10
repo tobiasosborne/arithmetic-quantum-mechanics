@@ -1,0 +1,109 @@
+[
+  {
+    "mode": "scalar-modulus",
+    "gate": "P1",
+    "exit": 1,
+    "output": "RED CAUGHT scalar-modulus at P1: scalar modulus law failed on actual qutrit matrix-unit data at c=G(re=Fraction(0, 1), im=Fraction(1, 1))\n"
+  },
+  {
+    "mode": "projective-branch",
+    "gate": "P1",
+    "exit": 1,
+    "output": "RED CAUGHT projective-branch at P1: projective amplitude equivalence was incorrectly used as CP-map equality\n"
+  },
+  {
+    "mode": "contraction-reverse",
+    "gate": "P2",
+    "exit": 1,
+    "output": "RED CAUGHT contraction-reverse at P2: contraction iff failed on actual rank-one probability data\n"
+  },
+  {
+    "mode": "zero-conditioning",
+    "gate": "P2",
+    "exit": 1,
+    "output": "RED CAUGHT zero-conditioning at P2: zero-probability conditioning was not explicitly rejected\n"
+  },
+  {
+    "mode": "kraus-adjoint-order",
+    "gate": "P3",
+    "exit": 1,
+    "output": "RED CAUGHT kraus-adjoint-order at P3: rectangular K* rho K construction has reverse type Y->X, expected X->Y\n"
+  },
+  {
+    "mode": "block-normalized-trace",
+    "gate": "P4",
+    "exit": 1,
+    "output": "RED CAUGHT block-normalized-trace at P4: ordinary block trace was replaced by a normalized M2 trace\n"
+  },
+  {
+    "mode": "kraus-list-equality",
+    "gate": "P5",
+    "exit": 1,
+    "output": "RED CAUGHT kraus-list-equality at P5: equal CP maps were distinguished by their nonunique Kraus lists\n"
+  },
+  {
+    "mode": "composite-index-loss",
+    "gate": "P6",
+    "exit": 1,
+    "output": "RED CAUGHT composite-index-loss at P6: composite Kraus data lost an intermediate-block path\n"
+  },
+  {
+    "mode": "tensor-tag-order",
+    "gate": "P6",
+    "exit": 1,
+    "output": "RED CAUGHT tensor-tag-order at P6: tensor map has wrong Cartesian block tags or matrix-unit action\n"
+  },
+  {
+    "mode": "retained-drop-outcome",
+    "gate": "P7",
+    "exit": 1,
+    "output": "RED CAUGHT retained-drop-outcome at P7: retained construction erased outcome-first external blocks\n"
+  },
+  {
+    "mode": "retained-outcome-factor",
+    "gate": "P7",
+    "exit": 1,
+    "output": "RED CAUGHT retained-outcome-factor at P7: retained instrument trace gained an outcome-count factor\n"
+  },
+  {
+    "mode": "sequential-hide-first",
+    "gate": "P8",
+    "exit": 1,
+    "output": "RED CAUGHT sequential-hide-first at P8: sequential outcomes are not retained in earlier/later order\n"
+  },
+  {
+    "mode": "sequential-pair-order",
+    "gate": "P8",
+    "exit": 1,
+    "output": "RED CAUGHT sequential-pair-order at P8: sequential outcomes are not retained in earlier/later order\n"
+  },
+  {
+    "mode": "tensor-outcome-order",
+    "gate": "P9",
+    "exit": 1,
+    "output": "RED CAUGHT tensor-outcome-order at P9: tensor instrument outcomes are not in listed-factor order\n"
+  },
+  {
+    "mode": "adjoint-direction",
+    "gate": "P10",
+    "exit": 1,
+    "output": "RED CAUGHT adjoint-direction at P10: rectangular adjoint has forward type X->Y instead of reverse Y->X\n"
+  },
+  {
+    "mode": "adjoint-is-branch",
+    "gate": "P10",
+    "exit": 1,
+    "output": "RED CAUGHT adjoint-is-branch at P10: discard adjoint was incorrectly classified as a reverse TNI branch\n"
+  },
+  {
+    "mode": "source-equals-cp",
+    "gate": "P11",
+    "exit": 1,
+    "output": "RED CAUGHT source-equals-cp at P11: distinct D1325 source arrows were identified by equal CP realization\n"
+  },
+  {
+    "mode": "green",
+    "exit": 0,
+    "output": "P1 PASS: 108 exact scalar/matrix-unit comparisons; projective class separated\nP2 PASS: five contraction cases and 28 exact rank-one inputs; zero conditioning rejected\nP3 PASS: 5 block matrix units, four independent Choi PSD tests, per-input completeness\nP4 PASS: ordinary trace channel; block weights 9/25+16/25=1\nP5 PASS: {I} equals {(3/5)I,(4/5)I} as maps on four matrix units\nP6 PASS: two-path composition, prep/dephase/discard, and full tensor matrix units\nP7 PASS: two outcome-first M2 blocks; channel sum and retained trace one\nP8 PASS: four earlier/later outcomes with exact probabilities summing to one\nP9 PASS: four listed-factor tensor outcomes; independent map action and trace one\nP10 PASS: 25 rectangular pairing checks; CP/subunital adjoint and non-TNI discard adjoint\nP11 PASS: basis preparations/discard, retained decoder tags, and finer source equality\nGREEN PASS: exact finite controls only; no claim promotion\n"
+  }
+]

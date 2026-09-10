@@ -242,52 +242,52 @@ nonempty scalar.
 ## SP-SCALAR
 
 - Title: Scalar normalization
-- Status: SKETCH
+- Status: PROVED
 - Stage: 2
 - Definitions: D1326,D1704,D1705,D1706
 - Dependencies: FRP-CP
 - Inherited: FRP-CP
 - Reuse: FRP-CP, process-category.md steps 6--8, contains the amplified-positivity and ordinary-trace calculation for realized arithmetic Kraus maps.
-- Remaining: Apply that matrix calculation to an arbitrary finite T and prove the contraction iff-condition and scalar scaling. A general T gives a CP map, not automatically a TNI branch.
+- Remaining: None within the admitted statement. The scalar/CP/contraction calculation and corrected representative-or-class-rule consequence passed capped review. A preferred or composition-compatible normalization remains separate.
 - Sources: SP-WAT18,SP-CK21
 - Inputs: Nonzero finite Hilbert spaces H,K; an arbitrary actual linear map T:H->K; a complex scalar c
 - Output: A CP map End(H)->End(K); a TNI branch exactly for T*T<=I; ordinary-trace probability scaling on admissible branches
 - Choices: Actual representative and norm; ordinary trace
 - Scope: Zero outcomes are retained and never conditionally normalized. This describes the additional data for an operational lift, not a claimed canonical choice of that data.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/scalar.md
+- Review: theory/verdicts/phantasm-processes-adjudication.md
+- Checks: theory/checks/phantasm_process_check.py
+- Evidence: admitted
 
 **Construction outline.** FRP-CP, process-category.md steps 6--8, contains the amplified-positivity and ordinary-trace calculation for realized arithmetic Kraus maps. Apply that matrix calculation to an arbitrary finite T and prove the contraction iff-condition and scalar scaling. A general T gives a CP map, not automatically a TNI branch.
 
-**Falsifier scope.** Use identity, a rank-one projection and scalar multiples 0,1/2,2 on a qutrit; compare successful probabilities with trace directly.
+**Falsifier scope.** Implemented: phantasm_process_check.py P1--P2 checks the exact scalar modulus law on all qutrit matrix units, distinguishes projective representatives from actual CP maps, and compares the contraction criterion with exact rank-one probability tests including zero. Zero-probability conditioning is rejected explicitly. These finite controls do not prove the arbitrary-dimensional statement or select a representative norm.
 
 **Required mutations.** Treat a factor 2 as a phase; normalize a zero-probability branch.
 
 ## SP-CP
 
 - Title: Closure and normalization of finite instruments
-- Status: SKETCH
+- Status: PROVED
 - Stage: 2
 - Definitions: D1325,D1326,D1327,D1706
 - Dependencies: FRP-CP
 - Inherited: FRP-CP
 - Reuse: FRP-CP admits composition/tensor, ordinary-trace normalization and discards for source-certified arithmetic processes.
-- Remaining: Extend the target to arbitrary Hilbert blocks using the finite Kraus criterion, and verify equality-of-CP-maps and the explicitly retained outcome target. Source soundness does not supply Kraus exhaustion.
+- Remaining: None within the admitted statement. Intrinsic block Kraus exhaustion, ordinary-trace criteria, composition/tensor, retained outcomes and ambient adjoints passed capped review. Arithmetic-source exhaustion remains separate.
 - Sources: SP-WAT18
 - Inputs: Finite nonzero Hilbert block families X,Y,Z; branches B_X->B_Y; instruments with common source and target and a named finite outcome set
 - Output: Composed/tensored branches and instruments; retained output direct-sum_o B_Y; trace-dual adjoints in the opposite direction
 - Choices: Ordinary block trace and explicit outcome labels
 - Scope: This is an ambient process theorem. It makes no claim that arithmetic or stabilizer generators exhaust these maps.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/process-kraus-blocks.md,theory/symplectic-phantasm/process-instruments.md
+- Review: theory/verdicts/phantasm-processes-adjudication.md
+- Checks: theory/checks/phantasm_process_check.py
+- Evidence: admitted
 
 **Construction outline.** FRP-CP admits composition/tensor, ordinary-trace normalization and discards for source-certified arithmetic processes. Extend the target to arbitrary Hilbert blocks using the finite Kraus criterion, and verify equality-of-CP-maps and the explicitly retained outcome target. Source soundness does not supply Kraus exhaustion.
 
-**Falsifier scope.** Exact rational Kraus examples on one and two matrix blocks, including preparation, discard, branching and a non-unital state channel.
+**Falsifier scope.** Implemented: phantasm_process_check.py P3--P11 checks rational/Gaussian-rational block Kraus action against independent superoperator coefficients and Choi positivity from matrix-unit outputs. It checks ordinary block traces, map/list equality, composition/tensor paths, retained and sequential/tensor outcome indices, rectangular trace adjoints, the non-TNI discard adjoint and finite D1327 comparisons. This does not prove arbitrary-dimensional Kraus exhaustion or arithmetic-source exhaustion.
 
 **Required mutations.** Use normalized trace in only one system; erase one outcome before summing; reverse a Kraus-adjoint factor.
 

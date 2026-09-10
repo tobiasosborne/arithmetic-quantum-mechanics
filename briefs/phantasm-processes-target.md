@@ -3,7 +3,11 @@
 Preparation date: 2026-09-10.  Planning model: `gpt-5.6-sol`, reasoning
 `xhigh`.
 
-This is the next bounded work order after the relation/stabilizer cluster.
+Landing note, 2026-09-10: SP-SCALAR and SP-CP are admitted through
+`theory/verdicts/phantasm-processes-adjudication.md`. The representative-only
+necessity was corrected to allow a class-invariant normalization rule.
+
+This records the bounded work order after the relation/stabilizer cluster.
 It prepares SP-SCALAR followed by SP-CP.  It contains no proof, checker
 implementation, review, status change, or authorization to resume a paused
 programme.
@@ -18,7 +22,7 @@ distinguish:
 2. a D1706 trace-nonincreasing branch, which additionally requires
    `T^*T<=1` or the multi-Kraus block analogue;
 3. a D1705 projective class, which contains no preferred norm and therefore
-   determines neither an actual CP map nor a success probability.
+   does not itself stipulate an actual CP map or a success probability.
 
 SP-SCALAR proves this separation for a one-Kraus map.  SP-CP proves the
 intrinsic finite-block Kraus criterion and the closure, retained-outcome and
@@ -158,12 +162,16 @@ One Lamport shard, target 220--320 lines.
    leave the CP map fixed, while general invertible rescaling changes it.
 5. State the exact D1705 consequence: `[T]` supplies no chosen member and no
    norm.  A nonzero class has admissible contractions after a noncanonical
-   rescaling, but an actual successful branch requires choosing a particular
-   representative satisfying the inequality.  The zero class gives the zero
+   rescaling, and a branch may be specified by either an admissible representative or
+   an admissible class-invariant normalization rule. The rule must be
+   specified, and its compatibility with composition is a separate task.  The zero class gives the zero
    branch and is never conditionally normalized.
 
-**Must not claim.** A canonical scale, a probability attached to a
-projective class, or a functor from the `C^times` quotient to actual CP maps.
+**Must not claim.** A scale or probability already specified by D1705, or
+a functor from its `C^times` quotient to actual CP maps. Lack of a stipulated
+scale is not an impossibility theorem about adding a normalization rule.
+Any proposed rule and its compatibility with composition require their own
+explicit construction and argument.
 
 ## Proof package B — SP-CP intrinsic block criterion
 

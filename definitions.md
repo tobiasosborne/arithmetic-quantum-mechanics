@@ -2819,13 +2819,37 @@ in every displayed inequality. An instrument has a finite nonempty outcome
 set $O$ and branches $\Phi_o:B_X\to B_Y$ with a common source and target,
 whose sum is a channel. Its retained version has codomain
 $\bigoplus_{o\in O}B_Y$ and sends $\rho$ to $(\Phi_o(\rho))_o$.
+Prescribe the outcome-first block identification
+\[
+ \bigoplus_{o\in O}B_Y
+ =\bigoplus_{(o,b)\in O\times B}\operatorname{End}(K_b),
+ \qquad (\rho_o)_o=(\rho_{o,b})_{(o,b)}.
+\]
+For another such family $Z=(L_c)_{c\in C}$ and instruments
+$(\Phi_o)_{o\in O}:B_X\to B_Y$ and
+$(\Psi_r)_{r\in R}:B_Y\to B_Z$, prescribe their sequential family to be
+\[
+ (\Psi_r\circ\Phi_o)_{(o,r)\in O\times R};
+\]
+the first component is the earlier outcome. For systems $X',Y'$ of the
+same kind and an independent instrument
+$(\Theta_s)_{s\in S}:B_{X'}\to B_{Y'}$, prescribe the tensor family
+$(\Phi_o\otimes\Theta_s)_{(o,s)\in O\times S}$ in listed-factor order.
+For every complex-linear map $\Phi:B_X\to B_Y$, prescribe its
+ordinary-trace adjoint $\Phi^{\operatorname{tr}*}:B_Y\to B_X$ by
+\[
+ \sum_b\operatorname{Tr}\!\left(y_b^*\Phi(x)_b\right)
+ =\sum_a\operatorname{Tr}\!\left(
+   \Phi^{\operatorname{tr}*}(y)_a^*x_a\right)
+ \quad(x\in B_X,\ y\in B_Y).
+\]
 Use the existing state and outcome convention: $\rho\geq0$,
 $\operatorname{Tr}_X\rho=1$, outcome probability
 $\operatorname{Tr}_Y\Phi_o(\rho)$, and conditional normalization only at
 positive probability. Composition is composition of maps; tensor uses
 Cartesian products of tags and ordinary Hilbert tensor factors.
 
-**Scope.** This is an ambient finite quantum process definition. It does not assert that every branch comes from the arithmetic or stabilizer generators. Traces are ordinary, not dimension-normalized.
+**Scope.** This is an ambient finite quantum process definition. It does not assert that every branch comes from the arithmetic or stabilizer generators. Traces are ordinary, not dimension-normalized. The ordinary-trace adjoint is an ambient reverse-direction map; even when it is completely positive, it is not required to be a trace-nonincreasing branch.
 
 **Sources.** SP-WAT18.
 
@@ -2833,7 +2857,7 @@ Cartesian products of tags and ordinary Hilbert tensor factors.
 
 **Reuses.** D1325,D1326,D1327.
 
-**Delta.** Ambient Hilbert blocks and a matrix Kraus presentation extend D1326. Ordinary trace, outcome retention and conditional normalization are reused; D1325 source equality is not replaced.
+**Delta.** Ambient Hilbert blocks and a matrix Kraus presentation extend D1326. Ordinary trace, outcome retention and conditional normalization are reused; D1325 source equality is not replaced. Outcome-pair order and the ambient ordinary-trace adjoint are prescribed explicitly.
 
 ## D1707 (coherent additive completion and classical tags)
 
