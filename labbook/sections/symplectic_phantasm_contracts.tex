@@ -719,7 +719,7 @@ Infinite boundedness and the completion require written arguments. No equivalenc
 \provenance{SP-FOCK}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Restriction of scalars preserves the Weyl datum]
-\statusSketch{}
+\statusProved{}
 For every finite extension $E/K$ of odd-characteristic finite fields and symplectic
 $E$-space $(V,\omega_E)$, the trace form on $\operatorname{Res}_{E/K}V$ is
 nondegenerate and alternating. If $\chi_K$ is nontrivial, so is
@@ -730,10 +730,49 @@ compose along towers by transitivity of trace.
 \begin{scope}
 The extension degree may be divisible by the characteristic. This is restriction of scalars with a trace form, not the uncorrected inclusion of a subfield as a symplectic subsystem.
 \end{scope}
-\provenance{SP-TRACE}{Inherited: FRB-TRACE; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
+\provenance{SP-TRACE}{Inherited: FRB-TRACE; structured arithmetic proof}{Exact arithmetic controls; existing bridge scope retained}{theory/verdicts/phantasm-arithmetic-adjudication.md}
+
+\begin{proof}[Restriction-of-scalars argument]
+Let $d=[E:K]$. The relative trace is $K$-linear and surjective, including
+when the characteristic divides $d$. Thus
+\[
+ \omega_{\mathrm{Res}}(v,w)
+ =\operatorname{Tr}_{E/K}(\omega_E(v,w))
+\]
+is alternating and $K$-bilinear. If $v\ne0$, choose $w_0$ with
+$c=\omega_E(v,w_0)\ne0$ and choose $x$ with
+$\operatorname{Tr}_{E/K}(x)=1$. Then
+$w=(x/c)w_0$ satisfies $\omega_{\mathrm{Res}}(v,w)=1$, proving
+nondegeneracy in arbitrary rank. Trace surjectivity also proves that
+$\chi_{E/K}=\chi_K\circ\operatorname{Tr}_{E/K}$ is nontrivial, without
+identifying the named base character with the fixed absolute-trace character.
+
+In odd characteristic, $1/2\in K$ and
+\[
+ \operatorname{Tr}_{E/K}(\omega_E(v,w)/2)
+ =\omega_{\mathrm{Res}}(v,w)/2.
+\]
+Consequently
+\[
+ \chi_{E/K}(\omega_E(v,w)/2)
+ =\chi_K(\omega_{\mathrm{Res}}(v,w)/2),
+\]
+so the identity on the underlying labels preserves the half-form Weyl
+product. It also preserves negation, the zero label and the coefficient
+trace, and is therefore the exact unital $*$-isomorphism in the proposition.
+At rank zero it is the identity on $\mathbb C$.
+
+For a named tower $L\subset K\subset E$ and characters induced from one
+named character of $L$, trace transitivity identifies the direct and
+iterated forms and characters. Both comparison routes are identity on the
+underlying labels and therefore compose literally. An unrelated named
+character of $K$ is not silently identified with the induced one. This is
+restriction of scalars through trace, rather than uncorrected subfield
+inclusion or subsystem decoding.
+\end{proof}
 
 \begin{proposition}[Named arithmetic Frobenius covariance]
-\statusSketch{}
+\statusProved{}
 For a finite extension $E/K$ of odd-characteristic finite fields, with $\lvert
 K\rvert=p^s$, $n\geq0$ and a named nontrivial additive character $\chi_K$, put
 $\chi_{E/K}=\chi_K\circ\operatorname{Tr}_{E/K}$. On the standard register $E^n\oplus
@@ -747,10 +786,45 @@ is identity.
 \begin{scope}
 A smaller period is allowed. Abstract spaces require named semilinear data; Frobenius is not identified with partial trace.
 \end{scope}
-\provenance{SP-FROB}{Inherited: FRB-FROB,FRB-TRACE; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
+\provenance{SP-FROB}{Inherited: FRB-FROB,FRB-TRACE; channel typing: SP-CP; structured arithmetic proof}{Exact arithmetic controls; existing bridge scope retained}{theory/verdicts/phantasm-arithmetic-adjudication.md}
+
+\begin{proof}[Relative Frobenius argument]
+Put $q=|K|=p^s$, $d=[E:K]$ and $\sigma(x)=x^q$. This is a $K$-linear field
+automorphism and $\sigma^d=1$. The conjugate-sum formula
+\[
+ \operatorname{Tr}_{E/K}(x)=\sum_{r=0}^{d-1}\sigma^r(x)
+\]
+shows that relative trace is invariant under $\sigma$. Hence coordinatewise
+$\sigma$ preserves the restricted symplectic form and every named relative
+character $\chi_K\circ\operatorname{Tr}_{E/K}$. This does not assert that an
+arbitrary base character is invariant under the one-step absolute
+$p$-power action.
+
+The specified basis permutation satisfies
+$U_{E/K,n}\delta_y=\delta_{\sigma y}$. On basis vectors the symmetrized Weyl
+operator is
+\[
+ W^{\mathrm s}_{E,n}(a,b)\delta_y
+ =\chi_{E/K}(-b\cdot y-a\cdot b/2)\delta_{y+a}.
+\]
+Conjugating by the permutation, then using character invariance and applying
+$\sigma$ to the phase argument, gives
+\[
+ U_{E/K,n}W^{\mathrm s}_{E,n}(a,b)U_{E/K,n}^*
+ =W^{\mathrm s}_{E,n}(\sigma a,\sigma b).
+\]
+Both phase coordinates are transformed. At $n=0$ all operators are the
+identity on $\mathbb C$.
+
+The single Kraus operator $U_{E/K,n}$ is unitary, so its conjugation is an
+ordinary-trace channel. Its inverse is conjugation by the adjoint, and its
+$d$-th power is identity because $U_{E/K,n}^d=1$. No minimal-period claim,
+partial trace, characteristic-two half-form, or non-bijective Frobenius map
+is used.
+\end{proof}
 
 \begin{proposition}[Subsystem inclusion and its dual decoder]
-\statusSketch{}
+\statusProved{}
 For an odd-characteristic finite field, a common nontrivial character and a
 symplectic injection $j:U\to V$, the orthogonal decomposition $V=j(U)\oplus
 j(U)^\perp$ admits the specified quantum subsystem realization. Its observable
@@ -762,7 +836,93 @@ decompositions, the decoders compose as partial traces.
 \begin{scope}
 The complement and Weyl model compatibility must be verified. Generic field embeddings and coordinate traces are not automatically such injections.
 \end{scope}
-\provenance{SP-SUBSYS}{Inherited: FRP-CP; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-SUBSYS}{Inherited: FRP-CP; structured arithmetic proof}{Exact finite arithmetic controls}{theory/verdicts/phantasm-arithmetic-adjudication.md}
+
+\begin{proof}[Subsystem geometry and model argument]
+For a symplectic injection $j:U\to V$, the image $j(U)$ is nondegenerate,
+so $j(U)\cap j(U)^\perp=0$. The dimension identity
+$\dim A+\dim A^\perp=\dim V$ gives
+\[
+ V=j(U)\oplus j(U)^\perp.
+\]
+The restricted form on the complement is nondegenerate because a vector in
+its radical also lies in the double perpendicular $j(U)$. Thus
+$(u,w)\mapsto ju+w$ is a symplectic isomorphism, including zero retained or
+zero complement factors.
+
+The tensor of the chosen irreducible Weyl models for $U$ and the complement,
+and the chosen model for $V$ transported through this symplectic
+isomorphism, are irreducible unitary models of the same full matrix Weyl
+algebra. Admitted model uniqueness supplies a unitary $J$ satisfying
+\[
+ J(W_U^{\mathrm s}(u)\otimes W_W^{\mathrm s}(w))J^*
+ =W_V^{\mathrm s}(ju+w),
+\]
+unique up to overall phase. This reuses the admitted realization rather than
+reproving finite Stone--von Neumann.
+
+For composable $U\xrightarrow{j}V\xrightarrow{\ell}X$, the map
+\[
+ W_j\oplus W_\ell\longrightarrow W_{\ell j},
+ \qquad(w,z)\longmapsto\ell(w)+z
+\]
+lands in the combined complement. Its two images are orthogonal, it is
+injective, dimensions agree, and it preserves the two forms; it is therefore
+symplectic. The same model comparison supplies the three registered
+injection unitaries and the complement unitary. The staged and direct routes
+implement the same Weyl label
+$\ell(ju)+\ell(w)+z$, so unitary-intertwiner uniqueness makes them differ by
+one allowed phase. This is exactly the registered pure-tensor compatibility,
+including the ordinary reassociation and rank-zero unitors.
+\end{proof}
+
+\begin{proof}[Observable and decoder argument]
+Conjugation gives
+\[
+ \iota_J(a)=J(a\otimes1)J^*,
+\]
+which is visibly linear, multiplicative, star-preserving and unital. For an
+orthonormal basis $(e_r)$ of the complement model, put
+\[
+ K_r=(1\otimes\langle e_r|)J^*:H_V\to H_U.
+\]
+Then
+\[
+ \mathcal D_J(\rho)=\sum_rK_r\rho K_r^*
+ =\operatorname{Tr}_{H_W}(J^*\rho J),
+ \qquad \sum_rK_r^*K_r=1_{H_V}.
+\]
+The decoder is therefore a completely positive ordinary-trace-preserving
+channel, with no division by the discarded dimension, and
+\[
+ \operatorname{Tr}(\mathcal D_J(\rho)a)
+ =\operatorname{Tr}(\rho\iota_J(a)).
+\]
+Putting the complement Weyl label equal to zero gives
+$\iota_J(W_U^{\mathrm s}(u))=W_V^{\mathrm s}(ju)$ and hence
+\[
+ \operatorname{Tr}(\mathcal D_J(\rho)W_U^{\mathrm s}(u))
+ =\operatorname{Tr}(\rho W_V^{\mathrm s}(ju)).
+\]
+Replacing $J$ by a phase multiple changes neither the inclusion nor the
+decoder.
+
+For the registered compatible iterated data, let $A$ be the staged unitary
+and $B$ the direct unitary after complement comparison and reassociation.
+Compatibility says $A=\lambda B$. The phase cancels from conjugation, and
+the complement unitary carries the tensor-product orthonormal basis to an
+orthonormal basis of the combined complement. Expanding both partial traces
+in these bases proves
+\[
+ \iota_{J_\ell}\iota_{J_j}=\iota_{J_{\ell j}},
+ \qquad
+ \mathcal D_{J_j}\mathcal D_{J_\ell}=\mathcal D_{J_{\ell j}}.
+\]
+This comparison is asserted only for the full registered compatibility data.
+It is a trace-preserving tensor-subsystem decoder, not the trace-nonincreasing
+success branch of a field support code. The full retained code decoder
+includes a separate failure outcome.
+\end{proof}
 
 \begin{proposition}[Tensor assembly and product-state existence]
 \statusSketch{}

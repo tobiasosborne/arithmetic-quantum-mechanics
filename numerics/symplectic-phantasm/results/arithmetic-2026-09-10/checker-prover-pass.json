@@ -1,0 +1,83 @@
+{
+  "sha256": "047f6948b9abfa65691213a489a8816a4a9b916d9070c11f73a4bd28d23ffa4c",
+  "runs": [
+    {
+      "mode": "trace-degree",
+      "gate": "A1",
+      "exit": 1,
+      "output": "RED CAUGHT trace-degree at A1: F27/F3 trace image/kernel/fibers or trace-one witness failed\n"
+    },
+    {
+      "mode": "character-conflation",
+      "gate": "A2",
+      "exit": 1,
+      "output": "RED CAUGHT character-conflation at A2: nonstandard F9 character was conflated with the fixed absolute character\n"
+    },
+    {
+      "mode": "tower-order",
+      "gate": "A3",
+      "exit": 1,
+      "output": "RED CAUGHT tower-order at A3: F3/F9/F81 trace routes disagree or wrong stage misses F9\n"
+    },
+    {
+      "mode": "half-form-trace",
+      "gate": "A4",
+      "exit": 1,
+      "output": "RED CAUGHT half-form-trace at A4: F27/F3 rank-1 half-form trace exponent mismatch\n"
+    },
+    {
+      "mode": "absolute-frobenius",
+      "gate": "A5",
+      "exit": 1,
+      "output": "RED CAUGHT absolute-frobenius at A5: F81/F9 relative Frobenius is not K-linear\n"
+    },
+    {
+      "mode": "half-coordinate",
+      "gate": "A6",
+      "exit": 1,
+      "output": "RED CAUGHT half-coordinate at A6: F27/F3 rank-1 sparse Frobenius covariance failed\n"
+    },
+    {
+      "mode": "rank-zero",
+      "gate": "A7",
+      "exit": 1,
+      "output": "RED CAUGHT rank-zero at A7: rank-zero empty tensor is not the identity channel on C\n"
+    },
+    {
+      "mode": "degenerate-subsystem",
+      "gate": "A8",
+      "exit": 1,
+      "output": "RED CAUGHT degenerate-subsystem at A8: subsystem and complement are not orthogonal\n"
+    },
+    {
+      "mode": "decoder-normalized-trace",
+      "gate": "A9",
+      "exit": 1,
+      "output": "RED CAUGHT decoder-normalized-trace at A9: ordinary decoder disagrees with index partial trace at E_(0,0)\n"
+    },
+    {
+      "mode": "decoder-direction",
+      "gate": "A10",
+      "exit": 1,
+      "output": "RED CAUGHT decoder-direction at A10: decoder traced the retained factor or corrupted correlated-state outputs\n"
+    },
+    {
+      "mode": "decoder-phase",
+      "gate": "A11",
+      "exit": 1,
+      "output": "RED CAUGHT decoder-phase at A11: overall phase did not cancel from decoder data\n"
+    },
+    {
+      "mode": "decoder-tower-order",
+      "gate": "A12",
+      "exit": 1,
+      "output": "RED CAUGHT decoder-tower-order at A12: direct/iterated decoder mismatch at tower matrix unit E_(0,4)\n"
+    },
+    {
+      "mode": "green",
+      "exit": 0,
+      "seconds": 49.372,
+      "output": "A1 PASS: F27 trace image 3/kernel 9/fibers 9; Gram ranks 0,6,12\nA2 PASS: nonstandard F9 character and F81 composite separated; F27 restriction trivial\nA3 PASS: 81 direct/iterated trace and nonstandard-character comparisons\nA4 PASS: 605 half-form exponent pairs plus sparse product/star/unit/trace\nA5 PASS: F27 cube/order3 and F81 ninth-power/order2 K-linearity/invariance\nA6 PASS: 648810 exhaustive-rank1/sparse-rank2 monomial covariance cases\nA7 PASS: rank-zero identity plus 256 rank1/2 permutation-channel controls\nA8 PASS: non-coordinate j,k symplectic/orthogonal/injective with 81 unique sums\nA9 PASS: 729 Weyl actions, 81 decoder units, completeness/trace and 729 dualities\nA10 PASS: asymmetric product, classical correlation and Bell density decoder direction\nA11 PASS: 27 Weyl-characteristic restrictions and exact J phase cancellation\nA12 PASS: explicit D1710 M3 compatibility, 729 matrix units and three tower states\nGREEN PASS: exact finite controls only; no claim promotion\n"
+    }
+  ]
+}

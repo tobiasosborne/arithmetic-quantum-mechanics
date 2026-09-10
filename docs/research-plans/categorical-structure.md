@@ -8,8 +8,9 @@ This is a continuing research direction within the Symplectic Phantasm.
 The local Weyl/affine/tensor and relation/compact/stabilizer clusters are
 now admitted at their canonical scopes, together with scalar normalization
 and finite instruments. The coherent/tagged sum comparison is now admitted.
-The next bounded task is the arithmetic interfaces in
-`../../briefs/phantasm-arithmetic-target.md`.
+The arithmetic trace/Frobenius/subsystem interfaces are admitted. The next
+bounded task is the completion controls in
+`../../briefs/phantasm-completions-target.md`.
 
 ## What the record should answer
 
@@ -127,13 +128,21 @@ comparison; the finite qutrit witness is only a check.
 |---|---|---|
 | SP-SUM | Full rectangular complex spans and full coherent block realization; typed empty-list zero maps; separate tagged subalgebra and ordinary-trace block dephasing | Actual amplitudes precede addition. Repeated list positions remain distinct, and the empty coherent sum differs from the tensor unit. No classical rig, fusion, Gaussian or arithmetic-source theorem is added |
 
+SP-TRACE, SP-FROB and SP-SUBSYS are admitted through
+`../../theory/verdicts/phantasm-arithmetic-adjudication.md`.
+
+| Comparison | Structure supplied by the existing claim | Choice or remaining boundary |
+|---|---|---|
+| SP-TRACE | Exact labelled half-form algebra comparison under trace restriction; compatible tower composition | Odd characteristic; named base character and field embedding; raw subfield inclusion is separate |
+| SP-FROB | Relative Frobenius gives a symplectic automorphism, exact unitary covariance and an invertible channel | Standard registers, relative base field and named character; no abstract descent datum is inferred |
+| SP-SUBSYS | Unital observable inclusion and reverse ordinary-trace channel; phase independence and compatible tower composition | Common character and compatible irreducible model encodings; a support-code success branch remains distinct |
+
 The next questions are:
 
-1. Carry the completed local comparisons into SP-TRACE, SP-FROB and
-   SP-SUBSYS, with explicit character transport, model choices and iterated
-   encoding compatibility. Continue to distinguish actual-map addition from
-   projective representatives and ordinary trace from other reference
-   functionals. The operator-vector/CP-Choi comparison remains separate.
+1. Establish the Fock functor on contractions, the specified prime tensor
+   product with product state, and the represented Bost--Connes control.
+   Keep the operator-vector/CP-Choi comparison and the scalar-retaining
+   arithmetic-source comparison explicit separate obligations.
 2. Compute the normalized and unnormalized amplitude cup/cap diagrams and
    their admissibility as physical branches. Track which compact equations
    survive which normalization; compact closure alone does not settle this.

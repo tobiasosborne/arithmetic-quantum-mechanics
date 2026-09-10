@@ -17,9 +17,10 @@ On a fresh checkout, first run `python3 scripts/fetch-phantasm-sources.py`;
 source bodies are deliberately ignored by Git, and the checker verifies
 their recorded hashes. The stage-1 Weyl/affine/tensor cluster and the
 SP-LREL/SP-COMPACT/SP-STAB-REL cluster, SP-SCALAR/SP-CP and SP-SUM are
-admitted through their respective adjudications. Next are SP-TRACE,
-SP-FROB and SP-SUBSYS under `briefs/phantasm-arithmetic-target.md`; register
-its D1710 compatibility and SP-FROB dependency proposals before use. The
+admitted through their respective adjudications, together with SP-TRACE,
+SP-FROB and SP-SUBSYS. Next are SP-FOCK, SP-PRIME and SP-BC-CONTROL under
+`briefs/phantasm-completions-target.md`; register its prepared D1708/D1711
+formula ownership before use. The
 2026-09-10 reuse correction is binding: SP-WEYL is a corollary of the
 admitted finite-abelian F1-REAL, and SP-TENSOR reuses F1-FUNCT. Consult the
 DAG's Inherited/Reuse/Remaining fields and each definition's Reuses/Delta

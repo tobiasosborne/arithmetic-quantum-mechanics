@@ -65,9 +65,9 @@ remain in their single sources. The record is an open research agenda,
 not an assertion that all desired structures coexist. It accompanies the
 bounded lemma clusters. The local Weyl/affine/tensor and relation/compact/
 stabilizer clusters, scalar/process comparison and coherent/tagged sums are
-admitted. Arithmetic interfaces are next, with the global arithmetic action
-and reference state as the major
-construction to earn after the local interfaces.
+admitted, together with trace restriction, relative Frobenius and subsystem
+decoders. Completion controls are next, with the global arithmetic action
+and reference state as the major construction to earn afterward.
 
 ## Construction order and acceptance gates
 
@@ -171,16 +171,24 @@ algebra remains the chosen block-diagonal subalgebra. The proof retains
 standard coordinates and the block decomposition. It makes no arithmetic
 source comparison and does not close DG-RIG.
 
-## Next bounded work — arithmetic interfaces
+## Arithmetic interfaces completed — 2026-09-10
 
-Use `briefs/phantasm-arithmetic-target.md` for SP-TRACE, SP-FROB and
-SP-SUBSYS before SP-FOCK. The explicit interface proposal is in
-`briefs/phantasm-arithmetic-interfaces.md`, and the next exact-checker
-specification is `briefs/phantasm-arithmetic-checks.md`. They remain
-preparation: register the proposed D1710 iterated-model compatibility and
-SP-FROB process-typing dependency before the proofs use them. Neither change
-has silently entered the current canonical data. This scheduling advances
-the arithmetic action while preserving every required global gate.
+SP-TRACE, SP-FROB and SP-SUBSYS are admitted through
+`theory/verdicts/phantasm-arithmetic-adjudication.md`, with SP-TRACE admitted
+before SP-FROB. D1710 owns the explicit common-character irreducible models,
+complement comparison and compatible iterated encodings up to phase.
+SP-FROB records SP-CP only for unitary-channel typing. The proof covers
+extension degrees divisible by the characteristic and preserves named
+character choices. The tensor decoder uses ordinary trace and remains
+distinct from a support-code success map.
+
+## Next bounded work — completion controls
+
+Use `briefs/phantasm-completions-target.md` for SP-FOCK, SP-PRIME and
+SP-BC-CONTROL. Register the prepared D1708 exponential-map and D1711
+identity-insertion formulas from `briefs/phantasm-completions-interfaces.md`
+before proof work. Those proposals are not yet canonical and admit no
+analytic properties. The seven global design gates remain open.
 
 TJO asked which step would be most consequential after the category work.
 The target is one explicit global arithmetic action with a reference state:

@@ -1,0 +1,7 @@
+{
+  "installed_sha256": "689c53d32f6bd7369bb19697926e55c49500140fa76bb041a80de6de911c563d",
+  "control": "Only per-field/rank count acceptance disabled on a temporary copy; covariance equation and nonempty guards retained.",
+  "exit": 0,
+  "seconds": 99.546,
+  "output": "RED SURVIVED covariance-census-loss at A6: 648797 exhaustive-rank1/sparse-rank2 monomial covariance cases\n"
+}

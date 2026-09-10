@@ -346,78 +346,78 @@ nonempty scalar.
 ## SP-TRACE
 
 - Title: Restriction of scalars preserves the Weyl datum
-- Status: SKETCH
+- Status: PROVED
 - Stage: 4
 - Definitions: D3,D1301,D1303,D1701,D1703,D1709
 - Dependencies: SP-WEYL,FRB-TRACE
 - Inherited: FRB-TRACE
 - Reuse: FRB-TRACE, foundation.md section 1, admits transported relative trace, surjectivity, transitivity and the trace-pairing argument.
-- Remaining: Apply the admitted trace facts to arbitrary-rank symplectic spaces and a named base character, then identify the half-form Weyl products. Keep chi_(E/K) separate from the fixed psi_E.
+- Remaining: None within the admitted statement. Arbitrary-rank trace nondegeneracy, named-character transport, exact half-form algebra comparison and compatible tower laws passed capped review.
 - Sources: SP-STFIELD,SP-PRASAD09
 - Inputs: E/K, an E-symplectic space and named nontrivial chi_K; chi_(E/K)=chi_K o Tr_(E/K)
 - Output: An underlying K-symplectic space and exact equality of the labelled Weyl products
 - Choices: The field embedding defining E/K and the K-character
 - Scope: The extension degree may be divisible by the characteristic. This is restriction of scalars with a trace form, not the uncorrected inclusion of a subfield as a symplectic subsystem.
-- Proof: none
-- Review: none
-- Checks: theory/checks/phantasm_reuse_check.py
-- Evidence: draft
+- Proof: theory/symplectic-phantasm/trace.md
+- Review: theory/verdicts/phantasm-arithmetic-adjudication.md
+- Checks: theory/checks/phantasm_reuse_check.py,theory/checks/phantasm_arithmetic_check.py
+- Evidence: admitted
 
 **Construction outline.** FRB-TRACE, foundation.md section 1, admits transported relative trace, surjectivity, transitivity and the trace-pairing argument. Apply the admitted trace facts to arbitrary-rank symplectic spaces and a named base character, then identify the half-form Weyl products. Keep chi_(E/K) separate from the fixed psi_E.
 
-**Falsifier scope.** Implemented: phantasm_reuse_check.py R6 tests a nonstandard F9 base character inside F81, relative-trace transitivity and relative Frobenius covariance. Existing frobenius_hierarchy_check.py remains evidence for its original FRB scopes; abstract-rank claims need their written argument.
+**Falsifier scope.** Implemented: phantasm_reuse_check.py R6 retains its F81/F9 nonstandard-character sample. phantasm_arithmetic_check.py A1--A4 adds F27/F3 degree-equals-characteristic traces, restricted Gram ranks zero/six/twelve, F3/F9/F81 tower transitivity, named-character separation, and exact rank-zero/one/two half-form product, star, unit and trace controls. These finite fields and sparse labels do not prove arbitrary-rank or all-extension statements.
 
 **Required mutations.** Replace trace by multiplication by the extension degree; use the restriction of psi_E to K as though it were always nontrivial.
 
 ## SP-FROB
 
 - Title: Named arithmetic Frobenius covariance
-- Status: SKETCH
+- Status: PROVED
 - Stage: 4
-- Definitions: D1301,D1302,D1303,D1703,D1709
-- Dependencies: SP-WEYL,SP-EGOROV,SP-TRACE,FRB-FROB,FRB-TRACE
+- Definitions: D1301,D1302,D1303,D1703,D1706,D1709
+- Dependencies: SP-WEYL,SP-EGOROV,SP-TRACE,SP-CP,FRB-FROB,FRB-TRACE
 - Inherited: FRB-FROB,FRB-TRACE
-- Reuse: FRB-FROB, foundation.md section 2, admits the absolute basis permutation, covariance and trace-dual atomic factorization; FRB-TRACE supplies the tower traces.
-- Remaining: Take the s-th power and n-fold tensor, check invariance of the chosen relative character, and match the symmetrized frame. An arbitrary base character is not automatically invariant under absolute Frobenius.
+- Reuse: FRB-FROB, foundation.md section 2, admits the absolute basis permutation, covariance and trace-dual atomic factorization; FRB-TRACE supplies the tower traces. SP-CP supplies only ambient unitary-conjugation channel typing; relative Frobenius covariance, inverse and finite power remain separate calculations.
+- Remaining: None within the admitted standard-register statement. Relative-power covariance, named-character invariance, inverse channel and declared finite power passed capped review. Abstract semilinear data remain a separate choice.
 - Sources: SP-STFIELD,SP-GH07
 - Inputs: E/K with |K|=p^s, rank n>=0, the chosen relative character and U_(E/K,n)=(U_E^s)^tensor n
 - Output: Symplectic automorphism, exact unitary covariance and invertible channel
 - Choices: Coordinates and relative base field; trace-normalized character
 - Scope: A smaller period is allowed. Abstract spaces require named semilinear data; Frobenius is not identified with partial trace.
-- Proof: none
-- Review: none
-- Checks: theory/checks/phantasm_reuse_check.py
-- Evidence: draft
+- Proof: theory/symplectic-phantasm/frobenius.md
+- Review: theory/verdicts/phantasm-arithmetic-adjudication.md
+- Checks: theory/checks/phantasm_reuse_check.py,theory/checks/phantasm_arithmetic_check.py
+- Evidence: admitted
 
 **Construction outline.** FRB-FROB, foundation.md section 2, admits the absolute basis permutation, covariance and trace-dual atomic factorization; FRB-TRACE supplies the tower traces. Take the s-th power and n-fold tensor, check invariance of the chosen relative character, and match the symmetrized frame. An arbitrary base character is not automatically invariant under absolute Frobenius.
 
-**Falsifier scope.** Implemented: phantasm_reuse_check.py R6 tests a nonstandard F9 base character inside F81, relative-trace transitivity and relative Frobenius covariance. Existing frobenius_hierarchy_check.py remains evidence for its original FRB scopes; abstract-rank claims need their written argument.
+**Falsifier scope.** Implemented: phantasm_reuse_check.py R6 retains its selected F81/F9 relative-power sample. phantasm_arithmetic_check.py A5--A7 checks F27/F3 cube/order-three and F81/F9 ninth-power/order-two K-linearity, trace/character invariance, 648,810 exhaustive-rank-one/sparse-rank-two Weyl covariance cases with guarded per-field/rank census sizes, rank zero, bijectivity, inverse channel action and ordinary trace. No dense F81 rank-two matrix is formed; finite success does not prove arbitrary-rank covariance.
 
 **Required mutations.** Replace conjugation by a partial trace or apply the Frobenius to only half the phase coordinates.
 
 ## SP-SUBSYS
 
 - Title: Subsystem inclusion and its dual decoder
-- Status: SKETCH
+- Status: PROVED
 - Stage: 4
 - Definitions: D1326,D1327,D1701,D1703,D1706,D1710
 - Dependencies: SP-WEYL,SP-TENSOR,SP-CP,FRP-CP
 - Inherited: FRP-CP
 - Reuse: FRP-CP admits the ordinary quantum discard and its normalization on arithmetic words.
-- Remaining: Construct the nondegenerate symplectic complement and compatible model unitary; identify its decoder with the existing discard in those coordinates. A support-code success map is not substituted for this partial trace.
+- Remaining: None within the admitted statement. Symplectic complements, compatible model existence, observable inclusion, ordinary-trace decoder, phase independence and compatible tower laws passed capped review. Support-code success maps remain separate.
 - Sources: SP-WAT18,SP-STFIELD
 - Inputs: Symplectic injection j and compatible model unitary J
 - Output: iota_J:End(H_U)->End(H_V), dual D_J in the opposite direction
 - Choices: Model unitary modulo overall phase; compatible tensor identifications in towers
 - Scope: The complement and Weyl model compatibility must be verified. Generic field embeddings and coordinate traces are not automatically such injections.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/subsystem-models.md,theory/symplectic-phantasm/subsystem-decoder.md
+- Review: theory/verdicts/phantasm-arithmetic-adjudication.md
+- Checks: theory/checks/phantasm_arithmetic_check.py
+- Evidence: admitted
 
 **Construction outline.** FRP-CP admits the ordinary quantum discard and its normalization on arithmetic words. Construct the nondegenerate symplectic complement and compatible model unitary; identify its decoder with the existing discard in those coordinates. A support-code success map is not substituted for this partial trace.
 
-**Falsifier scope.** Use a symplectic inclusion into two F3 registers and a three-register tower; test a correlated state and the identity normalization.
+**Falsifier scope.** Implemented: phantasm_arithmetic_check.py A8--A12 checks a non-coordinate F3 symplectic injection/complement, all 729 Weyl compatibility actions, ordinary decoder Kraus/index equality and trace duality, asymmetric/classically correlated/Bell inputs, Weyl characteristic restriction, phase cancellation, and an explicit three-register compatible direct/iterated decoder on 729 matrix units and three states. The M3 fixture satisfies D1710's explicit compatibility equation; it does not establish compatibility for arbitrary chosen data.
 
 **Required mutations.** Divide partial trace by the discarded dimension; use a degenerate inclusion; compose decoders with incompatible subsystem labels.
 

@@ -1,0 +1,29 @@
+{
+  "sha256": "047f6948b9abfa65691213a489a8816a4a9b916d9070c11f73a4bd28d23ffa4c",
+  "controls": [
+    {
+      "gate": "A1",
+      "mode": "trace-degree",
+      "exit": 0,
+      "output": "RED SURVIVED trace-degree at A1: F27 trace image 3/kernel 9/fibers 9; Gram ranks 0,6,12\n"
+    },
+    {
+      "gate": "A6",
+      "mode": "half-coordinate",
+      "exit": 0,
+      "output": "RED SURVIVED half-coordinate at A6: 648810 exhaustive-rank1/sparse-rank2 monomial covariance cases\n"
+    },
+    {
+      "gate": "A9",
+      "mode": "decoder-normalized-trace",
+      "exit": 0,
+      "output": "RED SURVIVED decoder-normalized-trace at A9: 729 Weyl actions, 81 decoder units, completeness/trace and 729 dualities\n"
+    },
+    {
+      "gate": "A12",
+      "mode": "decoder-tower-order",
+      "exit": 0,
+      "output": "RED SURVIVED decoder-tower-order at A12: explicit D1710 M3 compatibility, 729 matrix units and three tower states\n"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+[gate A] OK: every claim id in /home/tobias/Projects/arithmetic-quantum-mechanics/claims/CLAIMS.md is cited under /home/tobias/Projects/arithmetic-quantum-mechanics/labbook/sections.
+[gate B] OK: every Dn heading in /home/tobias/Projects/arithmetic-quantum-mechanics/definitions.md is cited under /home/tobias/Projects/arithmetic-quantum-mechanics/labbook/sections.
+[gate C] OK: no verbatim/lstlisting/alltt/minted under /home/tobias/Projects/arithmetic-quantum-mechanics/labbook.
+[gate D] OK: /home/tobias/Projects/arithmetic-quantum-mechanics/labbook/main.pdf is not older than any /home/tobias/Projects/arithmetic-quantum-mechanics/labbook/**.tex file.
+----------------------------------------
+[check-labbook] PASS

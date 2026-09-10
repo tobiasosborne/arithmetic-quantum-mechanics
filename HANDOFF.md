@@ -4,7 +4,67 @@
 
 # HANDOFF — live state
 
-## Current state — coherent and tagged sums admitted (2026-09-10)
+## Current state — arithmetic interfaces admitted (2026-09-10)
+
+SP-TRACE, SP-FROB and SP-SUBSYS are PROVED through
+`theory/verdicts/phantasm-arithmetic-adjudication.md`. The sole blind review
+passed separately for each claim; SP-TRACE was admitted before SP-FROB.
+One repair wave removed one redundant citation and added an enforced A6
+covariance census. No mathematical argument changed. Do not repeat review.
+
+D1710 owns common-character irreducible unitary models, symplectic
+complements, typed single-step/composite/complement encodings, explicit
+reassociation, compatibility up to one unretained phase, and rank-zero units.
+The proofs establish their geometry, model existence and decoder laws.
+SP-FROB records D1706/SP-CP only for its unitary-channel clause. Trace
+restriction retains the named base character, including extension degrees
+divisible by the characteristic; compatible towers use induced characters.
+Subsystem decoding uses ordinary partial trace and is distinct from the
+support-code success branch with a retained failure outcome in its full decoder.
+
+Canonical proofs are `trace.md`, `frobenius.md`, `subsystem-models.md` and
+`subsystem-decoder.md` under `theory/symplectic-phantasm/`. Their reviewed
+versions, original verdict, recomputation, repair and exact validation records
+are preserved in `numerics/symplectic-phantasm/results/arithmetic-2026-09-10/`.
+The register has **159 claims: 133 PROVED, 22 SKETCH, three CONJECTURE and
+one REFUTED**, with **175 definitions**. Twelve of fifteen SP claims are
+proved; three bootstrap claims and all seven design gates remain open.
+
+The final arithmetic checker passes normal and optimized runs at its declared
+648,810 exact sparse covariance cases. All thirteen reds fail first at their
+intended gates. Dropping one F81 rank-two state produces 648,797 comparisons
+and fails the new per-field/rank count guard; disabling only that guard on a
+temporary copy makes the altered census survive with exit 0. Empty state
+censuses are rejected explicitly. The original twelve mutations and imported
+helpers retain their scope. Finite passes do not prove the general claims.
+
+The existing canonical session-close passed 32 unchanged suites and 339 reds
+(exit 0, 730.35 seconds). The final new checker adds one suite and thirteen
+reds: current aggregate coverage is **33 suites and 352 reds**, plus a fresh
+post-promotion contract green and all twenty-two intended contract mutations.
+This is an aggregate of completed runs, not one post-promotion full-runner
+invocation. Final checker/source hashes are frozen with the evidence. The
+**188-page** labbook builds and passes lockstep; changed definition/proof
+pages were visually inspected.
+
+**Next bounded task:** SP-FOCK, SP-PRIME and SP-BC-CONTROL under
+`briefs/phantasm-completions-target.md`. The exact D1708 exponential-map and
+D1711 increasing-prime identity-insertion proposals are prepared in
+`briefs/phantasm-completions-interfaces.md`; they are NOT yet canonical.
+Register their formulas and exact labbook restatements before the proving
+pass. Keep analytic extension, Fock naturality, prime inductive completion,
+product-state extension/GNS and the represented BC identities as proof
+obligations until the capped review and mechanical adjudication.
+
+The full goal remains active. Completion controls do not close the seven
+design gates or supply a global arithmetic action/state. The consequential
+construction afterward is its explicit algebra, generators, relations and
+reference state, followed by actual dynamics and a separately formulated
+spectral comparison. A zeta partition function alone is insufficient.
+The earlier checkpoint entries below are historical; this section supersedes
+their old next-task instructions.
+
+## Prior checkpoint — coherent and tagged sums admitted (2026-09-10)
 
 SP-SUM is PROVED after one blind PASS, a single checker repair wave and
 mechanical adjudication. The proof needed no mathematical repair. The record

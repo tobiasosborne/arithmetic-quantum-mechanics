@@ -5,6 +5,12 @@ Preparation date: 2026-09-10. Planning model: `gpt-5.6-sol`, reasoning
 SP-TRACE, then SP-FROB, and SP-SUBSYS once SP-CP is admitted. It contains no
 proof, review, status change, or new foundational programme.
 
+**Completed 2026-09-10:** SP-TRACE, SP-FROB and SP-SUBSYS are admitted through
+`theory/verdicts/phantasm-arithmetic-adjudication.md`. D1710 and the SP-FROB
+process-typing dependency were registered before proof work. The planning
+language below is preserved as the work order, not the current status.
+The next work order is `briefs/phantasm-completions-target.md`.
+
 ## Exact objective and boundaries
 
 Build the local arithmetic action needed before any global-state assembly:
@@ -29,7 +35,7 @@ spectral construction.
 | SP-WEYL plus F1-REAL §2 | Full matrix Weyl realization, trace orthogonality and projective model uniqueness in arbitrary finite rank | Reuse after equality of Weyl products; do not restart SvN |
 | SP-TENSOR plus F1-FUNCT §3 | Exact direct-sum/tensor comparison, units, associativity and symmetry | Supply arbitrary-rank subsystem factorization and `n=0`; retain named coordinate/model choices |
 | FRP-CP `process-category.md` `<1>6`--`<1>10` | Kraus CP, ordinary-trace normalization, tensor and actual discard for arithmetic images | SP-SUBSYS needs arbitrary Hilbert partial trace through `J`, not a source support-code decoder |
-| SP-CP | Ambient finite-block Kraus/channel and ordinary-trace-adjoint theorem | Remains `SKETCH` until current adjudication; SP-SUBSYS and the channel clause of SP-FROB cannot promote before it |
+| SP-CP | Ambient finite-block Kraus/channel and ordinary-trace-adjoint theorem | Admitted; reused only for ambient channel and ordinary-trace-adjoint typing |
 
 `theory/checks/phantasm_reuse_check.py` R6 is finite evidence only. It checks
 the tower `F3 subset F9 subset F81`, a nonstandard F9 character inside F81,
@@ -44,15 +50,15 @@ its current Definitions omit D1706 and its Dependencies omit SP-CP. Before
 using this planned proof route, add
 `D1706` and `SP-CP` to the canonical row and DAG fields, with Reuse stating
 that SP-CP supplies only the ambient unitary-channel typing. This registers the chosen reuse route, not a new obstruction to unitary
-conjugation. Keep SP-FROB `SKETCH` while SP-CP is unadmitted. The mathematical covariance proof may be
-written earlier, but channel promotion may not outrun this dependency.
+conjugation. This dependency is now registered and SP-CP is admitted;
+SP-FROB remains SKETCH until its own proof and SP-TRACE dependency pass review.
 
 The proposed exact D1710 extension is in `briefs/phantasm-arithmetic-interfaces.md`;
 the next checker specification is `briefs/phantasm-arithmetic-checks.md`.
 Before SP-SUBSYS proof integration, explicitly own the direct-versus-iterated
-model comparison, reassociation and phase allowance. The proposal is not yet
-the canonical definition, and its geometric and decoder laws remain proof
-obligations.
+model comparison, reassociation and phase allowance. The D1710 proposal has now been registered, with irreducible unitary models
+and explicitly bound tensor vectors. Its geometric and decoder laws remain
+proof obligations. The canonical definition governs the proof.
 
 No new definition number is needed. D1709 already owns the trace form,
 general base character, relative power and rank-`n` permutation; D1710 owns

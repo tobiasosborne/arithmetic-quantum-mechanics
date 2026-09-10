@@ -1,0 +1,6 @@
+{
+  "gate": "G4",
+  "observed": "missing structured proof markers SP-FROB: theory/symplectic-phantasm/frobenius.md",
+  "before_sha256": "0873c574bd81abaa407e2d1cc8014b545b7bab497b31117f9bd345dcf7b9e5df",
+  "repair": "Relabel the existing global Fix hypothesis paragraph ASSUME. No hypothesis, equation or argument changes."
+}

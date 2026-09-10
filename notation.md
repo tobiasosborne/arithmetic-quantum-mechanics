@@ -244,6 +244,7 @@ base character. The following rows own only the additional names.
 | `Res_(E/K)V`, `omega_Res`, `chi_K`, `chi_(E/K)` | scalar restriction, trace form, named general base character and its relative-trace composite; neither character symbol replaces the fixed psi_E family | D1709 |
 | `sigma_(E/K)`, `varphi_V`, `U_(E/K,n)` | relative field power, named abstract semilinear datum and tensor of powers of the existing U_E | D1709 |
 | `j`, `J`, `iota_J`, `D_J` (nondegenerate subsystem) | symplectic injection, compatible model unitary, observable inclusion and trace-dual decoder; distinct from a field support-code success map | D1710 |
+| `ell`, `W_j`, `W_ell`, `W_(ell j)`, `J_j`, `J_ell`, `J_(ell j)`, `J^perp_(j,ell)` (iterated subsystem) | composable injection, actual complements and typed single-step/composite/complement model comparisons, with explicit reassociation and an unretained overall phase | D1710 |
 | `P`, `A_P`, `iota_QP`, `A_pr`, `varphi_pr`, `d_p`, `rho_p` (prime tensor assembly) | finite prime set, finite tensor algebra, unital embedding, norm completion, product reference and chosen local dimensions/densities | D1711 |
 | `H_BC`, `A_BC^rep`, `e(r)`, `mu_n`, `H_log`, `nu_n`, `L_n`, `Z_BC(b)`, `rho_(BC,b)` | represented BC benchmark, phase and semigroup operators, logarithmic energy, corner and adjoint maps, partition sum and density | D1712 |
 | `b`, `u`, `sigma_u` (real dynamics) | inverse temperature, time and physical automorphism flow; these are bound real variables, not Weyl labels or field Frobenius | D1712,D1713 |
