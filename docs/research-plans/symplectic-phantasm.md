@@ -66,8 +66,9 @@ not an assertion that all desired structures coexist. It accompanies the
 bounded lemma clusters. The local Weyl/affine/tensor and relation/compact/
 stabilizer clusters, scalar/process comparison and coherent/tagged sums are
 admitted, together with trace restriction, relative Frobenius and subsystem
-decoders. Completion controls are next, with the global arithmetic action
-and reference state as the major construction to earn afterward.
+decoders, Fock completion, prime assembly and the represented BC control.
+The characteristic-two and scalar-retaining interfaces are next, with the
+global arithmetic action and reference state as the major construction to earn.
 
 ## Construction order and acceptance gates
 
@@ -182,13 +183,34 @@ extension degrees divisible by the characteristic and preserves named
 character choices. The tensor decoder uses ordinary trace and remains
 distinct from a support-code success map.
 
-## Next bounded work — completion controls
+## Completion controls completed — 2026-09-10
 
-Use `briefs/phantasm-completions-target.md` for SP-FOCK, SP-PRIME and
-SP-BC-CONTROL. Register the prepared D1708 exponential-map and D1711
-identity-insertion formulas from `briefs/phantasm-completions-interfaces.md`
-before proof work. Those proposals are not yet canonical and admit no
-analytic properties. The seven global design gates remain open.
+SP-FOCK, SP-PRIME and SP-BC-CONTROL are admitted through
+`theory/verdicts/phantasm-completions-adjudication.md`. D1708 owns the
+normalized homogeneous exponential formula and its direction; D1711 owns
+increasing-prime identity insertion. Written proofs carry the Hilbert and
+C*-completions, product-state/GNS construction, maximal logarithmic-operator
+domain, point-norm dynamics and Gibbs trace convergence. The prime product
+and the represented BC control remain distinct constructions.
+
+All fifteen bootstrap claims are now proved. This does not close the seven
+design gates or construct an operator whose spectrum consists of zeta zeros.
+
+## Next bounded work — characteristic two and retained scalars
+
+Use `briefs/phantasm-char2-target.md`, its prepared interface proposal, and
+`docs/research-plans/phantasm-char2-source-comparison.md`. Register the new
+definitions and claims before proof work. The proposed source retains
+cocycle-defect lifts and implementing phases; no splitting is stipulated.
+GH08's raw Witt-center kernel must be compared after its chosen character,
+not identified by name with the classical affine translation space.
+
+The following scalar-retaining comparison is prepared in
+`briefs/phantasm-relation-lift-target.md` and its generator table. It starts
+on a named odd-prime arithmetic fragment, preserves coefficient restrictions
+and source equality, and does not identify the entire arithmetic source with
+pure stabilizer theory. DG-RIG must then specify the compatible additive
+construction before DG-GLOBAL supplies actual arithmetic maps and a state.
 
 TJO asked which step would be most consequential after the category work.
 The target is one explicit global arithmetic action with a reference state:

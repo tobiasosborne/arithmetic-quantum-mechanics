@@ -8,9 +8,9 @@ This is a continuing research direction within the Symplectic Phantasm.
 The local Weyl/affine/tensor and relation/compact/stabilizer clusters are
 now admitted at their canonical scopes, together with scalar normalization
 and finite instruments. The coherent/tagged sum comparison is now admitted.
-The arithmetic trace/Frobenius/subsystem interfaces are admitted. The next
-bounded task is the completion controls in
-`../../briefs/phantasm-completions-target.md`.
+The arithmetic and completion interfaces are admitted. The next bounded
+task is the characteristic-two lift interface in
+`../../briefs/phantasm-char2-target.md`.
 
 ## What the record should answer
 
@@ -137,12 +137,34 @@ SP-TRACE, SP-FROB and SP-SUBSYS are admitted through
 | SP-FROB | Relative Frobenius gives a symplectic automorphism, exact unitary covariance and an invertible channel | Standard registers, relative base field and named character; no abstract descent datum is inferred |
 | SP-SUBSYS | Unital observable inclusion and reverse ordinary-trace channel; phase independence and compatible tower composition | Common character and compatible irreducible model encodings; a support-code success branch remains distinct |
 
+SP-FOCK, SP-PRIME and SP-BC-CONTROL are admitted through
+`../../theory/verdicts/phantasm-completions-adjudication.md`.
+
+| Comparison | Structure supplied by the existing claim | Choice or remaining boundary |
+|---|---|---|
+| SP-FOCK | Bounded functor on actual contractions; natural unitary exponential comparison; vacuum and one-mode number operator | No strong-monoidal coherence or projective descent is added; infinite output spaces are outside the finite-block process theorem |
+| SP-PRIME | Isometric unital inductive tensor system, product state and GNS construction with cyclic reference vector | Every local dimension and density is chosen; no arithmetic coupling, separating-vector or factor claim |
+| SP-BC-CONTROL | Arithmetic semigroup isometries, corner endomorphisms, unital CP transfers and point-norm continuous dynamics with a zeta Gibbs trace | Concrete represented control with logarithmic-integer energies; no global identification, modular equality or zero spectrum |
+
+The registered input types identify three comparisons to keep explicit:
+
+- D1708 takes actual contractions. It does not prescribe a Fock assignment
+  on D1705 scalar classes; any such descent needs its own comparison.
+- The Fock exponential formula uses coherent Hilbert direct sum. The admitted
+  symplectic direct-sum comparison uses Hilbert tensor product. DG-RIG must
+  identify which product each functor preserves.
+- D1711 chooses local density operators, and D1713 supplies GNS data.
+  Faithfulness of the state, faithfulness of its representation, and the
+  separating-vector condition are separate questions. Cyclicity is the
+  current SP-PRIME output; the modular gate has the additional hypotheses.
+
 The next questions are:
 
-1. Establish the Fock functor on contractions, the specified prime tensor
-   product with product state, and the represented Bost--Connes control.
-   Keep the operator-vector/CP-Choi comparison and the scalar-retaining
-   arithmetic-source comparison explicit separate obligations.
+1. Register and prove the characteristic-two defect-lift interface, retaining
+   its cocycle and implementing-phase choices. The prepared generator match
+   for a scalar-retaining relation lift follows on its named odd-prime
+   fragment. Keep operator vectorization, CP Choi data and arithmetic-source
+   equality explicit separate comparisons.
 2. Compute the normalized and unnormalized amplitude cup/cap diagrams and
    their admissibility as physical branches. Track which compact equations
    survive which normalization; compact closure alone does not settle this.

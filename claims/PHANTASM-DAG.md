@@ -320,26 +320,26 @@ nonempty scalar.
 ## SP-FOCK
 
 - Title: Fock completion and the exponential law
-- Status: SKETCH
+- Status: PROVED
 - Stage: 3
 - Definitions: D1010,D1708
 - Dependencies: none
 - Inherited: none
 - Reuse: D1010 already names the one-mode polynomial domain and its Hilbert completion; no admitted general Fock functor theorem is used.
-- Remaining: Establish the general contraction-domain functor and normalized exponential law from the registered Fock source. Identify the one-mode basis x^r/sqrt(r!) with the existing completion without promoting the older Hall sketch.
+- Remaining: None within the admitted statement. Contraction-domain boundedness/functoriality, normalized unitary extension/naturality and zero/one-mode number-operator comparisons passed capped review. Strong monoidal coherence and a classical free-monoid comparison remain separate.
 - Sources: SP-DER06
 - Inputs: Hilbert spaces, contractions and the Hilbert Fock completion
 - Output: A bounded functor, natural exponential unitary and explicit vacuum/one-mode controls
 - Choices: Permutation action with inverse-index convention; Hilbert tensor normalization; contractions; the existing one-mode factorial basis
 - Scope: Infinite boundedness and the completion require written arguments. No equivalence between an unspecified classical free monoid and this Hilbert construction is asserted.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/fock.md
+- Review: theory/verdicts/phantasm-completions-adjudication.md
+- Checks: theory/checks/phantasm_completions_check.py
+- Evidence: admitted
 
 **Construction outline.** Prove norm bounds on every sector and take the Hilbert direct sum. Construct the exponential unitary with the binomial normalization and check dense finite-particle vectors, then extend by continuity.
 
-**Falsifier scope.** Compute symmetrizers and norms through particle number four for one and two modes; distinguish the zero space from C.
+**Falsifier scope.** Implemented: phantasm_completions_check.py F1--F3 checks rational symmetrizers through sector four in dimensions zero/one/two, sector ranks, vacuum, one-mode factorial normalization, binomial exponential norm squares and one-mode homogeneous naturality, contraction composition, and finite norm growth 1,2,4,8,16 from actual tensor powers of 2I on symmetric vectors. Bounded extension and the infinite growth conclusion remain written-proof obligations.
 
 **Required mutations.** Omit the binomial square root, remove the vacuum, or extend a norm-2 map as though its second quantization were bounded.
 
@@ -424,51 +424,51 @@ nonempty scalar.
 ## SP-PRIME
 
 - Title: Tensor assembly and product-state existence
-- Status: SKETCH
+- Status: PROVED
 - Stage: 5
 - Definitions: D1711,D1713
 - Dependencies: none
 - Inherited: none
 - Reuse: The earlier degree-block completion uses different algebras and embeddings; it is not a proof of this unital tensor construction.
-- Remaining: Verify this specified inductive matrix system and product-state/GNS existence. Factor type and arithmetic inter-prime maps remain separate.
+- Remaining: None within the admitted specified system. Identity insertion, isometric C*-completion, compatible product-state extension and bounded GNS construction with a cyclic vector passed capped review. Arithmetic coupling, faithfulness, a separating vector and factor type remain separate.
 - Sources: SP-CM08,SP-WAT18
 - Inputs: Explicit finite matrix factors, embeddings and local density operators
 - Output: A_pr, its product state and its GNS representation
 - Choices: Every local dimension and state; embeddings and ordering convention
 - Scope: No factor type, separating-vector property, inter-prime arithmetic process or Bost--Connes identification is asserted.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/prime-tensor.md
+- Review: theory/verdicts/phantasm-completions-adjudication.md
+- Checks: theory/checks/phantasm_completions_check.py
+- Evidence: admitted
 
 **Construction outline.** Check the finite embeddings and norm independence, use positivity and norm one on the algebraic union to extend by continuity, then construct the GNS quotient and completion.
 
-**Falsifier scope.** Use the finite prime sets empty, {2}, {3}, {2,3}, {2,3,5}; test embedding squares and compatible faithful and pure product states. Infinite conclusions need written proofs.
+**Falsifier scope.** Implemented: phantasm_completions_check.py P1--P2 checks empty/{2}/{3}/{2,3}/{2,3,5} identity insertion for dimensions 2,3,4, all available triangles, star/product/unit on sparse witnesses, exact a*a characteristic polynomials on diagonal witnesses, faithful and pure compatible product states, positivity, GNS Gram ranks 576/192/3, cyclicity and a concrete nonseparating pure cyclic vector. Infinite completion and state extension remain written-proof obligations; no representation nonfaithfulness or factor type is inferred.
 
-**Required mutations.** Use a non-unital finite embedding or an unnormalized reference density; infer faithfulness merely from cyclicity.
+**Required mutations.** Use a non-unital finite embedding or an unnormalized reference density; infer a separating reference vector merely from cyclicity.
 
 ## SP-BC-CONTROL
 
 - Title: Arithmetic semigroup and zeta control
-- Status: SKETCH
+- Status: PROVED
 - Stage: 5
 - Definitions: D1712,D1713
 - Dependencies: none
 - Inherited: none
 - Reuse: The earlier degree regularization has a different partition function and does not identify a Bost--Connes system.
-- Remaining: Check the represented semigroup identities, invariant dynamics and trace convergence against the registered BC sources; no spectral-zero identification is included.
+- Remaining: None within the admitted represented control. Semigroup/phase/corner/CP identities, maximal-domain self-adjointness, invariant point-norm flow and Gibbs trace convergence for real b>1 passed capped review. No global-system or zero-spectrum comparison is supplied.
 - Sources: SP-BC95,SP-CM04,SP-CM08,SP-SPECTOR98
 - Inputs: Concrete e(r), mu_n, H_log and real b>1
 - Output: Arithmetic map identities, invariant dynamics and a convergent zeta partition function
 - Choices: The chosen embedding of roots of unity, represented algebra and logarithmic energy
 - Scope: The Hamiltonian has logarithmic-integer eigenvalues. No zeta-zero spectrum, universal-representation faithfulness or full KMS classification is asserted.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/bc-control.md
+- Review: theory/verdicts/phantasm-completions-adjudication.md
+- Checks: theory/checks/phantasm_completions_check.py
+- Evidence: admitted
 
 **Construction outline.** Compute on each basis vector, using the finite roots-of-unity average for the corner relation. Prove point-norm continuity on generators and extend; obtain trace convergence from the scalar series.
 
-**Falsifier scope.** Check finitely supported basis vectors and rational phases with explicit support bounds, plus analytic integral bounds for the zeta tail; do not truncate the isometries into false finite-dimensional ones.
+**Falsifier scope.** Implemented: phantasm_completions_check.py B1--B4 uses symbolic positive-integer basis indices for semigroup/adjoint/range laws, including direct divisible and nondivisible adjoint-helper comparisons, rational phases and root-average divisibility, prime-valuation dynamics, symbolic corner homomorphism/compression controls, rational b=2,3 integral tail intervals and dyadic b=1 lower witnesses. It uses no finite shift truncation. Self-adjointness, continuity and trace class are written-proof obligations, and no zeta-zero spectrum is tested.
 
 **Required mutations.** Treat mu_n as unitary, omit the 1/n root average, or identify log-energy eigenvalues with zeta zeros.

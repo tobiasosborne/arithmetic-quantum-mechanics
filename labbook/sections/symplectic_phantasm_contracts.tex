@@ -706,7 +706,7 @@ Gaussian-closure, or source-exhaustion conclusion is added.
 \end{proof}
 
 \begin{proposition}[Fock completion and the exponential law]
-\statusSketch{}
+\statusProved{}
 On complex Hilbert spaces and contractions, the symmetric Fock prescription defines a
 functor and has a natural unitary exponential law $\Gamma_s(H\oplus
 K)\simeq\Gamma_s(H)\otimes\Gamma_s(K)$ with the standard normalized symmetric
@@ -716,7 +716,57 @@ C)\simeq\ell^2(\mathbb N_0)$, with particle number acting diagonally on the latt
 \begin{scope}
 Infinite boundedness and the completion require written arguments. No equivalence between an unspecified classical free monoid and this Hilbert construction is asserted.
 \end{scope}
-\provenance{SP-FOCK}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-FOCK}{theory/symplectic-phantasm/fock.md; structured proof}{Exact finite/symbolic completion controls; scope in the DAG}{theory/verdicts/phantasm-completions-adjudication.md}
+
+\begin{proof}[Symmetric-sector and exponential-law argument]
+The permutation average is a self-adjoint idempotent, hence the orthogonal
+projection onto symmetric tensors. Since $T^{\otimes r}$ commutes with every
+permutation, it maps $\operatorname{Sym}^rH$ to
+$\operatorname{Sym}^rK$. For a contraction,
+\[
+ \left\|T^{\otimes r}|_{\operatorname{Sym}^rH}\right\|
+ \leq\|T\|^r\leq1.
+\]
+The sectorwise direct sum is therefore bounded. Its vacuum sector is the
+identity, so its norm is one. Identity and composition hold sectorwise and
+extend by continuity, proving functoriality. If $\|T\|>1$, choose a unit vector $h$ with $\|Th\|>1$. The symmetric
+tensors $h^{\otimes r}$ have image norm $\|Th\|^r$, so no bounded
+expansive-map extension is obtained.
+
+For $r=n+m$, split $S_r$ into $(n,m)$-shuffle cosets. Internal permutations
+fix $\xi_n\in\operatorname{Sym}^nH$ and
+$\eta_m\in\operatorname{Sym}^mK$, while different shuffles occupy orthogonal
+$H/K$ slot patterns. It follows that
+\[
+ \left\|P_r^{H\oplus K}
+ ((\jmath_H^{\otimes n}\xi_n)\otimes
+  (\jmath_K^{\otimes m}\eta_m))\right\|^2
+ =\frac{n!m!}{r!}\|\xi_n\|^2\|\eta_m\|^2.
+\]
+The prescribed positive factor $\sqrt{r!/(n!m!)}$ makes every homogeneous
+map isometric. Distinct bidegrees are orthogonal. Expanding symmetrized pure
+tensors in $H\oplus K$ shows that the completed bidegree images exhaust each
+sector. Thus the algebraic map extends uniquely to a unitary
+\[
+ \mathsf{Exp}_{H,K}:\Gamma_s(H)\otimes\Gamma_s(K)
+ \longrightarrow\Gamma_s(H\oplus K).
+\]
+Its adjoint has the proposition's displayed direction. On homogeneous
+tensors, commuting a contraction with the symmetrizer proves
+\[
+ \mathsf{Exp}_{H',K'}(\Gamma_s(S)\otimes\Gamma_s(T))
+ =\Gamma_s(S\oplus T)\mathsf{Exp}_{H,K};
+\]
+density and boundedness extend this naturality equality. Vacuum and zero
+factors reduce to the prescribed unit identifications.
+
+For one mode, $e^{\otimes r}$ is a unit vector spanning the $r$-particle
+sector. The polynomial vectors $x^r/\sqrt{r!}$ are orthonormal for the
+existing factorial inner product, so mapping them to $e^{\otimes r}$ extends
+to the one-mode completion and then to the standard basis of
+$\ell^2(\mathbb N_0)$. Particle number has eigenvalue $r$ and domain
+$\sum_r r^2|c_r|^2<\infty$. No Hall multiplication or CCR claim is used.
+\end{proof}
 
 \begin{proposition}[Restriction of scalars preserves the Weyl datum]
 \statusProved{}
@@ -925,7 +975,7 @@ includes a separate failure outcome.
 \end{proof}
 
 \begin{proposition}[Tensor assembly and product-state existence]
-\statusSketch{}
+\statusProved{}
 For the specified finite matrix factors and trace-one positive reference operators
 indexed by primes, the finite tensor embeddings form an isometric unital inductive
 system. Its norm completion is a unital $C^*$-algebra, and the prescribed finite
@@ -935,10 +985,54 @@ represented von Neumann algebra with a cyclic reference vector.
 \begin{scope}
 No factor type, separating-vector property, inter-prime arithmetic process or Bost--Connes identification is asserted.
 \end{scope}
-\provenance{SP-PRIME}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-PRIME}{theory/symplectic-phantasm/prime-tensor.md; structured proof}{Exact finite/symbolic completion controls; scope in the DAG}{theory/verdicts/phantasm-completions-adjudication.md}
+
+\begin{proof}[Prime tensor and GNS argument]
+After the fixed increasing-order permutation of tensor factors, each finite
+embedding is $a\mapsto a\otimes1$. It preserves the unit, products and
+adjoints. Its operator norm is unchanged: the tensor-norm upper bound gives
+one inequality, and a norm-attaining vector for $a$ tensored with any unit
+vector gives the reverse inequality. Slotwise identity insertion also proves
+the embedding triangles, including
+\[
+ \iota_{Q\varnothing}(c)=c\bigotimes_{q\in Q}^{\nearrow}1_{H_q}.
+\]
+
+Represent algebraic-limit elements at finite stages. Isometry makes their
+norm independent of stage, and products and adjoints may be computed after
+moving representatives to a common union of prime sets. The matrix
+$C^*$-identity passes to this algebraic limit. Multiplication and adjoint are
+continuous, so its norm completion is a unital $C^*$-algebra with the common
+finite-stage unit.
+
+At stage $P$, put $\rho_P=\bigotimes_{p\in P}\rho_p$ and
+$\varphi_P(a)=\operatorname{Tr}(\rho_Pa)$. Positivity and trace
+factorization show that this is a state. Identity insertion gives
+\[
+ \varphi_Q(\iota_{QP}(a))
+ =\varphi_P(a)\prod_{q\in Q\setminus P}\operatorname{Tr}(\rho_q)
+ =\varphi_P(a).
+\]
+The compatible functional has norm one and extends uniquely by continuity;
+approximating $y^*y$ proves positivity on the completion.
+
+For the GNS quotient, positivity gives
+$|\varphi(a^*b)|^2\leq\varphi(a^*a)\varphi(b^*b)$. The null space is a left
+ideal because
+\[
+ \varphi((ca)^*(ca))\leq\|c\|^2\varphi(a^*a).
+\]
+Consequently left multiplication is well-defined and bounded by $\|c\|$ on
+the quotient and extends to its Hilbert completion as a unital
+$*$-representation. The class of one is cyclic because
+$\pi(a)[1]=[a]$, and the represented von Neumann algebra is the double
+commutant. Rank-deficient local densities may yield a cyclic but
+nonseparating vector. No faithfulness of the state or representation, and no
+separating or factor property, is inferred.
+\end{proof}
 
 \begin{proposition}[Arithmetic semigroup and zeta control]
-\statusSketch{}
+\statusProved{}
 In the specified represented Bost--Connes control, $\mu_m\mu_n=\mu_{mn}$,
 $\mu_n^*\mu_n=1$, and $\mu_n^*e(r)\mu_n=e(nr)$, while
 $\mu_ne(r)\mu_n^*=n^{-1}\sum_{ns=r}e(s)$. The prescribed time evolution leaves the
@@ -951,7 +1045,57 @@ one.
 \begin{scope}
 The Hamiltonian has logarithmic-integer eigenvalues. No zeta-zero spectrum, universal-representation faithfulness or full KMS classification is asserted.
 \end{scope}
-\provenance{SP-BC-CONTROL}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-BC-CONTROL}{theory/symplectic-phantasm/bc-control.md; structured proof}{Exact finite/symbolic completion controls; scope in the DAG}{theory/verdicts/phantasm-completions-adjudication.md}
+
+\begin{proof}[Represented arithmetic-control argument]
+The basis formulas give
+\[
+ \mu_n^*\delta_k=
+ \begin{cases}\delta_{k/n},&n\mid k,\\0,&n\nmid k,
+ \end{cases}
+\]
+and immediately imply $\mu_m\mu_n=\mu_{mn}$ and
+$\mu_n^*\mu_n=1$. They also give
+$\mu_n^*e(r)\mu_n=e(nr)$. The solutions of $ns=r$ are
+$s=(r+j)/n$, $0\leq j<n$. The finite root average
+\[
+ \frac1n\sum_{j=0}^{n-1}e^{2\pi i kj/n}
+\]
+is one exactly when $n\mid k$ and zero otherwise, proving the second
+conjugation identity with its factor $1/n$.
+
+Writing $q_n=\mu_n\mu_n^*$ locally, conjugation by $\mu_n$ is a
+$*$-isomorphism onto
+$q_nA_{\mathrm{BC}}^{\mathrm{rep}}q_n$: its inverse on the corner is compression by
+$\mu_n^*$. The latter compression preserves the represented algebra, is
+unital, and is completely positive by amplified quadratic-form positivity.
+No multiplicativity of this compression is asserted.
+
+The logarithmic multiplication operator is symmetric on its weighted domain.
+If a vector lies in the adjoint domain, testing against every basis vector
+forces the adjoint coordinates to be $(\log m)\xi_m$; square summability is
+exactly the prescribed domain. Thus the operator is self-adjoint there.
+Functional calculus gives
+$e^{iuH_{\log}}\delta_m=m^{iu}\delta_m$, and direct computation yields
+\[
+ \sigma_u(\mu_n)=n^{iu}\mu_n,\qquad \sigma_u(e(r))=e(r).
+\]
+These formulas preserve the algebraic generator algebra. Isometric
+conjugation extends them to the represented $C^*$-algebra. Continuity on
+finite generator polynomials, followed by uniform norm approximation, proves
+point-norm continuity.
+
+For $b>1$, functional calculus gives
+$e^{-bH_{\log}}\delta_m=m^{-b}\delta_m$. The integral comparison
+\[
+ \sum_{m=1}^{\infty}m^{-b}\leq1+\int_1^\infty x^{-b}\,dx
+ =1+\frac1{b-1}
+\]
+proves trace-class convergence. The trace is the prescribed
+$\zeta(b)$, so normalization gives a positive trace-one density. This is a
+positive real partition sum, with no KMS, modular, factor, global, or
+zeta-zero conclusion.
+\end{proof}
 
 \subsection{Decisions beyond the bootstrap}
 

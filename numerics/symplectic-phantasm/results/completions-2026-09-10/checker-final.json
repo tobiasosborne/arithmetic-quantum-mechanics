@@ -1,0 +1,108 @@
+{
+  "sha256": "d4e0f6eb13aefc87d2d964d9d608f7f0c7237e45b0b842e29fcc95f6f43ad4f0",
+  "red_count": 15,
+  "runs": [
+    {
+      "mode": "fock-binomial",
+      "gate": "F2",
+      "exit": 1,
+      "output": "RED CAUGHT fock-binomial at F2: exponential binomial normalization failed at (1,1)\n"
+    },
+    {
+      "mode": "fock-vacuum",
+      "gate": "F1",
+      "exit": 1,
+      "output": "RED CAUGHT fock-vacuum at F1: sector rank/vacuum census failed at d=0,r=0\n"
+    },
+    {
+      "mode": "fock-expansive",
+      "gate": "F3",
+      "exit": 1,
+      "output": "RED CAUGHT fock-expansive at F3: actual accepted base map is not a contraction\n"
+    },
+    {
+      "mode": "fock-tensor-collapse",
+      "gate": "F3",
+      "exit": 1,
+      "output": "RED CAUGHT fock-tensor-collapse at F3: actual tensor power of 2I failed symmetric growth at sector 1\n"
+    },
+    {
+      "mode": "one-mode-factorial",
+      "gate": "F1",
+      "exit": 1,
+      "output": "RED CAUGHT one-mode-factorial at F1: one-mode x^r/sqrt(r!) occupation basis is not isometric at r=2\n"
+    },
+    {
+      "mode": "prime-position",
+      "gate": "P1",
+      "exit": 1,
+      "output": "RED CAUGHT prime-position at P1: prime-2 identity was inserted after, rather than before, prime 3\n"
+    },
+    {
+      "mode": "prime-nonunital",
+      "gate": "P1",
+      "exit": 1,
+      "output": "RED CAUGHT prime-nonunital at P1: identity insertion used a nonunital prime projection\n"
+    },
+    {
+      "mode": "density-trace",
+      "gate": "P2",
+      "exit": 1,
+      "output": "RED CAUGHT density-trace at P2: finite product states are incompatible under identity insertion\n"
+    },
+    {
+      "mode": "gns-separating",
+      "gate": "P2",
+      "exit": 1,
+      "output": "RED CAUGHT gns-separating at P2: separating-candidate action lost Gram injectivity under the actual reference\n"
+    },
+    {
+      "mode": "mu-unitary",
+      "gate": "B1",
+      "exit": 1,
+      "output": "RED CAUGHT mu-unitary at B1: mu_n range projection was treated as identity\n"
+    },
+    {
+      "mode": "mu-adjoint-divisibility",
+      "gate": "B1",
+      "exit": 1,
+      "output": "RED CAUGHT mu-adjoint-divisibility at B1: actual mu_n* disagrees with the divisibility oracle\n"
+    },
+    {
+      "mode": "root-average",
+      "gate": "B2",
+      "exit": 1,
+      "output": "RED CAUGHT root-average at B2: finite root average/divisibility normalization failed\n"
+    },
+    {
+      "mode": "time-sign",
+      "gate": "B3",
+      "exit": 1,
+      "output": "RED CAUGHT time-sign at B3: time evolution has reversed prime-valuation exponent\n"
+    },
+    {
+      "mode": "L-multiplicative",
+      "gate": "B3",
+      "exit": 1,
+      "output": "RED CAUGHT L-multiplicative at B3: corner homomorphism candidate failed actual product action\n"
+    },
+    {
+      "mode": "b1-trace-class",
+      "gate": "B4",
+      "exit": 1,
+      "output": "RED CAUGHT b1-trace-class at B4: b=1 claimed trace bound 3 is exceeded by the 2^8 partial sum\n"
+    },
+    {
+      "mode": "green",
+      "exit": 0,
+      "seconds": 0.227,
+      "output": "F1 PASS: 15 rational symmetrizers; ranks (1,0..),(1^5),(1,2,3,4,5), vacuum/one-mode\nF2 PASS: 15 exact binomial norm-square and homogeneous naturality cases\nF3 PASS: sector functor through 4; 2I norms 1,2,4,8,16 with symbolic 2^r duty\nP1 PASS: 14 inclusions and 30 increasing-prime triangles; exact a*a polynomials\nP2 PASS: faithful/pure product states; GNS Gram ranks 576,192,3 and cyclic/nonseparating witness\nB1 PASS: symbolic semigroup/adjoint laws on 5 shifts and 30 indices; no truncation\nB2 PASS: 360 rational phase, divisibility and normalized root-average cases\nB3 PASS: prime-valuation dynamics and concrete L_2(mu_2 mu_2*) != L_2(mu_2)L_2(mu_2*)\nB4 PASS: rational b=2,3 tail intervals and eight finite dyadic b=1 lower witnesses\nGREEN PASS: exact finite/symbolic controls only; no claim promotion\n"
+    },
+    {
+      "mode": "optimized",
+      "exit": 0,
+      "seconds": 0.343,
+      "output": "F1 PASS: 15 rational symmetrizers; ranks (1,0..),(1^5),(1,2,3,4,5), vacuum/one-mode\nF2 PASS: 15 exact binomial norm-square and homogeneous naturality cases\nF3 PASS: sector functor through 4; 2I norms 1,2,4,8,16 with symbolic 2^r duty\nP1 PASS: 14 inclusions and 30 increasing-prime triangles; exact a*a polynomials\nP2 PASS: faithful/pure product states; GNS Gram ranks 576,192,3 and cyclic/nonseparating witness\nB1 PASS: symbolic semigroup/adjoint laws on 5 shifts and 30 indices; no truncation\nB2 PASS: 360 rational phase, divisibility and normalized root-average cases\nB3 PASS: prime-valuation dynamics and concrete L_2(mu_2 mu_2*) != L_2(mu_2)L_2(mu_2*)\nB4 PASS: rational b=2,3 tail intervals and eight finite dyadic b=1 lower witnesses\nGREEN PASS: exact finite/symbolic controls only; no claim promotion\n"
+    }
+  ]
+}

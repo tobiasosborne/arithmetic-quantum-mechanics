@@ -4,7 +4,77 @@
 
 # HANDOFF — live state
 
-## Current state — arithmetic interfaces admitted (2026-09-10)
+## Current state — all fifteen bootstrap claims admitted (2026-09-10)
+
+SP-FOCK, SP-PRIME and SP-BC-CONTROL are PROVED through
+`theory/verdicts/phantasm-completions-adjudication.md`. The sole blind review
+passed each mathematical claim and required no proof repair. One checker
+repair wave attached the growth probe to actual tensor powers and added
+nonmultiple adjoint coverage. The stale overview evidence phrase was fixed.
+Do not repeat the hostile review.
+
+D1708 owns the normalized homogeneous exponential map, direction, vacuum and
+zero-unit conventions. The proof gives its unitary extension and naturality
+on contractions, without a strong-monoidal coherence claim. D1711 owns exact
+increasing-prime identity insertion, including the empty scalar stage. Its
+specified product state extends to the C*-limit, and GNS supplies a cyclic
+vector; state faithfulness, representation faithfulness and separation remain
+distinct. The represented BC control has exact arithmetic identities, corner
+endomorphisms/UCP transfers, self-adjoint logarithmic energy, point-norm flow
+and Gibbs trace zeta(b) for real b>1. The prime product and this represented
+control are not identified with a global phantasm construction.
+
+Canonical proofs are `fock.md`, `prime-tensor.md` and `bc-control.md` under
+`theory/symplectic-phantasm/`. Their reviewed versions, the original checker,
+expectations, verdict, recomputation, repair and validation are preserved in
+`numerics/symplectic-phantasm/results/completions-2026-09-10/`. Only admission
+headers changed in the structured proofs. Final typesetting made the
+one-unit-vector expansive-growth gloss explicit and corrected a punctuation
+mark in both exact D1708 copies; no argument or hypothesis changed.
+
+The register has **159 claims: 136 PROVED, 19 SKETCH, three CONJECTURE and
+one REFUTED**, with **175 definitions**. All **15/15 bootstrap SP claims**
+are proved. All **seven design gates remain OPEN**. The full goal is active;
+no zeta-zero operator or RH claim has been established.
+
+The final completion checker has fifteen concrete modes. Normal and optimized
+greens pass; root observed every red exit 1 at its intended gate and each new
+guard-disabled control survive 0. Existing thirteen paths remain intact.
+The existing canonical session-close passed 33 unchanged suites and 352 reds
+(exit 0, 560.654 seconds); the new checker adds one suite and 15 reds. Current
+aggregate coverage is **34 suites and 367 reds**, plus fresh post-promotion
+contract green/all 22 intended mutations, a **191-page** PDF build and lockstep.
+This is an aggregate of separate completed runs, not a single post-promotion
+full-runner invocation. The changed definition/proof pages were visually
+inspected. Source hashes and exact scope are frozen with the result records.
+Finite success does not carry the infinite analytic conclusions.
+
+**Next bounded task:** DG-CHAR2, using `briefs/phantasm-char2-target.md`,
+`briefs/phantasm-char2-interfaces.md` and
+`docs/research-plans/phantasm-char2-source-comparison.md`. These are prepared
+proposals, NOT canonical definitions or admitted new claims. Assign fresh
+numbers from the actual registry, register the polarizing datum and the
+(g,r) cocycle-defect groupoid, and then formulate the positive Weyl/lift
+claims with explicit F1-REAL/F1-RING/F1-FUNCT reuse. No general splitting is
+an input. GH08's raw Witt-center Hom(V,R) kernel must be compared after its
+chosen character; it is not silently D1701's affine translation group.
+
+The following DG-REL-LIFT generator comparison is prepared in
+`briefs/phantasm-relation-lift-target.md` and
+`briefs/phantasm-relation-lift-generator-match.md`. Its labels and suggested
+numbers remain provisional. Work on the named odd-prime arithmetic fragment,
+retain R_p coefficients and source equality, and verify the selected
+amplitudes and cup/cap scalars before defining a geometric amplitude-line
+lift. The entire arithmetic source includes higher gates and is not pure
+stabilizer theory. DG-RIG still needs a compatible additive source; DG-GLOBAL
+then needs actual arithmetic maps, their relations and a chosen state before
+modular/spectral comparison. A zeta partition function alone is insufficient.
+
+The earlier checkpoint entries below are historical and their old next-task
+instructions are superseded by this section. The previous pushed checkpoint
+was `08c2aba`; this turn began from its clean worktree and made progress.
+
+## Prior checkpoint — arithmetic interfaces admitted (2026-09-10)
 
 SP-TRACE, SP-FROB and SP-SUBSYS are PROVED through
 `theory/verdicts/phantasm-arithmetic-adjudication.md`. The sole blind review

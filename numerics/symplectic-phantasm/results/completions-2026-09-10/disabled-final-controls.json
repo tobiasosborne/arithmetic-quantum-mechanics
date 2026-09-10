@@ -1,0 +1,17 @@
+{
+  "sha256": "d4e0f6eb13aefc87d2d964d9d608f7f0c7237e45b0b842e29fcc95f6f43ad4f0",
+  "runs": [
+    {
+      "mode": "fock-tensor-collapse",
+      "gate": "F3",
+      "exit": 0,
+      "output": "RED SURVIVED fock-tensor-collapse at F3: sector functor through 4; 2I norms 1,2,4,8,16 with symbolic 2^r duty\n"
+    },
+    {
+      "mode": "mu-adjoint-divisibility",
+      "gate": "B1",
+      "exit": 0,
+      "output": "RED SURVIVED mu-adjoint-divisibility at B1: symbolic semigroup/adjoint laws on 5 shifts and 30 indices; no truncation\n"
+    }
+  ]
+}

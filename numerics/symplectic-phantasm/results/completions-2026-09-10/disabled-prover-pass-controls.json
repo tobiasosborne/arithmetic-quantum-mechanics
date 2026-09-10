@@ -1,0 +1,23 @@
+{
+  "sha256": "de4ed53d12be8e8a7414b28aec57ce0bad8b617f804e57deec418c6baefceaa8",
+  "runs": [
+    {
+      "mode": "fock-binomial",
+      "gate": "F2",
+      "exit": 0,
+      "output": "RED SURVIVED fock-binomial at F2: 15 exact binomial norm-square and homogeneous naturality cases\n"
+    },
+    {
+      "mode": "prime-position",
+      "gate": "P1",
+      "exit": 0,
+      "output": "RED SURVIVED prime-position at P1: 14 inclusions and 30 increasing-prime triangles; exact a*a polynomials\n"
+    },
+    {
+      "mode": "root-average",
+      "gate": "B2",
+      "exit": 0,
+      "output": "RED SURVIVED root-average at B2: 360 rational phase, divisibility and normalized root-average cases\n"
+    }
+  ]
+}

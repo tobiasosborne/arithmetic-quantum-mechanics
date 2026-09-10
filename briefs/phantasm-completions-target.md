@@ -7,11 +7,18 @@ claims. It does not construct the global phantasm, identify modular and
 physical flows, classify factors, or attach any operator to zeta zeros. Keep
 all three claims SKETCH through proof and checker work.
 
+**Completed 2026-09-10:** SP-FOCK, SP-PRIME and SP-BC-CONTROL are admitted
+through `theory/verdicts/phantasm-completions-adjudication.md`. The planning
+instructions below are preserved as their work order; current statuses live
+in CLAIMS and the DAG. The next work order is `briefs/phantasm-char2-target.md`.
+
 ## Canonical ownership gate
 
 The exact proposed D1708/D1711 replacements are in
-`briefs/phantasm-completions-interfaces.md`. They are not yet canonical
-definitions and carry no property admission.
+`briefs/phantasm-completions-interfaces.md`. They were registered before proof work on 2026-09-10. D1708 additionally
+spells out the space superscript on P and the algebraic tensor symbol;
+D1711 uses the explicit phrase separating reference vector. This ownership
+registration carries no property admission.
 
 Two formulas should be owned before a proof calls them canonical.
 
@@ -41,7 +48,7 @@ Two formulas should be owned before a proof calls them canonical.
 D1712 already owns the represented operators, the maximal diagonal domain of
 `H_log`, the flow, `nu_n`, `L_n`, and the Gibbs density. A proof-local
 `q_n=mu_n mu_n^*` suffices to describe the corner; add a canonical name only
-if later claims will reuse it. D1713 owns GNS and makes separating cyclicity an
+if later claims will reuse it. D1713 owns GNS and makes a separating reference vector an
 additional modular hypothesis, so SP-PRIME must not infer it.
 
 ## Exact source ledger
@@ -115,8 +122,9 @@ Write `theory/symplectic-phantasm/prime-tensor.md`.
    has norm one and therefore extends uniquely and positively to `A_pr`.
 4. Give the standard GNS construction from D1713: prove Cauchy--Schwarz,
    boundedness of left multiplication, cyclicity of `[1]`, and set
-   `M_pr=pi_phi(A_pr)''`. Assert neither separating cyclicity nor faithfulness:
-   allowed `rho_p` may be rank deficient.
+   `M_pr=pi_phi(A_pr)''`. Assert neither a separating reference vector nor extra faithfulness
+   conclusions: allowed `rho_p` may be rank deficient. Keep state faithfulness,
+   representation faithfulness, and the separating-vector property distinct.
 
 Local choices are exactly every `d_p>=1`, every positive trace-one `rho_p`,
 increasing prime order, and the identity-insertion embeddings. This is not an

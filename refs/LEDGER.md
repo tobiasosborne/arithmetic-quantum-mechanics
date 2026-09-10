@@ -1117,9 +1117,9 @@ Route: https://arxiv.org/e-print/0808.1664 (TeX); final URL: https://arxiv.org/s
 
 Local readable body: `refs/symplectic-phantasm/SP-GH08/source.tex`.
 
-Verified locators: title/authors lines 49–54; §§1–2, S-vN_thm and Weilrep_thm.
+Verified locators: title/authors lines 49–54; length-two ring and symplectic lift 616–651; chosen Lagrangian cocycle 650–674; R-central Heisenberg group 678–695; ASp defect equation, composition and raw Hom(V,R) kernel 699–729; S-vN_thm/projective representation 747–792; Weilrep_thm and the separate lifted symplectic comparison 794–828 (inspected 2026-09-10).
 
-Scope: Characteristic-two construction uses additional affine/metaplectic and characteristic-four data. It does not justify applying the odd-characteristic half-form formula at p=2.
+Scope: Characteristic-two construction uses additional affine/metaplectic and characteristic-four data. Its ASp is described by raw R-valued cocycle-defect pairs, not by a stipulated split V semidirect Sp(V). The raw Hom(V,R) kernel must be compared after applying the chosen central character before identifying a phase-level translation kernel. The later theorem retains a symplectic Witt lift; it is not a general splitting input. It does not justify applying the odd-characteristic half-form formula at p=2. The prepared comparison is in `docs/research-plans/phantasm-char2-source-comparison.md`.
 
 ### SP-BCL22
 
@@ -1141,7 +1141,7 @@ Route: https://arxiv.org/e-print/math-ph/0511030 (TeX archive); final URL: https
 
 Local readable body: `refs/symplectic-phantasm/SP-DER06/derezinski.tex`.
 
-Verified locators: title/authors lines 433–437; §5, especially symmetric Fock spaces lines 1911–1964 and exponential law tensor.1 at 2051–2090.
+Verified locators: title/authors lines 433–437; §5, Hilbert tensor sum and vacuum lines 1814–1829, second quantization and contraction boundedness 1843–1851, composition 1871–1875, symmetric Fock spaces 1911–1964, restricted second quantization 2019–2038 and exponential law tensor.1 at 2051–2090 (completion-scope inspection 2026-09-10).
 
 Scope: Completed Fock Hilbert spaces, second quantization and tensor-product normalization. Algebraic symmetric algebra, Hilbert completion and a free commutative monoid in an unspecified category are distinct.
 
@@ -1165,7 +1165,7 @@ Route: https://arxiv.org/e-print/math/0404128 (TeX archive); final URL: https://
 
 Local readable body: `refs/symplectic-phantasm/SP-CM04/houcheschapter1final7.tex`.
 
-Verified locators: title/authors lines 365–367; discussion of the BC system around lines 1750–1850.
+Verified locators: title/authors lines 365–367; represented BC generator relations and time action at lines 1763–1783; zeta partition function 1829–1837 (completion-scope inspection 2026-09-10).
 
 Scope: Fetched TeX has the shorter overall title; the arXiv record carries the Part I / Q-lattices subtitle. Primary comparison for arithmetic semigroup maps and KMS analysis, not an assertion of novelty for the proposed quest.
 
@@ -1189,9 +1189,9 @@ Route: https://www.math.fsu.edu/~marcolli/coll-55.pdf (PDF); final URL: https://
 
 Local readable body: `refs/symplectic-phantasm/SP-CM08/paper.txt`.
 
-Verified locators: PDF title page; Chapter 3 §§4.1–4.4, printed pp.458ff; Chapter 4 §4.1, printed pp.616–619, Definition 4.46.
+Verified locators: PDF title page; Chapter 3 §§4.1–4.4, printed pp.458ff; represented basis, logarithmic Hamiltonian and partition function equations (3.140)–(3.142), readable lines 23930–23947; Chapter 4 §4.1, printed pp.616–619, equations (4.117)–(4.119), readable lines 30474–30493, and Definition 4.46 (completion-scope inspection 2026-09-10).
 
-Scope: Author-hosted book. BC algebra, time evolution, representations and modular theory have explicit hypotheses. GNS cyclicity alone is not enough to silently assume a separating vector or a prescribed factor type.
+Scope: Author-hosted book. BC algebra, time evolution, representations and modular theory have explicit hypotheses. GNS cyclicity alone is not enough to silently assume a separating vector or a prescribed factor type. The separating phrase following (4.118) is not used for arbitrary reference states; D1713 retains it as an additional modular hypothesis. These locators do not supply a theorem for the particular D1711 prime-indexed inductive system; its norm completion and product-state extension are proved locally.
 
 ### SP-WAT18
 
@@ -1201,7 +1201,7 @@ Route: https://cs.uwaterloo.ca/~watrous/TQI/TQI.pdf (PDF); final URL: https://cs
 
 Local readable body: `refs/symplectic-phantasm/SP-WAT18/paper.txt`.
 
-Verified locators: PDF title page; general linear-map adjoint, readable lines 1097–1105; Theorem 2.22, readable lines 3788–3808 (nonzero-map hypothesis); Theorem 2.26, lines 4020–4097; Corollary 2.27, lines 4125–4144; Kraus adjoint equations (2.69)–(2.70), lines 3640–3661; instruments and retained classical register, equations (2.258)–(2.262), lines 5139–5184; completely dephasing channel, equation (2.162), lines 4362–4379, printed pp.94–95; §2.2 Choi representation, equations (2.64)–(2.66), printed p.78 (inspected 2026-09-10).
+Verified locators: PDF title page; finite product density operators, equation (2.18), readable lines 3029–3039; general linear-map adjoint, readable lines 1097–1105; Theorem 2.22, readable lines 3788–3808 (nonzero-map hypothesis); Theorem 2.26, lines 4020–4097; Corollary 2.27, lines 4125–4144; Kraus adjoint equations (2.69)–(2.70), lines 3640–3661; instruments and retained classical register, equations (2.258)–(2.262), lines 5139–5184; completely dephasing channel, equation (2.162), lines 4362–4379, printed pp.94–95; §2.2 Choi representation, equations (2.64)–(2.66), printed p.78 (inspected 2026-09-10).
 
 Scope: Author-hosted 2018 draft; source for finite-dimensional CP/Kraus/trace-preservation, adjoints and instruments. Theorem 2.22 is stated for a nonzero map; zero components require a separate empty-Kraus treatment. Extension to the D1706 direct-sum blocks and retained outcome-pair indices is a local comparison, not an imported source theorem. Equation (2.162) is the one-dimensional-block dephasing model; the arbitrary summand-block formula of D1707 is derived locally using its projections. The Choi representation uses the displayed operator-vector convention and output/input tensor order, to be matched explicitly in a relation comparison. Personal-use source body remains ignored and is not redistributed.
 

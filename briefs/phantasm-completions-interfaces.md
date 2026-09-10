@@ -8,6 +8,13 @@ does not assert unitarity, naturality, strong monoidality, coherence,
 inductive-limit existence, state extension, arithmetic coupling or modular
 properties.
 
+**Adopted 2026-09-10:** The canonical definitions and exact labbook restatements
+now own these formulas. Root made only notation/spelling clarifications:
+`P_r^L` denotes the symmetrizer on L, `odot` the complex algebraic tensor
+product, the vacuum equation ends with a period, and the D1711 scope says
+separating reference vector. The proposal below remains its prepared record;
+canonical definitions govern the proving pass.
+
 ## Proposed complete D1708
 
 ## D1708 (bosonic Fock space and bounded second quantization)
