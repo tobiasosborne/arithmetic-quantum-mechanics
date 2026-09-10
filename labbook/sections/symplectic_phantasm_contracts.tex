@@ -4,7 +4,7 @@ The first contract is a finite-abelian corollary with an explicit phase and
 central-quotient comparison. The underlying tensor theorem is already
 available. The statements below distinguish these inherited results from
 the remaining affine naturality, relation semantics and analytic work.
-The first eight propositions are proved; the remaining seven retain sketch status.
+The first nine propositions are proved; the remaining six retain sketch status.
 
 \begin{proposition}[Weyl realization]
 \statusProved{}
@@ -614,7 +614,7 @@ CP dagger on the trace-nonincreasing branch category.
 \end{proof}
 
 \begin{proposition}[Coherent sums and tagged quantum systems]
-\statusSketch{}
+\statusProved{}
 For an odd prime $p$, the complex span of the actual stabilizer maps $\ell^2(\mathbb
 F_p^n)\to\ell^2(\mathbb F_p^m)$ is the full space of linear maps. The matrix
 completion therefore realizes all linear maps between its coherent Hilbert sums. For
@@ -626,7 +626,84 @@ trace-preserving block-dephasing channel.
 \begin{scope}
 Adding coherent linear combinations enlarges the pure stabilizer fragment. A classical rig source is still to be constructed.
 \end{scope}
-\provenance{SP-SUM}{Inherited: F1-REAL; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-SUM}{Inherited: F1-REAL; reviewed matrix-unit and block proof}{Exact finite sum controls}{Single blind review, sole checker repair and sum adjudication}
+
+\begin{proof}
+For $x\in\mathbb F_p^n$, tensor the computational zero preparations and
+translate them to obtain an actual map
+\[
+ e_x:\mathbb C\longrightarrow\ell^2(\mathbb F_p^n),
+ \qquad e_x(1)=\delta_x.
+\]
+At $n=0$ this is the identity on $\mathbb C$ indexed by the unique empty
+tuple.  Adjoint closure gives $e_x^*$, so for
+$y\in\mathbb F_p^m$ the actual composite
+\[
+ E_{y,x}=e_y e_x^*
+\]
+sends $\delta_z$ to $[x=z]\delta_y$.  These are the
+$p^{m+n}$ rectangular computational matrix units and form a basis of all
+linear maps between the two model spaces.  Individual matrix units are
+actual amplitudes; their arbitrary complex sums enter at the prescribed
+linear completion.  The projective scalar quotient does not supply this
+addition.
+
+This enlargement is strict.  For fixed ranks there are only finitely many
+affine Lagrangian relations over the finite field, so the admitted
+relation/stabilizer equivalence gives only finitely many nonzero projective
+stabilizer rays.  In contrast, $\operatorname{End}(\ell^2(\mathbb F_p))$
+has dimension $p^2>1$ and infinitely many rays: for independent matrix units
+$E,F$, the rays of $E+zF$, $z\in\mathbb C$, are pairwise distinct.  The full
+complex span therefore contains maps outside the pure actual-amplitude
+fragment.
+
+For ordered lists $X=(H_i)_{i=1}^s$ and $Y=(K_j)_{j=1}^t$, the prescribed
+block action is
+\[
+ (T_{ji})(\xi_i)_i=\left(\sum_iT_{ji}\xi_i\right)_j.
+\]
+It is injective because inputs supported on one summand and projection to one
+output recover every $T_{ji}$.  It is surjective because a linear map $L$
+has blocks $\pi_jL\iota_i$, which reconstruct $L$ by linearity.  Matrix
+composition and adjoint transpose realize ordinary composition and Hilbert
+adjoint.  If either list is empty, its realization is the zero Hilbert space
+and the unique empty block matrix is the unique typed zero map.  This empty
+list is distinct from the one-entry list $(\mathbb C)$, and no channel on the
+zero space is asserted.  Equal Hilbert spaces in repeated list positions
+remain separate summands.
+
+For a nonempty list put $H=\bigoplus_iH_i$, $d_i=\dim H_i$, and
+$D=\sum_i d_i$.  Block extraction gives
+\[
+ \operatorname{End}(H)=\bigoplus_{i,j}\operatorname{Hom}(H_j,H_i),
+\]
+so its dimension is $D^2$.  The tagged algebra retains only diagonal blocks
+$\bigoplus_i\operatorname{End}(H_i)$ and has dimension
+$\sum_i d_i^2$.  With at least two recorded positions, any nonzero
+cross-block matrix unit exhibits the possible proper inclusion, including
+when the two underlying Hilbert spaces are equal.
+
+The prescribed summand projections $P_i^X$ satisfy $P_i^X P_j^X=[i=j]P_i^X$ and $\sum_iP_i^X=1_H$.  Therefore
+\[
+ \Delta_X(a)=\sum_iP_i^X aP_i^X
+\]
+fixes each diagonal block and kills every off-diagonal block.  It is unital,
+idempotent, and has exactly the tagged algebra as its range.  The projections
+are a Kraus list with
+\[
+ \sum_i(P_i^X)^*P_i^X=1_H,
+\]
+so the admitted finite-block Kraus criterion makes $\Delta_X$ a channel.
+In an orthonormal basis adapted to the summands,
+\[
+ \operatorname{Tr}_H(\Delta_X(a))
+ =\sum_i\operatorname{Tr}_{H_i}(a_{ii})
+ =\operatorname{Tr}_H(a),
+\]
+with no division by the number or dimensions of the blocks.  This channel
+statement applies only to nonempty lists; no biproduct, fusion, rig,
+Gaussian-closure, or source-exhaustion conclusion is added.
+\end{proof}
 
 \begin{proposition}[Fock completion and the exponential law]
 \statusSketch{}

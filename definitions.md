@@ -2868,13 +2868,29 @@ $(H_{\mathbb F_p,n_1},\ldots,H_{\mathbb F_p,n_s})$, including the empty
 list, and arrows matrices whose entries lie in these linear spans.
 Composition is matrix multiplication and dagger is adjoint transpose.
 Realize a list as $H=\bigoplus_{i=1}^sH_{\mathbb F_p,n_i}$.
-Its coherent observable algebra is $\operatorname{End}(H)$.
+For finite lists $X=(H_i)_{i=1}^s$ and $Y=(K_j)_{j=1}^t$ of these
+model spaces, with $s,t\geq0$, prescribe the realization of an arrow
+matrix $T=(T_{ji})$ by
+\[
+ (\xi_i)_i\longmapsto\left(\sum_{i=1}^sT_{ji}\xi_i\right)_j:
+ \bigoplus_{i=1}^sH_i\longrightarrow\bigoplus_{j=1}^tK_j.
+\]
+The empty list realizes the zero Hilbert space; the unique empty block
+matrix to or from that list has the zero action of its stated type.
+The coherent observable algebra of the realized list is $\operatorname{End}(H)$.
 For a nonempty list the tagged observable algebra is instead
 $\bigoplus_i\operatorname{End}(H_{\mathbb F_p,n_i})$, embedded as the
 block-diagonal operators on $H$. Both constructions and their chosen
 block decomposition are recorded; they are not identified with one another.
+For a nonempty list $X=(H_i)_{i=1}^s$ with realized space $H$, prescribe
+$P_i^X\in\operatorname{End}(H)$ by
+$(P_i^X\xi)_j=\delta_{ij}\xi_j$ on the ordered summands, and prescribe
+\[
+ \Delta_X:\operatorname{End}(H)\longrightarrow\operatorname{End}(H),
+ \qquad \Delta_X(a)=\sum_{i=1}^sP_i^X aP_i^X.
+\]
 
-**Scope.** This completion deliberately adds linear combinations. Whether it preserves a proposed Gaussian fragment, or comes from classical disjoint unions, is a separate question.
+**Scope.** This completion deliberately adds linear combinations. Whether it preserves a proposed Gaussian fragment, or comes from classical disjoint unions, is a separate question. The empty list is permitted in the linear completion; no channel on the zero Hilbert space is prescribed. The range, positivity and trace properties of the block-dephasing map remain proof obligations.
 
 **Sources.** SP-CK21, SP-WAT18.
 
@@ -2882,7 +2898,7 @@ block decomposition are recorded; they are not identified with one another.
 
 **Reuses.** D1704,D1706.
 
-**Delta.** The complex linear and matrix completion of this particular stabilizer category; it is not the arithmetic R_p syntax or the graded Hecke completion.
+**Delta.** The complex linear and matrix completion of this particular stabilizer category; it is not the arithmetic R_p syntax or the graded Hecke completion. Its arrow block-action and summand dephasing maps are prescribed explicitly.
 
 ## D1708 (bosonic Fock space and bounded second quantization)
 

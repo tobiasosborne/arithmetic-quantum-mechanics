@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-10",
+  "admitted": [
+    "SP-SUM"
+  ],
+  "claims": {
+    "PROVED": 130,
+    "SKETCH": 25,
+    "CONJECTURE": 3,
+    "REFUTED": 1
+  },
+  "claim_total": 159,
+  "definitions": 175,
+  "sp_proved": 9,
+  "sp_sketch": 6,
+  "pdf_pages": 185,
+  "visual_pages": [
+    171,
+    182,
+    183
+  ],
+  "mathematical_proof_body_unchanged": true,
+  "green_suites": 32,
+  "advertised_red_modes": 339,
+  "sum_intended_reds": 10,
+  "contract_intended_reds": 22,
+  "coverage_note": "Existing canonical session-close passed31 unchanged suites/329 modes. The repaired new sum checker adds one suite/10 modes. Final post-promotion contract22, PDF and lockstep passed separately.",
+  "sha256": {
+    "AGENTS.md": "54898e8cb21aeba30029466d407b659cd464361dcd702574846ac0002c20e637",
+    "HANDOFF.md": "e39c3df4dce498b3f814c70ea9765b8d9e702cfe814857cf18fb30bb30e354e5",
+    "briefs/phantasm-sum-target.md": "2134b1f9cf6c28bbe30712e6056c400614d4f80e66b9506771177ce718a96e72",
+    "briefs/phantasm-arithmetic-target.md": "80c88cc65c2356cb9963f6963d233b57a6ee0dfda71398175146a7ce795c857e",
+    "briefs/phantasm-arithmetic-checks.md": "86af8b809e182c1e0aa30254ed39e514ac9f46e4e29a3c0277ba5d2db36bbc44",
+    "briefs/phantasm-arithmetic-interfaces.md": "aec8cb6d50725120dd9168bfa0db5cdb2ea8b4066473c7c56011ab1dd347fe00",
+    "definitions.md": "871a9edb25263a01ed0ae97d7e1b4b68918c95c05c74d8e8915f32b5f63c2ff9",
+    "notation.md": "9fa888689912f45d47231774f1067eaa5760235ba627a83e67b13c9376920771",
+    "claims/CLAIMS.md": "b3e996b219c02d9b99f0f9b90da2db238ae0562fc5c9532745a6f509af297132",
+    "claims/PHANTASM-DAG.md": "fa631a258717b3bff7eb235143961fe4d7ab6843ad87068bdd0350e448515edd",
+    "refs/LEDGER.md": "6995a831105ab32a8977315cfd2ed457e93519959762f049f5d6b270c0221baa",
+    "docs/research-plans/categorical-structure.md": "f498164a400822a2c4794da2cc993661eadae0822edf00f63724f013368c2b1c",
+    "docs/research-plans/symplectic-phantasm.md": "ad5ad6e457c051ed952f9a1483dcb74bd6f9c86b8e29008ade1c78370d9909ec",
+    "labbook/main.pdf": "275b7541f2b588d2145c2436f6821b509ddd3bf5b4bc925e88014f6dda3fa397",
+    "labbook/sections/00_overview.tex": "babc53380d56df489dcab97dace28f5c1a29eeb91dfb2004defe303fc3e05f4f",
+    "labbook/sections/symplectic_phantasm.tex": "02062060ba6537c2d71ddc7fb5d8d133081d88f6fc602fb6a4d009f4dfdc9114",
+    "labbook/sections/symplectic_phantasm_contracts.tex": "3239e072cbf70a2a0254087f2490037606fe0f2df02d339bea4c710451ca5bf0",
+    "theory/checks/phantasm_sum_check.py": "7c691be27c36bea16a344e9f3de114c3e48a67c20976871366e6f33f275d1b6c",
+    "theory/checks/phantasm_sum_EXPECTATIONS.md": "72b78a38a09e1dba3202d72de1ed47d3da3f26111a578b3aa091a176fc4a7650",
+    "theory/checks/phantasm_stabilizer_check.py": "ed940fece0058840c8960b4699d8173d4e014629a205e4f0e0c6e58dee069b32",
+    "theory/checks/phantasm_relations_check.py": "bdfa9952f1b0ea496a8eb07e6c72794d173cf7aa5cd795038d6e3b800ee6cfe2",
+    "theory/checks/wh_kappa_check.py": "4cad037cd7d82e8101af72def4a4abf748f671f68fda93806b24a74ed83892fa",
+    "theory/checks/phantasm_contract_check.py": "6de8fd95ed33c4cfc4ff25426532edf7a2422e7082393035a554044b2f242a3e",
+    "theory/symplectic-phantasm/sum.md": "a43e6f16ce09e39dd4cca3cf6b38dda6446e0965cf3e0d6e1ae05a8130443ba5",
+    "theory/verdicts/phantasm-sum-r1.md": "dac891460fa861c881df7cd29c132d8f2b9ad4d8754326a472533b2a46373811",
+    "theory/verdicts/phantasm-sum-adjudication.md": "1d48da9572010025b809e08cdadbc684b4d6896652f5696a863c0ebb5ee34d5c"
+  }
+}

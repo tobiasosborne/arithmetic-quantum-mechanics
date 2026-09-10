@@ -18,11 +18,11 @@ and ordinary-trace arithmetic processes likewise have admitted foundations.
 
 The Weyl realization, affine covariance, tensor comparison, relation
 composition, compact structure and odd-prime projective stabilizer
-comparison, scalar normalization and finite instrument laws below have
-passed their capped reviews. The remaining seven propositions retain sketch
-status. Their finite probes check the interfaces with admitted
+comparison, scalar normalization, finite instrument laws and coherent/tagged
+sums below have passed their capped reviews. The remaining six propositions
+retain sketch status. Their finite probes check the interfaces with admitted
 constructions; the arbitrary-rank conclusions rest on the written proofs.
-\provenance{SP-WEYL,SP-EGOROV,SP-TENSOR,SP-LREL,SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP}{Structured local, relation and process proofs}{Exact finite bridge, affine, relation, stabilizer and process probes}{Stage-1, relation and process adjudications}
+\provenance{SP-WEYL,SP-EGOROV,SP-TENSOR,SP-LREL,SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP,SP-SUM}{Structured local, relation, process and sum proofs}{Exact finite bridge, affine, relation, stabilizer and process probes}{Stage-1, relation, process and sum adjudications}
 
 \subsection{Choosing categorical structure}
 
@@ -60,13 +60,16 @@ successful branch. A class-invariant normalization rule can also specify a
 branch; the quotient itself selects no rule, and compatibility with
 composition is a separate obligation. The finite instrument theorem keeps
 ordinary traces and all named outcomes explicit. Its trace adjoint is an
-ambient reverse map and need not be a reverse branch. The next bounded work
-is the coherent-sum and classical-tag comparison, followed by the arithmetic
-trace, Frobenius and subsystem interfaces. Operator vectorization and the
+ambient reverse map and need not be a reverse branch. The coherent completion now realizes every linear map between its Hilbert
+sums, while the tagged algebra retains only diagonal blocks. The prescribed
+dephasing channel removes cross-block terms and preserves ordinary trace.
+The empty coherent sum is the zero Hilbert space, distinct from the quantum
+tensor unit. The next work is the arithmetic trace, Frobenius and subsystem
+interfaces. Operator vectorization and the
 CP Choi construction still require their separate relation comparison.
 The structural record will grow with those results, without treating an
 uninvestigated property as false or a desired combination as established.
-\provenance{SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP,SP-SUM}{Admitted compact, projective and process comparisons; sum task remains}{Finite controls at their declared scope}{Relation and process adjudications; sum remains a sketch}
+\provenance{SP-COMPACT,SP-STAB-REL,SP-SCALAR,SP-CP,SP-SUM}{Admitted compact, projective, process and sum comparisons}{Finite controls at their declared scope}{Relation, process and sum adjudications}
 
 \subsection{Shared register and hierarchy conventions}
 
@@ -315,16 +318,32 @@ $(H_{\mathbb F_p,n_1},\ldots,H_{\mathbb F_p,n_s})$, including the empty
 list, and arrows matrices whose entries lie in these linear spans.
 Composition is matrix multiplication and dagger is adjoint transpose.
 Realize a list as $H=\bigoplus_{i=1}^sH_{\mathbb F_p,n_i}$.
-Its coherent observable algebra is $\operatorname{End}(H)$.
+For finite lists $X=(H_i)_{i=1}^s$ and $Y=(K_j)_{j=1}^t$ of these
+model spaces, with $s,t\geq0$, prescribe the realization of an arrow
+matrix $T=(T_{ji})$ by
+\[
+ (\xi_i)_i\longmapsto\left(\sum_{i=1}^sT_{ji}\xi_i\right)_j:
+ \bigoplus_{i=1}^sH_i\longrightarrow\bigoplus_{j=1}^tK_j.
+\]
+The empty list realizes the zero Hilbert space; the unique empty block
+matrix to or from that list has the zero action of its stated type.
+The coherent observable algebra of the realized list is $\operatorname{End}(H)$.
 For a nonempty list the tagged observable algebra is instead
 $\bigoplus_i\operatorname{End}(H_{\mathbb F_p,n_i})$, embedded as the
 block-diagonal operators on $H$. Both constructions and their chosen
 block decomposition are recorded; they are not identified with one another.
+For a nonempty list $X=(H_i)_{i=1}^s$ with realized space $H$, prescribe
+$P_i^X\in\operatorname{End}(H)$ by
+$(P_i^X\xi)_j=\delta_{ij}\xi_j$ on the ordered summands, and prescribe
+\[
+ \Delta_X:\operatorname{End}(H)\longrightarrow\operatorname{End}(H),
+ \qquad \Delta_X(a)=\sum_{i=1}^sP_i^X aP_i^X.
+\]
 \end{definition}
 \begin{scope}
-This completion deliberately adds linear combinations. Whether it preserves a proposed Gaussian fragment, or comes from classical disjoint unions, is a separate question.
+This completion deliberately adds linear combinations. Whether it preserves a proposed Gaussian fragment, or comes from classical disjoint unions, is a separate question. The empty list is permitted in the linear completion; no channel on the zero Hilbert space is prescribed. The range, positivity and trace properties of the block-dephasing map remain proof obligations.
 \end{scope}
-\provenance{D1707}{Stipulation; SP-CK21, SP-WAT18}{See the scoped bridge checks}{Reuses: D1704,D1706; no promotion}
+\provenance{D1707}{Stipulation; SP-CK21, SP-WAT18}{Exact finite sum controls}{Reuses: D1704,D1706; SP-SUM admitted separately}
 
 \begin{definition}[bosonic Fock space and bounded second quantization]
 For a complex Hilbert space $H$, let $P_r=(r!)^{-1}\sum_{\pi\in S_r}U_\pi$,

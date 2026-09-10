@@ -4,6 +4,57 @@
 
 # HANDOFF — live state
 
+## Current state — coherent and tagged sums admitted (2026-09-10)
+
+SP-SUM is PROVED after one blind PASS, a single checker repair wave and
+mechanical adjudication. The proof needed no mathematical repair. The record
+is `theory/verdicts/phantasm-sum-adjudication.md`; the original PASS and
+finite recomputation are preserved. Do not repeat the hostile review.
+
+D1707 owns actual arrow block-action, typed empty-list zero maps, ordered
+summand projections `P_i^X` and `Delta_X(a)=sum_i P_i^X a P_i^X`. The empty
+coherent list realizes the zero Hilbert space, distinct from `H_(p,0)=C`.
+Repeated equal model spaces remain separate list positions. The proof
+constructs every rectangular matrix unit, gives full coherent block
+realization, and identifies the tagged algebra and its ordinary-trace
+dephasing. SP-STAB-REL is now an explicit dependency for the strict pure-
+stabilizer enlargement via finite projective rays. No arithmetic coefficient
+syntax comparison, rig, fusion or Gaussian theorem was admitted.
+
+The canonical proof is `theory/symplectic-phantasm/sum.md`. Its reviewed
+pass is frozen in the sum result directory; only its admission header changed.
+The register has **159 claims: 130 PROVED, 25 SKETCH, three CONJECTURE and
+one REFUTED**, with **175 definitions**. Nine of fifteen SP claims are
+proved; six claims and all seven later decision gates remain open.
+
+The final sum checker has ten real mutation modes. Root verified normal
+and optimized green, all intended red paths, U2a-disabled census survival
+with exit 0, and U7a-disabled projection loss failing later at U7b. Its
+imported dependency hashes are frozen. The existing canonical session-close
+passed 31 unchanged suites and 329 red commands (exit 0, 1246.151 seconds).
+Combined with the final new checker, current coverage is 32 green suites and
+339 red modes. The post-promotion contract passed green and all twenty-two
+intended red gates. The final **185-page** labbook builds, its new definition
+and proof pages were visually inspected, and the lockstep gate passed. This
+is aggregate current coverage, not one post-promotion runner invocation. Evidence is in
+`numerics/symplectic-phantasm/results/sum-2026-09-10/`.
+
+**Next bounded task:** SP-TRACE, SP-FROB and SP-SUBSYS under
+`briefs/phantasm-arithmetic-target.md`, before SP-FOCK. Read its two prepared
+companions: `briefs/phantasm-arithmetic-interfaces.md` proposes the exact
+D1710 iterated-J/model/complement compatibility, reassociation, phase and
+rank-zero data; `briefs/phantasm-arithmetic-checks.md` specifies twelve exact
+arithmetic gates. Register the D1710 proposal and the planned D1706/SP-CP
+SP-FROB channel-typing dependency before those proofs use them. They are not
+yet canonical definitions/dependencies and are not mathematical evidence.
+The arithmetic proving pass has not begun.
+
+The preceding process landing was pushed as `c6a651b`. The full campaign
+goal is active and unchanged: construct the arithmetic/global/state layers
+and assess a fully specified spectral comparison. A zeta partition function
+alone is insufficient. This local sum result completes no global, modular
+or spectral design gate.
+
 ## Current state — scalar and process cluster admitted (2026-09-10)
 
 SP-SCALAR and SP-CP are PROVED after one blind review, one repair wave per

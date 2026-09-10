@@ -1,0 +1,139 @@
+[
+  {
+    "mode": "duplicate-node",
+    "gate": "G1",
+    "exit": 1,
+    "output": "G1 FAIL: duplicate DAG node SP-WEYL\n"
+  },
+  {
+    "mode": "empty-scope",
+    "gate": "G1",
+    "exit": 1,
+    "output": "G1 FAIL: empty field SP-WEYL\n"
+  },
+  {
+    "mode": "missing-node",
+    "gate": "G2",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 FAIL: unresolved dependency SP-WEYL\n"
+  },
+  {
+    "mode": "missing-definition",
+    "gate": "G2",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 FAIL: unresolved definition SP-WEYL\n"
+  },
+  {
+    "mode": "status",
+    "gate": "G2",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 FAIL: status drift SP-WEYL\n"
+  },
+  {
+    "mode": "orphan-claim",
+    "gate": "G2",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 FAIL: canonical SP rows and contracts are not in bijection\n"
+  },
+  {
+    "mode": "decision-input",
+    "gate": "G2",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 FAIL: unresolved decision prerequisite DG-GLOBAL\n"
+  },
+  {
+    "mode": "cycle",
+    "gate": "G3",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 FAIL: dependency cycle at SP-WEYL\n"
+  },
+  {
+    "mode": "decision-cycle",
+    "gate": "G3",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 FAIL: dependency cycle at DG-MODULAR\n"
+  },
+  {
+    "mode": "refuted",
+    "gate": "G4",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 FAIL: refuted dependency of SP-EGOROV\n"
+  },
+  {
+    "mode": "promote",
+    "gate": "G4",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 FAIL: promotion has no admitted proof/review/checks SP-WEYL\n"
+  },
+  {
+    "mode": "proof-shard",
+    "gate": "G4",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 FAIL: missing structured proof markers SP-WEYL: docs/research-plans/categorical-structure.md\n"
+  },
+  {
+    "mode": "source-hash",
+    "gate": "G5",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 FAIL: source hash mismatch: SP-GH07 / readable\n"
+  },
+  {
+    "mode": "source-gap",
+    "gate": "G5",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 FAIL: GAP source used as evidence: SP-TITS57\n"
+  },
+  {
+    "mode": "labbook",
+    "gate": "G6",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 FAIL: claim statement/status/scope drift SP-WEYL\n"
+  },
+  {
+    "mode": "definition-drift",
+    "gate": "G6",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 FAIL: exact definition/scope drift D1701\n"
+  },
+  {
+    "mode": "notation-alias",
+    "gate": "G7",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 PASS: 15 exact definitions and 15 exact claim restatements\nG7 FAIL: retired duplicate alias reintroduced\n"
+  },
+  {
+    "mode": "notation-owner",
+    "gate": "G7",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 PASS: 15 exact definitions and 15 exact claim restatements\nG7 FAIL: missing/duplicate notation owner W^s_(k,n)(a,b)\n"
+  },
+  {
+    "mode": "inherited-status",
+    "gate": "G8",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG8 FAIL: inherited result is not an admitted earlier claim: F1-REAL\n"
+  },
+  {
+    "mode": "untracked-reuse",
+    "gate": "G8",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG8 FAIL: untracked inherited result SP-WEYL\n"
+  },
+  {
+    "mode": "definition-reuse",
+    "gate": "G8",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 PASS: 15 exact definitions and 15 exact claim restatements\nG7 PASS: selected shared-name ownership and convention guards\nG8 FAIL: unresolved reused definition D1701\n"
+  },
+  {
+    "mode": "definition-cycle",
+    "gate": "G8",
+    "exit": 1,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 PASS: 15 exact definitions and 15 exact claim restatements\nG7 PASS: selected shared-name ownership and convention guards\nG8 FAIL: definition reuse cycle at D1701\n"
+  },
+  {
+    "mode": "green",
+    "exit": 0,
+    "output": "G1 PASS: 15 unique contracts with explicit input/output/scope fields\nG2 PASS: contract, definition, dependency and source references resolve\nG3 PASS: 15 lemmas and 7 decision gates form a DAG\nG4 PASS: no refuted dependencies or unsupported promotions\nG5 PASS: 25 local sources pinned; 5 GAP leads unused\nG6 PASS: 15 exact definitions and 15 exact claim restatements\nG7 PASS: selected shared-name ownership and convention guards\nG8 PASS: inherited proof status/paths and acyclic definition reuse\nReady for proof work: SP-TRACE, SP-SUBSYS, SP-FOCK, SP-PRIME, SP-BC-CONTROL\nPASS: recorded contracts only; no mathematical claim promoted\n"
+  }
+]

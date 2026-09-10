@@ -1,0 +1,99 @@
+{
+  "sha256": "7c691be27c36bea16a344e9f3de114c3e48a67c20976871366e6f33f275d1b6c",
+  "help_flags": [
+    "--red-census-loss",
+    "--red-coherent-tagged",
+    "--red-dephase-average",
+    "--red-dephase-offdiag",
+    "--red-empty-vacuum",
+    "--red-matrix-unit-loss",
+    "--red-merge-repeated",
+    "--red-normalized-trace",
+    "--red-projection-loss",
+    "--red-pure-two-unit"
+  ],
+  "runs": [
+    {
+      "mode": "matrix-unit-loss",
+      "gate": "U1",
+      "exit": 1,
+      "output": "RED CAUGHT matrix-unit-loss at U1: rectangular matrix-unit words span rank 8 of shape dimension 9\n"
+    },
+    {
+      "mode": "census-loss",
+      "gate": "U2",
+      "exit": 1,
+      "output": "RED CAUGHT census-loss at U2: U2a imported-census guard failed: expected 216 Clifford, 144 rank-one, 360 distinct endomorphism rays\n"
+    },
+    {
+      "mode": "pure-two-unit",
+      "gate": "U2",
+      "exit": 1,
+      "output": "RED CAUGHT pure-two-unit at U2: U2b diag(1,1,0) was misclassified as an actual pure stabilizer amplitude\n"
+    },
+    {
+      "mode": "coherent-tagged",
+      "gate": "U3",
+      "exit": 1,
+      "output": "RED CAUGHT coherent-tagged at U3: coherent block action erased an off-diagonal summand map\n"
+    },
+    {
+      "mode": "merge-repeated",
+      "gate": "U4",
+      "exit": 1,
+      "output": "RED CAUGHT merge-repeated at U4: repeated list positions or coherent/tagged coordinate dimensions were merged\n"
+    },
+    {
+      "mode": "empty-vacuum",
+      "gate": "U5",
+      "exit": 1,
+      "output": "RED CAUGHT empty-vacuum at U5: empty-list realization was confused with rank-zero H_(F3,0)=C\n"
+    },
+    {
+      "mode": "dephase-offdiag",
+      "gate": "U6",
+      "exit": 1,
+      "output": "RED CAUGHT dephase-offdiag at U6: block dephasing disagrees at matrix unit E_(0,1)\n"
+    },
+    {
+      "mode": "projection-loss",
+      "gate": "U7",
+      "exit": 1,
+      "output": "RED CAUGHT projection-loss at U7: U7a summand-projection Kraus family is incomplete\n"
+    },
+    {
+      "mode": "dephase-average",
+      "gate": "U7",
+      "exit": 1,
+      "output": "RED CAUGHT dephase-average at U7: U7b block dephasing is not unital\n"
+    },
+    {
+      "mode": "normalized-trace",
+      "gate": "U8",
+      "exit": 1,
+      "output": "RED CAUGHT normalized-trace at U8: ordinary trace preservation was replaced by normalized block traces\n"
+    },
+    {
+      "mode": "green",
+      "exit": 0,
+      "output": "U1 PASS: 169 actual preparation/adjoint words; full rank for all nine rank pairs\nU2 PASS: diag(1,1,0) is a rank-two coherent sum outside 360 pure qutrit classes\nU3 PASS: coherent cross block, repeated-position tuple action, composition and dagger\nU4 PASS: derived dimensions 16/10,25/11,36/18,81/81 with repeated positions\nU5 PASS: typed 4x0,0x4,0x0 maps; empty list 0 differs from rank-zero C\nU6 PASS: all 16 matrix units: ten diagonal-block fixed, six off-diagonal killed\nU7 PASS: projection completeness, unitality, idempotence and rank-ten tagged range\nU8 PASS: all matrix units plus rational dense controls; ordinary trace, not 2 versus 4\nGREEN PASS: exact finite controls only; no claim promotion\n"
+    },
+    {
+      "mode": "green-O",
+      "exit": 0,
+      "output": "U1 PASS: 169 actual preparation/adjoint words; full rank for all nine rank pairs\nU2 PASS: diag(1,1,0) is a rank-two coherent sum outside 360 pure qutrit classes\nU3 PASS: coherent cross block, repeated-position tuple action, composition and dagger\nU4 PASS: derived dimensions 16/10,25/11,36/18,81/81 with repeated positions\nU5 PASS: typed 4x0,0x4,0x0 maps; empty list 0 differs from rank-zero C\nU6 PASS: all 16 matrix units: ten diagonal-block fixed, six off-diagonal killed\nU7 PASS: projection completeness, unitality, idempotence and rank-ten tagged range\nU8 PASS: all matrix units plus rational dense controls; ordinary trace, not 2 versus 4\nGREEN PASS: exact finite controls only; no claim promotion\n"
+    }
+  ],
+  "controls": [
+    {
+      "control": "disabled-U2a",
+      "exit": 0,
+      "output": "RED SURVIVED census-loss at U2: diag(1,1,0) is a rank-two coherent sum outside 360 pure qutrit classes\n"
+    },
+    {
+      "control": "disabled-U7a-propagation",
+      "exit": 1,
+      "output": "RED CAUGHT projection-loss at U7: U7b block dephasing is not unital\n"
+    }
+  ]
+}

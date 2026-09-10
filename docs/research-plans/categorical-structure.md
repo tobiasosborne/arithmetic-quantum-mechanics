@@ -7,9 +7,9 @@ structure can be found flexibly as the arithmetic construction develops.
 This is a continuing research direction within the Symplectic Phantasm.
 The local Weyl/affine/tensor and relation/compact/stabilizer clusters are
 now admitted at their canonical scopes, together with scalar normalization
-and finite instruments. The next bounded task is coherent and tagged sums
-under `../../briefs/phantasm-sum-target.md`, followed by the arithmetic
-interfaces in `../../briefs/phantasm-arithmetic-target.md`.
+and finite instruments. The coherent/tagged sum comparison is now admitted.
+The next bounded task is the arithmetic interfaces in
+`../../briefs/phantasm-arithmetic-target.md`.
 
 ## What the record should answer
 
@@ -119,12 +119,21 @@ scalar necessity overstatement and its correction remain recorded there.
 | SP-SCALAR | Complete positivity and the contraction iff-condition for actual one-Kraus maps; exact scalar modulus law; either an admissible representative or a class-invariant normalization rule can specify a branch | The quotient stipulates no actual branch or rule. Operator-norm normalization is representative-independent, as computed in scalar.md section 5; its compatibility with composition is a separate question |
 | SP-CP | Intrinsic finite-block Kraus criterion; composition, tensor and retained instruments with ordinary trace; general trace-adjoint construction and its CP specialization | Outcome order and actual-map equality are explicit. The trace adjoint of discard is not TNI, so ambient adjoints must be distinguished from reverse branches. No arithmetic-source exhaustion |
 
+SP-SUM is admitted through `../../theory/verdicts/phantasm-sum-adjudication.md`.
+Its proof uses actual matrix units and the admitted finite projective Hom-set
+comparison; the finite qutrit witness is only a check.
+
+| Comparison | Structure supplied by the existing claim | Choice or remaining boundary |
+|---|---|---|
+| SP-SUM | Full rectangular complex spans and full coherent block realization; typed empty-list zero maps; separate tagged subalgebra and ordinary-trace block dephasing | Actual amplitudes precede addition. Repeated list positions remain distinct, and the empty coherent sum differs from the tensor unit. No classical rig, fusion, Gaussian or arithmetic-source theorem is added |
+
 The next questions are:
 
-1. Prove the coherent-sum/tagged-algebra comparison in SP-SUM. Continue to
-   distinguish actual-map addition from projective representatives, and
-   ordinary block trace from other reference functionals. Compare operator
-   vectorization with the CP Choi construction separately.
+1. Carry the completed local comparisons into SP-TRACE, SP-FROB and
+   SP-SUBSYS, with explicit character transport, model choices and iterated
+   encoding compatibility. Continue to distinguish actual-map addition from
+   projective representatives and ordinary trace from other reference
+   functionals. The operator-vector/CP-Choi comparison remains separate.
 2. Compute the normalized and unnormalized amplitude cup/cap diagrams and
    their admissibility as physical branches. Track which compact equations
    survive which normalization; compact closure alone does not settle this.

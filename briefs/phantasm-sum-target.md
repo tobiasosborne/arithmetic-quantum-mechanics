@@ -2,7 +2,11 @@
 
 Date: 2026-09-10. Planning model: `gpt-5.6-sol`, reasoning `xhigh`.
 
-This is the next bounded local-interface task after the current process cluster.
+Landing note, 2026-09-10: SP-SUM is admitted through
+`theory/verdicts/phantasm-sum-adjudication.md`; the mathematical proof was
+unchanged by review. The arithmetic interfaces are next.
+
+This records the bounded local-interface task after the process cluster.
 It does not read or depend on any process prover/checker lane artifact. Begin
 proof work only after canonical SP-CP is admitted, because SP-SUM currently
 lists it as a dependency. Keep SP-SUM at `SKETCH` through planning and proving.
@@ -35,9 +39,11 @@ complex linear combinations deliberately.
 - F1-REAL already proves that Weyl operators span the full square
   endomorphism algebra of each finite configuration space. Reuse this result;
   do not reprove finite Stone--von Neumann.
-- The admitted SP-STAB-REL equivalence may be used as a consistency check, but
-  it is unnecessary for the rectangular matrix-unit construction and its
-  `C^times` quotient is not where coherent addition is defined.
+- SP-STAB-REL is a direct dependency for the strict-enlargement scope clause:
+  finite affine-relation Hom-sets give finitely many projective stabilizer
+  classes, whereas the linear Hom-space has infinitely many rays once its
+  dimension exceeds one. It is unnecessary for constructing rectangular
+  matrix units, and its quotient is not where coherent addition is defined.
 - D1706 supplies the ordinary-trace Kraus/channel criterion once SP-CP is
   admitted. Its systems are finite **nonempty** families of nonzero Hilbert
   spaces, so it does not create a channel on D1707's empty list.

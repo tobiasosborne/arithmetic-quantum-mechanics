@@ -64,8 +64,9 @@ preserved or forgotten and in what sense. Definitions and claim statuses
 remain in their single sources. The record is an open research agenda,
 not an assertion that all desired structures coexist. It accompanies the
 bounded lemma clusters. The local Weyl/affine/tensor and relation/compact/
-stabilizer clusters and the scalar/process comparison are admitted. Coherent
-and tagged sums are next, with the global arithmetic action and reference state as the major
+stabilizer clusters, scalar/process comparison and coherent/tagged sums are
+admitted. Arithmetic interfaces are next, with the global arithmetic action
+and reference state as the major
 construction to earn after the local interfaces.
 
 ## Construction order and acceptance gates
@@ -161,16 +162,25 @@ no rule, and composition compatibility remains a separate obligation.
 The instrument theorem does not identify ambient CP equality with
 arithmetic-source equality or assert source exhaustion.
 
-## Next bounded work — coherent/tagged sums, then arithmetic interfaces
+## Coherent and tagged sums completed — 2026-09-10
 
-Use `briefs/phantasm-sum-target.md` for one bounded SP-SUM pass. Register
-the stated D1707 arrow-realization and block-dephasing ownership before
-proof integration. Then use `briefs/phantasm-arithmetic-target.md` for
-SP-TRACE, SP-FROB and SP-SUBSYS before SP-FOCK. That work order registers
-its planned SP-FROB process-typing dependency before using it; the current
-canonical dependencies are not silently enlarged. This scheduling advances
-the arithmetic action while preserving the existing mathematical dependencies
-and every required global gate. The DAG priority table records this order.
+SP-SUM is admitted through `theory/verdicts/phantasm-sum-adjudication.md`.
+D1707 owns the arrow realization, typed empty-list maps and ordered-summand
+dephasing. The completion realizes all complex linear maps; the tagged
+algebra remains the chosen block-diagonal subalgebra. The proof retains
+standard coordinates and the block decomposition. It makes no arithmetic
+source comparison and does not close DG-RIG.
+
+## Next bounded work — arithmetic interfaces
+
+Use `briefs/phantasm-arithmetic-target.md` for SP-TRACE, SP-FROB and
+SP-SUBSYS before SP-FOCK. The explicit interface proposal is in
+`briefs/phantasm-arithmetic-interfaces.md`, and the next exact-checker
+specification is `briefs/phantasm-arithmetic-checks.md`. They remain
+preparation: register the proposed D1710 iterated-model compatibility and
+SP-FROB process-typing dependency before the proofs use them. Neither change
+has silently entered the current canonical data. This scheduling advances
+the arithmetic action while preserving every required global gate.
 
 TJO asked which step would be most consequential after the category work.
 The target is one explicit global arithmetic action with a reference state:

@@ -47,6 +47,13 @@ that SP-CP supplies only the ambient unitary-channel typing. This registers the 
 conjugation. Keep SP-FROB `SKETCH` while SP-CP is unadmitted. The mathematical covariance proof may be
 written earlier, but channel promotion may not outrun this dependency.
 
+The proposed exact D1710 extension is in `briefs/phantasm-arithmetic-interfaces.md`;
+the next checker specification is `briefs/phantasm-arithmetic-checks.md`.
+Before SP-SUBSYS proof integration, explicitly own the direct-versus-iterated
+model comparison, reassociation and phase allowance. The proposal is not yet
+the canonical definition, and its geometric and decoder laws remain proof
+obligations.
+
 No new definition number is needed. D1709 already owns the trace form,
 general base character, relative power and rank-`n` permutation; D1710 owns
 `j,W,J,iota_J,D_J`. Tower restriction maps and proof-local complement bases

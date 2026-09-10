@@ -294,26 +294,26 @@ nonempty scalar.
 ## SP-SUM
 
 - Title: Coherent sums and tagged quantum systems
-- Status: SKETCH
+- Status: PROVED
 - Stage: 3
 - Definitions: D1003,D1704,D1706,D1707
-- Dependencies: SP-WEYL,SP-CP,F1-REAL
+- Dependencies: SP-WEYL,SP-CP,SP-STAB-REL,F1-REAL
 - Inherited: F1-REAL
-- Reuse: F1-REAL section 2 already supplies the full endomorphism algebra on each configuration space.
-- Remaining: Use preparations/effects for rectangular matrix units; verify coherent versus tagged blocks and their dephasing. The complex linear hull is larger than both pure stabilizer maps and the arithmetic coefficient syntax.
+- Reuse: F1-REAL section 2 supplies the full endomorphism algebra on each configuration space. SP-STAB-REL supplies finite projective Hom-sets for the strict-enlargement scope clause; the rectangular matrix-unit argument uses actual D1704 maps directly.
+- Remaining: None within the admitted statement and Scope. Actual rectangular matrix units, coherent block realization, strict pure-fragment enlargement, empty/repeated list cases and ordinary-trace dephasing passed capped review. Classical rig and arithmetic-source comparisons remain separate.
 - Sources: SP-CK21,SP-WAT18
 - Inputs: Lists of actual stabilizer model Hilbert spaces and amplitude maps
 - Output: Full coherent matrix maps and the separate tagged subalgebra/dephasing
 - Choices: Block decomposition; actual scalar representatives before linear span
 - Scope: Adding coherent linear combinations enlarges the pure stabilizer fragment. A classical rig source is still to be constructed.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/sum.md
+- Review: theory/verdicts/phantasm-sum-adjudication.md
+- Checks: theory/checks/phantasm_sum_check.py
+- Evidence: admitted
 
-**Construction outline.** F1-REAL section 2 already supplies the full endomorphism algebra on each configuration space. Use preparations/effects for rectangular matrix units; verify coherent versus tagged blocks and their dephasing. The complex linear hull is larger than both pure stabilizer maps and the arithmetic coefficient syntax.
+**Construction outline.** F1-REAL section 2 already supplies the full endomorphism algebra on each configuration space. Use preparations/effects for rectangular matrix units; verify coherent versus tagged blocks and their dephasing. The complex linear hull strictly enlarges the pure stabilizer fragment; no arithmetic-source comparison is claimed here.
 
-**Falsifier scope.** For H=C plus C^3, compare dimensions 16 and 10 and a cross-block coherent observable; verify dephasing removes exactly off-diagonal blocks.
+**Falsifier scope.** Implemented: phantasm_sum_check.py U1--U8 constructs all 169 preparation/adjoint matrix-unit words for p=3 and ranks zero through two; checks block action/composition/dagger on repeated and empty lists with explicit zero-row/column shapes; derives coherent/tagged dimensions 16/10, 25/11, 36/18 and 81/81; and checks full matrix-unit dephasing, projection completeness, unitality, idempotence, range and ordinary trace. The imported exact qutrit census supplies the finite diag(1,1,0) witness. These controls do not prove arbitrary ranks or a rig/biproduct theorem.
 
 **Required mutations.** Replace the coherent algebra by its tagged subalgebra; claim arbitrary coherent sums stay within the uncompleted stabilizer morphisms.
 

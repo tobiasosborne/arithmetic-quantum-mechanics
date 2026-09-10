@@ -239,6 +239,7 @@ base character. The following rows own only the additional names.
 | `Stab_p^proj`, `[T]` | quotient by invertible complex scalars with a distinct zero class | D1705 |
 | `K_(b a,j)`, `Phi_o`, `Phi^(tr*)` (ambient CP target) | actual Hilbert Kraus maps, outcome maps and the ambient ordinary-trace adjoint; B_X and Tr_X reuse the D1326 row; distinct from D1206's normalized-trace density dual | D1706 |
 | `Mat(span_C Stab_p^amp)` | the specified coherent matrix completion; not the arithmetic R_p syntax or graded Hecke completion | D1707 |
+| `P_i^X`, `Delta_X` (coherent list) | ordered-summand projection and block-dephasing endomorphism; distinct from D1305 support-code projectors and D1713 modular operators | D1707 |
 | `P_r`, `U_pi`, `Sym^r H`, `Gamma_s(H)`, `Omega`, `N_H` (Fock) | symmetrizer, permutation action, symmetric sector, Hilbert Fock sum, vacuum and particle number; the one-mode polynomial completion is already F_bos in D1010 | D1708 |
 | `Res_(E/K)V`, `omega_Res`, `chi_K`, `chi_(E/K)` | scalar restriction, trace form, named general base character and its relative-trace composite; neither character symbol replaces the fixed psi_E family | D1709 |
 | `sigma_(E/K)`, `varphi_V`, `U_(E/K,n)` | relative field power, named abstract semilinear datum and tensor of powers of the existing U_E | D1709 |
