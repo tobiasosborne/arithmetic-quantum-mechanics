@@ -2,20 +2,56 @@
 \label{sec:symplectic-phantasm}
 
 The direction adopted on 9 September 2026 begins with finite symplectic
-objects and their quantum realizations, and then asks how arithmetic
-processes can act on systems assembled across primes. The procedure is
-sober, accretive, and careful: primary sources precede definitions,
-definitions precede lemma contracts, and proofs precede promotion.
+objects and their quantum realizations, then asks how arithmetic processes
+can act on systems assembled across primes. The procedure is sober,
+accretive, and careful: admitted results are reused at their exact scope,
+and new contracts state the extra choices and comparisons still required.
 The relation to the Riemann hypothesis remains a motivation.
 
-The following definitions fix a first layer. All propositions in this
-section are sketches of obligations to be discharged, with no new claim
-promoted to proved status. In particular, a category of quantum processes,
-a concrete observable algebra, and a representation with a reference state
-are separate objects. Their comparison is part of the work.
+The theorem for finite abelian configurations already provides matrix realization,
+irreducibility and uniqueness in arbitrary configuration size. The local
+Weyl task is its transport to symplectic coordinates and the half-form
+convention. The existing configuration-product theorem supplies the
+underlying Hilbert tensor comparison. Field traces, Frobenius permutations
+and ordinary-trace arithmetic processes likewise have admitted foundations.
+\provenance{F1-DUAL,F1-WEYL,F1-REAL,F1-FUNCT,FRB-TRACE,FRB-FROB,FRP-CP}{Existing admitted proof shards}{Existing checkers; finite bridge probes below}{Original adjudications; no status change}
+
+The assembled propositions below remain sketches pending their own
+promotion review. Their finite probes check the interfaces with the
+admitted constructions. They do not constitute a new proof of those
+foundations or a mathematical type checker for the whole programme.
+
+\subsection{Shared register and hierarchy conventions}
+
+\begin{definition}[Trace-framed arithmetic registers, recalled]
+Fix a prime $p$ and a named primitive complex $p$-th root $\zeta_p$.
+For a finite field $E/\mathbb F_p$ of cardinality $p^r$, retain $E$,
+$H_E=\ell^2(E)$ with basis $\delta_x$, and
+$\psi_E(x)=\zeta_p^{\operatorname{Tr}_{E/\mathbb F_p}(x)}$.
+Its prime-field phase space is $S_E=E\oplus E$ with
+$\Omega_E((a,b),(a',b'))=\operatorname{Tr}_{E/\mathbb F_p}(ab'-a'b)$.
+Set $X_E(a)\delta_x=\delta_{x+a}$,
+$Z_E(b)\delta_x=\psi_E(bx)\delta_x$, and
+$W_E(a,b)=Z_E(-b)X_E(a)$.
+An ordered list has the tensor-product Hilbert space and orthogonal direct
+sum phase space; the empty list has Hilbert space $\mathbb C$.
+The field structures and ordered factors are retained data.
+\end{definition}
+\begin{scope}This recalls the existing fixed character family in all characteristics. A general chosen base character is distinguished below.\end{scope}
+\provenance{D1301}{Existing definition}{Existing arithmetic checks}{Unchanged convention}
+
+\begin{definition}[Pauli group and Clifford hierarchy]
+For an ordered list $A=(E_1,\ldots,E_n)$ of trace-framed registers put
+$P_A=\{\lambda\bigotimes_j W_{E_j}(a_j,b_j):\lambda\in U(1)\}$.
+Set $C_1(A)=P_A$ and, for $r\geq1$, set
+$C_{r+1}(A)=\{U\text{ unitary}:UPU^*\in C_r(A)\text{ for every }P\in P_A\}$.
+The exact level of $U$ is the least positive $r$ with $U\in C_r(A)$,
+if it exists. All scalar phases are included, also at $p=2$.
+\end{definition}
+\begin{scope}Levels beyond the second are not stipulated to be groups. The pure stabilizer category below uses the existing second level.\end{scope}
+\provenance{D1307}{Existing definition}{Existing hierarchy checks}{Unchanged hierarchy}
 
 \subsection{Definition layer}
-
 \begin{definition}[finite symplectic objects and affine symmetries]
 Fix a finite field $k$ of characteristic $p$. A symplectic object is a
 finite-dimensional $k$-vector space $V$ with a $k$-bilinear alternating form
@@ -33,7 +69,7 @@ Composition is $(s,h)\circ(t,g)=(s+ht,hg)$ and the identity is $(0,1_V)$.
 \begin{scope}
 All characteristics are included in this classical datum. Rank one means dimension two; no quantum realization is part of the definition.
 \end{scope}
-\provenance{D1701}{Stipulation; SP-GH07, SP-W09}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1701}{Stipulation; SP-GH07, SP-W09}{See the scoped bridge checks}{Reuses: D1,D14; no promotion}
 
 \begin{definition}[affine Lagrangian relations]
 Fix a finite field $k$ and finite-dimensional symplectic $k$-spaces $V,W$.
@@ -54,54 +90,63 @@ symplectic space. Write $\mathsf L_k^{\mathrm{aff}}$ for this candidate.
 \begin{scope}
 Closure and category/coherence laws are proof obligations. Empty relations are retained; nonlinear subvarieties are outside this definition.
 \end{scope}
-\provenance{D1702}{Stipulation; SP-W09, SP-LW14, SP-CK21}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1702}{Stipulation; SP-W09, SP-LW14, SP-CK21}{See the scoped bridge checks}{Reuses: D1701; no promotion}
 
 \begin{definition}[odd-characteristic Weyl datum in arbitrary rank]
 Fix a finite field $k$ of odd characteristic, a nontrivial additive
 character $\psi:k\to U(1)$, and a finite-dimensional symplectic
 $k$-space $(V,\omega_V)$. Put $\beta_V=\omega_V/2$.
-The formal Weyl algebra $\mathcal A_{k,\psi}(V)$ has complex basis
-$\{w_v:v\in V\}$ and prescribed operations
+Extend the existing Weyl notation to $A_{\psi,\beta_V}(V)$, with basis
+$\{W_{\beta_V}(v):v\in V\}$ and prescribed operations
 \[
- w_vw_z=\psi(\omega_V(v,z)/2)w_{v+z},\qquad
- w_v^*=w_{-v},\qquad 1=w_0.
+ W_{\beta_V}(v)W_{\beta_V}(z)
+ =\psi(\omega_V(v,z)/2)W_{\beta_V}(v+z),\qquad
+ W_{\beta_V}(v)^*=W_{\beta_V}(-v),\qquad 1=W_{\beta_V}(0).
 \]
-Prescribe $\tau_V(\sum_v c_vw_v)=c_0$. On $k\times V$ prescribe the
-Heisenberg multiplication
-$(a,v)(b,z)=(a+b+\omega_V(v,z)/2,v+z)$, with central character $\psi$.
-For the standard space $V=k^n\oplus k^n$ with
-$\omega_V((a,b),(a',b'))=a\cdot b'-a'\cdot b$, put
-$\mathcal H_{k,n}=\ell^2(k^n)$ with counting inner product and prescribe
+Prescribe $\tau_V(\sum_v c_vW_{\beta_V}(v))=c_0$. On $k\times V$
+prescribe $(t,v)(t',z)=(t+t'+\omega_V(v,z)/2,v+z)$, with central
+character $\psi$.
+For $V=k^n\oplus k^n$ and
+$\omega_V((a,b),(a',b'))=a\cdot b'-a'\cdot b$, let
+$H_{k,n}=\ell^2(k^n)$ with counting inner product and its standard
+coordinate identification with $\ell^2(k)^{\otimes n}$.
+Use the distinct symmetrized-model notation
 \[
- (W(a,b)f)(x)=\psi(b\cdot x+a\cdot b/2)f(x+a).
+ W^{\mathrm s}_{k,n}(a,b)
+ =\psi(a\cdot b/2)\bigotimes_{j=1}^n W_{\beta_0}(a_j,b_j),
+ \qquad
+ (W^{\mathrm s}_{k,n}(a,b)f)(x)
+ =\psi(-b\cdot x+a\cdot b/2)f(x-a).
 \]
-An abstract-space model additionally names a symplectic identification
-with the standard space. Model independence is a claim, not a hidden choice.
+Here $W_{\beta_0}(a_j,b_j)\delta_y
+=\psi(-b_j(y+a_j))\delta_{y+a_j}$ is the existing reference model.
+An abstract-space model additionally names a symplectic coordinate
+identification. At $n=0$ use $H_{k,0}=\mathbb C$ and the empty tensor.
 \end{definition}
 \begin{scope}
-The half-form convention excludes characteristic two. Algebra laws, positivity, matrix realization and uniqueness are separate obligations.
+The half-form convention excludes characteristic two. The finite-abelian realization is already admitted; SP-WEYL records its coordinate, phase and central-quotient transport.
 \end{scope}
-\provenance{D1703}{Stipulation; SP-GH07, SP-PRASAD09, SP-GROSS06}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1703}{Stipulation; SP-GH07, SP-PRASAD09, SP-GROSS06}{See the scoped bridge checks}{Reuses: D3,D4,D5,D8,D1001,D1002,D1003,D1301,D1701; no promotion}
 
 \begin{definition}[actual stabilizer amplitudes]
-Fix an odd prime $p$, the character $\psi_p(x)=\exp(2\pi i x/p)$, and
-$\mathcal H_{p,n}=\ell^2(\mathbb F_p^n)$ for $n\geq0$.
-Let $\mathcal P_{p,n}$ be the subgroup of unitaries generated by the
-standard Weyl operators and all scalar phases. A Clifford unitary is a
-unitary $U$ satisfying $U\mathcal P_{p,n}U^*=\mathcal P_{p,n}$.
-Define $\mathsf{Stab}^{\mathrm{amp}}_p$ to have objects
-$\mathcal H_{p,n}$ and actual linear maps generated under composition,
-tensor product and adjoint by Clifford unitaries, the map
-$\eta:\mathbb C\to\mathcal H_{p,1}$ with $\eta(1)=\delta_0$,
-and scalar maps $c:\mathbb C\to\mathbb C$ for every $c\in\mathbb C$.
-Use the standard coordinate identification
-$\mathcal H_{p,m+n}=\mathcal H_{p,m}\otimes\mathcal H_{p,n}$.
+Fix an odd prime $p$ and the reference root
+$\zeta_p=\exp(2\pi i/p)$ in the trace-framed field registers. For the
+ordered word $A=(\mathbb F_p,\ldots,\mathbb F_p)$ of length $n\geq0$,
+use the existing full-scalar Pauli group $P_A$ and second hierarchy level
+$C_2(A)$ on $H_{\mathbb F_p,n}=\ell^2(\mathbb F_p^n)$.
+Define $\mathsf{Stab}^{\mathrm{amp}}_p$ to have these Hilbert spaces as
+objects and actual linear maps generated under composition, tensor product
+and adjoint by the unitaries in $C_2(A)$, the computational preparation
+$\mathbb C\to H_{\mathbb F_p,1}$ sending $1$ to $\delta_0$, and every
+scalar map $c:\mathbb C\to\mathbb C$ with $c\in\mathbb C$.
+Use the coordinate identification
+$H_{\mathbb F_p,m+n}=H_{\mathbb F_p,m}\otimes H_{\mathbb F_p,n}$.
 Equality is equality of the resulting linear maps, including zero.
 \end{definition}
 \begin{scope}
 Scalars and amplitudes are retained. Such a map defines a physical successful branch only with the required norm or instrument normalization. No closure under addition is imposed here.
 \end{scope}
-\provenance{D1704}{Stipulation; SP-GROSS06, SP-CK21}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1704}{Stipulation; SP-GROSS06, SP-CK21}{See the scoped bridge checks}{Reuses: D1301,D1307,D1703; no promotion}
 
 \begin{definition}[stabilizer amplitudes modulo invertible scalars]
 Fix an odd prime $p$ and the actual stabilizer amplitude category with
@@ -115,55 +160,59 @@ from quotienting unitary intertwiners only by $U(1)$.
 \begin{scope}
 The quotient records no success probability or norm. A coherent sum of independently rescaled representatives is not prescribed by this definition.
 \end{scope}
-\provenance{D1705}{Stipulation; SP-CK21}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1705}{Stipulation; SP-CK21}{See the scoped bridge checks}{Reuses: D1704; no promotion}
 
 \begin{definition}[finite quantum branches and instruments]
-A finite quantum system is a finite nonempty family of nonzero
-finite-dimensional complex Hilbert spaces $\mathbf H=(H_a)_{a\in A}$
-with algebra $\mathcal B(\mathbf H)=\bigoplus_a\operatorname{End}(H_a)$
-and trace $\operatorname{Tr}_{\mathbf H}=\sum_a\operatorname{Tr}_{H_a}$.
-A branch $\Phi:\mathcal B(\mathbf H)\to\mathcal B(\mathbf K)$ is a
-linear map admitting finitely many Kraus operators $K_{bar}:H_a\to K_b$
-with
+Extend the existing ordinary-trace CP target to a finite nonempty family
+$X=(H_a)_{a\in A}$ of arbitrary nonzero finite-dimensional complex Hilbert
+spaces. Use its existing notation
+$B_X=\bigoplus_a\operatorname{End}(H_a)$ and
+$\operatorname{Tr}_X=\sum_a\operatorname{Tr}_{H_a}$.
+For another such family $Y=(K_b)_{b\in B}$, a branch
+$\Phi:B_X\to B_Y$ is a linear map admitting finite Kraus lists
+$K_{b a,j}:H_a\to K_b$ such that
 \[
- \Phi(x)_b=\sum_{a,r}K_{bar}x_aK_{bar}^*,\qquad
- \sum_{b,r}K_{bar}^*K_{bar}\leq1_{H_a}\quad\text{for every }a.
+ \Phi(\rho)_b=\sum_{a,j}K_{b a,j}\rho_aK_{b a,j}^*,\qquad
+ \sum_{b,j}K_{b a,j}^*K_{b a,j}\leq1_{H_a}\quad\text{for every }a.
 \]
-Branches are identified by equality of their maps. A channel has equality
-in every displayed inequality. An instrument is a finite family of
-branches $(\Phi_o)_o$ whose sum is a channel. Outcomes remain named.
-For a positive input $\rho$ of trace one, define the probability of $o$
-as $\operatorname{Tr}(\Phi_o(\rho))$ and its conditional state by division
-by that probability only when it is positive. Use composition of maps,
-tensor product of systems and maps, and the identity map.
+Branch equality is equality of the linear maps. A channel has equality
+in every displayed inequality. An instrument has a finite nonempty outcome
+set $O$ and branches $\Phi_o:B_X\to B_Y$ with a common source and target,
+whose sum is a channel. Its retained version has codomain
+$\bigoplus_{o\in O}B_Y$ and sends $\rho$ to $(\Phi_o(\rho))_o$.
+Use the existing state and outcome convention: $\rho\geq0$,
+$\operatorname{Tr}_X\rho=1$, outcome probability
+$\operatorname{Tr}_Y\Phi_o(\rho)$, and conditional normalization only at
+positive probability. Composition is composition of maps; tensor uses
+Cartesian products of tags and ordinary Hilbert tensor factors.
 \end{definition}
 \begin{scope}
 This is an ambient finite quantum process definition. It does not assert that every branch comes from the arithmetic or stabilizer generators. Traces are ordinary, not dimension-normalized.
 \end{scope}
-\provenance{D1706}{Stipulation; SP-WAT18}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1706}{Stipulation; SP-WAT18}{See the scoped bridge checks}{Reuses: D1325,D1326,D1327; no promotion}
 
 \begin{definition}[coherent additive completion and classical tags]
 Fix an odd prime $p$ and its actual stabilizer amplitude category.
 First take the complex linear span of each Hom-set inside the ambient
 linear maps. Its matrix completion has objects finite lists
-$(\mathcal H_{p,n_1},\ldots,\mathcal H_{p,n_s})$, including the empty
+$(H_{\mathbb F_p,n_1},\ldots,H_{\mathbb F_p,n_s})$, including the empty
 list, and arrows matrices whose entries lie in these linear spans.
 Composition is matrix multiplication and dagger is adjoint transpose.
-Realize a list as $H=\bigoplus_{i=1}^s\mathcal H_{p,n_i}$.
+Realize a list as $H=\bigoplus_{i=1}^sH_{\mathbb F_p,n_i}$.
 Its coherent observable algebra is $\operatorname{End}(H)$.
 For a nonempty list the tagged observable algebra is instead
-$\bigoplus_i\operatorname{End}(\mathcal H_{p,n_i})$, embedded as the
+$\bigoplus_i\operatorname{End}(H_{\mathbb F_p,n_i})$, embedded as the
 block-diagonal operators on $H$. Both constructions and their chosen
 block decomposition are recorded; they are not identified with one another.
 \end{definition}
 \begin{scope}
 This completion deliberately adds linear combinations. Whether it preserves a proposed Gaussian fragment, or comes from classical disjoint unions, is a separate question.
 \end{scope}
-\provenance{D1707}{Stipulation; SP-CK21, SP-WAT18}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1707}{Stipulation; SP-CK21, SP-WAT18}{See the scoped bridge checks}{Reuses: D1704,D1706; no promotion}
 
 \begin{definition}[bosonic Fock space and bounded second quantization]
-For a complex Hilbert space $H$, let $P_r=(r!)^{-1}\sum_{\pi\in S_r}U_\pi$
-be the symmetrizer on the Hilbert tensor power $H^{\otimes r}$ and set
+For a complex Hilbert space $H$, let $P_r=(r!)^{-1}\sum_{\pi\in S_r}U_\pi$,
+where $U_\pi(h_1\otimes\cdots\otimes h_r)=h_{\pi^{-1}(1)}\otimes\cdots\otimes h_{\pi^{-1}(r)}$, and set
 $\operatorname{Sym}^rH=\operatorname{ran}P_r$, with
 $\operatorname{Sym}^0H=\mathbb C$. Define
 \[
@@ -180,37 +229,43 @@ $\{\xi:\sum_r r^2\|\xi_r\|^2<\infty\}$.
 \begin{scope}
 Boundedness and functor laws are obligations. No bounded second quantization of an arbitrary expansive map is asserted, and no unspecified categorical free-monoid property is imposed.
 \end{scope}
-\provenance{D1708}{Stipulation; SP-DER06}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1708}{Stipulation; SP-DER06}{See the scoped bridge checks}{Reuses: D1010; no promotion}
 
 \begin{definition}[scalar restriction and a named Frobenius datum]
-Let $E/K$ be a finite extension of finite fields and let $(V,\omega_E)$
-be a finite-dimensional symplectic $E$-space. On the underlying $K$-space
-$\operatorname{Res}_{E/K}V$ prescribe
-$\omega_K(v,w)=\operatorname{Tr}_{E/K}(\omega_E(v,w))$.
-For a nontrivial additive character $\psi_K$, prescribe
-$\psi_E=\psi_K\circ\operatorname{Tr}_{E/K}$.
-A Frobenius datum consists of the automorphism
-$\sigma(x)=x^{|K|}$ of $E$ and a bijective $\sigma$-semilinear map
-$F:V\to V$ satisfying
-$\omega_E(Fv,Fw)=\sigma(\omega_E(v,w))$.
-On the standard space $E^n\oplus E^n$ choose coordinatewise $\sigma$.
-On $\ell^2(E^n)$ its specified permutation is
-$U_F\delta_x=\delta_{\sigma(x)}$.
+Let $E/K$ be a finite extension of finite fields, with $|K|=p^s$, and let
+$(V,\omega_E)$ be a finite-dimensional symplectic $E$-space.
+On $\operatorname{Res}_{E/K}V$ prescribe
+$\omega_{\mathrm{Res}}(v,w)=\operatorname{Tr}_{E/K}(\omega_E(v,w))$.
+For a named nontrivial additive character $\chi_K$, write
+$\chi_{E/K}=\chi_K\circ\operatorname{Tr}_{E/K}$.
+The notation $\psi_E$ remains reserved for the fixed absolute-trace family;
+no equality with $\chi_{E/K}$ is stipulated for an arbitrary $\chi_K$.
+Write $\sigma_{E/K}(x)=x^{|K|}=\sigma_E^s(x)$.
+An abstract Frobenius datum additionally names a bijective
+$\sigma_{E/K}$-semilinear map $\varphi_V:V\to V$ satisfying
+$\omega_E(\varphi_Vv,\varphi_Vw)=\sigma_{E/K}(\omega_E(v,w))$.
+On $E^n\oplus E^n$ use coordinatewise $\sigma_{E/K}$.
+Its Hilbert permutation is
+$U_{E/K,n}=(U_E^s)^{\otimes n}$ on $\ell^2(E^n)$, with the empty tensor
+identity at $n=0$. The absolute permutations $\sigma_E,U_E$ keep their
+existing meanings.
 \end{definition}
 \begin{scope}
 The classical data allow characteristic two; the half-form quantum comparison is restricted to odd characteristic. Abstract symplectic spaces do not acquire descent data by omission. This does not define a field-inclusion functor.
 \end{scope}
-\provenance{D1709}{Stipulation; SP-STFIELD, SP-GH07}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1709}{Stipulation; SP-STFIELD, SP-GH07}{See the scoped bridge checks}{Reuses: D3,D1301,D1302,D1303,D1701; no promotion}
 
 \begin{definition}[a specified quantum subsystem decoder]
 Fix an odd-characteristic finite field $k$, a nontrivial additive
 character, and a symplectic linear injection $j:U\to V$ between
 finite-dimensional symplectic $k$-spaces. Put $W=j(U)^\perp$.
 A quantum subsystem datum additionally specifies finite-dimensional
-Weyl model Hilbert spaces $H_U,H_W,H_V$ and a unitary
+Weyl model Hilbert spaces $H_U,H_W,H_V$, with $W^{\mathrm s}_U$,
+$W^{\mathrm s}_W$, $W^{\mathrm s}_V$ denoting the symmetrized operators
+transported through their named coordinates, and a unitary
 $J:H_U\otimes H_W\to H_V$ satisfying
 \[
- J(W_U(u)\otimes W_W(w))J^*=W_V(ju+w).
+ J(W^{\mathrm s}_U(u)\otimes W^{\mathrm s}_W(w))J^*=W^{\mathrm s}_V(ju+w).
 \]
 Define the observable inclusion $\iota_J(a)=J(a\otimes1)J^*$ and the
 state decoder $\mathcal D_J(\rho)=\operatorname{Tr}_{H_W}(J^*\rho J)$,
@@ -221,7 +276,7 @@ for every $a\in\operatorname{End}(H_U)$.
 \begin{scope}
 The existence of the decomposition and compatible model unitary is an obligation. The datum is not scalar restriction, a generic field trace, or a non-bijective interpretation of finite-field Frobenius.
 \end{scope}
-\provenance{D1710}{Stipulation; SP-STFIELD, SP-WAT18}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1710}{Stipulation; SP-STFIELD, SP-WAT18}{See the scoped bridge checks}{Reuses: D1701,D1703,D1706; no promotion}
 
 \begin{definition}[finite-prime tensor assembly with a chosen reference]
 For every prime $p$, choose an integer $d_p\geq1$, a Hilbert space
@@ -239,7 +294,7 @@ $\varphi_{\mathrm{pr}}(\bigotimes_{p\in P}a_p)
 \begin{scope}
 The inductive and state-extension properties belong to a lemma. The matrices are specified data, not yet an all-prime Weyl assignment. Neither inter-prime arithmetic maps nor a factor type is supplied.
 \end{scope}
-\provenance{D1711}{Stipulation; SP-CM08, SP-WAT18}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1711}{Stipulation; SP-CM08, SP-WAT18}{See the scoped bridge checks}{Reuses: D1706; no promotion}
 
 \begin{definition}[a represented Bost--Connes control system]
 On $H_{\mathrm{BC}}=\ell^2(\mathbb N_{>0})$ with basis $(\delta_m)_{m\geq1}$,
@@ -262,13 +317,14 @@ $\rho_{\mathrm{BC},b}=Z_{\mathrm{BC}}(b)^{-1}e^{-bH_{\log}}$.
 \begin{scope}
 This is a concrete represented control, not an assertion of faithfulness of a universal presentation or an identification with the sought symplectic system. Convergence, invariance and CP properties remain lemma obligations.
 \end{scope}
-\provenance{D1712}{Stipulation; SP-BC95, SP-CM04, SP-CM08}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1712}{Stipulation; SP-BC95, SP-CM04, SP-CM08}{See the scoped bridge checks}{Reuses: none; no promotion}
 
 \begin{definition}[state, GNS and modular comparison data]
 A $C^*$-dynamical datum is a unital $C^*$-algebra $A$ with a point-norm
 continuous homomorphism $\sigma:\mathbb R\to\operatorname{Aut}(A)$.
 A state is a positive linear functional $\varphi$ with $\varphi(1)=1$.
-Its GNS prescription is the completion of $A/N_\varphi$ with
+Its GNS Hilbert space $H_\varphi$ is the prescribed completion of
+$A/N_\varphi$ with
 $N_\varphi=\{a:\varphi(a^*a)=0\}$ and
 $\langle[a],[b]\rangle=\varphi(a^*b)$, left action
 $\pi_\varphi(a)[b]=[ab]$, and cyclic vector $\Omega_\varphi=[1]$.
@@ -287,4 +343,4 @@ prescription is $a\mapsto\Delta_\varphi^{iu}a\Delta_\varphi^{-iu}$.
 \begin{scope}
 Analytic existence and comparison theorems must be cited or proved before use. No equality between modular flow, the specified physical flow, or Frobenius is a stipulation.
 \end{scope}
-\provenance{D1713}{Stipulation; SP-CM08, SP-CCM07}{See the lemma contracts below}{Source-first bootstrap; no promotion}
+\provenance{D1713}{Stipulation; SP-CM08, SP-CCM07}{See the scoped bridge checks}{Reuses: D1122,D1326; no promotion}

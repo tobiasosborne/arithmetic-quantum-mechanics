@@ -7,7 +7,7 @@
 | symbol | meaning | first fixed in |
 |---|---|---|
 | `p`, `m`, `q` | prime, degree, `q = p^m` for a finite field; in D1101, `q>0` is a real Hecke parameter with field specializations `q=Q` | D1, D1101 |
-| `κ`, `F_p` | the finite field `F_q` and its prime field; for D12, `κ=R/𝔪` is the residue field | D1, D12 |
+| `κ`, `F_p`, `k` | the finite field `F_q`, its prime field, and k as a bound field name; for D12, κ=R/𝔪 is the residue field | D1,D12; k used in D1104,D1701 |
 | `R`, `𝔪`, `R^×` | a finite commutative local ring; its maximal ideal; its unit group | D12 |
 | `soc(R)`, `Ann(I)` | `Ann(𝔪)`; the annihilator of an ideal `I` | D12 |
 | `V(κ)`, `V(R)` | `κ⊕κ`; `R⊕R`, the field and local-ring symplectic objects | D1, D14 |
@@ -30,8 +30,8 @@
 | `ζ` | a primitive `p`-th root of unity in `C` | D3 |
 | `ψ_ζ`, `Tr_{κ/F_p}` | `ζ^{Tr(·)}`; the absolute trace | D3 |
 | `μ_p`, `μ_4`, `U(1)` | `p`-th, 4th roots of unity; unit circle | D3 |
-| `W_β(v)` | Weyl operator / basis element of `A_{ψ,β}(V)` over the current base | D4, D16 |
-| `A_{ψ,β}(V)` | the twisted Weyl algebra over the current base | D4, D16 |
+| `W_β(v)` | Weyl basis element for the chosen cocycle; D1703 uses the same notation in arbitrary rank at β=ω/2; its concrete symmetrized model is W^s | D4,D16; extended in D1703 |
+| `A_{ψ,β}(V)` | the twisted Weyl algebra; D1703 extends the field construction to arbitrary symplectic rank at β=ω/2 | D4,D16; extended in D1703 |
 | `H_β(κ)`, `H_β(R)` | the Heisenberg groups `κ×V(κ)` and `R×V(R)` | D5, D16 |
 | `F`, `F^{(p)}` | the Weyl frame; the level-`μ_p` frame | D7, D11 |
 | `Aut_F(A)`, `Aut_F^κ(A)` | frame-preserving automorphisms; those with `κ`-linear `g` | D7 |
@@ -132,7 +132,7 @@
 | `J_i, V_i` | inclusion and normalized trace-fibre transfers | D1304 |
 | `C_i, P_i, N_i, G_i` | subfield support code, projector, isotropic phase labels and phase stabilizers; embedding subscript distinguishes these from flag indices | D1305 |
 | `F_E` | negative-kernel Fourier transform on the named field register | D1306 |
-| `P_A, C_k(A)` | full-scalar prime-field Pauli group and hierarchy on an ordered list | D1307 |
+| `P_A, C_k(A)` | full-scalar Pauli group and hierarchy on an ordered arithmetic word; D1704 uses this same C_2(A) on repeated prime-field atoms | D1307; reused in D1704 |
 | `M_E^(d)` | multiplication into a separate target register, with d separate controls | D1308 |
 | `D_f, delta_h f` | diagonal phase and backward additive difference | D1309 |
 | `(u,v)=u+vb` | coordinates in the named binary degree-four tower | D1310 |
@@ -144,7 +144,7 @@
 | `A_I; w_E,f_E,u_E,m_(E,d),j_i,v_i,e_E,t_i,c_i` | amplitude presentation and its typed generators | D1322,D1323 |
 | `H` (arithmetic interpretation) | amplitude interpretation in finite Hilbert spaces | D1324 |
 | `Proc_I, k_(b,a,j), h_(a,l)` | source-certified process category, Kraus amplitudes, residual certificate amplitudes | D1325 |
-| `B_X, Tr_X, R` (arithmetic process context) | block matrix algebra, sum of ordinary traces, CP interpretation | D1326 |
+| `B_X, Tr_X, R` (arithmetic process context) | block matrix algebra, sum of ordinary traces and CP interpretation; D1706 extends B_X and Tr_X to arbitrary Hilbert block families, while R remains the arithmetic interpretation | D1326; target extended in D1706 |
 | `p_s,q_s,D_s,d_s,a^[i],a_B` | range/complement projections, retained decoder, success arrow, code lift, named coordinate circuit | D1327 |
 
 | symbol | meaning | first fixed in |
@@ -220,30 +220,31 @@
 | `w_d(t)`, `v_d(t)`, `Z_D(beta,t)`, `Z_infty(beta,t)` | exact primitive success, its rescaling by s(t-1), and common successful mixture normalizers | D1621 |
 | `rho_(D,t)`, `rho_(infty,t)`, `W_D(beta,t)` | finite/completed common conditional densities and total physical mixture success | D1621, CMP-JOINT-LIMIT |
 
-## Symplectic Phantasm bootstrap — 2026-09-09
+## Symplectic Phantasm — shared notation, revised 2026-09-10
 
-Symbols below are scoped to the new quest. Existing character, field,
-Pauli/hierarchy and trace conventions are reused with the explicit
-restrictions in D1701–D1713; no historical meaning is changed.
+Existing Weyl algebras/generators, Pauli groups, hierarchy levels and
+ordinary block traces retain their owning rows above. No second definition
+is created by their use in the quest. Bound variables may be reused in
+separate typed formulas; the fixed character psi_E is not a freely chosen
+base character. The following rows own only the additional names.
 
 | symbol | meaning | first fixed in |
 |---|---|---|
-| `k`, `V`, `omega_V`, `overline V`, `n` (Phantasm) | fixed finite field, arbitrary-rank symplectic space, form, sign-reversed space, symplectic rank | D1701 |
-| `S_k`, `S_k^aff`, `(t,g)` | linear and affine symplectic groupoids; affine arrow v maps to gv+t | D1701 |
-| `L_k^aff`, `Delta_V`, `R dagger` | affine Lagrangian relation candidate including empty relations, diagonal identity, converse | D1702 |
-| `A_(k,psi)(V)`, `w_v`, `tau_V`, `beta_V` | arbitrary-rank odd-characteristic Weyl algebra, basis, coefficient trace, half-form cocycle | D1703 |
-| `H_(k,n)`, `W(a,b)` (Phantasm) | counting Hilbert space on k^n and the explicitly signed Schrödinger formula | D1703 |
-| `psi_p`, `P_(p,n)`, `Stab_p^amp`, `eta` (Phantasm) | chosen standard prime character, phase-extended Pauli group, actual stabilizer amplitudes, computational preparation | D1704 |
-| `Stab_p^proj`, `[T]` (Phantasm) | quotient by invertible complex scalars, with zero kept separate | D1705 |
-| `B(bold H)`, `Tr_(bold H)`, `K_bar`, `Phi_o` (Phantasm) | tagged finite matrix algebra, ordinary block trace, Kraus maps, instrument outcomes | D1706 |
-| `Mat(span_C Stab_p^amp)` | coherent matrix completion of the linear spans of actual stabilizer Hom-sets | D1707 |
-| `P_r`, `U_pi`, `Sym^r H`, `Gamma_s(H)`, `Omega`, `N_H` (Fock) | symmetrizer, permutation of factors, symmetric sector, completed symmetric Fock space, vacuum, particle number | D1708 |
-| `Res_(E/K)V`, `omega_E`, `omega_K`, `(sigma,F)` | scalar restriction, original and trace forms, relative semilinear Frobenius datum | D1709 |
-| `psi_K`, `psi_E`, `U_F` (scalar restriction) | named base character, its trace composite, coordinatewise relative-Frobenius permutation | D1709 |
-| `j`, `J`, `iota_J`, `D_J` (subsystem) | symplectic injection, compatible model unitary, observable inclusion, trace-dual decoder | D1710 |
-| `P`, `A_P`, `iota_QP`, `A_pr`, `varphi_pr`, `d_p`, `rho_p` (prime assembly) | finite prime set, finite tensor algebra, unital embedding, norm completion, product reference, chosen local dimension and density | D1711 |
-| `H_BC`, `A_BC^rep`, `e(r)`, `mu_n`, `H_log`, `nu_n`, `L_n`, `Z_BC(b)`, `rho_(BC,b)` | represented Bost–Connes control, root phases, semigroup isometries, logarithmic energy, corner and adjoint maps, partition sum and Gibbs density | D1712 |
-| `b`, `u`, `sigma_u` (dynamics) | inverse temperature, real time, specified physical automorphism flow; b is not a polarizing cocycle | D1712,D1713 |
-| `N_varphi`, `H_varphi`, `pi_varphi`, `Omega_varphi`, `M_varphi`, `S_varphi`, `J_varphi`, `Delta_varphi` | GNS null space, Hilbert completion, representation, cyclic vector, represented von Neumann algebra and modular data under the stated separating-vector hypothesis | D1713 |
-| `alpha_(t,g)` | affine Egorov *-isomorphism proposed on Weyl generators | SP-EGOROV |
-| `DG-CHAR2`, `DG-REL-LIFT`, `DG-RIG`, `DG-HIGHER`, `DG-GLOBAL`, `DG-MODULAR`, `DG-SPECTRUM` | research decision gates in the quest plan; these are not mathematical claim identifiers | quest work order |
+| `omega_V`, `overline V`, `n` (symplectic rank) | form on an arbitrary-rank space, its sign reversal and half the phase-space dimension | D1701 |
+| `S_k`, `S_k^aff`, `(t,g)` | linear and affine symplectic groupoids; v maps to gv+t | D1701 |
+| `L_k^aff`, `Delta_V`, `R dagger` | affine Lagrangian relation candidate, including empty relations; diagonal and converse | D1702 |
+| `tau_V`, `beta_V` | coefficient trace and half-form cocycle in the existing Weyl algebra notation | D1703 |
+| `H_(k,n)`, `W^s_(k,n)(a,b)` | coordinate Hilbert tensor of n existing k-registers; symmetrized operator with the same position labels as D8, related by the positive half-dot phase; W^s_V denotes its coordinate transport | D1703; D1710 for abstract-space models |
+| `Stab_p^amp` | category generated by the existing C_2(A), computational preparations and actual complex scalars; equality of actual maps | D1704 |
+| `Stab_p^proj`, `[T]` | quotient by invertible complex scalars with a distinct zero class | D1705 |
+| `K_(b a,j)`, `Phi_o` (ambient CP target) | actual Hilbert Kraus maps and outcome maps; B_X and Tr_X reuse the D1326 row | D1706 |
+| `Mat(span_C Stab_p^amp)` | the specified coherent matrix completion; not the arithmetic R_p syntax or graded Hecke completion | D1707 |
+| `P_r`, `U_pi`, `Sym^r H`, `Gamma_s(H)`, `Omega`, `N_H` (Fock) | symmetrizer, permutation action, symmetric sector, Hilbert Fock sum, vacuum and particle number; the one-mode polynomial completion is already F_bos in D1010 | D1708 |
+| `Res_(E/K)V`, `omega_Res`, `chi_K`, `chi_(E/K)` | scalar restriction, trace form, named general base character and its relative-trace composite; neither character symbol replaces the fixed psi_E family | D1709 |
+| `sigma_(E/K)`, `varphi_V`, `U_(E/K,n)` | relative field power, named abstract semilinear datum and tensor of powers of the existing U_E | D1709 |
+| `j`, `J`, `iota_J`, `D_J` (nondegenerate subsystem) | symplectic injection, compatible model unitary, observable inclusion and trace-dual decoder; distinct from a field support-code success map | D1710 |
+| `P`, `A_P`, `iota_QP`, `A_pr`, `varphi_pr`, `d_p`, `rho_p` (prime tensor assembly) | finite prime set, finite tensor algebra, unital embedding, norm completion, product reference and chosen local dimensions/densities | D1711 |
+| `H_BC`, `A_BC^rep`, `e(r)`, `mu_n`, `H_log`, `nu_n`, `L_n`, `Z_BC(b)`, `rho_(BC,b)` | represented BC benchmark, phase and semigroup operators, logarithmic energy, corner and adjoint maps, partition sum and density | D1712 |
+| `b`, `u`, `sigma_u` (real dynamics) | inverse temperature, time and physical automorphism flow; these are bound real variables, not Weyl labels or field Frobenius | D1712,D1713 |
+| `N_varphi`, `H_varphi`, `pi_varphi`, `Omega_varphi`, `M_varphi`, `S_varphi`, `J_varphi`, `Delta_varphi` | GNS and modular data under the stated cyclic/separating hypothesis | D1713 |
+| `alpha_(t,g)` | affine Egorov star-isomorphism on the existing Weyl generators | SP-EGOROV |

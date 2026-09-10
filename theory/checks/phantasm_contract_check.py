@@ -15,7 +15,7 @@ import re
 ROOT = Path(__file__).resolve().parents[2]
 REQUIRED = {'Title', 'Status', 'Stage', 'Definitions', 'Dependencies',
             'Sources', 'Inputs', 'Output', 'Choices', 'Scope', 'Proof',
-            'Review', 'Checks', 'Evidence'}
+            'Review', 'Checks', 'Evidence', 'Inherited', 'Reuse', 'Remaining'}
 STATUSES = {'PROVED', 'SKETCH', 'CONJECTURE', 'REFUTED'}
 MUTATIONS = {
     'duplicate-node': 'G1', 'empty-scope': 'G1',
@@ -25,6 +25,9 @@ MUTATIONS = {
     'refuted': 'G4', 'promote': 'G4',
     'source-hash': 'G5', 'source-gap': 'G5',
     'labbook': 'G6', 'definition-drift': 'G6',
+    'notation-alias': 'G7', 'notation-owner': 'G7',
+    'inherited-status': 'G8', 'untracked-reuse': 'G8',
+    'definition-reuse': 'G8', 'definition-cycle': 'G8',
 }
 
 
@@ -87,7 +90,8 @@ def parse(data):
         cid = row[0].strip('`* ')
         require(cid not in claims, 'G1', 'duplicate canonical claim ' + cid)
         require(len(row) >= 6, 'G1', 'malformed canonical row ' + cid)
-        claims[cid] = dict(statement=row[1], status=row[2].strip('`* '), deps=row[3])
+        claims[cid] = dict(statement=row[1], status=row[2].strip('`* '),
+                           deps=row[3], proof_cell=row[4])
     nodes = {}
     for match in re.finditer(r'^## (SP-[A-Z0-9-]+)\n(.*?)(?=^## |\Z)',
                              data['dag_text'], re.M | re.S):
@@ -100,7 +104,8 @@ def parse(data):
         require(all(v.strip() for v in node.values()), 'G1', 'empty field ' + cid)
         require(node['Status'] in STATUSES and node['Stage'].isdigit(),
                 'G1', 'bad status/stage ' + cid)
-        for label in ('Construction outline', 'Falsifier to implement', 'Required mutations'):
+        require(node['Evidence'] in {'planned', 'draft', 'admitted'}, 'G1', 'bad evidence state ' + cid)
+        for label in ('Construction outline', 'Falsifier scope', 'Required mutations'):
             require(re.search(r'\*\*' + label + r'\.\*\* \S', body),
                     'G1', 'missing ' + label + ': ' + cid)
         nodes[cid] = node
@@ -148,7 +153,7 @@ def mutate(data, mutation):
     elif mutation == 'orphan-claim':
         d['claims']['SP-ORPHAN'] = copy.deepcopy(d['claims'][cid])
     elif mutation == 'cycle':
-        d['nodes'][cid]['Dependencies'] = 'SP-EGOROV'
+        d['nodes'][cid]['Dependencies'] = ','.join(csv(d['nodes'][cid]['Dependencies']) + ['SP-EGOROV'])
         d['claims'][cid]['deps'] += ',SP-EGOROV'
     elif mutation == 'decision-input':
         d['decisions']['DG-GLOBAL']['deps'].append('DG-MISSING')
@@ -165,9 +170,23 @@ def mutate(data, mutation):
     elif mutation == 'source-gap':
         d['nodes'][cid]['Sources'] = 'SP-TITS57'
     elif mutation == 'labbook':
-        d['tex'] = d['tex'].replace('faithful normalized trace', 'arbitrary normalized trace', 1)
+        d['tex'] = re.sub(r'faithful\s+normalized\s+trace', 'arbitrary normalized trace',
+                          d['tex'], count=1)
     elif mutation == 'definition-drift':
         d['tex'] = d['tex'].replace('The zero space is allowed.', 'The zero space is excluded.', 1)
+    elif mutation == 'notation-alias':
+        d['notation'] += '\n| `P_(p,n)` | a second Pauli group name | D1704 |\n'
+    elif mutation == 'notation-owner':
+        d['notation'] = '\n'.join(x for x in d['notation'].splitlines() if '`W^s_(k,n)(a,b)`' not in x)
+    elif mutation == 'inherited-status':
+        d['claims']['F1-REAL']['status'] = 'SKETCH'
+    elif mutation == 'untracked-reuse':
+        d['nodes'][cid]['Dependencies'] = ','.join(x for x in csv(d['nodes'][cid]['Dependencies']) if x != 'F1-REAL')
+        d['claims'][cid]['deps'] = ','.join(x for x in csv(d['claims'][cid]['deps']) if x != 'F1-REAL')
+    elif mutation in ('definition-reuse', 'definition-cycle'):
+        target = 'D999999' if mutation == 'definition-reuse' else 'D1703'
+        d['defs']['D1701']['body'] = re.sub(r'(\*\*Reuses\.\*\* )[^\n]*',
+                                          lambda m: m[1] + target + '.', d['defs']['D1701']['body'])
     return d
 
 
@@ -207,7 +226,7 @@ def check(d, root):
                 'G2', 'unresolved decision prerequisite ' + key)
         require(all(x in d['sources'] or x in d['gaps'] for x in decision['sources']),
                 'G2', 'unresolved decision source ' + key)
-        recorded = set(re.findall(r'(?:SP|DG)-[A-Z0-9-]+', plan_decisions[key][1]))
+        recorded = set(re.findall(r'\b[A-Z][A-Z0-9]*(?:-[A-Za-z0-9]+)+\b', plan_decisions[key][1]))
         recorded -= d['sources'].keys() | d['gaps']
         require(recorded == set(decision['deps']), 'G2', 'plan prerequisite drift ' + key)
     print('G2 PASS: contract, definition, dependency and source references resolve')
@@ -268,11 +287,13 @@ def check(d, root):
         r'\\begin\{scope\}\s*(.*?)\\end\{scope\}\s*\\provenance\{(D\d+)\}',
         d['tex'], re.S)
     active_defs = {key for key in defs if 1701 <= int(key[1:]) <= 1799}
+    def_envs = [x for x in def_envs if x[3] in active_defs]
     require(len(def_envs) == len(active_defs) and {x[3] for x in def_envs} == active_defs,
             'G6', 'labbook definition coverage drift')
     for title, body, scope, did in def_envs:
         match = re.fullmatch(r'\s*(.*?)\s*\*\*Scope\.\*\* (.*?)\s*'
-                             r'\*\*Sources\.\*\* (.*?)\s*\*\*Obligations\.\*\* (.*?)\s*',
+                             r'\*\*Sources\.\*\* (.*?)\s*\*\*Obligations\.\*\* (.*?)\s*'
+                             r'\*\*Reuses\.\*\* (.*?)\s*\*\*Delta\.\*\* (\S.*?)\s*',
                              defs[did]['body'], re.S)
         require(match is not None, 'G6', 'definition metadata malformed ' + did)
         require(norm(title) == norm(defs[did]['title']) and
@@ -298,6 +319,53 @@ def check(d, root):
     for name in ('symplectic_phantasm', 'symplectic_phantasm_contracts'):
         require('\\input{sections/' + name + '}' in d['main'], 'G6', 'missing LaTeX input ' + name)
     print(f'G6 PASS: {len(active_defs)} exact definitions and {len(nodes)} exact claim restatements')
+
+    # Selected semantic-name contracts, not a general mathematics parser.
+    notation = d['notation'].split('## Symplectic Phantasm', 1)[1]
+    obsolete = ('A_(k,psi)(V)', 'w_v', 'P_(p,n)', 'psi_p', 'B(bold H)', 'Tr_(bold H)', 'U_F')
+    require(not any('`'+x+'`' in notation for x in obsolete), 'G7', 'retired duplicate alias reintroduced')
+    owned = {'W^s_(k,n)(a,b)': 'D1703', 'chi_(E/K)': 'D1709',
+             'U_(E/K,n)': 'D1709', 'Stab_p^amp': 'D1704'}
+    rows = [line for line in notation.splitlines() if line.startswith('|')]
+    for symbol, owner in owned.items():
+        matches = [line for line in rows if '`'+symbol+'`' in line]
+        require(len(matches) == 1 and owner in matches[0], 'G7', 'missing/duplicate notation owner ' + symbol)
+    require('\\psi(-b\\cdot x+a\\cdot b/2)f(x-a)' in defs['D1703']['body'],
+            'G7', 'reference-aligned symmetrized wavefunction convention drift')
+    require('P_A' in defs['D1704']['body'] and 'C_2(A)' in defs['D1704']['body'] and
+            '\\mathcal P' not in defs['D1704']['body'], 'G7', 'second Pauli/Clifford definition')
+    require('\\chi_K' in defs['D1709']['body'] and '\\psi_K' not in defs['D1709']['body'] and
+            '\\chi_{E/K}' in defs['D1709']['body'], 'G7', 'relative character notation conflated')
+    print('G7 PASS: selected shared-name ownership and convention guards')
+
+    for cid, node in nodes.items():
+        inherited = csv(node['Inherited'])
+        require(set(inherited) <= set(csv(node['Dependencies'])), 'G8', 'untracked inherited result ' + cid)
+        for old in inherited:
+            require(old in claims and claims[old]['status'] == 'PROVED' and not old.startswith('SP-'),
+                    'G8', 'inherited result is not an admitted earlier claim: ' + old)
+            paths = re.findall(r'theory/[^\s`|;,]+\.md', claims[old]['proof_cell'])
+            require(paths and all((root/path).is_file() for path in paths),
+                    'G8', 'inherited proof does not resolve: ' + old)
+    reuse_edges = {}
+    for did in active_defs:
+        reused = re.search(r'\*\*Reuses\.\*\* ([^\n]+)', defs[did]['body'])
+        parents = csv(reused[1].rstrip('.'))
+        require(all(x in defs for x in parents), 'G8', 'unresolved reused definition ' + did)
+        reuse_edges[did] = parents
+    done, stack = set(), set()
+    def definition_visit(did):
+        require(did not in stack, 'G8', 'definition reuse cycle at ' + did)
+        if did in done or did not in reuse_edges:
+            return
+        stack.add(did)
+        for parent in reuse_edges[did]:
+            definition_visit(parent)
+        stack.remove(did)
+        done.add(did)
+    for did in active_defs:
+        definition_visit(did)
+    print('G8 PASS: inherited proof status/paths and acyclic definition reuse')
     ready = [cid for cid, n in nodes.items() if n['Status'] != 'PROVED' and
              all(claims[x]['status'] == 'PROVED' for x in csv(n['Dependencies']))]
     priorities = {cid: int(priority) for cid, _, priority in d['order']}

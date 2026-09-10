@@ -1,5 +1,13 @@
 # Symplectic Phantasm: guidance audit and definition inventory
 
+**Reuse correction, 2026-09-10.** The admitted repository proofs are also
+ground truth. The current DAG now credits F1-REAL/F1-FUNCT and the relevant
+FRB/FRP results, and each definition records its reused content and actual
+extension. See `symplectic-phantasm-reuse.md` for the interface review.
+In the revised notation W^s is the explicit symmetrized model with the D8
+position labels, and chi_K/chi_(E/K) denote freely chosen relative
+characters; psi_E keeps its fixed trace-family meaning.
+
 Source-first bootstrap, 2026-09-09. This audits
 `fundamentals-two-categories.md`; it does not rewrite the historical note.
 Bibliographic truth, routes, hashes and locators live in `refs/LEDGER.md`.
@@ -59,13 +67,13 @@ exact symbols, variance or phase convention.
 |---|---|---|
 | Symplectic objects, rank, linear and affine symmetries | D1701 | Generalizes D1; SP-GH07, SP-W09; arbitrary-rank scope explicit |
 | Linear/affine Lagrangian correspondences | D1702 | SP-W09, SP-CK21; relational closure is SP-LREL |
-| Character, Weyl algebra, Heisenberg system and Hilbert realization | D3 and D1703 | Generalizes D4; SP-PRASAD09, SP-GH07; odd half-form convention explicit |
-| Actual pure stabilizer amplitudes | D1704 | D1307 Pauli/Clifford convention; SP-GROSS06, SP-CK21 |
+| Character, Weyl algebra, Heisenberg system and Hilbert realization | D3,D4,D5,D8,D1001–D1003 and D1703 | F1-REAL already supplies arbitrary finite configuration size; the new content is its symplectic-coordinate, half-form and raw-center comparison |
+| Actual pure stabilizer amplitudes | D1704 | Reuses D1307 P_A and C_2(A); only the actual-amplitude category is new |
 | Scalar-quotient stabilizer comparison | D1705 | SP-CK21; retains zero separately; not used as a probability space |
-| CP maps, channels, instruments, tagged systems | D1706 | Generalizes D1326 to an ambient finite setting; SP-WAT18 |
+| CP maps, channels, instruments, tagged systems | D1325–D1327 and D1706 | Reuses ordinary trace and output retention; the ambient target extension does not assert source exhaustion or change source equality |
 | Coherent sums and the candidate additive completion | D1707 | Explicit matrix completion; relation to arithmetic disjoint union remains DG-RIG |
-| Bosonic Fock space and second quantization | D1708 | SP-DER06; algebraic and completed domains distinguished |
-| Field extension, trace form and Frobenius datum | D1709 | Generalizes D1301–D1303; SP-STFIELD |
+| Bosonic Fock space and second quantization | D1010 and D1708 | D1010 already names the one-mode completion; SP-DER06 supplies the general Hilbert/contraction comparison |
+| Field extension, trace form and Frobenius datum | D1301–D1303 and D1709 | Reuses FRB-TRACE/FRB-FROB; distinguishes chi_(E/K), sigma_(E/K) and powers of the existing U_E from the fixed family |
 | Subsystem inclusion and partial trace | D1710 | SP-WAT18; not a replacement definition for existing arithmetic code transfers |
 | Tensor assembly across primes, product reference and GNS | D1711 and D1713 | SP-CM08; elementary finite matrix construction, no BC identification |
 | BC benchmark, powering maps and energy | D1712 | SP-BC95, SP-CM04, SP-CM08; concrete represented benchmark only |

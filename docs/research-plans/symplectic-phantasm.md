@@ -23,7 +23,9 @@ investigating its ideas; it does not endorse its mathematical assertions.
    actual title, authors, hypotheses and theorem/equation locators. Register
    routes, hashes and scope in `refs/LEDGER.md`. A missing source has a GAP
    entry and cannot support a claim. Citation discovery is not verification.
-2. Fix a small definition layer. Every object, Hom-set, composition, unit,
+2. First inventory the admitted results and existing definitions. Record
+   the exact reusable clauses and the remaining comparison; ground truth
+   includes admitted local proofs. Then fix a small definition layer. Every object, Hom-set, composition, unit,
    variance, involution, scalar quotient and named choice must be visible.
    Put stipulations in `definitions.md` and symbols in `notation.md`.
    Properties such as closure, canonicity and positivity belong to claims.
@@ -75,31 +77,39 @@ formulated bootstrap, not for an as-yet undefined global construction.
 
 | Gate | Prerequisites | Required decision and reviewable output |
 |---|---|---|
-| DG-CHAR2 | SP-WEYL, SP-EGOROV; SP-GH08 source audit | Specify characteristic-two phase/central-extension data and compatibility with the odd-prime package; retain the existing characteristic-two claims at their present scope |
-| DG-REL-LIFT | SP-STAB-REL, SP-SCALAR, SP-CP | Choose a decorated relation or circuit presentation retaining amplitudes, zero maps and probabilities; state normalization/composition laws and compare exactly with the scalar-quotient source |
+| DG-CHAR2 | SP-WEYL, SP-EGOROV, F1-REAL, F1-RING, WH-WEIL-a, WH-WEIL-c, WH-WEIL-d; SP-GH08 source audit | Reuse the admitted characteristic-two models. Specify the additional symmetry-lift/phase data; the general splitting conjecture is not an established input |
+| DG-REL-LIFT | SP-STAB-REL, SP-SCALAR, SP-CP, FRP-CAT, FRP-CP | Compare the existing scalar-retaining arithmetic source on matched fragments, then choose the required relation enrichment; its higher gates and coefficient restrictions prevent identifying the entire source with pure stabilizer theory |
 | DG-RIG | SP-TENSOR, SP-SUM, SP-FOCK | Choose formal additive completion, disjoint unions, or another explicit classical construction; prove distributivity and the quantum comparison without assuming all coherent sums preserve the stabilizer fragment |
-| DG-HIGHER | SP-EGOROV, SP-TRACE; SP-CGK17 | Specify polynomial functions and phase precision, finite-field polynomial identities, allowed nonlinear data and composition closure; first work one cubic phase example, then decide the correct general claim |
+| DG-HIGHER | SP-EGOROV, SP-TRACE, FRB-HIERARCHY, FRB-NATURAL; SP-CGK17 | Start from the admitted multiplication/phase families and their d=2 cubic example. The new work is their nonlinear geometric interpretation and any needed extension, with phase precision and composition explicit |
 | DG-GLOBAL | SP-PRIME, SP-BC-CONTROL, SP-FROB, SP-SUBSYS, DG-CHAR2, DG-REL-LIFT, DG-RIG | Give the actual inter-prime arithmetic maps and their composition laws; an uncoupled product alone does not define a symplectic Bost–Connes system |
 | DG-MODULAR | DG-GLOBAL | Choose a reference state, construct GNS, identify the support and faithfulness conditions, prove the dynamical/KMS relation with its sign and temperature scaling; factor type is an output |
 | DG-SPECTRUM | DG-MODULAR | Define the operator, its domain, trace/distribution and arithmetic comparison; separate partition function, implementing spectrum, channel spectrum and zeros |
 
-## First bounded work order
+## First bounded work order — revised for reuse, 2026-09-10
 
-After this bootstrap is registered, take **SP-WEYL → SP-EGOROV → SP-TENSOR**.
-The product is a checked local quantization contract for arbitrary rank,
-with a worked one-qudit and two-qudit example. Use the canonical algebra
-assignment and projective unitary implementers first; any preferred genuine
-Hilbert-space lift is an additional comparison with Gurevich–Hadani's
-oriented models, including their contravariant convention.
+Take **SP-WEYL → SP-EGOROV → SP-TENSOR** as a sequence of explicit
+comparisons with admitted results. SP-WEYL already has a structured
+corollary draft in `theory/symplectic-phantasm/reuse.md`: F1-REAL applies to
+A=(k^n,+), and F1-DUAL/F1-WEYL supply the character and cocycle data.
+The new work is symplectic coordinates, the half-form rephasing, the
+raw-center quotient, and the trace/unit match. Review that bridge rather
+than reopening the finite Stone–von Neumann theorem.
 
-Preread the local SP-GH07, SP-GH09 and SP-PRASAD09 source locators, the
-definitions listed in the DAG, and the existing rank-one conventions in D3 and D4.
-Write the exact falsifier expectations before the proof lands. The proof
-must identify the rank-one specialization with the current Weyl conventions,
-include the zero-dimensional unit, and verify the affine semidirect-product
-law and monoidal coherence. Do not add all-prime assembly or higher gates
-to this first work order.
+SP-EGOROV then checks the affine action and its projective implementation.
+SP-TENSOR uses F1-FUNCT for the configuration-product comparison and adds
+the half-form phase and affine naturality checks. Do not depend on
+SP-TENSOR to establish SP-WEYL; the admitted F1-FUNCT is a separate node.
+The local Gurevich–Hadani sources remain comparison references for a
+preferred genuine lift and its oriented, contravariant model conventions.
 
-The source and definition bootstrap makes no claim promotion. Subsequent
-agents record completed nodes, residual scope and the next ready node in
-`HANDOFF.md`, preserving the single statements in the canonical claim table.
+The exact bridge probes are `theory/checks/phantasm_reuse_check.py`, with
+scope and mutations registered beside it. They compare the existing
+Abelian implementation with the symmetrized wavefunction, and distinguish
+a general relative character from the fixed absolute-trace family.
+They do not prove the infinite or categorical claims. All assembled SP
+rows stay SKETCH pending their required promotion review.
+
+The Inherited, Reuse and Remaining fields of the argument DAG are the
+canonical reuse record. D1701–D1713 have Reuses and Delta fields; the
+notation review is summarized in `symplectic-phantasm-reuse.md`. No new
+claim or definition numbers were needed for this repair.

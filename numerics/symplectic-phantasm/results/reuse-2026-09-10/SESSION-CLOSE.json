@@ -1,0 +1,19 @@
+{
+  "time": "2026-09-10T07:33:29.961773+00:00",
+  "command": "bash scripts/session-close.sh",
+  "exit_code": 0,
+  "green_suites": 27,
+  "red_runs": 270,
+  "new_bridge_comparisons": 141027,
+  "new_contract_mutations": 21,
+  "new_bridge_mutations": 11,
+  "claims_promoted": [],
+  "definitions_added": [],
+  "pdf_pages": 174,
+  "SESSION-CLOSE_raw_sha256": "6e82a2b64c432956d6b53552dd47fd2d69156593b25ed92e83eacaac07317c91",
+  "SESSION-CLOSE_archive_sha256": "4fd264bcf98d4f468becf7fc2b2d2d461301d56e53ac30158a6706b0c2dd07b0",
+  "BUILD_raw_sha256": "00c3d4886d8ec7559364498c5c2b02b1d2faf3237a23712a01046f37defe96d0",
+  "BUILD_archive_sha256": "6a5150295ddb4f5baf9d2259ba8c4aad057293a50e0b65098814038490eb44bd",
+  "final_pdf_sha256": "67c0a52576627b31d630443857f8e706ac59401caf12bcd4c70d3aee9e256a2e",
+  "handoff_sha256": "41eb73434b26b92f2877bd36afcbb15a5c83a8a2e3107e2aa325507080df218c"
+}

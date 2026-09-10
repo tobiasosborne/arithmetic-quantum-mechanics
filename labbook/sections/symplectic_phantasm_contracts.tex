@@ -1,222 +1,215 @@
-\subsection{Lemma contracts and construction order}
+\subsection{Lemma contracts and remaining comparisons}
 
-The following propositions fix the statements to be built. The construction
-outlines and preregistered falsifier designs are recorded in the argument
-graph; no mathematical falsifier for this increment is reported as passed.
-The first cluster is the Weyl realization, affine covariance and tensor
-compatibility. Subsequent clusters add relation semantics, particle sectors,
-arithmetic extensions, and independent global control objects.
+The first contract is a finite-abelian corollary with an explicit phase and
+central-quotient comparison. The underlying tensor theorem is already
+available. The statements below distinguish these inherited results from
+the remaining affine naturality, relation semantics and analytic work.
+All new assembled statements retain sketch status.
 
-\begin{proposition}[Arbitrary-rank Weyl realization]
+\begin{proposition}[Weyl realization]
 \statusSketch{}
-For every odd-characteristic finite field $k$, nontrivial additive character
-$\psi$, and symplectic $k$-space $V$ of dimension $2n$, the prescribed Weyl
-algebra is a unital $*$-algebra with faithful normalized trace $\tau_V$ and
-is $*$-isomorphic to $\operatorname{End}(\mathbb C^{\#k^n})$. Its standard
-formula is a unitary irreducible realization; fixed-central-character
-irreducibles are unique up to unitary equivalence. Unit-norm intertwiners
-between irreducible unitary models are unique up to $U(1)$. Rank zero gives
-$\mathbb C$; rank one specializes to the existing Weyl algebra at
+For every odd-characteristic finite field $k$ of cardinality $q$, nontrivial additive
+character $\psi$, and symplectic $k$-space $V$ of dimension $2n$, at
+$\beta_V=\omega_V/2$ the Weyl algebra is a unital $*$-algebra with faithful
+normalized trace $\tau_V$ and is $*$-isomorphic to $\operatorname{End}(\mathbb
+C^{q^n})$. Its standard formula is a unitary irreducible realization;
+fixed-central-character irreducibles are unique up to unitary equivalence. Unitary
+intertwiners between irreducible unitary models are unique up to $U(1)$. Rank zero
+gives $\mathbb C$; rank one specializes to the existing Weyl algebra at
 $\beta=\omega/2$.
 \end{proposition}
 \begin{scope}
 Odd characteristic only; no preferred abstract-space basis or genuine symmetry lift is asserted.
 \end{scope}
-\provenance{SP-WEYL}{Construction outline in the argument DAG; SP-GH07,SP-PRASAD09,SP-GROSS06}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-WEYL}{Inherited: F1-DUAL,F1-WEYL,F1-REAL; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
 
 \begin{proposition}[Affine symmetries and projective implementation]
 \statusSketch{}
-For fixed odd-characteristic $k$ and nontrivial $\psi$, an affine symplectic
-arrow $(t,g):V\to W$ induces the $*$-isomorphism
-$\alpha_{t,g}(w_v)=\psi(\omega_W(t,gv))w_{gv}$.
-These assignments respect identities and affine composition exactly.
-On irreducible unitary models they have unique projective unitary
-implementers. Composition of those implementers agrees in the
-$U(1)$ quotient.
+For a fixed odd-characteristic finite field $k$ and nontrivial additive character
+$\psi$, put $\beta_V=\omega_V/2$ on each symplectic space. An affine symplectic arrow
+$(t,g):V\to W$ induces the $*$-isomorphism
+$\alpha_{t,g}(W_{\beta_V}(v))=\psi(\omega_W(t,gv))W_{\beta_W}(gv)$. These assignments
+respect identities and affine composition exactly. On irreducible unitary models they
+have unique projective unitary implementers. Composition of those implementers agrees
+in the $U(1)$ quotient.
 \end{proposition}
 \begin{scope}
 This is a covariant algebra functor and a projective implementation statement. Choosing a genuine linear lift is a separate comparison.
 \end{scope}
-\provenance{SP-EGOROV}{Construction outline in the argument DAG; SP-GH07,SP-GH09,SP-GROSS06}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-EGOROV}{Inherited: F1-REAL; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Symplectic sum and quantum tensor compatibility]
 \statusSketch{}
-For fixed odd-characteristic $k$ and nontrivial $\psi$, the assignment
-$w_{(v,w)}\mapsto w_v\otimes w_w$ gives a natural trace-preserving
-$*$-isomorphism $\mathcal A_{k,\psi}(V\oplus W)\to
-\mathcal A_{k,\psi}(V)\otimes\mathcal A_{k,\psi}(W)$.
-Together with the rank-zero unit these maps obey the associativity,
-unit and symmetry diagrams. The corresponding unitary model identifications
-obey these diagrams projectively.
+For a fixed odd-characteristic finite field $k$ and nontrivial additive character
+$\psi$, put $\beta_V=\omega_V/2$, $\beta_W=\omega_W/2$. The assignment
+$W_{\beta_V\oplus\beta_W}(v,w)\mapsto W_{\beta_V}(v)\otimes W_{\beta_W}(w)$ gives a
+natural trace-preserving $*$-isomorphism $A_{\psi,\beta_V\oplus\beta_W}(V\oplus W)\to
+A_{\psi,\beta_V}(V)\otimes A_{\psi,\beta_W}(W)$. Together with the rank-zero unit
+these maps obey the associativity, unit and symmetry diagrams. The corresponding
+unitary model identifications obey these diagrams projectively.
 \end{proposition}
 \begin{scope}
 The source operation is symplectic direct sum. This does not construct a coherent additive completion of the classical category.
 \end{scope}
-\provenance{SP-TENSOR}{Construction outline in the argument DAG; SP-GH07,SP-GH09}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-TENSOR}{Inherited: F1-FUNCT; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
 
 \begin{proposition}[Composition of affine Lagrangian relations]
 \statusSketch{}
-For every finite field $k$, the affine Lagrangian relation prescription is
-closed under relational composition and product and forms a dagger
-symmetric monoidal category. Its unit is the zero symplectic space.
-Graphs of affine symplectic isomorphisms define a faithful symmetric
-monoidal functor from the affine symmetry groupoid.
+For every finite field $k$, the affine Lagrangian relation prescription is closed
+under relational composition and product and forms a dagger symmetric monoidal
+category. Its unit is the zero symplectic space. Graphs of affine symplectic
+isomorphisms define a faithful symmetric monoidal functor from the affine symmetry
+groupoid.
 \end{proposition}
 \begin{scope}
 This concerns finite linear/affine geometry, including empty relations. It does not assert a normalized quantization of those relations.
 \end{scope}
-\provenance{SP-LREL}{Construction outline in the argument DAG; SP-W09,SP-LW14,SP-CK21}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-LREL}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[The scalar-quotient stabilizer comparison]
 \statusSketch{}
-For an odd prime $p$, restrict the affine Lagrangian relation category to
-the standard spaces $\mathbb F_p^{2n}$, $n\geq0$. There is a dagger
-symmetric monoidal equivalence to
-$\mathsf{Stab}^{\mathrm{proj}}_p$ sending rank $n$ to
-$\ell^2(\mathbb F_p^n)$ and the empty relation to the zero map class.
+For an odd prime $p$, restrict the affine Lagrangian relation category to the
+standard spaces $\mathbb F_p^{2n}$, $n\geq0$. There is a dagger symmetric monoidal
+equivalence to $\mathsf{Stab}^{\mathrm{proj}}_p$ sending rank $n$ to $\ell^2(\mathbb
+F_p^n)$ and the empty relation to the zero map class.
 \end{proposition}
 \begin{scope}
 The comparison is modulo all invertible complex scalars and is only formulated here for prime fields. It is not a probability-preserving instrument functor.
 \end{scope}
-\provenance{SP-STAB-REL}{Construction outline in the argument DAG; SP-CK21,SP-BC24}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-STAB-REL}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Scalar normalization]
 \statusSketch{}
-For finite-dimensional Hilbert spaces $H,K$ and a linear map $T:H\to K$,
-the map $\Phi_T(\rho)=T\rho T^*$ is completely positive and is
-trace-nonincreasing exactly when $T^*T\leq1$.
-For every complex $c$, $\Phi_{cT}=\lvert c\rvert^2\Phi_T$.
-Consequently a scalar-quotient stabilizer arrow becomes a specified
-successful branch only after a representative with an admissible norm is
-chosen; a phase change alone does not change that branch.
+For nonzero finite-dimensional Hilbert spaces $H,K$ and a linear map $T:H\to K$, the
+map $\Phi_T(\rho)=T\rho T^*$ is completely positive and is trace-nonincreasing
+exactly when $T^*T\leq1$. For every complex $c$, $\Phi_{cT}=\lvert c\rvert^2\Phi_T$.
+Consequently a scalar-quotient stabilizer arrow becomes a specified successful branch
+only after a representative with an admissible norm is chosen; a phase change alone
+does not change that branch.
 \end{proposition}
 \begin{scope}
 Zero outcomes are retained and never conditionally normalized. This describes the additional data for an operational lift, not a claimed canonical choice of that data.
 \end{scope}
-\provenance{SP-SCALAR}{Construction outline in the argument DAG; SP-WAT18,SP-CK21}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-SCALAR}{Inherited: FRP-CP; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Closure and normalization of finite instruments]
 \statusSketch{}
-For finite quantum systems with ordinary block traces, the Kraus branch
-prescription is equivalent to complete positivity and trace
-nonincrease. Channels, branches and instruments compose and tensor with
-the stated normalizations. Sequential instruments retain the ordered pair
-of outcomes, and summing over those pairs gives a channel. Adjoint maps
-under trace duality reverse the direction; a channel has a unital adjoint.
+For finite quantum systems with ordinary block traces, the Kraus branch prescription
+is equivalent to complete positivity and trace nonincrease. Channels, branches and
+instruments compose and tensor with the stated normalizations. Instruments have a
+common source and target; retaining outcomes sends the output to the direct sum of
+the outcome blocks, without a factor equal to the number of outcomes. Sequential
+instruments retain the ordered pair of outcomes, and summing over those pairs gives a
+channel. Adjoint maps under trace duality reverse the direction; a channel has a
+unital adjoint.
 \end{proposition}
 \begin{scope}
 This is an ambient process theorem. It makes no claim that arithmetic or stabilizer generators exhaust these maps.
 \end{scope}
-\provenance{SP-CP}{Construction outline in the argument DAG; SP-WAT18}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-CP}{Inherited: FRP-CP; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Coherent sums and tagged quantum systems]
 \statusSketch{}
-For an odd prime $p$, the complex span of the actual stabilizer maps
-$\ell^2(\mathbb F_p^n)\to\ell^2(\mathbb F_p^m)$ is the full space of
-linear maps. The matrix completion therefore realizes all linear maps
-between its coherent Hilbert sums. For a nonempty list $(H_i)_i$, the
-coherent algebra has dimension $(\sum_i\dim H_i)^2$ and the tagged
-algebra has dimension $\sum_i(\dim H_i)^2$; the tagged algebra is its
-block-diagonal subalgebra, with the corresponding trace-preserving
-block-dephasing channel.
+For an odd prime $p$, the complex span of the actual stabilizer maps $\ell^2(\mathbb
+F_p^n)\to\ell^2(\mathbb F_p^m)$ is the full space of linear maps. The matrix
+completion therefore realizes all linear maps between its coherent Hilbert sums. For
+a nonempty list of these model spaces $(H_i)_i$, the coherent algebra has dimension
+$(\sum_i\dim H_i)^2$ and the tagged algebra has dimension $\sum_i(\dim H_i)^2$; the
+tagged algebra is its block-diagonal subalgebra, with the corresponding
+trace-preserving block-dephasing channel.
 \end{proposition}
 \begin{scope}
 Adding coherent linear combinations enlarges the pure stabilizer fragment. A classical rig source is still to be constructed.
 \end{scope}
-\provenance{SP-SUM}{Construction outline in the argument DAG; SP-CK21,SP-WAT18}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-SUM}{Inherited: F1-REAL; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Fock completion and the exponential law]
 \statusSketch{}
-On complex Hilbert spaces and contractions, the symmetric Fock
-prescription defines a functor and has a natural unitary exponential law
-$\Gamma_s(H\oplus K)\simeq\Gamma_s(H)\otimes\Gamma_s(K)$ with the
-standard normalized symmetric tensors. In particular
-$\Gamma_s(0)=\mathbb C$ and
-$\Gamma_s(\mathbb C)\simeq\ell^2(\mathbb N_0)$, with particle number
-acting diagonally on the latter.
+On complex Hilbert spaces and contractions, the symmetric Fock prescription defines a
+functor and has a natural unitary exponential law $\Gamma_s(H\oplus
+K)\simeq\Gamma_s(H)\otimes\Gamma_s(K)$ with the standard normalized symmetric
+tensors. In particular $\Gamma_s(0)=\mathbb C$ and $\Gamma_s(\mathbb
+C)\simeq\ell^2(\mathbb N_0)$, with particle number acting diagonally on the latter.
 \end{proposition}
 \begin{scope}
 Infinite boundedness and the completion require written arguments. No equivalence between an unspecified classical free monoid and this Hilbert construction is asserted.
 \end{scope}
-\provenance{SP-FOCK}{Construction outline in the argument DAG; SP-DER06}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-FOCK}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Restriction of scalars preserves the Weyl datum]
 \statusSketch{}
-For every finite extension $E/K$ of odd-characteristic finite fields and
-symplectic $E$-space $(V,\omega_E)$, the trace form on
-$\operatorname{Res}_{E/K}V$ is nondegenerate and alternating. If
-$\psi_K$ is nontrivial, so is
-$\psi_E=\psi_K\circ\operatorname{Tr}_{E/K}$, and the identity on the
-underlying Weyl labels identifies the two half-form $*$-algebras exactly.
-These comparisons compose along towers by transitivity of trace.
+For every finite extension $E/K$ of odd-characteristic finite fields and symplectic
+$E$-space $(V,\omega_E)$, the trace form on $\operatorname{Res}_{E/K}V$ is
+nondegenerate and alternating. If $\chi_K$ is nontrivial, so is
+$\chi_{E/K}=\chi_K\circ\operatorname{Tr}_{E/K}$, and the identity on the underlying
+Weyl labels identifies the two half-form $*$-algebras exactly. These comparisons
+compose along towers by transitivity of trace.
 \end{proposition}
 \begin{scope}
 The extension degree may be divisible by the characteristic. This is restriction of scalars with a trace form, not the uncorrected inclusion of a subfield as a symplectic subsystem.
 \end{scope}
-\provenance{SP-TRACE}{Construction outline in the argument DAG; SP-STFIELD,SP-PRASAD09}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-TRACE}{Inherited: FRB-TRACE; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
 
 \begin{proposition}[Named arithmetic Frobenius covariance]
 \statusSketch{}
-For a finite extension $E/K$ of odd-characteristic finite fields, on the
-standard register $E^n\oplus E^n$ with the trace-form Weyl datum,
-coordinatewise $\#K$-power Frobenius is $K$-linear symplectic and its
-specified permutation unitary satisfies
-$U_FW(a,b)U_F^*=W(\sigma(a),\sigma(b))$.
-Its induced state channel is the invertible channel
-$\rho\mapsto U_F\rho U_F^*$ and its $[E:K]$-th power is identity.
+For a finite extension $E/K$ of odd-characteristic finite fields, with $\lvert
+K\rvert=p^s$, $n\geq0$ and a named nontrivial additive character $\chi_K$, put
+$\chi_{E/K}=\chi_K\circ\operatorname{Tr}_{E/K}$. On the standard register $E^n\oplus
+E^n$ with the trace-form Weyl datum for $\chi_{E/K}$, coordinatewise $\#K$-power
+Frobenius is $K$-linear symplectic and its specified permutation unitary satisfies
+$U_{E/K,n}W^{\mathrm s}_{E,n}(a,b)U_{E/K,n}^*=W^{\mathrm
+s}_{E,n}(\sigma_{E/K}(a),\sigma_{E/K}(b))$. Its induced state channel is the
+invertible channel $\rho\mapsto U_{E/K,n}\rho U_{E/K,n}^*$ and its $[E:K]$-th power
+is identity.
 \end{proposition}
 \begin{scope}
 A smaller period is allowed. Abstract spaces require named semilinear data; Frobenius is not identified with partial trace.
 \end{scope}
-\provenance{SP-FROB}{Construction outline in the argument DAG; SP-STFIELD,SP-GH07}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-FROB}{Inherited: FRB-FROB,FRB-TRACE; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
 
 \begin{proposition}[Subsystem inclusion and its dual decoder]
 \statusSketch{}
-For an odd-characteristic finite field, a common nontrivial character and
-a symplectic injection $j:U\to V$, the orthogonal decomposition
-$V=j(U)\oplus j(U)^\perp$ admits the specified quantum subsystem
-realization. Its observable inclusion is a unital $*$-homomorphism and
-its trace-dual decoder is a channel. The decoder restricts Weyl
-characteristic functions to $j(U)$ and is unchanged by an overall phase
-of the implementing unitary. For compatible iterated tensor decompositions,
-the decoders compose as partial traces.
+For an odd-characteristic finite field, a common nontrivial character and a
+symplectic injection $j:U\to V$, the orthogonal decomposition $V=j(U)\oplus
+j(U)^\perp$ admits the specified quantum subsystem realization. Its observable
+inclusion is a unital $*$-homomorphism and its trace-dual decoder is a channel. The
+decoder restricts Weyl characteristic functions to $j(U)$ and is unchanged by an
+overall phase of the implementing unitary. For compatible iterated tensor
+decompositions, the decoders compose as partial traces.
 \end{proposition}
 \begin{scope}
 The complement and Weyl model compatibility must be verified. Generic field embeddings and coordinate traces are not automatically such injections.
 \end{scope}
-\provenance{SP-SUBSYS}{Construction outline in the argument DAG; SP-WAT18,SP-STFIELD}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-SUBSYS}{Inherited: FRP-CP; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Tensor assembly and product-state existence]
 \statusSketch{}
-For the specified finite matrix factors and trace-one positive reference
-operators indexed by primes, the finite tensor embeddings form an
-isometric unital inductive system. Its norm completion is a unital
-$C^*$-algebra, and the prescribed finite product states extend uniquely
-to a state on it. The GNS prescription gives its represented von Neumann
-algebra with a cyclic reference vector.
+For the specified finite matrix factors and trace-one positive reference operators
+indexed by primes, the finite tensor embeddings form an isometric unital inductive
+system. Its norm completion is a unital $C^*$-algebra, and the prescribed finite
+product states extend uniquely to a state on it. The GNS prescription gives its
+represented von Neumann algebra with a cyclic reference vector.
 \end{proposition}
 \begin{scope}
 No factor type, separating-vector property, inter-prime arithmetic process or Bost--Connes identification is asserted.
 \end{scope}
-\provenance{SP-PRIME}{Construction outline in the argument DAG; SP-CM08,SP-WAT18}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-PRIME}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \begin{proposition}[Arithmetic semigroup and zeta control]
 \statusSketch{}
 In the specified represented Bost--Connes control, $\mu_m\mu_n=\mu_{mn}$,
-$\mu_n^*\mu_n=1$, and
-$\mu_n^*e(r)\mu_n=e(nr)$, while
-$\mu_ne(r)\mu_n^*=n^{-1}\sum_{ns=r}e(s)$.
-The prescribed time evolution leaves the algebra invariant and satisfies
-$\sigma_u(\mu_n)=n^{iu}\mu_n$ and $\sigma_u(e(r))=e(r)$.
-The maps $L_n$ are unital completely positive and $\nu_n$ are corner
-$*$-endomorphisms. For real $b>1$, the Gibbs operator is trace class with
-$\operatorname{Tr}(e^{-bH_{\log}})=\zeta(b)$ and the prescribed density
-has trace one.
+$\mu_n^*\mu_n=1$, and $\mu_n^*e(r)\mu_n=e(nr)$, while
+$\mu_ne(r)\mu_n^*=n^{-1}\sum_{ns=r}e(s)$. The prescribed time evolution leaves the
+algebra invariant and satisfies $\sigma_u(\mu_n)=n^{iu}\mu_n$ and
+$\sigma_u(e(r))=e(r)$. The maps $L_n$ are unital completely positive and $\nu_n$ are
+corner $*$-endomorphisms. For real $b>1$, the Gibbs operator is trace class with
+$\operatorname{Tr}(e^{-bH_{\log}})=\zeta(b)$ and the prescribed density has trace
+one.
 \end{proposition}
 \begin{scope}
 The Hamiltonian has logarithmic-integer eigenvalues. No zeta-zero spectrum, universal-representation faithfulness or full KMS classification is asserted.
 \end{scope}
-\provenance{SP-BC-CONTROL}{Construction outline in the argument DAG; SP-BC95,SP-CM04,SP-CM08,SP-SPECTOR98}{Proposed falsifier only}{No promotion; capped review pending}
+\provenance{SP-BC-CONTROL}{Inherited: No admitted earlier theorem claimed; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
 
 \subsection{Decisions beyond the bootstrap}
 

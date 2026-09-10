@@ -4,7 +4,58 @@
 
 # HANDOFF — live state
 
-## Active pivot — The Hunting of the Symplectic Phantasm (2026-09-09)
+## Current state — reuse and interface repair (2026-09-10)
+
+TJO asked to weave the already admitted results into the Phantasm plan and
+double-check contracts, definition overlap and notation creep. The quest
+and its sober, accretive, careful SOP remain active. The September 9
+bootstrap record below is historical where this update supersedes it.
+
+- All fourteen SP contracts now have **Inherited, Reuse and Remaining**
+  fields. F1-REAL supplies the arbitrary finite-configuration matrix/SvN
+  theorem; F1-FUNCT supplies the underlying tensor theorem; FRB-TRACE,
+  FRB-FROB and FRP-CP are reused only at their actual scope. The
+  characteristic-two and higher-gate decisions also reuse admitted results.
+- `theory/symplectic-phantasm/reuse.md` contains the short **SKETCH
+  corollary draft** for SP-WEYL and the half-form/tensor comparison. The
+  raw k-center is reduced along psi, with kernel ker(psi); it is not
+  silently identified with the faithful mu_p center of F1-REAL.
+- D1701–D1713 retain their numbers and each records **Reuses and Delta**.
+  D1704 reuses D1307's Pauli/hierarchy definitions. D1706 extends D1326's
+  ordinary-trace target with explicit instrument typing. The algebra and
+  generator names are reused; W^s distinguishes the symmetrized model.
+  Its position labels now agree with D8. The fixed psi_E family is kept
+  separate from chi_K and chi_(E/K), and relative Frobenius is written as
+  powers/tensors of the existing absolute permutation.
+- The overlap review is `docs/research-plans/symplectic-phantasm-reuse.md`.
+  Old claim statements and definition bodies before the bootstrap are
+  unchanged. No new claim/definition numbers or mathematical promotions
+  were introduced: 158 claims (121 PROVED, 33 SKETCH, three CONJECTURE,
+  one REFUTED), 173 definitions.
+- `phantasm_reuse_check.py` passed **141,027 exact finite comparisons**
+  against the existing Abelian implementation, including a nonstandard
+  F9 base character inside F81. Its eleven advertised defects failed at
+  their intended gates. The expanded contract checker passed green and
+  all 21 deliberate defects, including inherited-status, missing reuse,
+  definition-cycle and selected notation-ownership failures.
+
+**Next bounded task:** finish the required promotion review of the short
+SP-WEYL bridge, then the remaining affine action in SP-EGOROV and the
+affine naturality comparison in SP-TENSOR. Reuse the admitted finite SvN
+and configuration-product proofs rather than reopening them. A bridge
+checker pass is not a promotion. The ordinary CP target does not assert
+arithmetic source exhaustion; support-code success is not subsystem trace.
+
+The updated labbook builds at **174 pages**, and its revised reuse/lemma
+page was visually inspected. The full required session-close run passed
+**27 green suites and 270 advertised red runs**. Frozen repair records are
+in `numerics/symplectic-phantasm/results/reuse-2026-09-10/`; the earlier
+bootstrap evidence remains untouched. A line-wrapping-sensitive contract
+mutation was repaired and all new mutations were verified at their intended
+gates. The contract checker still checks recorded interfaces, not
+mathematical truth or a complete symbolic type system.
+
+## Quest charter and initial bootstrap (2026-09-09)
 
 TJO explicitly changed direction and named this quest. Its SOP is **sober,
 accretive, and careful**. The initial guidance note is
