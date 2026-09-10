@@ -63,7 +63,8 @@ the evidence and what it enables. For each comparison, specify what is
 preserved or forgotten and in what sense. Definitions and claim statuses
 remain in their single sources. The record is an open research agenda,
 not an assertion that all desired structures coexist. It accompanies the
-bounded lemma clusters; SP-WEYL → SP-EGOROV → SP-TENSOR remains next.
+bounded lemma clusters. Stage 1 is now admitted; SP-LREL and its explicit
+compact-structure follow-up are next.
 
 ## Construction order and acceptance gates
 
@@ -101,19 +102,20 @@ formulated bootstrap, not for an as-yet undefined global construction.
 | DG-MODULAR | DG-GLOBAL | Choose a reference state, construct GNS, identify the support and faithfulness conditions, prove the dynamical/KMS relation with its sign and temperature scaling; factor type is an output |
 | DG-SPECTRUM | DG-MODULAR | Define the operator, its domain, trace/distribution and arithmetic comparison; separate partition function, implementing spectrum, channel spectrum and zeros |
 
-## First bounded work order — revised for reuse, 2026-09-10
+## Stage 1 completed — 2026-09-10
 
-Take **SP-WEYL → SP-EGOROV → SP-TENSOR** as a sequence of explicit
-comparisons with admitted results. SP-WEYL already has a structured
-corollary draft in `theory/symplectic-phantasm/reuse.md`: F1-REAL applies to
+**SP-WEYL → SP-EGOROV → SP-TENSOR** are admitted through
+`theory/verdicts/phantasm-stage1-adjudication.md`, following one blind
+review and one repair wave per artifact. SP-WEYL is the structured
+corollary in `theory/symplectic-phantasm/reuse.md`: F1-REAL applies to
 A=(k^n,+), and F1-DUAL/F1-WEYL supply the character and cocycle data.
-The new work is symplectic coordinates, the half-form rephasing, the
-raw-center quotient, and the trace/unit match. Review that bridge rather
-than reopening the finite Stone–von Neumann theorem.
+The bridge supplies symplectic coordinates, half-form rephasing, the
+raw-center quotient and trace/unit match, preserving the admitted finite
+Stone–von Neumann theorem.
 
-SP-EGOROV then checks the affine action and its projective implementation.
+SP-EGOROV proves the affine action and its projective implementation.
 SP-TENSOR uses F1-FUNCT for the configuration-product comparison and adds
-the half-form phase and affine naturality checks. Do not depend on
+the half-form phase, affine naturality and projective coherence. Do not depend on
 SP-TENSOR to establish SP-WEYL; the admitted F1-FUNCT is a separate node.
 The local Gurevich–Hadani sources remain comparison references for a
 preferred genuine lift and its oriented, contravariant model conventions.
@@ -122,10 +124,22 @@ The exact bridge probes are `theory/checks/phantasm_reuse_check.py`, with
 scope and mutations registered beside it. They compare the existing
 Abelian implementation with the symmetrized wavefunction, and distinguish
 a general relative character from the fixed absolute-trace family.
-They do not prove the infinite or categorical claims. All assembled SP
-rows stay SKETCH pending their required promotion review.
+The new `theory/checks/phantasm_egorov_check.py` supplies exact affine and
+tensor naturality probes at its declared scope. Finite passes do not prove
+the arbitrary-rank statements. The other eleven SP rows remain SKETCH.
+D1703 explicitly extends D9's unitary models and projectivization while
+keeping the standard coordinate construction separate.
 
 The Inherited, Reuse and Remaining fields of the argument DAG are the
 canonical reuse record. D1701–D1713 have Reuses and Delta fields; the
 notation review is summarized in `symplectic-phantasm-reuse.md`. No new
 claim or definition numbers were needed for this repair.
+
+## Next bounded work — relations and compact structure
+
+Use `briefs/phantasm-relations-target.md`: first discharge SP-LREL, then
+formulate the explicit compact structure and its state/process comparison
+as a separate claim. The next stabilizer comparison remains scoped to odd
+prime fields and invertible scalars. Track closed-diagram scalars and
+normalization as inputs to SP-SCALAR and DG-REL-LIFT; compact closure does
+not itself establish a normalized quantum realization.

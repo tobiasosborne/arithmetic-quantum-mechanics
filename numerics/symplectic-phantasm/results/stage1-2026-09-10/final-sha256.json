@@ -1,0 +1,20 @@
+{
+  "AGENTS.md": "42dcc1af1071b6b4ed2f4e0270cc00031c0ea12db709ed273a7b99fc38e79819",
+  "HANDOFF.md": "186707b25f13581bb33f4342f64f3479111496e871b561c025c57a3e51f36450",
+  "definitions.md": "e79964fcc9f4bc82f953745b003177df6757c3376a14bad03168a7cc2754a0db",
+  "notation.md": "f32921fea627f7bb6d02b4831d2613546c00ade59cb274a606d8bb6e42d2b34f",
+  "claims/CLAIMS.md": "76c0df756c5f1d2202588a5ba79bc4f9074ee2741ea26edcc1500b9aeb2496c3",
+  "claims/PHANTASM-DAG.md": "f49038eb99e79ed2ffc804cf5a0f7c00443b1fb0aeb9a5d6059a66c4cf962a95",
+  "theory/symplectic-phantasm/reuse.md": "986feb159c081b96fdfaaf565a08f93b88e081002ec210586ff7aa9e0856933b",
+  "theory/symplectic-phantasm/egorov.md": "0b404f816af864b45189e0ed213a443ec510439c9f4c6be6b635b0ac49f7cbd6",
+  "theory/symplectic-phantasm/tensor.md": "f2ecb7fd6b2354189fc9b85549cbe36f7db5360fa6b24d870c005c6ec68a44d5",
+  "theory/checks/phantasm_contract_check.py": "65ada9a1e905c93a8a16a46b105e3cf4690fb6ab8dc543285a587ff14b9e7b48",
+  "theory/checks/phantasm_reuse_check.py": "3e4197ab7e98dd26ae6bce0868b56f5270c5b1bf185d1d76dc253be89a333f43",
+  "theory/checks/phantasm_egorov_check.py": "2fbab5533afa672a734487ba8d9e7ac2ef60075ffddb34377932ad2bc057aa42",
+  "theory/verdicts/phantasm-weyl-r1.md": "b9c39764c24afad4bfab073989cf8722efa3e7281f6b43368294e63949fc87e1",
+  "theory/verdicts/phantasm-egorov-tensor-r1.md": "6102b48a799e471e534b3032f19448337b4a427788a3f29952d9c337d001db1b",
+  "theory/verdicts/phantasm-stage1-adjudication.md": "f6f78425a4b7e56ae5d4424b0f939dbe7265590304693571830b4c8e706e4a79",
+  "labbook/sections/symplectic_phantasm.tex": "e043517a1d0918c4dec88846b792e51d1dbc5b3c18dea9a91e9925c269bb5b5f",
+  "labbook/sections/symplectic_phantasm_contracts.tex": "c5ccd3f2ae450583d9456fce10215088aee16d737d10474782935757d26f7d51",
+  "labbook/main.pdf": "cab8e1008e9f33f9b7c47365ae3ae0f3b1ab43a45a3f3f0e8e08d5b48f1d6ec7"
+}

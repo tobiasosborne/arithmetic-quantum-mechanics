@@ -165,6 +165,8 @@ def mutate(data, mutation):
         d['nodes'][cid]['Status'] = d['claims'][cid]['status'] = 'REFUTED'
     elif mutation == 'promote':
         d['nodes'][cid]['Status'] = d['claims'][cid]['status'] = 'PROVED'
+        # Still a false promotion when this node is already admitted.
+        d['nodes'][cid]['Evidence'] = 'draft'
     elif mutation == 'source-hash':
         d['sources']['SP-GH07']['readable_sha'] = '0' * 64
     elif mutation == 'source-gap':
@@ -246,6 +248,18 @@ def check(d, root):
     for cid in nodes.keys() | d['decisions'].keys():
         visit(cid)
     print(f"G3 PASS: {len(nodes)} lemmas and {len(d['decisions'])} decision gates form a DAG")
+
+    # Check inherited provenance before generic promotion requirements:
+    # an inherited-status defect must reach G8 even after an SP promotion.
+    for cid, node in nodes.items():
+        inherited = csv(node['Inherited'])
+        require(set(inherited) <= set(csv(node['Dependencies'])), 'G8', 'untracked inherited result ' + cid)
+        for old in inherited:
+            require(old in claims and claims[old]['status'] == 'PROVED' and not old.startswith('SP-'),
+                    'G8', 'inherited result is not an admitted earlier claim: ' + old)
+            paths = re.findall(r'theory/[^\s`|;,]+\.md', claims[old]['proof_cell'])
+            require(paths and all((root/path).is_file() for path in paths),
+                    'G8', 'inherited proof does not resolve: ' + old)
 
     for cid, node in nodes.items():
         deps = csv(node['Dependencies'])
@@ -338,15 +352,6 @@ def check(d, root):
             '\\chi_{E/K}' in defs['D1709']['body'], 'G7', 'relative character notation conflated')
     print('G7 PASS: selected shared-name ownership and convention guards')
 
-    for cid, node in nodes.items():
-        inherited = csv(node['Inherited'])
-        require(set(inherited) <= set(csv(node['Dependencies'])), 'G8', 'untracked inherited result ' + cid)
-        for old in inherited:
-            require(old in claims and claims[old]['status'] == 'PROVED' and not old.startswith('SP-'),
-                    'G8', 'inherited result is not an admitted earlier claim: ' + old)
-            paths = re.findall(r'theory/[^\s`|;,]+\.md', claims[old]['proof_cell'])
-            require(paths and all((root/path).is_file() for path in paths),
-                    'G8', 'inherited proof does not resolve: ' + old)
     reuse_edges = {}
     for did in active_defs:
         reused = re.search(r'\*\*Reuses\.\*\* ([^\n]+)', defs[did]['body'])

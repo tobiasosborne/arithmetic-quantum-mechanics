@@ -15,12 +15,13 @@ A passing contract check is not a mathematical proof.
 The contract command is `python3 theory/checks/phantasm_contract_check.py`.
 On a fresh checkout, first run `python3 scripts/fetch-phantasm-sources.py`;
 source bodies are deliberately ignored by Git, and the checker verifies
-their recorded hashes. The next bounded proof cluster is SP-WEYL, then
-SP-EGOROV and SP-TENSOR, as specified in the quest work order. The
+their recorded hashes. SP-WEYL, SP-EGOROV and SP-TENSOR are now admitted
+through the stage-1 adjudication. Next is SP-LREL with the explicit compact
+structure follow-up in `briefs/phantasm-relations-target.md`. The
 2026-09-10 reuse correction is binding: SP-WEYL is a corollary of the
 admitted finite-abelian F1-REAL, and SP-TENSOR reuses F1-FUNCT. Consult the
 DAG's Inherited/Reuse/Remaining fields and each definition's Reuses/Delta
-before proposing new foundational work. The bridge draft and exact
+before proposing new foundational work. The bridge proof and exact
 conversion probes are in `theory/symplectic-phantasm/reuse.md` and
 `theory/checks/phantasm_reuse_check.py`.
 

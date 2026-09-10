@@ -1,0 +1,14 @@
+[
+  {
+    "disabled_guard": "zero_operator == identity",
+    "mutation": "vacuum",
+    "exit": 0,
+    "stdout": "R1 PASS: 1002 exact comparisons\nR2 PASS: 942 exact comparisons\nR3 PASS: 69258 exact comparisons\nR4 PASS: 69258 exact comparisons\nR5 PASS: 99 exact comparisons\nR6 PASS: 1380 exact comparisons\nPASS: finite reuse interfaces only; no claim promotion\n"
+  },
+  {
+    "disabled_guard": "normalized_trace == [coefficient_trace]",
+    "mutation": "trace-normalization",
+    "exit": 0,
+    "stdout": "R1 PASS: 1002 exact comparisons\nR2 PASS: 942 exact comparisons\nR3 PASS: 69258 exact comparisons\nR4 PASS: 69258 exact comparisons\nR5 PASS: 99 exact comparisons\nR6 PASS: 1380 exact comparisons\nPASS: finite reuse interfaces only; no claim promotion\n"
+  }
+]

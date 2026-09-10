@@ -4,6 +4,55 @@
 
 # HANDOFF — live state
 
+## Current state — stage 1 admitted (2026-09-10)
+
+SP-WEYL, SP-EGOROV and SP-TENSOR are now PROVED in dependency order,
+following the two single blind reviews and one repair wave per artifact.
+The admission and repair dispositions are in
+`theory/verdicts/phantasm-stage1-adjudication.md`; the original verdicts
+are preserved beside it. Proofs are `theory/symplectic-phantasm/reuse.md`
+sections 1–2, `egorov.md` and `tensor.md`. The finite-abelian foundations
+and their earlier provenance are unchanged. No genuine Weil lift or
+characteristic-two quantum extension has been asserted.
+
+The current register has 158 claims: 124 PROVED, 30 SKETCH, three
+CONJECTURE and one REFUTED. There are still 173 definitions. D1703 alone
+was extended to own the arbitrary-rank unitary model groupoids and their
+U(1) quotient, explicitly reusing D9; D9 and every other earlier definition
+body are unchanged. Named standard coordinates are separate from arbitrary
+model objects. The raw-group uniqueness statement explicitly quantifies
+over unitary representations.
+
+The repaired reuse suite passes 141,939 exact comparisons and eleven
+intended red modes; the new affine suite passes 4,654,737 reported
+comparisons and nine intended red modes. Actual rank-zero/trace data now
+replace synthetic checker prechecks. The contract promotion mutations
+remain effective after admission, and an uncaught affine red exits zero
+so the repository runner rejects it. All repairs and disabled-comparison
+controls are recorded under
+`numerics/symplectic-phantasm/results/stage1-2026-09-10/`.
+
+The labbook builds at 178 pages and contains readable proofs of all three
+results. Its expanded model definition and proof pages were visually
+inspected; the new inline-equation overflow was fixed. The contract and
+lockstep gates pass. The full session-close run passed all 28 green suites
+and 279 advertised red runs. All 21 contract mutations were then verified
+at their intended gates against the actually promoted records. Final runs,
+source hashes and the validation summary are frozen in the stage-1 result
+directory. Do not repeat the stage-1 hostile reviews. The steering checkpoint
+before this work was pushed as `853c564`.
+
+**Next bounded task:** `briefs/phantasm-relations-target.md`: SP-LREL,
+then the separately formulated compact structure, cups/caps and state/process
+correspondence. The source is local and the categorical-structure record
+tracks the questions and established stage-1 comparisons. The following
+odd-prime stabilizer comparison must keep its invertible-scalar quotient
+and actual probability/normalization work distinct. All other eleven SP
+rows and all seven downstream design gates remain open at their recorded
+statuses. The persistent goal is the entire campaign, including an exact
+account of the success or failure of a specified Riemann-zero construction;
+this first landing does not complete that goal.
+
 ## Current steering — categorical structure and full campaign (2026-09-10)
 
 TJO asked to track the structural properties the categories can carry and

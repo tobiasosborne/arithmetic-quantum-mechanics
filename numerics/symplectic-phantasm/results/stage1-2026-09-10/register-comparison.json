@@ -1,0 +1,20 @@
+{
+  "definitions": 173,
+  "changed_definition": "D1703",
+  "D9_unchanged": true,
+  "claims": 158,
+  "statuses": {
+    "PROVED": 124,
+    "SKETCH": 30,
+    "CONJECTURE": 3,
+    "REFUTED": 1
+  },
+  "status_changes": [
+    "SP-WEYL",
+    "SP-EGOROV",
+    "SP-TENSOR"
+  ],
+  "statement_changes": [
+    "SP-WEYL"
+  ]
+}

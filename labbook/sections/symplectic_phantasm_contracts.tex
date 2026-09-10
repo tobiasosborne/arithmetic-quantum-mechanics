@@ -4,16 +4,16 @@ The first contract is a finite-abelian corollary with an explicit phase and
 central-quotient comparison. The underlying tensor theorem is already
 available. The statements below distinguish these inherited results from
 the remaining affine naturality, relation semantics and analytic work.
-All new assembled statements retain sketch status.
+The first three propositions are proved; the remaining eleven retain sketch status.
 
 \begin{proposition}[Weyl realization]
-\statusSketch{}
+\statusProved{}
 For every odd-characteristic finite field $k$ of cardinality $q$, nontrivial additive
 character $\psi$, and symplectic $k$-space $V$ of dimension $2n$, at
 $\beta_V=\omega_V/2$ the Weyl algebra is a unital $*$-algebra with faithful
 normalized trace $\tau_V$ and is $*$-isomorphic to $\operatorname{End}(\mathbb
 C^{q^n})$. Its standard formula is a unitary irreducible realization;
-fixed-central-character irreducibles are unique up to unitary equivalence. Unitary
+irreducible unitary representations of the prescribed Heisenberg group with central character $\psi$ are unique up to unitary equivalence. Unitary
 intertwiners between irreducible unitary models are unique up to $U(1)$. Rank zero
 gives $\mathbb C$; rank one specializes to the existing Weyl algebra at
 $\beta=\omega/2$.
@@ -21,10 +21,85 @@ $\beta=\omega/2$.
 \begin{scope}
 Odd characteristic only; no preferred abstract-space basis or genuine symmetry lift is asserted.
 \end{scope}
-\provenance{SP-WEYL}{Inherited: F1-DUAL,F1-WEYL,F1-REAL; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
+\provenance{SP-WEYL}{Structured proof: reuse.md, sections 1--2; inherited results as cited}{Exact finite probes at their declared scope}{Single blind review and stage-1 adjudication}
+
+\begin{proof}
+If $V$ is nonzero, choose a nonzero vector $e\in V$.  Nondegeneracy
+supplies $f$ with $\omega_V(e,f)=1$, and the plane spanned by $e,f$ is
+nondegenerate.  Its orthogonal complement is again symplectic, so induction
+gives a symplectic coordinate isomorphism
+\[
+ V\simeq k^n\oplus k^n,
+ \qquad
+ \omega_V((a,b),(a',b'))=a\mathbin{\cdot}b'-a'\mathbin{\cdot}b.
+\]
+For $V=0$, use the unique coordinate map between zero spaces; this case is
+also recovered below from the empty configuration group.
+The image of $\psi$ is the group of $p$th roots selected by $\psi$.  For
+$A=(k^n,+)$, the characters
+\[
+ \chi_b(x)=\psi(-b\mathbin{\cdot}x)
+\]
+are all the characters of $A$: if $b\ne0$, the functional
+$x\mapsto b\mathbin{\cdot}x$ is onto, so $\chi_b$ is nontrivial, and the
+previously proved finite-character count turns this injection into a
+bijection.
+
+In these coordinates the finite-abelian Weyl multiplier is
+$\psi(a\mathbin{\cdot}b')$.  Rephase its operators by
+\[
+ c(a,b)=\psi(a\mathbin{\cdot}b/2),
+ \qquad
+ W^{\mathrm s}(a,b)=c(a,b)W_{\mathrm{ref}}(a,\chi_b).
+\]
+Expanding the dot product gives
+\begin{align*}
+ &a\mathbin{\cdot}b'
+ +\frac12a\mathbin{\cdot}b
+ +\frac12a'\mathbin{\cdot}b'
+ -\frac12(a+a')\mathbin{\cdot}(b+b') \\
+ &\hspace{35mm}
+ =\frac12\bigl(a\mathbin{\cdot}b'-a'\mathbin{\cdot}b\bigr).
+\end{align*}
+Thus the rephased operators have exactly the half-form multiplier and satisfy
+$(W^{\mathrm s}(v))^*=W^{\mathrm s}(-v)$.  On the computational basis,
+\[
+ W^{\mathrm s}(a,b)\delta_y
+ =\psi\!\left(-b\mathbin{\cdot}y-\frac12a\mathbin{\cdot}b\right)
+   \delta_{y+a},
+\]
+which is the stated wavefunction formula after writing the output coordinate
+as $x=y+a$.
+
+Rephasing by nonzero scalars does not change the operator span.  The finite
+Stone--von Neumann theorem already proved for $A$ therefore gives all of
+$\operatorname{End}(\mathbb C^A)$, with
+\[
+ \operatorname{Tr}(W^{\mathrm s}(v))=q^n\,\mathbf 1_{v=0},
+ \qquad
+ \tau_V=q^{-n}\operatorname{Tr}.
+\]
+This trace is normalized and faithful because
+$\operatorname{Tr}(B^*B)>0$ for every nonzero matrix $B$.
+
+It remains to compare central coordinates.  The homomorphism
+\[
+ (t,a,b)\longmapsto
+ \bigl(\psi(t+a\mathbin{\cdot}b/2),a,\chi_b\bigr)
+\]
+from the prescribed $k$-central Heisenberg group onto the finite-abelian
+phase group has kernel
+$\{(t,0,0):\psi(t)=1\}$.  A unitary representation with the stipulated
+central character kills this kernel, and conversely a unitary representation
+of the quotient pulls back with that central character.  The previously
+proved finite Stone--von Neumann result now supplies dimension $q^n$,
+irreducibility, unitary equivalence, and uniqueness of unitary intertwiners
+up to $U(1)$.  For $n=0$ the construction is $\mathbb C$; for $n=1$ it is
+the already defined rank-one half-form Weyl algebra.
+\end{proof}
 
 \begin{proposition}[Affine symmetries and projective implementation]
-\statusSketch{}
+\statusProved{}
 For a fixed odd-characteristic finite field $k$ and nontrivial additive character
 $\psi$, put $\beta_V=\omega_V/2$ on each symplectic space. An affine symplectic arrow
 $(t,g):V\to W$ induces the $*$-isomorphism
@@ -36,10 +111,66 @@ in the $U(1)$ quotient.
 \begin{scope}
 This is a covariant algebra functor and a projective implementation statement. Choosing a genuine linear lift is a separate comparison.
 \end{scope}
-\provenance{SP-EGOROV}{Inherited: F1-REAL; remaining comparison in the DAG}{Proposed falsifier only}{SKETCH; promotion review pending}
+\provenance{SP-EGOROV}{Structured proof: egorov.md; inherited results as cited}{Exact finite probes at their declared scope}{Single blind review and stage-1 adjudication}
+
+\begin{proof}
+It is enough first to check the prescribed map on the Weyl basis.  For
+$v,z\in V$, symplecticity of $g$ gives
+\begin{align*}
+ \alpha_{t,g}(W_{\beta_V}(v))\alpha_{t,g}(W_{\beta_V}(z))
+ &=\psi\!\left(
+      \omega_W(t,gv)+\omega_W(t,gz)+\frac12\omega_W(gv,gz)
+    \right)W_{\beta_W}(g(v+z)) \\
+ &=\psi\!\left(
+      \omega_W(t,g(v+z))+\frac12\omega_V(v,z)
+    \right)W_{\beta_W}(g(v+z)) \\
+ &=\alpha_{t,g}
+   \bigl(W_{\beta_V}(v)W_{\beta_V}(z)\bigr).
+\end{align*}
+The unit is fixed. Since $\overline{\psi(x)}=\psi(-x)$, the same basis gives
+\[
+ \alpha_{t,g}(W_{\beta_V}(v)^*)=
+ \alpha_{t,g}(W_{\beta_V}(v))^*.
+\]
+The inverse affine arrow is
+$(-g^{-1}t,g^{-1})$, so this homomorphism is a $*$-isomorphism.
+
+The semidirect-product law is exact, rather than projective.  If
+$(t,g):V\to W$ and $(s,h):W\to Z$, then
+\begin{align*}
+ (\alpha_{s,h}\alpha_{t,g})(W_{\beta_V}(v))
+ &=\psi\!\left(\omega_W(t,gv)+\omega_Z(s,hgv)\right)
+   W_{\beta_Z}(hgv) \\
+ &=\psi\!\left(\omega_Z(s+ht,hgv)\right)W_{\beta_Z}(hgv) \\
+ &=\alpha_{s+ht,hg}(W_{\beta_V}(v)).
+\end{align*}
+The identity case follows by taking $(t,g)=(0,1_V)$.  Pure translation is
+inner:
+\[
+ W_{\beta_W}(t)W_{\beta_W}(v)W_{\beta_W}(t)^*
+ =\psi(\omega_W(t,v))W_{\beta_W}(v),
+\]
+so the affine formula is the Weyl translation followed by the linear
+Egorov map.
+
+Let $(H_V,\pi_V)$ and $(H_W,\pi_W)$ be objects of the arbitrary-rank model
+groupoids just defined.  Pulling $\pi_W$ back along $\alpha_{t,g}$ gives
+another object of the source model groupoid.  Finite Stone--von Neumann
+uniqueness supplies a unitary
+$U_{t,g}:H_V\to H_W$ with
+\[
+ U_{t,g}\pi_V(a)U_{t,g}^*=\pi_W(\alpha_{t,g}(a)),
+ \qquad a\in A_{\psi,\beta_V}(V),
+\]
+and any two such unitaries differ by a phase.  For two composable affine
+arrows, $U_{s,h}U_{t,g}$ and $U_{s+ht,hg}$ implement the same exact algebra
+map calculated above.  Their classes therefore agree after quotienting by
+$U(1)$.  This proves projective composition without selecting a genuine
+phase lift.
+\end{proof}
 
 \begin{proposition}[Symplectic sum and quantum tensor compatibility]
-\statusSketch{}
+\statusProved{}
 For a fixed odd-characteristic finite field $k$ and nontrivial additive character
 $\psi$, put $\beta_V=\omega_V/2$, $\beta_W=\omega_W/2$. The assignment
 $W_{\beta_V\oplus\beta_W}(v,w)\mapsto W_{\beta_V}(v)\otimes W_{\beta_W}(w)$ gives a
@@ -51,7 +182,70 @@ unitary model identifications obey these diagrams projectively.
 \begin{scope}
 The source operation is symplectic direct sum. This does not construct a coherent additive completion of the classical category.
 \end{scope}
-\provenance{SP-TENSOR}{Inherited: F1-FUNCT; remaining comparison in the DAG}{Finite reuse probe at its declared scope}{SKETCH; promotion review pending}
+\provenance{SP-TENSOR}{Structured proof: tensor.md; inherited results as cited}{Exact finite probes at their declared scope}{Single blind review and stage-1 adjudication}
+
+\begin{proof}
+Temporarily denote the displayed generator map by $\Theta_{V,W}$.  The
+direct-sum form gives
+\begin{align*}
+ &\Theta_{V,W}(W_{\beta_V\oplus\beta_W}(v,w))
+  \Theta_{V,W}(W_{\beta_V\oplus\beta_W}(v',w')) \\
+ &\quad=
+ \psi\!\left(\frac12\omega_V(v,v')+\frac12\omega_W(w,w')\right)
+ W_{\beta_V}(v+v')\otimes W_{\beta_W}(w+w'),
+\end{align*}
+which is the image of the product in the source algebra.  The map also
+preserves the unit and involution.  It takes the Weyl basis indexed by
+$V\oplus W$ bijectively to the tensor-product Weyl basis, and hence is a
+$*$-isomorphism.  On these basis elements,
+\[
+ (\tau_V\otimes\tau_W)
+ \bigl(W_{\beta_V}(v)\otimes W_{\beta_W}(w)\bigr)
+ =\mathbf 1_{v=0}\mathbf 1_{w=0}
+ =\tau_{V\oplus W}(W_{\beta_V\oplus\beta_W}(v,w)),
+\]
+so it preserves the normalized trace.
+
+In standard coordinates, reorder
+$((a_1,b_1),(a_2,b_2))$ as
+$((a_1,a_2),(b_1,b_2))$.  The previously proved configuration-product
+unitary sends $\delta_{(x,y)}$ to $\delta_x\otimes\delta_y$.  The half-form
+phase is compatible with this unitary because
+\[
+ \psi\!\left(\frac12(a_1\mathbin{\cdot}b_1
+                         +a_2\mathbin{\cdot}b_2)\right)
+ =\psi(a_1\mathbin{\cdot}b_1/2)\,
+  \psi(a_2\mathbin{\cdot}b_2/2).
+\]
+Thus the standard Weyl operator on the direct sum is carried exactly to the
+tensor of the two standard Weyl operators.
+
+Naturality for translations and linear symplectic maps is also exact.  For
+affine arrows $(t,g):V\to V'$ and $(s,h):W\to W'$, both routes around the
+naturality square send the generator labelled by $(v,w)$ to
+\[
+ \psi\!\left(\omega_{V'}(t,gv)+\omega_{W'}(s,hw)\right)
+ W_{\beta_{V'}}(gv)\otimes W_{\beta_{W'}}(hw).
+\]
+Rebracketing three summands, adjoining the zero space, or exchanging two
+summands likewise sends every Weyl generator to the same ordered tensor by
+either route.  The associativity, unit and symmetry diagrams therefore
+commute at the algebra level.
+
+For arbitrary objects $(H_V,\pi_V)$, $(H_W,\pi_W)$, and
+$(H_{V\oplus W},\pi_{V\oplus W})$ of the model groupoids just defined,
+finite Stone--von Neumann uniqueness supplies an implementing unitary
+\[
+ J_{V,W}:H_{V\oplus W}\longrightarrow H_V\otimes H_W
+\]
+for the displayed algebra isomorphism, unique up to $U(1)$.  In an affine
+naturality diagram, the two model-level routes implement the same exact
+algebra map just calculated, so they differ by one phase.  The same argument
+applied to the exact algebra associativity, unit and symmetry diagrams shows
+that every corresponding model diagram commutes in the $U(1)$ quotient.
+This uses only projective classes and makes no coherent choice of unitary
+representatives.
+\end{proof}
 
 \begin{proposition}[Composition of affine Lagrangian relations]
 \statusSketch{}

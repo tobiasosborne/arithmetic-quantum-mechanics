@@ -5,7 +5,9 @@ Choi correspondence: understand and track the possible structural
 properties of the categories, and their interactions, so that the right
 structure can be found flexibly as the arithmetic construction develops.
 This is a continuing research direction within the Symplectic Phantasm.
-It does not replace the current SP-WEYL → SP-EGOROV → SP-TENSOR work order.
+The SP-WEYL → SP-EGOROV → SP-TENSOR cluster is now admitted. The next
+bounded task is SP-LREL and the compact-structure follow-up below, under
+`../../briefs/phantasm-relations-target.md`.
 
 ## What the record should answer
 
@@ -77,6 +79,19 @@ an object is dualizable or a direct sum is a biproduct.
 | Arithmetic amplitudes and source-certified processes, D1321–D1327 | Which structures the arithmetic presentation carries and its interpretation preserves or forgets | FRP-CAT, FRP-CP, FRP-DESCENT at their admitted scope; DG-REL-LIFT for matched fragments |
 | Phase representation categories and their central sectors, D1011 | Internal tensor, matching external products, closure of a selected sector, fusion hypotheses and the role of the realization functor | F1-CAT remains SKETCH; reuse F1-WEYL/F1-FUNCT/F1-REAL without promoting the categorical comparison by association |
 | Fock and prime assembly data, D1708, D1711–D1713 | Domains of functorial completion and the extra state/dynamical choices | SP-FOCK, SP-PRIME, DG-GLOBAL, DG-MODULAR; a chosen algebra is not itself a replacement category |
+
+## First established comparisons
+
+Read the current status and exact hypotheses from the linked canonical
+claims and proofs. These entries explain how the stage-1 results answer
+part of the structural questions; they do not introduce another status
+register.
+
+| Comparison | Structure supplied by the existing claim | Choice or remaining boundary |
+|---|---|---|
+| SP-WEYL, `../../theory/symplectic-phantasm/reuse.md` sections 1–2 | Full matrix realization with faithful normalized trace; unitary model uniqueness and phase ambiguity made explicit | Fixed odd-characteristic field and nontrivial character; named coordinates only for the standard formula |
+| SP-EGOROV, `../../theory/symplectic-phantasm/egorov.md` | Exact covariant affine algebra action and composition; unique projective unitary implementation and model transport | D1703 owns the arbitrary-rank extension of D9; no genuine phase section has been selected |
+| SP-TENSOR, `../../theory/symplectic-phantasm/tensor.md` | Natural trace-preserving direct-sum/tensor comparison with exact algebra associativity, units and symmetry; projective model coherence | Uses F1-FUNCT at its admitted scope; coherent additive completion and duality are separate next questions |
 
 ## First concrete follow-up: cups, caps and scalar transport
 

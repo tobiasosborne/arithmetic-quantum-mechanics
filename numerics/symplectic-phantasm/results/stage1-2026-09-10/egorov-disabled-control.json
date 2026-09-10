@@ -1,0 +1,6 @@
+{
+  "disabled_guard": "need(left == right, \"rank-two affine naturality failed\")",
+  "mutation": "--red-tensor-phase",
+  "exit": 0,
+  "stdout": "phantasm_egorov_check mode=--red-tensor-phase\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.003s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.877s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.893s]\nE4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.001s]\nE5 PASS: F*F=3I and 9 exact Fourier covariance equalities [10 checks; 0.001s]\nE6 PASS: 2 unitary and 18 exact shear covariance checks [20 checks; 0.000s]\nE7 PASS: enumerated rank-zero affine/Weyl object and both tensor units [26 checks; 0.000s]\nE8 PASS: psi_u table, 81 additivity, 6,561 Weyl products, 6,561 translations, 81 Fourier and 162 shear covariances [13453 checks; 0.164s]\nE9 PASS: 81 operator tensors, 81 swaps and 3,779,136 all-factor affine naturality cases [3779298 checks; 1.110s]\nRED MODE --red-tensor-phase NOT CAUGHT (intended E9)\n"
+}

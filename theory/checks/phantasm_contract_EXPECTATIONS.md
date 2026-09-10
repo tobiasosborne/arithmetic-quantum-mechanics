@@ -1,5 +1,14 @@
 # Symplectic Phantasm argument-contract expectations
 
+2026-09-10 promotion guard repair: `--red-promote` asserts PROVED while
+explicitly replacing admission evidence by `draft`, so it remains a defect
+after the target claim is admitted. The inherited-provenance part of G8
+runs before generic G4 promotion requirements, preserving the intended G8
+failure for `--red-inherited-status` after SP promotions. Definition-reuse
+checks still run after definition metadata validation. An already-admitted
+in-memory status/evidence fixture exposed the inert old promotion mutation
+before this repair; it does not itself promote any repository claim.
+
 2026-09-10 extension: Inherited/Reuse/Remaining and Reuses/Delta make
 local proof reuse explicit. G7 guards selected notation/convention
 ownership and G8 checks the inherited proof status and definition reuse

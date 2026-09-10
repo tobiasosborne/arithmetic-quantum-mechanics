@@ -39,7 +39,7 @@
 | `χ`, `C_χ` | a character of `A_L`; its 1-dimensional module | D8, D16 |
 | `M_{L,χ}`, `M₀` | Schrödinger model of `(L,χ)`; the field standard model | D8, D16 |
 | `ℓ²(R)`, `e_y`, `X(a)`, `Z(b)` | local reference space; standard basis; shift and phase operators | D8, D16 |
-| `Mod_{ψ,β}(κ)`, `PMod_{ψ,β}(κ)` | the model groupoid; its projectivization | D9 |
+| `Mod_{ψ,β}(κ)`, `PMod_{ψ,β}(κ)`; `Mod_{ψ,β_V}(V)`, `PMod_{ψ,β_V}(V)` | the rank-one model groupoid and its projectivization; their arbitrary-rank half-form extension | D9,D1703 |
 | `P(H_ψ(κ))` | the canonical projective Hilbert space | D9 |
 | `P¹(κ)` | the projective line: the `q+1` lines of `V(κ)` | D1 |
 | `SL_2(κ)` | `κ`-linear automorphisms of `V(κ)` of determinant 1 | D1 |

@@ -1,17 +1,19 @@
 # Reusing the finite Weyl results in the Phantasm contracts
 
-2026-09-10. SP-WEYL is a **SKETCH corollary draft**, not a newly admitted
-theorem. Sections 1–2 assemble it from the already PROVED F1-DUAL,
-F1-WEYL and F1-REAL. Section 3 isolates the small phase comparison needed
-to reuse F1-FUNCT in SP-TENSOR; affine naturality is still owed there.
+2026-09-10. SP-WEYL is **PROVED** as the reviewed corollary in sections 1–2
+of the already admitted F1-DUAL, F1-WEYL and F1-REAL. Section 3 supplies
+the phase comparison used to reuse F1-FUNCT in SP-TENSOR; its affine
+naturality and projective coherence are proved in `tensor.md`.
 No earlier admitted result is reopened or assigned a new status.
 
-Canonical definitions: D3–D5, D8, D1001–D1004, D1701 and D1703.
+Canonical definitions: D3–D5, D8–D9, D1001–D1004, D1701 and D1703.
 The reused proofs are `../sidequests/f1-cyclotomic.md` §§0–3, admitted in
 `../verdicts/f1-adjudication.md`. The rank-one sign convention is in
 `../wh-kappa.md` §5, especially <1>1 and <1>5. The finite bridge probe is
 `../checks/phantasm_reuse_check.py`; finite agreement does not replace
-the remaining promotion review of this assembled statement.
+the proof review in `../verdicts/phantasm-weyl-r1.md`. The admission and
+mechanically verified repairs are recorded in
+`../verdicts/phantasm-stage1-adjudication.md`.
 
 ## 1. Symplectic coordinates and the finite character dual
 
@@ -135,7 +137,8 @@ by transporting F1-REAL. No new finite Stone–von Neumann proof is needed.
          **BY** <2>2–<2>3 and these entry calculations.
   <2>5. **QED** <1>3.
 
-<1>4. **ASSUME** the raw k-central half-form Heisenberg group.
+<1>4. **ASSUME** the raw k-central half-form Heisenberg group and unitary
+representations with the stipulated central character.
 **PROVE** its fixed-psi representations use the same finite-abelian block.
   <2>1. Define
            (t,a,b) |-> (psi(t+a.b/2),a,chi_b)
@@ -146,9 +149,10 @@ by transporting F1-REAL. No new finite Stone–von Neumann proof is needed.
          identifies all b-characters. Its kernel is
            {(t,0,0):psi(t)=1}.
          **BY** §1 <1>3–<1>4 and the displayed map.
-  <2>3. A raw-group representation with central character psi kills
-         that kernel. Conversely a representation of H_p(A) with central
-         character iota pulls back to central character psi.
+  <2>3. A raw-group unitary representation with central character psi kills
+         that kernel. Conversely a unitary representation of H_p(A) with central
+         character iota pulls back to central character psi; this pullback
+         preserves the unitary structure.
          **BY** <2>2 and the explicit central coordinate.
   <2>4. Apply F1-REAL's uniqueness, dimension and unitary-intertwiner
          assertions after this quotient; the same module algebra and
@@ -164,7 +168,7 @@ by transporting F1-REAL. No new finite Stone–von Neumann proof is needed.
   <2>2. At n=1, D1703's abstract cocycle is literally D4 with beta=omega/2.
          Its model is the phase change of D8 in <1>2, with the same labels.
          **BY** D4, D8 and <1>1–<1>2.
-  <2>3. **QED** <1>5 and the SP-WEYL corollary draft.
+  <2>3. **QED** <1>5 and the admitted SP-WEYL corollary.
 
 The September 9 wavefunction formula used f(x+a) and the opposite phase
 coordinate signs. It was a valid realization obtained by v |-> -v from
@@ -191,8 +195,8 @@ F1-FUNCT's configuration-product tensor map.
        **BY** F1-FUNCT §3 <1>3–<1>6 and the sum of component dot products.
 <1>4. **QED** for the transported configuration-product comparison.
 
-SP-TENSOR still records the extra affine symplectic naturality from
-SP-EGOROV. This section does not identify a source consisting only of
+SP-TENSOR's proof in `tensor.md` supplies the affine symplectic naturality
+from SP-EGOROV. This section does not identify a source consisting only of
 configuration isomorphisms with the full affine symplectic groupoid.
 
 ## 4. Reuse boundaries for the remaining contracts

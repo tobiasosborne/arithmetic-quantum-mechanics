@@ -1,0 +1,75 @@
+{
+  "sha256": "2fbab5533afa672a734487ba8d9e7ac2ef60075ffddb34377932ad2bc057aa42",
+  "records": [
+    {
+      "argument": "--red-sp-enumeration",
+      "expected_gate": "E1",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-sp-enumeration\nexact arithmetic only; finite success does not prove or promote a claim\nE1 FAIL: symplectic census is 48, expected 24 [0.000s total]\nRED MODE --red-sp-enumeration CAUGHT AT INTENDED GATE E1\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-semidir-order",
+      "expected_gate": "E2",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-semidir-order\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.004s]\nE2 FAIL: composition mismatch at ((0, 0), (0, 1, 2, 0)) o ((0, 1), (0, 1, 2, 0)) on (0, 0) [0.038s total]\nRED MODE --red-semidir-order CAUGHT AT INTENDED GATE E2\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-alpha-phase",
+      "expected_gate": "E3",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-alpha-phase\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.004s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.960s]\nE3 FAIL: alpha composition mismatch at ((0, 0), (0, 1, 2, 0)) o ((0, 1), (0, 1, 2, 0)) on (0, 1) [1.004s total]\nRED MODE --red-alpha-phase CAUGHT AT INTENDED GATE E3\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-translation-sign",
+      "expected_gate": "E4",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-translation-sign\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.002s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.920s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.983s]\nE4 FAIL: translation covariance failed at t=(0, 1),v=(1, 0) [1.905s total]\nRED MODE --red-translation-sign CAUGHT AT INTENDED GATE E4\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-fourier-sign",
+      "expected_gate": "E5",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-fourier-sign\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.004s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.831s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.882s]\nE4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.001s]\nE5 FAIL: Fourier covariance failed at (0, 1) [1.718s total]\nRED MODE --red-fourier-sign CAUGHT AT INTENDED GATE E5\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-shear-half",
+      "expected_gate": "E6",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-shear-half\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.004s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.834s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.885s]\nE4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.001s]\nE5 PASS: F*F=3I and 9 exact Fourier covariance equalities [10 checks; 0.001s]\nE6 FAIL: shear covariance failed at r=1,v=(1, 0) [1.724s total]\nRED MODE --red-shear-half CAUGHT AT INTENDED GATE E6\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-zero-qudit",
+      "expected_gate": "E7",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-zero-qudit\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.004s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.848s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.894s]\nE4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.001s]\nE5 PASS: F*F=3I and 9 exact Fourier covariance equalities [10 checks; 0.001s]\nE6 PASS: 2 unitary and 18 exact shear covariance checks [20 checks; 0.000s]\nE7 FAIL: rank-zero Weyl model is not one-dimensional [1.747s total]\nRED MODE --red-zero-qudit CAUGHT AT INTENDED GATE E7\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-f9-character",
+      "expected_gate": "E8",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-f9-character\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.004s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.831s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.885s]\nE4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.001s]\nE5 PASS: F*F=3I and 9 exact Fourier covariance equalities [10 checks; 0.001s]\nE6 PASS: 2 unitary and 18 exact shear covariance checks [20 checks; 0.000s]\nE7 PASS: enumerated rank-zero affine/Weyl object and both tensor units [26 checks; 0.000s]\nE8 FAIL: F9 character table (0, 2, 1, 0, 2, 1, 0, 2, 1) != (0, 0, 0, 1, 1, 1, 2, 2, 2) [1.722s total]\nRED MODE --red-f9-character CAUGHT AT INTENDED GATE E8\n",
+      "stderr": ""
+    },
+    {
+      "argument": "--red-tensor-phase",
+      "expected_gate": "E9",
+      "exit": 1,
+      "stdout": "phantasm_egorov_check mode=--red-tensor-phase\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.002s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.818s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.888s]\nE4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.001s]\nE5 PASS: F*F=3I and 9 exact Fourier covariance equalities [10 checks; 0.001s]\nE6 PASS: 2 unitary and 18 exact shear covariance checks [20 checks; 0.000s]\nE7 PASS: enumerated rank-zero affine/Weyl object and both tensor units [26 checks; 0.000s]\nE8 PASS: psi_u table, 81 additivity, 6,561 Weyl products, 6,561 translations, 81 Fourier and 162 shear covariances [13453 checks; 0.161s]\nE9 FAIL: rank-two affine naturality failed [1.874s total]\nRED MODE --red-tensor-phase CAUGHT AT INTENDED GATE E9\n",
+      "stderr": ""
+    },
+    {
+      "argument": "",
+      "exit": 0,
+      "stdout": "phantasm_egorov_check mode=green\nexact arithmetic only; finite success does not prove or promote a claim\nE1 PASS: 24 symplectic matrices, 216 affine arrows; 1944 form checks [1944 checks; 0.003s]\nE2 PASS: 216 inverses; 46,656 products and 419,904 point checks [420552 checks; 0.829s]\nE3 PASS: 9 identity, 1,944 star, 17,496 product and 419,904 composition cases [439353 checks; 0.892s]\nE4 PASS: 81 independent monomial conjugation equalities [81 checks; 0.001s]\nE5 PASS: F*F=3I and 9 exact Fourier covariance equalities [10 checks; 0.001s]\nE6 PASS: 2 unitary and 18 exact shear covariance checks [20 checks; 0.000s]\nE7 PASS: enumerated rank-zero affine/Weyl object and both tensor units [26 checks; 0.000s]\nE8 PASS: psi_u table, 81 additivity, 6,561 Weyl products, 6,561 translations, 81 Fourier and 162 shear covariances [13453 checks; 0.159s]\nE9 PASS: 81 operator tensors, 81 swaps and 3,779,136 all-factor affine naturality cases [3779298 checks; 1.261s]\nPASS: SP-EGOROV / affine SP-TENSOR finite falsifier [3.146s total]\n",
+      "stderr": ""
+    }
+  ],
+  "green_count": 4654737
+}

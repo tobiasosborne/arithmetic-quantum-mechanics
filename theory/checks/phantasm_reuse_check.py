@@ -115,17 +115,27 @@ def finite_model(c, f, rank, parameter):
     for a, b in m.ops:
         image = {(m.psi(t) + m.cochain(a, b)) % f.p for t in range(f.q)}
         c.check('R3', image == set(range(f.p)), 'central quotient not onto')
-    family = list(m.ops.values())
-    if c.mutation == 'vacuum' and rank == 0:
-        family = []
     dim = len(g.elements)
-    c.check('R4', len(family) == dim**2, 'wrong matrix basis size, including the vacuum')
+    zero_label = (g.zero, g.zero)
+    zero_operator = m.ops[zero_label]
+    if c.mutation == 'vacuum' and rank == 0:
+        zero_operator = scale(g, zero_operator, 1)
+    identity = tuple((x, 0) for x in g.elements)
+    c.check('R4', zero_operator == identity,
+            f'actual zero-label operator is not identity q={f.q}, rank={rank}')
+    for label, op in m.ops.items():
+        actual_trace = phase_sum([e for x, (y, e) in zip(g.elements, op) if x == y], f.p)
+        normalized_trace = [Fraction(coefficient, dim) for coefficient in actual_trace]
+        coefficient_trace = int(label == zero_label)
+        if c.mutation == 'trace-normalization' and label == zero_label:
+            coefficient_trace = dim
+        c.check('R4', normalized_trace == [coefficient_trace],
+                f'entry-derived normalized trace versus coefficient trace q={f.q}, rank={rank}, label={label}')
+    family = list(m.ops.values())
     for i, op in enumerate(family):
         for j, oq in enumerate(family):
             trace = phase_sum([e2-e1 for (x,e1),(y,e2) in zip(op,oq) if x == y], f.p)
             c.check('R4', trace == ([dim] if i == j else [0]), 'operator trace Gram')
-    denominator = dim**2 if c.mutation == 'trace-normalization' else dim
-    c.check('R4', Fraction(dim, denominator) == 1, 'normalized trace of identity')
     return m
 
 

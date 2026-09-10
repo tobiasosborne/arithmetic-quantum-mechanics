@@ -2701,18 +2701,41 @@ Use the distinct symmetrized-model notation
 \]
 Here $W_{\beta_0}(a_j,b_j)\delta_y
 =\psi(-b_j(y+a_j))\delta_{y+a_j}$ is the existing reference model.
-An abstract-space model additionally names a symplectic coordinate
-identification. At $n=0$ use $H_{k,0}=\mathbb C$ and the empty tensor.
+At $n=0$ use $H_{k,0}=\mathbb C$ and the empty tensor.  Transporting this
+standard formula to an abstract symplectic space requires a named
+symplectic coordinate identification.
 
-**Scope.** The half-form convention excludes characteristic two. The finite-abelian realization is already admitted; SP-WEYL records its coordinate, phase and central-quotient transport.
+Independently of such a coordinate choice, extend the model-groupoid
+prescription to arbitrary rank.  The category
+$\mathrm{Mod}_{\psi,\beta_V}(V)$ has objects $(H,\pi)$, where $H$ is a
+finite-dimensional complex Hilbert space and
+\[
+ \pi:A_{\psi,\beta_V}(V)\longrightarrow\operatorname{End}_{\mathbb C}(H)
+\]
+is a unital $*$-representation whose underlying module is simple and for
+which every $\pi(W_{\beta_V}(v))$ is unitary.  Its morphisms
+$U:(H,\pi)\to(H',\pi')$ are unitary intertwiners satisfying
+$U\pi(a)=\pi'(a)U$ for every $a\in A_{\psi,\beta_V}(V)$; identities and
+composition are the ordinary identities and composition of unitary maps.
+The category $\mathrm{PMod}_{\psi,\beta_V}(V)$ has the same objects and
+each morphism set is the quotient by the action
+$U\mapsto\lambda U$ of $\lambda\in U(1)$, with
+\[
+ [U']\circ[U]=[U'\circ U].
+\]
+When $V=V(k)$ has rank one and $\beta_V=\omega_V/2$, this is the existing
+rank-one model groupoid; the rank-one categories for other polarizing
+cocycles retain their existing meaning.
+
+**Scope.** The half-form convention excludes characteristic two. Named symplectic coordinates belong only to the construction and transport of the standard formula; they are not data of an arbitrary object of $\mathrm{Mod}_{\psi,\beta_V}(V)$. The finite-abelian realization is already admitted; the Weyl-realization proposition records its coordinate, phase and central-quotient transport.
 
 **Sources.** SP-GH07, SP-PRASAD09, SP-GROSS06.
 
 **Obligations.** SP-WEYL, SP-EGOROV, SP-TENSOR, SP-TRACE,DG-CHAR2.
 
-**Reuses.** D3,D4,D5,D8,D1001,D1002,D1003,D1301,D1701.
+**Reuses.** D3,D4,D5,D8,D9,D1001,D1002,D1003,D1301,D1701.
 
-**Delta.** Extend the existing Weyl algebra notation to arbitrary rank and fix a symmetrized model by rephasing D8, without reversing position labels.
+**Delta.** Extend the existing Weyl algebra notation and D9's unitary model groupoid/projectivization to arbitrary rank, and fix the coordinate standard model by rephasing D8 without reversing position labels. Arbitrary model objects do not require the standard coordinates.
 
 ## D1704 (actual stabilizer amplitudes)
 

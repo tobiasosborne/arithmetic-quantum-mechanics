@@ -3,7 +3,7 @@
 Canonical statements and statuses live in `claims/CLAIMS.md`. This file
 holds the typed contracts and remaining comparisons for the formulated
 bootstrap. The September 10 reuse review is in
-`docs/research-plans/symplectic-phantasm-reuse.md`. Every outline is SKETCH, not an admitted proof. The source audit
+`docs/research-plans/symplectic-phantasm-reuse.md`. Construction outlines summarize the work; admissions rest on the linked proofs and reviews. The source audit
 is `docs/research-plans/symplectic-phantasm-sources.md`; the staged work order
 and unformulated global decision gates are in
 `docs/research-plans/symplectic-phantasm.md`.
@@ -75,24 +75,24 @@ downstream mathematical assertion is admitted. Full work orders appear in
 ## SP-WEYL
 
 - Title: Weyl realization
-- Status: SKETCH
+- Status: PROVED
 - Stage: 1
-- Definitions: D3,D4,D5,D8,D1001,D1002,D1003,D1701,D1703
+- Definitions: D3,D4,D5,D8,D9,D1001,D1002,D1003,D1701,D1703
 - Dependencies: F1-DUAL,F1-WEYL,F1-REAL
 - Inherited: F1-DUAL,F1-WEYL,F1-REAL
 - Reuse: F1-REAL section 2 gives the full matrix image, finite SvN and U(1) uniqueness for every finite abelian A; F1-DUAL and F1-WEYL supply its pairing and cocycle.
-- Remaining: Only the symplectic-coordinate reduction, half-form phase change, raw-center quotient and trace/unit identification must be assembled; the assembled claim still needs promotion review.
+- Remaining: None within the admitted statement. The coordinate reduction, half-form phase, raw-center quotient and trace/unit comparison have passed review; stronger symmetry lifts remain separate.
 - Sources: SP-GH07,SP-PRASAD09,SP-GROSS06
 - Inputs: (k,V,omega,psi) with p odd; standard model additionally has symplectic coordinates
 - Output: A finite matrix *-algebra, coefficient/normalized matrix trace and the inherited unitary model class
 - Choices: The given nontrivial character and a named symplectic coordinate map; the symmetrizing cochain; the raw-center quotient is retained
 - Scope: Odd characteristic only; no preferred abstract-space basis or genuine symmetry lift is asserted.
 - Proof: theory/symplectic-phantasm/reuse.md
-- Review: none
+- Review: theory/verdicts/phantasm-stage1-adjudication.md
 - Checks: theory/checks/phantasm_reuse_check.py
-- Evidence: draft
+- Evidence: admitted
 
-**Construction outline.** Use the structured corollary draft in theory/symplectic-phantasm/reuse.md sections 1--2. The admitted finite-abelian proof supplies the matrix/SvN conclusions; only its explicit coordinate and phase transport is new.
+**Construction outline.** Use the reviewed corollary proof in theory/symplectic-phantasm/reuse.md sections 1--2. The admitted finite-abelian proof supplies the matrix/SvN conclusions; only its explicit coordinate and phase transport is new.
 
 **Falsifier scope.** Implemented: phantasm_reuse_check.py R1--R4 compares the existing Abelian operator code with the symmetrized wavefunction, central quotient, cocycle and trace at the declared finite fields/ranks. This is a bridge falsifier, not a re-proof of F1-REAL.
 
@@ -101,52 +101,52 @@ downstream mathematical assertion is admitted. Full work orders appear in
 ## SP-EGOROV
 
 - Title: Affine symmetries and projective implementation
-- Status: SKETCH
+- Status: PROVED
 - Stage: 1
-- Definitions: D1003,D1701,D1703
+- Definitions: D9,D1003,D1701,D1703
 - Dependencies: SP-WEYL,F1-REAL
 - Inherited: F1-REAL
 - Reuse: F1-REAL section 2 steps 6--8 gives uniqueness and unitary implementation for the finite matrix model.
-- Remaining: Check the affine semidirect-product action on the symmetrized generators in arbitrary rank and its covariance under model transport; no new finite SvN proof.
+- Remaining: None within the admitted statement. The exact affine action and projective implementation are proved for the explicitly owned arbitrary-rank model class; a genuine phase lift remains separate.
 - Sources: SP-GH07,SP-GH09,SP-GROSS06
 - Inputs: Affine symplectic arrow (t,g):V->W over fixed (k,psi)
 - Output: alpha_(t,g):A(V)->A(W); projective unitary H(V)->H(W)
 - Choices: The common character; model choices; no unrecorded phase section
 - Scope: This is a covariant algebra functor and a projective implementation statement. Choosing a genuine linear lift is a separate comparison.
-- Proof: none
-- Review: none
-- Checks: none
-- Evidence: planned
+- Proof: theory/symplectic-phantasm/egorov.md
+- Review: theory/verdicts/phantasm-stage1-adjudication.md
+- Checks: theory/checks/phantasm_egorov_check.py
+- Evidence: admitted
 
 **Construction outline.** F1-REAL section 2 steps 6--8 gives uniqueness and unitary implementation for the finite matrix model. Check the affine semidirect-product action on the symmetrized generators in arbitrary rank and its covariance under model transport; no new finite SvN proof.
 
-**Falsifier scope.** Enumerate the affine group on F3^2; check the semidirect-product law and both translation and Fourier/shear covariance.
+**Falsifier scope.** Implemented: phantasm_egorov_check.py E1--E8 enumerates all 216 affine symplectic arrows on F3^2, checks identities, inverses and all 46,656 ordered products pointwise, the induced Weyl-algebra action and independent translation, Fourier and shear covariance. It includes rank zero and a nonstandard F9 character. These finite checks do not prove the arbitrary-rank or projective-implementation statement.
 
 **Required mutations.** Drop the translated phase or reverse the order of the semidirect product.
 
 ## SP-TENSOR
 
 - Title: Symplectic sum and quantum tensor compatibility
-- Status: SKETCH
+- Status: PROVED
 - Stage: 1
-- Definitions: D1004,D1701,D1703
+- Definitions: D9,D1004,D1701,D1703
 - Dependencies: SP-WEYL,SP-EGOROV,F1-FUNCT
 - Inherited: F1-FUNCT
 - Reuse: F1-FUNCT section 3 supplies the configuration-product Hilbert tensor, basis maps, central product and coherence.
-- Remaining: Check the half-form cochain is multiplicative across factors, then extend the existing configuration-isomorphism naturality to the declared affine symplectic arrows. Do not use this SP claim to prove SP-WEYL.
+- Remaining: None within the admitted statement. The inherited tensor comparison, half-form transport, affine naturality and projective coherence have passed review; additive completion remains separate.
 - Sources: SP-GH07,SP-GH09
 - Inputs: Pairs and triples of symplectic spaces and affine arrows over fixed (k,psi)
 - Output: A(V+W) -> A(V) tensor A(W), natural with the affine action
 - Choices: The common character and standard tensor-coordinate ordering
 - Scope: The source operation is symplectic direct sum. This does not construct a coherent additive completion of the classical category.
-- Proof: none
-- Review: none
-- Checks: theory/checks/phantasm_reuse_check.py
-- Evidence: draft
+- Proof: theory/symplectic-phantasm/tensor.md
+- Review: theory/verdicts/phantasm-stage1-adjudication.md
+- Checks: theory/checks/phantasm_reuse_check.py,theory/checks/phantasm_egorov_check.py
+- Evidence: admitted
 
 **Construction outline.** Apply F1-FUNCT to the configuration product and verify psi((a.c+b.d)/2)=psi(a.c/2)psi(b.d/2). Combine the bridge with SP-EGOROV for the remaining affine naturality. A new proof of the underlying Hilbert tensor comparison is unnecessary.
 
-**Falsifier scope.** Implemented: phantasm_reuse_check.py R5 checks the transported product against independently tensored inherited operators, including a zero factor. The full affine naturality/coherence statement still requires its written bridge.
+**Falsifier scope.** Implemented: phantasm_reuse_check.py R5 checks the transported product against independently tensored inherited operators, including zero factors. phantasm_egorov_check.py E7/E9 checks the actual rank-zero model and tensor units, all 81 rank-two operator/tensor and swap comparisons over F3, and all 3,779,136 factorwise affine naturality cases. Arbitrary-rank and projective coherence are supplied by the written proof and review.
 
 **Required mutations.** Drop one tensor factor phase, interchange only one coordinate ordering, or replace the unit by a qudit.
 
